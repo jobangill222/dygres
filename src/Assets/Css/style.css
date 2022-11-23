@@ -177,7 +177,7 @@ img{
     padding: 0 !important;
     margin: 0;
 }
-.header-nav .user-dropdown{
+.user-dropdown{
     margin-left: 60px;
     position: relative;
 }
@@ -187,7 +187,7 @@ img{
     padding: 0 160px;
 }
 
-.header-nav .user-dropdown .Dropdown-listing {
+.user-dropdown .Dropdown-listing {
     position: absolute;
     top: 60px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
@@ -202,14 +202,14 @@ img{
     transition: .3s ease;
     z-index: 999;
 }
-.header-nav .user-dropdown .Dropdown-listing h4 {
+.user-dropdown .Dropdown-listing h4 {
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
     line-height: 18px;
     margin-bottom: 10px;
 }
-.header-nav .user-dropdown .Dropdown-listing li, .header-nav .user-dropdown .Dropdown-listing li a {
+.user-dropdown .Dropdown-listing li, .user-dropdown .Dropdown-listing li a {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -221,7 +221,7 @@ img{
     color: #171717;
     text-decoration: none;
 }
-.header-nav .user-dropdown .Dropdown-listing li svg {
+.user-dropdown .Dropdown-listing li svg {
     margin-right: 15px;
     font-weight: 600;
     font-size: 18px;
@@ -229,12 +229,12 @@ img{
     display: flex;
     align-items: center;
 }
-.header-nav .user-dropdown:hover .Dropdown-listing {
+.user-dropdown:hover .Dropdown-listing {
     visibility: visible;
     opacity: 1;
     transform: translate(0px, 0px);
 }
-.header-nav .user-dropdown .nav-link {
+.user-dropdown .nav-link {
     margin-left: 0 !important;
 }
 .body-wrapper {
@@ -1705,15 +1705,204 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
     line-height: 24px;
     color: #002358;
 }
-
-
-
-
-
-
-
-
-
+.Adminlayout {
+    padding: 50px 0 90px 0;
+}
+.dashboard-title-bar h4 {
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 58px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin: 0;
+}
+.dashboard-title-bar select.form-select {
+    width: auto;
+    margin: 0 0 0 auto;
+    background: #FFFFFF;
+    border: 1.37244px solid rgba(133, 134, 136, 0.16);
+    border-radius: 8px;
+    appearance: revert;
+    padding: 16px 50px 16px 24px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 21.9591px;
+    line-height: 25px;
+    color: #858688;
+    appearance: none;
+    background-image: url('../../../public/images/arrowdown.png');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1em;
+}
+.dashboard-boxes {
+    margin-top: 60px;
+}
+.dashboard-boxes .dash-boxes-in {
+    padding: 22px 28px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 12px 20px 8px rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: block;
+}
+.dashboard-boxes .dash-boxes-in ul.userstatus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.dashboard-boxes .dash-boxes-in ul.userstatus li {
+    display: flex;
+    align-items: center;
+}
+.dashboard-boxes .dash-boxes-in ul.userstatus li .iconbar {
+    background: #F0F0F0;
+    border-radius: 14.065px;
+    width: 56.26px;
+    height: 56.26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #002358;
+    margin-right: 20px;
+    transition: .5s ease;
+}
+.dashboard-boxes .dash-boxes-in ul.userstatus li h5 {
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #323335;
+}
+.dashboard-boxes .dash-boxes-in ul.userstatus li svg {
+    font-size: 32px;
+    color: #002358;
+    transition: .5s ease;
+}
+.dashboard-boxes .dash-boxes-in ul.weekly-status {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.dashboard-boxes .dash-boxes-in ul.weekly-status li h4 {
+    margin: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34.38px;
+    line-height: 41px;
+    color: #171717;
+}
+.dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar p {
+    font-weight: 400;
+    font-size: 22.504px;
+    line-height: 27px;
+    margin: 0 0 0 8px;
+}
+.dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar svg {
+    font-size: 26px;
+}
+.dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar.up svg , 
+.dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar.up p {
+    color: #0CAF60;
+}
+.dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar.down svg , 
+.dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar.down p {
+    color: #FA5F1C;
+}
+.dashboard-boxes .dash-boxes-in ul.weekly-status h5 {
+    margin: 8px 0 0 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22.504px;
+    line-height: 27px;
+    color: #4C4D4F;
+}
+.Linechart {
+    margin-bottom: 40px;
+}
+.Linechart {
+    margin-bottom: 40px;
+}
+.usertable {
+    margin-top: 30px;
+}
+.usertable table {
+    position: relative;
+}
+.usertable table thead th {
+    background: rgb(219 223 229 / 30%);
+    padding: 15px 30px!important;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.03em;
+    color: #002358;
+    border: none;
+}
+.usertable table tbody tr td {
+    padding: 15px 30px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #272727;
+    border: none;
+}
+.usertable table thead th:first-child {
+    border-radius: 8.78571px 0 0 8.78571px;
+}
+.usertable table thead th:last-child {
+    border-radius: 0 8.78571px 8.78571px 0;
+}
+.usertable table tbody tr td .number-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.usertable table tbody tr td .number-bar p {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #272727;
+}
+.usertable table tbody tr td .number-bar .user-dropdown ul.Dropdown-listing {
+    top: 20px;
+    background: #ffffff;
+}
+.usertable table tbody tr td .number-bar .user-dropdown svg {
+    cursor: pointer;
+}
+.Admin-modal .modal-footer {
+    border: none;
+    justify-content: center;
+}
+.Admin-modal .modal-footer button {
+    margin: 0 10px;
+}
+.Admin-modal .modal-body p {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #171717;
+    text-align: center;
+    margin: 0;
+}
+.Admin-modal .modal-content {
+    padding: 30px 0;
+}
 
 
 

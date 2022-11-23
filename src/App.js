@@ -18,11 +18,15 @@ import ProfileTabContent from './Components/Profile/ProfileTabTimeline';
 import EditProfile from './Components/Profile/EditProfile';
 import SiteLayout from './Components/Layouts/SiteLayout';
 import ProfileLayout from './Components/Layouts/ProfileLayout';
-import Login from './Components/AuthLayout/Login';
-import SignUp from './Components/AuthLayout/SignUp';
-import GetOtp from './Components/AuthLayout/GetOtp';
-import EnterOtp from './Components/AuthLayout/EnterOtp';
-import ResetPassword from './Components/AuthLayout/ResetPassword';
+import AuthLayout from './Components/Layouts/AuthLayout';
+import AdminLayout from './Components/Layouts/AdminLayout';
+import Login from './Components/AuthPages/Login';
+import SignUp from './Components/AuthPages/SignUp';
+import GetOtp from './Components/AuthPages/GetOtp';
+import EnterOtp from './Components/AuthPages/EnterOtp';
+import ResetPassword from './Components/AuthPages/ResetPassword';
+import Dashboard from './Components/AdminPages/Dashboard';
+import Users from './Components/AdminPages/Users';
 
 function App() {
 
@@ -31,9 +35,7 @@ function App() {
       <ThemeProvider>
 
         <Router>
-
           <Routes>
-
 
             <Route element={<SiteLayout />}>
               <Route exact path='/' element={<New />} />
@@ -44,12 +46,14 @@ function App() {
               <Route exact path='/not-voted' element={<NotVoted />} />
             </Route>
 
-
             <Route element={<ProfileLayout />}>
               <Route exact path='/profile' element={<Profile />} />
               <Route exact path='/profiletabs' element={<ProfileTabs />} />
               <Route exact path='/profiletabcontent' element={<ProfileTabContent />} />
               <Route exact path='/editprofile' element={<EditProfile />} />
+            </Route>
+
+            <Route element={<AuthLayout />}>
               <Route exact path='/login' element={<Login />} />
               <Route exact path='/signup' element={<SignUp />} />
               <Route exact path='/getotp' element={<GetOtp />} />
@@ -57,9 +61,12 @@ function App() {
               <Route exact path='/resetpassword' element={<ResetPassword />} />
             </Route>
 
+            <Route element={<AdminLayout />}>
+              <Route exact path='/dashboard' element={<Dashboard />} />
+              <Route exact path='/users' element={<Users />} />
+            </Route>
 
           </Routes>
-
         </Router>
 
       </ThemeProvider>
