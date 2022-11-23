@@ -28,8 +28,17 @@ ul li , ul {
     padding: 0;
     margin: 0;
 }
+a{
+    cursor: pointer;
+    color: #002358;
+    text-decoration: none;
+}
 img{
     max-width: 100%;
+}
+.form-check-input:checked {
+    background-color: #0a2358;
+    border-color: #0a2358;
 }
 .btn {
     padding: 12px 50px;
@@ -1572,8 +1581,130 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
     padding: 0 !important;
     color: #002358 !important;
 }
+.Auth-bar {
+    height: calc(100vh - 90px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-image: url('../../../public/images/auth-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.Auth-bar .Authbar-innerbox {
+    background: #FFFFFF;
+    border: 0.5px solid #E8E8E8;
+    box-shadow: 8px 9px 31px rgba(84, 114, 247, 0.09);
+    border-radius: 30px;
+    max-width: 563px;
+    margin: 0 auto;
+    padding: 40px;
+}
+.Auth-bar .Authbar-innerbox h4 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #002358;
+    justify-content: center;
+}
+.Auth-bar .Authbar-innerbox p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    text-align: center;
+}
+.Auth-bar .Authbar-innerbox form {
+    margin-top: 25px;
+    position: relative;
+}
+.Auth-bar .Authbar-innerbox form .authinputbar {
+    position: relative;
+    margin-bottom: 20px;
+}
+.Auth-bar .Authbar-innerbox form .authinputbar label.form-label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #6E7280;
+    margin-bottom: 8px;
+}
+.Auth-bar .Authbar-innerbox form .authinputbar .form-control {
+    background: #FFFFFF;
+    border: 2px solid #DDDDE3;
+    border-radius: 8px;
+    height: auto;
+    padding: 14px 16px;
+}
+.Auth-bar .Authbar-innerbox form .authcheckbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-
+.Auth-bar .Authbar-innerbox form .authcheckbox .form-check-input[type=checkbox] {
+    margin: 0 10px 0 0;
+    float: none !important;
+    width: 24px;
+    height: 24px;
+}
+.Auth-bar .Authbar-innerbox form .authcheckbox .form-check {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.Auth-bar .Authbar-innerbox form .authcheckbox .form-check label.form-check-label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #222446;
+}
+.Auth-bar .Authbar-innerbox form .authcheckbox .btn-simple a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
+    color: #002358;
+}
+.Auth-bar .Authbar-innerbox form button[type=submit] ,
+.Auth-bar .Authbar-innerbox form a.btn
+{
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    height: auto;
+    display: block;
+}
+.Auth-bar .Authbar-innerbox form .Noted-bar {
+    margin-top: 20px;
+    text-align: center;
+}
+.Auth-bar .Authbar-innerbox form .Noted-bar h6 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #6E7280;
+    margin: 0;
+}
+.Auth-bar .Authbar-innerbox form .Noted-bar h6 a {
+    color: #002358;
+    text-decoration: none;
+}
+.Auth-bar .Authbar-innerbox form .terms-condition {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #002358;
+}
 
 
 

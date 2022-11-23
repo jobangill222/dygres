@@ -94,10 +94,14 @@ const Header = () => {
                                     <h4 className="text-silver">Account</h4>
                                     <ul>
                                         <li className="text-secondry">
-                                        <Link className="active" to="/profile"><AiOutlineEye />View Profile</Link>
+                                            <Link className="active" to="/profile"><AiOutlineEye />View Profile</Link>
                                         </li>
-                                        <li className="text-secondry"><BsPencil />Edit Profile</li>
+                                        <li className="text-secondry">
+                                            <Link className="active" to="/editprofile"><BsPencil />Edit Profile</Link></li>
                                         <li className="text-secondry"><MdLogout />Log Out</li>
+                                        <li className="text-secondry">
+                                            <Link to="/login"><MdLogout />Log In</Link>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
