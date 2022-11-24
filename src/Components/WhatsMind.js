@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 
 const WhatsMind = () => {
 
-
     return (
         <>
             <div className="Whatsmind-bar">

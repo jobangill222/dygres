@@ -11,7 +11,7 @@ const DarkModeSwitch = () => {
     useEffect(() => {
         darkMode
             ? document.documentElement.setAttribute("darkMode", "")
-            : document.documentElement.removeAttribute("darkMode", "");
+            : document.documentElement.removeAttribute("darkMode");
     }, [darkMode]);
 
     return (

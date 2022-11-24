@@ -23,11 +23,13 @@ const Users = () => {
             <Container>
                 <div className="dashboard-title-bar">
                     <Row>
-                        <Col lg="8"><h4>users</h4></Col>
-                        <Col lg="4">
+                        <Col lg="6"><h4>users</h4></Col>
+                        <Col lg="6">
                             <div className="Titlebar-btns">
-                                <Button onClick={BlockClose} className="bg-primary text-white">Send Notification</Button>
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <div className="sendbtn">
+                                <Link to="/sendnotification">Send Notification</Link>
+                                </div>
+                                <Form.Group className="searchbar" controlId="exampleForm.ControlInput1">
                                     <BiSearch/>
                                     <Form.Control type="text" placeholder="Search for users" />
                                 </Form.Group>
@@ -60,13 +62,13 @@ const Users = () => {
                                                     <Link onClick={BlockShow}><MdBlock />Block</Link>
                                                 </li>
                                                 <li className="text-secondry">
-                                                    <Link to="/profile"><BsFilePost />Posts</Link>
+                                                    <Link to="/post"><BsFilePost />Posts</Link>
                                                 </li>
                                                 <li className="text-secondry">
-                                                    <Link to="/profile"><BsFlag />Flagged Posts</Link>
+                                                    <Link to="/flagpost"><BsFlag />Flagged Posts</Link>
                                                 </li>
                                                 <li className="text-secondry">
-                                                    <Link to="/profile"><BiIdCard />User Verification</Link>
+                                                    <Link to="/userverification"><BiIdCard />User Verification</Link>
                                                 </li>
                                             </ul>
                                         </div>

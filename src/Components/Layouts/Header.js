@@ -3,8 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import DarkModeSwitch from "./DarkModeSwitch";
-import { BsBell , BsPencil } from 'react-icons/bs';
-import { AiOutlineSetting , AiOutlineEye } from 'react-icons/ai';
+import { BsBell, BsPencil } from 'react-icons/bs';
+import { AiOutlineSetting, AiOutlineEye } from 'react-icons/ai';
 import { MdLogout } from 'react-icons/md';
 import { Link } from "react-router-dom";
 
@@ -16,11 +16,16 @@ const Header = () => {
         <>
             <Navbar className="header-nav" expand="lg">
                 <Container>
-                    <Navbar.Brand href="#home"><img src="/images/logo.png" alt="logo" /></Navbar.Brand>
+                    <Navbar.Brand href="#home">
+                        <img className="lightmode" src="/images/logo.png" alt="logo" />
+                        <img className="darkmode" src="/images/logowhite.png" alt="logo" />
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mx-auto me-0">
-                            <Nav.Link className="text-lightgray" href="#"><DarkModeSwitch /></Nav.Link>
+
+                            <div className="text-lightgray" href="#"><DarkModeSwitch /></div>
+
                             <div className="relative user-dropdown">
                                 <Nav.Link className="text-lightgray" href="#"><BsBell /></Nav.Link>
                                 <div className="Dropdown-listing notification-dropdown bg-white">
@@ -31,7 +36,7 @@ const Header = () => {
                                     <div className="notification-body">
                                         <div className="notification-list">
                                             <ul>
-                                                <li><img src="/images/user.png" alt="img"/></li>
+                                                <li><img src="/images/user.png" alt="img" /></li>
                                                 <li>
                                                     <div className="userdetail">
                                                         <h6>Methew Reed</h6>
@@ -44,7 +49,7 @@ const Header = () => {
                                         </div>
                                         <div className="notification-list">
                                             <ul>
-                                                <li><img src="/images/user.png" alt="img"/></li>
+                                                <li><img src="/images/user.png" alt="img" /></li>
                                                 <li>
                                                     <div className="userdetail">
                                                         <h6>Methew Reed</h6>
@@ -57,7 +62,7 @@ const Header = () => {
                                         </div>
                                         <div className="notification-list">
                                             <ul>
-                                                <li><img src="/images/user.png" alt="img"/></li>
+                                                <li><img src="/images/user.png" alt="img" /></li>
                                                 <li>
                                                     <div className="userdetail">
                                                         <h6>Methew Reed</h6>
@@ -70,7 +75,7 @@ const Header = () => {
                                         </div>
                                         <div className="notification-list">
                                             <ul>
-                                                <li><img src="/images/user.png" alt="img"/></li>
+                                                <li><img src="/images/user.png" alt="img" /></li>
                                                 <li>
                                                     <div className="userdetail">
                                                         <h6>Methew Reed</h6>
@@ -87,9 +92,13 @@ const Header = () => {
                                     </div>
                                 </div>
                             </div>
-                            <Nav.Link className="text-lightgray" href="#"><AiOutlineSetting /></Nav.Link>
+
+                            <Nav.Link className="text-lightgray" href="#">
+                                <AiOutlineSetting />
+                            </Nav.Link>
+
                             <div className="relative user-dropdown">
-                                <img src="/images/user.png"  alt="user-img"/>
+                                <img src="/images/user.png" alt="user-img" />
                                 <div className="Dropdown-listing bg-white">
                                     <h4 className="text-silver">Account</h4>
                                     <ul>

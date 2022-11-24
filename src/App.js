@@ -27,6 +27,10 @@ import EnterOtp from './Components/AuthPages/EnterOtp';
 import ResetPassword from './Components/AuthPages/ResetPassword';
 import Dashboard from './Components/AdminPages/Dashboard';
 import Users from './Components/AdminPages/Users';
+import Post from './Components/AdminPages/Post';
+import SendNotification from './Components/AdminPages/SendNotification';
+import FlagPost from './Components/AdminPages/FlagPost';
+import UserVerification from './Components/AdminPages/UserVerification';
 
 function App() {
 
@@ -64,6 +68,10 @@ function App() {
             <Route element={<AdminLayout />}>
               <Route exact path='/dashboard' element={<Dashboard />} />
               <Route exact path='/users' element={<Users />} />
+              <Route exact path='/post' element={<Post />} />
+              <Route exact path='/sendnotification' element={<SendNotification />} />
+              <Route exact path='/flagpost' element={<FlagPost />} />
+              <Route exact path='/userverification' element={<UserVerification />} />
             </Route>
 
           </Routes>
