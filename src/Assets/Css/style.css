@@ -40,6 +40,21 @@ img{
     background-color: #0a2358;
     border-color: #0a2358;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #212121;
+  -webkit-text-fill-color: #ffffff  ;
+  -webkit-box-shadow: 0 0 0px 1000px #212121 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  color: #ffffff !important;
+}
 .btn {
     padding: 12px 50px;
     border-radius: 5px;
@@ -221,6 +236,9 @@ img{
     color: #171717;
     text-decoration: none;
     width: 100%;
+}
+.user-dropdown .Dropdown-listing li a{
+    margin-bottom: 0 !important;
 }
 .user-dropdown .Dropdown-listing li svg {
     margin-right: 15px;
@@ -925,7 +943,7 @@ img{
     margin-bottom: 20px;
 }
 .Actions-modal .Awrds-li img {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .Actions-modal .Awrds-li h4 {
     margin: 0;
@@ -938,6 +956,7 @@ img{
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    display: inline-block;
     color: #AAAAAA;
 }
 .awards-modal .modal-header {
@@ -1249,7 +1268,8 @@ img{
 .notification-dropdown .notification-foot {
     text-align: center;
 }
-.notification-dropdown .notification-foot button {
+.notification-dropdown .notification-foot button ,
+.notification-dropdown .notification-foot a{
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -1548,6 +1568,10 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
     font-size: 20px;
     line-height: 24px;
     color: #002358;
+}
+.account-verify .verify-input button.outline-primary {
+    padding: 0;
+    border: none !important;
 }
 .upload-media-verify {
     background: rgba(0, 35, 88, 0.08);
@@ -2184,6 +2208,99 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 [darkmode] .Auth-bar .Authbar-innerbox h4, [darkmode] .Auth-bar .Authbar-innerbox p {
     color: #ffffff;
 }
+[darkmode] .Notfy-block {
+    background: #272728;
+    box-shadow: none;
+}
+[darkmode] .Notfy-block .notification-title h4 ,
+[darkmode] .notification-title ul li .btn-nill {
+    color: #ffffff;
+}
+[darkmode] .Notfy-block p.notify {
+    color: #ffffff;
+}
+[darkmode] .notification-content .user-active-timer li.text-green {
+    color: #ffffff;
+}
+[darkmode] .user-dropdown .Dropdown-listing {
+    background: #343434 !important;
+    border-color: #717171 !important;
+}
+[darkmode]  .user-dropdown .Dropdown-listing h4.text-silver {
+    color: #ffffff;
+}
+[darkmode]  .user-dropdown .Dropdown-listing ul li , [darkmode] .user-dropdown .Dropdown-listing ul li a {
+    color: #ffffff;
+}
+[darkmode] .user-dropdown .Dropdown-listing h4, 
+[darkmode] .user-dropdown .Dropdown-listing h6 , 
+[darkmode] .user-dropdown .Dropdown-listing p {
+    color: #ffffff !important;
+}
+[darkmode] .notification-dropdown .notification-foot button {
+    color: #ffffff;
+}
+[darkmode] .share-media li .sharebtn {
+    background: #ffffff;
+}
+[darkmode] .share-media li  p {
+    color: #ffffff;
+}
+[darkmode] .awards-modal .modal-header button.btn-add {
+    background: #343434;
+    border: 1px solid #FFFFFF;
+    color: #AAAAAA;
+}
+[darkmode] .Actions-modal .Awrds-li h4 {
+    background: #343434;
+    border: 1px solid #FFFFFF;
+    color: #AAAAAA;
+}
+[darkmode]  .notification-dropdown .notification-foot a{
+    color: #ffffff;
+}
+[darkmode] .editor-input .form-label {
+    color: #ffffff;
+}
+[darkmode] .editor-input .form-control ,
+[darkmode] .account-verify .verify-input input.form-control ,
+[darkmode] .editor-input .form-select{
+    background: #212121;
+    border: 2px solid #565656;
+    color: #ffffff;
+}
+[darkmode] .Uploaded-user .Imagebar {
+    border: 10px solid #212121;
+}
+[darkmode] .save-form-btn .outline-primary {
+    background: #ffffff !important;
+    color: #1c1b1b !important;
+}
+[darkmode] .upload-media-verify {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px dashed #FFFFFF;
+}
+[darkmode] .passwrd-verify .resetbtn {
+    color: #ffffff !important;
+}
+
+
+
+/* .arrowshape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid #717171;
+    width: 10px;
+    top: -31px;
+}
+
+.arrowbar {
+    position: relative;
+} */
 /* Responsive css  */
 @media (max-width: 1599px){
     .container {

@@ -29,66 +29,69 @@ const Header = () => {
                             <div className="relative user-dropdown">
                                 <Nav.Link className="text-lightgray" href="#"><BsBell /></Nav.Link>
                                 <div className="Dropdown-listing notification-dropdown bg-white">
-                                    <div className="notification-head">
-                                        <h4>Notifications</h4>
-                                        <h6>Mark all as read</h6>
-                                    </div>
-                                    <div className="notification-body">
-                                        <div className="notification-list">
-                                            <ul>
-                                                <li><img src="/images/user.png" alt="img" /></li>
-                                                <li>
-                                                    <div className="userdetail">
-                                                        <h6>Methew Reed</h6>
-                                                        <p>@methew11</p>
-                                                    </div>
-                                                    <p className="times">46 mins ago</p>
-                                                </li>
-                                            </ul>
-                                            <p className="notification">Methew Reed started Following you</p>
+                                    <div className="arrowbar">
+                                        <div className="arrowshape"></div>
+                                        <div className="notification-head">
+                                            <h4>Notifications</h4>
+                                            <h6>Mark all as read</h6>
                                         </div>
-                                        <div className="notification-list">
-                                            <ul>
-                                                <li><img src="/images/user.png" alt="img" /></li>
-                                                <li>
-                                                    <div className="userdetail">
-                                                        <h6>Methew Reed</h6>
-                                                        <p>@methew11</p>
-                                                    </div>
-                                                    <p className="times">46 mins ago</p>
-                                                </li>
-                                            </ul>
-                                            <p className="notification">Methew Reed started Following you</p>
+                                        <div className="notification-body">
+                                            <div className="notification-list">
+                                                <ul>
+                                                    <li><img src="/images/user.png" alt="img" /></li>
+                                                    <li>
+                                                        <div className="userdetail">
+                                                            <h6>Methew Reed</h6>
+                                                            <p>@methew11</p>
+                                                        </div>
+                                                        <p className="times">46 mins ago</p>
+                                                    </li>
+                                                </ul>
+                                                <p className="notification">Methew Reed started Following you</p>
+                                            </div>
+                                            <div className="notification-list">
+                                                <ul>
+                                                    <li><img src="/images/user.png" alt="img" /></li>
+                                                    <li>
+                                                        <div className="userdetail">
+                                                            <h6>Methew Reed</h6>
+                                                            <p>@methew11</p>
+                                                        </div>
+                                                        <p className="times">46 mins ago</p>
+                                                    </li>
+                                                </ul>
+                                                <p className="notification">Methew Reed started Following you</p>
+                                            </div>
+                                            <div className="notification-list">
+                                                <ul>
+                                                    <li><img src="/images/user.png" alt="img" /></li>
+                                                    <li>
+                                                        <div className="userdetail">
+                                                            <h6>Methew Reed</h6>
+                                                            <p>@methew11</p>
+                                                        </div>
+                                                        <p className="times">46 mins ago</p>
+                                                    </li>
+                                                </ul>
+                                                <p className="notification">Methew Reed started Following you</p>
+                                            </div>
+                                            <div className="notification-list">
+                                                <ul>
+                                                    <li><img src="/images/user.png" alt="img" /></li>
+                                                    <li>
+                                                        <div className="userdetail">
+                                                            <h6>Methew Reed</h6>
+                                                            <p>@methew11</p>
+                                                        </div>
+                                                        <p className="times">46 mins ago</p>
+                                                    </li>
+                                                </ul>
+                                                <p className="notification">Methew Reed started Following you</p>
+                                            </div>
                                         </div>
-                                        <div className="notification-list">
-                                            <ul>
-                                                <li><img src="/images/user.png" alt="img" /></li>
-                                                <li>
-                                                    <div className="userdetail">
-                                                        <h6>Methew Reed</h6>
-                                                        <p>@methew11</p>
-                                                    </div>
-                                                    <p className="times">46 mins ago</p>
-                                                </li>
-                                            </ul>
-                                            <p className="notification">Methew Reed started Following you</p>
+                                        <div className="notification-foot">
+                                            <Link to="/notification">See All</Link>
                                         </div>
-                                        <div className="notification-list">
-                                            <ul>
-                                                <li><img src="/images/user.png" alt="img" /></li>
-                                                <li>
-                                                    <div className="userdetail">
-                                                        <h6>Methew Reed</h6>
-                                                        <p>@methew11</p>
-                                                    </div>
-                                                    <p className="times">46 mins ago</p>
-                                                </li>
-                                            </ul>
-                                            <p className="notification">Methew Reed started Following you</p>
-                                        </div>
-                                    </div>
-                                    <div className="notification-foot">
-                                        <button href="#" type="button">See All</button>
                                     </div>
                                 </div>
                             </div>
@@ -100,6 +103,7 @@ const Header = () => {
                             <div className="relative user-dropdown">
                                 <img src="/images/user.png" alt="user-img" />
                                 <div className="Dropdown-listing bg-white">
+                                    <div className="arrowshape"></div>
                                     <h4 className="text-silver">Account</h4>
                                     <ul>
                                         <li className="text-secondry">

@@ -137,7 +137,7 @@ const DigitalTabContent = () => {
                     <h4><BsPencil />Edit Post</h4>
                     <Form>
                         <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">
-                            <Form.Control as="textarea" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. #HelloWorld #DummyText @iamhannah @methew reed" />
+                            <Form.Control as="textarea" style={{ height: '120px' }} value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. #HelloWorld #DummyText @iamhannah @methew reed" />
                             <div className="text-end">
                                 <Button className="outline-primary text-white"><ImCross />Cancel</Button>
                                 <Button className="bg-primary text-white">Save</Button>
@@ -146,7 +146,7 @@ const DigitalTabContent = () => {
                     </Form>
                 </div>
             </div>
-            <Accordion defaultActiveKey="0">
+            <Accordion >
                 <Accordion.Item eventKey="0">
                     <div className="digital-feeds ">
                         <div className="user-detail-bar">

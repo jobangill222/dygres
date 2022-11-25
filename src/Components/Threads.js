@@ -18,7 +18,7 @@ const Threads = () => {
     const handleShow = () => setShow(true);
     return (
         <>
-            <Accordion defaultActiveKey="2">
+            <Accordion >
                 <Accordion.Item eventKey="2">
                     <h4>Threads</h4>
                     <div className="user-detail-bar">
@@ -78,7 +78,7 @@ const Threads = () => {
                             </div>
                         </div>
                         <Accordion.Body className='thredsbar thredsbar-inner'>
-                            <Accordion defaultActiveKey="3">
+                            <Accordion >
                                 <Accordion.Item eventKey="3">
                                     <div className="user-detail-bar">
                                         <div className="detailleft">
