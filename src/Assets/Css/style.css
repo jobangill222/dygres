@@ -2283,8 +2283,55 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 [darkmode] .passwrd-verify .resetbtn {
     color: #ffffff !important;
 }
-
-
+[darkmode] .dashboard-boxes .dash-boxes-in {
+    background: #343434;
+    border: 1px solid #717171;
+}
+[darkmode] .dashboard-boxes .dash-boxes-in ul.userstatus li .iconbar {
+    background: #4E4E4E;
+}
+[darkmode] .dashboard-boxes .dash-boxes-in ul.weekly-status li h4 ,
+[darkmode] .dashboard-boxes .dash-boxes-in ul.weekly-status h5 ,
+[darkmode] .dashboard-boxes .dash-boxes-in ul.userstatus li svg
+{
+    color: #ffffff;
+}
+[darkmode] .dashboard-title-bar select.form-select {
+    background-color: #2E2D2D;
+    border: 1px solid #FFFFFF;
+}
+[darkmode] .dashboard-title-bar select.form-select {
+    background-color: #2E2D2D;
+    border: 1px solid #FFFFFF;
+}
+[darkmode] .usertable table thead th {
+    background: #383838;
+    color: #ffffff;
+}
+[darkmode] .usertable table tbody tr td .number-bar p ,.user-dropdown .Dropdown-listing li, .user-dropdown .Dropdown-listing li a {
+    color: #ffffff;
+}
+[darkmode] .usertable table tbody tr td , 
+[darkmode] .modal-content p , 
+[darkmode] .Username-titlebar h6{
+    color: #ffffff;
+}
+[darkmode] .Titlebar-btns .searchbar input {
+    background: #3A3A3A;
+}
+[darkmode] .modal-content {
+    background: #272728;
+}
+[darkmode] .modal-content {
+    background: #272728;
+}
+[darkmode] .verification-bar {
+    background: #272728;
+    box-shadow: none;
+}
+[darkmode] .verification-bar .verification-media-upload h5 ,[darkmode]  .verification-bar .verification-media-upload label {
+    color: #ffffff !important;
+}
 
 /* .arrowshape {
     position: absolute;
