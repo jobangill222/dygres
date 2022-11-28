@@ -206,7 +206,7 @@ const Threads = () => {
                 </Accordion.Item>
             </Accordion>
             {/* Delete modal */}
-            <Modal show={show} onHide={handleClose} centered>
+            <Modal  className="Actions-modal"  show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Delete Post</Modal.Title>
                 </Modal.Header>

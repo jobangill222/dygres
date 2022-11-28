@@ -1,10 +1,11 @@
 import React from "react";
+import TopLatestPost from "../Components/TopLatestPost";
 
 
 const Hot = () => {
     return (
         <>
-            <p>Hot</p>
+            <TopLatestPost/>
         </>
     );
 }

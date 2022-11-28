@@ -53,7 +53,7 @@ const Sidebar = () => {
                 </div>
                 {/* Menu start here */}
                 <ul className="sidebar-menu">
-                    <li><Link to="/new"><BsFileMedicalFill /> New</Link></li>
+                    <li><Link exact to="/new"><BsFileMedicalFill /> New</Link></li>
                     <li><Link to="/most-voted"><MdHowToVote />Most Voted</Link></li>
                     <li><Link to="/hot"><MdOutlineWhatshot />hot</Link></li>
                     <li><Link to="/not-voted"><BiLayerMinus/>not voted</Link></li>

@@ -31,6 +31,7 @@ import Post from './Components/AdminPages/Post';
 import SendNotification from './Components/AdminPages/SendNotification';
 import FlagPost from './Components/AdminPages/FlagPost';
 import UserVerification from './Components/AdminPages/UserVerification';
+import TopLatestPost from './Components/TopLatestPost';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
               <Route exact path='/most-voted' element={<MostVoted />} />
               <Route exact path='/notification' element={<Notifications />} />
               <Route exact path='/not-voted' element={<NotVoted />} />
+              <Route exact path='/not-voted' element={<TopLatestPost />} />
             </Route>
 
             <Route element={<ProfileLayout />}>

@@ -945,9 +945,7 @@ select:-webkit-autofill:focus {
     color: #AAAAAA;
     margin-bottom: 0;
 }
-.Actions-modal .modal-footer {
-    display: none;
-}
+
 .Actions-modal .Awrds-li {
     text-align: center;
     margin-bottom: 20px;
@@ -1967,7 +1965,7 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 }
 .Titlebar-btns .searchbar input {
     padding: 17px 17px 17px 50px;
-    border-radius: 50px;
+    border-radius: 8px;
     background: #FDFDFD;
     border: 1px solid #DCDCDC;
     font-style: normal;
@@ -2030,6 +2028,7 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
     box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
     border-radius: 20px;
     padding: 25px 30px;
+    margin-bottom: 20px;
     position: relative;
 }
 .verification-bar .verification-media-upload {
@@ -2109,6 +2108,7 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 [darkmode] .search-input-form form.user-searchform input {
     background: #3A3A3A;
     border-color: #565656;
+    outline: none !important;
 }
 .action-bar ul li.active {
     font-weight: bold;
@@ -2483,9 +2483,25 @@ ul.sidebar-menu {
     margin-right: 5px;
     font-size: 20px;
 }
+.Linechart, .Countrychart {
+    display: none;
+}
 /* Responsive css  */
 @media (max-width: 1599px){
-
+    .reply-post form .btn {
+        font-size: 18px;
+    }
+    .editor-input .form-control {
+        padding: 11px 20px;
+    }
+    .Auth-bar .Authbar-innerbox form .authinputbar .form-control {
+        padding: 11px 20px;
+    }
+    .editor-input .form-label {
+        font-size: 16px;
+        margin-bottom: 10px;
+        line-height: 19px;
+    }
 .header-nav .navbar-nav .user-dropdown img {
     width: 50px;
     height: 50px;
@@ -2536,8 +2552,11 @@ ul.sidebar-menu {
         font-size: 16px;
     }
     .dashboard-title-bar h4 {
-        font-size: 30px;
+        font-size: 26px;
         line-height: 1;
+    }
+    .verification-bar .verification-media-upload{
+        margin-top: 20px;
     }
     .Titlebar-btns .searchbar input {
         padding: 14px 17px 14px 50px;
@@ -2579,29 +2598,40 @@ ul.sidebar-menu {
         margin: 0;
     }
     .notification-content p.notify {
-        font-size: 18px;
-        line-height: 28px;
+        font-size: 16px;
+        line-height: 24px;
     }
     .Whatsmind-bar form textarea {
-        height: 120px;
+        height: 100px;
+        font-size: 16px;
+        padding: 15px;
     }
     .user-detaiting-listing li {
-        font-size: 16px;
-        line-height: 26px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .User-detail {
+        padding: 15px;
     }
     .User-detail .usermain-img img {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         object-fit: cover;
+    }
+    .User-detail .usermain-img {
+        margin-top: -60px;
     }
     .user-dropdown, .header-nav .navbar-nav a.nav-link {
         margin-left: 50px;
     }
     .digital-tabs {
-        margin-top: 25px;
+        margin-top: 15px;
         position: relative;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
         border: none;
+    }
+    .digital-tabs li .nav-link {
+        padding: 13px 40px;
     }
     .user-detail-listing{
         margin-top: 10px;
@@ -2620,7 +2650,8 @@ ul.sidebar-menu {
         font-size: 20px;
     }
     .User-detail .username {
-        margin: 15px 0 15px 0;
+        margin: 15px 0 10px 0;
+        font-size: 16px;
     }
     .user-detaiting-listing {
         margin-bottom: 15px;
@@ -2676,7 +2707,7 @@ ul.sidebar-menu {
     }
     .sidebar-profile .feature-image {
         position: relative;
-        height: 130px;
+        height: 100px;
     }
     .sidebar-profile .feature-image img {
         width: 100%;
@@ -2686,6 +2717,15 @@ ul.sidebar-menu {
     .user-detail-listing li p {
         font-size: 16px;
         margin-bottom: 5px;
+    }
+    .search-input-form form.user-searchform input {
+        padding: 10px 45px 10px 15px;
+        width: 100%;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        border-radius: 8px;
+        border: 1px solid #FAFAFA;
     }
 }
 
