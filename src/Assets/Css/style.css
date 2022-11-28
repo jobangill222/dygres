@@ -2474,6 +2474,11 @@ ul.sidebar-menu {
     background: #252525;
     border: 2px solid #565656;
 }
+[darkmode] .modal-content .modal-title.h4 {color: #ffffff;}
+
+[darkmode] .modal-content .modal-body {
+    color: #ffffff;
+}
 .user-active-timer ul li svg {
     margin-right: 5px;
     font-size: 20px;
