@@ -687,6 +687,7 @@ select:-webkit-autofill:focus {
     font-size: 16px;
     line-height: 26px;
     color: #545456;
+    border: none;
     min-height: auto !important;
     margin-bottom: 27px;
 }
@@ -704,7 +705,8 @@ select:-webkit-autofill:focus {
     align-items: center;
     justify-content: center;
     margin-left: 20px;
-    min-width: 180px;
+    min-width: 160px;
+    padding: 10px 38px;
 }
 .hoverdropdown button {
     font-style: normal;
@@ -968,9 +970,9 @@ select:-webkit-autofill:focus {
 }
 .awards-modal .modal-header button.btn-close {
     position: absolute;
-    top: 10px;
+    top: 50%;
     right: 0;
-    transform: translate(0px, 0px);
+    transform: translate(0px, -50%);
 }
 .awards-modal .modal-header button.btn-add {
     padding: 14px 20px;
@@ -2308,7 +2310,7 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
     background: #383838;
     color: #ffffff;
 }
-[darkmode] .usertable table tbody tr td .number-bar p ,.user-dropdown .Dropdown-listing li, .user-dropdown .Dropdown-listing li a {
+[darkmode] .usertable table tbody tr td .number-bar p ,[darkmode] .user-dropdown .Dropdown-listing li, [darkmode] .user-dropdown .Dropdown-listing li a {
     color: #ffffff;
 }
 [darkmode] .usertable table tbody tr td , 
@@ -2332,7 +2334,14 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 [darkmode] .verification-bar .verification-media-upload h5 ,[darkmode]  .verification-bar .verification-media-upload label {
     color: #ffffff !important;
 }
-
+[darkmode] .account-verify label.form-label ,
+[darkmode] .Auth-bar .Authbar-innerbox form .authcheckbox .btn-simple a, 
+[darkmode] .Auth-bar .Authbar-innerbox form .Noted-bar h6, 
+[darkmode] .Auth-bar .Authbar-innerbox form .Noted-bar h6 a, 
+[darkmode] .Auth-bar .Authbar-innerbox form .terms-condition a ,
+[darkmode] .Auth-bar .Authbar-innerbox form .authcheckbox .form-check label.form-check-label{
+    color: #ffffff;
+}
 /* .arrowshape {
     position: absolute;
     right: 0;
@@ -2348,11 +2357,84 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 .arrowbar {
     position: relative;
 } */
+
+
+.header-nav .navbar-brand .darkmode {
+    display: none;
+}
+[darkmode] .header-nav .navbar-brand .darkmode {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
 /* Responsive css  */
 @media (max-width: 1599px){
+    .Whatsmind-bar form textarea {
+        height: 120px;
+    }
+    .user-detaiting-listing li {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .User-detail .usermain-img img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+    .digital-tabs {
+        margin-top: 25px;
+        position: relative;
+        margin-bottom: 25px;
+        border: none;
+    }
+    .user-detail-listing{
+        margin-top: 15px;
+    }
+    .Whatsmind-bar form textarea {height: 120px;}
+    .User-detail .username {
+        margin: 15px 0 15px 0;
+    }
+    .user-detaiting-listing {
+        margin-bottom: 15px;
+    }
+    .sidebar-profile .sidebar-menu li a {
+        padding: 12px 12px 12px 30px;
+        font-size: 16px;
+    }
+    .digital-feeds .Description-bar {
+        padding-bottom: 15px;
+    }
+    .action-bar {
+        padding: 15px 0 0 0;
+    }
+    .user-edit textarea.form-control, .user-edit input {
+        padding: 15px;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 15px;
+    }
+    .digital-feeds .Description-bar p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .sidebar-profile .sidebar-menu li a svg {
+        font-size: 18px;
+        margin-right: 15px;
+    }
     .container {
         max-width: 100%;
         padding: 0 30px;
+    }
+    .body-wrapper {
+        padding: 20px 0;
     }
     .thredsbar {
         padding: 30px 30px;
