@@ -1668,17 +1668,7 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
     margin-bottom: 8px;
     text-transform: capitalize;
 }
-.Auth-bar .Authbar-innerbox form .authinputbar .form-control {
-    background: #3A3A3A;
-    border: 2px solid #3A3A3A;
-    border-radius: 8px;
-    height: auto;
-    padding: 14px 16px;
-    color: #ffffff;
-}
-.Auth-bar .Authbar-innerbox form .authinputbar .form-control::placeholder{
-    color: #898989;
-}
+
 .Auth-bar .Authbar-innerbox form .authcheckbox {
     display: flex;
     align-items: center;
@@ -2196,6 +2186,17 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 [darkmode] .accordion .accordion-collapse {
     background: #272728;
     box-shadow: none;
+}
+[darkmode]  .Auth-bar .Authbar-innerbox form .authinputbar .form-control {
+    background: #3A3A3A;
+    border: 2px solid #3A3A3A;
+    border-radius: 8px;
+    height: auto;
+    padding: 14px 16px;
+    color: #ffffff;
+}
+[darkmode] .Auth-bar .Authbar-innerbox form .authinputbar .form-control::placeholder{
+    color: #898989;
 }
 [darkmode] .Description-bar p {
     color: #AFAFAF;
