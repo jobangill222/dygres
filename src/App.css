@@ -35,7 +35,7 @@
 }
 #theme-switch .switch-check, #theme-switch .switch-x {
   bottom: 0px;
-  top: 50%;
+  top: 41%;
   position: absolute;
   margin: 0 0px;
   transform: translate(0px, -50%);
@@ -48,12 +48,12 @@
   color: #FFAB08;
 }
 #theme-switch .switch-check {
-left: 10px;
+left: 15px;
 opacity: 0;
 transition: opacity 0.25s ease 0s;
 }
 #theme-switch .switch-x {
-  right: 10px;
+  right: 15px;
   opacity: 1;
   transition: opacity 0.25s ease 0s;
 }

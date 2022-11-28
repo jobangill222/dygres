@@ -16,7 +16,7 @@ const UserVerification = () => {
                         </Col>
                     </Row>
                 </div>
-                <div className="verification-bar mt-5">
+                <div className="verification-bar ">
                     <div className="user-detail-bar">
                         <div className="detailleft">
                             <div className="avatar-img">
@@ -54,7 +54,7 @@ const UserVerification = () => {
                         </div>
                     </div>
                 </div>
-                <div className="verification-bar mt-5">
+                <div className="verification-bar">
                     <div className="user-detail-bar">
                         <div className="detailleft">
                             <div className="avatar-img">

@@ -16,9 +16,13 @@ const Header = () => {
         <>
             <Navbar className="header-nav" expand="lg">
                 <Container>
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand >
+                        <Link to="/">
                         <img className="lightmode" src="/images/logo.png" alt="logo" />
-                        <img className="darkmode" src="/images/logowhite.png" alt="logo" />
+                        </Link>
+                        <Link to="/">
+                        <img className="darkmode" src="/images/logowhite.png" alt="logo" /> 
+                        </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -26,8 +30,8 @@ const Header = () => {
 
                             <div className="text-lightgray" href="#"><DarkModeSwitch /></div>
 
-                            <div className="relative user-dropdown">
-                                <Nav.Link className="text-lightgray" href="#"><BsBell /></Nav.Link>
+                            <div className="relative user-dropdown notify-add">
+                                <Nav.Link className="text-lightgray btndot" href="#"><BsBell /></Nav.Link>
                                 <div className="Dropdown-listing notification-dropdown bg-white">
                                     <div className="arrowbar">
                                         <div className="arrowshape"></div>
@@ -107,10 +111,10 @@ const Header = () => {
                                     <h4 className="text-silver">Account</h4>
                                     <ul>
                                         <li className="text-secondry">
-                                            <Link className="active" to="/profile"><AiOutlineEye />View Profile</Link>
+                                            <Link to="/profile"><AiOutlineEye />View Profile</Link>
                                         </li>
                                         <li className="text-secondry">
-                                            <Link className="active" to="/editprofile"><BsPencil />Edit Profile</Link></li>
+                                            <Link to="/editprofile"><BsPencil />Edit Profile</Link></li>
                                         <li className="text-secondry"><MdLogout />Log Out</li>
                                         <li className="text-secondry">
                                             <Link to="/login"><MdLogout />Log In</Link>

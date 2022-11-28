@@ -51,7 +51,7 @@ const Threads = () => {
                             </div>
                             <div className="action-bar">
                                 <ul className="actionleftbar">
-                                    <li className="active"><AiFillLike /><span className="number">12</span>Agree</li>
+                                    <li className='active' ><AiFillLike /><span className="number">12</span>Agree</li>
                                     <li><FaGift /><span className="number">6</span>Award</li>
                                     <li><AiFillDislike /><span className="number">12</span>Disagree</li>
                                     <li>
@@ -108,7 +108,7 @@ const Threads = () => {
                                             </div>
                                             <div className="action-bar">
                                                 <ul className="actionleftbar">
-                                                    <li className="active"><AiFillLike /><span className="number">12</span>Agree</li>
+                                                    <li><AiFillLike /><span className="number">12</span>Agree</li>
                                                     <li><FaGift /><span className="number">6</span>Award</li>
                                                     <li><AiFillDislike /><span className="number">12</span>Disagree</li>
                                                     <li><Accordion.Header><FaComments /><span className="number">12</span>Threads</Accordion.Header></li>
@@ -162,7 +162,7 @@ const Threads = () => {
                                                 </div>
                                                 <div className="action-bar">
                                                     <ul className="actionleftbar">
-                                                        <li className="active"><AiFillLike /><span className="number">12</span>Agree</li>
+                                                        <li><AiFillLike /><span className="number">12</span>Agree</li>
                                                         <li><FaGift /><span className="number">6</span>Award</li>
                                                         <li><AiFillDislike /><span className="number">12</span>Disagree</li>
                                                         <li><FaComments /><span className="number">12</span>Threads</li>

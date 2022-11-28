@@ -88,7 +88,7 @@ const Post = () => {
                             </div>
                             <div className="action-bar">
                                 <ul className="actionleftbar">
-                                    <li className="active" onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                                    <li className='active'  onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                                     <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                                     <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                                     <li><FaComments /><span className="number">12</span>Threads</li>
@@ -151,7 +151,7 @@ const Post = () => {
                             </div>
                             <div className="action-bar">
                                 <ul className="actionleftbar">
-                                    <li className="active" onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                                    <li onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                                     <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                                     <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                                     <li><FaComments /><span className="number">12</span>Threads</li>
@@ -214,7 +214,7 @@ const Post = () => {
                             </div>
                             <div className="action-bar">
                                 <ul className="actionleftbar">
-                                    <li className="active" onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                                    <li onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                                     <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                                     <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                                     <li><FaComments /><span className="number">12</span>Threads</li>
