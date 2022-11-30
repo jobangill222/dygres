@@ -20,6 +20,7 @@ import SiteLayout from './Components/Layouts/SiteLayout';
 import ProfileLayout from './Components/Layouts/ProfileLayout';
 import AuthLayout from './Components/Layouts/AuthLayout';
 import AdminLayout from './Components/Layouts/AdminLayout';
+import NoHeaderLayout from './Components/Layouts/NoHeaderLayout';
 import Login from './Components/AuthPages/Login';
 import SignUp from './Components/AuthPages/SignUp';
 import GetOtp from './Components/AuthPages/GetOtp';
@@ -32,6 +33,7 @@ import SendNotification from './Components/AdminPages/SendNotification';
 import FlagPost from './Components/AdminPages/FlagPost';
 import UserVerification from './Components/AdminPages/UserVerification';
 import TopLatestPost from './Components/TopLatestPost';
+import NotFound from './Pages/NotFound';
 
 function App() {
 
@@ -65,6 +67,7 @@ function App() {
               <Route exact path='/getotp' element={<GetOtp />} />
               <Route exact path='/enterotp' element={<EnterOtp />} />
               <Route exact path='/resetpassword' element={<ResetPassword />} />
+              
             </Route>
 
             <Route element={<AdminLayout />}>
@@ -74,6 +77,10 @@ function App() {
               <Route exact path='/sendnotification' element={<SendNotification />} />
               <Route exact path='/flagpost' element={<FlagPost />} />
               <Route exact path='/userverification' element={<UserVerification />} />
+            </Route>
+
+            <Route element={<NoHeaderLayout />}>
+              <Route exact path='/notfound' element={<NotFound />} />
             </Route>
 
           </Routes>

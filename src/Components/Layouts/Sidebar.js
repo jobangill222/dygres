@@ -56,7 +56,7 @@ const Sidebar = () => {
                     <li><Link exact to="/new"><BsFileMedicalFill /> New</Link></li>
                     <li><Link to="/most-voted"><MdHowToVote />Most Voted</Link></li>
                     <li><Link to="/hot"><MdOutlineWhatshot />hot</Link></li>
-                    <li><Link to="/not-voted"><BiLayerMinus/>not voted</Link></li>
+                    <li><Link to="/notfound"><BiLayerMinus/>not voted</Link></li>
                     <li><Link to="/notification"><BsBell/>notification</Link></li>
                 </ul>
                 {/* Menu ends here */}
