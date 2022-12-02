@@ -2606,7 +2606,16 @@ ul.sidebar-menu {
     margin-top: 20px;
 }
 
-
+.image-uploaded-class button.bg-primary {
+    opacity: 0;
+    transform: translate(0px, 10px);
+    visibility: hidden;
+}
+.image-uploaded-class:hover button.bg-primary {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0px, 0px);
+}
 
 
 

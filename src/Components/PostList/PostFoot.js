@@ -1,24 +1,18 @@
 import React, { useState } from 'react';
-import { MdOutlineTimer } from 'react-icons/md';
 import { AiFillLike, AiFillDislike, AiOutlinePlus , AiFillLinkedin } from 'react-icons/ai';
 import { FaGift, FaComments , FaFacebookF , FaRedditAlien } from 'react-icons/fa';
 import { BsFillFlagFill, BsPencil, BsThreeDots  , BsTwitter , BsWhatsapp } from 'react-icons/bs';
 import { BiCopy } from 'react-icons/bi';
-import { ImForward, ImCross } from 'react-icons/im';
+import { ImForward } from 'react-icons/im';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Accordion from 'react-bootstrap/Accordion';
-import Threads from './Threads';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import PostHead from './PostList/PostHead';
-import PostContent from './PostList/PostContent';
-import PostFoot from './PostList/PostFoot';
 
-const DigitalTabContent = () => {
+const PostFoot = () => {
 
     // Delete Modal
     const [show, setShow] = useState(false);
@@ -51,122 +45,31 @@ const DigitalTabContent = () => {
 
     return (
         <>
-            <div className="digital-feeds ">
-                <PostHead />
-                <div className="user-preview">
-                    <PostContent/>
-                    <PostFoot/>
-                </div>
+            <div className="action-bar">
+                <ul className="actionleftbar">
+                    <li className='active' onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                    <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
+                    <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
+                    <li><FaComments /><span className="number">12</span>Threads</li>
+                    <li>
+                        <Dropdown className="hoverdropdown">
+                            <Dropdown.Toggle className="p-0 bg-transparent border-0 text-lightgray" variant="success" id="dropdown-basic">
+                                <BsFillFlagFill /><span className="number">12</span>Report
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={EditReport}><BsPencil />Edit Post</Dropdown.Item>
+                                <Dropdown.Item onClick={handleShow}><RiDeleteBin6Line />Delete Post</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </li>
+                    <li>
+                        <BsThreeDots />
+                    </li>
+                </ul>
+                <ul className="actionrytbar">
+                    <li onClick={ShareShow}><ImForward />Share</li>
+                </ul>
             </div>
-            <div className="digital-feeds ">
-                <div className="user-detail-bar">
-                    <div className="detailleft">
-                        <div className="avatar-img active">
-                            <img src="/images/user.png" alt="user-img" />
-                        </div>
-                        <div className="user-detail">
-                            <h4 className="text-secondry">Amanpreet Singh</h4>
-                            <div className="user-availbility">
-                                <h6 className="text-lightgray">@amans</h6>
-                                <h5 className="text-lightgray greentime">1hr ago</h5>
-                            </div>
-                            <div className="levelbar text-darkwhite level2">Level2 <h6 className="level2-circle"><span className="text-white lvlstar">2</span></h6></div>
-                        </div>
-                        <ul className="awards-bar bg-darkgray">
-                            <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
-                            <li className="text-whitesure"><img src="/images/award2.png" alt="awards" />4</li>
-                            <li className="text-whitesure"><img src="/images/award3.png" alt="awards" />6</li>
-                            <li className="text-whitesure"><img src="/images/award4.png" alt="awards" />9</li>
-                        </ul>
-                    </div>
-                    <div className="user-active-timer">
-                        <ul>
-                            <li className="text-green"><MdOutlineTimer />22hrs 20mins</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="user-edit">
-                    <h4><BsPencil />Edit Post</h4>
-                    <Form>
-                        <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">
-                            <Form.Control as="textarea" style={{ height: '120px' }} value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. #HelloWorld #DummyText @iamhannah @methew reed" />
-                            <div className="text-end">
-                                <Button className="outline-primary text-white"><ImCross />Cancel</Button>
-                                <Button className="bg-primary text-white">Save</Button>
-                            </div>
-                        </Form.Group>
-                    </Form>
-                </div>
-            </div>
-            <Accordion >
-                <Accordion.Item eventKey="0">
-                    <div className="digital-feeds ">
-                        <div className="user-detail-bar">
-                            <div className="detailleft">
-                                <div className="avatar-img active">
-                                    <img src="/images/user.png" alt="user-img" />
-                                </div>
-                                <div className="user-detail">
-                                    <h4 className="text-secondry">Amanpreet Singh</h4>
-                                    <div className="user-availbility">
-                                        <h6 className="text-lightgray">@amans</h6>
-                                        <h5 className="text-lightgray">1hr ago</h5>
-                                    </div>
-                                    <div className="levelbar text-darkwhite level2">Level2 <h6 className="level2-circle"><span className="text-white lvlstar">2</span></h6></div>
-                                </div>
-                                <ul className="awards-bar bg-darkgray">
-                                    <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
-                                    <li className="text-whitesure"><img src="/images/award2.png" alt="awards" />4</li>
-                                    <li className="text-whitesure"><img src="/images/award3.png" alt="awards" />6</li>
-                                    <li className="text-whitesure"><img src="/images/award4.png" alt="awards" />9</li>
-                                </ul>
-                            </div>
-                            <div className="user-active-timer">
-                                <ul>
-                                    <li className="text-green"><MdOutlineTimer />22hrs 20mins</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="user-preview">
-                            <div className="Description-bar">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span className="text-primary">#HelloWorld</span> <span className="text-primary">@methewreed</span> <span className="text-primary">@iamhannah</span></p>
-                            </div>
-                            <div className="action-bar">
-
-                                <ul className="actionleftbar">
-                                    <li ><AiFillLike /><span className="number">12</span>Agree</li>
-                                    <li><FaGift /><span className="number">6</span>Award</li>
-                                    <li><AiFillDislike /><span className="number">12</span>Disagree</li>
-                                    <li>
-                                        <Accordion.Header><FaComments /><span className="number">12</span>Threads</Accordion.Header>
-                                    </li>
-                                    <li>
-                                        <Dropdown className="hoverdropdown">
-                                            <Dropdown.Toggle className="p-0 bg-transparent border-0 text-lightgray" variant="success" id="dropdown-basic">
-                                                <BsFillFlagFill /><span className="number">12</span>Report
-                                            </Dropdown.Toggle>
-                                            <Dropdown.Menu>
-                                                <Dropdown.Item href=""><BsPencil />Edit Post</Dropdown.Item>
-                                                <Dropdown.Item onClick={handleShow}><RiDeleteBin6Line />Delete Post</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </li>
-                                    <li>
-                                        <BsThreeDots />
-                                    </li>
-                                </ul>
-
-                                <ul className="actionrytbar">
-                                    <li><ImForward />Share</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <Accordion.Body eventKey="0" className='thredsbar'>
-                        <Threads />
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
             {/* Delete modal */}
             <Modal className="Actions-modal" show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
@@ -543,8 +446,7 @@ const DigitalTabContent = () => {
                 </Modal.Body>
             </Modal>
         </>
-
     );
 }
 
-export default DigitalTabContent;
+export default PostFoot;
