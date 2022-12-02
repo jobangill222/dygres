@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { AiFillLike, AiFillDislike, AiOutlinePlus , AiFillLinkedin } from 'react-icons/ai';
-import { FaGift, FaComments , FaFacebookF , FaRedditAlien } from 'react-icons/fa';
-import { BsFillFlagFill, BsPencil, BsThreeDots  , BsTwitter , BsWhatsapp } from 'react-icons/bs';
+import { AiFillLike, AiFillDislike, AiOutlinePlus, AiFillLinkedin } from 'react-icons/ai';
+import { FaGift, FaComments, FaFacebookF, FaRedditAlien } from 'react-icons/fa';
+import { BsFillFlagFill, BsPencil, BsThreeDots, BsTwitter, BsWhatsapp } from 'react-icons/bs';
 import { BiCopy } from 'react-icons/bi';
 import { ImForward } from 'react-icons/im';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Accordion from 'react-bootstrap/Accordion';
 const PostFoot = () => {
 
     // Delete Modal
@@ -50,7 +50,10 @@ const PostFoot = () => {
                     <li className='active' onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                     <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                     <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
-                    <li><FaComments /><span className="number">12</span>Threads</li>
+                    <li><Accordion.Header>
+                        <FaComments />
+                        <span className="number">12</span>Threads
+                    </Accordion.Header></li>
                     <li>
                         <Dropdown className="hoverdropdown">
                             <Dropdown.Toggle className="p-0 bg-transparent border-0 text-lightgray" variant="success" id="dropdown-basic">
@@ -394,9 +397,9 @@ const PostFoot = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -409,38 +412,38 @@ const PostFoot = () => {
                 <Modal.Body>
                     <ul className='share-media'>
                         <li>
-                            <button className='sharebtn' type="button"><BsTwitter/></button>
+                            <button className='sharebtn' type="button"><BsTwitter /></button>
                             <p>Twitter</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><FaFacebookF/></button>
+                            <button className='sharebtn' type="button"><FaFacebookF /></button>
                             <p>Facebook</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><FaRedditAlien/></button>
+                            <button className='sharebtn' type="button"><FaRedditAlien /></button>
                             <p>Reddit</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><BsWhatsapp/></button>
+                            <button className='sharebtn' type="button"><BsWhatsapp /></button>
                             <p>WhatsApp</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><AiFillLinkedin/></button>
+                            <button className='sharebtn' type="button"><AiFillLinkedin /></button>
                             <p>Linkedin</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><BsTwitter/></button>
+                            <button className='sharebtn' type="button"><BsTwitter /></button>
                             <p>Twitter</p>
                         </li>
                     </ul>
                     <Form>
                         <Form.Group className="mb-3" controlId="">
-                            <Form.Control placeholder="https://example.com/article/social-share-modal"/>
+                            <Form.Control placeholder="https://example.com/article/social-share-modal" />
                         </Form.Group>
                         <Form.Group>
-                        <Button type="submit">
-                            <BiCopy/>
-                        </Button>
+                            <Button type="submit">
+                                <BiCopy />
+                            </Button>
                         </Form.Group>
                     </Form>
                 </Modal.Body>

@@ -937,9 +937,9 @@ input.form-control{
     cursor: pointer;
     transition: .3s ease;
 }
-.Actions-modal .modal-header button.btn-close:hover {
-    transform: rotate(360deg);
-}
+/* .Actions-modal .modal-header button.btn-close:hover {
+    transform: translate(0,-50%) rotate(360deg) !important;
+} */
 .Actions-modal  .modal-body {
     padding: 20px 0;
 }
