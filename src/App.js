@@ -11,9 +11,9 @@ import NotVoted from "./Pages/NotVoted";
 import Profile from "./Components/Profile/Profile";
 import ProfileTabs from "./Components/Profile/ProfileTabs";
 import ProfileTabContent from "./Components/Profile/ProfileTabTimeline";
-import EditProfile from "./Components/Profile/EditProfile";
 import SiteLayout from "./Components/Layouts/SiteLayout";
 import ProfileLayout from "./Components/Layouts/ProfileLayout";
+import EditProfileLayout from "./Components/Layouts/EditProfileLayout";
 import AuthLayout from "./Components/Layouts/AuthLayout";
 import AdminLayout from "./Components/Layouts/AdminLayout";
 import NoHeaderLayout from "./Components/Layouts/NoHeaderLayout";
@@ -81,7 +81,15 @@ function App() {
                     path="/profiletabcontent"
                     element={<ProfileTabContent />}
                   />
+                </Route>
+
+                <Route element={<EditProfileLayout />}>
                   <Route exact path="/editprofile" element={<EditProfile />} />
+                  <Route
+                    exact
+                    path="/personalinformation"
+                    element={<PersonalInformation />}
+                  />
                 </Route>
 
                 <Route element={<AdminLayout />}>

@@ -13,7 +13,7 @@ const ProfileLayout = () => {
     return (
         <>
             <Header />
-            <div className='body-wrapper p-0'>
+            <div className='body-wrapper p-0'> 
                 <Outlet />
             </div>
 
