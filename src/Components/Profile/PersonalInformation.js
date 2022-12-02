@@ -58,7 +58,7 @@ const PersonalInformation = () => {
           : "",
         verificationImage: axiosRes.personalDetails.verificationImage
           ? axiosRes.personalDetails.verificationImage
-          : "/images/user172.png",
+          : "/images/upload-dummy-backgroud.png",
         isPhotoVerify: axiosRes.personalDetails.isPhotoVerify
           ? axiosRes.personalDetails.isPhotoVerify
           : 0,
@@ -220,6 +220,12 @@ const PersonalInformation = () => {
         );
         console.log("axiosRes", axiosRes);
         if (axiosRes.status === "success") {
+          setPersonalInfoFieldStates((previousState) => {
+            return {
+              ...previousState,
+              isEmailVerify: 1,
+            };
+          });
           toast(axiosRes.message);
           setShowEmailOtpPopup(false);
         } else {
@@ -272,7 +278,23 @@ const PersonalInformation = () => {
               <Col lg="6 ">
                 <Form.Group className="editor-input " controlId="">
                   <Form.Label>Upload verification image</Form.Label>
-                  <div className="upload-media-verify">
+
+                  {console.log("fileState", fileState)}
+                  {console.log(
+                    "personalInfoFieldStates.verificationImage",
+                    personalInfoFieldStates.verificationImage
+                  )}
+
+                  <div
+                    className={
+                      fileState
+                        ? `image-uploaded-class upload-media-verify`
+                        : personalInfoFieldStates.verificationImage !==
+                          "/images/upload-dummy-backgroud.png"
+                        ? `image-uploaded-class upload-media-verify`
+                        : `upload-media-verify`
+                    }
+                  >
                     <img
                       src={personalInfoFieldStates.verificationImage}
                       alt="icon"
@@ -285,8 +307,10 @@ const PersonalInformation = () => {
                       Upload Image
                     </Button>
                   </div>
-                  <p className="uploaded-note"><b>{personalInfoFieldStates.photoVerificationCode}</b> Upload
-                  your picture along with this code for verification</p>
+                  <p className="uploaded-note">
+                    <b>{personalInfoFieldStates.photoVerificationCode}</b>{" "}
+                    Upload your picture along with this code for verification
+                  </p>
                 </Form.Group>
                 <Form.Group className="editor-input" controlId="">
                   <Form.Label>Phone Number</Form.Label>
@@ -415,7 +439,7 @@ const PersonalInformation = () => {
         onHide={handleEmailOtpPopupClose}
         centered
       >
-        <Modal.Body >
+        <Modal.Body>
           <div className="Authbar-innerbox E-Otp">
             <h4>Enter OTP</h4>
             <p>Please check your email for a message with your OTP.</p>
