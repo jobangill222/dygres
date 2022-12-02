@@ -35,6 +35,7 @@ import { DContext } from "./Context/DContext";
 import { ToastContainer } from "react-toastify";
 import EditProfile from "./Components/Profile/EditProfile";
 import PersonalInformation from "./Components/Profile/PersonalInformation";
+import PostHead from "./Components/PostList/PostHead";
 
 function App() {
   // Context Variables
@@ -73,6 +74,7 @@ function App() {
                   />
                   <Route exact path="/not-voted" element={<NotVoted />} />
                   <Route exact path="/not-voted" element={<TopLatestPost />} />
+                  <Route exact path="/posthead" element={<PostHead />} />
                 </Route>
 
                 <Route element={<ProfileLayout />}>
