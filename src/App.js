@@ -33,6 +33,8 @@ import NotFound from "./Pages/NotFound";
 import { useContext } from "react";
 import { DContext } from "./Context/DContext";
 import { ToastContainer } from "react-toastify";
+import EditProfile from "./Components/Profile/EditProfile";
+import PersonalInformation from "./Components/Profile/PersonalInformation";
 
 function App() {
   // Context Variables
