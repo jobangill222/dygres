@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,20 +7,40 @@ import { BsBell, BsPencil } from 'react-icons/bs';
 import { AiOutlineSetting, AiOutlineEye } from 'react-icons/ai';
 import { MdLogout } from 'react-icons/md';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+// Context
+import { DContext } from "../../Context/DContext";
 
 const Header = () => {
+    
+    const navigate = useNavigate();
 
+    const {setUser, setUserToken} = useContext(DContext)
+ 
+    //Logout Functionality
+    const logoutHandler = async(e) => { 
+        console.log('logout handler call');
+        setUser(null);
+        setUserToken(null);
+        // localStorage.clear();
+        localStorage.removeItem('accessToken');
+        navigate("/");
+    }
+    //End logout functionality
+
+    // Context Variables
+    const {userToken} = useContext(DContext)
 
     return (
         <>
             <Navbar className="header-nav" expand="lg">
                 <Container>
                     <Navbar.Brand >
-                        <Link to="/">
+                        <Link to="/new">
                         <img className="lightmode" src="/images/logo.png" alt="logo" />
                         </Link>
-                        <Link to="/">
+                        <Link to="/new">
                         <img className="darkmode" src="/images/logowhite.png" alt="logo" /> 
                         </Link>
                     </Navbar.Brand>
@@ -30,6 +50,9 @@ const Header = () => {
 
                             <div className="text-lightgray" href="#"><DarkModeSwitch /></div>
 
+                        {
+                            userToken ? 
+                            <>
                             <div className="relative user-dropdown notify-add">
                                 <Nav.Link className="text-lightgray btndot" href="#"><BsBell /></Nav.Link>
                                 <div className="Dropdown-listing notification-dropdown bg-white">
@@ -115,13 +138,14 @@ const Header = () => {
                                         </li>
                                         <li className="text-secondry">
                                             <Link to="/editprofile"><BsPencil />Edit Profile</Link></li>
-                                        <li className="text-secondry"><MdLogout />Log Out</li>
-                                        <li className="text-secondry">
-                                            <Link to="/login"><MdLogout />Log In</Link>
-                                        </li>
+                                        <li className="text-secondry" onClick={logoutHandler}><MdLogout />Log Out</li>
+                                        
                                     </ul>
                                 </div>
                             </div>
+                            </>:null
+                        }
+                            
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

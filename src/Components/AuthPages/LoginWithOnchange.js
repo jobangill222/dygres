@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useState, useContext} from "react";
 import Container from "react-bootstrap/esm/Container";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,21 +9,19 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from "react-hook-form";
 
+
 // Context
 import { DContext } from "../../Context/DContext";
 
-const Login = () => {  
 
-    // Context Variables
-    const {userLogin, setUser, setUserToken} = useContext(DContext)
+const LoginWithOnchange = () => { 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const handleRegistration = async(data) => {
         // e.preventDefault()
             console.log(data);
-
             try{
-                const axiosRes = await userLogin(data)
+                const axiosRes = await userLogin(loginField)
     
                 console.log('axiosRes' , axiosRes); 
                 if(axiosRes.status === 'success'){
@@ -61,18 +59,19 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    
+    // Context Variables
+    const {userLogin, setUser, setUserToken} = useContext(DContext)
 
-    /*const [loginField, setLoginField] = useState({
+    const [loginField, setLoginField] = useState({
         email: "", 
         password: "",
     });
+
     const changeValue = async(e) => { 
         const {name , value} = e.target;
         loginField[name] = value;
         setLoginField({...loginField});
-    }*/
- 
+    }
      
     return (
         <> 
@@ -89,8 +88,8 @@ const Login = () => {
                                         placeholder="Enter Email Address" 
                                         name="email" 
                                         {...register('email', registerOptions.email)}
-                                        // value={loginField?.email} 
-                                        // onChange={changeValue} 
+                                        value={loginField?.email} 
+                                        onChange={changeValue} 
                                     />
 
                                 <small className="text-danger">
@@ -105,17 +104,17 @@ const Login = () => {
                                         placeholder="Enter Password" 
                                         name="password"
                                         {...register('password', registerOptions.password)}
-                                        // value={loginField?.password} 
-                                        // onChange={e => changeValue(e)} 
+                                        value={loginField?.password} 
+                                        onChange={e => changeValue(e)} 
                                     />
                                  <small className="text-danger">
-                                    {errors?.password && errors.password.message}
+                                {errors?.password && errors.password.message}
                                 </small>
                             </Form.Group>
 
                             
                             <Form.Group className="authinputbar authcheckbox" controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox"  label="Remember me" />
+                                <Form.Check type="checkbox" label="Remember me" />
                                 <div className="btn-simple">
                                     <Link to="/getotp">Forgot your password?</Link>
                                 </div>
@@ -137,4 +136,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default LoginWithOnchange;
