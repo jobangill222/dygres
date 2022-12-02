@@ -233,6 +233,25 @@ export const DProvider = (props) => {
     }
   };
 
+  const createPostDContext = async (content) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/create-post`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          content: content,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while create Post api (DContext.js) - ", err);
+    }
+  };
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -253,6 +272,7 @@ export const DProvider = (props) => {
     changePasswordDContext,
     getEmailOtpInsideLoginDContext,
     verifyOtpInsideLoginDContext,
+    createPostDContext,
   };
   return (
     <DContext.Provider value={{ ...value }}>{props.children}</DContext.Provider>

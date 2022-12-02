@@ -234,7 +234,7 @@ const PersonalInformation = () => {
 
   return (
     <>
-      {/* {console.log("personalInfoFiledsState", personalInfoFieldStates)} */}
+      {console.log("personalInfoFiledsState", personalInfoFieldStates)}
 
       <div className="Profile-Upload-media">
         <Row>

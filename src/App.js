@@ -62,7 +62,7 @@ function App() {
             ) : (
               <>
                 <Route element={<SiteLayout />}>
-                  <Route exact path='/' element={<New />} />
+                  <Route exact path="/" element={<New />} />
                   <Route exact path="/new" element={<New />} />
                   <Route exact path="/hot" element={<Hot />} />
                   <Route exact path="/most-voted" element={<MostVoted />} />
@@ -78,12 +78,20 @@ function App() {
                 <Route element={<ProfileLayout />}>
                   <Route exact path="/profile" element={<Profile />} />
                   <Route exact path="/profiletabs" element={<ProfileTabs />} />
-                  <Route exact path="/profiletabcontent" element={<ProfileTabContent />}/>
+                  <Route
+                    exact
+                    path="/profiletabcontent"
+                    element={<ProfileTabContent />}
+                  />
                 </Route>
 
                 <Route element={<EditProfileLayout />}>
                   <Route exact path="/editprofile" element={<EditProfile />} />
-                  <Route exact path="/personalinformation" element={<PersonalInformation />} />
+                  <Route
+                    exact
+                    path="/personalinformation"
+                    element={<PersonalInformation />}
+                  />
                 </Route>
 
                 <Route element={<AdminLayout />}>
