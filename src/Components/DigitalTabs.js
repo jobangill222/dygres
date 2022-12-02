@@ -17,6 +17,9 @@ const DigitalTabs = () => {
                 <Tab eventKey="Global" title="Global">
                     <DigitalTabContent/>
                 </Tab>
+                <Tab eventKey="Official" title="Official">
+                    <DigitalTabContent/>
+                </Tab>
             </Tabs>
         </>
     );

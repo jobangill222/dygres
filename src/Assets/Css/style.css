@@ -76,10 +76,11 @@ select:-webkit-autofill:focus {
     transition: .3s ease-in-out;
     border: 1px solid #002358 !important;
 }
-.btn-primary:hover{
-    background-color: #ffffff !important;
+.btn-primary:hover {
+    background-color: #1c1b1b !important;
     transition: .3s ease-in-out;
-    color: #002358 !important;
+    color: #ffffff !important;
+    border-color: #565656 !important;
 }
 .form-control:hover, .form-control:focus, .form-control:active {
     outline: none;
@@ -430,7 +431,7 @@ select:-webkit-autofill:focus {
 .Whatsmind-bar form .word-note {
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 17px;
     color: #8B958E;
     margin-bottom: 0;
@@ -460,7 +461,7 @@ select:-webkit-autofill:focus {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-.digital-tabs li:nth-child(2) .nav-link {
+.digital-tabs li:last-child .nav-link {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -797,7 +798,7 @@ select:-webkit-autofill:focus {
     width: 4px;
     height: 4px;
     border-radius: 50px;
-    background: gray;
+    background: #aaaaaa;
     position: absolute;
     left: 0;
     top: 50%;
@@ -806,9 +807,9 @@ select:-webkit-autofill:focus {
 .user-detail-bar .detailleft .user-detail .user-availbility h5.redtime::after {
     background: red;
 }
-.user-detail-bar .detailleft .user-detail .user-availbility h5.greentime::after {
+/* .user-detail-bar .detailleft .user-detail .user-availbility h5.greentime::after {
     background: #22B84C;
-}
+} */
 .reply-post {
     margin-top: 30px;
 }
@@ -1086,7 +1087,7 @@ select:-webkit-autofill:focus {
     text-align: right;
 }
 .share-media {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-between;
     padding: 30px 20px 20px 20px;
@@ -1125,13 +1126,7 @@ select:-webkit-autofill:focus {
 .share-media li:hover .sharebtn {
     transform: rotate(360deg);
 }
-.share-media {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 20px 20px 20px;
-    margin: 0 -40px;
-}
+
 .share-media li .sharebtn {
     width: 76px;
     height: 76px;
@@ -2106,6 +2101,11 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 [darkmode] .search-input-form form.user-searchform input::placeholder{
     color: #919191;
 }
+[darkmode] .share-popup form input.form-control {
+    background: #252525;
+    border: 2px solid #565656;
+    color: #ffffff !important;
+}
 [darkmode] .edit-bar svg , 
 [darkmode] .user-detail-listing li p ,
 [darkmode]  .header-nav .navbar-nav .nav-link ,
@@ -2179,9 +2179,9 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
     border: 1px solid #565656 !important;
 }
 [darkmode] .outline-primary:hover, [darkmode] .btn-outline-primary:hover {
-    background: #ffffff !important;
-    color: #1c1b1b !important;
-    border: 1px solid #ffffff !important;
+    background: #0a2358 !important;
+    color: #ffffff !important;
+    border: 1px solid #0a2358 !important;
 }
 [darkmode] .accordion .accordion-collapse {
     background: #272728;
@@ -2413,7 +2413,10 @@ ul.sidebar-menu {
 [darkmode] .Username-titlebar h6 svg {
     color: #ffffff;
 }
-[darkmode]  .aboutline h4 , [darkmode]  .aboutline p {
+[darkmode]  .aboutline p {
+    color: #afafaf;
+}
+[darkmode]  .aboutline h4  {
     color: #ffffff;
 }
 .level1 {
@@ -2487,6 +2490,55 @@ ul.sidebar-menu {
 .Linechart, .Countrychart {
     display: none;
 }
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+.notfound {
+    height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.notfound-content {
+    text-align: center;
+}
+.notfound-content h2 {
+    font-size: 220px;
+    line-height: 1;
+    font-weight: bolder;
+    font-family: 'Alfa Slab One', cursive;
+    margin: 0;
+    background: -webkit-linear-gradient(#000000, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 6px 0px 0px #0a2256;
+}
+.notfound-content h4 {
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.notfound-content p {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+.Noheader nav.header-nav.navbar {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Responsive css  */
 @media (max-width: 1599px){
     .reply-post form .btn {
