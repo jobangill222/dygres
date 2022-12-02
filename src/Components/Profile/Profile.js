@@ -37,22 +37,22 @@ const Profile = () => {
                                     <h6 className="text-lightgray">@amans</h6>
                                 </div>
                                 <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
-                                <ul class="user-detail-listing">
+                                <ul className="user-detail-listing">
                                     <li>
-                                        <p class="text-secondry">6</p>
-                                        <h6 class="text-offwhite">Posts</h6>
+                                        <p className="text-secondry">6</p>
+                                        <h6 className="text-offwhite">Posts</h6>
                                     </li>
                                     <li>
-                                        <p class="text-secondry">10</p>
-                                        <h6 class="text-offwhite">Following</h6>
+                                        <p className="text-secondry">10</p>
+                                        <h6 className="text-offwhite">Following</h6>
                                     </li>
                                     <li>
-                                        <p class="text-secondry">145</p>
-                                        <h6 class="text-offwhite">Followers</h6>
+                                        <p className="text-secondry">145</p>
+                                        <h6 className="text-offwhite">Followers</h6>
                                     </li>
                                     <li>
-                                        <p class="text-secondry">578</p>
-                                        <h6 class="text-offwhite">Awards</h6>
+                                        <p className="text-secondry">578</p>
+                                        <h6 className="text-offwhite">Awards</h6>
                                     </li>
                                 </ul>
                             </div>

@@ -310,7 +310,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -322,7 +322,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -334,7 +334,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -346,7 +346,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -358,7 +358,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -370,7 +370,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                 </Modal.Body>
@@ -392,7 +392,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -404,7 +404,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -416,7 +416,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -428,7 +428,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -440,7 +440,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                     <ul className='aggree-li'>
@@ -452,7 +452,7 @@ const ProfileTabContent = () => {
                             </div>
                         </li>
                         <li>
-                            <button class="followbtn" type="button">Follow</button>
+                            <button className="followbtn" type="button">Follow</button>
                         </li>
                     </ul>
                 </Modal.Body>

@@ -285,8 +285,8 @@ const PersonalInformation = () => {
                       Upload Image
                     </Button>
                   </div>
-                  <b>{personalInfoFieldStates.photoVerificationCode}</b> Upload
-                  your picture along with this code for verification
+                  <p className="uploaded-note"><b>{personalInfoFieldStates.photoVerificationCode}</b> Upload
+                  your picture along with this code for verification</p>
                 </Form.Group>
                 <Form.Group className="editor-input" controlId="">
                   <Form.Label>Phone Number</Form.Label>
@@ -415,16 +415,12 @@ const PersonalInformation = () => {
         onHide={handleEmailOtpPopupClose}
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Post</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="Authbar-innerbox">
+        <Modal.Body >
+          <div className="Authbar-innerbox E-Otp">
             <h4>Enter OTP</h4>
             <p>Please check your email for a message with your OTP.</p>
             <form>
               <Form.Group className="authinputbar" controlId="formBasicEmail">
-                <Form.Label>Enter OTP</Form.Label>
                 <Form.Control
                   type="number"
                   name="otp"
