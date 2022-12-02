@@ -14,6 +14,19 @@ body{
     color: #545456;
     -webkit-font-smoothing: antialiased;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {
+    -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 h1,h2,h3,h4,h5,h6{
     color: #002358;
 }
@@ -1586,6 +1599,10 @@ body[data-page="/editprofile"]  .somewhere-full .somewhere-pad-0
 .account-verify .verify-input button.outline-primary {
     padding: 0;
     border: none !important;
+    background-color: transparent !important; 
+}
+.account-verify .verify-input button.outline-primary:hover{
+    color: #002358 !important;
 }
 .upload-media-verify {
     background: rgba(0, 35, 88, 0.08);
