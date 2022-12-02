@@ -3,6 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import { Link, Outlet } from "react-router-dom";
 import Header from "../Header";
 import { useLocation } from "react-router-dom";
+import FooterMob from "../FooterMob";
 
 
 const ProfileLayout = () => {
@@ -28,6 +29,7 @@ const splitLocation = pathname.split("/");
                 </Container>
 
             </div>
+            <FooterMob/>
 
         </>
     );

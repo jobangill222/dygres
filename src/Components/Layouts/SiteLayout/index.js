@@ -7,6 +7,7 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import FooterMob from "../FooterMob";
 
 
 const SiteLayout = () => {
@@ -28,6 +29,7 @@ const SiteLayout = () => {
                     </Row>
                 </Container>
             </div>
+            <FooterMob/>
 
         </>
     );
