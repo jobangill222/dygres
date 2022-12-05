@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlineTimer } from "react-icons/md";
 
-const PostHead = () => {
+const PostHead = ({ user }) => {
   return (
     <>
       <div className="user-detail-bar">
@@ -13,7 +13,7 @@ const PostHead = () => {
             <div className="user-detail">
               <h4 className="text-secondry">Amanpreet Singh</h4>
               <div className="user-availbility">
-                <h6 className="text-lightgray">@amans</h6>
+                <h6 className="text-lightgray">@{user[0]?.username}</h6>
                 <h5 className="text-lightgray greentime">1hr ago</h5>
               </div>
               <div className="levelbar text-darkwhite level1">
