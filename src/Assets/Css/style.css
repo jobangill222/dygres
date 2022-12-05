@@ -2686,10 +2686,14 @@ ul.sidebar-menu {
     display: flex;
     align-items: flex-start;
 }
-
-
-
-
+.flagbtnbar button.bg-danger {
+    border: 1px solid #0a2358 !important;
+    color: #0a2358 !important;
+}
+[darkmode] .flagbtnbar button.bg-danger {
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+}
 
 
 /* Responsive css  */
@@ -2954,6 +2958,11 @@ ul.sidebar-menu {
         max-width: 100%;
         padding: 0 30px;
     }
+    .action-bar .flagbtnbar li button {
+        margin-left: 0 !important;
+        margin-top: 20px;
+        margin-right: 20px;
+    }
 }
 
 @media (min-width:991px){
@@ -2966,6 +2975,10 @@ ul.sidebar-menu {
     }
 }
 @media (max-width:990px){
+
+
+
+
 table {
     display: block;
     width: 100%;
@@ -3235,6 +3248,17 @@ table {
         padding-left: 30px;
         position: relative;
     }
+    .verification-bar .verification-media-upload {
+        display: block;
+    }
+    
+    .verification-bar {
+        padding: 15px;
+    }
+    
+    .verification-bar .verification-media-upload .verify-content {
+        margin-top: 20px;
+    }
     .thredsbar .threads-rows::after {
         content: '';
         position: absolute;
@@ -3244,11 +3268,18 @@ table {
         top: 0;
         background: #BCBCBC;
     }
+    .Auth-bar .Authbar-innerbox {
+        padding: 20px 20px;
+    }
 }
 @media (max-width: 574px){
     .profile-user-detail .user-detail-bar .detailleft {
         margin-bottom: 20px;
         width: 100%;
+    }
+    .action-bar .flagbtnbar li button {
+        padding: 10px 20px;
+        font-size: 14px;
     }
     .profiletabsbar {
         margin: 20px 0;
