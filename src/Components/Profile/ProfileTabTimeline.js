@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { MdOutlineTimer } from 'react-icons/md';
-import { AiFillLike, AiFillDislike, AiOutlinePlus , AiFillLinkedin } from 'react-icons/ai';
-import { FaGift, FaComments , FaFacebookF , FaRedditAlien } from 'react-icons/fa';
-import { BsFillFlagFill, BsPencil, BsThreeDots  , BsTwitter , BsWhatsapp } from 'react-icons/bs';
+import { AiFillLike, AiFillDislike, AiOutlinePlus, AiFillLinkedin } from 'react-icons/ai';
+import { FaGift, FaComments, FaFacebookF, FaRedditAlien } from 'react-icons/fa';
+import { BsFillFlagFill, BsPencil, BsThreeDots, BsTwitter, BsWhatsapp } from 'react-icons/bs';
 import { BiCopy } from 'react-icons/bi';
 import { ImForward } from 'react-icons/im';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -50,16 +50,18 @@ const ProfileTabContent = () => {
             <div className="digital-feeds ">
                 <div className="user-detail-bar">
                     <div className="detailleft">
-                        <div className="avatar-img active">
-                            <img src="/images/user.png" alt="user-img" />
-                        </div>
-                        <div className="user-detail">
-                            <h4 className="text-secondry">Amanpreet Singh</h4>
-                            <div className="user-availbility">
-                                <h6 className="text-lightgray">@amans</h6>
-                                <h5 className="text-lightgray greentime">1hr ago</h5>
+                        <div className="userleftside">
+                            <div className="avatar-img active">
+                                <img src="/images/user.png" alt="user-img" />
                             </div>
-                            <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            <div className="user-detail">
+                                <h4 className="text-secondry">Amanpreet Singh</h4>
+                                <div className="user-availbility">
+                                    <h6 className="text-lightgray">@amans</h6>
+                                    <h5 className="text-lightgray greentime">1hr ago</h5>
+                                </div>
+                                <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            </div>
                         </div>
                         <ul className="awards-bar bg-darkgray">
                             <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
@@ -80,7 +82,7 @@ const ProfileTabContent = () => {
                     </div>
                     <div className="action-bar">
                         <ul className="actionleftbar">
-                            <li className='active'  onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                            <li className='active' onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                             <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                             <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                             <li><FaComments /><span className="number">12</span>Threads</li>
@@ -108,16 +110,18 @@ const ProfileTabContent = () => {
             <div className="digital-feeds ">
                 <div className="user-detail-bar">
                     <div className="detailleft">
-                        <div className="avatar-img active">
-                            <img src="/images/user.png" alt="user-img" />
-                        </div>
-                        <div className="user-detail">
-                            <h4 className="text-secondry">Amanpreet Singh</h4>
-                            <div className="user-availbility">
-                                <h6 className="text-lightgray">@amans</h6>
-                                <h5 className="text-lightgray greentime">1hr ago</h5>
+                        <div className="userleftside">
+                            <div className="avatar-img active">
+                                <img src="/images/user.png" alt="user-img" />
                             </div>
-                            <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            <div className="user-detail">
+                                <h4 className="text-secondry">Amanpreet Singh</h4>
+                                <div className="user-availbility">
+                                    <h6 className="text-lightgray">@amans</h6>
+                                    <h5 className="text-lightgray greentime">1hr ago</h5>
+                                </div>
+                                <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            </div>
                         </div>
                         <ul className="awards-bar bg-darkgray">
                             <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
@@ -138,7 +142,7 @@ const ProfileTabContent = () => {
                     </div>
                     <div className="action-bar">
                         <ul className="actionleftbar">
-                            <li  onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                            <li onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                             <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                             <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                             <li><FaComments /><span className="number">12</span>Threads</li>
@@ -166,16 +170,18 @@ const ProfileTabContent = () => {
             <div className="digital-feeds ">
                 <div className="user-detail-bar">
                     <div className="detailleft">
-                        <div className="avatar-img active">
-                            <img src="/images/user.png" alt="user-img" />
-                        </div>
-                        <div className="user-detail">
-                            <h4 className="text-secondry">Amanpreet Singh</h4>
-                            <div className="user-availbility">
-                                <h6 className="text-lightgray">@amans</h6>
-                                <h5 className="text-lightgray greentime">1hr ago</h5>
+                        <div className="userleftside">
+                            <div className="avatar-img active">
+                                <img src="/images/user.png" alt="user-img" />
                             </div>
-                            <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            <div className="user-detail">
+                                <h4 className="text-secondry">Amanpreet Singh</h4>
+                                <div className="user-availbility">
+                                    <h6 className="text-lightgray">@amans</h6>
+                                    <h5 className="text-lightgray greentime">1hr ago</h5>
+                                </div>
+                                <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            </div>
                         </div>
                         <ul className="awards-bar bg-darkgray">
                             <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
@@ -196,7 +202,7 @@ const ProfileTabContent = () => {
                     </div>
                     <div className="action-bar">
                         <ul className="actionleftbar">
-                            <li  onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                            <li onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                             <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                             <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                             <li><FaComments /><span className="number">12</span>Threads</li>
@@ -224,16 +230,18 @@ const ProfileTabContent = () => {
             <div className="digital-feeds ">
                 <div className="user-detail-bar">
                     <div className="detailleft">
-                        <div className="avatar-img active">
-                            <img src="/images/user.png" alt="user-img" />
-                        </div>
-                        <div className="user-detail">
-                            <h4 className="text-secondry">Amanpreet Singh</h4>
-                            <div className="user-availbility">
-                                <h6 className="text-lightgray">@amans</h6>
-                                <h5 className="text-lightgray greentime">1hr ago</h5>
+                        <div className="userleftside">
+                            <div className="avatar-img active">
+                                <img src="/images/user.png" alt="user-img" />
                             </div>
-                            <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            <div className="user-detail">
+                                <h4 className="text-secondry">Amanpreet Singh</h4>
+                                <div className="user-availbility">
+                                    <h6 className="text-lightgray">@amans</h6>
+                                    <h5 className="text-lightgray greentime">1hr ago</h5>
+                                </div>
+                                <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            </div>
                         </div>
                         <ul className="awards-bar bg-darkgray">
                             <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
@@ -279,9 +287,9 @@ const ProfileTabContent = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* Delete modal */}
-            <Modal  className="Actions-modal"  show={show} onHide={handleClose} centered>
+            <Modal className="Actions-modal" show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Delete Post</Modal.Title>
                 </Modal.Header>
@@ -604,9 +612,9 @@ const ProfileTabContent = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -619,38 +627,38 @@ const ProfileTabContent = () => {
                 <Modal.Body>
                     <ul className='share-media'>
                         <li>
-                            <button className='sharebtn' type="button"><BsTwitter/></button>
+                            <button className='sharebtn' type="button"><BsTwitter /></button>
                             <p>Twitter</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><FaFacebookF/></button>
+                            <button className='sharebtn' type="button"><FaFacebookF /></button>
                             <p>Facebook</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><FaRedditAlien/></button>
+                            <button className='sharebtn' type="button"><FaRedditAlien /></button>
                             <p>Reddit</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><BsWhatsapp/></button>
+                            <button className='sharebtn' type="button"><BsWhatsapp /></button>
                             <p>WhatsApp</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><AiFillLinkedin/></button>
+                            <button className='sharebtn' type="button"><AiFillLinkedin /></button>
                             <p>Linkedin</p>
                         </li>
                         <li>
-                            <button className='sharebtn' type="button"><BsTwitter/></button>
+                            <button className='sharebtn' type="button"><BsTwitter /></button>
                             <p>Twitter</p>
                         </li>
                     </ul>
                     <Form>
                         <Form.Group className="mb-3" controlId="">
-                            <Form.Control placeholder="https://example.com/article/social-share-modal"/>
+                            <Form.Control placeholder="https://example.com/article/social-share-modal" />
                         </Form.Group>
                         <Form.Group>
-                        <Button type="submit">
-                            <BiCopy/>
-                        </Button>
+                            <Button type="submit">
+                                <BiCopy />
+                            </Button>
                         </Form.Group>
                     </Form>
                 </Modal.Body>

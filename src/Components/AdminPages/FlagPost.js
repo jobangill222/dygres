@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import { MdOutlineTimer } from 'react-icons/md';
-import { AiFillLike, AiFillDislike, AiOutlinePlus  } from 'react-icons/ai';
-import { FaGift, FaComments  } from 'react-icons/fa';
+import { AiFillLike, AiFillDislike, AiOutlinePlus } from 'react-icons/ai';
+import { FaGift, FaComments } from 'react-icons/fa';
 import { BsFillFlagFill, BsPencil, BsThreeDots } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -37,7 +37,7 @@ const FlagPost = () => {
     const [EditReportShow, setEditreportshow] = useState(false);
     const EditReportClose = () => setEditreportshow(false);
     const EditReport = () => setEditreportshow(true);
-   
+
 
     return (
         <>
@@ -53,16 +53,18 @@ const FlagPost = () => {
                     <div className="digital-feeds ">
                         <div className="user-detail-bar">
                             <div className="detailleft">
-                                <div className="avatar-img active">
-                                    <img src="/images/user.png" alt="user-img" />
-                                </div>
-                                <div className="user-detail">
-                                    <h4 className="text-secondry">Amanpreet Singh</h4>
-                                    <div className="user-availbility">
-                                        <h6 className="text-lightgray">@amans</h6>
-                                        <h5 className="text-lightgray greentime">1hr ago</h5>
+                                <div className="userleftside">
+                                    <div className="avatar-img active">
+                                        <img src="/images/user.png" alt="user-img" />
                                     </div>
-                                    <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                    <div className="user-detail">
+                                        <h4 className="text-secondry">Amanpreet Singh</h4>
+                                        <div className="user-availbility">
+                                            <h6 className="text-lightgray">@amans</h6>
+                                            <h5 className="text-lightgray greentime">1hr ago</h5>
+                                        </div>
+                                        <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                    </div>
                                 </div>
                                 <ul className="awards-bar bg-darkgray">
                                     <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
@@ -83,7 +85,7 @@ const FlagPost = () => {
                             </div>
                             <div className="action-bar">
                                 <ul className="actionleftbar">
-                                    <li className='active'  onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                                    <li className='active' onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                                     <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                                     <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                                     <li><FaComments /><span className="number">12</span>Threads</li>
@@ -105,7 +107,7 @@ const FlagPost = () => {
                                 <ul className="actionrytbar flagbtnbar">
                                     <li >
                                         <Button className="bg-primary text-white">Remove from flag</Button>
-                                        <Button className="bg-danger text-white"><RiDeleteBin6Line/>Delete Post</Button>
+                                        <Button className="bg-danger text-white"><RiDeleteBin6Line />Delete Post</Button>
                                     </li>
                                 </ul>
                             </div>
@@ -116,16 +118,18 @@ const FlagPost = () => {
                     <div className="digital-feeds ">
                         <div className="user-detail-bar">
                             <div className="detailleft">
-                                <div className="avatar-img active">
-                                    <img src="/images/user.png" alt="user-img" />
-                                </div>
-                                <div className="user-detail">
-                                    <h4 className="text-secondry">Amanpreet Singh</h4>
-                                    <div className="user-availbility">
-                                        <h6 className="text-lightgray">@amans</h6>
-                                        <h5 className="text-lightgray greentime">1hr ago</h5>
+                                <div className="userleftside">
+                                    <div className="avatar-img active">
+                                        <img src="/images/user.png" alt="user-img" />
                                     </div>
-                                    <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                    <div className="user-detail">
+                                        <h4 className="text-secondry">Amanpreet Singh</h4>
+                                        <div className="user-availbility">
+                                            <h6 className="text-lightgray">@amans</h6>
+                                            <h5 className="text-lightgray greentime">1hr ago</h5>
+                                        </div>
+                                        <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                    </div>
                                 </div>
                                 <ul className="awards-bar bg-darkgray">
                                     <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
@@ -146,7 +150,7 @@ const FlagPost = () => {
                             </div>
                             <div className="action-bar">
                                 <ul className="actionleftbar">
-                                    <li  onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                                    <li onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                                     <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                                     <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                                     <li><FaComments /><span className="number">12</span>Threads</li>
@@ -168,7 +172,7 @@ const FlagPost = () => {
                                 <ul className="actionrytbar flagbtnbar">
                                     <li >
                                         <Button className="bg-primary text-white">Remove from flag</Button>
-                                        <Button className="bg-danger text-white"><RiDeleteBin6Line/>Delete Post</Button>
+                                        <Button className="bg-danger text-white"><RiDeleteBin6Line />Delete Post</Button>
                                     </li>
                                 </ul>
                             </div>
@@ -179,16 +183,18 @@ const FlagPost = () => {
                     <div className="digital-feeds ">
                         <div className="user-detail-bar">
                             <div className="detailleft">
-                                <div className="avatar-img active">
-                                    <img src="/images/user.png" alt="user-img" />
-                                </div>
-                                <div className="user-detail">
-                                    <h4 className="text-secondry">Amanpreet Singh</h4>
-                                    <div className="user-availbility">
-                                        <h6 className="text-lightgray">@amans</h6>
-                                        <h5 className="text-lightgray greentime">1hr ago</h5>
+                                <div className="userleftside">
+                                    <div className="avatar-img active">
+                                        <img src="/images/user.png" alt="user-img" />
                                     </div>
-                                    <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                    <div className="user-detail">
+                                        <h4 className="text-secondry">Amanpreet Singh</h4>
+                                        <div className="user-availbility">
+                                            <h6 className="text-lightgray">@amans</h6>
+                                            <h5 className="text-lightgray greentime">1hr ago</h5>
+                                        </div>
+                                        <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                    </div>
                                 </div>
                                 <ul className="awards-bar bg-darkgray">
                                     <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
@@ -209,7 +215,7 @@ const FlagPost = () => {
                             </div>
                             <div className="action-bar">
                                 <ul className="actionleftbar">
-                                    <li  onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
+                                    <li onClick={AgreeShow}><AiFillLike /><span className="number">12</span>Agree</li>
                                     <li onClick={DisAgreeShow}><AiFillDislike /><span className="number">12</span>Disagree</li>
                                     <li onClick={AwardsShow}><FaGift /><span className="number">6</span>Award</li>
                                     <li><FaComments /><span className="number">12</span>Threads</li>
@@ -231,7 +237,7 @@ const FlagPost = () => {
                                 <ul className="actionrytbar flagbtnbar">
                                     <li >
                                         <Button className="bg-primary text-white">Remove from flag</Button>
-                                        <Button className="bg-danger text-white"><RiDeleteBin6Line/>Delete Post</Button>
+                                        <Button className="bg-danger text-white"><RiDeleteBin6Line />Delete Post</Button>
                                     </li>
                                 </ul>
                             </div>
@@ -563,14 +569,14 @@ const FlagPost = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
             </Modal>
-            
+
         </>
     );
 }

@@ -23,7 +23,7 @@ const splitLocation = pathname.split("/");
 
     return (
         <>
-            <Navbar className="header-nav" expand="md">
+            <Navbar className="header-nav" expand="lg">
                 <Container>
                     <div className="mainheader">
                         <Navbar.Brand >

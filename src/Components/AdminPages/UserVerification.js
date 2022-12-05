@@ -19,13 +19,15 @@ const UserVerification = () => {
                 <div className="verification-bar ">
                     <div className="user-detail-bar">
                         <div className="detailleft">
-                            <div className="avatar-img">
-                                <img src="/images/user.png" alt="user-img" />
-                            </div>
-                            <div className="user-detail">
-                                <h4 className="text-secondry">Amanpreet Singh</h4>
-                                <div className="user-availbility">
-                                    <h6 className="text-lightgray">@amans</h6>
+                            <div className="userleftside">
+                                <div className="avatar-img">
+                                    <img src="/images/user.png" alt="user-img" />
+                                </div>
+                                <div className="user-detail">
+                                    <h4 className="text-secondry">Amanpreet Singh</h4>
+                                    <div className="user-availbility">
+                                        <h6 className="text-lightgray">@amans</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -57,13 +59,15 @@ const UserVerification = () => {
                 <div className="verification-bar">
                     <div className="user-detail-bar">
                         <div className="detailleft">
-                            <div className="avatar-img">
-                                <img src="/images/user.png" alt="user-img" />
-                            </div>
-                            <div className="user-detail">
-                                <h4 className="text-secondry">Amanpreet Singh</h4>
-                                <div className="user-availbility">
-                                    <h6 className="text-lightgray">@amans</h6>
+                            <div className="userleftside">
+                                <div className="avatar-img">
+                                    <img src="/images/user.png" alt="user-img" />
+                                </div>
+                                <div className="user-detail">
+                                    <h4 className="text-secondry">Amanpreet Singh</h4>
+                                    <div className="user-availbility">
+                                        <h6 className="text-lightgray">@amans</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>

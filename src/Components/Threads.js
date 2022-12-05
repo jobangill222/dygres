@@ -23,19 +23,21 @@ const Threads = () => {
                     <h4>Threads</h4>
                     <div className="user-detail-bar">
                         <div className="detailleft">
-                            <div className="avatar-img active">
-                                <img src="/images/user.png" alt="user-img" />
-                            </div>
-                            <div className="user-detail">
-                                <div className='follow-bar'>
-                                    <h4 className="text-secondry">Amanpreet Singh</h4>
-                                    <button className='followbtn' type='button'>Follow</button>
+                            <div className="userleftside">
+                                <div className="avatar-img active">
+                                    <img src="/images/user.png" alt="user-img" />
                                 </div>
-                                <div className="user-availbility">
-                                    <h6 className="text-lightgray">@amans</h6>
-                                    <h5 className="text-lightgray redtime">1hr ago</h5>
+                                <div className="user-detail">
+                                    <div className='follow-bar'>
+                                        <h4 className="text-secondry">Amanpreet Singh</h4>
+                                        <button className='followbtn' type='button'>Follow</button>
+                                    </div>
+                                    <div className="user-availbility">
+                                        <h6 className="text-lightgray">@amans</h6>
+                                        <h5 className="text-lightgray redtime">1hr ago</h5>
+                                    </div>
+                                    <div className="levelbar text-darkwhite level2">Level2 <h6 className="level2-circle"><span className="text-white lvlstar">2</span></h6></div>
                                 </div>
-                                <div className="levelbar text-darkwhite level2">Level2 <h6 className="level2-circle"><span className="text-white lvlstar">2</span></h6></div>
                             </div>
                         </div>
                         <div className="user-active-timer">
@@ -82,6 +84,7 @@ const Threads = () => {
                                 <Accordion.Item eventKey="3">
                                     <div className="user-detail-bar">
                                         <div className="detailleft">
+                                        <div className="userleftside">
                                             <div className="avatar-img active">
                                                 <img src="/images/user.png" alt="user-img" />
                                             </div>
@@ -92,6 +95,7 @@ const Threads = () => {
                                                     <h5 className="text-lightgray greentime">1hr ago</h5>
                                                 </div>
                                                 <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                            </div>
                                             </div>
 
                                         </div>
@@ -137,6 +141,7 @@ const Threads = () => {
                                         <Accordion.Body className='thredsbar thredsbar-inner'>
                                             <div className="user-detail-bar">
                                                 <div className="detailleft">
+                                                <div className="userleftside">
                                                     <div className="avatar-img active">
                                                         <img src="/images/user.png" alt="user-img" />
                                                     </div>
@@ -148,7 +153,7 @@ const Threads = () => {
                                                         </div>
                                                         <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
                                                     </div>
-
+                                                    </div>
                                                 </div>
                                                 <div className="user-active-timer">
                                                     <ul>

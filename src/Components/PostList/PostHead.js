@@ -6,16 +6,18 @@ const PostHead = () => {
         <>
             <div className="user-detail-bar">
                     <div className="detailleft">
-                        <div className="avatar-img active">
-                            <img src="/images/user.png" alt="user-img" />
-                        </div>
-                        <div className="user-detail">
-                            <h4 className="text-secondry">Amanpreet Singh</h4>
-                            <div className="user-availbility">
-                                <h6 className="text-lightgray">@amans</h6>
-                                <h5 className="text-lightgray greentime">1hr ago</h5>
+                        <div className="userleftside">
+                            <div className="avatar-img active">
+                                <img src="/images/user.png" alt="user-img" />
                             </div>
-                            <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            <div className="user-detail">
+                                <h4 className="text-secondry">Amanpreet Singh</h4>
+                                <div className="user-availbility">
+                                    <h6 className="text-lightgray">@amans</h6>
+                                    <h5 className="text-lightgray greentime">1hr ago</h5>
+                                </div>
+                                <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                            </div>
                         </div>
                         <ul className="awards-bar bg-darkgray">
                             <li className="text-whitesure"><img src="/images/award1.png" alt="awards" />5</li>
