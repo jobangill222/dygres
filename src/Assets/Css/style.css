@@ -517,6 +517,7 @@ input.form-control{
 .user-detail-bar .detailleft .avatar-img {
     position: relative;
     margin-right: 18px;
+    flex: 0 0 60px;
 }
 .user-detail-bar .detailleft .avatar-img.active::after {
     content: '';
@@ -2616,14 +2617,83 @@ ul.sidebar-menu {
     visibility: visible;
     transform: translate(0px, 0px);
 }
+.mainheader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 
+.Mob-Footerbar {
+    padding: 10px 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background: #ffffff;
+    height: 65px;
+}
 
+.Mob-Footerbar .mob-foot-menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
 
+.Mob-Footerbar .mob-foot-menu li {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    text-align: center;
+}
 
+.Mob-Footerbar .mob-foot-menu li.Addpost a {
+    width: 67px;
+    height: 67px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0 auto;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 0.5px solid #DDDDDD;
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.06);
+    top: -40PX;
+    position: relative;
+    font-size: 52px;
+    color: #B9B9B9;
+    transition: .5s ease;
+}
 
+.Mob-Footerbar .mob-foot-menu li a {
+    font-size: 24px;
+    color: #002358;
+}
 
+.Mob-Footerbar .mob-foot-menu li a img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 
+.Mob-Footerbar .mob-foot-menu li.Addpost a:hover svg {
+    transform: rotate(360deg);
+}
+.Mob-Footerbar{
+    display: none;
+}
+.userleftside {
+    display: flex;
+    align-items: flex-start;
+}
+.flagbtnbar button.bg-danger {
+    border: 1px solid #0a2358 !important;
+    color: #0a2358 !important;
+}
+[darkmode] .flagbtnbar button.bg-danger {
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+}
 
 
 /* Responsive css  */
@@ -2712,8 +2782,9 @@ ul.sidebar-menu {
         margin-top: 20px;
     }
     .Titlebar-btns .searchbar input {
-        padding: 14px 17px 14px 50px;
+        padding: 14px 17px 14px 50px !important;
     }
+
     .usertable table thead th , .usertable table tbody tr td {
         font-size: 16px;
     }
@@ -2887,4 +2958,344 @@ ul.sidebar-menu {
         max-width: 100%;
         padding: 0 30px;
     }
+    .action-bar .flagbtnbar li button {
+        margin-left: 0 !important;
+        margin-top: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (min-width:991px){
+    .navbar-expand-lg .navbar-collapse {
+        display: none !important;
+        flex-basis: auto;
+    }
+    ul.web-none{
+        display: none;
+    }
+}
+@media (max-width:990px){
+
+
+
+
+table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.Titlebar-btns {flex-direction: column-reverse;align-items: flex-start;margin-top: 20px;}
+
+.Titlebar-btns .sendbtn a {
+    display: inline-block;
+    margin-top: 10px;
+}
+.usertable table tbody tr td .number-bar .user-dropdown ul.Dropdown-listing {
+    top: inherit;
+    background: #ffffff;
+    bottom: -20px;
+    padding: 5px 15px;
+    right: 20px;
+}
+.user-dropdown .Dropdown-listing li, .user-dropdown .Dropdown-listing li a {
+    margin-bottom: 5px;
+}
+.user-dropdown .Dropdown-listing li a {
+    margin-bottom: 0 !important;
+}
+
+.share-popup form button {
+    top: 50%;
+    transform: translate(0px, -50%);
+}
+.share-popup form button {top: 50%;transform: translate(0px, -50%);}
+.Titlebar-btns .searchbar {
+    width: 100%;
+}
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+    .dashboard-title-bar select.form-select {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    .profiletabsbar {
+        margin: 20px 0;
+    }
+    .user-detail-bar .detailleft {
+        display: block;
+    }
+    .user-detail-bar .detailleft .awards-bar {
+        margin: 15px 0 15px 0px;
+    }
+    .action-bar ul li, .action-bar ul li .accordion-button{
+        margin-bottom: 10px;
+    }
+    .btn-primary {
+        padding: 10px 20px;
+    }
+    .profile-user-detail .user-detail-bar .detailleft .user-detail h4.text-secondry {
+        color: #0a2358;
+    }
+    .profile-user-detail .user-detail-bar .detailleft .user-detail .user-availbility h6.text-lightgray {
+        color: #afafaf;
+    }
+    .profile-user-detail .user-edit-cover ul li a {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+    .digital-tabs li .nav-link {
+        padding: 10px 20px;
+    }
+    .notfound-content h2 {
+        font-size: 90px;
+    }
+    
+    .notfound-content h4 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .thredsbar {
+        position: relative;
+        padding: 20px 15px;
+    }
+    .notfound-content p {
+        font-size: 16px;
+    }
+    .profile-user-detail .user-detail-bar .detailleft .avatar-img {
+        width: 110px;
+        height: 110px;
+    }
+    .action-bar ul li .accordion-button {
+        margin: 0 !important;
+    }
+    .Notfy-block {
+        padding: 20px 10px;
+    }
+    
+    .notification-title ul li {
+        margin-left: 10px;
+    }
+    
+    .notification-title ul li .btn-nill {
+        font-size: 14px;
+    }
+    .profile-user-detail .user-detail-listing {
+        margin-top: 10px;
+    }
+    .user-detail-bar .detailleft .avatar-img {
+        position: relative;
+        margin-right: 15px;
+    }
+    .profile-user-detail .user-detail-bar .detailleft {
+        margin-bottom: 30px;
+    }
+    .profile-user-detail {
+        margin-top: -60px;
+        margin-bottom: 50px;
+    }
+    body {
+        padding-bottom: 100px;
+    }
+    .Whatsmind-bar {
+        margin-bottom: 40px;
+    }
+    .sidebar-profile {
+        display: none;
+    }
+    .header-nav {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+    }
+    .Mob-Footerbar{
+        display: block;
+    }
+    .mob-none {
+        display: none !important;
+    }
+    .mainheader {
+        padding: 15px 0;
+    }
+    .mobilemenu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .outline-primary, .btn-outline-primary {
+        padding: 10px 20px;
+    }
+    .mobilemenu ul.web-none {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    .mobilemenu ul.web-none li {
+        margin-right: 30px;
+    }
+    
+    .mobilemenu ul.web-none li a {
+        font-size: 20px;
+        color: #727272;
+    }
+    
+    .mobilemenu button.navbar-toggler {
+        background: transparent;
+        border: none !important;
+        padding: 0;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .navbar-collapse ul.sidebar-menu li a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 10px;
+        background: #fafafa;
+        border-bottom: 1px solid #f1f1f1;
+        color: #aaaaaa;
+    }
+    .navbar-collapse ul.sidebar-menu li.active a{
+        background-color: #002358;
+        color: #ffffff;
+    }
+    .navbar-collapse ul.sidebar-menu li a svg {
+        margin-right: 10px;
+    }
+    .body-wrapper {
+        padding: 95px 0 !important;
+    }
+    ul.profiletabsbar li a {
+        padding: 12px 30px;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    .digital-tabs li:first-child .nav-link, ul.profiletabsbar li:first-child a {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .digital-tabs li:last-child .nav-link, ul.profiletabsbar li:last-child a {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .header-nav {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+    }
+    .profile-user-detail .user-edit-cover ul li {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+    .text-end.save-form-btn {
+        text-align: left !important;
+        margin-top: 10px;
+    }
+    .editor-input .form-select {
+        padding: 11px 20px;
+    }
+    .account-verify .verify-input {display: block;}
+    
+    .account-verify .verify-input input.form-control {
+        max-width: 100%;
+    }
+    .digital-feeds {
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+    .profile-user-detail {
+        margin-top: -60px;
+        margin-bottom: 0px;
+    }
+    .profile-feature-image {
+        height: 150px;
+        overflow: hidden;
+        margin-top: -20px;
+    }
+    .action-bar ul li, .action-bar ul li .accordion-button {
+        font-size: 0;
+        margin-left: 3px;
+    }
+    
+    .action-bar ul li svg, .action-bar ul li .accordion-button svg {
+        font-size: 18px;
+    }
+    
+    .hoverdropdown button, .action-bar ul li .accordion-button {
+        font-size: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
+    .action-bar ul li span.number {
+        font-size: 14px;
+    }
+    .thredsbar .threads-rows {
+        padding-left: 30px;
+        position: relative;
+    }
+    .verification-bar .verification-media-upload {
+        display: block;
+    }
+    
+    .verification-bar {
+        padding: 15px;
+    }
+    
+    .verification-bar .verification-media-upload .verify-content {
+        margin-top: 20px;
+    }
+    .thredsbar .threads-rows::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        left: 10px;
+        top: 0;
+        background: #BCBCBC;
+    }
+    .Auth-bar .Authbar-innerbox {
+        padding: 20px 20px;
+    }
+}
+@media (max-width: 574px){
+    .profile-user-detail .user-detail-bar .detailleft {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .action-bar .flagbtnbar li button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    .profiletabsbar {
+        margin: 20px 0;
+        display: block;
+    }
+    .editor-input .form-select {
+        padding: 11px 20px;
+    }
+    .profile-user-detail .user-detail-listing {
+        justify-content: flex-start;
+    }
+    .profile-user-detail .user-detail-listing li {
+        margin-right: 20px;
+    }
+    .mobilemenu ul.web-none li {
+        margin-right: 20px;
+    }
+
 }
