@@ -528,11 +528,7 @@ ul.profiletabsbar li:last-child a {
   align-items: flex-start;
   justify-content: flex-start;
 }
-.user-detail-bar .detailleft .avatar-img {
-  position: relative;
-  margin-right: 18px;
-  flex: 0 0 60px;
-}
+
 .user-detail-bar .detailleft .avatar-img.active::after {
   content: "";
   position: absolute;
@@ -1429,6 +1425,10 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   width: 100%;
   height: 100%;
 }
+.user-detail-bar .detailleft .avatar-img {
+  position: relative;
+  margin-right: 18px;
+}
 .profile-user-detail
   .user-detail-bar
   .detailleft
@@ -1498,7 +1498,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 .notification-content.unreadmark p.notify {
   color: #000000;
-  font-weight: 600;
+  font-weight: 400;
 }
 .aboutline {
   margin-bottom: 40px;
@@ -3050,6 +3050,11 @@ ul.sidebar-menu {
   }
 }
 @media (max-width: 990px) {
+  .user-detail-bar .detailleft .avatar-img {
+    position: relative;
+    margin-right: 18px;
+    flex: 0 0 60px;
+  }
   table {
     display: block;
     width: 100%;
@@ -3202,7 +3207,7 @@ ul.sidebar-menu {
   .header-nav {
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 5;
     width: 100%;
   }
   .Mob-Footerbar {
@@ -3285,7 +3290,7 @@ ul.sidebar-menu {
   .header-nav {
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 5;
     width: 100%;
   }
   .profile-user-detail .user-edit-cover ul li {
