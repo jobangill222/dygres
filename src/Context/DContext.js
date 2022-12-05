@@ -252,6 +252,42 @@ export const DProvider = (props) => {
     }
   };
 
+  const getGlobalPostDContext = async (pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/post/get-global-posts?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get global post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const getFollowingPostDContext = async (pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/post/get-following-posts?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get following post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -273,6 +309,8 @@ export const DProvider = (props) => {
     getEmailOtpInsideLoginDContext,
     verifyOtpInsideLoginDContext,
     createPostDContext,
+    getGlobalPostDContext,
+    getFollowingPostDContext,
   };
   return (
     <DContext.Provider value={{ ...value }}>{props.children}</DContext.Provider>

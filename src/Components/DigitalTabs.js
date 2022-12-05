@@ -3,22 +3,40 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import DigitalTabContent from "./DigitalTabContent";
 
-const DigitalTabs = () => {
+const DigitalTabs = (props) => {
+  const { setActiveTabState, postList } = props;
+
   return (
     <>
       <Tabs
-        defaultActiveKey="Following"
+        defaultActiveKey="Global"
         id="uncontrolled-tab-example"
         className="digital-tabs"
+        onSelect={(e) => setActiveTabState(e)}
       >
         <Tab eventKey="Following" title="Following">
-          <DigitalTabContent />
+          {postList.map((post) => (
+            <DigitalTabContent
+              setActiveTabState={setActiveTabState}
+              post={post}
+            />
+          ))}
         </Tab>
         <Tab eventKey="Global" title="Global">
-          <DigitalTabContent />
+          {postList.map((post) => (
+            <DigitalTabContent
+              setActiveTabState={setActiveTabState}
+              post={post}
+            />
+          ))}
         </Tab>
         <Tab eventKey="Official" title="Official">
-          <DigitalTabContent />
+          {postList.map((post) => (
+            <DigitalTabContent
+              setActiveTabState={setActiveTabState}
+              post={post}
+            />
+          ))}
         </Tab>
       </Tabs>
     </>

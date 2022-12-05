@@ -4,12 +4,17 @@ import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 import { DContext } from "../Context/DContext";
 
-const WhatsMind = () => {
+const WhatsMind = (props) => {
+  //To change state when post is posted
+  const { setIsPostState } = props;
+
   //Set create post state
   const [createPostState, setCreatePostState] = useState("");
 
+  // Function to all api
   const { createPostDContext } = useContext(DContext);
 
+  //Submit post
   const submitPost = async () => {
     if (!createPostState) {
       toast("Post cannot be empty.");
@@ -19,6 +24,7 @@ const WhatsMind = () => {
       try {
         const axiosRes = await createPostDContext(createPostState);
         if (axiosRes.status === "success") {
+          setIsPostState("1");
           toast(axiosRes.message);
           setCreatePostState("");
         } else {
@@ -38,6 +44,7 @@ const WhatsMind = () => {
             <Form.Control
               as="textarea"
               rows={6}
+              maxLength={420}
               placeholder="What’s on your mind............?"
               name="content"
               value={createPostState}

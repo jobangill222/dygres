@@ -75,7 +75,7 @@ const PersonalInformation = () => {
   };
 
   useEffect(() => {
-    console.log("Get personal info in use Effect");
+    // console.log("Get personal info in use Effect");
     getPersonalInfoData();
   }, []);
 
@@ -134,6 +134,8 @@ const PersonalInformation = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  //Submit change password
   const handleRegistration = async (data) => {
     // e.preventDefault()
     console.log("data-----", data);
@@ -156,11 +158,12 @@ const PersonalInformation = () => {
       console.log(err);
     }
   };
-
+  //validation error in chnage password Modal
   const handleError = (errors) => {
     console.log(errors);
   };
 
+  // validation messages in change password
   const registerOptions = {
     currentPassword: {
       required: "Enter current password.",
@@ -185,6 +188,7 @@ const PersonalInformation = () => {
     },
   };
 
+  //Get otp when click on verify email
   const getOtpForEmailVerification = async () => {
     if (personalInfoFieldStates.isEmailVerify === 0) {
       handleEmailOtpPopupShow();
@@ -207,6 +211,7 @@ const PersonalInformation = () => {
 
   const [otpState, setOtpState] = useState("");
 
+  //Submit otp
   const submitOtp = async (e) => {
     e.preventDefault();
     console.log("otpState", otpState);
@@ -240,7 +245,7 @@ const PersonalInformation = () => {
 
   return (
     <>
-      {console.log("personalInfoFiledsState", personalInfoFieldStates)}
+      {/* {console.log("personalInfoFiledsState", personalInfoFieldStates)} */}
 
       <div className="Profile-Upload-media">
         <Row>
