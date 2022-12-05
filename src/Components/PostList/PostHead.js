@@ -11,7 +11,9 @@ const PostHead = ({ user }) => {
               <img src="/images/user.png" alt="user-img" />
             </div>
             <div className="user-detail">
-              <h4 className="text-secondry">Amanpreet Singh</h4>
+              <h4 className="text-secondry">
+                {user[0].name ? user[0].name : user[0].username}
+              </h4>
               <div className="user-availbility">
                 <h6 className="text-lightgray">@{user[0]?.username}</h6>
                 <h5 className="text-lightgray greentime">1hr ago</h5>

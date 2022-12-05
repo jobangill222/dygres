@@ -14,6 +14,11 @@ export const DProvider = (props) => {
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     setUserToken(accessToken);
+    // const checkAuth = async () => {
+    //   const axiosRes = await getGenInformationDContext();
+    //   setUser(axiosRes.generalDetails);
+    // };
+    // checkAuth();
   }, []);
 
   // Global Functions
@@ -132,6 +137,7 @@ export const DProvider = (props) => {
         },
         data: bodyFormData,
       });
+
       console.log("axiosRes=========", axiosRes);
       return axiosRes.data;
     } catch (err) {

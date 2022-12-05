@@ -17,6 +17,7 @@ const DigitalTabs = (props) => {
         <Tab eventKey="Following" title="Following">
           {postList.map((post) => (
             <DigitalTabContent
+              key={post._id}
               setActiveTabState={setActiveTabState}
               post={post}
             />
@@ -25,6 +26,7 @@ const DigitalTabs = (props) => {
         <Tab eventKey="Global" title="Global">
           {postList.map((post) => (
             <DigitalTabContent
+              key={post._id}
               setActiveTabState={setActiveTabState}
               post={post}
             />
@@ -33,6 +35,7 @@ const DigitalTabs = (props) => {
         <Tab eventKey="Official" title="Official">
           {postList.map((post) => (
             <DigitalTabContent
+              key={post._id}
               setActiveTabState={setActiveTabState}
               post={post}
             />
