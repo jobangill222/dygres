@@ -226,6 +226,12 @@ const Header = () => {
                   not voted
                 </Link>
               </li>
+              <li className="logout" onClick={logoutHandler}>
+                <Link to="/logout">
+                  <MdLogout />
+                  Logout
+                </Link>
+              </li>
             </ul>
           </Navbar.Collapse>
         </Container>
