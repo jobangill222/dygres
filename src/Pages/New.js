@@ -6,19 +6,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const New = () => {
   //Functions to call api
-  const { getGlobalPostDContext, getFollowingPostDContext } =
+  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList } =
     useContext(DContext);
 
-  //State for postList
-  const [postList, setPostList] = useState([]);
+
   //State for active tab like: global , follwing, officials
   const [activeTabState, setActiveTabState] = useState("Global");
   //State for is post or not to paas dependency in use effect
   const [isPostState, setIsPostState] = useState("0");
 
-  // useEffect(() => {
-  //   componentDidMount();
-  // }, []);
 
   //For render post list render when change tab and post something
   useEffect(() => {
@@ -38,7 +34,7 @@ const New = () => {
       //Api call
       let pageNumberOfPostList = 1;
       const axiosRes = await getGlobalPostDContext(pageNumberOfPostList);
-      console.log("axiosRes********* after get global posts", axiosRes);
+      // console.log("axiosRes********* after get global posts", axiosRes);
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
       }
@@ -66,7 +62,7 @@ const New = () => {
   const appendNextList = async () => {
     let currentPage = localStorage.getItem("currentPage");
     let pageNumberOfPostList = parseInt(currentPage) + 1;
-    console.log("appendNextList function call", pageNumberOfPostList);
+    // console.log("appendNextList function call", pageNumberOfPostList);
 
     let axiosRes;
 

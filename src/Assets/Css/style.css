@@ -546,10 +546,20 @@ ul.profiletabsbar li:last-child a {
   line-height: 22px;
   margin-bottom: 2px;
 }
+.avatar-img img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .user-detail-bar .detailleft .user-detail .user-availbility {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 5px;
+}
+.profile-user-detail .user-detail h4.text-secondry {
+  height: 28px;
 }
 .user-detail-bar .detailleft .user-detail .user-availbility h6,
 .user-detail-bar .detailleft .user-detail .user-availbility h5 {
@@ -626,6 +636,11 @@ ul.profiletabsbar li:last-child a {
 .digital-feeds .Description-bar {
   padding-bottom: 24px;
   border-bottom: 0.5px solid #dddddd;
+}
+.report-tabs li.active {
+  background: #0a2358;
+  border-color: #0a2358;
+  color: #ffffff;
 }
 .digital-feeds .Description-bar p {
   font-style: normal;

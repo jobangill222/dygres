@@ -18,7 +18,7 @@ const Header = () => {
 
   // Context Variables
   const { user, setUser, userToken, setUserToken } = useContext(DContext);
-  console.log("console user Details in header", user);
+  // console.log("console user Details in header", user);
 
   //Logout Functionality
   const logoutHandler = async (e) => {
@@ -155,7 +155,14 @@ const Header = () => {
                     <AiOutlineSetting />
                   </Nav.Link>
                   <div className="relative user-dropdown">
-                    <img src="images/user.png" alt="user-img" />
+                    <img
+                      src={
+                        user?.profileImage
+                          ? user?.profileImage
+                          : `images/user.png`
+                      }
+                      alt="user-img"
+                    />
                     <div className="Dropdown-listing bg-white">
                       <div className="arrowshape"></div>
                       <h4 className="text-silver">Account</h4>

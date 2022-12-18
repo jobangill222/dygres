@@ -30,7 +30,7 @@ const Threads = () => {
                                 <div className="user-detail">
                                     <div className='follow-bar'>
                                         <h4 className="text-secondry">Amanpreet Singh</h4>
-                                        <button className='followbtn' type='button'>Follow</button>
+                                        {/* <button className='followbtn' type='button'>Follow</button> */}
                                     </div>
                                     <div className="user-availbility">
                                         <h6 className="text-lightgray">@amans</h6>
@@ -89,7 +89,9 @@ const Threads = () => {
                                                 <img src="/images/user.png" alt="user-img" />
                                             </div>
                                             <div className="user-detail">
-                                                <div className="follow-bar"><h4 className="text-secondry">Amanpreet Singh</h4><button className="followbtn" type="button">Follow</button></div>
+                                                <div className="follow-bar"><h4 className="text-secondry">Amanpreet Singh</h4>
+                                                    {/* <button className="followbtn" type="button">Follow</button> */}
+                                                </div>
                                                 <div className="user-availbility">
                                                     <h6 className="text-lightgray">@amans</h6>
                                                     <h5 className="text-lightgray greentime">1hr ago</h5>
@@ -146,7 +148,9 @@ const Threads = () => {
                                                         <img src="/images/user.png" alt="user-img" />
                                                     </div>
                                                     <div className="user-detail">
-                                                        <div className="follow-bar"><h4 className="text-secondry">Amanpreet Singh</h4><button className="followbtn" type="button">Follow</button></div>
+                                                        <div className="follow-bar"><h4 className="text-secondry">Amanpreet Singh</h4>
+                                                            {/* <button className="followbtn" type="button">Follow</button> */}
+                                                        </div>
                                                         <div className="user-availbility">
                                                             <h6 className="text-lightgray">@amans</h6>
                                                             <h5 className="text-lightgray greentime">1hr ago</h5>

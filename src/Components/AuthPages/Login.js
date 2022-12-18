@@ -14,7 +14,8 @@ import { DContext } from "../../Context/DContext";
 
 const Login = () => {
   // Context Variables
-  const { userLogin, setUser, setUserToken } = useContext(DContext);
+  const { userLogin, setUser, setUserToken, setUserStats } =
+    useContext(DContext);
 
   const {
     register,
@@ -32,8 +33,11 @@ const Login = () => {
       if (axiosRes.status === "success") {
         localStorage.setItem("accessToken", axiosRes.accessToken);
 
-        setUser(axiosRes);
+        console.log("login console", axiosRes);
+
+        setUser(axiosRes.data);
         setUserToken(axiosRes.accessToken);
+        setUserStats(axiosRes.userStats);
 
         toast(axiosRes.message);
         navigate("/editprofile");
@@ -74,6 +78,7 @@ const Login = () => {
 
   return (
     <>
+      {/* {console.log("userStats in login page", userStats)}; */}
       <div className="Auth-bar">
         <Container>
           <div className="Authbar-innerbox">

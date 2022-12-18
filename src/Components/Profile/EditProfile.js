@@ -106,8 +106,6 @@ const EditProfile = () => {
 
   return (
     <>
-      {/* {console.log('genInfoFiledsState',genInfoFiledsState)} */}
-
       <div className="Profile-Upload-media">
         <Row>
           <Col lg="6">

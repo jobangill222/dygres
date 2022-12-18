@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   AiFillLike,
   AiFillDislike,
@@ -23,19 +23,150 @@ import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
-const PostFoot = () => {
-  // Delete Modal
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
+import { DContext } from "../../Context/DContext";
+import { toast } from "react-toastify";
+
+const PostFoot = (props) => {
+  //Props
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, is_report, postUserID, postID, setIsEditFieldOpen } = props;
+
+  //Functions to call api
+  const { agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList } = useContext(DContext);
+
+  //Set states
+  const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
+  const [isAgree, setIsAgree] = useState(false);
+
+  const [postDisAgreeCount, setPostDisAgreeCount] = useState(disagree_count);
+  const [isDisAgree, setIsDisAgree] = useState(false);
+
+  const [postReportCount, setPostReportCount] = useState(report_count);
+  const [isReport, setIsReport] = useState(false);
+
+
+  // useeffect to render count and pass true false status for active and un active footer options
+  useEffect(() => {
+    if (is_agree === 1) {
+      setIsAgree(true);
+    } else {
+      setIsAgree(false);
+    }
+    setPostAgreeCount(agree_count);
+  }, [is_agree]);
+
+  useEffect(() => {
+    if (is_disagree === 1) {
+      setIsDisAgree(true);
+    } else {
+      setIsDisAgree(false);
+    }
+    setPostDisAgreeCount(disagree_count);
+  }, [is_disagree]);
+
+  useEffect(() => {
+    if (is_report === 1) {
+      setIsReport(true);
+    } else {
+      setIsReport(false);
+    }
+    setPostReportCount(report_count);
+  }, [is_report]);
+
   // Aggree Modal
   const [showAgree, setShowagree] = useState(false);
   const AgreeClose = () => setShowagree(false);
-  const AgreeShow = () => setShowagree(true);
+  const AgreeShow = async (postID) => {
+    const agreeAxiosRes = await agreeUnagreePost(postID);
+    if (agreeAxiosRes.status === "success") {
+      if (agreeAxiosRes.action === "agree") {
+        let newAgreeCountWhenAgree = postAgreeCount + 1;
+        setPostAgreeCount(newAgreeCountWhenAgree);
+        setIsAgree(true);
+      } else {
+        let newAgreeCountWhenUnagree = postAgreeCount - 1;
+        setPostAgreeCount(newAgreeCountWhenUnagree);
+        setIsAgree(false);
+      }
+    } else {
+      toast(agreeAxiosRes.message);
+    }
+
+    // setShowagree(true);
+  };
+
   // DisAggree Modal
   const [disshowAgree, setDisShowagree] = useState(false);
   const DisAgreeClose = () => setDisShowagree(false);
-  const DisAgreeShow = () => setDisShowagree(true);
+  const DisAgreeShow = async (postID) => {
+    const disagreeAxiosRes = await disAgreeUnDisAgreePost(postID);
+    if (disagreeAxiosRes.status === "success") {
+      if (disagreeAxiosRes.action === "disagree") {
+        let newDisAgreeCountWhenDisAgree = postDisAgreeCount + 1;
+        setPostDisAgreeCount(newDisAgreeCountWhenDisAgree);
+        setIsDisAgree(true);
+      } else {
+        let newDisAgreeCountWhenUnDisagree = postDisAgreeCount - 1;
+        setPostDisAgreeCount(newDisAgreeCountWhenUnDisagree);
+        setIsDisAgree(false);
+      }
+    }
+    else {
+      toast(disagreeAxiosRes.message);
+    }
+    // setDisShowagree(true);
+  };
+
+
+  // Report Modal
+  const [EditReportShow, setEditreportshow] = useState(false);
+  const EditReportClose = () => setEditreportshow(false);
+  const EditReport = async (postID) => {
+    if (isReport) {
+      toast('Already reported');
+    } else {
+      setEditreportshow(true);
+    }
+  }
+  const [reportReason, setReportReason] = useState("");
+  const [reportDescription, setReportDescription] = useState("");
+  const submitReport = async (e) => {
+    e.preventDefault();
+    console.log('post Id to be report', postID);
+    console.log('reportReason', reportReason);
+    console.log('reportDescription', reportDescription);
+    if (!reportReason) {
+      toast("please select reason.")
+    } else {
+      const reportAxiosRes = await reportPostDContext(postID, reportReason, reportDescription)
+      console.log('reportAxiosRes', reportAxiosRes);
+      if (reportAxiosRes.status === "success") {
+        let newReportCount = postReportCount + 1;
+        setPostReportCount(newReportCount);
+        setIsReport(true);
+        setEditreportshow(false);
+      }
+      toast(reportAxiosRes.message);
+    }
+  }
+
+
+  // Delete Modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+  }
+  const yesDeletePost = async () => {
+    const axiosDeleteRes = await deletePostDContext(postID);
+    if (axiosDeleteRes.status === "success") {
+      setShow(false);
+      const result = postList.filter(post => post._id !== postID);
+      setPostList(result);
+    }
+    toast(axiosDeleteRes.message);
+  }
+
   // Awards Modal
   const [showAwards, setAwardsClose] = useState(false);
   const AwardsClose = () => setAwardsClose(false);
@@ -44,10 +175,7 @@ const PostFoot = () => {
   const [showBuyAwards, setShowAwardsClose] = useState(false);
   const ShowBuyAwardsClose = () => setShowAwardsClose(false);
   const ShowAddMore = () => setShowAwardsClose(true);
-  // Edit Report Modal
-  const [EditReportShow, setEditreportshow] = useState(false);
-  const EditReportClose = () => setEditreportshow(false);
-  const EditReport = () => setEditreportshow(true);
+
   // Share Modal
   const [ReportShare, setshareShow] = useState(false);
   const shareClose = () => setshareShow(false);
@@ -57,14 +185,22 @@ const PostFoot = () => {
     <>
       <div className="action-bar">
         <ul className="actionleftbar">
-          <li className="active" onClick={AgreeShow}>
+          <li
+            className={isAgree ? `active` : ""}
+            onClick={() => AgreeShow(postID)}
+          >
             <AiFillLike />
-            <span className="number">12</span>Agree
+            <span className="number">{postAgreeCount}</span>Agree
           </li>
-          <li onClick={DisAgreeShow}>
+
+          <li
+            className={isDisAgree ? `active` : ""}
+            onClick={() => DisAgreeShow(postID)}
+          >
             <AiFillDislike />
-            <span className="number">12</span>Disagree
+            <span className="number">{postDisAgreeCount}</span>Disagree
           </li>
+
           <li onClick={AwardsShow}>
             <FaGift />
             <span className="number">6</span>Award
@@ -75,6 +211,10 @@ const PostFoot = () => {
               <span className="number">12</span>Threads
             </Accordion.Header>
           </li>
+          <li className={isReport ? `active` : ""} onClick={() => EditReport(postID)}>
+            <BsFillFlagFill />
+            <span className="number">{postReportCount}</span>Report
+          </li>
           <li>
             <Dropdown className="hoverdropdown">
               <Dropdown.Toggle
@@ -82,11 +222,11 @@ const PostFoot = () => {
                 variant="success"
                 id="dropdown-basic"
               >
-                <BsFillFlagFill />
-                <span className="number">12</span>Report
+                {user._id === postUserID && <BsThreeDots />}
+
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item onClick={EditReport}>
+                <Dropdown.Item onClick={() => setIsEditFieldOpen(true)} >
                   <BsPencil />
                   Edit Post
                 </Dropdown.Item>
@@ -96,9 +236,7 @@ const PostFoot = () => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          </li>
-          <li>
-            <BsThreeDots />
+
           </li>
         </ul>
         <ul className="actionrytbar">
@@ -123,7 +261,7 @@ const PostFoot = () => {
           <Button variant="outline-primary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={yesDeletePost}>
             Yes
           </Button>
         </Modal.Footer>
@@ -438,54 +576,25 @@ const PostFoot = () => {
         </Modal.Header>
         <Modal.Body>
           <ul className="report-tabs">
-            <li className="active">spam</li>
-            <li>Harassment</li>
-            <li>Hate</li>
-            <li>Misinformation</li>
-            <li>Self-harm</li>
-            <li>Misinformation</li>
-            <li>spam</li>
-            <li>Harassment</li>
-            <li>Hate</li>
-            <li>Misinformation</li>
-            <li>Self-harm</li>
-            <li>Misinformation</li>
-            <li>spam</li>
-            <li>Harassment</li>
-            <li>Hate</li>
-            <li>Misinformation</li>
-            <li>Self-harm</li>
-            <li>Misinformation</li>
-            <li>spam</li>
-            <li>Harassment</li>
-            <li>Hate</li>
-            <li>Misinformation</li>
-            <li>Self-harm</li>
-            <li>Misinformation</li>
-            <li>spam</li>
-            <li>Harassment</li>
-            <li>Hate</li>
-            <li>Misinformation</li>
-            <li>Self-harm</li>
-            <li>Misinformation</li>
-            <li>spam</li>
-            <li>Harassment</li>
-            <li>Hate</li>
-            <li>Misinformation</li>
-            <li>Self-harm</li>
-            <li>Misinformation</li>
+            <li onClick={() => setReportReason('Spam')} className={reportReason === "Spam" ? `active` : ""} >Spam</li>
+            <li onClick={() => setReportReason('Harassment')} className={reportReason === "Harassment" ? `active` : ""}>Harassment</li>
+            <li onClick={() => setReportReason('Hate')} className={reportReason === "Hate" ? `active` : ""}>Hate</li>
+            <li onClick={() => setReportReason('Misinformation')} className={reportReason === "Misinformation" ? `active` : ""}>Misinformation</li>
+            <li onClick={() => setReportReason('Self-harm')} className={reportReason === "Self-harm" ? `active` : ""}>Self-harm</li>
           </ul>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Describe (optional)</Form.Label>
               <Form.Control
+                value={reportDescription}
+                onChange={(e) => setReportDescription(e.target.value)}
                 as="textarea"
                 placeholder="Describe your issue for report........."
                 style={{ height: "92px" }}
               />
             </Form.Group>
             <Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" onClick={submitReport} >
                 Submit
               </Button>
             </Form.Group>

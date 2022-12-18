@@ -10,15 +10,23 @@ export const DProvider = (props) => {
   // State variables
   const [user, setUser] = useState(null);
   const [userToken, setUserToken] = useState(null);
+  const [userStats, setUserStats] = useState(null);
+
+  //State for postList
+  const [postList, setPostList] = useState([]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    setUserToken(accessToken);
-    // const checkAuth = async () => {
-    //   const axiosRes = await getGenInformationDContext();
-    //   setUser(axiosRes.generalDetails);
-    // };
-    // checkAuth();
+
+    if (accessToken) {
+      setUserToken(accessToken);
+      const checkAuth = async () => {
+        const userDetails = await getUserDetailsDContext();
+        setUser(userDetails.data);
+        setUserStats(userDetails.userStats);
+      };
+      checkAuth();
+    }
   }, []);
 
   // Global Functions
@@ -139,6 +147,9 @@ export const DProvider = (props) => {
       });
 
       console.log("axiosRes=========", axiosRes);
+
+      const updatedDetails = await getUserDetailsDContext();
+      setUser(updatedDetails.data);
       return axiosRes.data;
     } catch (err) {
       console.log("Some issue while login (DContext.js) - ", err);
@@ -174,6 +185,9 @@ export const DProvider = (props) => {
         data: bodyFormData,
       });
       console.log("axiosRes=========", axiosRes);
+      const updatedDetails = await getUserDetailsDContext();
+      setUser(updatedDetails.data);
+
       return axiosRes.data;
     } catch (err) {
       console.log(
@@ -233,7 +247,10 @@ export const DProvider = (props) => {
         },
       });
 
+      const updatedDetails = await getUserDetailsDContext();
+      setUser(updatedDetails.data);
       return axiosRes.data;
+
     } catch (err) {
       console.log("Some issue while login (DContext.js) - ", err);
     }
@@ -294,6 +311,169 @@ export const DProvider = (props) => {
     }
   };
 
+  const getUserDetailsDContext = async () => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/profile/get-user-details`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      // console.log("get user detail api hit:", axiosRes.data);
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get user detail api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const agreeUnagreePost = async (postID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/agree-post`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+        },
+      });
+      // console.log("get user detail api hit:", axiosRes.data);
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit agree un agree api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const disAgreeUnDisAgreePost = async (postID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/disagree-post`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+        },
+      });
+      // console.log("get user detail api hit:", axiosRes.data);
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit dis agree un-disagree api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const reportPostDContext = async (postID, reportReason, reportDescription) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/report-post`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+          reportReason: reportReason,
+          description: reportDescription,
+        },
+      });
+      // console.log("get user detail api hit:", axiosRes.data);
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit report and unreport api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const deletePostDContext = async (postID) => {
+    try {
+      const axiosRes = await axios({
+        method: "delete",
+        url: `${BASE_URL}/post/delete-post`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+        },
+      });
+      return axiosRes.data;
+    }
+    catch (err) {
+      console.log("Some issue while hit delete post api in (DContext.js)", err);
+    }
+  }
+
+  const editPostDContext = async (postID, editContent) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/edit-post`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+          content: editContent,
+        },
+      });
+      return axiosRes.data;
+    }
+    catch (err) {
+      console.log("Some issue while hit edit post api in (DContext.js)", err);
+    }
+  }
+
+  const followUnfollowDContext = async (userID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/profile/follow-unfollow`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          userID: userID,
+        },
+      });
+      return axiosRes.data;
+    }
+    catch (err) {
+      console.log("Some issue while hit follow un follow api in (DContext.js)", err);
+    }
+  }
+
+  const getMyPostsDContext = async (pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/post/get-my-posts?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get my post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -301,6 +481,10 @@ export const DProvider = (props) => {
     setUser,
     userToken,
     setUserToken,
+    userStats,
+    setUserStats,
+    postList,
+    setPostList,
     // Methods
     userLogin,
     userSignup,
@@ -317,8 +501,22 @@ export const DProvider = (props) => {
     createPostDContext,
     getGlobalPostDContext,
     getFollowingPostDContext,
+    agreeUnagreePost,
+    disAgreeUnDisAgreePost,
+    reportPostDContext,
+    deletePostDContext,
+    editPostDContext,
+    followUnfollowDContext,
+    getMyPostsDContext
   };
   return (
-    <DContext.Provider value={{ ...value }}>{props.children}</DContext.Provider>
+    <>
+      {/* {console.log("updated user state", user)}
+      {console.log("updated user stats state", userStats)} */}
+
+      <DContext.Provider value={{ ...value }}>
+        {props.children}
+      </DContext.Provider>
+    </>
   );
 };

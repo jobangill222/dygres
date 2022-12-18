@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from 'react-bootstrap/Container';
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import { BsFillImageFill, BsPencil } from 'react-icons/bs';
 import ProfileTabs from "./ProfileTabs";
 import { Link } from "react-router-dom";
+import { DContext } from "../../Context/DContext";
 
 const Profile = () => {
 
+    const { user } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
-          Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter.
+            {user?.bio ? user.bio : "No bio"}
         </Tooltip>
-      );
+    );
 
 
     return (
@@ -27,14 +29,15 @@ const Profile = () => {
                         <div className="detailleft">
                             <OverlayTrigger placement="top" overlay={tooltip}>
                                 <div className="avatar-img">
-                                    <img src="/images/u100.png" alt="user-img" />
+                                    <img src={user?.profileImage ? user.profileImage : `/images/u100.png`} alt="user-img" />
                                 </div>
                             </OverlayTrigger>
 
                             <div className="user-detail">
-                                <h4 className="text-secondry">Amanpreet Singh</h4>
+
+                                <h4 className="text-secondry">{user?.name ? user.name : ""}</h4>
                                 <div className="user-availbility">
-                                    <h6 className="text-lightgray">@amans</h6>
+                                    <h6 className="text-lightgray">@{user?.username}</h6>
                                 </div>
                                 <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
                                 <ul className="user-detail-listing">
