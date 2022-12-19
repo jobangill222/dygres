@@ -75,12 +75,12 @@ const PostHead = (props) => {
         <div className="detailleft">
           <div className="userleftside">
             <div className="avatar-img active">
-              <img src={postUserDetails[0]?.profileImage ? BASE_URL + `/` + postUserDetails[0]?.profileImage : `/images/user.png`} alt="user-img" />
+              <img src={postUserDetails?.profileImage ? BASE_URL + `/` + postUserDetails?.profileImage : `/images/user.png`} alt="user-img" />
             </div>
             <div className="user-detail">
               <div className="follow-bar">
                 <h4 className="text-secondry">
-                  {postUserDetails[0].name ? postUserDetails[0].name : postUserDetails[0].username}
+                  {postUserDetails.name ? postUserDetails.name : postUserDetails.username}
                 </h4>
 
 
@@ -95,7 +95,7 @@ const PostHead = (props) => {
 
 
               <div className="user-availbility">
-                <h6 className="text-lightgray">@{postUserDetails[0]?.username}</h6>
+                <h6 className="text-lightgray">@{postUserDetails?.username}</h6>
                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(created_at)._d.getTime())}</h5>
               </div>
               <div className="levelbar text-darkwhite level1">
