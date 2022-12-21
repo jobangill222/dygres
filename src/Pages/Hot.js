@@ -1,11 +1,12 @@
 import React from "react";
-import TopLatestPost from "../Components/TopLatestPost";
+// import DigitalTabContent from "../Components/DigitalTabContent";
 
 
 const Hot = () => {
     return (
         <>
-            <TopLatestPost/>
+            <h4 className="pagetitle">Hot</h4>
+            {/* <DigitalTabContent/> */}
         </>
     );
 }

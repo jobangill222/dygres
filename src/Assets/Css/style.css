@@ -6,14 +6,48 @@
 }
 body {
   font-family: "Lato", sans-serif;
-  background-color: #fafafa;
+  background-color: var(--base-lightgray);
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
-  color: #545456;
+  color: var(--base-default-text);
   -webkit-font-smoothing: antialiased;
 }
+/* Colors */
+:root{
+  --base-primary: #002358;
+  --base-secondry: #171717;
+  --base-lightgray: #fafafa;
+  --base-darkgray: #8b958e;
+  --bg-darkgray: #ebebeb;
+  --base-whitesure: #979797;
+  --base-offwhite: #6e7280;
+  --base-offgray: #ececec;
+  --base-offtextgray: #9b9b9b;
+  --base-text-lightgray: #aaaaaa;
+  --base-purewhite: #ffffff;
+  --base-placeholder: #cbcbcb;
+  --base-green: #22b84c;
+  --base-border: #dddddd;
+  --base-level1: #db9102;
+  --base-default-text: #545456;
+  --base-inputautofill: #212121;
+  --base-tablebg: #e1e5ea;
+  --darkmode-lightgray: #383838;
+  --darkmode-darkblack: #1c1b1b;
+  --darkmode-lightblack: #272728;
+  --darkmode-offgray: #3a3a3a;
+  --darkmode-offwhite: #afafaf;
+  --darkmode-gray2xl : #343434;
+}
+
+
+
+
+
+
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -33,13 +67,13 @@ h3,
 h4,
 h5,
 h6 {
-  color: #002358;
+  color: var(--base-primary);
 }
 p {
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
-  color: #545456;
+  color: var(--base-default-text);
 }
 ul li,
 ul {
@@ -49,15 +83,15 @@ ul {
 }
 a {
   cursor: pointer;
-  color: #002358;
+  color: var(--base-primary);
   text-decoration: none;
 }
 img {
   max-width: 100%;
 }
 .form-check-input:checked {
-  background-color: #0a2358;
-  border-color: #0a2358;
+  background-color: var(--base-primary);
+  border-color: var(--base-primary);
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -68,11 +102,11 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 1px solid #212121;
-  -webkit-text-fill-color: #ffffff;
-  -webkit-box-shadow: 0 0 0px 1000px #212121 inset;
+  border: 1px solid var(--base-inputautofill);
+  -webkit-text-fill-color: var(--base-purewhite);
+  -webkit-box-shadow: 0 0 0px 1000px var(--base-inputautofill) inset;
   transition: background-color 5000s ease-in-out 0s;
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
 }
 .btn {
   padding: 12px 50px;
@@ -84,8 +118,8 @@ select:-webkit-autofill:focus {
   transition: 0.3s ease-in-out;
 }
 .btn-primary {
-  background-color: #002358 !important;
-  color: #ffffff;
+  background-color: var(--base-primary) !important;
+  color: var(--base-purewhite);
   padding: 12px 50px;
   border-radius: 5px;
   font-style: normal;
@@ -93,17 +127,17 @@ select:-webkit-autofill:focus {
   font-size: 18.5965px;
   line-height: 22px;
   transition: 0.3s ease-in-out;
-  border: 1px solid #002358 !important;
+  border: 1px solid var(--base-primary) !important;
 }
 .btn-primary:hover {
-  background-color: #1c1b1b !important;
+  background-color: var(--darkmode-darkblack) !important;
   transition: 0.3s ease-in-out;
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
   border-color: #565656 !important;
 }
 input.form-control {
-  background: #ffffff;
-  border: 1.24px solid #dddddd;
+  background: var(--base-purewhite);
+  border: 1.24px solid var(--base-border);
   border-radius: 4.96px;
   height: auto;
   padding: 20px 60px 20px 20px;
@@ -113,55 +147,55 @@ input.form-control {
 .form-control:active {
   outline: none;
   box-shadow: none;
-  border: 1px solid #0a2358;
+  border: 1px solid var(--base-primary);
 }
 .level1 {
-  color: #db9102;
+  color: var(--base-level1);
 }
 .level1-circle {
-  background: #db9102 !important;
+  background: var(--base-level1) !important;
 }
 .outline-primary:hover,
 .btn-outline-primary:hover {
-  background: #002358 !important;
-  color: #ffffff !important;
+  background: var(--base-primary) !important;
+  color: var(--base-purewhite) !important;
 }
 /* Colors */
 .text-primary {
-  color: #002358 !important;
+  color: var(--base-primary) !important;
 }
 .text-secondry {
-  color: #171717;
+  color: var(--base-secondry);
 }
 .text-black {
   color: #000000;
 }
 .text-white {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 .text-gray {
-  color: #fafafa;
+  color: var(--base-lightgray);
 }
 .text-lightgray {
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
 }
 .text-darkgray {
-  color: #ebebeb;
+  color: var(--bg-darkgray);
 }
 .text-musterd {
-  color: #db9102;
+  color: var(--base-level1);
 }
 .text-green {
-  color: #22b84c;
+  color: var(--base-green);
 }
 .text-offwhite {
-  color: #6e7280;
+  color: var(--base-offwhite);
 }
 .text-silver {
   color: #656875;
 }
 .text-whitesure {
-  color: #979797;
+  color: var(--base-whitesure);
 }
 .text-darkwhite {
   color: #939d9e;
@@ -169,31 +203,31 @@ input.form-control {
 /* Background Colors */
 
 .bg-primary {
-  background-color: #002358 !important;
+  background-color: var(--base-primary) !important;
 }
 .bg-secondry {
-  background-color: #171717;
+  background-color: var(--base-secondry);
 }
 .bg-black {
   background-color: #000000;
 }
 .bg-white {
-  background-color: #ffffff;
+  background-color: var(--base-purewhite);
 }
 .bg-gray {
-  background-color: #fafafa;
+  background-color: var(--base-lightgray);
 }
 .bg-lightgray {
-  background-color: #aaaaaa;
+  background-color: var(--base-text-lightgray);
 }
 .bg-darkgray {
-  background-color: #ebebeb;
+  background-color: var(--bg-darkgray);
 }
 .bg-musterd {
-  background-color: #db9102;
+  background-color: var(--base-level1);
 }
 .bg-green {
-  background-color: #22b84c;
+  background-color: var(--base-green);
 }
 
 /* BS Container */
@@ -240,7 +274,7 @@ input.form-control {
   padding: 15px 20px;
   right: 0;
   width: 197px;
-  border: 2px solid #dddddd;
+  border: 2px solid var(--base-border);
   transform: translate(0px, 20px);
   opacity: 0;
   visibility: hidden;
@@ -264,7 +298,7 @@ input.form-control {
   font-size: 14px;
   line-height: 28px;
   cursor: pointer;
-  color: #171717;
+  color: var(--base-secondry);
   text-decoration: none;
   width: 100%;
 }
@@ -296,7 +330,7 @@ input.form-control {
 }
 .sidebar-profile {
   border-radius: 20px;
-  background: #ffffff;
+  background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgb(204 204 204 / 15%);
   position: sticky;
   top: 15px;
@@ -320,8 +354,8 @@ input.form-control {
   justify-content: center;
   font-size: 14px;
   cursor: pointer;
-  border: 1px solid #ffffff;
-  background: #ffffff;
+  border: 1px solid var(--base-purewhite);
+  background: var(--base-purewhite);
 }
 .sidebar-profile .feature-image .edit-bar .uploadimg-input {
   position: absolute;
@@ -388,10 +422,10 @@ input.form-control {
   font-size: 15.8162px;
   line-height: 19px;
   border-radius: 8px;
-  border: 1px solid #fafafa;
+  border: 1px solid var(--base-lightgray);
 }
 .search-input-form form.user-searchform input::placeholder {
-  color: #cbcbcb;
+  color: var(--base-placeholder);
 }
 .search-input-form form.user-searchform button {
   border: none;
@@ -414,14 +448,14 @@ input.form-control {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   text-transform: capitalize;
   transition: 0.3s ease-in-out;
   background-image: inherit;
 }
 .sidebar-profile .sidebar-menu li a.active,
 .sidebar-profile .sidebar-menu li a:hover {
-  color: #002358;
+  color: var(--base-primary);
 }
 .sidebar-profile .sidebar-menu li a svg {
   margin-right: 25px;
@@ -436,16 +470,16 @@ input.form-control {
   background-size: contain;
 }
 .Whatsmind-bar {
-  background: #ffffff;
+  background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
   border-radius: 20px;
   padding: 25px;
 }
 .Whatsmind-bar form textarea {
-  background: #fafafa;
+  background: var(--base-lightgray);
   border-radius: 8px;
   padding: 24px;
-  border: 1px solid #fafafa;
+  border: 1px solid var(--base-lightgray);
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -453,7 +487,7 @@ input.form-control {
   margin-bottom: 9px;
 }
 .Whatsmind-bar form textarea::placeholder {
-  color: #cbcbcb;
+  color: var(--base-placeholder);
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -464,7 +498,7 @@ input.form-control {
   font-weight: 400;
   font-size: 16px;
   line-height: 17px;
-  color: #8b958e;
+  color: var(--base-darkgray);
   margin-bottom: 0;
 }
 .digital-tabs {
@@ -476,15 +510,15 @@ input.form-control {
 .digital-tabs li .nav-link,
 ul.profiletabsbar li a {
   padding: 13px 60px;
-  border: 1px solid #ececec;
+  border: 1px solid var(--base-offgray);
   border-radius: 0;
-  background: #ececec;
+  background: var(--base-offgray);
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
   text-transform: capitalize;
-  color: #9b9b9b;
+  color: var(--base-offtextgray);
 }
 .profiletabsbar {
   margin: 60px 0;
@@ -494,9 +528,9 @@ ul.profiletabsbar li a {
 }
 .digital-tabs li .nav-link.active,
 ul.profiletabsbar li.active a {
-  background: #002358 !important;
-  border-color: #002358 !important;
-  color: #ffffff !important;
+  background: var(--base-primary) !important;
+  border-color: var(--base-primary) !important;
+  color: var(--base-purewhite) !important;
 }
 .digital-tabs li:first-child .nav-link,
 ul.profiletabsbar li:first-child a {
@@ -511,7 +545,7 @@ ul.profiletabsbar li:last-child a {
 
 .digital-feeds {
   padding: 18px 25px;
-  background: #ffffff;
+  background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
   border-radius: 20px;
   margin-bottom: 30px;
@@ -536,7 +570,7 @@ ul.profiletabsbar li:last-child a {
   right: 5px;
   width: 12px;
   height: 12px;
-  background: #22b84c;
+  background: var(--base-green);
   border-radius: 50%;
 }
 .user-detail-bar .detailleft .user-detail h4 {
@@ -599,7 +633,7 @@ ul.profiletabsbar li:last-child a {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--base-purewhite);
   border-radius: 50%;
   font-size: 7px;
 }
@@ -635,12 +669,12 @@ ul.profiletabsbar li:last-child a {
 }
 .digital-feeds .Description-bar {
   padding-bottom: 24px;
-  border-bottom: 0.5px solid #dddddd;
+  border-bottom: 0.5px solid var(--base-border);
 }
 .report-tabs li.active {
-  background: #0a2358;
-  border-color: #0a2358;
-  color: #ffffff;
+  background: var(--base-primary);
+  border-color: var(--base-primary);
+  color: var(--base-purewhite);
 }
 .digital-feeds .Description-bar p {
   font-style: normal;
@@ -674,7 +708,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   cursor: pointer;
   margin-bottom: 5px;
 }
@@ -693,22 +727,22 @@ ul.profiletabsbar li:last-child a {
 }
 .action-bar ul li:hover,
 .action-bar ul li.active {
-  color: #0a2358;
+  color: var(--base-primary);
 }
 .action-bar ul li:hover,
 .action-bar ul li.active {
-  color: #0a2358;
+  color: var(--base-primary);
 }
 .hoverdropdown button::after {
   display: none;
 }
 .hoverdropdown button:hover {
-  color: #0a2358 !important;
+  color: var(--base-primary) !important;
 }
 .hoverdropdown .dropdown-menu {
   padding: 5px 0px;
   margin: 0;
-  background: #ffffff;
+  background: var(--base-purewhite);
   border: 1px solid #dddde3;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
@@ -721,7 +755,7 @@ ul.profiletabsbar li:last-child a {
   line-height: 28px;
   display: flex;
   align-items: center;
-  color: #171717;
+  color: var(--base-secondry);
 }
 .hoverdropdown .dropdown-menu .dropdown-item:last-child {
   margin: 0;
@@ -740,7 +774,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  color: #979797;
+  color: var(--base-whitesure);
   margin-bottom: 10px;
 }
 .user-edit h4 svg {
@@ -756,7 +790,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  color: #545456;
+  color: var(--base-default-text);
   border: none;
   min-height: auto !important;
   margin-bottom: 27px;
@@ -764,8 +798,8 @@ ul.profiletabsbar li:last-child a {
 .outline-primary,
 .btn-outline-primary {
   background: transparent !important;
-  color: #002358 !important;
-  border: 1px solid #002358 !important;
+  color: var(--base-primary) !important;
+  border: 1px solid var(--base-primary) !important;
 }
 .user-edit button svg {
   margin-right: 10px;
@@ -784,7 +818,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   cursor: pointer;
 }
 .accordion {
@@ -801,7 +835,7 @@ ul.profiletabsbar li:last-child a {
   padding: 0;
   background: transparent;
   border: none;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   box-shadow: none;
 }
 .actionleftbar .accordion-header button.accordion-button::after {
@@ -812,12 +846,12 @@ ul.profiletabsbar li:last-child a {
 }
 .accordion .accordion-collapse {
   margin-top: 20px;
-  background: #ffffff;
+  background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
   border-radius: 20px !important;
 }
 .actionleftbar .accordion-header button.accordion-button:not(.collapsed) {
-  color: #0a2358;
+  color: var(--base-primary);
 }
 .thredsbar {
   padding: 30px 100px;
@@ -828,7 +862,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  color: #171717;
+  color: var(--base-secondry);
   margin-bottom: 20px;
 }
 .user-detail-bar .detailleft .follow-bar {
@@ -838,7 +872,7 @@ ul.profiletabsbar li:last-child a {
 }
 .followbtn {
   margin-left: 20px;
-  border: 1.78846px solid #002358;
+  border: 1.78846px solid var(--base-primary);
   border-radius: 3.57692px;
   padding: 6px 16px;
   background: transparent;
@@ -846,12 +880,12 @@ ul.profiletabsbar li:last-child a {
   font-weight: 700;
   font-size: 12px;
   line-height: 14px;
-  color: #002358;
+  color: var(--base-primary);
   transition: 0.3s ease;
 }
 .followbtn:hover {
-  background: #002358;
-  color: #ffffff;
+  background: var(--base-primary);
+  color: var(--base-purewhite);
 }
 .user-detail-bar .detailleft .user-detail .user-availbility h5 {
   position: relative;
@@ -862,7 +896,7 @@ ul.profiletabsbar li:last-child a {
   width: 4px;
   height: 4px;
   border-radius: 50px;
-  background: #aaaaaa;
+  background: var(--base-text-lightgray);
   position: absolute;
   left: 0;
   top: 50%;
@@ -872,7 +906,7 @@ ul.profiletabsbar li:last-child a {
   background: red;
 }
 /* .user-detail-bar .detailleft .user-detail .user-availbility h5.greentime::after {
-    background: #22B84C;
+    background: var(--base-green);
 } */
 .reply-post {
   margin-top: 30px;
@@ -895,7 +929,7 @@ ul.profiletabsbar li:last-child a {
   line-height: 22px;
 }
 .Notfy-block {
-  background: #ffffff;
+  background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgb(204 204 204 / 15%);
   border-radius: 20px;
   padding: 30px 30px;
@@ -910,11 +944,11 @@ ul.profiletabsbar li:last-child a {
   font-size: 22px;
   line-height: 26px;
   letter-spacing: 0.02em;
-  color: #002358;
+  color: var(--base-primary);
   cursor: pointer;
 }
 .reply-post form .replyinput .form-control::placeholder {
-  color: #cbcbcb;
+  color: var(--base-placeholder);
 }
 .thredsbar .threads-rows {
   padding-left: 80px;
@@ -938,7 +972,7 @@ ul.profiletabsbar li:last-child a {
   height: 100%;
   left: 30px;
   top: 0;
-  background: #bcbcbc;
+  background: var(--base-text-lightgray);
 }
 .user-detaiting-listing {
   margin-bottom: 30px;
@@ -949,7 +983,7 @@ ul.profiletabsbar li:last-child a {
   font-size: 17px;
   line-height: 30px;
   text-align: center;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
 }
 .user-detaiting-listing li img {
   margin-left: 10px;
@@ -1001,7 +1035,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  color: #171717;
+  color: var(--base-secondry);
   margin: 0;
 }
 .Actions-modal .modal-body .aggree-li li .user-del h6 {
@@ -1009,7 +1043,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   margin-bottom: 0;
 }
 
@@ -1022,8 +1056,8 @@ ul.profiletabsbar li:last-child a {
 }
 .Actions-modal .Awrds-li h4 {
   margin: 0;
-  background: #fafafa;
-  border: 0.2px solid #dddddd;
+  background: var(--base-lightgray);
+  border: 0.2px solid var(--base-border);
   border-radius: 40px;
   padding: 15px 20px;
   font-family: "Lato";
@@ -1032,7 +1066,7 @@ ul.profiletabsbar li:last-child a {
   font-size: 18px;
   line-height: 22px;
   display: inline-block;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
 }
 .awards-modal .modal-header {
   display: flex;
@@ -1050,14 +1084,14 @@ ul.profiletabsbar li:last-child a {
 .awards-modal .modal-header button.btn-add {
   padding: 14px 20px;
   height: auto;
-  background: #fafafa;
-  border: 0.2px solid #dddddd;
+  background: var(--base-lightgray);
+  border: 0.2px solid var(--base-border);
   border-radius: 40px;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  color: #171717;
+  color: var(--base-secondry);
 }
 .awards-modal .modal-header button.btn-add svg {
   margin-left: 10px;
@@ -1082,14 +1116,14 @@ ul.profiletabsbar li:last-child a {
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
 }
 .buymore-modal .Awrds-li h5 {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
 }
 .buymore-modal .modal-dialog {
   max-width: 772px;
@@ -1101,7 +1135,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
-  color: #171717;
+  color: var(--base-secondry);
 }
 .buymore-modal .modal-body {
   padding: 20px 20px;
@@ -1113,7 +1147,7 @@ ul.profiletabsbar li:last-child a {
   margin-bottom: 40px;
 }
 .report-tabs li {
-  background: #ffffff;
+  background: var(--base-purewhite);
   border: 2px solid #dddde3;
   border-radius: 20px;
   padding: 9px 22px;
@@ -1121,7 +1155,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   text-transform: capitalize;
   margin-bottom: 10px;
   margin-right: 8px;
@@ -1132,12 +1166,12 @@ ul.profiletabsbar li:last-child a {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  color: #171717;
+  color: var(--base-secondry);
   display: block;
   text-align: left;
 }
 .Editreportmodal form textarea {
-  background: #ffffff;
+  background: var(--base-purewhite);
   border: 1px solid #dddde3;
   border-radius: 8px;
   font-style: normal;
@@ -1148,7 +1182,7 @@ ul.profiletabsbar li:last-child a {
   padding: 14px 20px;
 }
 .Editreportmodal form textarea::placeholder {
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
 }
 .Editreportmodal form {
   text-align: right;
@@ -1187,7 +1221,7 @@ ul.profiletabsbar li:last-child a {
   font-size: 14.22px;
   line-height: 17px;
   text-align: center;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   margin: 0;
 }
 .share-media li:hover .sharebtn {
@@ -1221,7 +1255,7 @@ ul.profiletabsbar li:last-child a {
   font-size: 14.22px;
   line-height: 17px;
   text-align: center;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   margin: 0;
 }
 .share-media li:hover .sharebtn {
@@ -1236,7 +1270,7 @@ ul.profiletabsbar li:last-child a {
   background: transparent !important;
   border: none !important;
   padding: 5px !important;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   position: absolute;
   top: 15px;
   right: 15px;
@@ -1250,7 +1284,7 @@ ul.profiletabsbar li:last-child a {
   align-items: center;
   justify-content: space-between;
   padding-bottom: 20px;
-  border-bottom: 0.557878px solid #dddddd;
+  border-bottom: 0.557878px solid var(--base-border);
   margin-bottom: 20px;
 }
 .notification-dropdown .notification-head h4 {
@@ -1258,7 +1292,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 400 !important;
   font-size: 18px !important;
   line-height: 22px !important;
-  color: #002358;
+  color: var(--base-primary);
   margin: 0 !important;
 }
 .notification-dropdown .notification-head h6 {
@@ -1266,13 +1300,13 @@ ul.profiletabsbar li:last-child a {
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
-  color: #002358;
+  color: var(--base-primary);
   margin: 0;
 }
 .notification-list {
   margin-bottom: 15px;
   padding-bottom: 15px;
-  border-bottom: 0.557878px solid #dddddd;
+  border-bottom: 0.557878px solid var(--base-border);
 }
 .notification-list ul {
   display: flex;
@@ -1303,7 +1337,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 500;
   font-size: 12.5743px;
   line-height: 15px;
-  color: #171717;
+  color: var(--base-secondry);
   margin: 0;
 }
 .notification-list ul li:last-child .userdetail p {
@@ -1311,7 +1345,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 400;
   font-size: 9.77998px;
   line-height: 12px;
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
   margin: 0;
 }
 .notification-list p.notification {
@@ -1320,7 +1354,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 700;
   font-size: 16px;
   line-height: 21px;
-  color: #545456;
+  color: var(--base-default-text);
 }
 .notification-list ul li p.times {
   margin: 0;
@@ -1328,7 +1362,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 700;
   font-size: 11px;
   line-height: 21px;
-  color: #545456;
+  color: var(--base-default-text);
 }
 .notification-dropdown .notification-foot {
   text-align: center;
@@ -1339,7 +1373,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 700;
   font-size: 18px;
   line-height: 22px;
-  color: #002358;
+  color: var(--base-primary);
   border: none !important;
   background: transparent !important;
   cursor: pointer;
@@ -1349,7 +1383,7 @@ ul.profiletabsbar li:last-child a {
   align-items: center;
   justify-content: space-between;
   padding-bottom: 20px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid var(--base-border);
   margin-bottom: 30px;
 }
 .notification-title ul {
@@ -1365,19 +1399,19 @@ ul.profiletabsbar li:last-child a {
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  color: #002358;
+  color: var(--base-primary);
   border: none;
   background: transparent;
   cursor: pointer;
 }
 .notification-content {
   padding-bottom: 20px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid var(--base-border);
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
-  color: #afafaf;
+  color: var(--darkmode-offwhite);
   margin-bottom: 20px;
 }
 .notification-content p.notify {
@@ -1386,7 +1420,7 @@ ul.profiletabsbar li:last-child a {
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
-  color: #afafaf;
+  color: var(--darkmode-offwhite);
 }
 .notification-content .user-active-timer li.text-green {
   color: #000000;
@@ -1453,7 +1487,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 32px;
   line-height: 30px;
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 .profile-user-detail
   .user-detail-bar
@@ -1465,7 +1499,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 700;
   font-size: 18px;
   line-height: 30px;
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 .profile-user-detail .user-detail-bar .detailleft .user-detail .levelbar {
   font-style: normal;
@@ -1488,7 +1522,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 18.5965px;
   line-height: 22px;
-  color: #ffffff;
+  color: var(--base-purewhite);
   border-radius: 5px;
   padding: 14px 32px;
   border: none;
@@ -1509,7 +1543,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin-top: 40px;
 }
 .notification-content.readmark p.notify {
-  color: #afafaf;
+  color: var(--darkmode-offwhite);
 }
 .notification-content.unreadmark p.notify {
   color: #000000;
@@ -1523,7 +1557,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  color: #171717;
+  color: var(--base-secondry);
   margin-bottom: 10px;
 }
 .aboutline p {
@@ -1532,13 +1566,13 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
-  color: #545456;
+  color: var(--base-default-text);
 }
 .Uploaded-user .Imagebar {
   width: 172px;
   height: 172px;
   border-radius: 50%;
-  border: 10px solid #ffffff;
+  border: 10px solid var(--base-purewhite);
   position: relative;
 }
 .Uploaded-user .Imagebar img {
@@ -1556,7 +1590,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   justify-content: center;
   cursor: pointer;
   font-size: 30px;
-  color: #ffffff;
+  color: var(--base-purewhite);
   position: absolute;
   right: -10px;
   bottom: 0px;
@@ -1599,11 +1633,11 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  color: #171717;
+  color: var(--base-secondry);
   margin-bottom: 15px;
 }
 .editor-input .form-control {
-  background: #ffffff;
+  background: var(--base-purewhite);
   border: 2px solid #d9d9d9;
   border-radius: 8px;
   height: auto;
@@ -1621,7 +1655,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  color: #171717;
+  color: var(--base-secondry);
   margin-bottom: 15px;
 }
 .account-verify .verify-input {
@@ -1638,7 +1672,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  color: #002358;
+  color: var(--base-primary);
 }
 .account-verify .verify-input button.outline-primary {
   padding: 0;
@@ -1646,11 +1680,11 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   background-color: transparent !important;
 }
 .account-verify .verify-input button.outline-primary:hover {
-  color: #002358 !important;
+  color: var(--base-primary) !important;
 }
 .upload-media-verify {
   background: rgba(0, 35, 88, 0.08);
-  border: 1px dashed #002358;
+  border: 1px dashed var(--base-primary);
   border-radius: 8px;
   padding: 40px;
   text-align: center;
@@ -1670,7 +1704,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   opacity: 0;
 }
 .editor-input .form-select {
-  background: #ffffff;
+  background: var(--base-purewhite);
   border: 2px solid #d9d9d9;
   border-radius: 8px;
   height: auto;
@@ -1681,7 +1715,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
-  color: #002358 !important;
+  color: var(--base-primary) !important;
 }
 .Auth-bar {
   height: calc(100vh - 90px);
@@ -1695,7 +1729,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   background-size: cover;
 }
 .Auth-bar .Authbar-innerbox {
-  background: #ffffff;
+  background: var(--base-purewhite);
   border: 0.5px solid #e8e8e8;
   box-shadow: 8px 9px 31px rgba(84, 114, 247, 0.09);
   border-radius: 30px;
@@ -1709,7 +1743,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   line-height: 28px;
   display: flex;
   align-items: center;
-  color: #002358;
+  color: var(--base-primary);
   justify-content: center;
 }
 .Auth-bar .Authbar-innerbox p {
@@ -1731,7 +1765,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
-  color: #6e7280;
+  color: var(--base-offwhite);
   margin-bottom: 8px;
   text-transform: capitalize;
 }
@@ -1776,7 +1810,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-size: 16px;
   line-height: 24px;
   text-align: right;
-  color: #002358;
+  color: var(--base-primary);
 }
 .Auth-bar .Authbar-innerbox form button[type="submit"],
 .Auth-bar .Authbar-innerbox form a.btn {
@@ -1795,11 +1829,11 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #6e7280;
+  color: var(--base-offwhite);
   margin: 0;
 }
 .Auth-bar .Authbar-innerbox form .Noted-bar h6 a {
-  color: #002358;
+  color: var(--base-primary);
   text-decoration: none;
 }
 .Auth-bar .Authbar-innerbox form .terms-condition {
@@ -1808,7 +1842,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  color: #002358;
+  color: var(--base-primary);
 }
 .Adminlayout {
   padding: 50px 0 90px 0;
@@ -1825,7 +1859,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 .dashboard-title-bar select.form-select {
   margin: 0 0 0 auto;
-  background: #ffffff;
+  background: var(--base-purewhite);
   border: 1.37244px solid rgba(133, 134, 136, 0.16);
   border-radius: 8px;
   appearance: revert;
@@ -1847,7 +1881,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 .dashboard-boxes .dash-boxes-in {
   padding: 22px 28px;
-  background: #ffffff;
+  background: var(--base-purewhite);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12),
     0px 12px 20px 8px rgba(0, 0, 0, 0.02);
   border-radius: 8px;
@@ -1873,7 +1907,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   align-items: center;
   justify-content: center;
   font-size: 32px;
-  color: #002358;
+  color: var(--base-primary);
   margin-right: 20px;
   transition: 0.5s ease;
 }
@@ -1883,11 +1917,11 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
-  color: #323335;
+  color: var(--base-inputautofill);
 }
 .dashboard-boxes .dash-boxes-in ul.userstatus li svg {
   font-size: 32px;
-  color: #002358;
+  color: var(--base-primary);
   transition: 0.5s ease;
 }
 .dashboard-boxes .dash-boxes-in ul.weekly-status {
@@ -1901,7 +1935,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 34.38px;
   line-height: 41px;
-  color: #171717;
+  color: var(--base-secondry);
 }
 .dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar {
   display: flex;
@@ -1946,13 +1980,13 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   position: relative;
 }
 .usertable table thead th {
-  background: #e1e5ea;
+  background: var(--base-tablebg);
   padding: 15px 30px !important;
   font-weight: 600;
   font-size: 18px;
   line-height: 23px;
   letter-spacing: 0.03em;
-  color: #002358;
+  color: var(--base-primary);
   border: none;
 }
 .usertable table tbody tr td {
@@ -1985,7 +2019,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 .usertable table tbody tr td .number-bar .user-dropdown ul.Dropdown-listing {
   top: 20px;
-  background: #ffffff;
+  background: var(--base-purewhite);
 }
 .usertable table tbody tr td .number-bar .user-dropdown svg {
   cursor: pointer;
@@ -2002,7 +2036,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  color: #171717;
+  color: var(--base-secondry);
   text-align: center;
   margin: 0;
 }
@@ -2022,8 +2056,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
-  color: #ffffff;
-  background: #002358 !important;
+  color: var(--base-purewhite);
+  background: var(--base-primary) !important;
   border-radius: 5px;
 }
 .Titlebar-btns .searchbar {
@@ -2062,12 +2096,12 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   justify-content: center;
 }
 .bg-danger {
-  border: 1px solid #ffffff !important;
+  border: 1px solid var(--base-purewhite) !important;
   background: transparent !important;
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
 }
 .bg-danger:hover {
-  background: #ffffff !important;
+  background: var(--base-purewhite) !important;
   color: #000000 !important;
 }
 .Username-titlebar {
@@ -2082,15 +2116,15 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  color: #171717;
+  color: var(--base-secondry);
 }
 
 .Username-titlebar h6 svg {
   margin-right: 10px;
-  color: #002358;
+  color: var(--base-primary);
 }
 .verification-bar {
-  background: #ffffff;
+  background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
   border-radius: 20px;
   padding: 25px 30px;
@@ -2106,7 +2140,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .verification-bar .verification-media-upload .mediabar {
   width: 298px;
   height: 292px;
-  border: 1px solid #dddddd;
+  border: 1px solid var(--base-border);
   border-radius: 20px;
   margin-right: 25px;
   flex: 0 0 298px;
@@ -2130,7 +2164,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  color: #171717;
+  color: var(--base-secondry);
 }
 .verification-bar .formbarbtn {
   display: flex;
@@ -2151,7 +2185,7 @@ p.uploaded-note {
 
 p.uploaded-note b {
   font-weight: 700 !important;
-  color: #0a2358;
+  color: var(--base-primary);
 }
 .upload-media-verify img {
   position: absolute;
@@ -2173,21 +2207,21 @@ p.uploaded-note b {
 
 /********** DARKMODE CSS  **********/
 [darkmode] body {
-  background: #1c1b1b;
+  background: var(--darkmode-darkblack);
 }
 [darkmode] .header-nav {
-  background: #383838;
+  background: var(--darkmode-lightgray);
 }
 [darkmode] .header-nav img.lightmode {
   display: none;
 }
 
 [darkmode] .sidebar-profile {
-  background: #272728;
+  background: var(--darkmode-lightblack);
   box-shadow: none;
 }
 [darkmode] .sidebar-profile {
-  background: #272728;
+  background: var(--darkmode-lightblack);
   box-shadow: none;
 }
 [darkmode] .edit-bar {
@@ -2195,7 +2229,7 @@ p.uploaded-note b {
   border-color: #515151 !important;
 }
 [darkmode] .search-input-form form.user-searchform input {
-  background: #3a3a3a;
+  background: var(--darkmode-offgray);
   border-color: #565656;
   outline: none !important;
 }
@@ -2208,7 +2242,7 @@ p.uploaded-note b {
 [darkmode] input.form-control {
   background: #252525;
   border: 2px solid #565656;
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
 }
 [darkmode] .edit-bar svg,
 [darkmode] .user-detail-listing li p,
@@ -2218,17 +2252,17 @@ p.uploaded-note b {
 [darkmode] .sidebar-profile .sidebar-menu li a:hover,
 [darkmode] .hoverdropdown button:hover,
 [darkmode] .thredsbar h4 {
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
 }
 
 [darkmode] .user-detaiting-listing li {
-  color: #bcbcbc;
+  color: var(--base-text-lightgray);
 }
 [darkmode] .user-detail-listing li h6 {
-  color: #bcbcbc;
+  color: var(--base-text-lightgray);
 }
 [darkmode] .Whatsmind-bar {
-  background: #272728;
+  background: var(--darkmode-lightblack);
   box-shadow: none;
 }
 [darkmode] .Whatsmind-bar form textarea {
@@ -2237,81 +2271,84 @@ p.uploaded-note b {
 }
 [darkmode] .digital-tabs li .nav-link,
 [darkmode] ul.profiletabsbar li a {
-  border: 1px solid #3a3a3a;
-  background: #3a3a3a;
-  color: #e7e7e7;
+  border: 1px solid var(--darkmode-offgray);
+  background: var(--darkmode-offgray);
+  color: var(--base-text-lightgray);
 }
-[darkmode] .digital-tabs li .nav-link.active,
-[darkmode] ul.profiletabsbar li a.active {
-  background: #002358 !important;
-  border-color: #002358 !important;
+[darkmode] .digital-tabs li .nav-link.active, [darkmode] ul.profiletabsbar li a.active {
+  background: var(--darkmode-lightblack) !important;
+  border-color: var(--darkmode-lightblack) !important;
+}
+[darkmode] .pagetitle {
+  color: var(--base-text-lightgray);
+  border-color: var(--base-text-lightgray);
 }
 [darkmode] .Whatsmind-bar form textarea {
   background: #252525;
   border: 2px solid #565656;
 }
 [darkmode] p.uploaded-note b {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] p.uploaded-note {
-  color: #aaaaaa;
+  color: var(--base-text-lightgray);
 }
 [darkmode] .Authbar-innerbox.E-Otp h4 {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] #theme-switch .switch-icon svg {
   font-size: 20px;
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .digital-feeds {
-  background: #272728;
+  background: var(--darkmode-lightblack);
   box-shadow: none;
 }
 [darkmode] .text-primary {
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
 }
 [darkmode] .action-bar ul li:hover,
 [darkmode] .action-bar ul li.active {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .bg-darkgray {
-  background: #3a3a3a;
+  background: var(--darkmode-offgray);
 }
 [darkmode] .digital-feeds .Description-bar p {
-  color: #afafaf;
+  color: var(--darkmode-offwhite);
 }
 [darkmode] .digital-feeds .Description-bar p {
-  color: #afafaf;
+  color: var(--darkmode-offwhite);
 }
 [darkmode] .user-edit textarea.form-control,
 [darkmode] .user-edit input {
-  background: #3a3a3a;
-  border-color: #3a3a3a;
-  color: #afafaf;
+  background: var(--darkmode-offgray);
+  border-color: var(--darkmode-offgray);
+  color: var(--darkmode-offwhite);
 }
 [darkmode] .outline-primary,
 [darkmode] .btn-outline-primary {
-  background: #1c1b1b !important;
-  color: #ffffff !important;
+  background: var(--darkmode-darkblack) !important;
+  color: var(--base-purewhite) !important;
   border: 1px solid #565656 !important;
 }
 [darkmode] .outline-primary:hover,
 [darkmode] .btn-outline-primary:hover {
-  background: #0a2358 !important;
-  color: #ffffff !important;
-  border: 1px solid #0a2358 !important;
+  background: var(--base-primary) !important;
+  color: var(--base-purewhite) !important;
+  border: 1px solid var(--base-primary) !important;
 }
 [darkmode] .accordion .accordion-collapse {
-  background: #272728;
+  background: var(--darkmode-lightblack);
   box-shadow: none;
 }
 [darkmode] .Auth-bar .Authbar-innerbox form .authinputbar .form-control {
-  background: #3a3a3a;
-  border: 2px solid #3a3a3a;
+  background: var(--darkmode-offgray);
+  border: 2px solid var(--darkmode-offgray);
   border-radius: 8px;
   height: auto;
   padding: 14px 16px;
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode]
   .Auth-bar
@@ -2322,7 +2359,7 @@ p.uploaded-note b {
   color: #898989;
 }
 [darkmode] .Description-bar p {
-  color: #afafaf;
+  color: var(--darkmode-offwhite);
 }
 [darkmode]
   .actionleftbar
@@ -2332,113 +2369,113 @@ p.uploaded-note b {
 [darkmode] .Actions-modal .modal-header button.btn-close,
 [darkmode] .Actions-modal .modal-body .aggree-li li .user-del h4,
 [darkmode] .dashboard-title-bar h4 {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .followbtn {
-  border: 1.78846px solid #ffffff;
-  color: #ffffff;
+  border: 1.78846px solid var(--base-purewhite);
+  color: var(--base-purewhite);
 }
 [darkmode] .reply-post form .replyinput .form-control {
-  background: #3a3a3a;
+  background: var(--darkmode-offgray);
   border: 1px solid #d3d3d3;
-  color: #cbcbcb;
+  color: var(--base-placeholder);
 }
 [darkmode] .reply-post form .btn {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .Actions-modal .modal-content {
-  background: #272728;
+  background: var(--darkmode-lightblack);
 }
 [darkmode] .Auth-bar .Authbar-innerbox {
-  background: #272728;
-  border: 0.5px solid #272728;
+  background: var(--darkmode-lightblack);
+  border: 0.5px solid var(--darkmode-lightblack);
   box-shadow: none;
 }
 [darkmode] .Auth-bar .Authbar-innerbox h4,
 [darkmode] .Auth-bar .Authbar-innerbox p {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .Notfy-block {
-  background: #272728;
+  background: var(--darkmode-lightblack);
   box-shadow: none;
 }
 [darkmode] .Notfy-block .notification-title h4,
 [darkmode] .notification-title ul li .btn-nill {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .notification-content.unreadmark p.notify {
-  color: #ffffff;
+  color: var(--base-purewhite);
   font-weight: 600;
 }
 [darkmode] .notification-content .user-active-timer li.text-green {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .user-dropdown .Dropdown-listing {
-  background: #343434 !important;
+  background: var(--darkmode-gray2xl) !important;
   border-color: #717171 !important;
 }
 [darkmode] .user-dropdown .Dropdown-listing h4.text-silver {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .user-dropdown .Dropdown-listing ul li,
 [darkmode] .user-dropdown .Dropdown-listing ul li a {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .user-dropdown .Dropdown-listing h4,
 [darkmode] .user-dropdown .Dropdown-listing h6,
 [darkmode] .user-dropdown .Dropdown-listing p {
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
 }
 [darkmode] .notification-dropdown .notification-foot button {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .share-media li .sharebtn {
-  background: #ffffff;
+  background: var(--base-purewhite);
 }
 [darkmode] .share-media li p {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .awards-modal .modal-header button.btn-add {
-  background: #343434;
-  border: 1px solid #ffffff;
-  color: #aaaaaa;
+  background: var(--darkmode-gray2xl);
+  border: 1px solid var(--base-purewhite);
+  color: var(--base-text-lightgray);
 }
 [darkmode] .Actions-modal .Awrds-li h4 {
-  background: #343434;
-  border: 1px solid #ffffff;
-  color: #aaaaaa;
+  background: var(--darkmode-gray2xl);
+  border: 1px solid var(--base-purewhite);
+  color: var(--base-text-lightgray);
 }
 [darkmode] .notification-dropdown .notification-foot a {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .editor-input .form-label {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .form-control,
 [darkmode] input.form-control,
 [darkmode] .form-select,
 [darkmode] .form-control,
 [darkmode] .form-control {
-  background: #212121;
+  background: var(--base-inputautofill);
   border: 2px solid #565656;
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .Uploaded-user .Imagebar {
   border: 10px solid #565656;
 }
 [darkmode] .save-form-btn .outline-primary {
-  background: #ffffff !important;
-  color: #1c1b1b !important;
+  background: var(--base-purewhite) !important;
+  color: var(--darkmode-darkblack) !important;
 }
 [darkmode] .upload-media-verify {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px dashed #ffffff;
+  border: 1px dashed var(--base-purewhite);
 }
 [darkmode] .passwrd-verify .resetbtn {
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
 }
 [darkmode] .dashboard-boxes .dash-boxes-in {
-  background: #343434;
+  background: var(--darkmode-gray2xl);
   border: 1px solid #717171;
 }
 [darkmode] .dashboard-boxes .dash-boxes-in ul.userstatus li .iconbar {
@@ -2447,47 +2484,47 @@ p.uploaded-note b {
 [darkmode] .dashboard-boxes .dash-boxes-in ul.weekly-status li h4,
 [darkmode] .dashboard-boxes .dash-boxes-in ul.weekly-status h5,
 [darkmode] .dashboard-boxes .dash-boxes-in ul.userstatus li svg {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .dashboard-title-bar select.form-select {
   background-color: #2e2d2d;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--base-purewhite);
 }
 [darkmode] .dashboard-title-bar select.form-select {
   background-color: #2e2d2d;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--base-purewhite);
 }
 [darkmode] .usertable table thead th {
-  background: #383838;
-  color: #ffffff;
+  background: var(--darkmode-lightgray);
+  color: var(--base-purewhite);
 }
 [darkmode] .usertable table tbody tr td .number-bar p,
 [darkmode] .user-dropdown .Dropdown-listing li,
 [darkmode] .user-dropdown .Dropdown-listing li a {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .usertable table tbody tr td,
 [darkmode] .modal-content p,
 [darkmode] .Username-titlebar h6 {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .Titlebar-btns .searchbar input {
-  background: #3a3a3a;
-  color: #ffffff;
+  background: var(--darkmode-offgray);
+  color: var(--base-purewhite);
 }
 [darkmode] .modal-content {
-  background: #272728;
+  background: var(--darkmode-lightblack);
 }
 [darkmode] .modal-content {
-  background: #272728;
+  background: var(--darkmode-lightblack);
 }
 [darkmode] .verification-bar {
-  background: #272728;
+  background: var(--darkmode-lightblack);
   box-shadow: none;
 }
 [darkmode] .verification-bar .verification-media-upload h5,
 [darkmode] .verification-bar .verification-media-upload label {
-  color: #ffffff !important;
+  color: var(--base-purewhite) !important;
 }
 [darkmode] .account-verify label.form-label,
 [darkmode] .Auth-bar .Authbar-innerbox form .authcheckbox .btn-simple a,
@@ -2501,7 +2538,7 @@ p.uploaded-note b {
   .authcheckbox
   .form-check
   label.form-check-label {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 /* .arrowshape {
     position: absolute;
@@ -2522,22 +2559,22 @@ p.uploaded-note b {
   background-color: #656565;
 }
 [darkmode] .hoverdropdown .dropdown-menu {
-  background: #3a3a3a;
+  background: var(--darkmode-offgray);
   border: 1px solid #dddde3;
 }
 [darkmode] .hoverdropdown .dropdown-menu a.dropdown-item {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .report-tabs li {
-  background: #343434;
-  border: 2px solid #ffffff;
+  background: var(--darkmode-gray2xl);
+  border: 2px solid var(--base-purewhite);
 }
 [darkmode] .Editreportmodal form label.form-label {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] #theme-switch .switch-thumb {
-  background-color: #002358;
-  border-color: #002358;
+  background-color: var(--darkmode-darkblack);
+  border-color: var(--darkmode-darkblack);
 }
 ul.sidebar-menu {
   padding-bottom: 20px;
@@ -2549,19 +2586,19 @@ ul.sidebar-menu {
   display: block;
 }
 [darkmode] .Username-titlebar h6 svg {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .aboutline p {
-  color: #afafaf;
+  color: var(--darkmode-offwhite);
 }
 [darkmode] .aboutline h4 {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 .level1 {
-  color: #db9102 !important;
+  color: var(--base-level1) !important;
 }
 [darkmode] .Whatsmind-bar form textarea {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] .Whatsmind-bar form textarea::placeholder {
   color: #919191;
@@ -2581,7 +2618,7 @@ ul.sidebar-menu {
   position: relative;
 }
 [darkmode] .Auth-bar .Authbar-innerbox form .authinputbar label.form-label {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 [darkmode] button.btn-close {
   filter: invert(1);
@@ -2595,9 +2632,9 @@ ul.sidebar-menu {
 [darkmode] select:-webkit-autofill,
 [darkmode] select:-webkit-autofill:hover,
 [darkmode] select:-webkit-autofill:focus {
-  border: 1px solid #ffffff;
-  -webkit-text-fill-color: #212121;
-  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+  border: 1px solid var(--base-purewhite);
+  -webkit-text-fill-color: var(--base-inputautofill);
+  -webkit-box-shadow: 0 0 0px 1000px var(--base-purewhite) inset;
   -webkit-transition: background-color 5000s ease-in-out 0s;
   transition: background-color 5000s ease-in-out 0s;
 }
@@ -2618,11 +2655,11 @@ ul.sidebar-menu {
   border: 2px solid #565656;
 }
 [darkmode] .modal-content .modal-title.h4 {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 
 [darkmode] .modal-content .modal-body {
-  color: #ffffff;
+  color: var(--base-purewhite);
 }
 .user-active-timer ul li svg {
   margin-right: 5px;
@@ -2675,7 +2712,7 @@ ul.sidebar-menu {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  color: #545456;
+  color: var(--base-default-text);
   border: none;
 }
 .E-Otp form {
@@ -2709,7 +2746,7 @@ ul.sidebar-menu {
   bottom: 0;
   width: 100%;
   left: 0;
-  background: #ffffff;
+  background: var(--base-purewhite);
   height: 65px;
 }
 
@@ -2733,8 +2770,8 @@ ul.sidebar-menu {
   justify-content: center;
   margin: 0 auto 0 auto;
   border-radius: 50%;
-  background: #ffffff;
-  border: 0.5px solid #dddddd;
+  background: var(--base-purewhite);
+  border: 0.5px solid var(--base-border);
   box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.06);
   top: -40px;
   position: relative;
@@ -2745,7 +2782,7 @@ ul.sidebar-menu {
 
 .Mob-Footerbar .mob-foot-menu li a {
   font-size: 24px;
-  color: #002358;
+  color: var(--base-primary);
 }
 
 .Mob-Footerbar .mob-foot-menu li a img {
@@ -2765,14 +2802,33 @@ ul.sidebar-menu {
   align-items: flex-start;
 }
 .flagbtnbar button.bg-danger {
-  border: 1px solid #0a2358 !important;
-  color: #0a2358 !important;
+  border: 1px solid var(--base-primary) !important;
+  color: var(--base-primary) !important;
 }
 [darkmode] .flagbtnbar button.bg-danger {
-  border: 1px solid #ffffff !important;
-  color: #ffffff !important;
+  border: 1px solid var(--base-purewhite) !important;
+  color: var(--base-purewhite) !important;
 }
-
+.pagetitle {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 38px;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  color: var(--base-primary);
+  border-bottom: 1px solid var(--base-primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  display: inline-block;
+  padding-right: 30px;
+}
+[darkmode] .dashboard-boxes .dash-boxes-in ul.userstatus li h5 {
+  color: var(--base-text-lightgray) !important;
+}
+[darkmode] .bg-primary {
+  background-color: var(--darkmode-lightgray) !important;
+  border-color: var(--darkmode-lightgray) !important;
+}
 /* Responsive css  */
 @media (max-width: 1599px) {
   .account-verify .verify-input button {
@@ -2870,7 +2926,6 @@ ul.sidebar-menu {
   .Titlebar-btns .searchbar input {
     padding: 14px 17px 14px 50px !important;
   }
-
   .usertable table thead th,
   .usertable table tbody tr td {
     font-size: 16px;
@@ -3039,7 +3094,7 @@ ul.sidebar-menu {
     font-size: 14px;
     line-height: 17px;
     border-radius: 8px;
-    border: 1px solid #fafafa;
+    border: 1px solid var(--base-lightgray);
   }
 }
 
@@ -3090,7 +3145,7 @@ ul.sidebar-menu {
   }
   .usertable table tbody tr td .number-bar .user-dropdown ul.Dropdown-listing {
     top: inherit;
-    background: #ffffff;
+    background: var(--base-purewhite);
     bottom: -20px;
     padding: 5px 15px;
     right: 20px;
@@ -3146,7 +3201,7 @@ ul.sidebar-menu {
     .detailleft
     .user-detail
     h4.text-secondry {
-    color: #0a2358;
+    color: var(--base-primary);
   }
   .profile-user-detail
     .user-detail-bar
@@ -3154,7 +3209,7 @@ ul.sidebar-menu {
     .user-detail
     .user-availbility
     h6.text-lightgray {
-    color: #afafaf;
+    color: var(--darkmode-offwhite);
   }
   .profile-user-detail .user-edit-cover ul li a {
     font-size: 16px;
@@ -3258,7 +3313,7 @@ ul.sidebar-menu {
 
   .mobilemenu ul.web-none li a {
     font-size: 20px;
-    color: #727272;
+    color: var(--base-default-text);
   }
 
   .mobilemenu button.navbar-toggler {
@@ -3273,13 +3328,13 @@ ul.sidebar-menu {
     align-items: center;
     justify-content: flex-start;
     padding: 10px 10px;
-    background: #fafafa;
+    background: var(--base-lightgray);
     border-bottom: 1px solid #f1f1f1;
-    color: #aaaaaa;
+    color: var(--base-text-lightgray);
   }
   .navbar-collapse ul.sidebar-menu li.active a {
-    background-color: #002358;
-    color: #ffffff;
+    background-color: var(--base-primary);
+    color: var(--base-purewhite);
   }
   .navbar-collapse ul.sidebar-menu li a svg {
     margin-right: 10px;
@@ -3383,7 +3438,7 @@ ul.sidebar-menu {
     height: 100%;
     left: 10px;
     top: 0;
-    background: #bcbcbc;
+    background: var(--base-text-lightgray);
   }
   .Auth-bar .Authbar-innerbox {
     padding: 20px 20px;

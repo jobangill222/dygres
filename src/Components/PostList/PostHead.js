@@ -82,8 +82,6 @@ const PostHead = (props) => {
                 <h4 className="text-secondry">
                   {postUserDetails.name ? postUserDetails.name : postUserDetails.username}
                 </h4>
-
-
                 {user._id !== postUserID &&
                   <>
                     {isFollowState === 0 && <button className='followbtn' onClick={followUser} type='button'>Follow</button>}

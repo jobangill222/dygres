@@ -1,10 +1,12 @@
 import React from "react";
+// import DigitalTabContent from "../Components/DigitalTabContent";
 
 
 const NotVoted = () => {
     return (
         <>
-            <p>Not voted</p>
+            <h4 className="pagetitle">Not Voted</h4>
+            {/* <DigitalTabContent/> */}
         </>
     );
 }

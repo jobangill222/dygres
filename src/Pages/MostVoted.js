@@ -1,10 +1,12 @@
 import React from "react";
+// import DigitalTabContent from "../Components/DigitalTabContent";
 
 
 const MostVoted = () => {
     return (
         <>
-            <p>Most voted</p>
+            <h4 className="pagetitle">Most Voted</h4>
+            {/* <DigitalTabContent/> */}
         </>
     );
 }
