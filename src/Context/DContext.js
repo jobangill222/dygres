@@ -474,6 +474,62 @@ export const DProvider = (props) => {
     }
   };
 
+
+  const getMostVotedPostDContext = async (pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/post/most-voted-posts?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get most voted post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+
+  const getHotPostDContext = async (pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/post/hot-posts?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get hot post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const getNotVotedPostDContext = async (pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/post/not-voted-posts?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get not voted post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -507,7 +563,10 @@ export const DProvider = (props) => {
     deletePostDContext,
     editPostDContext,
     followUnfollowDContext,
-    getMyPostsDContext
+    getMyPostsDContext,
+    getMostVotedPostDContext,
+    getHotPostDContext,
+    getNotVotedPostDContext
   };
   return (
     <>

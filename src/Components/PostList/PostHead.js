@@ -97,7 +97,7 @@ const PostHead = (props) => {
                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(created_at)._d.getTime())}</h5>
               </div>
               <div className="levelbar text-darkwhite level1">
-                Level{userVerificationLevel}{" "}
+                Level {userVerificationLevel}{" "}
                 <h6 className="level1-circle">
                   <span className="text-white lvlstar">{userVerificationLevel}</span>
                 </h6>
