@@ -280,10 +280,10 @@ const PersonalInformation = () => {
           </Col>
           <div className="Userdetail-editorbar">
             <Row>
-              <Col lg="6 ">
+              <Col lg="12 ">
                 <Form.Group className="editor-input " controlId="">
                   <Form.Label>Upload verification image</Form.Label>
-
+                    <div className="editor-same-line">
                   {console.log("fileState", fileState)}
                   {console.log(
                     "personalInfoFieldStates.verificationImage",
@@ -316,7 +316,10 @@ const PersonalInformation = () => {
                     <b>{personalInfoFieldStates.photoVerificationCode}</b>{" "}
                     Upload your picture along with this code for verification
                   </p>
+                  </div>
                 </Form.Group>
+              </Col>
+              <Col lg="6 ">
                 <Form.Group className="editor-input" controlId="">
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control

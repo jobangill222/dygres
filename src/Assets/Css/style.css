@@ -2829,6 +2829,20 @@ ul.sidebar-menu {
   background-color: var(--darkmode-lightgray) !important;
   border-color: var(--darkmode-lightgray) !important;
 }
+.editor-same-line {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.editor-same-line .upload-media-verify {
+  flex: 0 0 49%;
+  margin-right: 30px;
+}
+.editor-same-line p.uploaded-note {
+  margin: 0;
+  background: var(--base-offgray);
+  padding: 20px;
+}
 /* Responsive css  */
 @media (max-width: 1599px) {
   .account-verify .verify-input button {
