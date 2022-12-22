@@ -27,6 +27,9 @@ import Accordion from "react-bootstrap/Accordion";
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 
+// Import Modals
+import AggreeModal from "../Modals/AggreeModal";
+
 const PostFoot = (props) => {
   //Props
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, is_report, postUserID, postID, setIsEditFieldOpen } = props;
@@ -183,22 +186,20 @@ const PostFoot = (props) => {
 
   return (
     <>
+      <AggreeModal/>
       <div className="action-bar">
         <ul className="actionleftbar">
-          <li
+          <li>
+            <div 
             className={isAgree ? `active` : ""}
-            onClick={() => AgreeShow(postID)}
-          >
-            <AiFillLike />
-            <span className="number">{postAgreeCount}</span>Agree
+            onClick={() => AgreeShow(postID)}><AiFillLike /></div>
+            <div className="list-text" ><span className="number">{postAgreeCount}</span>Agree</div>
           </li>
 
-          <li
-            className={isDisAgree ? `active` : ""}
-            onClick={() => DisAgreeShow(postID)}
-          >
-            <AiFillDislike />
-            <span className="number">{postDisAgreeCount}</span>Disagree
+          <li>
+            <div className={isDisAgree ? `active` : ""}
+            onClick={() => DisAgreeShow(postID)}><AiFillDislike /></div>
+            <div className="list-text" ><span className="number">{postDisAgreeCount}</span>Disagree</div>
           </li>
 
           <li onClick={AwardsShow}>
@@ -211,9 +212,9 @@ const PostFoot = (props) => {
               <span className="number">12</span>Threads
             </Accordion.Header>
           </li>
-          <li className={isReport ? `active` : ""} onClick={() => EditReport(postID)}>
-            <BsFillFlagFill />
-            <span className="number">{postReportCount}</span>Report
+          <li >
+            <div className={isReport ? `active` : ""} onClick={() => EditReport(postID)}><BsFillFlagFill /></div>
+            <div className="list-text" ><span className="number">{postReportCount}</span>Report</div>
           </li>
           <li>
             <Dropdown className="hoverdropdown">
