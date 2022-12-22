@@ -725,6 +725,9 @@ ul.profiletabsbar li:last-child a {
 .action-bar ul li span.number {
   margin-right: 5px;
 }
+.action-bar ul li .active svg {
+  color: #0a2358;
+}
 .action-bar ul li:hover,
 .action-bar ul li.active {
   color: var(--base-primary);
