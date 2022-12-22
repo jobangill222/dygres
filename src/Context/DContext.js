@@ -530,6 +530,53 @@ export const DProvider = (props) => {
     }
   };
 
+
+  const getAgreedPostUserDContext = async (PostID, PageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `'${BASE_URL}/post/agreed-post-user?page=${PageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get agreed post user api (DCOntext.js) - ", err);
+    }
+  };
+
+  const getDisAgreedPostUserDContext = async (PostID, PageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `'${BASE_URL}/post/disagreed-post-user?page=${PageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get dis-agreed post user api (DCOntext.js) - ", err);
+    }
+  };
+
+  const getReportedPostUserDContext = async (PostID, PageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `'${BASE_URL}/post/reported-post-user?page=${PageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get reported post user api (DCOntext.js) - ", err);
+    }
+  };
+
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -566,7 +613,10 @@ export const DProvider = (props) => {
     getMyPostsDContext,
     getMostVotedPostDContext,
     getHotPostDContext,
-    getNotVotedPostDContext
+    getNotVotedPostDContext,
+    getAgreedPostUserDContext,
+    getDisAgreedPostUserDContext,
+    getReportedPostUserDContext,
   };
   return (
     <>

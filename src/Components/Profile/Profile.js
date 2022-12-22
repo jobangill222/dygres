@@ -9,7 +9,7 @@ import { DContext } from "../../Context/DContext";
 
 const Profile = () => {
 
-    const { user } = useContext(DContext);
+    const { user, userStats } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -42,15 +42,15 @@ const Profile = () => {
                                 <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
                                 <ul className="user-detail-listing">
                                     <li>
-                                        <p className="text-secondry">6</p>
+                                        <p className="text-secondry">{userStats?.totalPosts}</p>
                                         <h6 className="text-offwhite">Posts</h6>
                                     </li>
                                     <li>
-                                        <p className="text-secondry">10</p>
+                                        <p className="text-secondry">{userStats?.totalFollowing}</p>
                                         <h6 className="text-offwhite">Following</h6>
                                     </li>
                                     <li>
-                                        <p className="text-secondry">145</p>
+                                        <p className="text-secondry">{userStats?.totalFollowers}</p>
                                         <h6 className="text-offwhite">Followers</h6>
                                     </li>
                                     <li>

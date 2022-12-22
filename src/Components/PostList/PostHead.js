@@ -13,7 +13,9 @@ TimeAgo.addDefaultLocale(en)
 
 const PostHead = (props) => {
 
-  const { user, postList, setPostList, followUnfollowDContext } = useContext(DContext);
+  const { user, userStats, setUserStats, postList, setPostList, followUnfollowDContext } = useContext(DContext);
+
+  console.log('userStats', userStats);
 
   const { postUserDetails, is_follow, postUserID, created_at } = props;
 
@@ -43,6 +45,15 @@ const PostHead = (props) => {
     })
     setPostList([...newPostList, { ...newPostList[0] }]);
     setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+
+    // Update user stats state
+    setUserStats((previousState) => {
+      return {
+        ...previousState,
+        totalFollowing: previousState.totalFollowing + 1,
+      };
+    });
+
     await followUnfollowDContext(postUserID);
   }
 
@@ -57,6 +68,15 @@ const PostHead = (props) => {
     setPostList([...newPostList, { ...newPostList[0] }]);
     // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
     setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
+
+    // Update user stats state
+    setUserStats((previousState) => {
+      return {
+        ...previousState,
+        totalFollowing: previousState.totalFollowing - 1,
+      };
+    });
+
     await followUnfollowDContext(postUserID);
   }
 
