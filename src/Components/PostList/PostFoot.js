@@ -32,7 +32,7 @@ const PostFoot = (props) => {
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, is_report, postUserID, postID, setIsEditFieldOpen } = props;
 
   //Functions to call api
-  const { agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -163,6 +163,14 @@ const PostFoot = (props) => {
       setShow(false);
       const result = postList.filter(post => post._id !== postID);
       setPostList(result);
+
+      // Update user stats state
+      setUserStats((previousState) => {
+        return {
+          ...previousState,
+          totalPosts: previousState.totalPosts - 1,
+        };
+      });
     }
     toast(axiosDeleteRes.message);
   }

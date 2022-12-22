@@ -12,7 +12,7 @@ const WhatsMind = (props) => {
   const [createPostState, setCreatePostState] = useState("");
 
   // Function to all api
-  const { createPostDContext } = useContext(DContext);
+  const { createPostDContext, setUserStats } = useContext(DContext);
 
   //Submit post
   const submitPost = async () => {
@@ -26,6 +26,15 @@ const WhatsMind = (props) => {
         if (axiosRes.status === "success") {
           setIsPostState("1");
           toast(axiosRes.message);
+
+          // Update user stats state
+          setUserStats((previousState) => {
+            return {
+              ...previousState,
+              totalPosts: previousState.totalPosts + 1,
+            };
+          });
+
           setCreatePostState("");
         } else {
           toast(axiosRes.message);

@@ -13,9 +13,7 @@ TimeAgo.addDefaultLocale(en)
 
 const PostHead = (props) => {
 
-  const { user, userStats, setUserStats, postList, setPostList, followUnfollowDContext } = useContext(DContext);
-
-  console.log('userStats', userStats);
+  const { user, setUserStats, postList, setPostList, followUnfollowDContext } = useContext(DContext);
 
   const { postUserDetails, is_follow, postUserID, created_at } = props;
 
