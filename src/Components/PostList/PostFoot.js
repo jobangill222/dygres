@@ -27,15 +27,13 @@ import Accordion from "react-bootstrap/Accordion";
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 
-// Import Modals
-import AggreeModal from "../Modals/AggreeModal";
 
 const PostFoot = (props) => {
   //Props
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, is_report, postUserID, postID, setIsEditFieldOpen } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedPostIDForPopup, setPopupType } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -76,10 +74,10 @@ const PostFoot = (props) => {
     setPostReportCount(report_count);
   }, [is_report]);
 
+
+
   // Aggree Modal
-  const [showAgree, setShowagree] = useState(false);
-  const AgreeClose = () => setShowagree(false);
-  const AgreeShow = async (postID) => {
+  const AgreePost = async (postID) => {
     const agreeAxiosRes = await agreeUnagreePost(postID);
     if (agreeAxiosRes.status === "success") {
       if (agreeAxiosRes.action === "agree") {
@@ -94,14 +92,12 @@ const PostFoot = (props) => {
     } else {
       toast(agreeAxiosRes.message);
     }
-
-    // setShowagree(true);
   };
 
+
+
   // DisAggree Modal
-  const [disshowAgree, setDisShowagree] = useState(false);
-  const DisAgreeClose = () => setDisShowagree(false);
-  const DisAgreeShow = async (postID) => {
+  const DisAgreePost = async (postID) => {
     const disagreeAxiosRes = await disAgreeUnDisAgreePost(postID);
     if (disagreeAxiosRes.status === "success") {
       if (disagreeAxiosRes.action === "disagree") {
@@ -117,7 +113,6 @@ const PostFoot = (props) => {
     else {
       toast(disagreeAxiosRes.message);
     }
-    // setDisShowagree(true);
   };
 
 
@@ -178,6 +173,7 @@ const PostFoot = (props) => {
     toast(axiosDeleteRes.message);
   }
 
+
   // Awards Modal
   const [showAwards, setAwardsClose] = useState(false);
   const AwardsClose = () => setAwardsClose(false);
@@ -192,22 +188,34 @@ const PostFoot = (props) => {
   const shareClose = () => setshareShow(false);
   const ShareShow = () => setshareShow(true);
 
+
+
+  // open popup by set state in selected postid which is global state and set popup stype state
+  const viewPopup = async (type) => {
+    setSelectedPostIDForPopup(postID)
+    // console.log('type', type);
+    setPopupType(type);
+  }
+
   return (
     <>
-      <AggreeModal/>
       <div className="action-bar">
         <ul className="actionleftbar">
           <li>
-            <div 
-            className={isAgree ? `active` : ""}
-            onClick={() => AgreeShow(postID)}><AiFillLike /></div>
-            <div className="list-text" ><span className="number">{postAgreeCount}</span>Agree</div>
+            <div
+              className={isAgree ? `active` : ""}
+              onClick={() => AgreePost(postID)}><AiFillLike /></div>
+            <div className="list-text" onClick={() => viewPopup('agree')} >
+              <span className="number">{postAgreeCount}</span>
+              Agree</div>
           </li>
 
           <li>
             <div className={isDisAgree ? `active` : ""}
-            onClick={() => DisAgreeShow(postID)}><AiFillDislike /></div>
-            <div className="list-text" ><span className="number">{postDisAgreeCount}</span>Disagree</div>
+              onClick={() => DisAgreePost(postID)}><AiFillDislike /></div>
+            <div className="list-text" onClick={() => viewPopup('disagree')} >
+              <span className="number">{postDisAgreeCount}</span>
+              Disagree</div>
           </li>
 
           <li onClick={AwardsShow}>
@@ -222,7 +230,9 @@ const PostFoot = (props) => {
           </li>
           <li >
             <div className={isReport ? `active` : ""} onClick={() => EditReport(postID)}><BsFillFlagFill /></div>
-            <div className="list-text" ><span className="number">{postReportCount}</span>Report</div>
+            <div className="list-text" onClick={() => viewPopup('report')}>
+              <span className="number">{postReportCount}</span>
+              Report</div>
           </li>
           <li>
             <Dropdown className="hoverdropdown">
@@ -275,202 +285,11 @@ const PostFoot = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      {/* Aggree modal */}
-      <Modal
-        className="Actions-modal"
-        show={showAgree}
-        onHide={AgreeClose}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Agreed by</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-        </Modal.Body>
-        <Modal.Footer></Modal.Footer>
-      </Modal>
-      {/* DisAgreeShow modal */}
-      <Modal
-        className="Actions-modal"
-        show={disshowAgree}
-        onHide={DisAgreeClose}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Disagreed by</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-          <ul className="aggree-li">
-            <li>
-              <img src="/images/user.png" alt="userimg" />
-              <div className="user-del">
-                <h4>Methew Reed</h4>
-                <h6>@methew11</h6>
-              </div>
-            </li>
-            <li>
-              <button className="followbtn" type="button">
-                Follow
-              </button>
-            </li>
-          </ul>
-        </Modal.Body>
-        <Modal.Footer></Modal.Footer>
-      </Modal>
+
+
+
+
+
       {/* Awards modal */}
       <Modal
         className="Actions-modal awards-modal z-1050"
@@ -489,37 +308,37 @@ const PostFoot = (props) => {
           <Row>
             <Col className="col-md-4">
               <div className="Awrds-li">
-                <img src="/images/awards.png" alt="img" />
+                <img src="/gif/thumbsdown2.gif" alt="img" />
                 <h4>Owned: 56</h4>
               </div>
             </Col>
             <Col className="col-md-4">
               <div className="Awrds-li">
-                <img src="/images/awards.png" alt="img" />
+                <img src="/gif/thumbsdown2.gif" alt="img" />
                 <h4>Owned: 56</h4>
               </div>
             </Col>
             <Col className="col-md-4">
               <div className="Awrds-li">
-                <img src="/images/awards.png" alt="img" />
+                <img src="/gif/thumbsdown2.gif" alt="img" />
                 <h4>Owned: 56</h4>
               </div>
             </Col>
             <Col className="col-md-4">
               <div className="Awrds-li">
-                <img src="/images/awards.png" alt="img" />
+                <img src="/gif/thumbsdown2.gif" alt="img" />
                 <h4>Owned: 56</h4>
               </div>
             </Col>
             <Col className="col-md-4">
               <div className="Awrds-li">
-                <img src="/images/awards.png" alt="img" />
+                <img src="/gif/thumbsdown2.gif" alt="img" />
                 <h4>Owned: 56</h4>
               </div>
             </Col>
             <Col className="col-md-4">
               <div className="Awrds-li">
-                <img src="/images/awards.png" alt="img" />
+                <img src="/gif/thumbsdown2.gif" alt="img" />
                 <h4>Owned: 56</h4>
               </div>
             </Col>

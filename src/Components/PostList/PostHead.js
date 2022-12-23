@@ -124,16 +124,16 @@ const PostHead = (props) => {
           </div>
           <ul className="awards-bar bg-darkgray">
             <li className="text-whitesure">
-              <img src="/images/award1.png" alt="awards" />5
+              <img src="/gif/thumbsdown2.gif" alt="awards" />5
             </li>
             <li className="text-whitesure">
-              <img src="/images/award2.png" alt="awards" />4
+              <img src="/gif/thumbsdown2.gif" alt="awards" />4
             </li>
             <li className="text-whitesure">
-              <img src="/images/award3.png" alt="awards" />6
+              <img src="/gif/thumbsdown2.gif" alt="awards" />6
             </li>
             <li className="text-whitesure">
-              <img src="/images/award4.png" alt="awards" />9
+              <img src="/gif/thumbsdown2.gif" alt="awards" />9
             </li>
           </ul>
         </div>

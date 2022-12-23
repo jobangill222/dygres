@@ -378,6 +378,7 @@ input.form-control {
   width: 120px;
   height: 120px;
   object-fit: cover;
+  border-radius: 50%;
 }
 .user-detail-listing {
   display: flex;
@@ -644,6 +645,9 @@ ul.profiletabsbar li:last-child a {
   margin-left: 30px;
   border-radius: 25px;
   padding: 3px 0;
+  background-color: transparent;
+  position: relative;
+  top: -10px;
 }
 .user-detail-bar .detailleft .awards-bar li {
   margin: 0 10px;
@@ -656,6 +660,9 @@ ul.profiletabsbar li:last-child a {
   font-weight: 600;
   font-size: 16.6025px;
   line-height: 20px;
+  width: 50px;
+  border-radius: 50%;
+  background: #9c9c9c;
 }
 .digital-feeds .user-active-timer ul li {
   font-style: normal;
@@ -885,6 +892,7 @@ ul.profiletabsbar li:last-child a {
   line-height: 14px;
   color: var(--base-primary);
   transition: 0.3s ease;
+  min-width: 92px;
 }
 .followbtn:hover {
   background: var(--base-primary);
@@ -1015,7 +1023,9 @@ ul.profiletabsbar li:last-child a {
     transform: translate(0,-50%) rotate(360deg) !important;
 } */
 .Actions-modal .modal-body {
-  padding: 20px 0;
+  padding: 20px;
+  height: 350px;
+  overflow: scroll;
 }
 .Actions-modal .modal-body .aggree-li {
   display: flex;
@@ -1031,6 +1041,7 @@ ul.profiletabsbar li:last-child a {
 .Actions-modal .modal-body .aggree-li li img {
   width: 46px;
   height: 46px;
+  border-radius: 50%;
   margin-right: 15px;
 }
 .Actions-modal .modal-body .aggree-li li .user-del h4 {
@@ -1056,6 +1067,7 @@ ul.profiletabsbar li:last-child a {
 }
 .Actions-modal .Awrds-li img {
   margin-bottom: 20px;
+  width: 140px;
 }
 .Actions-modal .Awrds-li h4 {
   margin: 0;
@@ -2845,6 +2857,22 @@ ul.sidebar-menu {
   margin: 0;
   background: var(--base-offgray);
   padding: 20px;
+}
+.empty-bar {
+  text-align: center;
+}
+.empty-bar img {
+  max-width: 25%;
+  margin: 0 auto 30px auto;
+}
+.empty-bar h4 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.empty-bar p {
+  font-size: 16px;
+  margin: 0;
 }
 /* Responsive css  */
 @media (max-width: 1599px) {

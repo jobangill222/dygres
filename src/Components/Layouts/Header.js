@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import DarkModeSwitch from "./DarkModeSwitch";
-import { AiOutlineSetting, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { BsPencil, BsFileMedicalFill, BsBell, BsSearch } from "react-icons/bs";
@@ -151,9 +151,9 @@ const Header = () => {
                       </div>
                     </div>
                   </div>
-                  <Nav.Link className="text-lightgray" href="#">
+                  {/* <Nav.Link className="text-lightgray" href="#">
                     <AiOutlineSetting />
-                  </Nav.Link>
+                  </Nav.Link> */}
                   <div className="relative user-dropdown">
                     <img
                       src={

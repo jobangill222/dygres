@@ -1,13 +1,15 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import DigitalTabContent from "../Components/DigitalTabContent";
 import { DContext } from "../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+// Import Modals
+import UserListModal from "../Components/Modals/UserListModal";
 
 const NotVoted = () => {
 
 
-    const { getNotVotedPostDContext, postList, setPostList } =
+    const { getNotVotedPostDContext, postList, setPostList, selectedPostIDForPopup } =
         useContext(DContext);
 
     useEffect(() => {
@@ -48,6 +50,15 @@ const NotVoted = () => {
         }
     };
 
+
+    // Change state when click on count of agree disagree etc and change popupstate to true to open
+    const [popupOpenStatus, setPopupOpenStatus] = useState(false);
+    useEffect(() => {
+        if (selectedPostIDForPopup) {
+            setPopupOpenStatus(true);
+        }
+    }, [selectedPostIDForPopup])
+
     return (
         <>
 
@@ -58,6 +69,9 @@ const NotVoted = () => {
             >
                 {/* {postList} */}
             </InfiniteScroll>
+
+            {/* Modal */}
+            {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
             <h4 className="pagetitle">Not Voted</h4>
             {postList.map((post) => (

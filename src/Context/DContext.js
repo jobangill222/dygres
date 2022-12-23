@@ -15,6 +15,10 @@ export const DProvider = (props) => {
   //State for postList
   const [postList, setPostList] = useState([]);
 
+  //State For Popup UserList
+  const [selectedPostIDForPopup, setSelectedPostIDForPopup] = useState(null);
+  const [popupType, setPopupType] = useState(null);
+
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
 
@@ -474,7 +478,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const getMostVotedPostDContext = async (pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
@@ -492,7 +495,6 @@ export const DProvider = (props) => {
       );
     }
   };
-
 
   const getHotPostDContext = async (pageNumberOfPostList) => {
     try {
@@ -530,14 +532,16 @@ export const DProvider = (props) => {
     }
   };
 
-
-  const getAgreedPostUserDContext = async (PostID, PageNumber) => {
+  const getAgreedPostUserDContext = async (selectedPostID, PageNumber) => {
     try {
       const axiosRes = await axios({
         method: "post",
-        url: `'${BASE_URL}/post/agreed-post-user?page=${PageNumber}`,
+        url: `${BASE_URL}/post/agreed-post-user?page=${PageNumber}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: selectedPostID,
         },
       });
       return axiosRes.data;
@@ -546,13 +550,16 @@ export const DProvider = (props) => {
     }
   };
 
-  const getDisAgreedPostUserDContext = async (PostID, PageNumber) => {
+  const getDisAgreedPostUserDContext = async (selectedPostID, PageNumber) => {
     try {
       const axiosRes = await axios({
         method: "post",
-        url: `'${BASE_URL}/post/disagreed-post-user?page=${PageNumber}`,
+        url: `${BASE_URL}/post/disagreed-post-user?page=${PageNumber}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: selectedPostID,
         },
       });
       return axiosRes.data;
@@ -561,13 +568,16 @@ export const DProvider = (props) => {
     }
   };
 
-  const getReportedPostUserDContext = async (PostID, PageNumber) => {
+  const getReportedPostUserDContext = async (selectedPostID, PageNumber) => {
     try {
       const axiosRes = await axios({
         method: "post",
-        url: `'${BASE_URL}/post/reported-post-user?page=${PageNumber}`,
+        url: `${BASE_URL}/post/reported-post-user?page=${PageNumber}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: selectedPostID,
         },
       });
       return axiosRes.data;
@@ -588,6 +598,10 @@ export const DProvider = (props) => {
     setUserStats,
     postList,
     setPostList,
+    selectedPostIDForPopup,
+    setSelectedPostIDForPopup,
+    popupType,
+    setPopupType,
     // Methods
     userLogin,
     userSignup,

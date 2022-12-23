@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import ProfileAbout from "./ProfileAbout";
@@ -6,11 +6,11 @@ import ProfileAbout from "./ProfileAbout";
 import { DContext } from "../../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 import DigitalTabContent from "../DigitalTabContent";
-
+import UserListModal from "../Modals/UserListModal";
 
 const ProfileTabs = () => {
 
-    const { postList, setPostList, getMyPostsDContext } = useContext(DContext);
+    const { postList, setPostList, getMyPostsDContext, selectedPostIDForPopup } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -52,6 +52,17 @@ const ProfileTabs = () => {
         }
     };
 
+
+
+    // Change state when click on count of agree disagree etc and change popupstate to true to open
+    const [popupOpenStatus, setPopupOpenStatus] = useState(false);
+    useEffect(() => {
+        if (selectedPostIDForPopup) {
+            setPopupOpenStatus(true);
+        }
+    }, [selectedPostIDForPopup])
+
+
     return (
         <>
 
@@ -68,6 +79,10 @@ const ProfileTabs = () => {
             >
                 {/* {postList} */}
             </InfiniteScroll>
+
+
+            {/* Modal */}
+            {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
             <Tabs defaultActiveKey="Timeline" id="" className="digital-tabs" >
                 {/* <Tab eventKey="Timeline" title="Timeline">
