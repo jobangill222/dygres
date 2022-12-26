@@ -37,6 +37,9 @@ import EditProfile from "./Components/Profile/EditProfile";
 import PersonalInformation from "./Components/Profile/PersonalInformation";
 import PostHead from "./Components/PostList/PostHead";
 import WhatsMind from "./Components/WhatsMind";
+import SinglePost from "./Components/SinglePost/index";
+
+
 
 function App() {
   // Context Variables
@@ -77,6 +80,9 @@ function App() {
                   <Route exact path="/not-voted" element={<TopLatestPost />} />
                   <Route exact path="/posthead" element={<PostHead />} />
                   <Route exact path="/whatsmind" element={<WhatsMind />} />
+                  <Route exact path="/singlepost" element={<SinglePost />} />
+
+
                 </Route>
 
                 <Route element={<ProfileLayout />}>

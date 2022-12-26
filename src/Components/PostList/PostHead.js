@@ -23,7 +23,7 @@ const PostHead = (props) => {
   const timeAgo = new TimeAgo('en-US')
 
   let userVerificationLevel;
-  if (user.isEmailVerify === 1 && user.isPhotoVerify === 0) {
+  if (user?.isEmailVerify === 1 && user?.isPhotoVerify === 0) {
     userVerificationLevel = 1;
   }
   else if (user.isPhotoVerify === 1) {

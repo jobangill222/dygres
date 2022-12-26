@@ -28,9 +28,9 @@ import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 
 
-const PostFoot = (props) => {
+const SinglePostFoot = (props) => {
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, is_report, postUserID, postID, setIsEditFieldOpen } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, is_report, postUserID, postID, setIsEditFieldOpen } = props;
 
   //Functions to call api
   const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedPostIDForPopup, setPopupType } = useContext(DContext);
@@ -44,8 +44,6 @@ const PostFoot = (props) => {
 
   const [postReportCount, setPostReportCount] = useState(report_count);
   const [isReport, setIsReport] = useState(false);
-
-  const [isThreadOpen, setIsThreadOpen] = useState(false);
 
 
   // useeffect to render count and pass true false status for active and un active footer options
@@ -208,7 +206,7 @@ const PostFoot = (props) => {
               className={isAgree ? `active` : ""}
               onClick={() => AgreePost(postID)}><AiFillLike /></div>
             <div className="list-text" onClick={() => viewPopup('agree')} >
-              <span className="number">{postAgreeCount}</span>
+              <span className="number">0</span>
               Agree</div>
           </li>
 
@@ -216,7 +214,7 @@ const PostFoot = (props) => {
             <div className={isDisAgree ? `active` : ""}
               onClick={() => DisAgreePost(postID)}><AiFillDislike /></div>
             <div className="list-text" onClick={() => viewPopup('disagree')} >
-              <span className="number">{postDisAgreeCount}</span>
+              <span className="number">1</span>
               Disagree</div>
           </li>
 
@@ -224,22 +222,16 @@ const PostFoot = (props) => {
             <FaGift />
             <span className="number">6</span>Award
           </li>
-
-
-
           <li>
-            <Accordion.Header isThreadOpen={isThreadOpen} >
+            <Accordion.Header>
               <FaComments />
-              <span className="number" onClick={() => setIsThreadOpen(true)}>{comment_count}</span>Threads
+              <span className="number">12</span>Threads
             </Accordion.Header>
           </li>
-
-
-
           <li >
             <div className={isReport ? `active` : ""} onClick={() => EditReport(postID)}><BsFillFlagFill /></div>
             <div className="list-text" onClick={() => viewPopup('report')}>
-              <span className="number">{postReportCount}</span>
+              <span className="number">2</span>
               Report</div>
           </li>
           <li>
@@ -502,4 +494,4 @@ const PostFoot = (props) => {
   );
 };
 
-export default PostFoot;
+export default SinglePostFoot;

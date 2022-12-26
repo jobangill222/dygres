@@ -10,7 +10,7 @@ import PostEdit from "./PostList/PostEdit";
 const DigitalTabContent = (props) => {
   // Prop Destrucutring
   // console.log("props.post", props.post);
-  const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, is_report, userID, _id, is_follow, created_at
+  const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, is_report, userID, _id, is_follow, created_at
   } = props.post;
 
   //States
@@ -37,6 +37,7 @@ const DigitalTabContent = (props) => {
                     disagree_count={disagree_count}
                     is_disagree={is_disagree}
                     report_count={report_count}
+                    comment_count={comment_count}
                     is_report={is_report}
                     postUserID={userID}
                     postID={_id}

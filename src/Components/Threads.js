@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MdOutlineTimer } from 'react-icons/md';
-import Dropdown from 'react-bootstrap/Dropdown';
+// import Dropdown from 'react-bootstrap/Dropdown';
 import { AiFillLike, AiFillDislike } from 'react-icons/ai';
-import { FaGift, FaComments } from 'react-icons/fa';
-import { BsFillFlagFill, BsPencil } from 'react-icons/bs';
+import { FaComments } from 'react-icons/fa';
+// import { BsFillFlagFill, BsPencil } from 'react-icons/bs';
 import { ImForward } from 'react-icons/im';
-import { RiDeleteBin6Line , RiMessageFill } from 'react-icons/ri';
+import { RiMessageFill } from 'react-icons/ri';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+// import Modal from 'react-bootstrap/Modal';
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 const Threads = () => {
 
-    const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     return (
         <>
             <Accordion >
-                <Accordion.Item eventKey="2">
+                <Accordion.Item eventKey="0">
                     <h4>Threads</h4>
                     <div className="user-detail-bar">
                         <div className="detailleft">
@@ -54,7 +51,7 @@ const Threads = () => {
                             <div className="action-bar">
                                 <ul className="actionleftbar">
                                     <li className='active' ><AiFillLike /><span className="number">12</span>Agree</li>
-                                    <li><FaGift /><span className="number">6</span>Award</li>
+                                    {/* <li><FaGift /><span className="number">6</span>Award</li> */}
                                     <li><AiFillDislike /><span className="number">12</span>Disagree</li>
                                     <li>
                                         <Accordion.Header><FaComments /><span className="number">12</span>Threads</Accordion.Header>
@@ -62,42 +59,41 @@ const Threads = () => {
                                     <li>
                                         <RiMessageFill />Reply
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <Dropdown className="hoverdropdown">
                                             <Dropdown.Toggle className="p-0 bg-transparent border-0 text-lightgray" variant="success" id="dropdown-basic">
                                                 <BsFillFlagFill /><span className="number">12</span>Report
                                             </Dropdown.Toggle>
                                             <Dropdown.Menu>
                                                 <Dropdown.Item href=""><BsPencil />Edit Post</Dropdown.Item>
-                                                <Dropdown.Item onClick={handleShow}><RiDeleteBin6Line />Delete Post</Dropdown.Item>
+                                                <Dropdown.Item ><RiDeleteBin6Line />Delete Post</Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
-                                    </li>
+                                    </li> */}
                                 </ul>
                                 <ul className="actionrytbar">
                                     <li><ImForward />Share</li>
                                 </ul>
                             </div>
                         </div>
-                        <Accordion.Body className='thredsbar thredsbar-inner'>
+                        {/* <Accordion.Body className='thredsbar thredsbar-inner'>
                             <Accordion >
-                                <Accordion.Item eventKey="3">
+                                <Accordion.Item eventKey="2">
                                     <div className="user-detail-bar">
                                         <div className="detailleft">
-                                        <div className="userleftside">
-                                            <div className="avatar-img active">
-                                                <img src="/images/user.png" alt="user-img" />
-                                            </div>
-                                            <div className="user-detail">
-                                                <div className="follow-bar"><h4 className="text-secondry">Amanpreet Singh</h4>
-                                                    {/* <button className="followbtn" type="button">Follow</button> */}
+                                            <div className="userleftside">
+                                                <div className="avatar-img active">
+                                                    <img src="/images/user.png" alt="user-img" />
                                                 </div>
-                                                <div className="user-availbility">
-                                                    <h6 className="text-lightgray">@amans</h6>
-                                                    <h5 className="text-lightgray greentime">1hr ago</h5>
+                                                <div className="user-detail">
+                                                    <div className="follow-bar"><h4 className="text-secondry">Amanpreet Singh</h4>
+                                                    </div>
+                                                    <div className="user-availbility">
+                                                        <h6 className="text-lightgray">@amans</h6>
+                                                        <h5 className="text-lightgray greentime">1hr ago</h5>
+                                                    </div>
+                                                    <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
                                                 </div>
-                                                <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
-                                            </div>
                                             </div>
 
                                         </div>
@@ -130,7 +126,7 @@ const Threads = () => {
                                                         </Dropdown>
                                                     </li>
                                                     <li>
-                                                        
+
                                                     </li>
                                                 </ul>
                                                 <ul className="actionrytbar">
@@ -143,20 +139,19 @@ const Threads = () => {
                                         <Accordion.Body className='thredsbar thredsbar-inner'>
                                             <div className="user-detail-bar">
                                                 <div className="detailleft">
-                                                <div className="userleftside">
-                                                    <div className="avatar-img active">
-                                                        <img src="/images/user.png" alt="user-img" />
-                                                    </div>
-                                                    <div className="user-detail">
-                                                        <div className="follow-bar"><h4 className="text-secondry">Amanpreet Singh</h4>
-                                                            {/* <button className="followbtn" type="button">Follow</button> */}
+                                                    <div className="userleftside">
+                                                        <div className="avatar-img active">
+                                                            <img src="/images/user.png" alt="user-img" />
                                                         </div>
-                                                        <div className="user-availbility">
-                                                            <h6 className="text-lightgray">@amans</h6>
-                                                            <h5 className="text-lightgray greentime">1hr ago</h5>
+                                                        <div className="user-detail">
+                                                            <div className="follow-bar"><h4 className="text-secondry">Amanpreet Singh</h4>
+                                                            </div>
+                                                            <div className="user-availbility">
+                                                                <h6 className="text-lightgray">@amans</h6>
+                                                                <h5 className="text-lightgray greentime">1hr ago</h5>
+                                                            </div>
+                                                            <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
                                                         </div>
-                                                        <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
-                                                    </div>
                                                     </div>
                                                 </div>
                                                 <div className="user-active-timer">
@@ -187,7 +182,7 @@ const Threads = () => {
                                                             </Dropdown>
                                                         </li>
                                                         <li>
-                                                            
+
                                                         </li>
                                                     </ul>
                                                     <ul className="actionrytbar">
@@ -199,7 +194,7 @@ const Threads = () => {
                                     </div>
                                 </Accordion.Item>
                             </Accordion>
-                        </Accordion.Body>
+                        </Accordion.Body> */}
 
                     </div>
                     <div className='reply-post'>
@@ -214,21 +209,8 @@ const Threads = () => {
                     </div>
                 </Accordion.Item>
             </Accordion>
-            {/* Delete modal */}
-            <Modal  className="Actions-modal"  show={show} onHide={handleClose} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Delete Post</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Are you sure you want to Delete this post ?</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="outline-primary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Yes
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+
+
         </>
     );
 }
