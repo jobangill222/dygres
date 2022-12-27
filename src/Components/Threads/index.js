@@ -92,7 +92,7 @@ const Threads = (props) => {
                             ))}
                         </>
 
-                        : <span>No comments</span>}
+                        : <span className='no-comment'>No comments</span>}
 
                     {commentListState.length > 2 ?
                         <>
