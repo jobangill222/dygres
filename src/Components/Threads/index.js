@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 
 const Threads = (props) => {
 
-    const { isThreadBoxOpen, postID } = props;
+    const { isThreadBoxOpen, postID, setPostCommentCount } = props;
 
     const [commentListState, setCommentListState] = useState([]);
 
@@ -51,8 +51,10 @@ const Threads = (props) => {
                 if (axiosRes.status === "success") {
                     setIsPostComment(true);
                     toast(axiosRes.message);
-                    // setIsPostComment(false);
+                    // Make field empty afetr comment
                     setCreateCommentState("");
+                    //Inc comment count
+                    setPostCommentCount((previousState) => previousState + 1);
                 } else {
                     toast(axiosRes.message);
                 }

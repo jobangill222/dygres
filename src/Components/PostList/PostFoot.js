@@ -30,7 +30,7 @@ import { toast } from "react-toastify";
 
 const PostFoot = (props) => {
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, is_report, postUserID, postID, setIsEditFieldOpen } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, postCommentCount, is_report, postUserID, postID, setIsEditFieldOpen } = props;
 
   //Functions to call api
   const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedPostIDForPopup, setPopupType } = useContext(DContext);
@@ -45,11 +45,10 @@ const PostFoot = (props) => {
   const [postReportCount, setPostReportCount] = useState(report_count);
   const [isReport, setIsReport] = useState(false);
 
-  const [postCommentCount, setPostCommentCount] = useState(comment_count);
   const [isThreadOpen, setIsThreadOpen] = useState(false);
 
   useEffect(() => {
-    console.log("isThreadOpen", isThreadOpen);
+    // console.log("isThreadOpen", isThreadOpen);
     props.onCommentBoxOpen(isThreadOpen);
   }, [isThreadOpen]);
 
@@ -256,7 +255,7 @@ const PostFoot = (props) => {
                 variant="success"
                 id="dropdown-basic"
               >
-                {user._id === postUserID && <BsThreeDots />}
+                {user?._id === postUserID && <BsThreeDots />}
 
               </Dropdown.Toggle>
               <Dropdown.Menu>

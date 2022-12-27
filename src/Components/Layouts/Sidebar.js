@@ -17,6 +17,8 @@ const Sidebar = () => {
         </Tooltip>
     );
 
+    // console.log('user', user);
+
     return (
         <>
             <div className="sidebar-profile">
@@ -53,8 +55,8 @@ const Sidebar = () => {
                             <h6 className="text-offwhite">Awards</h6>
                         </li>
                     </ul>
-                    {/* <h4 className="text-secondry username text-center">{user?.name ? user.name : user.username}</h4> */}
-                    <h4 className="text-secondry username text-center">Amanpreet</h4>
+                    <h4 className="text-secondry username text-center">{user ? user?.name : user?.username}</h4>
+                    {/* <h4 className="text-secondry username text-center">Amanpreet</h4> */}
 
                     <ul className="user-detaiting-listing">
                         {/* <li>UI/UX Designer <img src="/images/ui-ux.png" alt="icons" /></li>

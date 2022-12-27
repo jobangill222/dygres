@@ -14,6 +14,9 @@ const DigitalTabContent = (props) => {
   } = props.post;
 
   //States
+
+  const [postCommentCount, setPostCommentCount] = useState(comment_count);
+
   const [isEditFieldOpen, setIsEditFieldOpen] = useState(false);
   const [postContent, setPostContent] = useState(content);
 
@@ -44,7 +47,7 @@ const DigitalTabContent = (props) => {
                     disagree_count={disagree_count}
                     is_disagree={is_disagree}
                     report_count={report_count}
-                    comment_count={comment_count}
+                    postCommentCount={postCommentCount}
                     is_report={is_report}
                     postUserID={userID}
                     postID={_id}
@@ -58,7 +61,7 @@ const DigitalTabContent = (props) => {
               </div>
             </div>
             <Accordion.Body eventKey="0" className="thredsbar">
-              <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} />
+              <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} setPostCommentCount={setPostCommentCount} />
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>

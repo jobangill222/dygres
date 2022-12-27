@@ -26,7 +26,7 @@ const PostHead = (props) => {
   if (user?.isEmailVerify === 1 && user?.isPhotoVerify === 0) {
     userVerificationLevel = 1;
   }
-  else if (user.isPhotoVerify === 1) {
+  else if (user?.isPhotoVerify === 1) {
     userVerificationLevel = 2;
   }
   else {
@@ -98,9 +98,9 @@ const PostHead = (props) => {
             <div className="user-detail">
               <div className="follow-bar">
                 <h4 className="text-secondry">
-                  {postUserDetails.name ? postUserDetails.name : postUserDetails.username}
+                  {postUserDetails ? postUserDetails?.name : postUserDetails?.username}
                 </h4>
-                {user._id !== postUserID &&
+                {user?._id !== postUserID &&
                   <>
                     {isFollowState === 0 && <button className='followbtn' onClick={followUser} type='button'>Follow</button>}
                     {isFollowState === 1 && <button className='followbtn' onClick={UnfollowUser} type='button'>Un-Follow</button>}

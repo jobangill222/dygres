@@ -170,12 +170,14 @@ const EditProfile = () => {
                   <Form.Control
                     type="text"
                     name="thoughts"
+                    max="420"
+                    maxLength={420}
                     value={genInfoFiledsState.thoughts}
                     placeholder="Enter A penny for your thoughts?"
                     onChange={changeValue}
                   />
+                  <p className="word-note">Character {genInfoFiledsState.thoughts.length}/420</p>
                 </Form.Group>
-                <p className="word-note">Character 3/420</p>
 
                 <Form.Group className="editor-input" controlId="">
                   <Form.Label>Bio</Form.Label>
@@ -183,13 +185,15 @@ const EditProfile = () => {
                     name="bio"
                     as="textarea"
                     rows={7}
+                    max="420"
+                    maxLength={420}
                     type="text"
                     value={genInfoFiledsState.bio}
                     placeholder="Enter Bio"
                     onChange={changeValue}
                   />
+                  <p className="word-note">Character {genInfoFiledsState.bio.length}/420</p>
                 </Form.Group>
-                <p className="word-note">Character 3/420</p>
               </Col>
             </Row>
           </div>
