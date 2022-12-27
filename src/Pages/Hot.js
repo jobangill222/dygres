@@ -8,7 +8,7 @@ import UserListModal from "../Components/Modals/UserListModal";
 
 const Hot = () => {
 
-    const { getHotPostDContext, postList, setPostList, selectedPostIDForPopup } =
+    const { getHotPostDContext, postList, setPostList, selectedIDForPopup } =
         useContext(DContext);
 
     useEffect(() => {
@@ -53,10 +53,10 @@ const Hot = () => {
     // Change state when click on count of agree disagree etc and change popupstate to true to open
     const [popupOpenStatus, setPopupOpenStatus] = useState(false);
     useEffect(() => {
-        if (selectedPostIDForPopup) {
+        if (selectedIDForPopup) {
             setPopupOpenStatus(true);
         }
-    }, [selectedPostIDForPopup])
+    }, [selectedIDForPopup])
 
     return (
         <>

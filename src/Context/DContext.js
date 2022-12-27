@@ -17,8 +17,8 @@ export const DProvider = (props) => {
   const [postList, setPostList] = useState([]);
 
   //State For Popup UserList
-  const [selectedPostIDForPopup, setSelectedPostIDForPopup] = useState(null);
-  const [popupType, setPopupType] = useState(null);
+  const [selectedIDForPopup, setSelectedIDForPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
+  const [popupType, setPopupType] = useState(null); // like popup for user agreed or disagreed to comment or user agree disagree to post based on this hit api in component/modal/User list
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -605,7 +605,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const createCommentDContext = async (postID, comment) => {
     try {
       const axiosRes = await axios({
@@ -626,6 +625,86 @@ export const DProvider = (props) => {
     }
   };
 
+  const agreeUnagreeCommentDContext = async (commentID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/agree-comment`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          commentID: commentID,
+        },
+      });
+      // console.log("get user detail api hit:", axiosRes.data);
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit agree un agree comment api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const disagreeUnDisagreeCommentDContext = async (commentID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/disagree-comment`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          commentID: commentID,
+        },
+      });
+      // console.log("get user detail api hit:", axiosRes.data);
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit agree un agree comment api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+
+  const getAgreedCommentUserDContext = async (selectedPostID, PageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/agreed-comment-user-list?page=${PageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          commentID: selectedPostID,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get agreed comment user api (DCOntext.js) - ", err);
+    }
+  };
+
+  const getDisagreedCommentUserDContext = async (selectedPostID, PageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/disagreed-comment-user-list?page=${PageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          commentID: selectedPostID,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get disagreed comment user api (DCOntext.js) - ", err);
+    }
+  };
 
   // Variables and methods to be shared globally
   const value = {
@@ -638,8 +717,8 @@ export const DProvider = (props) => {
     setUserStats,
     postList,
     setPostList,
-    selectedPostIDForPopup,
-    setSelectedPostIDForPopup,
+    selectedIDForPopup,
+    setSelectedIDForPopup,
     popupType,
     setPopupType,
     // Methods
@@ -673,6 +752,10 @@ export const DProvider = (props) => {
     getReportedPostUserDContext,
     getPostCommentDContext,
     createCommentDContext,
+    agreeUnagreeCommentDContext,
+    disagreeUnDisagreeCommentDContext,
+    getAgreedCommentUserDContext,
+    getDisagreedCommentUserDContext
   };
   return (
     <>

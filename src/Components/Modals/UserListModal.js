@@ -9,7 +9,7 @@ const UserListModal = (props) => {
 
     const { popupOpenStatus, setPopupOpenStatus } = props;
 
-    const { selectedPostIDForPopup, setSelectedPostIDForPopup, popupType, getAgreedPostUserDContext, getDisAgreedPostUserDContext, getReportedPostUserDContext } = useContext(DContext);
+    const { selectedIDForPopup, setSelectedIDForPopup, popupType, getAgreedPostUserDContext, getDisAgreedPostUserDContext, getReportedPostUserDContext, getAgreedCommentUserDContext, getDisagreedCommentUserDContext } = useContext(DContext);
     // console.log('user', user._id);
 
     const [userList, setUserList] = useState([]);
@@ -17,7 +17,7 @@ const UserListModal = (props) => {
     // Aggree Modal
     const AggreeListClose = () => {
         setPopupOpenStatus(false);
-        setSelectedPostIDForPopup(null);
+        setSelectedIDForPopup(null);
     }
 
     useEffect(() => {
@@ -31,14 +31,20 @@ const UserListModal = (props) => {
             //Api call
             let PageNumber = 1;
             let axiosRes;
-            if (popupType === 'agree') {
-                axiosRes = await getAgreedPostUserDContext(selectedPostIDForPopup, PageNumber);
+            if (popupType === 'agree-post-user-list') {
+                axiosRes = await getAgreedPostUserDContext(selectedIDForPopup, PageNumber);
             }
-            if (popupType === 'disagree') {
-                axiosRes = await getDisAgreedPostUserDContext(selectedPostIDForPopup, PageNumber);
+            if (popupType === 'disagree-post-user-list') {
+                axiosRes = await getDisAgreedPostUserDContext(selectedIDForPopup, PageNumber);
             }
-            if (popupType === 'report') {
-                axiosRes = await getReportedPostUserDContext(selectedPostIDForPopup, PageNumber);
+            if (popupType === 'report-post-user-list') {
+                axiosRes = await getReportedPostUserDContext(selectedIDForPopup, PageNumber);
+            }
+            if (popupType === 'agreed-comment-user-list') {
+                axiosRes = await getAgreedCommentUserDContext(selectedIDForPopup, PageNumber);
+            }
+            if (popupType === 'disagreed-comment-user-list') {
+                axiosRes = await getDisagreedCommentUserDContext(selectedIDForPopup, PageNumber);
             }
             // console.log("axiosRes********* User List", axiosRes);
             if (axiosRes.status === "success") {
@@ -58,14 +64,20 @@ const UserListModal = (props) => {
         // console.log("appendNextList function call", pageNumberOfPostList);
 
         let axiosRes;
-        if (popupType === 'agree') {
-            axiosRes = await getAgreedPostUserDContext(selectedPostIDForPopup, PageNumber);
+        if (popupType === 'agree-post-user-list') {
+            axiosRes = await getAgreedPostUserDContext(selectedIDForPopup, PageNumber);
         }
-        if (popupType === 'disagree') {
-            axiosRes = await getDisAgreedPostUserDContext(selectedPostIDForPopup, PageNumber);
+        if (popupType === 'disagree-post-user-list') {
+            axiosRes = await getDisAgreedPostUserDContext(selectedIDForPopup, PageNumber);
         }
-        if (popupType === 'report') {
-            axiosRes = await getReportedPostUserDContext(selectedPostIDForPopup, PageNumber);
+        if (popupType === 'report-post-user-list') {
+            axiosRes = await getReportedPostUserDContext(selectedIDForPopup, PageNumber);
+        }
+        if (popupType === 'agreed-comment-user-list') {
+            axiosRes = await getAgreedCommentUserDContext(selectedIDForPopup, PageNumber);
+        }
+        if (popupType === 'disagreed-comment-user-list') {
+            axiosRes = await getDisagreedCommentUserDContext(selectedIDForPopup, PageNumber);
         }
 
 
@@ -93,30 +105,27 @@ const UserListModal = (props) => {
             </InfiniteScroll>
 
             {/* Aggree modal */}
-            <Modal
-                className="Actions-modal"
-                show={popupOpenStatus} onHide={AggreeListClose}
-                centered
-            >
+            <Modal className="Actions-modal" show={popupOpenStatus} onHide={AggreeListClose} centered >
+
                 <Modal.Header closeButton>
-                    <Modal.Title>{popupType === 'agree' ?
-                        "Agree By" : popupType === 'disagree' ?
-                            "Disagree By" : popupType === 'report' ?
-                                "Report By" : ""}</Modal.Title>
+                    <Modal.Title>{popupType === 'agree-post-user-list' ?
+                        "Agree By" : popupType === 'disagree-post-user-list' ?
+                            "Disagree By" : popupType === 'report-post-user-list' ?
+                                "Report By" : popupType === 'agreed-comment-user-list' ?
+                                    "Agree By" : popupType === 'disagreed-comment-user-list' ?
+                                        "Disagree By" : ""}</Modal.Title>
                 </Modal.Header>
+
+
                 <Modal.Body id="scrollableDiv">
-
-
                     {userList.length ? userList.map((userListing) => (
                         <SingleUserList userListing={userListing} />
                     )) : <div className="empty-bar">
                         <img src="/images/empty.png" alt='dummy' />
                         <h4>Empty List</h4>
                     </div>}
-
-
-
                 </Modal.Body>
+
             </Modal>
         </>
     );

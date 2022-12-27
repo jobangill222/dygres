@@ -34,7 +34,9 @@ export default function SingleUserList(props) {
             }
         })
         setPostList([...newPostList, { ...newPostList[0] }]);
-        setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+        // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+        setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
+
 
         // Update user stats stats
         setUserStats((previousState) => {
@@ -85,7 +87,7 @@ export default function SingleUserList(props) {
                         <h6>@{userListing?.user?.username}</h6>
                     </div>
                 </li>
-                {/* <li>
+                <li>
                     {
                         user._id !== userListing.userID ?
                             isFollowStateUserList === 0 ? <button className="followbtn" type="button" onClick={followUserInUserList}>Follow</button> :
@@ -94,13 +96,13 @@ export default function SingleUserList(props) {
                                 </button> : ''
                     }
 
-                </li> */}
+                </li>
 
-                <li>
+                {/* <li>
                     <button className="followbtn" type="button">
                         Follow
                     </button>
-                </li>
+                </li> */}
             </ul>
 
         </>

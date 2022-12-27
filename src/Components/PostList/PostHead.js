@@ -13,15 +13,19 @@ TimeAgo.addDefaultLocale(en)
 
 const PostHead = (props) => {
 
+  //Context
   const { user, setUserStats, postList, setPostList, followUnfollowDContext } = useContext(DContext);
 
+  //Props
   const { postUserDetails, is_follow, postUserID, created_at } = props;
 
+  //State
   const [isFollowState, setIsFollowState] = useState(0);
 
   // Create formatter (English).
   const timeAgo = new TimeAgo('en-US')
 
+  //Userlevel verification
   let userVerificationLevel;
   if (user?.isEmailVerify === 1 && user?.isPhotoVerify === 0) {
     userVerificationLevel = 1;
@@ -33,6 +37,8 @@ const PostHead = (props) => {
     userVerificationLevel = 0;
   }
 
+
+  //Follow to user and update post Listing
   const followUser = async () => {
     let newPostList = postList;
     postList.forEach((post, index) => {
@@ -42,7 +48,8 @@ const PostHead = (props) => {
       }
     })
     setPostList([...newPostList, { ...newPostList[0] }]);
-    setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+    // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+    setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
 
     // Update user stats state
     setUserStats((previousState) => {
@@ -55,6 +62,8 @@ const PostHead = (props) => {
     await followUnfollowDContext(postUserID);
   }
 
+
+  //Un-follow user and update Post Listing
   const UnfollowUser = async () => {
     let newPostList = postList;
     postList.forEach((post, index) => {
@@ -78,6 +87,8 @@ const PostHead = (props) => {
     await followUnfollowDContext(postUserID);
   }
 
+
+  // When is_follow change or new list come then set in state
   useEffect(() => {
     if (is_follow === 1) {
       setIsFollowState(1);
@@ -98,7 +109,7 @@ const PostHead = (props) => {
             <div className="user-detail">
               <div className="follow-bar">
                 <h4 className="text-secondry">
-                  {postUserDetails ? postUserDetails?.name : postUserDetails?.username}
+                  {postUserDetails?.name ? postUserDetails.name : postUserDetails?.username}
                 </h4>
                 {user?._id !== postUserID &&
                   <>

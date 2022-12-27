@@ -73,32 +73,39 @@ const Threads = (props) => {
                     {commentListState.length ?
                         <>
                             <h4>Threads</h4>
-                            {commentListState.map((comment) => (
+                            {commentListState.map((comment, index) => {
 
-                                <>
-                                    {console.log('comment', comment)}
-                                    <ThreadHead user={comment.user} created_at={comment.created_at} />
-                                    <div className='threads-rows'>
-                                        <div className="user-preview">
+                                if (index < 2) {
 
-                                            <ThreadContent content={comment.comment} />
-                                            <ThreadFoot />
+                                    return <div key={comment._id}>
+                                        <ThreadHead user={comment.user} created_at={comment.created_at} />
+                                        <div className='threads-rows'>
+                                            <div className="user-preview">
+
+                                                <ThreadContent content={comment.comment} />
+                                                <ThreadFoot is_agree={comment.is_agree} is_disagree={comment.is_disagree} agree_count={comment.agree_count} disagree_count={comment.disagree_count} commentID={comment._id} />
+
+                                            </div>
+                                            <Accordion.Body className='thredsbar thredsbar-inner'>
+                                                {/* <Threads /> */}
+                                            </Accordion.Body>
 
                                         </div>
-                                        <Accordion.Body className='thredsbar thredsbar-inner'>
-                                            {/* <Threads /> */}
-                                        </Accordion.Body>
-
                                     </div>
-                                </>
-                            ))}
+                                } else {
+                                    return
+                                    <>
+                                    </>
+                                }
+
+                            })}
                         </>
 
                         : <span className='no-comment'>No comments</span>}
 
                     {commentListState.length > 2 ?
                         <>
-                            <span>View more</span>
+                            <div className='viewmore'>View more</div>
                         </> : ""
                     }
 

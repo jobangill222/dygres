@@ -33,7 +33,7 @@ const PostFoot = (props) => {
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, postCommentCount, is_report, postUserID, postID, setIsEditFieldOpen } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedPostIDForPopup, setPopupType } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -45,12 +45,12 @@ const PostFoot = (props) => {
   const [postReportCount, setPostReportCount] = useState(report_count);
   const [isReport, setIsReport] = useState(false);
 
-  const [isThreadOpen, setIsThreadOpen] = useState(false);
+  const [isthreadopen, setIsthreadopen] = useState(false);
 
   useEffect(() => {
-    // console.log("isThreadOpen", isThreadOpen);
-    props.onCommentBoxOpen(isThreadOpen);
-  }, [isThreadOpen]);
+    // console.log("isthreadopen", isthreadopen);
+    props.onCommentBoxOpen(isthreadopen);
+  }, [isthreadopen]);
 
   // useeffect to render count and pass true false status for active and un active footer options
   useEffect(() => {
@@ -198,7 +198,7 @@ const PostFoot = (props) => {
 
   // open popup by set state in selected postid which is global state and set popup stype state
   const viewPopup = async (type) => {
-    setSelectedPostIDForPopup(postID)
+    setSelectedIDForPopup(postID)
     // console.log('type', type);
     setPopupType(type);
   }
@@ -211,7 +211,7 @@ const PostFoot = (props) => {
             <div
               className={isAgree ? `active` : ""}
               onClick={() => AgreePost(postID)}><AiFillLike /></div>
-            <div className="list-text" onClick={() => viewPopup('agree')} >
+            <div className="list-text" onClick={() => viewPopup('agree-post-user-list')} >
               <span className="number">{postAgreeCount}</span>
               Agree</div>
           </li>
@@ -219,7 +219,7 @@ const PostFoot = (props) => {
           <li>
             <div className={isDisAgree ? `active` : ""}
               onClick={() => DisAgreePost(postID)}><AiFillDislike /></div>
-            <div className="list-text" onClick={() => viewPopup('disagree')} >
+            <div className="list-text" onClick={() => viewPopup('disagree-post-user-list')} >
               <span className="number">{postDisAgreeCount}</span>
               Disagree</div>
           </li>
@@ -234,7 +234,7 @@ const PostFoot = (props) => {
 
 
           <li>
-            <Accordion.Header isThreadOpen={isThreadOpen} onClick={() => setIsThreadOpen(!isThreadOpen)}>
+            <Accordion.Header isthreadopen={isthreadopen} onClick={() => setIsthreadopen(!isthreadopen)}>
               <FaComments />
               <span className="number">{postCommentCount}</span>Threads
             </Accordion.Header>
@@ -244,10 +244,12 @@ const PostFoot = (props) => {
 
           <li >
             <div className={isReport ? `active` : ""} onClick={() => EditReport(postID)}><BsFillFlagFill /></div>
-            <div className="list-text" onClick={() => viewPopup('report')}>
+            <div className="list-text" onClick={() => viewPopup('report-post-user-list')}>
               <span className="number">{postReportCount}</span>
               Report</div>
           </li>
+
+
           <li>
             <Dropdown className="hoverdropdown">
               <Dropdown.Toggle
