@@ -27,11 +27,11 @@
   opacity: 0;
 }
 #theme-switch .switch-track {
-  background-color: #002358;
   height: 40px;
   width: 90px;
   border-radius: 30px;
   transition: all 0.2s ease 0s;
+  background: linear-gradient(180deg, #21A0DA -28.9%, #9DD382 100%), #FFFFFF;
 }
 #theme-switch .switch-check, #theme-switch .switch-x {
   bottom: 0px;
@@ -66,7 +66,7 @@ transition: opacity 0.25s ease 0s;
   width: 50px;
   border-width: 1px;
   border-style: solid;
-  border-color: #4d4d4d;
+  border-color: #ffffff;
   border-image: initial;
   border-radius: 20px;
   transition: all 0.25s ease 0s;
