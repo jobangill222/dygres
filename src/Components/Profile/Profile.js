@@ -13,7 +13,7 @@ const Profile = () => {
 
     const tooltip = (
         <Tooltip id="tooltip">
-            {user?.bio ? user.bio : "No bio"}
+            {user?.thoughts ? user.thoughts : "No thoughts"}
         </Tooltip>
     );
 

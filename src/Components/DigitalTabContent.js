@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { MdOutlineTimer } from "react-icons/md";
 import Accordion from "react-bootstrap/Accordion";
-import Threads from "./Threads";
+import Threads from "./Threads/index";
 import PostHead from "./PostList/PostHead";
 import PostContent from "./PostList/PostContent";
 import PostFoot from "./PostList/PostFoot";
@@ -16,6 +16,13 @@ const DigitalTabContent = (props) => {
   //States
   const [isEditFieldOpen, setIsEditFieldOpen] = useState(false);
   const [postContent, setPostContent] = useState(content);
+
+  const [isThreadBoxOpen, setIsThreadBoxOpen] = useState(false);
+
+  const handleCommentBoxOpen = (e) => {
+    // console.log("thread open", e);
+    setIsThreadBoxOpen(e);
+  }
 
   return (
     <>
@@ -41,6 +48,7 @@ const DigitalTabContent = (props) => {
                     is_report={is_report}
                     postUserID={userID}
                     postID={_id}
+                    onCommentBoxOpen={handleCommentBoxOpen}
                     setIsEditFieldOpen={setIsEditFieldOpen}
                   />
                 }
@@ -50,7 +58,7 @@ const DigitalTabContent = (props) => {
               </div>
             </div>
             <Accordion.Body eventKey="0" className="thredsbar">
-              <Threads />
+              <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} />
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>

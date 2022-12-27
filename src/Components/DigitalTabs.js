@@ -36,6 +36,18 @@ const DigitalTabs = (props) => {
         className="digital-tabs"
         onSelect={(e) => setActiveTabState(e)}
       >
+
+        <Tab eventKey="Global" title="Global">
+          {postList.map((post) => (
+            <DigitalTabContent
+              key={post._id}
+              setActiveTabState={setActiveTabState}
+              post={post}
+            />
+          ))}
+        </Tab>
+
+
         <Tab eventKey="Following" title="Following">
           {/* {console.log("post list in folowing tab", postList)} */}
           {postList.map((post) => (
@@ -46,15 +58,7 @@ const DigitalTabs = (props) => {
             />
           ))}
         </Tab>
-        <Tab eventKey="Global" title="Global">
-          {postList.map((post) => (
-            <DigitalTabContent
-              key={post._id}
-              setActiveTabState={setActiveTabState}
-              post={post}
-            />
-          ))}
-        </Tab>
+
         <Tab eventKey="Official" title="Official">
           {postList.map((post) => (
             <DigitalTabContent

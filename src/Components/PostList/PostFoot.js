@@ -45,8 +45,13 @@ const PostFoot = (props) => {
   const [postReportCount, setPostReportCount] = useState(report_count);
   const [isReport, setIsReport] = useState(false);
 
+  const [postCommentCount, setPostCommentCount] = useState(comment_count);
   const [isThreadOpen, setIsThreadOpen] = useState(false);
 
+  useEffect(() => {
+    console.log("isThreadOpen", isThreadOpen);
+    props.onCommentBoxOpen(isThreadOpen);
+  }, [isThreadOpen]);
 
   // useeffect to render count and pass true false status for active and un active footer options
   useEffect(() => {
@@ -220,6 +225,8 @@ const PostFoot = (props) => {
               Disagree</div>
           </li>
 
+
+
           <li onClick={AwardsShow}>
             <FaGift />
             <span className="number">6</span>Award
@@ -228,9 +235,9 @@ const PostFoot = (props) => {
 
 
           <li>
-            <Accordion.Header isThreadOpen={isThreadOpen} >
+            <Accordion.Header isThreadOpen={isThreadOpen} onClick={() => setIsThreadOpen(!isThreadOpen)}>
               <FaComments />
-              <span className="number" onClick={() => setIsThreadOpen(true)}>{comment_count}</span>Threads
+              <span className="number">{postCommentCount}</span>Threads
             </Accordion.Header>
           </li>
 

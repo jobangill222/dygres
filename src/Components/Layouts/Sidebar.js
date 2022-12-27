@@ -4,10 +4,18 @@ import { BiSearch, BiLayerMinus } from 'react-icons/bi';
 import { MdHowToVote, MdOutlineWhatshot } from 'react-icons/md';
 import { Link } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
+import Tooltip from 'react-bootstrap/tooltip';
+import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 
 const Sidebar = () => {
 
     const { user, userStats } = useContext(DContext);
+
+    const tooltip = (
+        <Tooltip id="tooltip">
+            {user?.thoughts ? user.thoughts : "No thoughts"}
+        </Tooltip>
+    );
 
     return (
         <>
@@ -22,9 +30,11 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <div className="User-detail">
-                    <div className="usermain-img">
-                        <img src={user?.profileImage ? user.profileImage : `/images/user-120.png`} alt="user-main-img" />
-                    </div>
+                    <OverlayTrigger placement="top" overlay={tooltip}>
+                        <div className="usermain-img">
+                            <img src={user?.profileImage ? user.profileImage : `/images/user-120.png`} alt="user-main-img" />
+                        </div>
+                    </OverlayTrigger>
                     <ul className="user-detail-listing">
                         <li>
                             <p className="text-secondry">{userStats?.totalPosts}</p>
@@ -43,11 +53,14 @@ const Sidebar = () => {
                             <h6 className="text-offwhite">Awards</h6>
                         </li>
                     </ul>
-                    <h4 className="text-secondry username text-center">Amanpreet Singh</h4>
+                    {/* <h4 className="text-secondry username text-center">{user?.name ? user.name : user.username}</h4> */}
+                    <h4 className="text-secondry username text-center">Amanpreet</h4>
+
                     <ul className="user-detaiting-listing">
-                        <li>UI/UX Designer <img src="/images/ui-ux.png" alt="icons" /></li>
+                        {/* <li>UI/UX Designer <img src="/images/ui-ux.png" alt="icons" /></li>
                         <li>Workoholic <img src="/images/workholic.png" alt="icons" /></li>
-                        <li>Begginer <img src="/images/beginer.png" alt="icons" /></li>
+                        <li>Begginer <img src="/images/beginer.png" alt="icons" /></li> */}
+                        <li>{user?.bio ? user.bio : 'No bio'}</li>
                     </ul>
                     <div className="search-input-form">
                         <form className="user-searchform">

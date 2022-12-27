@@ -1,7 +1,7 @@
 import React from "react";
 // import { highlightName } from "../../helper/highlightName";
 
-const SinglePostContent = ({ postContent }) => {
+const SinglePostContent = () => {
 
   // const finalPostContent = highlightName(postContent);
 

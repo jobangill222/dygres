@@ -3,6 +3,7 @@ import axios from "axios";
 
 // COnstants
 import { BASE_URL } from "../Config";
+// import { isCompositeComponent } from "react-dom/test-utils";
 
 export const DContext = React.createContext();
 
@@ -586,6 +587,45 @@ export const DProvider = (props) => {
     }
   };
 
+  const getPostCommentDContext = async (PostID, pageNumberOfComment) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/get-post-comments?page=${pageNumberOfComment}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: PostID,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get 2 latest comment of post api (DCOntext.js) - ", err);
+    }
+  };
+
+
+  const createCommentDContext = async (postID, comment) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/add-comment`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+          comment: comment,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while create comment api (DContext.js) - ", err);
+    }
+  };
+
 
   // Variables and methods to be shared globally
   const value = {
@@ -631,6 +671,8 @@ export const DProvider = (props) => {
     getAgreedPostUserDContext,
     getDisAgreedPostUserDContext,
     getReportedPostUserDContext,
+    getPostCommentDContext,
+    createCommentDContext,
   };
   return (
     <>

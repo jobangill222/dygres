@@ -175,6 +175,8 @@ const EditProfile = () => {
                     onChange={changeValue}
                   />
                 </Form.Group>
+                <p className="word-note">Character 3/420</p>
+
                 <Form.Group className="editor-input" controlId="">
                   <Form.Label>Bio</Form.Label>
                   <Form.Control
@@ -187,6 +189,7 @@ const EditProfile = () => {
                     onChange={changeValue}
                   />
                 </Form.Group>
+                <p className="word-note">Character 3/420</p>
               </Col>
             </Row>
           </div>
