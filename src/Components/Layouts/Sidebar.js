@@ -74,10 +74,11 @@ const Sidebar = () => {
                 {/* Menu start here */}
                 <ul className="sidebar-menu">
                     <li><Link exact to="/new"><BsFileMedicalFill /> New</Link></li>
-                    <li><Link to="/most-voted"><MdHowToVote />Most Voted</Link></li>
                     <li><Link to="/hot"><MdOutlineWhatshot />hot</Link></li>
-                    <li><Link to="/not-voted"><BiLayerMinus />not voted</Link></li>
-                    <li><Link to="/notification"><BsBell />notification</Link></li>
+
+                    <li><Link to="/most-voted"><MdHowToVote />Most Votes</Link></li>
+                    <li><Link to="/not-voted"><BiLayerMinus />Least Votes</Link></li>
+                    <li><Link to="/notification"><BsBell />Notifications</Link></li>
                 </ul>
                 {/* Menu ends here */}
             </div>

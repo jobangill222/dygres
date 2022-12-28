@@ -15,11 +15,9 @@ const DigitalTabContent = (props) => {
 
   //States
 
-  const [postCommentCount, setPostCommentCount] = useState(comment_count);
-
+  const [commentCount, setCommentCount] = useState(comment_count);
   const [isEditFieldOpen, setIsEditFieldOpen] = useState(false);
   const [postContent, setPostContent] = useState(content);
-
   const [isThreadBoxOpen, setIsThreadBoxOpen] = useState(false);
 
   const handleCommentBoxOpen = (e) => {
@@ -30,45 +28,45 @@ const DigitalTabContent = (props) => {
   return (
     <>
       <div className="digital-feeds p-0">
-        <Accordion>
-          <Accordion.Item eventKey="0">
-            <div className="digital-feeds ">
-              <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} />
-              <div className="user-preview">
+
+        <div className="accordionitem" >
+          <div className="digital-feeds ">
+            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} />
+            <div className="user-preview">
 
 
-                {isEditFieldOpen === false &&
-                  <PostContent postContent={postContent} />
-                }
-                {isEditFieldOpen === false &&
-                  <PostFoot
-                    agree_count={agree_count}
-                    is_agree={is_agree}
-                    disagree_count={disagree_count}
-                    is_disagree={is_disagree}
-                    report_count={report_count}
-                    postCommentCount={postCommentCount}
-                    is_report={is_report}
-                    postUserID={userID}
-                    postID={_id}
-                    onCommentBoxOpen={handleCommentBoxOpen}
-                    setIsEditFieldOpen={setIsEditFieldOpen}
-                  />
-                }
+              {isEditFieldOpen === false &&
+                <PostContent postContent={postContent} />
+              }
+              {isEditFieldOpen === false &&
+                <PostFoot
+                  agree_count={agree_count}
+                  is_agree={is_agree}
+                  disagree_count={disagree_count}
+                  is_disagree={is_disagree}
+                  report_count={report_count}
+                  commentCount={commentCount}
+                  is_report={is_report}
+                  postUserID={userID}
+                  postID={_id}
+                  onCommentBoxOpen={handleCommentBoxOpen}
+                  setIsEditFieldOpen={setIsEditFieldOpen}
+                />
+              }
 
-                {isEditFieldOpen && <PostEdit postID={_id} postContent={postContent} setPostContent={setPostContent} setIsEditFieldOpen={setIsEditFieldOpen} />}
+              {isEditFieldOpen && <PostEdit postID={_id} postContent={postContent} setPostContent={setPostContent} setIsEditFieldOpen={setIsEditFieldOpen} />}
 
-              </div>
             </div>
-            <Accordion.Body eventKey="0" className="thredsbar">
-              <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} setPostCommentCount={setPostCommentCount} />
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+          </div>
+
+          {isThreadBoxOpen &&
+            <div className="thredsbar">
+              <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} commentID="" setCommentCount={setCommentCount} />
+            </div>
+          }
+        </div>
       </div>
-      {/* <div className="digital-feeds ">
-        <PostEdit />
-      </div> */}
+
     </>
   );
 };

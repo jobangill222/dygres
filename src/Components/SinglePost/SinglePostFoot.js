@@ -267,7 +267,7 @@ const SinglePostFoot = (props) => {
       </div>
       {/* Delete modal */}
       <Modal
-        className="Actions-modal"
+        className="Actions-modal deletemodal"
         show={show}
         onHide={handleClose}
         centered

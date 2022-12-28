@@ -22,7 +22,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Accordion from "react-bootstrap/Accordion";
 
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
@@ -30,7 +29,7 @@ import { toast } from "react-toastify";
 
 const PostFoot = (props) => {
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, postCommentCount, is_report, postUserID, postID, setIsEditFieldOpen } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen } = props;
 
   //Functions to call api
   const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType } = useContext(DContext);
@@ -81,7 +80,6 @@ const PostFoot = (props) => {
   }, [is_report]);
 
 
-
   // Aggree Modal
   const AgreePost = async (postID) => {
     const agreeAxiosRes = await agreeUnagreePost(postID);
@@ -99,8 +97,6 @@ const PostFoot = (props) => {
       toast(agreeAxiosRes.message);
     }
   };
-
-
 
   // DisAggree Modal
   const DisAgreePost = async (postID) => {
@@ -120,7 +116,6 @@ const PostFoot = (props) => {
       toast(disagreeAxiosRes.message);
     }
   };
-
 
   // Report Modal
   const [EditReportShow, setEditreportshow] = useState(false);
@@ -233,13 +228,13 @@ const PostFoot = (props) => {
 
 
 
-          <li>
-            <Accordion.Header isthreadopen={isthreadopen} onClick={() => setIsthreadopen(!isthreadopen)}>
-              <FaComments />
-              <span className="number">{postCommentCount}</span>Threads
-            </Accordion.Header>
-          </li>
 
+          <li>
+            <div className={isthreadopen ? 'accordionhead active' : 'accordionhead'} isthreadopen={isthreadopen ? isthreadopen : ""} onClick={() => setIsthreadopen(!isthreadopen)}>
+              <FaComments />
+              <span className="number">{commentCount}</span>Threads
+            </div>
+          </li>
 
 
           <li >
@@ -283,7 +278,7 @@ const PostFoot = (props) => {
       </div>
       {/* Delete modal */}
       <Modal
-        className="Actions-modal"
+        className="Actions-modal deletemodal"
         show={show}
         onHide={handleClose}
         centered

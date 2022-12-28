@@ -1,26 +1,32 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AiFillLike } from 'react-icons/ai';
 import { FaComments } from 'react-icons/fa';
-import Accordion from 'react-bootstrap/Accordion';
 import { toast } from "react-toastify";
+// import Form from 'react-bootstrap/Form';
+// import Button from 'react-bootstrap/Button';
 
 // import { BsFillFlagFill, BsPencil } from 'react-icons/bs';
 // import { ImForward } from 'react-icons/im';
 import { RiMessageFill } from 'react-icons/ri';
 import { DContext } from "../../Context/DContext";
+import Threads from '.';
 
 
 export default function ThreadFoot(props) {
 
-    const { disagree_count, agree_count, is_agree, is_disagree, commentID } = props
+    const { disagree_count, agree_count, is_agree, is_disagree, commentID, postID, child_comment_count } = props
 
     const { agreeUnagreeCommentDContext, disagreeUnDisagreeCommentDContext, setSelectedIDForPopup, setPopupType } = useContext(DContext);
 
 
+    //States
+    const [commentCount, setCommentCount] = useState(child_comment_count);
     const [disagreeCountState, setDisagreeCountState] = useState(disagree_count);
     const [agreeCountState, setAgreeCountState] = useState(agree_count);
     const [isAgreeState, setIsAgreeState] = useState(false);
     const [isDisagreeState, setIsDisagreeState] = useState(false);
+    const [isThreadBoxOpen, setIsThreadBoxOpen] = useState(false);
+
 
     useEffect(() => {
         if (is_agree === 1) {
@@ -33,8 +39,6 @@ export default function ThreadFoot(props) {
             setIsDisagreeState(true)
         }
     }, [is_disagree])
-
-
 
     // Aggree Comment
     const agreeComment = async (commentID) => {
@@ -53,17 +57,6 @@ export default function ThreadFoot(props) {
             toast(agreeAxiosRes.message);
         }
     };
-
-
-
-    // open popup by set state in selected postid which is global state and set popup stype state
-    const viewPopup = async (type) => {
-        setSelectedIDForPopup(commentID)
-        // console.log('type', type);
-        setPopupType(type);
-    }
-
-
 
     // DisAggree Comment
     const DisagreeComment = async (commentID) => {
@@ -84,14 +77,19 @@ export default function ThreadFoot(props) {
         }
     };
 
+    // open popup by set state in selected postid which is global state and set popup stype state
+    const viewPopup = async (type) => {
+        setSelectedIDForPopup(commentID)
+        // console.log('type', type);
+        setPopupType(type);
+    }
+
 
     return (
         <>
 
             <div className="action-bar">
                 <ul className="actionleftbar">
-
-
 
                     <li>
                         <div
@@ -101,40 +99,48 @@ export default function ThreadFoot(props) {
                             Agree
                         </div>
                     </li>
-                    {/* <li><FaGift /><span className="number">6</span>Award</li> */}
-
 
                     <li>
                         <div
                             className={isDisagreeState ? 'active' : ""} onClick={() => DisagreeComment(commentID)}><AiFillLike /></div>
-                        <div className="list-text" onClick={() => viewPopup('disagreed-comment-user-list')} >
+                        <div className2="list-text" onClick={() => viewPopup('disagreed-comment-user-list')} >
                             <span className="number">{disagreeCountState}</span>
                             Disagree
                         </div>
                     </li>
 
-
-
                     <li>
-                        <Accordion.Header><FaComments /><span className="number">12</span>Threads</Accordion.Header>
+                        <div className={isThreadBoxOpen ? 'accordionhead active' : 'accordionhead'} onClick={() => setIsThreadBoxOpen(!isThreadBoxOpen)}><FaComments /><span className="number">{commentCount}</span>Threads
+                        </div>
                     </li>
-                    <li>
+
+                    <li onClick={() => setIsThreadBoxOpen(true)}>
                         <RiMessageFill />Reply
                     </li>
-                    {/* <li>
-                            <Dropdown className="hoverdropdown">
-                                <Dropdown.Toggle className="p-0 bg-transparent border-0 text-lightgray" variant="success" id="dropdown-basic">
-                                    <BsFillFlagFill /><span className="number">12</span>Report
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href=""><BsPencil />Edit Post</Dropdown.Item>
-                                    <Dropdown.Item ><RiDeleteBin6Line />Delete Post</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </li> */}
+
                 </ul>
 
+                {/* <div className='reply-post'>
+                    <Form>
+                        <Form.Group className='replyinput' controlId="formBasicEmail">
+                            <Form.Control type="text" name="comment"
+                                value=""
+                                max="420"
+                                placeholder="What are your thoughts............?" />
+                        </Form.Group>
+                        <Button className="btn " >
+                            Post
+                        </Button>
+
+                    </Form>
+                </div> */}
             </div>
+
+            {isThreadBoxOpen &&
+                <div className="thredsbar">
+                    <Threads isThreadBoxOpen={isThreadBoxOpen} postID={postID} commentID={commentID} setCommentCount={setCommentCount} />
+                </div>
+            }
 
         </>
     )

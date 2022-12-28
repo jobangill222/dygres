@@ -251,7 +251,7 @@ const Post = () => {
                 </div>
             </Container>
             {/* Delete modal */}
-            <Modal className="Actions-modal" show={show} onHide={handleClose} centered>
+            <Modal className="Actions-modal deletemodal" show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Delete Post</Modal.Title>
                 </Modal.Header>

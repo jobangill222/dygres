@@ -605,7 +605,7 @@ export const DProvider = (props) => {
     }
   };
 
-  const createCommentDContext = async (postID, comment) => {
+  const createCommentDContext = async (postID, commentID, comment) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -616,6 +616,7 @@ export const DProvider = (props) => {
         data: {
           postID: postID,
           comment: comment,
+          parentCommentID: commentID,
         },
       });
 
@@ -669,7 +670,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const getAgreedCommentUserDContext = async (selectedPostID, PageNumber) => {
     try {
       const axiosRes = await axios({
@@ -705,6 +705,24 @@ export const DProvider = (props) => {
       console.log("Some issue while hitting get disagreed comment user api (DCOntext.js) - ", err);
     }
   };
+
+  const getCommentOfCommentDContext = async (commentID, pageNumberOfComment) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/get-child-comments?page=${pageNumberOfComment}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          parentCommentID: commentID,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get child comment of post api (DCOntext.js) - ", err);
+    }
+  }
 
   // Variables and methods to be shared globally
   const value = {
@@ -755,7 +773,8 @@ export const DProvider = (props) => {
     agreeUnagreeCommentDContext,
     disagreeUnDisagreeCommentDContext,
     getAgreedCommentUserDContext,
-    getDisagreedCommentUserDContext
+    getDisagreedCommentUserDContext,
+    getCommentOfCommentDContext
   };
   return (
     <>

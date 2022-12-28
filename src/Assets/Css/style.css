@@ -899,7 +899,7 @@ ul.profiletabsbar li:last-child a {
   color: var(--base-primary);
 }
 .thredsbar {
-  padding: 30px 100px;
+  padding: 20px 50px;
   position: relative;
 }
 .thredsbar h4 {
@@ -969,7 +969,7 @@ ul.profiletabsbar li:last-child a {
   background: #f8f8f8;
   border: 1px solid #d3d3d3;
   border-radius: 8px;
-  padding: 25px 90px 25px 25px;
+  padding: 25px 90px 25px 25px !important;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -992,6 +992,15 @@ ul.profiletabsbar li:last-child a {
   letter-spacing: 0.02em;
   color: var(--base-primary) !important;
   cursor: pointer;
+}
+.action-bar .reply-post {
+  margin: 0;
+  width: 100%;
+  margin-top: 20px;
+  display: none;
+}
+.action-bar .reply-post.active {
+  display: block;
 }
 .reply-post form .replyinput .form-control::placeholder {
   color: var(--base-placeholder);
@@ -1029,7 +1038,7 @@ ul.profiletabsbar li:last-child a {
   font-size: 17px;
   line-height: 30px;
   text-align: center;
-  word-break: break-all;
+  word-break: break-word;
   color: var(--base-text-lightgray);
 }
 .user-detaiting-listing li img {
@@ -1255,9 +1264,18 @@ ul.profiletabsbar li:last-child a {
   transition: 0.5s ease;
   margin-bottom: 10px;
 }
+.deletemodal .modal-body {
+  height: auto;
+  padding: 30px 0px;
+}
 .share-media li {
   padding: 0 20px;
   text-align: center;
+}
+.header-nav .navbar-nav .user-dropdown img{
+  width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 .modal.show .modal-dialog {
   max-width: 772px;
@@ -3149,7 +3167,7 @@ ul.sidebar-menu {
   }
   .thredsbar {
     position: relative;
-    padding: 30px 60px;
+    padding: 10px 20px;
   }
   .action-bar ul li {
     margin-left: 15px;
