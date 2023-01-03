@@ -3,6 +3,7 @@ import DigitalTabs from "../Components/DigitalTabs";
 import WhatsMind from "../Components/WhatsMind";
 import { DContext } from "../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Spinner from 'react-bootstrap/Spinner';
 
 const New = () => {
   //Functions to call api
@@ -14,6 +15,8 @@ const New = () => {
   const [activeTabState, setActiveTabState] = useState("Global");
   //State for is post or not to paas dependency in use effect
   const [isPostState, setIsPostState] = useState("0");
+
+  const [isLoding, setIsLoading] = useState(false);
 
 
   //For render post list render when change tab and post something
@@ -31,6 +34,7 @@ const New = () => {
   //Get global post
   const getGlobalPosts = async () => {
     try {
+      setIsLoading(true);
       //Api call
       let pageNumberOfPostList = 1;
       const axiosRes = await getGlobalPostDContext(pageNumberOfPostList);
@@ -38,6 +42,7 @@ const New = () => {
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
       }
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -46,6 +51,7 @@ const New = () => {
   //Get Following post
   const getFollowingPosts = async () => {
     try {
+      setIsLoading(true);
       //Api call
       let pageNumberOfPostList = 1;
       const axiosRes = await getFollowingPostDContext(pageNumberOfPostList);
@@ -53,6 +59,7 @@ const New = () => {
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
       }
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -84,6 +91,15 @@ const New = () => {
   };
   return (
     <>
+      {isLoding &&
+        <div className='loader'>
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+
+      }
+
       <InfiniteScroll
         dataLength={postList.length}
         next={appendNextList}

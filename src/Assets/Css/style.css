@@ -44,6 +44,24 @@ body {
   --darkmode-offwhite: #afafaf;
   --darkmode-gray2xl : #343434;
 }
+/* Loader */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #00000091;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: 2s ease-in-out;
+}
+.loader .spinner-border {
+  color: var(--base-lightgray);
+}
+
 /* Text Gradient */
 .text-gradient{
     background: linear-gradient(180deg, #21A0DA -28.9%, #9DD382 100%), #FFFFFF;

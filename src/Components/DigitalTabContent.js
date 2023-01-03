@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 // import { MdOutlineTimer } from "react-icons/md";
-import Accordion from "react-bootstrap/Accordion";
 import Threads from "./Threads/index";
 import PostHead from "./PostList/PostHead";
 import PostContent from "./PostList/PostContent";
@@ -60,9 +59,13 @@ const DigitalTabContent = (props) => {
           </div>
 
           {isThreadBoxOpen &&
-            <div className="thredsbar">
-              <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} commentID="" setCommentCount={setCommentCount} />
-            </div>
+            <>
+              {console.log("rednder")}
+
+              <div className="thredsbar">
+                <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} commentID="" setCommentCount={setCommentCount} />
+              </div>
+            </>
           }
         </div>
       </div>

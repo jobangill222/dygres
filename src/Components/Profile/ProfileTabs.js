@@ -10,7 +10,7 @@ import UserListModal from "../Modals/UserListModal";
 
 const ProfileTabs = () => {
 
-    const { postList, setPostList, getMyPostsDContext, selectedPostIDForPopup } = useContext(DContext);
+    const { postList, setPostList, getMyPostsDContext, selectedIDForPopup } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -57,10 +57,10 @@ const ProfileTabs = () => {
     // Change state when click on count of agree disagree etc and change popupstate to true to open
     const [popupOpenStatus, setPopupOpenStatus] = useState(false);
     useEffect(() => {
-        if (selectedPostIDForPopup) {
+        if (selectedIDForPopup) {
             setPopupOpenStatus(true);
         }
-    }, [selectedPostIDForPopup])
+    }, [selectedIDForPopup])
 
 
     return (
