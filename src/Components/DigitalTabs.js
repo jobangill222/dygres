@@ -38,35 +38,53 @@ const DigitalTabs = (props) => {
       >
 
         <Tab eventKey="Global" title="Global">
-          {postList.map((post) => (
-            <DigitalTabContent
-              key={post._id}
-              setActiveTabState={setActiveTabState}
-              post={post}
-            />
-          ))}
+          {postList.length ?
+            postList.map((post) => (
+              <DigitalTabContent
+                key={post._id}
+                setActiveTabState={setActiveTabState}
+                post={post}
+              />
+            ))
+            : <div className="empty-bar">
+              <img src="/images/empty.png" alt='dummy' />
+              <h4>No Post</h4>
+            </div>
+          }
         </Tab>
 
 
         <Tab eventKey="Following" title="Following">
           {/* {console.log("post list in folowing tab", postList)} */}
-          {postList.map((post) => (
-            <DigitalTabContent
-              key={post._id}
-              setActiveTabState={setActiveTabState}
-              post={post}
-            />
-          ))}
+          {postList.length ?
+            postList.map((post) => (
+              <DigitalTabContent
+                key={post._id}
+                setActiveTabState={setActiveTabState}
+                post={post}
+              />
+            ))
+            : <div className="empty-bar">
+              <img src="/images/empty.png" alt='dummy' />
+              <h4>No Post</h4>
+            </div>
+          }
         </Tab>
 
         <Tab eventKey="Official" title="Official">
-          {postList.map((post) => (
-            <DigitalTabContent
-              key={post._id}
-              setActiveTabState={setActiveTabState}
-              post={post}
-            />
-          ))}
+          {postList.length ?
+            postList.map((post) => (
+              <DigitalTabContent
+                key={post._id}
+                setActiveTabState={setActiveTabState}
+                post={post}
+              />
+            ))
+            : <div className="empty-bar">
+              <img src="/images/empty.png" alt='dummy' />
+              <h4>No Post</h4>
+            </div>
+          }
         </Tab>
       </Tabs>
     </>

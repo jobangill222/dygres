@@ -74,12 +74,20 @@ const NotVoted = () => {
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
             <h4 className="pagetitle">Not Voted</h4>
-            {postList.map((post) => (
-                <DigitalTabContent
-                    key={post._id}
-                    post={post}
-                />
-            ))}
+            {
+                postList.length ?
+                    postList.map((post) => (
+                        <DigitalTabContent
+                            key={post._id}
+                            post={post}
+                        />
+                    ))
+                    :
+                    <div className="empty-bar">
+                        <img src="/images/empty.png" alt='dummy' />
+                        <h4>No Post</h4>
+                    </div>
+            }
         </>
     );
 }

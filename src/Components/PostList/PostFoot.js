@@ -29,7 +29,7 @@ import { toast } from "react-toastify";
 
 const PostFoot = (props) => {
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable } = props;
 
   //Functions to call api
   const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType } = useContext(DContext);
@@ -205,7 +205,8 @@ const PostFoot = (props) => {
           <li>
             <div
               className={isAgree ? `active` : ""}
-              onClick={() => AgreePost(postID)}><AiFillLike /></div>
+              onClick={() => !isPostDisable && AgreePost(postID)}><AiFillLike />
+            </div>
             <div className="list-text" onClick={() => viewPopup('agree-post-user-list')} >
               <span className="number">{postAgreeCount}</span>
               Agree</div>
@@ -213,12 +214,12 @@ const PostFoot = (props) => {
 
           <li>
             <div className={isDisAgree ? `active` : ""}
-              onClick={() => DisAgreePost(postID)}><AiFillDislike /></div>
+              onClick={() => !isPostDisable && DisAgreePost(postID)}><AiFillDislike />
+            </div>
             <div className="list-text" onClick={() => viewPopup('disagree-post-user-list')} >
               <span className="number">{postDisAgreeCount}</span>
               Disagree</div>
           </li>
-
 
 
           <li onClick={AwardsShow}>

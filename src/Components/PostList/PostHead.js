@@ -4,6 +4,9 @@ import { DContext } from "../../Context/DContext";
 
 import { BASE_URL } from '../../Config/index';
 
+import Countdown from 'react-countdown';
+
+
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
@@ -17,7 +20,7 @@ const PostHead = (props) => {
   const { user, setUserStats, postList, setPostList, followUnfollowDContext } = useContext(DContext);
 
   //Props
-  const { postUserDetails, is_follow, postUserID, created_at } = props;
+  const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable } = props;
 
   //State
   const [isFollowState, setIsFollowState] = useState(0);
@@ -98,6 +101,35 @@ const PostHead = (props) => {
   }, [is_follow]);
 
 
+
+  // const Completionist = () => console.log('You are good to go!')
+
+  // Random component
+  const Completionist = () => <span style={{ color: "red" }}><MdOutlineTimer />Time over</span>;
+
+  // Renderer callback with condition
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a completed state
+      setIsPostDisable(true)
+      return <Completionist />;
+    } else {
+      let colour;
+      // Render a countdown
+      if (days === 0) {
+        colour = "red";
+      }
+      else if (days === 1) {
+        colour = "yellow";
+      }
+      else {
+        colour = "green";
+      }
+      return <span style={{ color: colour }}> <MdOutlineTimer />{days}:{hours}:{minutes}:{seconds}</span>;
+    }
+  };
+
+
   return (
     <>
       <div className="user-detail-bar">
@@ -150,10 +182,14 @@ const PostHead = (props) => {
         </div>
         <div className="user-active-timer">
           <ul>
+
             <li className="text-green">
-              <MdOutlineTimer />
-              22hrs 20mins
+              {/* <MdOutlineTimer /> */}
+              {/* 3 day timer from post date */}
+              <Countdown date={moment(created_at) + 259200 * 1000} renderer={renderer}>
+              </Countdown>
             </li>
+
           </ul>
         </div>
       </div>

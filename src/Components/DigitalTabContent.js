@@ -19,6 +19,9 @@ const DigitalTabContent = (props) => {
   const [postContent, setPostContent] = useState(content);
   const [isThreadBoxOpen, setIsThreadBoxOpen] = useState(false);
 
+  const [isPostDisable, setIsPostDisable] = useState(false);
+
+
   const handleCommentBoxOpen = (e) => {
     // console.log("thread open", e);
     setIsThreadBoxOpen(e);
@@ -30,7 +33,7 @@ const DigitalTabContent = (props) => {
 
         <div className="accordionitem" >
           <div className="digital-feeds ">
-            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} />
+            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} />
             <div className="user-preview">
 
 
@@ -50,6 +53,7 @@ const DigitalTabContent = (props) => {
                   postID={_id}
                   onCommentBoxOpen={handleCommentBoxOpen}
                   setIsEditFieldOpen={setIsEditFieldOpen}
+                  isPostDisable={isPostDisable}
                 />
               }
 
