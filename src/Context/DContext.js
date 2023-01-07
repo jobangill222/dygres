@@ -20,6 +20,10 @@ export const DProvider = (props) => {
   const [selectedIDForPopup, setSelectedIDForPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
   const [popupType, setPopupType] = useState(null); // like popup for user agreed or disagreed to comment or user agree disagree to post based on this hit api in component/modal/User list
 
+
+  const [selectedPostIDForAwardPopup, setSelectedPostIDForAwardPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
+
+
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
 
@@ -724,6 +728,80 @@ export const DProvider = (props) => {
     }
   }
 
+
+  const getAwardListToSendDContext = async (selectedPostIDForAwardPopup) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/user/award/award-list-to-send`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: selectedPostIDForAwardPopup,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get award list to send api (DCOntext.js) - ", err);
+    }
+  };
+
+
+  const getPackagesToBuyDContext = async () => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/user/award/get-package-list`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get pckage list api (DCOntext.js) - ", err);
+    }
+  };
+
+
+  const BuyAwardDContext = async (packageID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/user/award/create-payment-link`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          packageID: packageID,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting payment link api (DCOntext.js) - ", err);
+    }
+  };
+
+  const SendAwardDContext = async (postID, awardID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/user/award/send-award`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+          awardID: awardID,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while send award api (DCOntext.js) - ", err);
+    }
+  };
+
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -739,6 +817,8 @@ export const DProvider = (props) => {
     setSelectedIDForPopup,
     popupType,
     setPopupType,
+    selectedPostIDForAwardPopup,
+    setSelectedPostIDForAwardPopup,
     // Methods
     userLogin,
     userSignup,
@@ -774,7 +854,11 @@ export const DProvider = (props) => {
     disagreeUnDisagreeCommentDContext,
     getAgreedCommentUserDContext,
     getDisagreedCommentUserDContext,
-    getCommentOfCommentDContext
+    getCommentOfCommentDContext,
+    getAwardListToSendDContext,
+    getPackagesToBuyDContext,
+    BuyAwardDContext,
+    SendAwardDContext
   };
   return (
     <>

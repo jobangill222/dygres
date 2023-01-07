@@ -20,8 +20,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
@@ -29,10 +27,10 @@ import { toast } from "react-toastify";
 
 const PostFoot = (props) => {
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setSelectedPostIDForAwardPopup } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -175,14 +173,14 @@ const PostFoot = (props) => {
   }
 
 
-  // Awards Modal
-  const [showAwards, setAwardsClose] = useState(false);
-  const AwardsClose = () => setAwardsClose(false);
-  const AwardsShow = () => setAwardsClose(true);
-  // BuyMore Awards
-  const [showBuyAwards, setShowAwardsClose] = useState(false);
-  const ShowBuyAwardsClose = () => setShowAwardsClose(false);
-  const ShowAddMore = () => setShowAwardsClose(true);
+  // // Awards Modal
+  // const [showAwards, setAwardsClose] = useState(false);
+  // const AwardsClose = () => setAwardsClose(false);
+  // const AwardsShow = () => setAwardsClose(true);
+  // // BuyMore Awards
+  // const [showBuyAwards, setShowAwardsClose] = useState(false);
+  // const ShowBuyAwardsClose = () => setShowAwardsClose(false);
+  // const ShowAddMore = () => setShowAwardsClose(true);
 
   // Share Modal
   const [ReportShare, setshareShow] = useState(false);
@@ -192,10 +190,15 @@ const PostFoot = (props) => {
 
 
   // open popup by set state in selected postid which is global state and set popup stype state
-  const viewPopup = async (type) => {
+  const viewUserListPopup = async (type) => {
     setSelectedIDForPopup(postID)
     // console.log('type', type);
     setPopupType(type);
+  }
+
+
+  const viewAwardModal = () => {
+    setSelectedPostIDForAwardPopup(postID)
   }
 
   return (
@@ -207,7 +210,7 @@ const PostFoot = (props) => {
               className={isAgree ? `active` : ""}
               onClick={() => !isPostDisable && AgreePost(postID)}><AiFillLike />
             </div>
-            <div className="list-text" onClick={() => viewPopup('agree-post-user-list')} >
+            <div className="list-text" onClick={() => viewUserListPopup('agree-post-user-list')} >
               <span className="number">{postAgreeCount}</span>
               Agree</div>
           </li>
@@ -216,15 +219,16 @@ const PostFoot = (props) => {
             <div className={isDisAgree ? `active` : ""}
               onClick={() => !isPostDisable && DisAgreePost(postID)}><AiFillDislike />
             </div>
-            <div className="list-text" onClick={() => viewPopup('disagree-post-user-list')} >
+            <div className="list-text" onClick={() => viewUserListPopup('disagree-post-user-list')} >
               <span className="number">{postDisAgreeCount}</span>
               Disagree</div>
           </li>
 
 
-          <li onClick={AwardsShow}>
+          {/* <li onClick={AwardsShow}> */}
+          <li onClick={viewAwardModal} >
             <FaGift />
-            <span className="number">6</span>Award
+            <span className="number">{awardCount}</span>Award
           </li>
 
 
@@ -240,7 +244,7 @@ const PostFoot = (props) => {
 
           <li >
             <div className={isReport ? `active` : ""} onClick={() => EditReport(postID)}><BsFillFlagFill /></div>
-            <div className="list-text" onClick={() => viewPopup('report-post-user-list')}>
+            <div className="list-text" onClick={() => viewUserListPopup('report-post-user-list')}>
               <span className="number">{postReportCount}</span>
               Report</div>
           </li>
@@ -303,7 +307,7 @@ const PostFoot = (props) => {
 
 
       {/* Awards modal */}
-      <Modal
+      {/* <Modal
         className="Actions-modal awards-modal z-1050"
         show={showAwards}
         onHide={AwardsClose}
@@ -358,7 +362,7 @@ const PostFoot = (props) => {
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
-      {/* BuyAwards modal */}
+      BuyAwards modal 
       <Modal
         className="Actions-modal buymore-modal "
         show={showBuyAwards}
@@ -403,7 +407,7 @@ const PostFoot = (props) => {
           </Row>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
-      </Modal>
+      </Modal> */}
       {/* Edit Report */}
       <Modal
         className="Actions-modal Editreportmodal"

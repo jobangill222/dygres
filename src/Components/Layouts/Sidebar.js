@@ -51,7 +51,7 @@ const Sidebar = () => {
                             <h6 className="text-offwhite">Followers</h6>
                         </li>
                         <li>
-                            <p className="text-secondry">578</p>
+                            <p className="text-secondry">{userStats?.totalAwards}</p>
                             <h6 className="text-offwhite">Awards</h6>
                         </li>
                     </ul>

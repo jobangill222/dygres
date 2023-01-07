@@ -5,10 +5,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
+import AwardModal from "../Components/Modals/AwardModal";
 
 const MostVoted = () => {
 
-    const { getMostVotedPostDContext, postList, setPostList, selectedIDForPopup } =
+    const { getMostVotedPostDContext, postList, setPostList, selectedIDForPopup, selectedPostIDForAwardPopup } =
         useContext(DContext);
 
     useEffect(() => {
@@ -50,6 +51,15 @@ const MostVoted = () => {
     };
 
 
+
+    // Change state when click on award in foot section and change popupstate to true to open
+    const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
+    useEffect(() => {
+        if (selectedPostIDForAwardPopup) {
+            setAwardPopupOpenStatus(true);
+        }
+    }, [selectedPostIDForAwardPopup])
+
     // Change state when click on count of agree disagree etc and change popupstate to true to open
     const [popupOpenStatus, setPopupOpenStatus] = useState(false);
     useEffect(() => {
@@ -70,6 +80,9 @@ const MostVoted = () => {
 
             {/* Modal */}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
+
+            {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />}
+
 
             <h4 className="pagetitle">Most Voted</h4>
 

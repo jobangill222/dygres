@@ -5,10 +5,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
+import AwardModal from "../Components/Modals/AwardModal";
+
 
 const Hot = () => {
 
-    const { getHotPostDContext, postList, setPostList, selectedIDForPopup } =
+    const { getHotPostDContext, postList, setPostList, selectedIDForPopup, selectedPostIDForAwardPopup } =
         useContext(DContext);
 
     useEffect(() => {
@@ -58,6 +60,15 @@ const Hot = () => {
         }
     }, [selectedIDForPopup])
 
+
+    // Change state when click on award in foot section and change popupstate to true to open
+    const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
+    useEffect(() => {
+        if (selectedPostIDForAwardPopup) {
+            setAwardPopupOpenStatus(true);
+        }
+    }, [selectedPostIDForAwardPopup])
+
     return (
         <>
 
@@ -71,6 +82,8 @@ const Hot = () => {
 
             {/* Modal */}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
+
+            {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />}
 
             <h4 className="pagetitle">Hot</h4>
 

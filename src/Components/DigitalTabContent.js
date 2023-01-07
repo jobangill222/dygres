@@ -9,12 +9,14 @@ import PostEdit from "./PostList/PostEdit";
 const DigitalTabContent = (props) => {
   // Prop Destrucutring
   // console.log("props.post", props.post);
-  const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, is_report, userID, _id, is_follow, created_at
+  const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, award_count, is_report, userID, _id, is_follow, created_at
   } = props.post;
 
   //States
 
   const [commentCount, setCommentCount] = useState(comment_count);
+  const [awardCount, setAwardCount] = useState(award_count);
+
   const [isEditFieldOpen, setIsEditFieldOpen] = useState(false);
   const [postContent, setPostContent] = useState(content);
   const [isThreadBoxOpen, setIsThreadBoxOpen] = useState(false);
@@ -48,12 +50,15 @@ const DigitalTabContent = (props) => {
                   is_disagree={is_disagree}
                   report_count={report_count}
                   commentCount={commentCount}
+
                   is_report={is_report}
                   postUserID={userID}
                   postID={_id}
                   onCommentBoxOpen={handleCommentBoxOpen}
                   setIsEditFieldOpen={setIsEditFieldOpen}
                   isPostDisable={isPostDisable}
+
+                  awardCount={awardCount}
                 />
               }
 

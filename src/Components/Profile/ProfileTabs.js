@@ -7,10 +7,12 @@ import { DContext } from "../../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 import DigitalTabContent from "../DigitalTabContent";
 import UserListModal from "../Modals/UserListModal";
+import AwardModal from "../Modals/AwardModal";
+
 
 const ProfileTabs = () => {
 
-    const { postList, setPostList, getMyPostsDContext, selectedIDForPopup } = useContext(DContext);
+    const { postList, setPostList, getMyPostsDContext, selectedIDForPopup, selectedPostIDForAwardPopup } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -63,6 +65,15 @@ const ProfileTabs = () => {
     }, [selectedIDForPopup])
 
 
+
+    // Change state when click on award in foot section and change popupstate to true to open
+    const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
+    useEffect(() => {
+        if (selectedPostIDForAwardPopup) {
+            setAwardPopupOpenStatus(true);
+        }
+    }, [selectedPostIDForAwardPopup])
+
     return (
         <>
 
@@ -83,6 +94,8 @@ const ProfileTabs = () => {
 
             {/* Modal */}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
+
+            {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />}
 
             <Tabs defaultActiveKey="Timeline" id="" className="digital-tabs" >
                 {/* <Tab eventKey="Timeline" title="Timeline">
