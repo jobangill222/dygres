@@ -1,15 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
-import { BsFillImageFill, BsPencil } from 'react-icons/bs';
-import ProfileTabs from "./ProfileTabs";
-import { Link } from "react-router-dom";
+import UsersProfileTabs from "./UsersProfileTabs";
 import { DContext } from "../../Context/DContext";
+import { useNavigate } from "react-router-dom";
 
-const Profile = () => {
 
-    const { user, userStats } = useContext(DContext);
+const UsersProfile = () => {
+
+    const { getOtherUserDetailByUsernameContext } = useContext(DContext);
+
+    const [user, setUser] = useState();
+    const [userStats, setUserStats] = useState();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    const getData = async () => {
+        try {
+            //Api call
+            const username = localStorage.getItem('username');
+
+            const axiosRes = await getOtherUserDetailByUsernameContext(username);
+            console.log("axiosRes********* data", axiosRes);
+            if (axiosRes.status === "success") {
+                setUser(axiosRes.data)
+                setUserStats(axiosRes.userStats)
+            } else {
+                navigate('/notfound')
+            }
+        } catch (error) {
+            console.log('err');
+        }
+    }
+
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -64,10 +92,10 @@ const Profile = () => {
                         <div className="user-edit-cover">
                             <ul>
                                 <li>
-                                    <Link to="/"><BsFillImageFill />Edit Cover</Link>
+                                    {/* <Link to="/"><BsFillImageFill />Edit Cover</Link> */}
                                 </li>
                                 <li>
-                                    <Link to="/editprofile"><BsPencil />Edit profile</Link>
+                                    {/* <Link to="/editprofile"><BsPencil />Edit profile</Link> */}
                                 </li>
                             </ul>
                         </div>
@@ -76,10 +104,10 @@ const Profile = () => {
                 </Container>
             </div>
             <Container>
-                <ProfileTabs user={user} />
+                <UsersProfileTabs user={user} />
             </Container>
         </>
     );
 }
 
-export default Profile;
+export default UsersProfile;

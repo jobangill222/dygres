@@ -6,6 +6,11 @@ import { ThemeProvider } from "./hooks/useThemeContext";
 import Notifications from "./Pages/Notifications";
 import New from "./Pages/New";
 import Hot from "./Pages/Hot";
+import HashTagPosts from "./Pages/HashTagPosts";
+
+import SinglePostDetail from "./Pages/SinglePostDetail";
+
+
 import MostVoted from "./Pages/MostVoted";
 import NotVoted from "./Pages/NotVoted";
 import Profile from "./Components/Profile/Profile";
@@ -39,6 +44,7 @@ import PostHead from "./Components/PostList/PostHead";
 import WhatsMind from "./Components/WhatsMind";
 import SinglePost from "./Components/SinglePost/index";
 
+import UsersProfile from "./Components/Profile/UsersProfile";
 
 
 function App() {
@@ -71,6 +77,10 @@ function App() {
                   <Route exact path="/new" element={<New />} />
                   <Route exact path="/hot" element={<Hot />} />
                   <Route exact path="/most-voted" element={<MostVoted />} />
+                  <Route exact path="/hashtagPosts" element={<HashTagPosts />} />
+                  <Route exact path="/SinglePostDetail" element={<SinglePostDetail />} />
+
+
                   <Route
                     exact
                     path="/notification"
@@ -87,6 +97,8 @@ function App() {
 
                 <Route element={<ProfileLayout />}>
                   <Route exact path="/profile" element={<Profile />} />
+                  <Route exact path="/Usersprofile" element={<UsersProfile />} />
+
                   <Route exact path="/profiletabs" element={<ProfileTabs />} />
                   <Route
                     exact

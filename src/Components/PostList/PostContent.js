@@ -1,18 +1,16 @@
 import React from "react";
-import { highlightName } from "../../helper/highlightName";
+// import { highlightName } from "../../helper/highlightName";
+import HighLight from "../HighLight";
 
 const PostContent = ({ postContent }) => {
 
-  const finalPostContent = highlightName(postContent);
+  // const finalPostContent = highlightName(postContent);
 
   return (
     <>
       <div className="Description-bar">
         <p>
-          {finalPostContent}
-          {/* <span className="text-primary">#HelloWorld</span>{" "}
-          <span className="text-primary">@methewreed</span>{" "}
-          <span className="text-primary">@iamhannah</span> */}
+          <HighLight content={postContent} />
         </p>
       </div>
     </>

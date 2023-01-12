@@ -16,6 +16,9 @@ export const DProvider = (props) => {
   //State for postList
   const [postList, setPostList] = useState([]);
 
+  //Notifications
+  const [notificationList, setNotificationList] = useState([]);
+
   //State For Popup UserList
   const [selectedIDForPopup, setSelectedIDForPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
   const [popupType, setPopupType] = useState(null); // like popup for user agreed or disagreed to comment or user agree disagree to post based on this hit api in component/modal/User list
@@ -802,6 +805,151 @@ export const DProvider = (props) => {
   };
 
 
+  const getOtherUserDetailByUsernameContext = async (username) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/profile/get-other-user-details-by-username`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          username: username,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get other user detail api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const getOtherUserPostsByUsernameDContext = async (username, pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/get-other-user-posts-by-username?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          username: username,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get other user post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+
+  const getpostsByHashTagDContext = async (hashtagName, pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/get-posts-by-hashtag?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          hashtagName: hashtagName,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get hashtag post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+  const getSinglePostDetailDContext = async (postID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/single-post-detail`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID
+        }
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get single post detail api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+
+  const getNotificationDContext = async (pageNumberOfNotificationList) => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/user/notification/get-notifications?page=${pageNumberOfNotificationList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get notification list api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+
+  const deleteNotificationDContext = async (notificationID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/user/notification/delete-notification`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          notificationID: notificationID
+        }
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while delete notification api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+
+  const deleteAllNotificationDContext = async (notificationID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/user/notification/delete-all-notification`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while delete all notification api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -813,6 +961,8 @@ export const DProvider = (props) => {
     setUserStats,
     postList,
     setPostList,
+    notificationList,
+    setNotificationList,
     selectedIDForPopup,
     setSelectedIDForPopup,
     popupType,
@@ -858,7 +1008,14 @@ export const DProvider = (props) => {
     getAwardListToSendDContext,
     getPackagesToBuyDContext,
     BuyAwardDContext,
-    SendAwardDContext
+    SendAwardDContext,
+    getOtherUserDetailByUsernameContext,
+    getOtherUserPostsByUsernameDContext,
+    getpostsByHashTagDContext,
+    getSinglePostDetailDContext,
+    getNotificationDContext,
+    deleteNotificationDContext,
+    deleteAllNotificationDContext
   };
   return (
     <>

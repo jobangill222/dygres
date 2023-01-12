@@ -24,13 +24,15 @@ import Modal from "react-bootstrap/Modal";
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 
+import AwardModal from "../Modals/AwardModal";
+
 
 const PostFoot = (props) => {
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, listingType } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setSelectedPostIDForAwardPopup } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setSelectedPostIDForAwardPopup, selectedPostIDForAwardPopup } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -43,6 +45,13 @@ const PostFoot = (props) => {
   const [isReport, setIsReport] = useState(false);
 
   const [isthreadopen, setIsthreadopen] = useState(false);
+
+
+  useEffect(() => {
+    if (listingType === 'single') {
+      setIsthreadopen(true);
+    }
+  }, [])
 
   useEffect(() => {
     // console.log("isthreadopen", isthreadopen);
@@ -196,10 +205,13 @@ const PostFoot = (props) => {
     setPopupType(type);
   }
 
+  const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
 
   const viewAwardModal = () => {
     setSelectedPostIDForAwardPopup(postID)
+    setAwardPopupOpenStatus(true);
   }
+
 
   return (
     <>
@@ -231,7 +243,7 @@ const PostFoot = (props) => {
             <span className="number">{awardCount}</span>Award
           </li>
 
-
+          {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} setAwardCount={setAwardCount} />}
 
 
           <li>

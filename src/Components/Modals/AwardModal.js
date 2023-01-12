@@ -11,7 +11,7 @@ import SinglePackageList from './SinglePackageList';
 
 const AwardModal = (props) => {
 
-    const { awardPopupOpenStatus, setAwardPopupOpenStatus } = props;
+    const { awardPopupOpenStatus, setAwardPopupOpenStatus, setAwardCount } = props;
     const { selectedPostIDForAwardPopup, setSelectedPostIDForAwardPopup, getAwardListToSendDContext, getPackagesToBuyDContext } = useContext(DContext);
     // console.log('selectedPostIDForAwardPopup', selectedPostIDForAwardPopup);
 
@@ -71,7 +71,7 @@ const AwardModal = (props) => {
                     <Row>
 
                         {awardListToSend.map((awardList) => (
-                            < SingleAward awardList={awardList} />
+                            < SingleAward awardList={awardList} setAwardCount={setAwardCount} />
                         ))}
 
                     </Row>

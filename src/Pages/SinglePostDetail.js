@@ -1,30 +1,33 @@
 import React, { useEffect, useContext, useState } from "react";
 import DigitalTabContent from "../Components/DigitalTabContent";
 import { DContext } from "../Context/DContext";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
+import { toast } from "react-toastify";
 // import AwardModal from "../Components/Modals/AwardModal";
 
 const MostVoted = () => {
 
-    const { getMostVotedPostDContext, postList, setPostList, selectedIDForPopup } =
+    const { getSinglePostDetailDContext, postList, setPostList, selectedIDForPopup } =
         useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
-        getMostVotedPosts();
+        getPostDetail();
     }, []);
 
-    const getMostVotedPosts = async () => {
+    const getPostDetail = async () => {
         try {
             //Api call
-            let pageNumberOfPostList = 1;
-            const axiosRes = await getMostVotedPostDContext(pageNumberOfPostList);
-            // console.log("axiosRes******** after get most votes posts", axiosRes);
+            const postID = "63bd0d2088c93064c87b89ff";
+            const axiosRes = await getSinglePostDetailDContext(postID);
+            console.log("axiosRes******** after get hashtag posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
+            }
+            else {
+                toast(axiosRes.message);
             }
         } catch (err) {
             console.log(err);
@@ -32,33 +35,6 @@ const MostVoted = () => {
     };
 
 
-    //Append next post list
-    const appendNextList = async () => {
-        let currentPage = localStorage.getItem("currentPage");
-        let pageNumberOfPostList = parseInt(currentPage) + 1;
-        // console.log("appendNextList function call", pageNumberOfPostList);
-
-        const axiosRes = await getMostVotedPostDContext(pageNumberOfPostList);
-        // console.log(
-        //     "axiosRes********* after get most voted posts on page",
-        //     pageNumberOfPostList,
-        //     axiosRes
-        // );
-        if (axiosRes.status === "success") {
-            setPostList((current) => [...current, ...axiosRes.list]);
-            localStorage.setItem("currentPage", pageNumberOfPostList);
-        }
-    };
-
-
-
-    // Change state when click on award in foot section and change popupstate to true to open
-    // const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
-    // useEffect(() => {
-    //     if (selectedPostIDForAwardPopup) {
-    //         setAwardPopupOpenStatus(true);
-    //     }
-    // }, [selectedPostIDForAwardPopup])
 
     // Change state when click on count of agree disagree etc and change popupstate to true to open
     const [popupOpenStatus, setPopupOpenStatus] = useState(false);
@@ -70,13 +46,7 @@ const MostVoted = () => {
 
     return (
         <>
-            <InfiniteScroll
-                dataLength={postList.length}
-                next={appendNextList}
-                hasMore={true}
-            >
-                {/* {postList} */}
-            </InfiniteScroll>
+
 
             {/* Modal */}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
@@ -84,7 +54,7 @@ const MostVoted = () => {
             {/* {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />} */}
 
 
-            <h4 className="pagetitle">Most Voted</h4>
+            <h4 className="pagetitle">Post Detail</h4>
 
             {
                 postList.length ?
@@ -92,6 +62,7 @@ const MostVoted = () => {
                         <DigitalTabContent
                             key={post._id}
                             post={post}
+                            listingType="single"
                         />
                     ))
                     :

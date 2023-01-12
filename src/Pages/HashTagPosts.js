@@ -7,25 +7,29 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import UserListModal from "../Components/Modals/UserListModal";
 // import AwardModal from "../Components/Modals/AwardModal";
 
+const HashTagPosts = () => {
 
-const Hot = () => {
-
-    const { getHotPostDContext, postList, setPostList, selectedIDForPopup } =
+    const { getpostsByHashTagDContext, postList, setPostList, selectedIDForPopup } =
         useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
-        getHotPosts();
+        getposts();
     }, []);
 
-    const getHotPosts = async () => {
+    const getposts = async () => {
         try {
             //Api call
             let pageNumberOfPostList = 1;
-            const axiosRes = await getHotPostDContext(pageNumberOfPostList);
-            // console.log("axiosRes******** after get hot posts", axiosRes);
+
+            const hashtagName = localStorage.getItem('hashTagName')
+            const axiosRes = await getpostsByHashTagDContext(hashtagName, pageNumberOfPostList);
+            console.log("axiosRes******** after get hashtag posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
+            }
+            else {
+                setPostList([]);
             }
         } catch (err) {
             console.log(err);
@@ -39,9 +43,11 @@ const Hot = () => {
         let pageNumberOfPostList = parseInt(currentPage) + 1;
         // console.log("appendNextList function call", pageNumberOfPostList);
 
-        const axiosRes = await getHotPostDContext(pageNumberOfPostList);
+
+        const hashtagName = localStorage.getItem('hashTagName')
+        const axiosRes = await getpostsByHashTagDContext(hashtagName, pageNumberOfPostList);
         // console.log(
-        //     "axiosRes********* after get hot posts on page",
+        //     "axiosRes********* after get most voted posts on page",
         //     pageNumberOfPostList,
         //     axiosRes
         // );
@@ -52,14 +58,6 @@ const Hot = () => {
     };
 
 
-    // Change state when click on count of agree disagree etc and change popupstate to true to open
-    const [popupOpenStatus, setPopupOpenStatus] = useState(false);
-    useEffect(() => {
-        if (selectedIDForPopup) {
-            setPopupOpenStatus(true);
-        }
-    }, [selectedIDForPopup])
-
 
     // Change state when click on award in foot section and change popupstate to true to open
     // const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
@@ -69,9 +67,16 @@ const Hot = () => {
     //     }
     // }, [selectedPostIDForAwardPopup])
 
+    // Change state when click on count of agree disagree etc and change popupstate to true to open
+    const [popupOpenStatus, setPopupOpenStatus] = useState(false);
+    useEffect(() => {
+        if (selectedIDForPopup) {
+            setPopupOpenStatus(true);
+        }
+    }, [selectedIDForPopup])
+
     return (
         <>
-
             <InfiniteScroll
                 dataLength={postList.length}
                 next={appendNextList}
@@ -85,23 +90,25 @@ const Hot = () => {
 
             {/* {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />} */}
 
-            <h4 className="pagetitle">Hot</h4>
 
-            {postList.length ?
-                postList.map((post) => (
-                    <DigitalTabContent
-                        key={post._id}
-                        post={post}
-                    />
-                ))
-                :
-                <div className="empty-bar">
-                    <img src="/images/empty.png" alt='dummy' />
-                    <h4>No Post</h4>
-                </div>
+            <h4 className="pagetitle">HashTag</h4>
+
+            {
+                postList.length ?
+                    postList.map((post) => (
+                        <DigitalTabContent
+                            key={post._id}
+                            post={post}
+                        />
+                    ))
+                    :
+                    <div className="empty-bar">
+                        <img src="/images/empty.png" alt='dummy' />
+                        <h4>No Post</h4>
+                    </div>
             }
         </>
     );
 }
 
-export default Hot;
+export default HashTagPosts;

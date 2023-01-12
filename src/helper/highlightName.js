@@ -4,7 +4,7 @@ export const highlightName = (finalPostContent) => {
     // console.log('myArray', myArray);
 
     return <span> {myArray.map((singleWord, i) =>
-        <span key={i} className={singleWord[0] === '@' ? "text-primary" : singleWord[0] === '#' ? "text-primary" : ""}>
+        <span key={i} className={singleWord[0] === '@' ? "text-primary-highlight" : singleWord[0] === '#' ? "text-primary-highlight" : ""}>
             {singleWord}{' '}
         </span>
     )

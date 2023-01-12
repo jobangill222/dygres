@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
-import { DContext } from "../../Context/DContext";
+import React from 'react';
 
-const ProfileAbout = () => {
+const ProfileAbout = (props) => {
 
     //From Global state
-    const { user } = useContext(DContext);
+    const { user } = props;
 
     return (
         <>

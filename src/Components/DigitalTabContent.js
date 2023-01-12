@@ -10,7 +10,9 @@ const DigitalTabContent = (props) => {
   // Prop Destrucutring
   // console.log("props.post", props.post);
   const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, award_count, is_report, userID, _id, is_follow, created_at
-  } = props.post;
+    , postAward } = props.post;
+
+  const { listingType } = props;
 
   //States
 
@@ -35,7 +37,7 @@ const DigitalTabContent = (props) => {
 
         <div className="accordionitem" >
           <div className="digital-feeds ">
-            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} />
+            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} postAward={postAward} />
             <div className="user-preview">
 
 
@@ -59,6 +61,9 @@ const DigitalTabContent = (props) => {
                   isPostDisable={isPostDisable}
 
                   awardCount={awardCount}
+                  setAwardCount={setAwardCount}
+
+                  listingType={listingType}
                 />
               }
 

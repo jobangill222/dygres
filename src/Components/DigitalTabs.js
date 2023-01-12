@@ -6,7 +6,8 @@ import { DContext } from "../Context/DContext";
 
 // Import Modals
 import UserListModal from "./Modals/UserListModal";
-import AwardModal from "./Modals/AwardModal";
+import ViewPostAwardModal from "./Modals/ViewPostAwardModal";
+
 
 
 const DigitalTabs = (props) => {
@@ -15,7 +16,7 @@ const DigitalTabs = (props) => {
   const { setActiveTabState } = props;
 
   //Global states
-  const { postList, selectedIDForPopup, selectedPostIDForAwardPopup } = useContext(DContext);
+  const { postList, selectedIDForPopup } = useContext(DContext);
 
   // Change state when click on count of agree disagree etc and change popupstate to true to open
   const [popupOpenStatus, setPopupOpenStatus] = useState(false);
@@ -26,14 +27,6 @@ const DigitalTabs = (props) => {
   }, [selectedIDForPopup])
 
 
-  // Change state when click on award in foot section and change popupstate to true to open
-  const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
-  useEffect(() => {
-    if (selectedPostIDForAwardPopup) {
-      setAwardPopupOpenStatus(true);
-    }
-  }, [selectedPostIDForAwardPopup])
-
 
   return (
     <>
@@ -41,7 +34,9 @@ const DigitalTabs = (props) => {
       {/* Modal */}
       {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
-      {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />}
+      {/* <ViewPostAwardModal /> */}
+
+
 
       <Tabs
         defaultActiveKey="Global"

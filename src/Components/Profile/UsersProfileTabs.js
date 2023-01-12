@@ -10,11 +10,11 @@ import UserListModal from "../Modals/UserListModal";
 // import AwardModal from "../Modals/AwardModal";
 
 
-const ProfileTabs = (props) => {
+const UsersProfileTabs = (props) => {
 
     const { user } = props;
 
-    const { postList, setPostList, getMyPostsDContext, selectedIDForPopup } = useContext(DContext);
+    const { postList, setPostList, getOtherUserPostsByUsernameDContext, selectedIDForPopup } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -26,7 +26,9 @@ const ProfileTabs = (props) => {
         try {
             //Api call
             let pageNumberOfPostList = 1;
-            const axiosRes = await getMyPostsDContext(pageNumberOfPostList);
+            // const username = "newuse1r674";
+            const username = localStorage.getItem('username');
+            const axiosRes = await getOtherUserPostsByUsernameDContext(username, pageNumberOfPostList);
             // console.log("axiosRes********* after get my posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
@@ -44,7 +46,9 @@ const ProfileTabs = (props) => {
 
         let axiosRes;
 
-        axiosRes = await getMyPostsDContext(pageNumberOfPostList);
+        // const username = "newuse1r674";
+        const username = localStorage.getItem('username');
+        axiosRes = await getOtherUserPostsByUsernameDContext(username, pageNumberOfPostList);
         // console.log(
         //     "axiosRes********* after get my posts on page",
         //     pageNumberOfPostList,
@@ -111,7 +115,7 @@ const ProfileTabs = (props) => {
                 </Tab>
 
                 {/* ABout section */}
-                <Tab eventKey="About you" title="About you">
+                <Tab eventKey="About" title="About">
                     <ProfileAbout user={user} />
                 </Tab>
             </Tabs>
@@ -119,4 +123,4 @@ const ProfileTabs = (props) => {
     );
 }
 
-export default ProfileTabs;
+export default UsersProfileTabs;

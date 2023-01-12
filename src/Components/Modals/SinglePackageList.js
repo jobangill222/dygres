@@ -60,7 +60,7 @@ export default function SinglePackageList(props) {
                     <h5>{singlePackage?.name}</h5>
                     <h3>₹{singlePackage?.amount}</h3>
 
-                    {singlePackage.is_buy === 0 ? <button onClick={buyPackage} >Buy</button> : <button >Already Purchased</button>}
+                    {singlePackage.is_buy === 0 ? <button className="btn-primary" onClick={buyPackage} >Buy</button> : <button className="btn-primary">Purchased</button>}
                     {/* <button onClick={buyPackage} >Buy</button> */}
                 </div>
             </Col>

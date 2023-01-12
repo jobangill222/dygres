@@ -2,10 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { MdOutlineTimer } from "react-icons/md";
 import { DContext } from "../../Context/DContext";
 
-import { BASE_URL } from '../../Config/index';
-
 import Countdown from 'react-countdown';
-
+import PostHeadAward from "./PostHeadAward";
 
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
@@ -20,7 +18,7 @@ const PostHead = (props) => {
   const { user, setUserStats, postList, setPostList, followUnfollowDContext } = useContext(DContext);
 
   //Props
-  const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable } = props;
+  const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward } = props;
 
   //State
   const [isFollowState, setIsFollowState] = useState(0);
@@ -136,7 +134,7 @@ const PostHead = (props) => {
         <div className="detailleft">
           <div className="userleftside">
             <div className="avatar-img active">
-              <img src={postUserDetails?.profileImage ? BASE_URL + `/` + postUserDetails?.profileImage : `/images/user.png`} alt="user-img" />
+              <img src={postUserDetails?.profileImage ? postUserDetails?.profileImage : `/images/user.png`} alt="user-img" />
             </div>
             <div className="user-detail">
               <div className="follow-bar">
@@ -165,20 +163,29 @@ const PostHead = (props) => {
               </div>
             </div>
           </div>
+
+
           <ul className="awards-bar bg-darkgray">
-            <li className="text-whitesure">
-              <img src="/gif/thumbsdown2.gif" alt="awards" />5
-            </li>
-            <li className="text-whitesure">
-              <img src="/gif/thumbsdown2.gif" alt="awards" />4
-            </li>
-            <li className="text-whitesure">
-              <img src="/gif/thumbsdown2.gif" alt="awards" />6
-            </li>
-            <li className="text-whitesure">
-              <img src="/gif/thumbsdown2.gif" alt="awards" />9
-            </li>
+            {postAward?.length ?
+              postAward.map((award, index) => {
+
+                if (index < 4) {
+                  return <PostHeadAward
+                    key={award._id}
+                    award={award}
+                  />
+                } else {
+                  return ""
+                }
+
+              })
+              : ""
+            }
           </ul>
+
+
+
+
         </div>
         <div className="user-active-timer">
           <ul>

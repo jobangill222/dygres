@@ -4,7 +4,7 @@ import { DContext } from "../../Context/DContext";
 
 export default function SingleAward(props) {
 
-    const { awardList } = props;
+    const { awardList, setAwardCount } = props;
     // console.log(awardList, awardList)
 
 
@@ -23,6 +23,7 @@ export default function SingleAward(props) {
             const axiosRes = await SendAwardDContext(selectedPostIDForAwardPopup, awardList._id);
             console.log('axiosRes after send award', axiosRes);
             setIsAwardSent(true)
+            setAwardCount((previousState) => previousState + 1);
         } catch (err) {
             console.log(err);
         }
@@ -33,7 +34,7 @@ export default function SingleAward(props) {
                 <div className="Awrds-li">
                     <img src={awardList?.image} alt="img" />
                     <h4>{awardList?.name}</h4>
-                    {isAwardSent ? <button >sent</button> : <button onClick={sendAward} >Send</button>}
+                    {isAwardSent ? <button className="btn-primary" >Sent</button> : <button className="btn-primary" onClick={sendAward} >Send</button>}
                 </div>
             </Col>
         </>
