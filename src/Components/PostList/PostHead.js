@@ -175,7 +175,7 @@ const PostHead = (props) => {
                     award={award}
                   />
                 } else {
-                  return <p>More</p>
+                  return <button type='button' className="viewmorebtn">View more</button>
                 }
 
               })

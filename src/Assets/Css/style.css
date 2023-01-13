@@ -702,7 +702,7 @@ ul.profiletabsbar li:last-child a {
   top: -10px;
 }
 .user-detail-bar .detailleft .awards-bar li {
-  margin: 0 10px;
+  margin: 0 10px 0 0;
   display: flex;
   align-items: center;
 }
@@ -1088,7 +1088,31 @@ ul.profiletabsbar li:last-child a {
 .Actions-modal .modal-body {
   padding: 20px;
   height: 350px;
-  overflow: scroll;
+  overflow-y: scroll;
+  border: none;
+}
+.viewpostawardsmodal .awards-bar {
+  margin-left: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+}
+.viewmorebtn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+  cursor: pointer;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.viewpostawardsmodal .user-detail-bar {
+  padding: 0;
+  margin: 0;
+}
+
+.viewpostawardsmodal .awards-bar li {
+  margin: 0 20px 0 0 !important;
 }
 .Actions-modal .modal-body .aggree-li {
   display: flex;

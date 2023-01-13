@@ -29,7 +29,7 @@ const ViewPostsAwardModal = () => {
 
         <>
             <Modal
-                className="Actions-modal awards-modal z-1050"
+                className="Actions-modal viewpostawardsmodal awards-modal z-1050"
                 show={viewPostAwards}
                 onHide={PostAwardsClose}
                 centered
@@ -52,7 +52,6 @@ const ViewPostsAwardModal = () => {
 
                     </Row>
                 </Modal.Body>
-                <Modal.Footer></Modal.Footer>
             </Modal>
 
         </>
