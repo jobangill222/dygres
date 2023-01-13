@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import { DContext } from "../../Context/DContext";
 
 
-const ViewPostAwardModal = () => {
+const ViewPostsAwardModal = () => {
 
     const { } = useContext(DContext);
     // console.log('selectedPostIDForAwardPopup', selectedPostIDForAwardPopup);
@@ -60,4 +60,4 @@ const ViewPostAwardModal = () => {
 }
 
 
-export default ViewPostAwardModal;
+export default ViewPostsAwardModal;

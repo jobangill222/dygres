@@ -6,7 +6,7 @@ import { DContext } from "../Context/DContext";
 
 // Import Modals
 import UserListModal from "./Modals/UserListModal";
-import ViewPostAwardModal from "./Modals/ViewPostAwardModal";
+import ViewPostsAwardModal from "./Modals/ViewPostsAwardModal";
 
 
 
@@ -34,9 +34,7 @@ const DigitalTabs = (props) => {
       {/* Modal */}
       {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
-      {/* <ViewPostAwardModal /> */}
-
-
+      <ViewPostsAwardModal />
 
       <Tabs
         defaultActiveKey="Global"

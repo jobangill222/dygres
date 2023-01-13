@@ -175,7 +175,7 @@ const PostHead = (props) => {
                     award={award}
                   />
                 } else {
-                  return ""
+                  return <p>More</p>
                 }
 
               })
