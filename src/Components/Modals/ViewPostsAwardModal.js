@@ -40,15 +40,11 @@ const ViewPostsAwardModal = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
-                        <div className="user-detail-bar">
-                            <div className="detailleft">
-                                <ul className="awards-bar bg-darkgray">
+                                <ul className="awards-bar ">
                                     <li className="text-whitesure">
                                         <img src="/images/user.png" alt="awards" />3
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
 
                     </Row>
                 </Modal.Body>
