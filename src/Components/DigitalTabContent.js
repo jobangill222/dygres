@@ -37,7 +37,7 @@ const DigitalTabContent = (props) => {
 
         <div className="accordionitem" >
           <div className="digital-feeds ">
-            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} postAward={postAward} />
+            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} postAward={postAward} postID={_id} />
             <div className="user-preview">
 
 

@@ -5,13 +5,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
-// import AwardModal from "../Components/Modals/AwardModal";
+import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
+
 
 const NotVoted = () => {
 
 
-    const { getNotVotedPostDContext, postList, setPostList, selectedIDForPopup } =
-        useContext(DContext);
+    const { getNotVotedPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -69,6 +69,13 @@ const NotVoted = () => {
         }
     }, [selectedIDForPopup])
 
+    const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
+    useEffect(() => {
+        if (postIDForAwardOfPost) {
+            setViewMoreAwardOfPost(true);
+        }
+    }, [postIDForAwardOfPost])
+
     return (
         <>
 
@@ -83,7 +90,8 @@ const NotVoted = () => {
             {/* Modal */}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
-            {/* {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />} */}
+            {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
+
 
             <h4 className="pagetitle">Not Voted</h4>
             {

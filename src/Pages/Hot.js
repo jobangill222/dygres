@@ -5,13 +5,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
-// import AwardModal from "../Components/Modals/AwardModal";
+import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
+
 
 
 const Hot = () => {
 
-    const { getHotPostDContext, postList, setPostList, selectedIDForPopup } =
-        useContext(DContext);
+    const { getHotPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -60,6 +60,13 @@ const Hot = () => {
         }
     }, [selectedIDForPopup])
 
+    const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
+    useEffect(() => {
+        if (postIDForAwardOfPost) {
+            setViewMoreAwardOfPost(true);
+        }
+    }, [postIDForAwardOfPost])
+
 
     // Change state when click on award in foot section and change popupstate to true to open
     // const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
@@ -83,7 +90,8 @@ const Hot = () => {
             {/* Modal */}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
-            {/* {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />} */}
+            {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
+
 
             <h4 className="pagetitle">Hot</h4>
 

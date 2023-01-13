@@ -7,30 +7,35 @@ import Row from "react-bootstrap/Row";
 import { DContext } from "../../Context/DContext";
 
 
-const ViewPostsAwardModal = () => {
+const ViewPostsAwardModal = (props) => {
 
-    const { } = useContext(DContext);
-    // console.log('selectedPostIDForAwardPopup', selectedPostIDForAwardPopup);
+    const { viewMoreAwardOfPost, setViewMoreAwardOfPost } = props;
 
-
-    const [viewPostAwards, setViewPostAwards] = useState(true);
+    const { postIDForAwardOfPost, setPostIDForAwardOfPost, getAwardOfPostDContext } = useContext(DContext);
 
     const PostAwardsClose = () => {
-        setViewPostAwards(false);
-        // setSelectedPostIDForAwardPopup(null);
+
+        setViewMoreAwardOfPost(false);
+        setPostIDForAwardOfPost(null)
     }
 
     useEffect(() => {
-        // AwardListToSend();
+        list();
     }, [])
 
+
+    const [awardListState, setAwardListState] = useState([]);
+    const list = async () => {
+        const axiosRes = await getAwardOfPostDContext(postIDForAwardOfPost);
+        setAwardListState(axiosRes.awardList[0].postAward)
+    }
 
     return (
 
         <>
             <Modal
                 className="Actions-modal viewpostawardsmodal awards-modal z-1050"
-                show={viewPostAwards}
+                show={viewMoreAwardOfPost}
                 onHide={PostAwardsClose}
                 centered
             >
@@ -40,11 +45,17 @@ const ViewPostsAwardModal = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
-                                <ul className="awards-bar ">
-                                    <li className="text-whitesure">
-                                        <img src="/images/user.png" alt="awards" />3
-                                    </li>
-                                </ul>
+                        <ul className="awards-bar ">
+                            {/* {console.log('awardListState', awardListState)} */}
+
+
+                            {awardListState.map((award) => (
+                                <li className="text-whitesure">
+                                    <img src={award.awardDetail[0].image} alt="awards" />{award.awardCount}
+                                </li>
+                            ))}
+
+                        </ul>
 
                     </Row>
                 </Modal.Body>

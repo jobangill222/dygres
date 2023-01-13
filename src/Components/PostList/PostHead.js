@@ -15,10 +15,10 @@ TimeAgo.addDefaultLocale(en)
 const PostHead = (props) => {
 
   //Context
-  const { user, setUserStats, postList, setPostList, followUnfollowDContext } = useContext(DContext);
+  const { user, setUserStats, postList, setPostList, followUnfollowDContext, setPostIDForAwardOfPost } = useContext(DContext);
 
   //Props
-  const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward } = props;
+  const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward, postID } = props;
 
   //State
   const [isFollowState, setIsFollowState] = useState(0);
@@ -128,6 +128,12 @@ const PostHead = (props) => {
   };
 
 
+
+  const viewAllAwardsOfPost = async () => {
+    setPostIDForAwardOfPost(postID)
+  }
+
+
   return (
     <>
       <div className="user-detail-bar">
@@ -174,13 +180,18 @@ const PostHead = (props) => {
                     key={index * Math.random(100)}
                     award={award}
                   />
-                } else {
-                  return <button type='button' className="viewmorebtn">View more</button>
                 }
-
               })
               : ""
             }
+
+
+            {postAward?.length > 4 ?
+              <>
+                <button type='button' className="viewmorebtn" onClick={viewAllAwardsOfPost} >View more</button>
+              </> : ""
+            }
+
           </ul>
 
 

@@ -5,12 +5,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
-// import AwardModal from "../Components/Modals/AwardModal";
+import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
 
 const HashTagPosts = () => {
 
-    const { getpostsByHashTagDContext, postList, setPostList, selectedIDForPopup } =
-        useContext(DContext);
+    const { getpostsByHashTagDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -75,6 +74,13 @@ const HashTagPosts = () => {
         }
     }, [selectedIDForPopup])
 
+    const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
+    useEffect(() => {
+        if (postIDForAwardOfPost) {
+            setViewMoreAwardOfPost(true);
+        }
+    }, [postIDForAwardOfPost])
+
     return (
         <>
             <InfiniteScroll
@@ -88,7 +94,8 @@ const HashTagPosts = () => {
             {/* Modal */}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
-            {/* {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />} */}
+            {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
+
 
 
             <h4 className="pagetitle">HashTag</h4>

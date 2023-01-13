@@ -16,7 +16,7 @@ const DigitalTabs = (props) => {
   const { setActiveTabState } = props;
 
   //Global states
-  const { postList, selectedIDForPopup } = useContext(DContext);
+  const { postList, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
 
   // Change state when click on count of agree disagree etc and change popupstate to true to open
   const [popupOpenStatus, setPopupOpenStatus] = useState(false);
@@ -27,6 +27,13 @@ const DigitalTabs = (props) => {
   }, [selectedIDForPopup])
 
 
+  const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
+  useEffect(() => {
+    if (postIDForAwardOfPost) {
+      setViewMoreAwardOfPost(true);
+    }
+  }, [postIDForAwardOfPost])
+
 
   return (
     <>
@@ -34,7 +41,7 @@ const DigitalTabs = (props) => {
       {/* Modal */}
       {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
-      <ViewPostsAwardModal />
+      {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
       <Tabs
         defaultActiveKey="Global"

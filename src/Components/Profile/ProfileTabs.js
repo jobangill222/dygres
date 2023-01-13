@@ -7,14 +7,14 @@ import { DContext } from "../../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 import DigitalTabContent from "../DigitalTabContent";
 import UserListModal from "../Modals/UserListModal";
-// import AwardModal from "../Modals/AwardModal";
+import ViewPostsAwardModal from "../Modals/ViewPostsAwardModal";
 
 
 const ProfileTabs = (props) => {
 
     const { user } = props;
 
-    const { postList, setPostList, getMyPostsDContext, selectedIDForPopup } = useContext(DContext);
+    const { postList, setPostList, getMyPostsDContext, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -66,6 +66,12 @@ const ProfileTabs = (props) => {
         }
     }, [selectedIDForPopup])
 
+    const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
+    useEffect(() => {
+        if (postIDForAwardOfPost) {
+            setViewMoreAwardOfPost(true);
+        }
+    }, [postIDForAwardOfPost])
 
     return (
         <>
@@ -88,7 +94,8 @@ const ProfileTabs = (props) => {
             {/* Modal */}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
-            {/* {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />} */}
+            {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
+
 
             <Tabs defaultActiveKey="Timeline" id="" className="digital-tabs" >
 

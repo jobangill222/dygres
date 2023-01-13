@@ -47,7 +47,7 @@ const SignUp = () => {
         setUserToken(axiosRes.accessToken);
         setUserStats(axiosRes.userStats);
 
-        toast(axiosRes.message);
+        // toast(axiosRes.message);
         // navigate("/editprofile");
         navigate("/");
 

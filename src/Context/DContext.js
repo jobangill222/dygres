@@ -23,9 +23,7 @@ export const DProvider = (props) => {
   const [selectedIDForPopup, setSelectedIDForPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
   const [popupType, setPopupType] = useState(null); // like popup for user agreed or disagreed to comment or user agree disagree to post based on this hit api in component/modal/User list
 
-
-
-
+  const [postIDForAwardOfPost, setPostIDForAwardOfPost] = useState(null); //postID for show all awards of posts in post Head component
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -891,6 +889,28 @@ export const DProvider = (props) => {
   };
 
 
+  const getAwardOfPostDContext = async (postID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/get-post-awards`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID
+        }
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get award of post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+
   const getNotificationDContext = async (pageNumberOfNotificationList) => {
     try {
       const axiosRes = await axios({
@@ -967,6 +987,8 @@ export const DProvider = (props) => {
     setSelectedIDForPopup,
     popupType,
     setPopupType,
+    postIDForAwardOfPost,
+    setPostIDForAwardOfPost,
     // Methods
     userLogin,
     userSignup,
@@ -1011,6 +1033,7 @@ export const DProvider = (props) => {
     getOtherUserPostsByUsernameDContext,
     getpostsByHashTagDContext,
     getSinglePostDetailDContext,
+    getAwardOfPostDContext,
     getNotificationDContext,
     deleteNotificationDContext,
     deleteAllNotificationDContext
