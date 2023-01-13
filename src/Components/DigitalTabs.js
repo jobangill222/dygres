@@ -46,10 +46,11 @@ const DigitalTabs = (props) => {
       >
 
         <Tab eventKey="Global" title="Global">
+          {/* {console.log("post list in global tab render", postList)} */}
           {postList.length ?
-            postList.map((post) => (
+            postList.map((post, index) => (
               <DigitalTabContent
-                key={post._id}
+                key={index * Math.random(100000)}
                 setActiveTabState={setActiveTabState}
                 post={post}
               />

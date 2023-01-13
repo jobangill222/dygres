@@ -6,9 +6,9 @@ import { toast } from 'react-toastify';
 
 export default function SinglePackageList(props) {
 
-    const { singlePackage, setShowBuyPackages, setAwardPopupOpenStatus } = props;
+    const { setSelectedPostIDForAwardPopup, singlePackage, setShowBuyPackages, setAwardPopupOpenStatus } = props;
 
-    const { BuyAwardDContext, setSelectedPostIDForAwardPopup } = useContext(DContext);
+    const { BuyAwardDContext } = useContext(DContext);
 
     const [isLoding, setIsLoading] = useState(false);
 

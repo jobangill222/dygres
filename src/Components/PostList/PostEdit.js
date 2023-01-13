@@ -27,7 +27,9 @@ const PostEdit = (props) => {
                 setPostContent(editContent);
                 setIsEditFieldOpen(false)
             }
-            toast(editPostAxiosRes.message);
+            else {
+                toast(editPostAxiosRes.message);
+            }
         }
     }
 

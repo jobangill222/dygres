@@ -24,7 +24,7 @@ export const DProvider = (props) => {
   const [popupType, setPopupType] = useState(null); // like popup for user agreed or disagreed to comment or user agree disagree to post based on this hit api in component/modal/User list
 
 
-  const [selectedPostIDForAwardPopup, setSelectedPostIDForAwardPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
+
 
 
   useEffect(() => {
@@ -967,8 +967,6 @@ export const DProvider = (props) => {
     setSelectedIDForPopup,
     popupType,
     setPopupType,
-    selectedPostIDForAwardPopup,
-    setSelectedPostIDForAwardPopup,
     // Methods
     userLogin,
     userSignup,

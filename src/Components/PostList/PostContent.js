@@ -4,6 +4,7 @@ import HighLight from "../HighLight";
 
 const PostContent = ({ postContent }) => {
 
+  // console.log('postContentpostContent', postContent)
   // const finalPostContent = highlightName(postContent);
 
   return (

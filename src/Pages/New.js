@@ -36,6 +36,7 @@ const New = () => {
     try {
       setIsLoading(true);
       //Api call
+      setPostList([]);
       let pageNumberOfPostList = 1;
       const axiosRes = await getGlobalPostDContext(pageNumberOfPostList);
       console.log("axiosRes********* after get global posts on page 1", axiosRes);

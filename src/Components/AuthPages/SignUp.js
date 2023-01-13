@@ -48,7 +48,9 @@ const SignUp = () => {
         setUserStats(axiosRes.userStats);
 
         toast(axiosRes.message);
-        navigate("/editprofile");
+        // navigate("/editprofile");
+        navigate("/");
+
       } else {
         const errorMessage = axiosRes.message;
         toast(errorMessage);
@@ -87,8 +89,8 @@ const SignUp = () => {
                   placeholder="Enter Email Address"
                   name="email"
                   {...register("email", registerOptions.email)}
-                  // value={email}
-                  // onChange={e => setEmail(e.target.value)}
+                // value={email}
+                // onChange={e => setEmail(e.target.value)}
                 />
                 <small className="text-danger">
                   {errors?.email && errors.email.message}
@@ -105,8 +107,8 @@ const SignUp = () => {
                   placeholder="Enter Password"
                   name="password"
                   {...register("password", registerOptions.password)}
-                  // value={password}
-                  // onChange={e => setPassword(e.target.value)}
+                // value={password}
+                // onChange={e => setPassword(e.target.value)}
                 />
                 <small className="text-danger">
                   {errors?.password && errors.password.message}

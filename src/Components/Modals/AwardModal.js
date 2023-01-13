@@ -11,16 +11,14 @@ import SinglePackageList from './SinglePackageList';
 
 const AwardModal = (props) => {
 
-    const { awardPopupOpenStatus, setAwardPopupOpenStatus, setAwardCount } = props;
-    const { selectedPostIDForAwardPopup, setSelectedPostIDForAwardPopup, getAwardListToSendDContext, getPackagesToBuyDContext } = useContext(DContext);
+    const { selectedPostIDForAwardPopup, setSelectedPostIDForAwardPopup, awardPopupOpenStatus, setAwardPopupOpenStatus, setAwardCount } = props;
+    const { getAwardListToSendDContext, getPackagesToBuyDContext } = useContext(DContext);
     // console.log('selectedPostIDForAwardPopup', selectedPostIDForAwardPopup);
 
     const [awardListToSend, setAwardListToSend] = useState([]);
     // const [showAwards, setAwardsClose] = useState(awardPopupOpenStatus);
     const AwardsClose = () => {
-        // setAwardsClose(false);
         setAwardPopupOpenStatus(false);
-        setSelectedPostIDForAwardPopup(null);
     }
 
     useEffect(() => {
@@ -31,7 +29,6 @@ const AwardModal = (props) => {
     const AwardListToSend = async () => {
         try {
             const axiosRes = await getAwardListToSendDContext(selectedPostIDForAwardPopup);
-            console.log('axiosRes to get award list', axiosRes);
             setAwardListToSend(axiosRes.list)
         } catch (err) {
             console.log(err);
@@ -71,7 +68,7 @@ const AwardModal = (props) => {
                     <Row>
 
                         {awardListToSend.map((awardList) => (
-                            < SingleAward awardList={awardList} setAwardCount={setAwardCount} />
+                            < SingleAward selectedPostIDForAwardPopup={selectedPostIDForAwardPopup} awardList={awardList} setAwardCount={setAwardCount} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />
                         ))}
 
                     </Row>
@@ -92,7 +89,7 @@ const AwardModal = (props) => {
                     <Row>
 
                         {packageList.map((singlePackage) => (
-                            <SinglePackageList singlePackage={singlePackage} setShowBuyPackages={setShowBuyPackages} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />
+                            <SinglePackageList setSelectedPostIDForAwardPopup={setSelectedPostIDForAwardPopup} singlePackage={singlePackage} setShowBuyPackages={setShowBuyPackages} setAwardPopupOpenStatus={setAwardPopupOpenStatus} />
                         ))}
 
 

@@ -171,7 +171,7 @@ const PostHead = (props) => {
 
                 if (index < 4) {
                   return <PostHeadAward
-                    key={award._id}
+                    key={index * Math.random(100)}
                     award={award}
                   />
                 } else {

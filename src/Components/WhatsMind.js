@@ -19,14 +19,12 @@ const WhatsMind = (props) => {
     if (!createPostState) {
       toast("Post cannot be empty.");
     } else {
-      console.log("createPostState", createPostState);
+      // console.log("createPostState", createPostState);
       //   alert("Post successfully.");
       try {
         const axiosRes = await createPostDContext(createPostState);
         if (axiosRes.status === "success") {
           setIsPostState("1");
-          toast(axiosRes.message);
-
           // Update user stats state
           setUserStats((previousState) => {
             return {

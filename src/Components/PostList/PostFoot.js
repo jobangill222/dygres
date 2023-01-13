@@ -32,7 +32,7 @@ const PostFoot = (props) => {
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, listingType } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setSelectedPostIDForAwardPopup, selectedPostIDForAwardPopup } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -206,10 +206,10 @@ const PostFoot = (props) => {
   }
 
   const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
-
+  const [selectedPostIDForAwardPopup, setSelectedPostIDForAwardPopup] = useState(postID); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
   const viewAwardModal = () => {
-    setSelectedPostIDForAwardPopup(postID)
     setAwardPopupOpenStatus(true);
+    setSelectedPostIDForAwardPopup(postID)
   }
 
 
@@ -238,12 +238,14 @@ const PostFoot = (props) => {
 
 
           {/* <li onClick={AwardsShow}> */}
+          {/* {console.log('awardPopupOpenStatus', awardPopupOpenStatus)} */}
+
           <li onClick={viewAwardModal} >
             <FaGift />
             <span className="number">{awardCount}</span>Award
           </li>
 
-          {awardPopupOpenStatus && <AwardModal awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} setAwardCount={setAwardCount} />}
+          {awardPopupOpenStatus && <AwardModal selectedPostIDForAwardPopup={selectedPostIDForAwardPopup} setSelectedPostIDForAwardPopup={setSelectedPostIDForAwardPopup} awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} setAwardCount={setAwardCount} />}
 
 
           <li>
