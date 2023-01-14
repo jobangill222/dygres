@@ -8,8 +8,12 @@ import Form from "react-bootstrap/Form";
 
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
+
+  const navigate = useNavigate();
+
   //Import Api functions from DContext file
   const { getGenInformationDContext, updateGenInformationDContext } =
     useContext(DContext);
@@ -76,6 +80,7 @@ const EditProfile = () => {
 
     const axiosRes = await updateGenInformationDContext(bodyFormData);
     // console.log('axiosRes in update gen Info' , axiosRes);
+    navigate("/profile");
     toast(axiosRes.message);
   };
 
