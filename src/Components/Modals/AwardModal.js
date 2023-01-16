@@ -73,7 +73,6 @@ const AwardModal = (props) => {
 
                     </Row>
                 </Modal.Body>
-                <Modal.Footer></Modal.Footer>
             </Modal>
             {/* BuyAwards modal */}
             <Modal
@@ -95,7 +94,6 @@ const AwardModal = (props) => {
 
                     </Row>
                 </Modal.Body>
-                <Modal.Footer></Modal.Footer>
             </Modal>
         </>
     )

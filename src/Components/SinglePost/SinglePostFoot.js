@@ -344,7 +344,6 @@ const SinglePostFoot = (props) => {
             </Col>
           </Row>
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
       </Modal>
       {/* BuyAwards modal */}
       <Modal
@@ -390,7 +389,6 @@ const SinglePostFoot = (props) => {
             </Col>
           </Row>
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
       </Modal>
       {/* Edit Report */}
       <Modal

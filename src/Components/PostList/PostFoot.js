@@ -16,6 +16,7 @@ import {
 import { BiCopy } from "react-icons/bi";
 import { ImForward } from "react-icons/im";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { HiSpeakerphone } from "react-icons/hi";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -286,6 +287,13 @@ const PostFoot = (props) => {
               </Dropdown.Menu>
             </Dropdown>
 
+          </li>
+          <li>
+            <div className=""><HiSpeakerphone />
+            </div>
+            <div className="list-text" >
+              <span className="number">2</span>
+              Amplify</div>
           </li>
         </ul>
         <ul className="actionrytbar">

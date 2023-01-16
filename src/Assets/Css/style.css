@@ -907,6 +907,22 @@ ul.profiletabsbar li:last-child a {
 .accordion .digital-feeds {
   margin-bottom: 0;
 }
+.modal-header {
+  padding: 0px 20px 20px 20px;
+  margin-bottom: 10px;
+}
+.retweetmodal .digital-feeds.feed-type .feedtype-textarea textarea {
+  background: #F8F8F8;
+  border-radius: 8px;
+  padding: 25px;
+}
+.thredsbar span.no-comment {
+  margin-top: 15px !important;
+  display: block;
+}
+.thredsbar span.no-comment ~ .reply-post {
+  margin-top: 10px;
+}
 .accordion .accordion-collapse {
   margin-top: 0px;
   background: var(--base-purewhite);
@@ -1062,9 +1078,6 @@ ul.profiletabsbar li:last-child a {
 .user-detaiting-listing li img {
   margin-left: 10px;
 }
-.Actions-modal .modal-header {
-  padding: 0 0 20px 0;
-}
 .Actions-modal .modal-header .modal-title.h4 {
   font-style: normal;
   font-weight: 600;
@@ -1210,6 +1223,11 @@ ul.profiletabsbar li:last-child a {
   position: relative;
   padding-right: 40px;
 }
+.modal-footer {
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .awards-modal .modal-header button.btn-close {
   position: absolute;
   top: 50%;
@@ -1265,6 +1283,20 @@ ul.profiletabsbar li:last-child a {
 }
 .buymore-modal .Awrds-li .awards-img {
   text-align: center;
+  position: relative;
+}
+.buymore-modal .Awrds-li .awards-img p {
+  text-align: right;
+  position: absolute;
+  right: 0;
+  top: -20px;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  color: #AAAAAA;
+  font-size: 14px;
+  margin: 0;
 }
 .buymore-modal .Awrds-li h3 {
   font-weight: 600;
@@ -2523,6 +2555,20 @@ p.uploaded-note b {
 [darkmode] .Actions-modal .modal-body .aggree-li li .user-del h4,
 [darkmode] .dashboard-title-bar h4 {
   color: var(--base-purewhite);
+}
+.Actions-modal .modal-body::-webkit-scrollbar{
+  display: none;
+}
+.retweetmodal .digital-feeds {
+  background: #FFFFFF;
+  border: 1px solid #D3D3D3;
+}
+.retweetmodal .digital-feeds .Description-bar {
+  border: none;
+  padding: 15px 0 0 0;
+}
+.retweetmodal .digital-feeds .user-detail-bar {
+  margin-top: 0;
 }
 [darkmode] .followbtn {
   border: 1.78846px solid var(--base-purewhite);

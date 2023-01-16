@@ -339,8 +339,6 @@ const FlagPost = () => {
                         </li>
                     </ul>
                 </Modal.Body>
-                <Modal.Footer>
-                </Modal.Footer>
             </Modal>
             {/* DisAgreeShow modal */}
             <Modal className="Actions-modal" show={disshowAgree} onHide={DisAgreeClose} centered>
@@ -421,8 +419,6 @@ const FlagPost = () => {
                         </li>
                     </ul>
                 </Modal.Body>
-                <Modal.Footer>
-                </Modal.Footer>
             </Modal>
             {/* Awards modal */}
             <Modal className="Actions-modal awards-modal z-1050" show={showAwards} onHide={AwardsClose} centered>
@@ -470,8 +466,6 @@ const FlagPost = () => {
                         </Col>
                     </Row>
                 </Modal.Body>
-                <Modal.Footer>
-                </Modal.Footer>
             </Modal>
             {/* BuyAwards modal */}
             <Modal className="Actions-modal buymore-modal " show={showBuyAwards} onHide={ShowBuyAwardsClose} centered>
@@ -512,8 +506,6 @@ const FlagPost = () => {
                         </Col>
                     </Row>
                 </Modal.Body>
-                <Modal.Footer>
-                </Modal.Footer>
             </Modal>
             {/* Edit Report */}
             <Modal className="Actions-modal Editreportmodal" show={EditReportShow} onHide={EditReportClose} centered>

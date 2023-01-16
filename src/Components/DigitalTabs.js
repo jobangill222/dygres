@@ -7,6 +7,7 @@ import { DContext } from "../Context/DContext";
 // Import Modals
 import UserListModal from "./Modals/UserListModal";
 import ViewPostsAwardModal from "./Modals/ViewPostsAwardModal";
+import RetweetModal from "./Modals/RetweetModal";
 
 
 
@@ -42,6 +43,8 @@ const DigitalTabs = (props) => {
       {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
       {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
+
+      <RetweetModal />
 
       <Tabs
         defaultActiveKey="Global"
