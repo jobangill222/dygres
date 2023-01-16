@@ -25,6 +25,9 @@ export const DProvider = (props) => {
 
   const [postIDForAwardOfPost, setPostIDForAwardOfPost] = useState(null); //postID for show all awards of posts in post Head component
 
+  const [postIDForRetweet, setPostIDForRetweet] = useState(null); //postID for show all awards of posts in post Head component
+
+
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
 
@@ -266,7 +269,7 @@ export const DProvider = (props) => {
     }
   };
 
-  const createPostDContext = async (content) => {
+  const createPostDContext = async (content, parentPostID) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -276,6 +279,7 @@ export const DProvider = (props) => {
         },
         data: {
           content: content,
+          parentPostID: parentPostID
         },
       });
 
@@ -989,6 +993,8 @@ export const DProvider = (props) => {
     setPopupType,
     postIDForAwardOfPost,
     setPostIDForAwardOfPost,
+    postIDForRetweet,
+    setPostIDForRetweet,
     // Methods
     userLogin,
     userSignup,

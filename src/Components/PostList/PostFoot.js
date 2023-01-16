@@ -33,7 +33,7 @@ const PostFoot = (props) => {
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, listingType } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -214,6 +214,12 @@ const PostFoot = (props) => {
   }
 
 
+  const retweetPost = async () => {
+    setPostIDForRetweet(postID)
+    // console.log('type', type);
+  }
+
+
   return (
     <>
       <div className="action-bar">
@@ -264,6 +270,15 @@ const PostFoot = (props) => {
               Report</div>
           </li>
 
+          {user?._id !== postUserID && <li>
+            <div className="" onClick={retweetPost}>
+              <HiSpeakerphone />
+            </div>
+            <div className="list-text" onClick={retweetPost}>
+              {/* <span className="number">2</span> */}
+              Amplify</div>
+          </li>}
+
 
           <li>
             <Dropdown className="hoverdropdown">
@@ -288,13 +303,7 @@ const PostFoot = (props) => {
             </Dropdown>
 
           </li>
-          <li>
-            <div className=""><HiSpeakerphone />
-            </div>
-            <div className="list-text" >
-              <span className="number">2</span>
-              Amplify</div>
-          </li>
+
         </ul>
         <ul className="actionrytbar">
           <li onClick={ShareShow}>

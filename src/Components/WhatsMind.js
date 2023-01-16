@@ -22,7 +22,8 @@ const WhatsMind = (props) => {
       // console.log("createPostState", createPostState);
       //   alert("Post successfully.");
       try {
-        const axiosRes = await createPostDContext(createPostState);
+        const parentPostID = null;
+        const axiosRes = await createPostDContext(createPostState, parentPostID);
         if (axiosRes.status === "success") {
           setIsPostState("1");
           // Update user stats state

@@ -1,16 +1,16 @@
 import React, { useEffect, useContext, useState } from "react";
 import DigitalTabContent from "../Components/DigitalTabContent";
 import { DContext } from "../Context/DContext";
+import { toast } from "react-toastify";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
-import { toast } from "react-toastify";
 import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
-
+import RetweetModal from "../Components/Modals/RetweetModal";
 
 const MostVoted = () => {
 
-    const { getSinglePostDetailDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
+    const { getSinglePostDetailDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -20,7 +20,7 @@ const MostVoted = () => {
     const getPostDetail = async () => {
         try {
             //Api call
-            const postID = "63bd0d2088c93064c87b89ff";
+            const postID = "63c548a229cbcf4c40a86695";
             const axiosRes = await getSinglePostDetailDContext(postID);
             console.log("axiosRes******** after get hashtag posts", axiosRes);
             if (axiosRes.status === "success") {
@@ -51,6 +51,13 @@ const MostVoted = () => {
         }
     }, [postIDForAwardOfPost])
 
+    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    useEffect(() => {
+        if (postIDForRetweet) {
+            setViewRetweetPopup(true);
+        }
+    }, [postIDForRetweet])
+
     return (
         <>
 
@@ -60,7 +67,7 @@ const MostVoted = () => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
-
+            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
 
             <h4 className="pagetitle">Post Detail</h4>
 

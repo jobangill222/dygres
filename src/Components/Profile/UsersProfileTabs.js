@@ -8,13 +8,14 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import DigitalTabContent from "../DigitalTabContent";
 import UserListModal from "../Modals/UserListModal";
 import ViewPostsAwardModal from "../Modals/ViewPostsAwardModal";
+import RetweetModal from "../Modals/RetweetModal";
 
 
 const UsersProfileTabs = (props) => {
 
     const { user } = props;
 
-    const { postList, setPostList, getOtherUserPostsByUsernameDContext, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
+    const { postList, setPostList, getOtherUserPostsByUsernameDContext, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -78,6 +79,14 @@ const UsersProfileTabs = (props) => {
         }
     }, [postIDForAwardOfPost])
 
+
+    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    useEffect(() => {
+        if (postIDForRetweet) {
+            setViewRetweetPopup(true);
+        }
+    }, [postIDForRetweet])
+
     return (
         <>
 
@@ -101,6 +110,7 @@ const UsersProfileTabs = (props) => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
+            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
 
             <Tabs defaultActiveKey="Timeline" id="" className="digital-tabs" >
 

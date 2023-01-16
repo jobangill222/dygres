@@ -1,7 +1,6 @@
 import React from "react";
 // import { highlightName } from "../../helper/highlightName";
 import HighLight from "../HighLight";
-
 const PostContent = ({ postContent }) => {
 
   // console.log('postContentpostContent', postContent)
@@ -14,6 +13,7 @@ const PostContent = ({ postContent }) => {
           <HighLight content={postContent} />
         </p>
       </div>
+
     </>
   );
 };

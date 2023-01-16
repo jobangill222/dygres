@@ -17,7 +17,7 @@ const DigitalTabs = (props) => {
   const { setActiveTabState } = props;
 
   //Global states
-  const { postList, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
+  const { postList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
 
   // Change state when click on count of agree disagree etc and change popupstate to true to open
   const [popupOpenStatus, setPopupOpenStatus] = useState(false);
@@ -36,6 +36,14 @@ const DigitalTabs = (props) => {
   }, [postIDForAwardOfPost])
 
 
+  const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+  useEffect(() => {
+    if (postIDForRetweet) {
+      setViewRetweetPopup(true);
+    }
+  }, [postIDForRetweet])
+
+
   return (
     <>
 
@@ -44,7 +52,7 @@ const DigitalTabs = (props) => {
 
       {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
-      <RetweetModal />
+      {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
 
       <Tabs
         defaultActiveKey="Global"

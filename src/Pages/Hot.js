@@ -6,12 +6,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
 import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
-
+import RetweetModal from "../Components/Modals/RetweetModal";
 
 
 const Hot = () => {
 
-    const { getHotPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
+    const { getHotPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -68,13 +68,12 @@ const Hot = () => {
     }, [postIDForAwardOfPost])
 
 
-    // Change state when click on award in foot section and change popupstate to true to open
-    // const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
-    // useEffect(() => {
-    //     if (selectedPostIDForAwardPopup) {
-    //         setAwardPopupOpenStatus(true);
-    //     }
-    // }, [selectedPostIDForAwardPopup])
+    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    useEffect(() => {
+        if (postIDForRetweet) {
+            setViewRetweetPopup(true);
+        }
+    }, [postIDForRetweet])
 
     return (
         <>
@@ -92,6 +91,7 @@ const Hot = () => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
+            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
 
             <h4 className="pagetitle">Hot</h4>
 

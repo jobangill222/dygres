@@ -6,12 +6,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
 import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
-
+import RetweetModal from "../Components/Modals/RetweetModal";
 
 const NotVoted = () => {
 
 
-    const { getNotVotedPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost } = useContext(DContext);
+    const { getNotVotedPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -76,6 +76,13 @@ const NotVoted = () => {
         }
     }, [postIDForAwardOfPost])
 
+    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    useEffect(() => {
+        if (postIDForRetweet) {
+            setViewRetweetPopup(true);
+        }
+    }, [postIDForRetweet])
+
     return (
         <>
 
@@ -92,6 +99,7 @@ const NotVoted = () => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
+            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
 
             <h4 className="pagetitle">Not Voted</h4>
             {

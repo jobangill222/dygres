@@ -5,12 +5,15 @@ import PostHead from "./PostList/PostHead";
 import PostContent from "./PostList/PostContent";
 import PostFoot from "./PostList/PostFoot";
 import PostEdit from "./PostList/PostEdit";
+import PostRetweetForm from './PostList/PostRetweetForm';
 
 const DigitalTabContent = (props) => {
   // Prop Destrucutring
   // console.log("props.post", props.post);
-  const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, award_count, is_report, userID, _id, is_follow, created_at
+  const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, award_count, is_report, userID, _id, is_follow, created_at, parentPostID, parentPostDetail
     , postAward } = props.post;
+
+  // console.log('props.post', props.post)
 
   const { listingType } = props;
 
@@ -42,7 +45,11 @@ const DigitalTabContent = (props) => {
 
 
               {isEditFieldOpen === false &&
-                <PostContent postContent={postContent} />
+                <>
+                  <PostContent postContent={postContent} />
+                  {parentPostID !== null && <PostRetweetForm parentPostDetail={parentPostDetail} />}
+                </>
+
               }
               {isEditFieldOpen === false &&
                 <PostFoot
