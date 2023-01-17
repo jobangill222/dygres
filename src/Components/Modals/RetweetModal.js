@@ -17,7 +17,7 @@ export default function SingleAward(props) {
 
     const { viewRetweetPopup, setViewRetweetPopup } = props;
 
-    const { postIDForRetweet, setPostIDForRetweet, getSinglePostDetailDContext, createPostDContext, setUserStats } = useContext(DContext);
+    const { postIDForRetweet, setPostIDForRetweet, getSinglePostDetailDContext, createPostDContext, setUserStats, setIsPostState } = useContext(DContext);
 
     const closePopup = async () => {
         setViewRetweetPopup(false)
@@ -125,7 +125,7 @@ export default function SingleAward(props) {
             try {
                 const axiosRes = await createPostDContext(createPostState, postIDForRetweet);
                 if (axiosRes.status === "success") {
-                    // setIsPostState("1");
+                    setIsPostState("1");
                     // Update user stats state
                     setUserStats((previousState) => {
                         return {

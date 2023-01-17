@@ -15,8 +15,6 @@ const DigitalTabContent = (props) => {
 
   // console.log('props.post', props.post)
 
-  const { listingType } = props;
-
   //States
 
   const [commentCount, setCommentCount] = useState(comment_count);
@@ -70,7 +68,6 @@ const DigitalTabContent = (props) => {
                   awardCount={awardCount}
                   setAwardCount={setAwardCount}
 
-                  listingType={listingType}
                 />
               }
 

@@ -1260,7 +1260,14 @@ ul.profiletabsbar li:last-child a {
   margin-left: 10px;
 }
 .z-1050.modal.show {
-  z-index: 1050;
+  z-index: 1060;
+}
+.fade.modal-backdrop {
+  background: #000000 !important;
+  opacity: 0.2;
+}
+.award_of_package {
+  cursor: pointer;
 }
 .buymore-modal .Awrds-li {
   position: relative;

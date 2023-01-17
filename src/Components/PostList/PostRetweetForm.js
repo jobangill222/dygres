@@ -13,7 +13,7 @@ export default function PostRetweetForm(props) {
 
 
     return (
-        <div className="digital-feeds diffrentiate-bar">
+        < div className="digital-feeds diffrentiate-bar" >
             <div className="user-detail-bar">
                 <div className="detailleft">
                     <div className="userleftside">
@@ -23,7 +23,7 @@ export default function PostRetweetForm(props) {
                         <div className="user-detail">
                             <div className="follow-bar">
                                 <h4 className="text-secondry">
-                                    {console.log('parentPostDetail', parentPostDetail)}
+                                    {/* {console.log('parentPostDetail', parentPostDetail)} */}
                                     {parentPostDetail[0]?.user[0]?.name ? parentPostDetail[0]?.user[0]?.name : parentPostDetail[0]?.user[0]?.username}
                                 </h4>
                             </div>
@@ -48,6 +48,6 @@ export default function PostRetweetForm(props) {
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

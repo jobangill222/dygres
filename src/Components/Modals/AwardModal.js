@@ -52,7 +52,7 @@ const AwardModal = (props) => {
 
         <>
             <Modal
-                className="Actions-modal awards-modal z-1050"
+                className="Actions-modal awards-modal "
                 show={awardPopupOpenStatus}
                 onHide={AwardsClose}
                 centered
@@ -76,7 +76,7 @@ const AwardModal = (props) => {
             </Modal>
             {/* BuyAwards modal */}
             <Modal
-                className="Actions-modal buymore-modal "
+                className="Actions-modal buymore-modal z-1050"
                 show={showBuyPackages}
                 onHide={BuyMorePackageClose}
                 centered

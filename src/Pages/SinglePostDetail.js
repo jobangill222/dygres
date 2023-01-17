@@ -77,7 +77,6 @@ const MostVoted = () => {
                         <DigitalTabContent
                             key={post._id}
                             post={post}
-                            listingType="single"
                         />
                     ))
                     :

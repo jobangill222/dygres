@@ -19,13 +19,17 @@ export const DProvider = (props) => {
   //Notifications
   const [notificationList, setNotificationList] = useState([]);
 
+  //State for is post or not to paas dependency in use effect for render updated list when post 
+  const [isPostState, setIsPostState] = useState("0");
+
   //State For Popup UserList
-  const [selectedIDForPopup, setSelectedIDForPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
   const [popupType, setPopupType] = useState(null); // like popup for user agreed or disagreed to comment or user agree disagree to post based on this hit api in component/modal/User list
+
+  const [selectedIDForPopup, setSelectedIDForPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
 
   const [postIDForAwardOfPost, setPostIDForAwardOfPost] = useState(null); //postID for show all awards of posts in post Head component
 
-  const [postIDForRetweet, setPostIDForRetweet] = useState(null); //postID for show all awards of posts in post Head component
+  const [postIDForRetweet, setPostIDForRetweet] = useState(null); //store post id for retweet
 
 
   useEffect(() => {
@@ -983,6 +987,8 @@ export const DProvider = (props) => {
     setUserToken,
     userStats,
     setUserStats,
+    isPostState,
+    setIsPostState,
     postList,
     setPostList,
     notificationList,

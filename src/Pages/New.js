@@ -7,14 +7,12 @@ import Spinner from 'react-bootstrap/Spinner';
 
 const New = () => {
   //Functions to call api
-  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList } =
-    useContext(DContext);
+  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState } = useContext(DContext);
 
 
   //State for active tab like: global , follwing, officials
   const [activeTabState, setActiveTabState] = useState("Global");
-  //State for is post or not to paas dependency in use effect
-  const [isPostState, setIsPostState] = useState("0");
+
 
   const [isLoding, setIsLoading] = useState(false);
 
@@ -28,8 +26,18 @@ const New = () => {
     if (activeTabState === "Following") {
       getFollowingPosts();
     }
+  }, [activeTabState]);
+
+
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", 1);
+    if (activeTabState === "Global") {
+      getGlobalPosts();
+    }
     setIsPostState("0");
-  }, [activeTabState, isPostState]);
+  }, [isPostState]);
+
 
   //Get global post
   const getGlobalPosts = async () => {
@@ -44,6 +52,10 @@ const New = () => {
         setPostList(axiosRes.list);
       }
       setIsLoading(false);
+
+      //Move to top
+      window.scrollTo(0, 0);
+
     } catch (err) {
       console.log(err);
     }
