@@ -2,6 +2,8 @@ import React, { useEffect, useContext, useState } from "react";
 import DigitalTabContent from "../Components/DigitalTabContent";
 import { DContext } from "../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loader from "../Components/Loader";
+
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
@@ -11,7 +13,7 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const Hot = () => {
 
-    const { getHotPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
+    const { getHotPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -20,6 +22,7 @@ const Hot = () => {
 
     const getHotPosts = async () => {
         try {
+            setIsLoading(true);
             //Api call
             let pageNumberOfPostList = 1;
             const axiosRes = await getHotPostDContext(pageNumberOfPostList);
@@ -27,6 +30,7 @@ const Hot = () => {
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
             }
+            setIsLoading(false);
         } catch (err) {
             console.log(err);
         }
@@ -77,6 +81,8 @@ const Hot = () => {
 
     return (
         <>
+
+            {isLoading && <Loader />}
 
             <InfiniteScroll
                 dataLength={postList.length}

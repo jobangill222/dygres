@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from "react-router-dom";
-
+import { DContext } from "../Context/DContext";
 
 export default function HighLight(props) {
 
@@ -8,12 +8,23 @@ export default function HighLight(props) {
     const navigate = useNavigate();
 
 
+    const { checkUsernameExistDContext } = useContext(DContext);
+
     const myArray = content.split(" ");
 
     const userDetail = async (name) => {
         var newStr = name.replace('@', '')
         localStorage.setItem('username', newStr);
-        navigate('/UsersProfile')
+
+        const axiosRes = await checkUsernameExistDContext(newStr);
+        console.log('axiosResaxiosResaxiosResaxiosRes', axiosRes)
+        if (axiosRes.status === 'error') {
+            navigate('/notfound')
+        }
+        else {
+            navigate('/UsersProfile')
+
+        }
     }
 
     const hashTag = async (name) => {
@@ -27,7 +38,7 @@ export default function HighLight(props) {
     return (
         <>
             <span> {myArray.map((singleWord, i) =>
-                <span key={i} onClick={() => { if (singleWord[0] === '@') { userDetail(singleWord) } if (singleWord[0] === '#') { hashTag(singleWord) } }} className={singleWord[0] === '@' ? "text-primary-highlight" : singleWord[0] === '#' ? "text-primary-highlight" : ""}>
+                <span key={i} onClick={() => { if (singleWord.length > 1 && singleWord[0] === '@') { userDetail(singleWord) } if (singleWord.length > 1 && singleWord[0] === '#') { hashTag(singleWord) } }} className={singleWord.length > 1 && singleWord[0] === '@' ? "text-primary-highlight" : singleWord.length > 1 && singleWord[0] === '#' ? "text-primary-highlight" : ""}>
                     {singleWord}{' '}
                 </span>
             )

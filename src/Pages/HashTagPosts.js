@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import DigitalTabContent from "../Components/DigitalTabContent";
 import { DContext } from "../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loader from "../Components/Loader";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
@@ -10,15 +11,17 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const HashTagPosts = () => {
 
-    const { getpostsByHashTagDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
+    const { getpostsByHashTagDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
+        // setPostList([]);
         localStorage.setItem("currentPage", 1);
         getposts();
     }, []);
 
     const getposts = async () => {
         try {
+            setIsLoading(true);
             //Api call
             let pageNumberOfPostList = 1;
 
@@ -31,6 +34,9 @@ const HashTagPosts = () => {
             else {
                 setPostList([]);
             }
+            setIsLoading(false);
+            //Move to top
+            window.scrollTo(0, 0);
         } catch (err) {
             console.log(err);
         }
@@ -91,6 +97,9 @@ const HashTagPosts = () => {
 
     return (
         <>
+
+            {isLoading && <Loader />}
+
             <InfiniteScroll
                 dataLength={postList.length}
                 next={appendNextList}

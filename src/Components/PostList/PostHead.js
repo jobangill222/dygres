@@ -26,19 +26,6 @@ const PostHead = (props) => {
   // Create formatter (English).
   const timeAgo = new TimeAgo('en-US')
 
-  //Userlevel verification
-  let userVerificationLevel;
-  if (user?.isEmailVerify === 1 && user?.isPhotoVerify === 0) {
-    userVerificationLevel = 1;
-  }
-  else if (user?.isPhotoVerify === 1) {
-    userVerificationLevel = 2;
-  }
-  else {
-    userVerificationLevel = 0;
-  }
-
-
   //Follow to user and update post Listing
   const followUser = async () => {
     let newPostList = postList;
@@ -162,9 +149,9 @@ const PostHead = (props) => {
                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(created_at)._d.getTime())}</h5>
               </div>
               <div className="levelbar text-darkwhite level1">
-                Level {userVerificationLevel}{" "}
+                Level {postUserDetails?.isEmailVerify === 1 && postUserDetails?.isPhotoVerify === 0 ? '1' : postUserDetails?.isPhotoVerify === 1 ? "2" : "0"}
                 <h6 className="level1-circle">
-                  <span className="text-white lvlstar">{userVerificationLevel}</span>
+                  <span className="text-white lvlstar">{postUserDetails?.isEmailVerify === 1 && postUserDetails?.isPhotoVerify === 0 ? '1' : postUserDetails?.isPhotoVerify === 1 ? "2" : "0"}</span>
                 </h6>
               </div>
             </div>

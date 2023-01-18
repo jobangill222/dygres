@@ -10,14 +10,16 @@ import UserListModal from "../Modals/UserListModal";
 import ViewPostsAwardModal from "../Modals/ViewPostsAwardModal";
 import RetweetModal from "../Modals/RetweetModal";
 
+import Loader from "../Loader";
 
 const UsersProfileTabs = (props) => {
 
     const { user } = props;
 
-    const { postList, setPostList, getOtherUserPostsByUsernameDContext, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
+    const { postList, setPostList, getOtherUserPostsByUsernameDContext, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
+        // setPostList([]);
         localStorage.setItem("currentPage", 1);
         getMyPosts();
     }, [])
@@ -25,6 +27,7 @@ const UsersProfileTabs = (props) => {
     const getMyPosts = async () => {
         // console.log('sss');
         try {
+            setIsLoading(true);
             //Api call
             let pageNumberOfPostList = 1;
             // const username = "newuse1r674";
@@ -34,6 +37,10 @@ const UsersProfileTabs = (props) => {
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
             }
+            //Move to top
+            window.scrollTo(0, 0);
+
+            setIsLoading(false);
         } catch (error) {
             console.log('err');
         }
@@ -89,6 +96,7 @@ const UsersProfileTabs = (props) => {
 
     return (
         <>
+            {isLoading && <Loader />}
 
             <InfiniteScroll
                 dataLength={postList.length}

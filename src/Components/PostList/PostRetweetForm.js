@@ -11,7 +11,6 @@ export default function PostRetweetForm(props) {
 
     const { parentPostDetail } = props;
 
-
     return (
         < div className="digital-feeds diffrentiate-bar" >
             <div className="user-detail-bar">

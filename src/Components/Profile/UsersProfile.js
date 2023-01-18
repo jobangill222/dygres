@@ -4,7 +4,6 @@ import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import UsersProfileTabs from "./UsersProfileTabs";
 import { DContext } from "../../Context/DContext";
-import { useNavigate } from "react-router-dom";
 
 
 const UsersProfile = () => {
@@ -14,7 +13,6 @@ const UsersProfile = () => {
     const [user, setUser] = useState();
     const [userStats, setUserStats] = useState();
 
-    const navigate = useNavigate();
 
     useEffect(() => {
         getData();
@@ -30,8 +28,6 @@ const UsersProfile = () => {
             if (axiosRes.status === "success") {
                 setUser(axiosRes.data)
                 setUserStats(axiosRes.userStats)
-            } else {
-                navigate('/notfound')
             }
         } catch (error) {
             console.log('err');
@@ -67,7 +63,8 @@ const UsersProfile = () => {
                                 <div className="user-availbility">
                                     <h6 className="text-lightgray">@{user?.username}</h6>
                                 </div>
-                                <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                <div className="levelbar text-darkwhite level1">Level {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0"}
+                                    <h6 className="level1-circle"><span className="text-white lvlstar">{user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0"}</span></h6></div>
                                 <ul className="user-detail-listing">
                                     <li>
                                         <p className="text-secondry">{userStats?.totalPosts}</p>

@@ -45,7 +45,7 @@ import WhatsMind from "./Components/WhatsMind";
 import SinglePost from "./Components/SinglePost/index";
 
 import UsersProfile from "./Components/Profile/UsersProfile";
-
+import { DProvider } from "./Context/DContext";
 
 function App() {
   // Context Variables
@@ -55,6 +55,9 @@ function App() {
     <>
       <ThemeProvider>
         <Router>
+          <DProvider>
+
+          </DProvider>
           <Routes>
             {/* {console.log('check the user state context - ', userToken)} */}
 

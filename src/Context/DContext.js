@@ -8,6 +8,8 @@ import { BASE_URL } from "../Config";
 export const DContext = React.createContext();
 
 export const DProvider = (props) => {
+
+
   // State variables
   const [user, setUser] = useState(null);
   const [userToken, setUserToken] = useState(null);
@@ -31,6 +33,7 @@ export const DProvider = (props) => {
 
   const [postIDForRetweet, setPostIDForRetweet] = useState(null); //store post id for retweet
 
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -39,8 +42,16 @@ export const DProvider = (props) => {
       setUserToken(accessToken);
       const checkAuth = async () => {
         const userDetails = await getUserDetailsDContext();
-        setUser(userDetails.data);
-        setUserStats(userDetails.userStats);
+        console.log('userDetails,userDetails', userDetails);
+        if (userDetails.status === "error") {
+          localStorage.removeItem("accessToken");
+          setUser(null);
+          setUserStats(null);
+        }
+        else {
+          setUser(userDetails.data);
+          setUserStats(userDetails.userStats);
+        }
       };
       checkAuth();
     }
@@ -978,6 +989,28 @@ export const DProvider = (props) => {
     }
   };
 
+
+  const checkUsernameExistDContext = async (username) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/profile/check-username-exist`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          username: username
+        }
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while check username exist api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -1001,6 +1034,8 @@ export const DProvider = (props) => {
     setPostIDForAwardOfPost,
     postIDForRetweet,
     setPostIDForRetweet,
+    isLoading,
+    setIsLoading,
     // Methods
     userLogin,
     userSignup,
@@ -1048,7 +1083,8 @@ export const DProvider = (props) => {
     getAwardOfPostDContext,
     getNotificationDContext,
     deleteNotificationDContext,
-    deleteAllNotificationDContext
+    deleteAllNotificationDContext,
+    checkUsernameExistDContext
   };
   return (
     <>

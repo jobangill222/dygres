@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import DigitalTabContent from "../Components/DigitalTabContent";
 import { DContext } from "../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loader from "../Components/Loader";
 
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
@@ -10,7 +11,7 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const MostVoted = () => {
 
-    const { getMostVotedPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
+    const { getMostVotedPostDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -19,6 +20,7 @@ const MostVoted = () => {
 
     const getMostVotedPosts = async () => {
         try {
+            setIsLoading(true);
             //Api call
             let pageNumberOfPostList = 1;
             const axiosRes = await getMostVotedPostDContext(pageNumberOfPostList);
@@ -26,6 +28,7 @@ const MostVoted = () => {
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
             }
+            setIsLoading(false);
         } catch (err) {
             console.log(err);
         }
@@ -84,6 +87,8 @@ const MostVoted = () => {
 
     return (
         <>
+            {isLoading && <Loader />}
+
             <InfiniteScroll
                 dataLength={postList.length}
                 next={appendNextList}

@@ -17,6 +17,8 @@ const Profile = () => {
         </Tooltip>
     );
 
+    // console.log('user', user)
+
 
     return (
         <>
@@ -39,7 +41,9 @@ const Profile = () => {
                                 <div className="user-availbility">
                                     <h6 className="text-lightgray">@{user?.username}</h6>
                                 </div>
-                                <div className="levelbar text-darkwhite level1">Level1 <h6 className="level1-circle"><span className="text-white lvlstar">2</span></h6></div>
+                                {console.log('useruseruser', user)}
+                                <div className="levelbar text-darkwhite level1">Level {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0"}
+                                    <h6 className="level1-circle"><span className="text-white lvlstar">{user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0"}</span></h6></div>
                                 <ul className="user-detail-listing">
                                     <li>
                                         <p className="text-secondry">{userStats?.totalPosts}</p>

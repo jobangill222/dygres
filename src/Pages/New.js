@@ -3,22 +3,20 @@ import DigitalTabs from "../Components/DigitalTabs";
 import WhatsMind from "../Components/WhatsMind";
 import { DContext } from "../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Spinner from 'react-bootstrap/Spinner';
+import Loader from "../Components/Loader";
 
 const New = () => {
   //Functions to call api
-  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState } = useContext(DContext);
+  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading } = useContext(DContext);
 
 
   //State for active tab like: global , follwing, officials
   const [activeTabState, setActiveTabState] = useState("Global");
 
 
-  const [isLoding, setIsLoading] = useState(false);
-
-
   //For render post list render when change tab and post something
   useEffect(() => {
+    setPostList([]);
     localStorage.setItem("currentPage", 1);
     if (activeTabState === "Global") {
       getGlobalPosts();
@@ -104,14 +102,7 @@ const New = () => {
   };
   return (
     <>
-      {isLoding &&
-        <div className='loader'>
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        </div>
-
-      }
+      {isLoading && <Loader />}
 
       <InfiniteScroll
         dataLength={postList.length}

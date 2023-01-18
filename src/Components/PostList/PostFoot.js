@@ -444,11 +444,35 @@ const PostFoot = (props) => {
         </Modal.Header>
         <Modal.Body>
           <ul className="report-tabs">
-            <li onClick={() => setReportReason('Spam')} className={reportReason === "Spam" ? `active` : ""} >Spam</li>
-            <li onClick={() => setReportReason('Harassment')} className={reportReason === "Harassment" ? `active` : ""}>Harassment</li>
-            <li onClick={() => setReportReason('Hate')} className={reportReason === "Hate" ? `active` : ""}>Hate</li>
-            <li onClick={() => setReportReason('Misinformation')} className={reportReason === "Misinformation" ? `active` : ""}>Misinformation</li>
-            <li onClick={() => setReportReason('Self-harm')} className={reportReason === "Self-harm" ? `active` : ""}>Self-harm</li>
+
+            <li onClick={() => setReportReason('abuse or harassment')} className={reportReason === "abuse or harassment" ? `active` : ""}>abuse or harassment</li>
+            <li onClick={() => setReportReason('child exploitation')} className={reportReason === "child exploitation" ? `active` : ""}>child exploitation</li>
+            <li onClick={() => setReportReason('copyright or trademark infringement')} className={reportReason === "copyright or trademark infringement" ? `active` : ""}>copyright or trademark infringement</li>
+            <li onClick={() => setReportReason('cyberbullying')} className={reportReason === "cyberbullying" ? `active` : ""}>cyberbullying</li>
+            <li onClick={() => setReportReason('deepfake')} className={reportReason === "deepfake" ? `active` : ""}>deepfake</li>
+            <li onClick={() => setReportReason('doxxing')} className={reportReason === "doxxing" ? `active` : ""}>doxxing</li>
+            <li onClick={() => setReportReason('election or political interference')} className={reportReason === "election or political interference" ? `active` : ""}>election or political interference</li>
+            <li onClick={() => setReportReason('explicit adult content')} className={reportReason === "explicit adult content" ? `active` : ""}>explicit adult content</li>
+            <li onClick={() => setReportReason('graphic violence')} className={reportReason === "graphic violence" ? `active` : ""}>graphic violence</li>
+            <li onClick={() => setReportReason('hate speech or hateful conduct')} className={reportReason === "hate speech or hateful conduct" ? `active` : ""}>hate speech or hateful conduct</li>
+            <li onClick={() => setReportReason('impersonating a dygres team member')} className={reportReason === "impersonating a dygres team member" ? `active` : ""}>impersonating a dygres team member</li>
+            <li onClick={() => setReportReason('misleading or deceptive identity')} className={reportReason === "misleading or deceptive identity" ? `active` : ""}>misleading or deceptive identity</li>
+            <li onClick={() => setReportReason('phishing')} className={reportReason === "phishing" ? `active` : ""}>phishing</li>
+            <li onClick={() => setReportReason('platform manipulation')} className={reportReason === "platform manipulation" ? `active` : ""}>platform manipulation</li>
+            <li onClick={() => setReportReason('sensitive or offensive media')} className={reportReason === "sensitive or offensive media" ? `active` : ""}>sensitive or offensive media</li>
+            <li onClick={() => setReportReason('sexual exploitation or sexual violence')} className={reportReason === "sexual exploitation or sexual violence" ? `active` : ""}>sexual exploitation or sexual violence</li>
+            <li onClick={() => setReportReason('someone is impersonating me')} className={reportReason === "someone is impersonating me" ? `active` : ""}>someone is impersonating me</li>
+            <li onClick={() => setReportReason('spam')} className={reportReason === "spam" ? `active` : ""}>spam</li>
+            <li onClick={() => setReportReason('suicide baiting')} className={reportReason === "suicide baiting" ? `active` : ""}>suicide baiting</li>
+            <li onClick={() => setReportReason('suicide or self-harm risk')} className={reportReason === "suicide or self-harm risk" ? `active` : ""}>suicide or self-harm risk</li>
+            <li onClick={() => setReportReason('suspected bot')} className={reportReason === "suspected bot" ? `active` : ""}>suspected bot</li>
+            <li onClick={() => setReportReason('terrorism or violent extremism')} className={reportReason === "terrorism or violent extremism" ? `active` : ""}>terrorism or violent extremism</li>
+            <li onClick={() => setReportReason('tragedy cooldown period')} className={reportReason === "tragedy cooldown period" ? `active` : ""}>tragedy cooldown period</li>
+            <li onClick={() => setReportReason('unlabeled manipulated or deceptive media')} className={reportReason === "unlabeled manipulated or deceptive media" ? `active` : ""}>unlabeled manipulated or deceptive media</li>
+            <li onClick={() => setReportReason('unlabeled synthetic or AI generated content')} className={reportReason === "unlabeled synthetic or AI generated content" ? `active` : ""}>unlabeled synthetic or AI generated content</li>
+            <li onClick={() => setReportReason('violence')} className={reportReason === "violence" ? `active` : ""}>violence</li>
+            <li onClick={() => setReportReason('witch hunting')} className={reportReason === "witch hunting" ? `active` : ""}>witch hunting</li>
+
           </ul>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
