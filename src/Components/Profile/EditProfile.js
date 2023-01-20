@@ -181,7 +181,7 @@ const EditProfile = () => {
                     placeholder="Enter A penny for your thoughts?"
                     onChange={changeValue}
                   />
-                  <p className="word-note">Character {genInfoFiledsState.thoughts.length}/50</p>
+                  <p className="word-note">{50 - genInfoFiledsState.thoughts.length}</p>
                 </Form.Group>
 
                 <Form.Group className="editor-input" controlId="">
@@ -197,7 +197,7 @@ const EditProfile = () => {
                     placeholder="Enter Bio"
                     onChange={changeValue}
                   />
-                  <p className="word-note">Character {genInfoFiledsState.bio.length}/120</p>
+                  <p className="word-note">{120 - genInfoFiledsState.bio.length}</p>
                 </Form.Group>
               </Col>
             </Row>

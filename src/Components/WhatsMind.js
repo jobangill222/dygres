@@ -6,7 +6,7 @@ import { DContext } from "../Context/DContext";
 
 const WhatsMind = (props) => {
   //To change state when post is posted
-  const { setIsPostState } = props;
+  const { setIsPostState, placeholderState } = props;
 
   //Set create post state
   const [createPostState, setCreatePostState] = useState("");
@@ -44,65 +44,65 @@ const WhatsMind = (props) => {
     }
   };
 
-  const title = [
-    "A penny for your thoughts",
-    "A penny for your thoughts? Hell, how about a dime?",
-    "Share your thoughts",
-    "INSERT IDEA TO CONTINUE",
-    "Welcome to idea central… population, you!",
-    "Express thyself, mortal!",
-    "Hello human, want to talk? 🙂",
-    "What’s up?",
-    "What’s on your mind?",
-    "Welcome earthling, what do you have to share today?",
-    "Ready to dygres?",
-    "The worlds worst kept secret",
-    "BREAKING NEWS!",
-    "The world is waiting… to hear from you!",
-    "I was today years old when…",
-    "How are you feeling today?",
-    "How’s your week going?",
-    "Anything you need to talk about?",
+  // const title = [
+  //   "A penny for your thoughts",
+  //   "A penny for your thoughts? Hell, how about a dime?",
+  //   "Share your thoughts",
+  //   "INSERT IDEA TO CONTINUE",
+  //   "Welcome to idea central… population, you!",
+  //   "Express thyself, mortal!",
+  //   "Hello human, want to talk? 🙂",
+  //   "What’s up?",
+  //   "What’s on your mind?",
+  //   "Welcome earthling, what do you have to share today?",
+  //   "Ready to dygres?",
+  //   "The worlds worst kept secret",
+  //   "BREAKING NEWS!",
+  //   "The world is waiting… to hear from you!",
+  //   "I was today years old when…",
+  //   "How are you feeling today?",
+  //   "How’s your week going?",
+  //   "Anything you need to talk about?",
 
-    "Say something",
-    "Unload word hoard here",
-    "Time to empty the mental library?",
-    "Need to talk? We’re listening.",
-    "Express your thoughts",
-    "Never be afraid to express yourself",
-    "Unleash your brainchildren",
-    "Speak up, we want to hear from you.",
-    "The world is waiting…",
-    "It was a dark and stormy night",
-    "It was the best of times, it was the worst of times.",
-    "It’s creativity time! :D",
+  //   "Say something",
+  //   "Unload word hoard here",
+  //   "Time to empty the mental library?",
+  //   "Need to talk? We’re listening.",
+  //   "Express your thoughts",
+  //   "Never be afraid to express yourself",
+  //   "Unleash your brainchildren",
+  //   "Speak up, we want to hear from you.",
+  //   "The world is waiting…",
+  //   "It was a dark and stormy night",
+  //   "It was the best of times, it was the worst of times.",
+  //   "It’s creativity time! :D",
 
-    "How’s it going?",
-    "How are you today?",
-    "Let your dreams blossom",
-    "Tappity tap tappity tap tap",
-    "Caps lock is not actually cruise control for cool.",
-    "Caps lock may be cruise control for cool, but you still have to steer",
-    "Thought cabinet unlocked",
-    "New thought/idea unlocked",
-    "This may be the greatest/best thing you've ever written",
-    "Ready for your magnum opus?",
-    "Write your little heart out",
-    "Share your dygressions",
-    "Let’s dygres",
-    "Shall we dygres?",
-    "Is it sharing time already?",
-    "Think brain, think!",
-    "Another day, another dygression.",
-    "What would you like to dygres on today?",
-    "How will you be dygressing today?",
-    "Great to see you again!",
-    "Welcome back to another amazing idea",
-    "Incredible thoughts",
-    "Show us your genius",
-  ];
+  //   "How’s it going?",
+  //   "How are you today?",
+  //   "Let your dreams blossom",
+  //   "Tappity tap tappity tap tap",
+  //   "Caps lock is not actually cruise control for cool.",
+  //   "Caps lock may be cruise control for cool, but you still have to steer",
+  //   "Thought cabinet unlocked",
+  //   "New thought/idea unlocked",
+  //   "This may be the greatest/best thing you've ever written",
+  //   "Ready for your magnum opus?",
+  //   "Write your little heart out",
+  //   "Share your dygressions",
+  //   "Let’s dygres",
+  //   "Shall we dygres?",
+  //   "Is it sharing time already?",
+  //   "Think brain, think!",
+  //   "Another day, another dygression.",
+  //   "What would you like to dygres on today?",
+  //   "How will you be dygressing today?",
+  //   "Great to see you again!",
+  //   "Welcome back to another amazing idea",
+  //   "Incredible thoughts",
+  //   "Show us your genius",
+  // ];
 
-  const placeholder = title[Math.floor(Math.random() * title.length)];
+  // const placeholder = title[Math.floor(Math.random() * title.length)];
 
   return (
     <>
@@ -113,7 +113,7 @@ const WhatsMind = (props) => {
               as="textarea"
               rows={6}
               maxLength={420}
-              placeholder={placeholder}
+              placeholder={placeholderState}
               name="content"
               value={createPostState}
               max="420"
@@ -121,7 +121,9 @@ const WhatsMind = (props) => {
                 setCreatePostState(e.target.value);
               }}
             />
-            <p className="word-note">Character {createPostState.length}/420</p>
+            {/* <p className="word-note">Character {createPostState.length}/420</p> */}
+            <p className="word-note">{420 - createPostState.length}</p>
+
             <div className="text-end">
               <Button className="bg-primary text-white" onClick={submitPost}>
                 Submit

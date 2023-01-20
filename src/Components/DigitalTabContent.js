@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { MdOutlineTimer } from "react-icons/md";
 import Threads from "./Threads/index";
 import PostHead from "./PostList/PostHead";
@@ -6,12 +6,15 @@ import PostContent from "./PostList/PostContent";
 import PostFoot from "./PostList/PostFoot";
 import PostEdit from "./PostList/PostEdit";
 import PostRetweetForm from './PostList/PostRetweetForm';
+import { useNavigate } from "react-router-dom";
 
 const DigitalTabContent = (props) => {
   // Prop Destrucutring
   // console.log("props.post", props.post);
   const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, award_count, is_report, userID, _id, is_follow, created_at, parentPostID, parentPostDetail
     , postAward } = props.post;
+
+  const { postListingType } = props;
 
   // console.log('props.post', props.post)
 
@@ -32,6 +35,22 @@ const DigitalTabContent = (props) => {
     setIsThreadBoxOpen(e);
   }
 
+  const navigate = useNavigate();
+  const viewSinglePost = async () => {
+    localStorage.setItem('PostIdForSinglePost', _id);
+    navigate('/SinglePostDetail')
+  }
+
+
+  useEffect(() => {
+    // console.log('postListingType', postListingType);
+    if (postListingType === 'singlePost') {
+      setIsThreadBoxOpen(true);
+      //Move to top
+      window.scrollTo(0, 0);
+    }
+  }, [])
+
   return (
     <>
       <div className="digital-feeds p-0">
@@ -44,11 +63,16 @@ const DigitalTabContent = (props) => {
 
               {isEditFieldOpen === false &&
                 <>
+                  <div onClick={viewSinglePost}>
+                    {/* <h5>View post</h5> */}
+                  </div>
+
                   <PostContent postContent={postContent} />
                   {parentPostID !== null && <PostRetweetForm parentPostDetail={parentPostDetail} />}
-                </>
 
+                </>
               }
+
               {isEditFieldOpen === false &&
                 <PostFoot
                   agree_count={agree_count}
@@ -78,8 +102,6 @@ const DigitalTabContent = (props) => {
 
           {isThreadBoxOpen &&
             <>
-              {console.log("rednder")}
-
               <div className="thredsbar">
                 <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} commentID="" setCommentCount={setCommentCount} />
               </div>

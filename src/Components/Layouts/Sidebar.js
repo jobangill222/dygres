@@ -66,7 +66,7 @@ const Sidebar = () => {
                     </ul>
                     <div className="search-input-form">
                         <form className="user-searchform">
-                            <input type="text" className="bg-gray" placeholder="Search users...." />
+                            <input type="text" className="bg-gray" placeholder="Search" />
                             <button className="bg-lightgray text-lightgray"><BiSearch /></button>
                         </form>
                     </div>

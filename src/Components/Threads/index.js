@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 
 const Threads = (props) => {
 
-    const { isThreadBoxOpen, postID, setCommentCount, commentID } = props;
+    const { isThreadBoxOpen, postID, setCommentCount, commentID, clickTypeState } = props;
 
     const [commentListState, setCommentListState] = useState([]);
 
@@ -120,6 +120,23 @@ const Threads = (props) => {
 
             <div className='accordionitem' ref={scollToRef}>
 
+                {clickTypeState === 'reply' && <div className='reply-post'>
+                    <Form>
+                        <Form.Group className='replyinput' controlId="formBasicEmail">
+                            <Form.Control type="text" name="comment"
+                                value={createCommentState}
+                                max="420"
+                                onChange={(e) => {
+                                    setCreateCommentState(e.target.value);
+                                }}
+                                placeholder="What are your thoughts............?" />
+                        </Form.Group>
+                        <Button className="btn " onClick={submitComment}>
+                            Post
+                        </Button>
+                    </Form>
+                </div>}
+
                 {commentListState.length ?
                     <>
                         {commentID ? '' : <h4>Threads</h4>}
@@ -150,8 +167,9 @@ const Threads = (props) => {
 
                         })}
                     </>
-                    : commentID ? <span className='no-comment'>No Reply</span>
-                        : <span className='no-comment'>No comments</span>}
+                    // : commentID ? <span className='no-comment'>No Reply</span>
+                    // : <span className='no-comment'>No comments</span>}
+                    : ""}
 
 
                 {paginationData?.currentPage < paginationData?.totalNumberOfPages ?
@@ -165,7 +183,7 @@ const Threads = (props) => {
 
 
 
-                <div className='reply-post'>
+                {clickTypeState !== 'reply' && <div className='reply-post'>
                     <Form>
                         <Form.Group className='replyinput' controlId="formBasicEmail">
                             <Form.Control type="text" name="comment"
@@ -181,6 +199,7 @@ const Threads = (props) => {
                         </Button>
                     </Form>
                 </div>
+                }
             </div>
 
 

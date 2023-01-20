@@ -121,7 +121,7 @@ const UserListModal = (props) => {
                     {userList.length ? userList.map((userListing) => (
                         <SingleUserList userListing={userListing} />
                     )) : <div className="empty-bar">
-                        <img src="/images/empty.png" alt='dummy' />
+                        {/* <img src="/images/empty.png" alt='dummy' /> */}
                         <h4>Empty List</h4>
                     </div>}
                 </Modal.Body>

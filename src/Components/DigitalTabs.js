@@ -72,8 +72,8 @@ const DigitalTabs = (props) => {
               />
             ))
             : <div className="empty-bar">
-              <img src="/images/empty.png" alt='dummy' />
-              <h4>No Post</h4>
+              {/* <img src="/images/empty.png" alt='dummy' /> */}
+              <h4>No Posts</h4>
             </div>
           }
         </Tab>
@@ -89,9 +89,10 @@ const DigitalTabs = (props) => {
                 post={post}
               />
             ))
-            : <div className="empty-bar">
-              <img src="/images/empty.png" alt='dummy' />
-              <h4>No Post</h4>
+            :
+            <div className="empty-bar">
+              {/* <img src="/images/empty.png" alt='dummy' /> */}
+              <h4>You’re not following anyone at the moment. :(</h4>
             </div>
           }
         </Tab>
@@ -106,8 +107,8 @@ const DigitalTabs = (props) => {
               />
             ))
             : <div className="empty-bar">
-              <img src="/images/empty.png" alt='dummy' />
-              <h4>No Post</h4>
+              {/* <img src="/images/empty.png" alt='dummy' /> */}
+              <h4>No Posts</h4>
             </div>
           }
         </Tab>

@@ -14,7 +14,7 @@ const MostVoted = () => {
     const { getSinglePostDetailDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
-        localStorage.setItem("currentPage", 1);
+        // localStorage.setItem("currentPage", 1);
         getPostDetail();
     }, []);
 
@@ -22,8 +22,10 @@ const MostVoted = () => {
         try {
             setIsLoading(true);
             //Api call
-            const postID = "63c548a229cbcf4c40a86695";
-            const axiosRes = await getSinglePostDetailDContext(postID);
+            const PostIdForSinglePost = localStorage.getItem('PostIdForSinglePost');
+
+            // const postID = "63c7c179d5618a6185825361";
+            const axiosRes = await getSinglePostDetailDContext(PostIdForSinglePost);
             console.log("axiosRes******** after get hashtag posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
@@ -80,12 +82,13 @@ const MostVoted = () => {
                         <DigitalTabContent
                             key={post._id}
                             post={post}
+                            postListingType='singlePost'
                         />
                     ))
                     :
                     <div className="empty-bar">
-                        <img src="/images/empty.png" alt='dummy' />
-                        <h4>No Post</h4>
+                        {/* <img src="/images/empty.png" alt='dummy' /> */}
+                        <h4>No Posts</h4>
                     </div>
             }
         </>

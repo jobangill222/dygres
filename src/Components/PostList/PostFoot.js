@@ -128,7 +128,7 @@ const PostFoot = (props) => {
       setEditreportshow(true);
     }
   }
-  const [reportReason, setReportReason] = useState("");
+  const [reportReason, setReportReason] = useState(null);
   const [reportDescription, setReportDescription] = useState("");
   const submitReport = async (e) => {
     e.preventDefault();
@@ -136,7 +136,7 @@ const PostFoot = (props) => {
     console.log('reportReason', reportReason);
     console.log('reportDescription', reportDescription);
     if (!reportReason) {
-      toast("please select reason.")
+      toast("Please select reason.")
     } else {
       const reportAxiosRes = await reportPostDContext(postID, reportReason, reportDescription)
       console.log('reportAxiosRes', reportAxiosRes);
@@ -176,14 +176,6 @@ const PostFoot = (props) => {
   }
 
 
-  // // Awards Modal
-  // const [showAwards, setAwardsClose] = useState(false);
-  // const AwardsClose = () => setAwardsClose(false);
-  // const AwardsShow = () => setAwardsClose(true);
-  // // BuyMore Awards
-  // const [showBuyAwards, setShowAwardsClose] = useState(false);
-  // const ShowBuyAwardsClose = () => setShowAwardsClose(false);
-  // const ShowAddMore = () => setShowAwardsClose(true);
 
   // Share Modal
   const [ReportShare, setshareShow] = useState(false);
@@ -192,10 +184,9 @@ const PostFoot = (props) => {
 
 
 
-  // open popup by set state in selected postid which is global state and set popup stype state
+  // open popup by set state in selected postid which is global state and set popup type state
   const viewUserListPopup = async (type) => {
     setSelectedIDForPopup(postID)
-    // console.log('type', type);
     setPopupType(type);
   }
 
@@ -211,6 +202,25 @@ const PostFoot = (props) => {
     setPostIDForRetweet(postID)
     // console.log('type', type);
   }
+
+
+  //Make multiselect report reason
+  const selectReportReason = async (reason) => {
+    if (reportReason === null) {
+      setReportReason(reason)
+    } else {
+      var arr = reportReason.split(',');
+      const index = arr.indexOf(reason);
+      if (index > -1) { // only splice arr when item is found
+        arr.splice(index, 1); // 2nd parameter means remove one item only
+        setReportReason(arr.toString());
+      }
+      else {
+        setReportReason(reportReason + ',' + reason)
+      }
+    }
+  }
+
 
 
   return (
@@ -256,9 +266,15 @@ const PostFoot = (props) => {
           </li>
 
 
-          <li >
+          {/* <li >
             <div className={isReport ? `active` : ""} onClick={() => EditReport(postID)}><BsFillFlagFill /></div>
             <div className="list-text" onClick={() => viewUserListPopup('report-post-user-list')}>
+              <span className="number">{postReportCount}</span>
+              Report</div>
+          </li> */}
+          <li onClick={() => EditReport(postID)} >
+            <BsFillFlagFill />
+            <div className="list-text">
               <span className="number">{postReportCount}</span>
               Report</div>
           </li>
@@ -445,33 +461,33 @@ const PostFoot = (props) => {
         <Modal.Body>
           <ul className="report-tabs">
 
-            <li onClick={() => setReportReason('abuse or harassment')} className={reportReason === "abuse or harassment" ? `active` : ""}>abuse or harassment</li>
-            <li onClick={() => setReportReason('child exploitation')} className={reportReason === "child exploitation" ? `active` : ""}>child exploitation</li>
-            <li onClick={() => setReportReason('copyright or trademark infringement')} className={reportReason === "copyright or trademark infringement" ? `active` : ""}>copyright or trademark infringement</li>
-            <li onClick={() => setReportReason('cyberbullying')} className={reportReason === "cyberbullying" ? `active` : ""}>cyberbullying</li>
-            <li onClick={() => setReportReason('deepfake')} className={reportReason === "deepfake" ? `active` : ""}>deepfake</li>
-            <li onClick={() => setReportReason('doxxing')} className={reportReason === "doxxing" ? `active` : ""}>doxxing</li>
-            <li onClick={() => setReportReason('election or political interference')} className={reportReason === "election or political interference" ? `active` : ""}>election or political interference</li>
-            <li onClick={() => setReportReason('explicit adult content')} className={reportReason === "explicit adult content" ? `active` : ""}>explicit adult content</li>
-            <li onClick={() => setReportReason('graphic violence')} className={reportReason === "graphic violence" ? `active` : ""}>graphic violence</li>
-            <li onClick={() => setReportReason('hate speech or hateful conduct')} className={reportReason === "hate speech or hateful conduct" ? `active` : ""}>hate speech or hateful conduct</li>
-            <li onClick={() => setReportReason('impersonating a dygres team member')} className={reportReason === "impersonating a dygres team member" ? `active` : ""}>impersonating a dygres team member</li>
-            <li onClick={() => setReportReason('misleading or deceptive identity')} className={reportReason === "misleading or deceptive identity" ? `active` : ""}>misleading or deceptive identity</li>
-            <li onClick={() => setReportReason('phishing')} className={reportReason === "phishing" ? `active` : ""}>phishing</li>
-            <li onClick={() => setReportReason('platform manipulation')} className={reportReason === "platform manipulation" ? `active` : ""}>platform manipulation</li>
-            <li onClick={() => setReportReason('sensitive or offensive media')} className={reportReason === "sensitive or offensive media" ? `active` : ""}>sensitive or offensive media</li>
-            <li onClick={() => setReportReason('sexual exploitation or sexual violence')} className={reportReason === "sexual exploitation or sexual violence" ? `active` : ""}>sexual exploitation or sexual violence</li>
-            <li onClick={() => setReportReason('someone is impersonating me')} className={reportReason === "someone is impersonating me" ? `active` : ""}>someone is impersonating me</li>
-            <li onClick={() => setReportReason('spam')} className={reportReason === "spam" ? `active` : ""}>spam</li>
-            <li onClick={() => setReportReason('suicide baiting')} className={reportReason === "suicide baiting" ? `active` : ""}>suicide baiting</li>
-            <li onClick={() => setReportReason('suicide or self-harm risk')} className={reportReason === "suicide or self-harm risk" ? `active` : ""}>suicide or self-harm risk</li>
-            <li onClick={() => setReportReason('suspected bot')} className={reportReason === "suspected bot" ? `active` : ""}>suspected bot</li>
-            <li onClick={() => setReportReason('terrorism or violent extremism')} className={reportReason === "terrorism or violent extremism" ? `active` : ""}>terrorism or violent extremism</li>
-            <li onClick={() => setReportReason('tragedy cooldown period')} className={reportReason === "tragedy cooldown period" ? `active` : ""}>tragedy cooldown period</li>
-            <li onClick={() => setReportReason('unlabeled manipulated or deceptive media')} className={reportReason === "unlabeled manipulated or deceptive media" ? `active` : ""}>unlabeled manipulated or deceptive media</li>
-            <li onClick={() => setReportReason('unlabeled synthetic or AI generated content')} className={reportReason === "unlabeled synthetic or AI generated content" ? `active` : ""}>unlabeled synthetic or AI generated content</li>
-            <li onClick={() => setReportReason('violence')} className={reportReason === "violence" ? `active` : ""}>violence</li>
-            <li onClick={() => setReportReason('witch hunting')} className={reportReason === "witch hunting" ? `active` : ""}>witch hunting</li>
+            <li onClick={() => selectReportReason('abuse or harassment')} className={reportReason && reportReason.includes("abuse or harassment") && 'active'}>abuse or harassment</li>
+            <li onClick={() => selectReportReason('child exploitation')} className={reportReason && reportReason.includes("child exploitation") && 'active'}>child exploitation</li>
+            <li onClick={() => selectReportReason('copyright or trademark infringement')} className={reportReason && reportReason.includes("copyright or trademark infringement") && 'active'}>copyright or trademark infringement</li>
+            <li onClick={() => selectReportReason('cyberbullying')} className={reportReason && reportReason.includes("cyberbullying") && 'active'}>cyberbullying</li>
+            <li onClick={() => selectReportReason('deepfake')} className={reportReason && reportReason.includes("deepfake") && 'active'}>deepfake</li>
+            <li onClick={() => selectReportReason('doxxing')} className={reportReason && reportReason.includes("doxxing") && 'active'}>doxxing</li>
+            <li onClick={() => selectReportReason('election or political interference')} className={reportReason && reportReason.includes("election or political interference") && 'active'}>election or political interference</li>
+            <li onClick={() => selectReportReason('explicit adult content')} className={reportReason && reportReason.includes("explicit adult content") && 'active'}>explicit adult content</li>
+            <li onClick={() => selectReportReason('graphic violence')} className={reportReason && reportReason.includes("graphic violence") && 'active'}>graphic violence</li>
+            <li onClick={() => selectReportReason('hate speech or hateful conduct')} className={reportReason && reportReason.includes("hate speech or hateful conduct") && 'active'}>hate speech or hateful conduct</li>
+            <li onClick={() => selectReportReason('impersonating a dygres team member')} className={reportReason && reportReason.includes("impersonating a dygres team member") && 'active'}>impersonating a dygres team member</li>
+            <li onClick={() => selectReportReason('misleading or deceptive identity')} className={reportReason && reportReason.includes("misleading or deceptive identity") && 'active'}>misleading or deceptive identity</li>
+            <li onClick={() => selectReportReason('phishing')} className={reportReason && reportReason.includes("phishing") && 'active'}>phishing</li>
+            <li onClick={() => selectReportReason('platform manipulation')} className={reportReason && reportReason.includes("platform manipulation") && 'active'}>platform manipulation</li>
+            <li onClick={() => selectReportReason('sensitive or offensive media')} className={reportReason && reportReason.includes("sensitive or offensive media") && 'active'}>sensitive or offensive media</li>
+            <li onClick={() => selectReportReason('sexual exploitation or sexual violence')} className={reportReason && reportReason.includes("sexual exploitation or sexual violence") && 'active'}>sexual exploitation or sexual violence</li>
+            <li onClick={() => selectReportReason('someone is impersonating me')} className={reportReason && reportReason.includes("someone is impersonating me") && 'active'}>someone is impersonating me</li>
+            <li onClick={() => selectReportReason('spam')} className={reportReason && reportReason.includes("spam") && 'active'}>spam</li>
+            <li onClick={() => selectReportReason('suicide baiting')} className={reportReason && reportReason.includes("suicide baiting") && 'active'}>suicide baiting</li>
+            <li onClick={() => selectReportReason('suicide or self-harm risk')} className={reportReason && reportReason.includes("suicide or self-harm risk") && 'active'}>suicide or self-harm risk</li>
+            <li onClick={() => selectReportReason('suspected bot')} className={reportReason && reportReason.includes("suspected bot") && 'active'}>suspected bot</li>
+            <li onClick={() => selectReportReason('terrorism or violent extremism')} className={reportReason && reportReason.includes("terrorism or violent extremism") && 'active'}>terrorism or violent extremism</li>
+            <li onClick={() => selectReportReason('tragedy cooldown period')} className={reportReason && reportReason.includes("tragedy cooldown period") && 'active'}>tragedy cooldown period</li>
+            <li onClick={() => selectReportReason('unlabeled manipulated or deceptive media')} className={reportReason && reportReason.includes("unlabeled manipulated or deceptive media") && 'active'}>unlabeled manipulated or deceptive media</li>
+            <li onClick={() => selectReportReason('unlabeled synthetic or AI generated content')} className={reportReason && reportReason.includes("unlabeled synthetic or AI generated content") && 'active'}>unlabeled synthetic or AI generated content</li>
+            <li onClick={() => selectReportReason('violence')} className={reportReason && reportReason.includes("violence") && 'active'}>violence</li>
+            <li onClick={() => selectReportReason('witch hunting')} className={reportReason && reportReason.includes("witch hunting") && 'active'}>witch hunting</li>
 
           </ul>
           <Form>
@@ -491,10 +507,10 @@ const PostFoot = (props) => {
               </Button>
             </Form.Group>
           </Form>
-        </Modal.Body>
-      </Modal>
+        </Modal.Body >
+      </Modal >
       {/* Share Post */}
-      <Modal
+      < Modal
         className="Actions-modal share-popup"
         show={ReportShare}
         onHide={shareClose}
@@ -553,7 +569,7 @@ const PostFoot = (props) => {
             </Form.Group>
           </Form>
         </Modal.Body>
-      </Modal>
+      </Modal >
     </>
   );
 };

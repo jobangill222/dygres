@@ -67,12 +67,12 @@ export default function SingleNotificationList(props) {
             {/* Delete modal */}
             <Modal className="Actions-modal  deletemodal" show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete Post</Modal.Title>
+                    <Modal.Title>Delete Notification ?</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure you want to Delete this post ?</Modal.Body>
+                <Modal.Body>Are you sure you want to Delete this notification ?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="outline-primary" onClick={handleClose}>
-                        Close
+                        No
                     </Button>
                     <Button variant="primary" onClick={yesDeleteNotification}>
                         Yes

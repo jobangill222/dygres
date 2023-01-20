@@ -180,7 +180,9 @@ export default function SingleAward(props) {
                                             }} />
                                     </Form.Group>
                                 </Form>
-                                <p className="word-note">Character {createPostState.length}/420</p>
+                                {/* <p className="word-note">Character {createPostState.length}/420</p> */}
+                                <p className="word-note">{420 - createPostState.length}</p>
+
                             </div>
                         </div>
                         <div className="digital-feeds diffrentiate-bar">

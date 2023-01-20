@@ -1259,6 +1259,16 @@ ul.profiletabsbar li:last-child a {
 .awards-modal .modal-header button.btn-add svg {
   margin-left: 10px;
 }
+.empty-bar {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.empty-bar h4 {
+  font-size: 24px;
+  margin: 0;
+}
 .z-1050.modal.show {
   z-index: 1060;
 }
@@ -3066,11 +3076,7 @@ ul.sidebar-menu {
   max-width: 25%;
   margin: 0 auto 30px auto;
 }
-.empty-bar h4 {
-  font-size: 36px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
+
 .empty-bar p {
   font-size: 16px;
   margin: 0;

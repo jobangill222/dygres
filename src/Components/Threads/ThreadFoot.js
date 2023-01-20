@@ -85,6 +85,21 @@ export default function ThreadFoot(props) {
     }
 
 
+
+    const [clickTypeState, setClickTypeState] = useState('thread');
+    const replyClick = async () => {
+        setIsThreadBoxOpen(true)
+        setClickTypeState('reply');
+    }
+
+
+    const threadClick = async () => {
+        setIsThreadBoxOpen(true)
+        setClickTypeState('thread');
+        // setIsThreadBoxOpen(!isThreadBoxOpen)
+    }
+
+
     return (
         <>
 
@@ -109,12 +124,18 @@ export default function ThreadFoot(props) {
                         </div>
                     </li>
 
+
+
+
                     <li>
-                        <div className={isThreadBoxOpen ? 'accordionhead active' : 'accordionhead'} onClick={() => setIsThreadBoxOpen(!isThreadBoxOpen)}><FaComments /><span className="number">{commentCount}</span>Threads
+                        {/* <div className={isThreadBoxOpen ? 'accordionhead active' : 'accordionhead'} onClick={() => setIsThreadBoxOpen(!isThreadBoxOpen)}><FaComments /><span className="number">{commentCount}</span>Threads */}
+                        <div className={isThreadBoxOpen ? 'accordionhead active' : 'accordionhead'} onClick={threadClick}><FaComments /><span className="number">{commentCount}</span>Threads
+
                         </div>
                     </li>
 
-                    <li onClick={() => setIsThreadBoxOpen(true)}>
+                    {/* <li onClick={() => setIsThreadBoxOpen(true)}> */}
+                    <li onClick={replyClick}>
                         <RiMessageFill />Reply
                     </li>
 
@@ -138,7 +159,7 @@ export default function ThreadFoot(props) {
 
             {isThreadBoxOpen &&
                 <div className="thredsbar">
-                    <Threads isThreadBoxOpen={isThreadBoxOpen} postID={postID} commentID={commentID} setCommentCount={setCommentCount} />
+                    <Threads isThreadBoxOpen={isThreadBoxOpen} postID={postID} commentID={commentID} setCommentCount={setCommentCount} clickTypeState={clickTypeState} />
                 </div>
             }
 
