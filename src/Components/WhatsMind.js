@@ -17,7 +17,7 @@ const WhatsMind = (props) => {
   //Submit post
   const submitPost = async () => {
     if (!createPostState) {
-      toast("Post cannot be empty.");
+      toast("Consider entering text into the box before clicking submit.");
     } else {
       // console.log("createPostState", createPostState);
       //   alert("Post successfully.");

@@ -7,14 +7,14 @@ import FooterMob from "../FooterMob";
 
 
 const ProfileLayout = () => {
-//assigning location variable
-const location = useLocation();
+    //assigning location variable
+    const location = useLocation();
 
-//destructuring pathname from location
-const { pathname } = location;
+    //destructuring pathname from location
+    const { pathname } = location;
 
-//Javascript split method to get the name of the path in array
-const splitLocation = pathname.split("/");
+    //Javascript split method to get the name of the path in array
+    const splitLocation = pathname.split("/");
 
     return (
         <>
@@ -22,14 +22,14 @@ const splitLocation = pathname.split("/");
             <div className='body-wrapper p-0'>
                 <Container>
                     <ul className="profiletabsbar">
-                        <li className={splitLocation[1] === "editprofile" ? "active" : ""}><Link exact to="/editprofile">general information</Link></li>
-                        <li className={splitLocation[1] === "personalinformation" ? "active" : ""}><Link exact to="/personalinformation">Personal information</Link></li>
+                        <li className={splitLocation[1] === "editprofile" ? "active" : ""}><Link exact to="/editprofile">Account Settings</Link></li>
+                        <li className={splitLocation[1] === "personalinformation" ? "active" : ""}><Link exact to="/personalinformation">About Me</Link></li>
                     </ul>
                     <Outlet />
                 </Container>
 
             </div>
-            <FooterMob/>
+            <FooterMob />
 
         </>
     );

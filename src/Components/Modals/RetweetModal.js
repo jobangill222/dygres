@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/Button';
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 import HighLight from "../HighLight"
-
+import Tooltip from 'react-bootstrap/tooltip';
+import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
@@ -49,6 +50,12 @@ export default function SingleAward(props) {
 
     }
 
+
+    const verificationtooltip = (
+        <Tooltip id="verificationtooltip">
+            {userVerificationLevel === 1 ? 'Verified Email' : userVerificationLevel === 2 ? "Verified Human" : "No Verification"}
+        </Tooltip>
+    );
 
 
 
@@ -118,7 +125,7 @@ export default function SingleAward(props) {
     //Submit post
     const submitPost = async () => {
         if (!createPostState) {
-            toast("Post cannot be empty.");
+            toast("Consider entering text into the box before clicking submit.");
         } else {
             // console.log("createPostState", createPostState);
             //   alert("Post successfully.");
@@ -203,12 +210,14 @@ export default function SingleAward(props) {
                                                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(postDetailForRetweet?.created_at)._d.getTime())}</h5>
                                             </div>
                                             {/* {console.log('userVerificationLeveluserVerificationLevel', userVerificationLevel)} */}
-                                            <div className="levelbar text-darkwhite level1">
-                                                Level {userVerificationLevel}
-                                                <h6 className="level1-circle">
+                                            <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                                                <div className="levelbar text-darkwhite level1">
+                                                    Level {userVerificationLevel}
+                                                    {/* <h6 className="level1-circle">
                                                     <span className="text-white lvlstar">{userVerificationLevel}</span>
-                                                </h6>
-                                            </div>
+                                                </h6> */}
+                                                </div>
+                                            </OverlayTrigger>
                                         </div>
                                     </div>
                                 </div>

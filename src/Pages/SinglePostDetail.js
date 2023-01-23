@@ -11,12 +11,13 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const MostVoted = () => {
 
-    const { getSinglePostDetailDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { getSinglePostDetailDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, postIDForSinglePostState } = useContext(DContext);
+
 
     useEffect(() => {
         // localStorage.setItem("currentPage", 1);
         getPostDetail();
-    }, []);
+    }, [postIDForSinglePostState]);
 
     const getPostDetail = async () => {
         try {
@@ -87,7 +88,7 @@ const MostVoted = () => {
                     ))
                     :
                     <div className="empty-bar">
-                        {/* <img src="/images/empty.png" alt='dummy' /> */}
+                        <img src="/images/empty.png" alt='dummy' />
                         <h4>No Posts</h4>
                     </div>
             }

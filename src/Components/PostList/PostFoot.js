@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import {
   AiFillLike,
   AiFillDislike,
-  AiOutlinePlus,
+  // AiOutlinePlus,
   AiFillLinkedin,
 } from "react-icons/ai";
 import { FaGift, FaComments, FaFacebookF, FaRedditAlien } from "react-icons/fa";
@@ -21,16 +21,27 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-
+import Countdown from 'react-countdown';
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 
 import AwardModal from "../Modals/AwardModal";
+import { MdOutlineTimer } from "react-icons/md";
+
+
+import moment from "moment";
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+TimeAgo.addDefaultLocale(en)
 
 
 const PostFoot = (props) => {
+
+  const timeAgo = new TimeAgo('en-US')
+
+
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at } = props;
 
   //Functions to call api
   const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet } = useContext(DContext);
@@ -145,8 +156,11 @@ const PostFoot = (props) => {
         setPostReportCount(newReportCount);
         setIsReport(true);
         setEditreportshow(false);
+        toast('Thank you, your report has been successfully submitted.');
       }
-      toast(reportAxiosRes.message);
+      else {
+        toast(reportAxiosRes.message);
+      }
     }
   }
 
@@ -221,6 +235,33 @@ const PostFoot = (props) => {
     }
   }
 
+
+  // Edit Post Renderer callback with condition
+  const [isPostEditableState, setIsPostEditableState] = useState(null);
+  const editRenderer = ({ minutes, seconds, completed }) => {
+    if (completed) {
+      // setIsPostDisable(true)
+      setIsPostEditableState(true)
+      return <Completionist />;
+    } else {
+      return <span style={{ color: 'red' }}> <MdOutlineTimer />{minutes}:{seconds}</span>;
+    }
+  };
+
+
+  // delete Post Renderer callback with condition
+  const [isPostDeletableableState, setIsPostDeletableableState] = useState(null);
+  const deleteRenderer = ({ minutes, seconds, completed }) => {
+    if (completed) {
+      // setIsPostDisable(true)
+      setIsPostDeletableableState(true)
+      return <Completionist />;
+    } else {
+      return <span style={{ color: 'red' }}> <MdOutlineTimer />{minutes}:{seconds}</span>;
+    }
+  };
+
+  const Completionist = () => <span style={{ color: "red" }}><MdOutlineTimer />Time over</span>;
 
 
   return (
@@ -300,13 +341,20 @@ const PostFoot = (props) => {
 
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => setIsEditFieldOpen(true)} >
-                  <BsPencil />
-                  Edit Post
+                <Dropdown.Item onClick={() => setIsEditFieldOpen(true)} disabled={isPostEditableState ? true : false} >
+                  <p><BsPencil />
+                    Edit Post</p>
+                  <Countdown date={moment(created_at) + 1800 * 1000} renderer={editRenderer} >
+                  </Countdown>
+
                 </Dropdown.Item>
-                <Dropdown.Item onClick={handleShow}>
-                  <RiDeleteBin6Line />
-                  Delete Post
+                <Dropdown.Item onClick={handleShow} disabled={isPostDeletableableState ? true : false}>
+                  <p>
+                    <RiDeleteBin6Line />
+                    Delete Post
+                  </p>
+                  <Countdown date={moment(created_at) + 3600 * 1000} renderer={deleteRenderer} >
+                  </Countdown>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -497,7 +545,7 @@ const PostFoot = (props) => {
                 value={reportDescription}
                 onChange={(e) => setReportDescription(e.target.value)}
                 as="textarea"
-                placeholder="Describe your issue for report........."
+                placeholder="Please describe your issue."
                 style={{ height: "92px" }}
               />
             </Form.Group>

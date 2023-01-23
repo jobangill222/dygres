@@ -4,6 +4,8 @@ import { DContext } from "../../Context/DContext";
 
 import Countdown from 'react-countdown';
 import PostHeadAward from "./PostHeadAward";
+import Tooltip from 'react-bootstrap/tooltip';
+import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
@@ -86,6 +88,17 @@ const PostHead = (props) => {
   }, [is_follow]);
 
 
+  const [verificationLevelState, setVerificationLevelState] = useState(0);
+  //Verification Level
+  useEffect(() => {
+    setVerificationLevelState(postUserDetails?.isEmailVerify === 1 && postUserDetails?.isPhotoVerify === 0 ? '1' : postUserDetails?.isPhotoVerify === 1 ? "2" : "0");
+  }, [postUserDetails])
+
+  const verificationtooltip = (
+    <Tooltip id="verificationtooltip">
+      {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"}
+    </Tooltip>
+  );
 
   // const Completionist = () => console.log('You are good to go!')
 
@@ -148,12 +161,14 @@ const PostHead = (props) => {
                 <h6 className="text-lightgray">@{postUserDetails?.username}</h6>
                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(created_at)._d.getTime())}</h5>
               </div>
-              <div className="levelbar text-darkwhite level1">
-                Level {postUserDetails?.isEmailVerify === 1 && postUserDetails?.isPhotoVerify === 0 ? '1' : postUserDetails?.isPhotoVerify === 1 ? "2" : "0"}
-                <h6 className="level1-circle">
+              <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                <div className="levelbar text-darkwhite level1">
+                  Level {verificationLevelState}
+                  {/* <h6 className="level1-circle">
                   <span className="text-white lvlstar">{postUserDetails?.isEmailVerify === 1 && postUserDetails?.isPhotoVerify === 0 ? '1' : postUserDetails?.isPhotoVerify === 1 ? "2" : "0"}</span>
-                </h6>
-              </div>
+                </h6> */}
+                </div>
+              </OverlayTrigger>
             </div>
           </div>
 

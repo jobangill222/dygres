@@ -802,6 +802,7 @@ ul.profiletabsbar li:last-child a {
   color: var(--base-primary) !important;
 }
 .hoverdropdown .dropdown-menu {
+  min-width: 220px;
   padding: 5px 0px;
   margin: 0;
   background: var(--base-purewhite);
@@ -810,7 +811,7 @@ ul.profiletabsbar li:last-child a {
   border-radius: 8px;
 }
 .hoverdropdown .dropdown-menu .dropdown-item {
-  padding: 5px 20px;
+  padding: 5px 10px;
   margin-bottom: 5px;
   font-weight: 600;
   font-size: 14px;
@@ -818,6 +819,33 @@ ul.profiletabsbar li:last-child a {
   display: flex;
   align-items: center;
   color: var(--base-secondry);
+}
+.hoverdropdown .dropdown-menu .dropdown-item.disabled {
+  opacity: 0.3;
+}
+
+.hoverdropdown .dropdown-menu .dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hoverdropdown .dropdown-menu .dropdown-item p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: var(--base-secondry);
+}
+
+.hoverdropdown .dropdown-menu .dropdown-item span {
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.hoverdropdown .dropdown-menu .dropdown-item span svg {
+  margin-right: 2px;
 }
 .hoverdropdown .dropdown-menu .dropdown-item:last-child {
   margin: 0;
@@ -1256,14 +1284,20 @@ ul.profiletabsbar li:last-child a {
   line-height: 22px;
   color: var(--base-secondry);
 }
+.levelbar {
+  display: inline-block !important;
+  top: -12px !important;
+  position: relative;
+}
 .awards-modal .modal-header button.btn-add svg {
   margin-left: 10px;
 }
 .empty-bar {
-  height: 200px;
+  padding: 40px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .empty-bar h4 {
   font-size: 24px;

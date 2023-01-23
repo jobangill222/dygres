@@ -1,15 +1,28 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import Tooltip from 'react-bootstrap/tooltip';
+import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 TimeAgo.addDefaultLocale(en)
 
-export default function PostRetweetForm(props) {
+export default function PostRetweetFrom(props) {
 
     const timeAgo = new TimeAgo('en-US')
 
     const { parentPostDetail } = props;
+
+    const [verificationLevelState, setVerificationLevelState] = useState(0);
+    //Verification Level
+    useEffect(() => {
+        setVerificationLevelState(parentPostDetail[0]?.user[0]?.isEmailVerify === 1 && parentPostDetail[0]?.user[0]?.isPhotoVerify === 0 ? '1' : parentPostDetail[0]?.user[0]?.isPhotoVerify === 1 ? "2" : "0");
+    }, [parentPostDetail])
+
+    const verificationtooltip = (
+        <Tooltip id="verificationtooltip">
+            {parentPostDetail[0]?.user[0]?.isEmailVerify === 1 && parentPostDetail[0]?.user[0]?.isPhotoVerify === 0 ? 'Verified Email' : parentPostDetail[0]?.user[0]?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"}
+        </Tooltip>
+    );
 
     return (
         < div className="digital-feeds diffrentiate-bar" >
@@ -27,15 +40,18 @@ export default function PostRetweetForm(props) {
                                 </h4>
                             </div>
                             <div className="user-availbility">
-                                <h6 className="text-lightgray">@{parentPostDetail[0]?.user[0].username}</h6>
+
+                                <h6 className="text-lightgray">@{parentPostDetail[0]?.user[0]?.username || ""}</h6>
                                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(parentPostDetail[0]?.created_at)._d.getTime())}</h5>
                             </div>
-                            <div className="levelbar text-darkwhite level1">
-                                Level {parentPostDetail[0].user[0].isEmailVerify === 1 && parentPostDetail[0].user[0].isPhotoVerify === 0 ? '1' : parentPostDetail[0].user[0].isPhotoVerify === 1 ? "2" : "0"}
-                                <h6 className="level1-circle">
-                                    <span className="text-white lvlstar">{parentPostDetail[0].user[0].isEmailVerify === 1 && parentPostDetail[0].user[0].isPhotoVerify === 0 ? '1' : parentPostDetail[0].user[0].isPhotoVerify === 1 ? "2" : "0"}</span>
-                                </h6>
-                            </div>
+                            <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                                <div className="levelbar text-darkwhite level1">
+                                    Level {verificationLevelState}
+                                    {/* <h6 className="level1-circle">
+                                    <span className="text-white lvlstar">{parentPostDetail[0]?.user[0]?.isEmailVerify === 1 && parentPostDetail[0]?.user[0]?.isPhotoVerify === 0 ? '1' : parentPostDetail[0]?.user[0]?.isPhotoVerify === 1 ? "2" : "0"}</span>
+                                </h6> */}
+                                </div>
+                            </OverlayTrigger>
                         </div>
                     </div>
                 </div>

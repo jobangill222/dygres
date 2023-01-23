@@ -8,11 +8,11 @@ import Form from "react-bootstrap/Form";
 
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   //Import Api functions from DContext file
   const { getGenInformationDContext, updateGenInformationDContext } =
@@ -80,7 +80,7 @@ const EditProfile = () => {
 
     const axiosRes = await updateGenInformationDContext(bodyFormData);
     // console.log('axiosRes in update gen Info' , axiosRes);
-    navigate("/profile");
+    // navigate("/profile");
     toast(axiosRes.message);
   };
 
@@ -148,12 +148,12 @@ const EditProfile = () => {
             <Row>
               <Col lg="6 ">
                 <Form.Group className="editor-input" controlId="">
-                  <Form.Label>Display Name</Form.Label>
+                  <Form.Label>Hi, my name is</Form.Label>
                   <Form.Control
                     type="text"
                     name="name"
                     value={genInfoFiledsState.name}
-                    placeholder="Enter Display Name"
+                    placeholder="What does the world call you?"
                     onChange={changeValue}
                   />
                 </Form.Group>
@@ -171,21 +171,21 @@ const EditProfile = () => {
               </Col>
               <Col lg="12">
                 <Form.Group className="editor-input" controlId="">
-                  <Form.Label>A penny for your thoughts?</Form.Label>
+                  <Form.Label>News Flash!</Form.Label>
                   <Form.Control
                     type="text"
                     name="thoughts"
                     max="420"
                     maxLength={50}
                     value={genInfoFiledsState.thoughts}
-                    placeholder="Enter A penny for your thoughts?"
+                    placeholder="Enter Your News Flash here."
                     onChange={changeValue}
                   />
                   <p className="word-note">{50 - genInfoFiledsState.thoughts.length}</p>
                 </Form.Group>
 
                 <Form.Group className="editor-input" controlId="">
-                  <Form.Label>Bio</Form.Label>
+                  <Form.Label>About Me</Form.Label>
                   <Form.Control
                     name="bio"
                     as="textarea"
@@ -194,7 +194,7 @@ const EditProfile = () => {
                     maxLength={120}
                     type="text"
                     value={genInfoFiledsState.bio}
-                    placeholder="Enter Bio"
+                    placeholder="Enter About Me"
                     onChange={changeValue}
                   />
                   <p className="word-note">{120 - genInfoFiledsState.bio.length}</p>

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // import { MdOutlineTimer } from 'react-icons/md';
 
 import { BASE_URL } from '../../Config/index';
-
+import Tooltip from 'react-bootstrap/tooltip';
+import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
@@ -16,16 +17,30 @@ export default function ThreadHead(props) {
     // Create formatter (English).
     const timeAgo = new TimeAgo('en-US')
 
-    let userVerificationLevel;
-    if (user?.isEmailVerify === 1 && user?.isPhotoVerify === 0) {
-        userVerificationLevel = 1;
-    }
-    else if (user.isPhotoVerify === 1) {
-        userVerificationLevel = 2;
-    }
-    else {
-        userVerificationLevel = 0;
-    }
+    // let userVerificationLevel;
+    // if (user?.isEmailVerify === 1 && user?.isPhotoVerify === 0) {
+    //     userVerificationLevel = 1;
+    // }
+    // else if (user.isPhotoVerify === 1) {
+    //     userVerificationLevel = 2;
+    // }
+    // else {
+    //     userVerificationLevel = 0;
+    // }
+
+
+
+    const [verificationLevelState, setVerificationLevelState] = useState(0);
+    //Verification Level
+    useEffect(() => {
+        setVerificationLevelState(user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0");
+    }, [user])
+
+    const verificationtooltip = (
+        <Tooltip id="verificationtooltip">
+            {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"}
+        </Tooltip>
+    );
 
 
     return (
@@ -45,7 +60,11 @@ export default function ThreadHead(props) {
                                 <h6 className="text-lightgray">@{user?.username}</h6>
                                 <h5 className="text-lightgray redtime">{timeAgo.format(moment(created_at)._d.getTime())}</h5>
                             </div>
-                            <div className="levelbar text-darkwhite level2">Level {userVerificationLevel}{" "} <h6 className="level2-circle"><span className="text-white lvlstar">{userVerificationLevel}</span></h6></div>
+                            <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                                <div className="levelbar text-darkwhite level1">Level {verificationLevelState}{" "}
+                                    {/* <h6 className="level2-circle"><span className="text-white lvlstar">{verificationLevelState}</span></h6> */}
+                                </div>
+                            </OverlayTrigger>
                         </div>
                     </div>
                 </div>

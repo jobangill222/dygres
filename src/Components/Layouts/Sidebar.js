@@ -13,7 +13,7 @@ const Sidebar = () => {
 
     const tooltip = (
         <Tooltip id="tooltip">
-            {user?.thoughts ? user.thoughts : "No thoughts"}
+            {user?.thoughts ? user.thoughts : "crickets"}
         </Tooltip>
     );
 
@@ -26,7 +26,7 @@ const Sidebar = () => {
                     <img src="/images/feature-img.png" alt="feature-img" />
                     <div className="edit-bar">
                         {/* <input type="file" className="uploadimg-input" /> */}
-                        <Link to="/editprofile">
+                        <Link to="/profile">
                             <BsPencil className="text-primary" />
                         </Link>
                     </div>

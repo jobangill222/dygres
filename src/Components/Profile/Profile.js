@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
@@ -13,12 +13,24 @@ const Profile = () => {
 
     const tooltip = (
         <Tooltip id="tooltip">
-            {user?.thoughts ? user.thoughts : "No thoughts"}
+            {user?.thoughts ? user.thoughts : "crickets"}
+        </Tooltip>
+    );
+
+    const verificationtooltip = (
+        <Tooltip id="verificationtooltip">
+            {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"}
         </Tooltip>
     );
 
     // console.log('user', user)
 
+
+    const [verificationLevelState, setVerificationLevelState] = useState(0);
+    //Verification Level
+    useEffect(() => {
+        setVerificationLevelState(user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0");
+    }, [user])
 
     return (
         <>
@@ -41,9 +53,12 @@ const Profile = () => {
                                 <div className="user-availbility">
                                     <h6 className="text-lightgray">@{user?.username}</h6>
                                 </div>
-                                {console.log('useruseruser', user)}
-                                <div className="levelbar text-darkwhite level1">Level {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0"}
-                                    <h6 className="level1-circle"><span className="text-white lvlstar">{user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0"}</span></h6></div>
+                                {/* {console.log('useruseruser', user)} */}
+                                <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                                    <div className="levelbar text-darkwhite level1">Level {verificationLevelState}
+                                        {/* <h6 className="level1-circle"><span className="text-white lvlstar">{user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0"}</span></h6> */}
+                                    </div>
+                                </OverlayTrigger>
                                 <ul className="user-detail-listing">
                                     <li>
                                         <p className="text-secondry">{userStats?.totalPosts}</p>

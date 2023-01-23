@@ -32,7 +32,7 @@ const SignUp = () => {
     console.log(data);
 
     if (!ref.current.checked) {
-      toast("Please check the checkbox");
+      toast("Please verify your age to join dygres.");
       return;
     }
     try {
@@ -65,6 +65,7 @@ const SignUp = () => {
 
   const registerOptions = {
     email: { required: "Enter Email Address" },
+    username: { required: "Enter Username" },
     password: {
       required: "Enter Password.",
       minLength: {
@@ -97,6 +98,26 @@ const SignUp = () => {
                 </small>
               </Form.Group>
 
+
+              <Form.Group
+                className="authinputbar"
+                controlId="formBasicPassword"
+              >
+                <Form.Label>Your Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Username"
+                  name="username"
+                  {...register("username", registerOptions.username)}
+                // value={password}
+                // onChange={e => setPassword(e.target.value)}
+                />
+                <small className="text-danger">
+                  {errors?.username && errors.username.message}
+                </small>
+              </Form.Group>
+
+
               <Form.Group
                 className="authinputbar"
                 controlId="formBasicPassword"
@@ -127,11 +148,11 @@ const SignUp = () => {
               </Form.Group>
 
               <Button variant="primary" type="submit">
-                Sign up
+                Join dygres
               </Button>
               <div className="Noted-bar">
                 <h6>
-                  Don’t have an account? <Link to="/">Login here</Link>
+                  Already have an account? <Link to="/"> Login here</Link>
                 </h6>
               </div>
               <div className="terms-condition">

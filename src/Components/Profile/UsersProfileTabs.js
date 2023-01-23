@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import ProfileAbout from "./ProfileAbout";
+import UsersAbout from "./UsersAbout";
 // import ProfileTabTimeline from "./ProfileTabTimeline";
 import { DContext } from "../../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -134,15 +134,15 @@ const UsersProfileTabs = (props) => {
                             ))
                             :
                             <div className="empty-bar">
-                                {/* <img src="/images/empty.png" alt='dummy' /> */}
+                                <img src="/images/empty.png" alt='dummy' />
                                 <h4>No Posts</h4>
                             </div>
                     }
                 </Tab>
 
-                {/* ABout section */}
+                {/* About section */}
                 <Tab eventKey="About" title="About">
-                    <ProfileAbout user={user} />
+                    <UsersAbout user={user} />
                 </Tab>
             </Tabs>
         </>

@@ -19,7 +19,7 @@ const PostEdit = (props) => {
 
     const saveEditPost = async () => {
         if (!editContent) {
-            toast("Post cannot be empty.");
+            toast("Consider entering text into the box before clicking submit.");
         } else {
             const editPostAxiosRes = await editPostDContext(postID, editContent);
             // console.log('editPostAxiosReseditPostAxiosReseditPostAxiosRes' , editPostAxiosRes);

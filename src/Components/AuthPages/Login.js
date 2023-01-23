@@ -56,7 +56,7 @@ const Login = () => {
   };
 
   const registerOptions = {
-    email: { required: "Enter Email Address" },
+    email: { required: "Enter Email Address or Username" },
     password: {
       required: "Enter Password.",
       minLength: {
@@ -88,10 +88,10 @@ const Login = () => {
             <p>Enter your details to log into your account!</p>
             <form onSubmit={handleSubmit(handleRegistration, handleError)}>
               <Form.Group className="authinputbar" controlId="formBasicEmail">
-                <Form.Label>Your email</Form.Label>
+                <Form.Label>Your Email / Username</Form.Label>
                 <Form.Control
-                  type="email"
-                  placeholder="Enter Email Address"
+                  type="text"
+                  placeholder="Enter Email Address / Username"
                   name="email"
                   {...register("email", registerOptions.email)}
                 // value={loginField?.email}

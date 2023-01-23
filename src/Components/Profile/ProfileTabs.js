@@ -126,7 +126,7 @@ const ProfileTabs = (props) => {
                             ))
                             :
                             <div className="empty-bar">
-                                {/* <img src="/images/empty.png" alt='dummy' /> */}
+                                <img src="/images/empty.png" alt='dummy' />
                                 <h4>No Posts</h4>
                             </div>
                     }

@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import { MdOutlineTimer } from "react-icons/md";
 import Threads from "./Threads/index";
 import PostHead from "./PostList/PostHead";
 import PostContent from "./PostList/PostContent";
 import PostFoot from "./PostList/PostFoot";
 import PostEdit from "./PostList/PostEdit";
-import PostRetweetForm from './PostList/PostRetweetForm';
+import PostRetweetFrom from './PostList/PostRetweetFrom';
 import { useNavigate } from "react-router-dom";
+import { DContext } from "../Context/DContext";
+
 
 const DigitalTabContent = (props) => {
   // Prop Destrucutring
@@ -15,6 +17,9 @@ const DigitalTabContent = (props) => {
     , postAward } = props.post;
 
   const { postListingType } = props;
+
+
+  const { setPostIDForSinglePostState } = useContext(DContext);
 
   // console.log('props.post', props.post)
 
@@ -36,11 +41,16 @@ const DigitalTabContent = (props) => {
   }
 
   const navigate = useNavigate();
-  const viewSinglePost = async () => {
-    localStorage.setItem('PostIdForSinglePost', _id);
+  // const viewSinglePost = async () => {
+  //   localStorage.setItem('PostIdForSinglePost', _id);
+  //   navigate('/SinglePostDetail')
+  // }
+
+  const viewParentPostDetail = async (postID) => {
+    localStorage.setItem('PostIdForSinglePost', postID);
+    setPostIDForSinglePostState(postID);
     navigate('/SinglePostDetail')
   }
-
 
   useEffect(() => {
     // console.log('postListingType', postListingType);
@@ -63,12 +73,16 @@ const DigitalTabContent = (props) => {
 
               {isEditFieldOpen === false &&
                 <>
-                  <div onClick={viewSinglePost}>
-                    {/* <h5>View post</h5> */}
-                  </div>
+                  {/* <div onClick={viewSinglePost}> */}
+                  {/* <h5>View post</h5> */}
+                  {/* </div> */}
 
                   <PostContent postContent={postContent} />
-                  {parentPostID !== null && <PostRetweetForm parentPostDetail={parentPostDetail} />}
+                  {parentPostID !== null &&
+                    <div onClick={() => viewParentPostDetail(parentPostID)}>
+                      <PostRetweetFrom parentPostDetail={parentPostDetail} />
+                    </div>
+                  }
 
                 </>
               }
@@ -91,6 +105,8 @@ const DigitalTabContent = (props) => {
 
                   awardCount={awardCount}
                   setAwardCount={setAwardCount}
+
+                  created_at={created_at}
 
                 />
               }

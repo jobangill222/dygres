@@ -231,7 +231,7 @@ const PersonalInformation = () => {
               isEmailVerify: 1,
             };
           });
-          toast(axiosRes.message);
+          toast('Verfication complete.');
           setShowEmailOtpPopup(false);
         } else {
           const errorMessage = axiosRes.message;
@@ -283,39 +283,39 @@ const PersonalInformation = () => {
               <Col lg="12 ">
                 <Form.Group className="editor-input " controlId="">
                   <Form.Label>Upload verification image</Form.Label>
-                    <div className="editor-same-line">
-                  {console.log("fileState", fileState)}
-                  {console.log(
-                    "personalInfoFieldStates.verificationImage",
-                    personalInfoFieldStates.verificationImage
-                  )}
+                  <div className="editor-same-line">
+                    {console.log("fileState", fileState)}
+                    {console.log(
+                      "personalInfoFieldStates.verificationImage",
+                      personalInfoFieldStates.verificationImage
+                    )}
 
-                  <div
-                    className={
-                      fileState
-                        ? `image-uploaded-class upload-media-verify`
-                        : personalInfoFieldStates.verificationImage !==
-                          "/images/upload-dummy-backgroud.png"
-                        ? `image-uploaded-class upload-media-verify`
-                        : `upload-media-verify`
-                    }
-                  >
-                    <img
-                      src={personalInfoFieldStates.verificationImage}
-                      alt="icon"
-                      id="output"
-                      ref={verificationImageRef}
-                    />
-                    <Button className="bg-primary text-white ">
-                      <input type="file" onChange={uploadVerificationImage} />
-                      <BsUpload className="me-2" />
-                      Upload Image
-                    </Button>
-                  </div>
-                  <p className="uploaded-note">
-                    <b>{personalInfoFieldStates.photoVerificationCode}</b>{" "}
-                    Upload your picture along with this code for verification
-                  </p>
+                    <div
+                      className={
+                        fileState
+                          ? `image-uploaded-class upload-media-verify`
+                          : personalInfoFieldStates.verificationImage !==
+                            "/images/upload-dummy-backgroud.png"
+                            ? `image-uploaded-class upload-media-verify`
+                            : `upload-media-verify`
+                      }
+                    >
+                      <img
+                        src={personalInfoFieldStates.verificationImage}
+                        alt="icon"
+                        id="output"
+                        ref={verificationImageRef}
+                      />
+                      <Button className="bg-primary text-white ">
+                        <input type="file" onChange={uploadVerificationImage} />
+                        <BsUpload className="me-2" />
+                        Upload Image
+                      </Button>
+                    </div>
+                    <p className="uploaded-note">
+                      <b>{personalInfoFieldStates.photoVerificationCode}</b>{" "}
+                      Upload your picture along with this code for verification
+                    </p>
                   </div>
                 </Form.Group>
               </Col>
@@ -346,7 +346,7 @@ const PersonalInformation = () => {
                     </Button>
                   </Form.Group>
                 </div>
-                <Form.Group className="editor-input" controlId="">
+                {/* <Form.Group className="editor-input" controlId="">
                   <Form.Label>Region</Form.Label>
                   <Form.Select
                     aria-label="Default select example"
@@ -367,7 +367,7 @@ const PersonalInformation = () => {
                     <option value="Pakistan">Pakistan</option>
                     <option value="Saudi Arabia">Saudi Arabia</option>
                   </Form.Select>
-                </Form.Group>
+                </Form.Group> */}
               </Col>
             </Row>
           </div>

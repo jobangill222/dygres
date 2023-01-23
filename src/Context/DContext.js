@@ -35,6 +35,10 @@ export const DProvider = (props) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+
+  const [postIDForSinglePostState, setPostIDForSinglePostState] = useState(null);
+
+
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
 
@@ -76,7 +80,7 @@ export const DProvider = (props) => {
     }
   };
 
-  const userSignup = async ({ email, password }) => {
+  const userSignup = async ({ email, username, password }) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -84,6 +88,7 @@ export const DProvider = (props) => {
         // headers: { Authorization: "Bearer " + authState.user.access_token },
         data: {
           email: email,
+          username: username,
           password: password,
         },
       });
@@ -1040,6 +1045,8 @@ export const DProvider = (props) => {
     userLogin,
     userSignup,
     userResetPassword,
+    postIDForSinglePostState,
+    setPostIDForSinglePostState,
     userGetOtp,
     userEnterOtp,
     getGenInformationDContext,
