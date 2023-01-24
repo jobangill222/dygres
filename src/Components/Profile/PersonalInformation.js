@@ -300,17 +300,21 @@ const PersonalInformation = () => {
                             : `upload-media-verify`
                       }
                     >
-                      <img
-                        src={personalInfoFieldStates.verificationImage}
-                        alt="icon"
-                        id="output"
-                        ref={verificationImageRef}
-                      />
-                      <Button className="bg-primary text-white ">
-                        <input type="file" onChange={uploadVerificationImage} />
-                        <BsUpload className="me-2" />
-                        Upload Image
-                      </Button>
+                      <div className="imagebarupload">
+                        <Button className="bg-primary text-white ">
+                          <input type="file" onChange={uploadVerificationImage} />
+                          <BsUpload className="me-2" />
+                          Upload Image
+                        </Button>
+
+                        <img
+                          src={personalInfoFieldStates.verificationImage}
+                          alt="icon"
+                          id="output"
+                          ref={verificationImageRef}
+                        />
+                        <p className="succesful">Image uploaded succesfully.</p>
+                      </div>
                     </div>
                     <p className="uploaded-note">
                       <b>{personalInfoFieldStates.photoVerificationCode}</b>{" "}

@@ -4,6 +4,7 @@ import { DContext } from "../../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 // import { BASE_URL } from '../../Config/index';
 import SingleUserList from "./SingleUserList";
+import { FaThumbsUp , FaThumbsDown } from "react-icons/fa";
 
 const UserListModal = (props) => {
 
@@ -125,11 +126,11 @@ const UserListModal = (props) => {
                     <Modal.Title>{
                         popupType === 'followers-list' ? 'Followers'
                             : popupType === 'following-list' ? 'Following'
-                                : popupType === 'agree-post-user-list' ? "Agree By"
-                                    : popupType === 'disagree-post-user-list' ? "Disagree By"
+                                : popupType === 'agree-post-user-list' ? <FaThumbsUp/>
+                                    : popupType === 'disagree-post-user-list' ? <FaThumbsDown/>
                                         : popupType === 'report-post-user-list' ? "Report By"
-                                            : popupType === 'agreed-comment-user-list' ? "Agree By"
-                                                : popupType === 'disagreed-comment-user-list' ? "Disagree By"
+                                            : popupType === 'agreed-comment-user-list' ? <FaThumbsUp/>
+                                                : popupType === 'disagreed-comment-user-list' ? <FaThumbsDown/>
                                                     : ""}</Modal.Title>
                 </Modal.Header>
 

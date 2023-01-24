@@ -123,7 +123,7 @@ const PostHead = (props) => {
         colour = "red";
       }
       else if (days === 1) {
-        colour = "yellow";
+        colour = "#FFBF00";
       }
       else {
         colour = "green";

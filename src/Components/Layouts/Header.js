@@ -6,8 +6,8 @@ import DarkModeSwitch from "./DarkModeSwitch";
 import { AiOutlineEye } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { BsPencil, BsFileMedicalFill, BsBell, BsSearch } from "react-icons/bs";
-import { BiLayerMinus } from "react-icons/bi";
+import { BsPencil, BsFileMedicalFill, BsBell, BsSearch  } from "react-icons/bs";
+import { BiLayerMinus, BiHome } from "react-icons/bi";
 import { MdHowToVote, MdOutlineWhatshot } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
@@ -58,6 +58,9 @@ const Header = () => {
               </Link>
             </Navbar.Brand>
             <Nav className="mx-auto me-0 mob-none">
+              <Link to='/new' className="homeicon">
+                <BiHome/>
+              </Link>
               <div className="text-lightgray" href="#">
                 <DarkModeSwitch />
               </div>
