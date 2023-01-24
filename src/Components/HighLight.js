@@ -14,14 +14,13 @@ export default function HighLight(props) {
 
     const userDetail = async (name) => {
         var newStr = name.replace('@', '')
-        localStorage.setItem('username', newStr);
-
         const axiosRes = await checkUsernameExistDContext(newStr);
         console.log('axiosResaxiosResaxiosResaxiosRes', axiosRes)
         if (axiosRes.status === 'error') {
             navigate('/notfound')
         }
         else {
+            localStorage.setItem('sessionUserID', axiosRes.detail._id);
             navigate('/UsersProfile')
 
         }

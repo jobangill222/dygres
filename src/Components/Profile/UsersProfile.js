@@ -8,7 +8,7 @@ import { DContext } from "../../Context/DContext";
 
 const UsersProfile = () => {
 
-    const { getOtherUserDetailByUsernameContext, setSelectedIDForPopup, setPopupType } = useContext(DContext);
+    const { getOtherUserDetailByUserIDDContext, setSelectedIDForPopup, setPopupType } = useContext(DContext);
 
     const [user, setUser] = useState();
     const [userStats, setUserStats] = useState();
@@ -34,10 +34,10 @@ const UsersProfile = () => {
     const getData = async () => {
         try {
             //Api call
-            const username = localStorage.getItem('username');
+            const sessionUserID = localStorage.getItem('sessionUserID');
 
-            const axiosRes = await getOtherUserDetailByUsernameContext(username);
-            console.log("axiosRes********* data", axiosRes);
+            const axiosRes = await getOtherUserDetailByUserIDDContext(sessionUserID);
+            console.log("axiosRes==========********* data", axiosRes);
             if (axiosRes.status === "success") {
                 setUser(axiosRes.data)
                 setUserStats(axiosRes.userStats)

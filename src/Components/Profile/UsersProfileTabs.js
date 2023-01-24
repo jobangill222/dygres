@@ -16,7 +16,7 @@ const UsersProfileTabs = (props) => {
 
     const { user } = props;
 
-    const { postList, popupType, setPostList, getOtherUserPostsByUsernameDContext, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { postList, popupType, setPostList, getOtherUserPostsByUserIDDContext, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
         // setPostList([]);
@@ -30,9 +30,9 @@ const UsersProfileTabs = (props) => {
             setIsLoading(true);
             //Api call
             let pageNumberOfPostList = 1;
-            // const username = "newuse1r674";
-            const username = localStorage.getItem('username');
-            const axiosRes = await getOtherUserPostsByUsernameDContext(username, pageNumberOfPostList);
+            // const userID = "newuse1r674";
+            const sessionUserID = localStorage.getItem('sessionUserID');
+            const axiosRes = await getOtherUserPostsByUserIDDContext(sessionUserID, pageNumberOfPostList);
             // console.log("axiosRes********* after get my posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
@@ -54,9 +54,9 @@ const UsersProfileTabs = (props) => {
 
         let axiosRes;
 
-        // const username = "newuse1r674";
-        const username = localStorage.getItem('username');
-        axiosRes = await getOtherUserPostsByUsernameDContext(username, pageNumberOfPostList);
+        // const userID = "newuse1r674";
+        const sessionUserID = localStorage.getItem('sessionUserID');
+        axiosRes = await getOtherUserPostsByUserIDDContext(sessionUserID, pageNumberOfPostList);
         // console.log(
         //     "axiosRes********* after get my posts on page",
         //     pageNumberOfPostList,

@@ -140,8 +140,8 @@ const PostHead = (props) => {
 
 
 
-  const userProfileDetail = async (name) => {
-    localStorage.setItem('username', name);
+  const userProfileDetail = async (userID) => {
+    localStorage.setItem('sessionUserID', userID);
     navigate('/UsersProfile')
   }
 
@@ -155,7 +155,7 @@ const PostHead = (props) => {
             </div>
             <div className="user-detail">
               <div className="follow-bar">
-                <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?.username)}>
+                <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?._id)}>
                   {postUserDetails?.name ? postUserDetails.name : postUserDetails?.username}
                 </h4>
                 {user?._id !== postUserID &&

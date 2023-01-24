@@ -827,16 +827,16 @@ export const DProvider = (props) => {
   };
 
 
-  const getOtherUserDetailByUsernameContext = async (username) => {
+  const getOtherUserDetailByUserIDDContext = async (userID) => {
     try {
       const axiosRes = await axios({
         method: "post",
-        url: `${BASE_URL}/profile/get-other-user-details-by-username`,
+        url: `${BASE_URL}/profile/get-other-user-details-by-userID`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          username: username,
+          userID: userID,
         },
       });
       return axiosRes.data;
@@ -848,16 +848,16 @@ export const DProvider = (props) => {
     }
   };
 
-  const getOtherUserPostsByUsernameDContext = async (username, pageNumberOfPostList) => {
+  const getOtherUserPostsByUserIDDContext = async (userID, pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
         method: "post",
-        url: `${BASE_URL}/post/get-other-user-posts-by-username?page=${pageNumberOfPostList}`,
+        url: `${BASE_URL}/post/get-other-user-posts-by-userID?page=${pageNumberOfPostList}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          username: username,
+          userID: userID,
         },
       });
       return axiosRes.data;
@@ -1123,8 +1123,8 @@ export const DProvider = (props) => {
     getPackagesToBuyDContext,
     BuyAwardDContext,
     SendAwardDContext,
-    getOtherUserDetailByUsernameContext,
-    getOtherUserPostsByUsernameDContext,
+    getOtherUserDetailByUserIDDContext,
+    getOtherUserPostsByUserIDDContext,
     getpostsByHashTagDContext,
     getSinglePostDetailDContext,
     getAwardOfPostDContext,
