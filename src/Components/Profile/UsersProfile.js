@@ -8,7 +8,7 @@ import { DContext } from "../../Context/DContext";
 
 const UsersProfile = () => {
 
-    const { getOtherUserDetailByUsernameContext } = useContext(DContext);
+    const { getOtherUserDetailByUsernameContext, setSelectedIDForPopup, setPopupType } = useContext(DContext);
 
     const [user, setUser] = useState();
     const [userStats, setUserStats] = useState();
@@ -17,6 +17,19 @@ const UsersProfile = () => {
     useEffect(() => {
         getData();
     }, [])
+
+
+    const myFollowers = async () => {
+        setPopupType('followers-list');
+        setSelectedIDForPopup(user._id)
+    }
+
+    const myFollowing = async () => {
+        setPopupType('following-list');
+        setSelectedIDForPopup(user._id)
+    }
+
+
 
     const getData = async () => {
         try {
@@ -85,11 +98,11 @@ const UsersProfile = () => {
                                         <p className="text-secondry">{userStats?.totalPosts}</p>
                                         <h6 className="text-offwhite">Posts</h6>
                                     </li>
-                                    <li>
+                                    <li onClick={myFollowing}>
                                         <p className="text-secondry">{userStats?.totalFollowing}</p>
                                         <h6 className="text-offwhite">Following</h6>
                                     </li>
-                                    <li>
+                                    <li onClick={myFollowers}>
                                         <p className="text-secondry">{userStats?.totalFollowers}</p>
                                         <h6 className="text-offwhite">Followers</h6>
                                     </li>

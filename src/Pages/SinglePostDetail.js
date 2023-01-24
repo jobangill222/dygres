@@ -11,7 +11,7 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const MostVoted = () => {
 
-    const { getSinglePostDetailDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, postIDForSinglePostState } = useContext(DContext);
+    const { popupType, getSinglePostDetailDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, postIDForSinglePostState } = useContext(DContext);
 
 
     useEffect(() => {
@@ -45,10 +45,10 @@ const MostVoted = () => {
     // Change state when click on count of agree disagree etc and change popupstate to true to open
     const [popupOpenStatus, setPopupOpenStatus] = useState(false);
     useEffect(() => {
-        if (selectedIDForPopup) {
+        if (popupType) {
             setPopupOpenStatus(true);
         }
-    }, [selectedIDForPopup])
+    }, [popupType])
 
     const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
     useEffect(() => {

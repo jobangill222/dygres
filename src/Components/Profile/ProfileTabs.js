@@ -16,7 +16,7 @@ const ProfileTabs = (props) => {
 
     const { user } = props;
 
-    const { postList, setPostList, getMyPostsDContext, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { postList, popupType, setPostList, getMyPostsDContext, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -65,10 +65,10 @@ const ProfileTabs = (props) => {
     // Change state when click on count of agree disagree etc and change popupstate to true to open
     const [popupOpenStatus, setPopupOpenStatus] = useState(false);
     useEffect(() => {
-        if (selectedIDForPopup) {
+        if (popupType) {
             setPopupOpenStatus(true);
         }
-    }, [selectedIDForPopup])
+    }, [popupType])
 
     const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
     useEffect(() => {

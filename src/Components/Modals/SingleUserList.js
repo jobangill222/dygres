@@ -7,6 +7,8 @@ export default function SingleUserList(props) {
     //props
     const { userListing } = props;
 
+    // console.log('userListing', userListing)
+
     //Global state and functions
     const { user, postList, setPostList, setUserStats, followUnfollowDContext } = useContext(DContext);
 
@@ -28,7 +30,7 @@ export default function SingleUserList(props) {
         console.log('follow call');
         let newPostList = postList;
         postList.forEach((post, index) => {
-            if (post.userID === userListing.userID) {
+            if (post.userID === userListing?.user?._id) {
                 console.log('condition hit of follow user');
                 newPostList[index] = { ...post, is_follow: 1 }
             }
@@ -46,14 +48,14 @@ export default function SingleUserList(props) {
             };
         });
 
-        await followUnfollowDContext(userListing.userID);
+        await followUnfollowDContext(userListing?.user?._id);
         setIsFollowStateUserList(1);
     }
 
     const UnfollowUserInUserList = async () => {
         let newPostList = postList;
         postList.forEach((post, index) => {
-            if (post.userID === userListing.userID) {
+            if (post.userID === userListing?.user?._id) {
                 console.log('condition hit of unfollow user');
                 newPostList[index] = { ...post, is_follow: 0 }
             }
@@ -70,7 +72,7 @@ export default function SingleUserList(props) {
             };
         });
 
-        await followUnfollowDContext(userListing.userID);
+        await followUnfollowDContext(userListing?.user?._id);
         setIsFollowStateUserList(0);
     }
 
@@ -79,7 +81,7 @@ export default function SingleUserList(props) {
     return (
         <>
 
-            <ul key={userListing.userID} className="aggree-li">
+            <ul key={userListing?.user?._id} className="aggree-li">
                 <li>
                     <img src={userListing.user?.profileImage ? BASE_URL + `/` + userListing.user?.profileImage : `/images/user.png`} alt="userimg" />
                     <div className="user-del">
@@ -89,7 +91,7 @@ export default function SingleUserList(props) {
                 </li>
                 <li>
                     {
-                        user._id !== userListing.userID ?
+                        user._id !== userListing?.user?._id ?
                             isFollowStateUserList === 0 ? <button className="followbtn" type="button" onClick={followUserInUserList}>Follow</button> :
                                 <button className="followbtn" type="button" onClick={UnfollowUserInUserList}>
                                     Un-Follow

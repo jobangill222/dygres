@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { BsPencil, BsFileMedicalFill, BsBell } from 'react-icons/bs';
 import { BiSearch, BiLayerMinus } from 'react-icons/bi';
 import { MdHowToVote, MdOutlineWhatshot } from 'react-icons/md';
@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
+import { useNavigate } from "react-router-dom";
+// import UserListModal from "../Modals/UserListModal";
 
 const Sidebar = () => {
-
-    const { user, userStats } = useContext(DContext);
+    const navigate = useNavigate();
+    const { user, userStats, setSelectedIDForPopup, setPopupType } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -19,8 +21,25 @@ const Sidebar = () => {
 
     // console.log('user', user);
 
+    const openViewProfile = async () => {
+        navigate("/profile");
+    }
+
+
+
+    const myFollowers = async () => {
+        setPopupType('followers-list');
+        setSelectedIDForPopup(user._id)
+    }
+
+    const myFollowing = async () => {
+        setPopupType('following-list');
+        setSelectedIDForPopup(user._id)
+    }
+
     return (
         <>
+
             <div className="sidebar-profile">
                 <div className="feature-image">
                     <img src="/images/feature-img.png" alt="feature-img" />
@@ -38,15 +57,15 @@ const Sidebar = () => {
                         </div>
                     </OverlayTrigger>
                     <ul className="user-detail-listing">
-                        <li>
+                        <li onClick={openViewProfile}>
                             <p className="text-secondry">{userStats?.totalPosts}</p>
                             <h6 className="text-offwhite">Posts</h6>
                         </li>
-                        <li>
+                        <li onClick={myFollowing}>
                             <p className="text-secondry">{userStats?.totalFollowing}</p>
                             <h6 className="text-offwhite">Following</h6>
                         </li>
-                        <li>
+                        <li onClick={myFollowers}>
                             <p className="text-secondry">{userStats?.totalFollowers}</p>
                             <h6 className="text-offwhite">Followers</h6>
                         </li>
@@ -74,8 +93,7 @@ const Sidebar = () => {
                 {/* Menu start here */}
                 <ul className="sidebar-menu">
                     <li><Link exact to="/new"><BsFileMedicalFill /> New</Link></li>
-                    <li><Link to="/hot"><MdOutlineWhatshot />hot</Link></li>
-
+                    <li><Link to="/hot"><MdOutlineWhatshot />Hot</Link></li>
                     <li><Link to="/most-voted"><MdHowToVote />Most Votes</Link></li>
                     <li><Link to="/not-voted"><BiLayerMinus />Least Votes</Link></li>
                     <li><Link to="/notification"><BsBell />Notifications</Link></li>

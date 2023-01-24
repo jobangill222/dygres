@@ -9,7 +9,7 @@ import { DContext } from "../../Context/DContext";
 
 const Profile = () => {
 
-    const { user, userStats } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, setPopupType } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -31,6 +31,18 @@ const Profile = () => {
     useEffect(() => {
         setVerificationLevelState(user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0");
     }, [user])
+
+
+    const myFollowers = async () => {
+        setPopupType('followers-list');
+        setSelectedIDForPopup(user._id)
+    }
+
+    const myFollowing = async () => {
+        setPopupType('following-list');
+        setSelectedIDForPopup(user._id)
+    }
+
 
     return (
         <>
@@ -64,11 +76,11 @@ const Profile = () => {
                                         <p className="text-secondry">{userStats?.totalPosts}</p>
                                         <h6 className="text-offwhite">Posts</h6>
                                     </li>
-                                    <li>
+                                    <li onClick={myFollowing}>
                                         <p className="text-secondry">{userStats?.totalFollowing}</p>
                                         <h6 className="text-offwhite">Following</h6>
                                     </li>
-                                    <li>
+                                    <li onClick={myFollowers}>
                                         <p className="text-secondry">{userStats?.totalFollowers}</p>
                                         <h6 className="text-offwhite">Followers</h6>
                                     </li>

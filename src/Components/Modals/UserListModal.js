@@ -9,7 +9,7 @@ const UserListModal = (props) => {
 
     const { popupOpenStatus, setPopupOpenStatus } = props;
 
-    const { selectedIDForPopup, setSelectedIDForPopup, popupType, getAgreedPostUserDContext, getDisAgreedPostUserDContext, getReportedPostUserDContext, getAgreedCommentUserDContext, getDisagreedCommentUserDContext } = useContext(DContext);
+    const { selectedIDForPopup, setSelectedIDForPopup, popupType, setPopupType, getAgreedPostUserDContext, getDisAgreedPostUserDContext, getReportedPostUserDContext, getAgreedCommentUserDContext, getDisagreedCommentUserDContext, getFollowersDContext, getFollowingDContext } = useContext(DContext);
     // console.log('user', user._id);
 
     const [userList, setUserList] = useState([]);
@@ -18,6 +18,7 @@ const UserListModal = (props) => {
     const AggreeListClose = () => {
         setPopupOpenStatus(false);
         setSelectedIDForPopup(null);
+        setPopupType(null)
     }
 
     useEffect(() => {
@@ -31,6 +32,13 @@ const UserListModal = (props) => {
             //Api call
             let PageNumber = 1;
             let axiosRes;
+
+            if (popupType === 'followers-list') {
+                axiosRes = await getFollowersDContext(selectedIDForPopup, PageNumber);
+            }
+            if (popupType === 'following-list') {
+                axiosRes = await getFollowingDContext(selectedIDForPopup, PageNumber);
+            }
             if (popupType === 'agree-post-user-list') {
                 axiosRes = await getAgreedPostUserDContext(selectedIDForPopup, PageNumber);
             }
@@ -48,7 +56,7 @@ const UserListModal = (props) => {
             }
             // console.log("axiosRes********* User List", axiosRes);
             if (axiosRes.status === "success") {
-                console.log('axiosRes.listaxiosRes.list', axiosRes.list);
+                // console.log('axiosRes.listaxiosRes.list', axiosRes.list);
                 setUserList(axiosRes.list);
             }
         } catch (err) {
@@ -64,6 +72,12 @@ const UserListModal = (props) => {
         // console.log("appendNextList function call", pageNumberOfPostList);
 
         let axiosRes;
+        if (popupType === 'followers-list') {
+            axiosRes = await getFollowersDContext(selectedIDForPopup, PageNumber);
+        }
+        if (popupType === 'following-list') {
+            axiosRes = await getFollowingDContext(selectedIDForPopup, PageNumber);
+        }
         if (popupType === 'agree-post-user-list') {
             axiosRes = await getAgreedPostUserDContext(selectedIDForPopup, PageNumber);
         }
@@ -108,12 +122,15 @@ const UserListModal = (props) => {
             <Modal className="Actions-modal" show={popupOpenStatus} onHide={AggreeListClose} centered >
 
                 <Modal.Header closeButton>
-                    <Modal.Title>{popupType === 'agree-post-user-list' ?
-                        "Agree By" : popupType === 'disagree-post-user-list' ?
-                            "Disagree By" : popupType === 'report-post-user-list' ?
-                                "Report By" : popupType === 'agreed-comment-user-list' ?
-                                    "Agree By" : popupType === 'disagreed-comment-user-list' ?
-                                        "Disagree By" : ""}</Modal.Title>
+                    <Modal.Title>{
+                        popupType === 'followers-list' ? 'Followers'
+                            : popupType === 'following-list' ? 'Following'
+                                : popupType === 'agree-post-user-list' ? "Agree By"
+                                    : popupType === 'disagree-post-user-list' ? "Disagree By"
+                                        : popupType === 'report-post-user-list' ? "Report By"
+                                            : popupType === 'agreed-comment-user-list' ? "Agree By"
+                                                : popupType === 'disagreed-comment-user-list' ? "Disagree By"
+                                                    : ""}</Modal.Title>
                 </Modal.Header>
 
 
@@ -122,7 +139,7 @@ const UserListModal = (props) => {
                         <SingleUserList userListing={userListing} />
                     )) : <div className="empty-bar">
                         <img src="/images/empty.png" alt='dummy' />
-                        <h4>There is nothing here :(</h4>
+                        <h4>Empty List</h4>
                     </div>}
                 </Modal.Body>
 

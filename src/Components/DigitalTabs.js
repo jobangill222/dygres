@@ -17,15 +17,15 @@ const DigitalTabs = (props) => {
   const { setActiveTabState } = props;
 
   //Global states
-  const { postList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
+  const { postList, popupType, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
 
   // Change state when click on count of agree disagree etc and change popupstate to true to open
   const [popupOpenStatus, setPopupOpenStatus] = useState(false);
   useEffect(() => {
-    if (selectedIDForPopup) {
+    if (popupType) {
       setPopupOpenStatus(true);
     }
-  }, [selectedIDForPopup])
+  }, [popupType])
 
 
   const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);

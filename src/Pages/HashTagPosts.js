@@ -11,7 +11,7 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const HashTagPosts = () => {
 
-    const { getpostsByHashTagDContext, postList, setPostList, selectedIDForPopup, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { popupType, getpostsByHashTagDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
         // setPostList([]);
@@ -76,10 +76,10 @@ const HashTagPosts = () => {
     // Change state when click on count of agree disagree etc and change popupstate to true to open
     const [popupOpenStatus, setPopupOpenStatus] = useState(false);
     useEffect(() => {
-        if (selectedIDForPopup) {
+        if (popupType) {
             setPopupOpenStatus(true);
         }
-    }, [selectedIDForPopup])
+    }, [popupType])
 
     const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
     useEffect(() => {

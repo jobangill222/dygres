@@ -7,6 +7,9 @@ import PostHeadAward from "./PostHeadAward";
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 
+
+import { useNavigate } from "react-router-dom";
+
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
@@ -15,6 +18,8 @@ TimeAgo.addDefaultLocale(en)
 
 
 const PostHead = (props) => {
+
+  const navigate = useNavigate();
 
   //Context
   const { user, setUserStats, postList, setPostList, followUnfollowDContext, setPostIDForAwardOfPost } = useContext(DContext);
@@ -134,6 +139,12 @@ const PostHead = (props) => {
   }
 
 
+
+  const userProfileDetail = async (name) => {
+    localStorage.setItem('username', name);
+    navigate('/UsersProfile')
+  }
+
   return (
     <>
       <div className="user-detail-bar">
@@ -144,7 +155,7 @@ const PostHead = (props) => {
             </div>
             <div className="user-detail">
               <div className="follow-bar">
-                <h4 className="text-secondry">
+                <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?.username)}>
                   {postUserDetails?.name ? postUserDetails.name : postUserDetails?.username}
                 </h4>
                 {user?._id !== postUserID &&

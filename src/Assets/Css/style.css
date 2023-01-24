@@ -798,6 +798,10 @@ ul.profiletabsbar li:last-child a {
 .hoverdropdown button::after {
   display: none;
 }
+.user-detail-bar .detailleft .user-detail h4.text-secondry,
+.user-detail-listing li p {
+  cursor: pointer;
+}
 .hoverdropdown button:hover {
   color: var(--base-primary) !important;
 }
