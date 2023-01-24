@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BsUpload } from "react-icons/bs";
@@ -58,7 +58,7 @@ const PersonalInformation = () => {
           : "",
         verificationImage: axiosRes.personalDetails.verificationImage
           ? axiosRes.personalDetails.verificationImage
-          : "/images/upload-dummy-backgroud.png",
+          : null,
         isPhotoVerify: axiosRes.personalDetails.isPhotoVerify
           ? axiosRes.personalDetails.isPhotoVerify
           : 0,
@@ -74,10 +74,12 @@ const PersonalInformation = () => {
     }
   };
 
+  const [isSaveState, setIsSaveState] = useState(false);
   useEffect(() => {
     // console.log("Get personal info in use Effect");
     getPersonalInfoData();
-  }, []);
+    setIsSaveState(false)
+  }, [isSaveState]);
 
   //Change values onChange and save in state
   const changeValue = async (e) => {
@@ -101,12 +103,12 @@ const PersonalInformation = () => {
     const axiosRes = await updatePersonalInformationDContext(bodyFormData);
     console.log("axiosRes in update personal Info", axiosRes);
     toast(axiosRes.message);
+    setFileState(null)
+    setIsSaveState(true)
   };
 
   //Set file state
-  const [fileState, setFileState] = useState();
-  const verificationImageRef = useRef(null);
-
+  const [fileState, setFileState] = useState(null);
   //Upload Image function
   const uploadVerificationImage = async (e) => {
     const imageType = e.target.files[0].type;
@@ -115,13 +117,7 @@ const PersonalInformation = () => {
       imageType === "image/ppg" ||
       imageType === "image/jpeg"
     ) {
-      const url = URL.createObjectURL(e.target.files[0]);
       setFileState(e.target.files[0]);
-      // console.log('url' , url)
-      verificationImageRef.current.src = url;
-      verificationImageRef.current.onload = function () {
-        URL.revokeObjectURL(verificationImageRef.current.src); // free memory
-      };
     } else {
       toast("Only png, jpg and jpeg allowed.");
     }
@@ -138,7 +134,7 @@ const PersonalInformation = () => {
   //Submit change password
   const handleRegistration = async (data) => {
     // e.preventDefault()
-    console.log("data-----", data);
+    // console.log("data-----", data);
     if (data.newPassword !== data.confirmNewPassword) {
       toast("Password and Confirm password should be same");
       return;
@@ -245,7 +241,7 @@ const PersonalInformation = () => {
 
   return (
     <>
-      {/* {console.log("personalInfoFiledsState", personalInfoFieldStates)} */}
+      {console.log("personalInfoFiledsState", personalInfoFieldStates)}
 
       <div className="Profile-Upload-media">
         <Row>
@@ -284,11 +280,8 @@ const PersonalInformation = () => {
                 <Form.Group className="editor-input " controlId="">
                   <Form.Label>Upload verification image</Form.Label>
                   <div className="editor-same-line">
-                    {console.log("fileState", fileState)}
-                    {console.log(
-                      "personalInfoFieldStates.verificationImage",
-                      personalInfoFieldStates.verificationImage
-                    )}
+                    {/* {console.log("fileState", fileState)} */}
+                    {/* {console.log("personalInfoFieldStates.verificationImage", personalInfoFieldStates.verificationImage)} */}
 
                     <div
                       className={
@@ -307,13 +300,18 @@ const PersonalInformation = () => {
                           Upload Image
                         </Button>
 
-                        <img
+                        {/* <img
                           src={personalInfoFieldStates.verificationImage}
                           alt="icon"
                           id="output"
                           ref={verificationImageRef}
-                        />
-                        <p className="succesful">Image uploaded succesfully.</p>
+                        /> */}
+                        {/* {console.log('personalInfoFieldStatespersonalInfoFieldStates', personalInfoFieldStates)} */}
+                        {fileState !== null && <p className="succesful">Image Selected successfully.</p>}
+                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 3 && <p className="succesful">Your human verification is under review.</p>}
+                        {personalInfoFieldStates.isPhotoVerify === 2 && <p className="succesful">Human Verification rejected, please Upload image again.</p>}
+                        {personalInfoFieldStates.isPhotoVerify === 1 && <p className="succesful">Human Verified.</p>}
+
                       </div>
                     </div>
                     <p className="uploaded-note">
