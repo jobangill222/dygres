@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import { BsThreeDotsVertical, BsFilePost, BsFlag } from 'react-icons/bs';
 import { MdBlock } from 'react-icons/md';
-import { BiIdCard , BiSearch } from 'react-icons/bi';
+import { BiIdCard, BiSearch } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -27,10 +27,10 @@ const Users = () => {
                         <Col lg="6">
                             <div className="Titlebar-btns">
                                 <div className="sendbtn">
-                                <Link to="/sendnotification">Send Notification</Link>
+                                    <Link to="/admin/sendnotification">Send Notification</Link>
                                 </div>
                                 <Form.Group className="searchbar" controlId="exampleForm.ControlInput1">
-                                    <BiSearch/>
+                                    <BiSearch />
                                     <Form.Control type="text" placeholder="Search for users" />
                                 </Form.Group>
                             </div>
@@ -62,13 +62,13 @@ const Users = () => {
                                                     <Link onClick={BlockShow}><MdBlock />Block</Link>
                                                 </li>
                                                 <li className="text-secondry">
-                                                    <Link to="/post"><BsFilePost />Posts</Link>
+                                                    <Link to="/admin/post"><BsFilePost />Posts</Link>
                                                 </li>
                                                 <li className="text-secondry">
-                                                    <Link to="/flagpost"><BsFlag />Flagged Posts</Link>
+                                                    <Link to="/admin/flagpost"><BsFlag />Flagged Posts</Link>
                                                 </li>
                                                 <li className="text-secondry">
-                                                    <Link to="/userverification"><BiIdCard />User Verification</Link>
+                                                    <Link to="/admin/userverification"><BiIdCard />User Verification</Link>
                                                 </li>
                                             </ul>
                                         </div>

@@ -28,7 +28,7 @@ const Header = () => {
     setUserToken(null);
     // localStorage.clear();
     localStorage.removeItem("accessToken");
-    navigate("/");
+    navigate("/login");
   };
   //End logout functionality
 
@@ -67,10 +67,10 @@ const Header = () => {
         <Container>
           <div className="mainheader">
             <Navbar.Brand>
-              <Link to="/">
+              <Link to="/new">
                 <img className="lightmode" src="/images/logo.png" alt="logo" />
               </Link>
-              <Link to="/">
+              <Link to="/new">
                 <img
                   className="darkmode"
                   src="/images/logowhite.png"

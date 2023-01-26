@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import FooterMob from "../FooterMob";
 
-import Header from "../Header";
+import AdminHeader from "../AdminHeader";
 
 
 const AdminLayout = () => {
@@ -13,11 +13,11 @@ const AdminLayout = () => {
 
     return (
         <>
-            <Header />
+            <AdminHeader />
             <div className='body-wrapper Adminlayout'>
                 <Outlet />
             </div>
-            <FooterMob/>
+            <FooterMob />
         </>
     );
 }

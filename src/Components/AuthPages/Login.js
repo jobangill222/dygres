@@ -41,7 +41,7 @@ const Login = () => {
 
         // toast(axiosRes.message);
         // navigate("/editprofile");
-        navigate("/");
+        navigate("/new");
 
       } else {
         const errorMessage = axiosRes.message;

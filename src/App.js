@@ -60,9 +60,15 @@ function App() {
           <Routes>
             {/* {console.log('check the user state context - ', userToken)} */}
 
+            <Route path="*" element={<NotFound />} />
+            <Route element={<NoHeaderLayout />}>
+              <Route exact path="/notfound" element={<NotFound />} />
+            </Route>
+
+            <Route exact path="/login" element={<Login />} />
+
             {!userToken ? (
               <Route element={<AuthLayout />}>
-                <Route exact path="/" element={<Login />} />
                 <Route exact path="/signup" element={<SignUp />} />
                 <Route exact path="/getotp" element={<GetOtp />} />
                 <Route exact path="/enterotp" element={<EnterOtp />} />
@@ -75,7 +81,7 @@ function App() {
             ) : (
               <>
                 <Route element={<SiteLayout />}>
-                  <Route exact path="/" element={<New />} />
+                  <Route exact path="/login" element={<New />} />
                   <Route exact path="/new" element={<New />} />
                   <Route exact path="/hot" element={<Hot />} />
                   <Route exact path="/most-voted" element={<MostVoted />} />
@@ -116,7 +122,7 @@ function App() {
                   />
                 </Route>
 
-                <Route element={<AdminLayout />}>
+                {/* <Route element={<AdminLayout />}>
                   <Route exact path="/dashboard" element={<Dashboard />} />
                   <Route exact path="/users" element={<Users />} />
                   <Route exact path="/post" element={<Post />} />
@@ -131,13 +137,22 @@ function App() {
                     path="/userverification"
                     element={<UserVerification />}
                   />
-                </Route>
+                </Route> */}
 
-                <Route element={<NoHeaderLayout />}>
-                  <Route exact path="/notfound" element={<NotFound />} />
-                </Route>
+
               </>
             )}
+
+            <Route element={<AdminLayout />}>
+              <Route exact path="admin/dashboard" element={<Dashboard />} />
+              <Route exact path="admin/users" element={<Users />} />
+              <Route exact path="admin/post" element={<Post />} />
+              <Route exact path="admin/sendnotification" element={<SendNotification />} />
+              <Route exact path="admin/flagpost" element={<FlagPost />} />
+              <Route exact path="admin/userverification" element={<UserVerification />}
+              />
+            </Route>
+
           </Routes>
         </Router>
       </ThemeProvider>

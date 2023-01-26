@@ -8,10 +8,11 @@ import { Link } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
 import ViewAllAwardsIGot from '../Modals/ViewAllAwardsIGot';
 import { toast } from "react-toastify";
+import Loader from "../../Components/Loader";
 
 const Profile = () => {
 
-    const { user, userStats, setSelectedIDForPopup, setPopupType, updateCoverImageDContext } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, setPopupType, updateCoverImageDContext, isLoading, setIsLoading } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -84,7 +85,7 @@ const Profile = () => {
 
     //Submit form to update data
     const submitHandler = async () => {
-
+        setIsLoading(true);
         //Convert to Bodyfrom data
         var bodyFormData = new FormData();
         bodyFormData.append("coverImage", file);
@@ -92,11 +93,14 @@ const Profile = () => {
         await updateCoverImageDContext(bodyFormData);
         // console.log('axiosRes in update gen Info', axiosRes);
         setFile('');
+        setIsLoading(false);
     };
 
 
     return (
         <>
+
+            {isLoading && <Loader />}
 
             {awardIGotPopupState && <ViewAllAwardsIGot awardIGotPopupState={awardIGotPopupState} setAwardIGotPopupState={setAwardIGotPopupState} />}
 

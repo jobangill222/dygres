@@ -49,7 +49,7 @@ const SignUp = () => {
 
         // toast(axiosRes.message);
         // navigate("/editprofile");
-        navigate("/");
+        navigate("/new");
 
       } else {
         const errorMessage = axiosRes.message;
@@ -152,7 +152,7 @@ const SignUp = () => {
               </Button>
               <div className="Noted-bar">
                 <h6>
-                  Already have an account? <Link to="/"> Login here</Link>
+                  Already have an account? <Link to="/login"> Login here</Link>
                 </h6>
               </div>
               <div className="terms-condition">
