@@ -5,7 +5,7 @@ import { TbCameraPlus } from "react-icons/tb";
 import { MdOutlineSave } from "react-icons/md";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
+import Loader from "../../Components/Loader";
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const EditProfile = () => {
   // const navigate = useNavigate();
 
   //Import Api functions from DContext file
-  const { getGenInformationDContext, updateGenInformationDContext } =
+  const { getGenInformationDContext, updateGenInformationDContext, isLoading, setIsLoading } =
     useContext(DContext);
 
   // Define State
@@ -67,6 +67,9 @@ const EditProfile = () => {
 
   //Submit form to update data
   const submitHandler = async () => {
+
+    setIsLoading(true);
+
     console.log("Update gen info function calls");
     console.log("genInfoFiledsState", genInfoFiledsState);
 
@@ -82,6 +85,8 @@ const EditProfile = () => {
     // console.log('axiosRes in update gen Info' , axiosRes);
     // navigate("/profile");
     toast(axiosRes.message);
+
+    setIsLoading(false);
   };
 
   //Set file state
@@ -90,13 +95,18 @@ const EditProfile = () => {
 
   //Upload Image function
   const uploadProfileImage = async (e) => {
+
+    const imageSize = e.target.files[0].size;
     const imageType = e.target.files[0].type;
     console.log("imageType", imageType);
-    if (
-      imageType === "image/png" ||
-      imageType === "image/ppg" ||
-      imageType === "image/jpeg"
-    ) {
+
+    if (imageSize > 10485760) {
+      toast("Image should should be 10 MB.");
+    }
+    else if (imageType !== "image/png" && imageType !== "image/ppg" && imageType !== "image/jpeg") {
+      toast("Only png, jpg and jpeg allowed.");
+    }
+    else {
       const url = URL.createObjectURL(e.target.files[0]);
       setFile(e.target.files[0]);
       // console.log('url' , url)
@@ -104,13 +114,14 @@ const EditProfile = () => {
       imageRef.current.onload = function () {
         URL.revokeObjectURL(imageRef.current.src); // free memory
       };
-    } else {
-      toast("Only png, jpg and jpeg allowed.");
     }
   };
 
   return (
     <>
+
+      {isLoading && <Loader />}
+
       <div className="Profile-Upload-media">
         <Row>
           <Col lg="6">

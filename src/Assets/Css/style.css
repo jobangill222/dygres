@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: ‘Outfit’, sans-serif;
   background-color: var(--base-lightgray);
   font-style: normal;
   font-weight: 400;
@@ -15,7 +15,7 @@ body {
   color: var(--base-default-text);
   -webkit-font-smoothing: antialiased;
 }
-a:hover{
+a:hover {
   color: var(--base-secondry);
 }
 /* Colors */
@@ -578,8 +578,7 @@ input.form-control {
   font-size: 20px;
   cursor: pointer;
 }
-.thredsbar
-.sidebar-profile .sidebar-menu li a.active,
+.thredsbar .sidebar-profile .sidebar-menu li a.active,
 .sidebar-profile .sidebar-menu li a:hover {
   color: #2fb84c;
 }
@@ -704,6 +703,7 @@ ul.profiletabsbar li:last-child a {
   justify-content: space-between;
   margin-top: 20px;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .viewmore {
@@ -747,12 +747,14 @@ ul.profiletabsbar li:last-child a {
   border-radius: 50%;
   object-fit: cover;
 }
-
+.profile-user-detail .detailleft .user-availbility {
+  margin: 0 !important;
+}
 .user-detail-bar .detailleft .user-detail .user-availbility {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 .profile-user-detail .user-detail h4.text-secondry {
@@ -1122,7 +1124,7 @@ ul.profiletabsbar li:last-child a {
   line-height: 18px;
 }
 
-.thredsbar span.no-comment~.reply-post {
+.thredsbar span.no-comment ~ .reply-post {
   margin-top: 10px;
 }
 
@@ -1136,15 +1138,20 @@ ul.profiletabsbar li:last-child a {
 .actionleftbar .accordion-header button.accordion-button:not(.collapsed) {
   color: var(--base-primary);
 }
-
+.typefilenone input[type="file"] {
+  display: none;
+}
+.typefilenone {
+  opacity: 0.5;
+}
 .thredsbar {
   padding: 20px 50px;
   position: relative;
-  height: 400px;
+  max-height: 400px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.thredsbar  .thredsbar {
+.thredsbar .thredsbar {
   overflow: visible;
   height: auto;
 }
@@ -1181,7 +1188,8 @@ ul.profiletabsbar li:last-child a {
   border-image-slice: 1;
 }
 
-.followbtn:hover {}
+.followbtn:hover {
+}
 
 .user-detail-bar .detailleft .user-detail .user-availbility h5 {
   position: relative;
@@ -1299,11 +1307,11 @@ ul.profiletabsbar li:last-child a {
 }
 
 .thredsbar .threads-rows::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 16.8px;
-  background-image: url('../../../public/images/carotdown.png');
+  background-image: url("../../../public/images/carotdown.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1521,7 +1529,7 @@ ul.profiletabsbar li:last-child a {
 }
 
 .levelbar {
-  display: inline-block !important;
+  display: inline-flex !important;
   top: -12px !important;
   position: relative;
 }
@@ -1693,7 +1701,7 @@ ul.profiletabsbar li:last-child a {
 
 .deletemodal .modal-body {
   height: auto;
-  padding: 30px 0px;
+  padding: 30px 20px;
 }
 
 .share-media li {
@@ -1769,7 +1777,8 @@ ul.profiletabsbar li:last-child a {
   transform: rotate(360deg);
 }
 
-.share-popup form input.form-control {}
+.share-popup form input.form-control {
+}
 
 .share-popup form {
   position: relative;
@@ -2023,7 +2032,11 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin-right: 18px;
 }
 
-.profile-user-detail .user-detail-bar .detailleft .user-detail h4.text-secondry {
+.profile-user-detail
+  .user-detail-bar
+  .detailleft
+  .user-detail
+  h4.text-secondry {
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
@@ -2031,7 +2044,12 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   color: var(--base-purewhite);
 }
 
-.profile-user-detail .user-detail-bar .detailleft .user-detail .user-availbility h6.text-lightgray {
+.profile-user-detail
+  .user-detail-bar
+  .detailleft
+  .user-detail
+  .user-availbility
+  h6.text-lightgray {
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -2057,7 +2075,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin-left: 12px;
 }
 
-.profile-user-detail .user-edit-cover ul li a {
+.profile-user-detail .user-edit-cover ul li a,
+.profile-user-detail .user-edit-cover ul li button {
   background: rgb(0 0 0 / 30%);
   font-style: normal;
   font-weight: 600;
@@ -2073,13 +2092,42 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   transition: 0.3s ease;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+.profile-feature-image {
+  position: relative;
 }
 
-.profile-user-detail .user-edit-cover ul li a svg {
+.user-edit-cover .savebtn {
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff !important;
+  color: var(--tab-text) !important;
+  height: auto;
+  padding: 13px 40px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: capitalize;
+  border: none !important;
+  border-radius: 5px;
+}
+.profile-user-detail .user-edit-cover ul li button input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.profile-user-detail .user-edit-cover ul li a svg,
+.profile-user-detail .user-edit-cover ul li button svg {
   margin-right: 10px;
 }
 
-.profile-user-detail .user-edit-cover ul li a:hover {
+.profile-user-detail .user-edit-cover ul li a:hover,
+.profile-user-detail .user-edit-cover ul li button:hover {
   background: #000000;
 }
 
@@ -2365,7 +2413,11 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   justify-content: space-between;
 }
 
-.Auth-bar .Authbar-innerbox form .authcheckbox .form-check-input[type="checkbox"] {
+.Auth-bar
+  .Authbar-innerbox
+  form
+  .authcheckbox
+  .form-check-input[type="checkbox"] {
   margin: 0 10px 0 0;
   float: none !important;
   width: 24px;
@@ -2380,7 +2432,12 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   justify-content: flex-start;
 }
 
-.Auth-bar .Authbar-innerbox form .authcheckbox .form-check label.form-check-label {
+.Auth-bar
+  .Authbar-innerbox
+  form
+  .authcheckbox
+  .form-check
+  label.form-check-label {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -3048,7 +3105,12 @@ p.uploaded-note b {
   color: var(--base-purewhite);
 }
 
-[darkmode] .Auth-bar .Authbar-innerbox form .authinputbar .form-control::placeholder {
+[darkmode]
+  .Auth-bar
+  .Authbar-innerbox
+  form
+  .authinputbar
+  .form-control::placeholder {
   color: #898989;
 }
 
@@ -3056,7 +3118,10 @@ p.uploaded-note b {
   color: var(--darkmode-offwhite);
 }
 
-[darkmode] .actionleftbar .accordion-header button.accordion-button:not(.collapsed),
+[darkmode]
+  .actionleftbar
+  .accordion-header
+  button.accordion-button:not(.collapsed),
 [darkmode] .Actions-modal .modal-header .modal-title.h4,
 [darkmode] .Actions-modal .modal-header button.btn-close,
 [darkmode] .Actions-modal .modal-body .aggree-li li .user-del h4,
@@ -3279,7 +3344,13 @@ p.uploaded-note b {
 [darkmode] .Auth-bar .Authbar-innerbox form .Noted-bar h6,
 [darkmode] .Auth-bar .Authbar-innerbox form .Noted-bar h6 a,
 [darkmode] .Auth-bar .Authbar-innerbox form .terms-condition a,
-[darkmode] .Auth-bar .Authbar-innerbox form .authcheckbox .form-check label.form-check-label {
+[darkmode]
+  .Auth-bar
+  .Authbar-innerbox
+  form
+  .authcheckbox
+  .form-check
+  label.form-check-label {
   color: #35a0da;
 }
 
@@ -3766,12 +3837,21 @@ ul.sidebar-menu {
     height: 200px;
   }
 
-  .profile-user-detail .user-detail-bar .detailleft .user-detail h4.text-secondry {
+  .profile-user-detail
+    .user-detail-bar
+    .detailleft
+    .user-detail
+    h4.text-secondry {
     font-size: 26px;
     line-height: 28px;
   }
 
-  .profile-user-detail .user-detail-bar .detailleft .user-detail .user-availbility h6.text-lightgray {
+  .profile-user-detail
+    .user-detail-bar
+    .detailleft
+    .user-detail
+    .user-availbility
+    h6.text-lightgray {
     font-size: 16px;
   }
 
@@ -4116,11 +4196,20 @@ ul.sidebar-menu {
     padding: 10px 20px;
   }
 
-  .profile-user-detail .user-detail-bar .detailleft .user-detail h4.text-secondry {
+  .profile-user-detail
+    .user-detail-bar
+    .detailleft
+    .user-detail
+    h4.text-secondry {
     color: var(--base-primary);
   }
 
-  .profile-user-detail .user-detail-bar .detailleft .user-detail .user-availbility h6.text-lightgray {
+  .profile-user-detail
+    .user-detail-bar
+    .detailleft
+    .user-detail
+    .user-availbility
+    h6.text-lightgray {
     color: var(--darkmode-offwhite);
   }
 

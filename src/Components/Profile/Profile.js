@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import Container from 'react-bootstrap/Container';
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
@@ -6,10 +6,12 @@ import { BsFillImageFill, BsPencil } from 'react-icons/bs';
 import ProfileTabs from "./ProfileTabs";
 import { Link } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
+import ViewAllAwardsIGot from '../Modals/ViewAllAwardsIGot';
+import { toast } from "react-toastify";
 
 const Profile = () => {
 
-    const { user, userStats, setSelectedIDForPopup, setPopupType } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, setPopupType, updateCoverImageDContext } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -44,10 +46,65 @@ const Profile = () => {
     }
 
 
+    const [awardIGotPopupState, setAwardIGotPopupState] = useState(false);
+    const viewAwardIGot = async () => {
+        setAwardIGotPopupState(true);
+    }
+
+
+
+    //Set file state
+    const [file, setFile] = useState();
+    const imageRef = useRef(null);
+
+    //Upload Image function
+    const uploadCoverImage = async (e) => {
+
+        const imageSize = e.target.files[0].size;
+        const imageType = e.target.files[0].type;
+        console.log("imageType", imageType);
+
+        if (imageSize > 10485760) {
+            toast("Image should should be 10 MB.");
+        }
+        else if (imageType !== "image/png" && imageType !== "image/ppg" && imageType !== "image/jpeg") {
+            toast("Only png, jpg and jpeg allowed.");
+        }
+        else {
+            const url = URL.createObjectURL(e.target.files[0]);
+            setFile(e.target.files[0]);
+            // console.log('url' , url)
+            imageRef.current.src = url;
+            imageRef.current.onload = function () {
+                URL.revokeObjectURL(imageRef.current.src); // free memory
+            };
+        }
+    };
+
+
+    //Submit form to update data
+    const submitHandler = async () => {
+
+        //Convert to Bodyfrom data
+        var bodyFormData = new FormData();
+        bodyFormData.append("coverImage", file);
+
+        await updateCoverImageDContext(bodyFormData);
+        // console.log('axiosRes in update gen Info', axiosRes);
+        setFile('');
+    };
+
+
     return (
         <>
+
+            {awardIGotPopupState && <ViewAllAwardsIGot awardIGotPopupState={awardIGotPopupState} setAwardIGotPopupState={setAwardIGotPopupState} />}
+
+
+
             <div className="profile-feature-image">
-                <img src="/images/feature.png" alt="feature-img" />
+                <img src={user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" ref={imageRef} />
+
             </div>
             <div className="profile-user-detail">
                 <Container>
@@ -84,7 +141,7 @@ const Profile = () => {
                                         <p className="text-secondry">{userStats?.totalFollowers}</p>
                                         <h6 className="text-offwhite">Followers</h6>
                                     </li>
-                                    <li>
+                                    <li onClick={viewAwardIGot}>
                                         <p className="text-secondry">{userStats?.totalAwards}</p>
                                         <h6 className="text-offwhite">Awards</h6>
                                     </li>
@@ -95,11 +152,21 @@ const Profile = () => {
                         <div className="user-edit-cover">
                             <ul>
                                 <li>
-                                    <Link to="/"><BsFillImageFill />Edit Cover</Link>
-                                </li>
-                                <li>
                                     <Link to="/editprofile"><BsPencil />Edit profile</Link>
                                 </li>
+                                <li>
+                                    {/* <Link to="/"><BsFillImageFill />Edit Cover</Link> */}
+                                    <button onChange={uploadCoverImage}>
+                                        <BsFillImageFill />
+                                        <input type='file' />Edit Cover
+                                    </button>
+
+                                </li>
+                                {file &&
+                                    <li onClick={submitHandler}>
+                                        <button className='savebtn' type='button'>Save</button>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </div>

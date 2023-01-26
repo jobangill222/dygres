@@ -11,13 +11,13 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const HashTagPosts = () => {
 
-    const { popupType, getpostsByHashTagDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { popupType, getpostsByHashTagDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, searchState } = useContext(DContext);
 
     useEffect(() => {
         // setPostList([]);
         localStorage.setItem("currentPage", 1);
         getposts();
-    }, []);
+    }, [searchState]);
 
     const getposts = async () => {
         try {
@@ -26,7 +26,7 @@ const HashTagPosts = () => {
             let pageNumberOfPostList = 1;
 
             const hashtagName = localStorage.getItem('hashTagName')
-            const axiosRes = await getpostsByHashTagDContext(hashtagName, pageNumberOfPostList);
+            const axiosRes = await getpostsByHashTagDContext(searchState, hashtagName, pageNumberOfPostList);
             console.log("axiosRes******** after get hashtag posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
@@ -51,7 +51,7 @@ const HashTagPosts = () => {
 
 
         const hashtagName = localStorage.getItem('hashTagName')
-        const axiosRes = await getpostsByHashTagDContext(hashtagName, pageNumberOfPostList);
+        const axiosRes = await getpostsByHashTagDContext(searchState, hashtagName, pageNumberOfPostList);
         // console.log(
         //     "axiosRes********* after get most voted posts on page",
         //     pageNumberOfPostList,

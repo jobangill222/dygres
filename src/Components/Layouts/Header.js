@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,18 +6,19 @@ import DarkModeSwitch from "./DarkModeSwitch";
 import { AiOutlineEye } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { BsPencil, BsFileMedicalFill, BsBell, BsSearch  } from "react-icons/bs";
+import { BsPencil, BsFileMedicalFill, BsBell, BsSearch } from "react-icons/bs";
 import { BiLayerMinus, BiHome } from "react-icons/bi";
 import { MdHowToVote, MdOutlineWhatshot } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
 import { useNavigate } from "react-router-dom";
+import SingleNotificationList from '../Notification/SingleNotificationList';
 
 const Header = () => {
   const navigate = useNavigate();
 
   // Context Variables
-  const { user, setUser, userToken, setUserToken } = useContext(DContext);
+  const { user, setUser, userToken, setUserToken, notificationList, setNotificationList, getNotificationDContext } = useContext(DContext);
   // console.log("console user Details in header", user);
 
   //Logout Functionality
@@ -40,6 +41,26 @@ const Header = () => {
   //Javascript split method to get the name of the path in array
   const splitLocation = pathname.split("/");
 
+
+  //Get notifications
+  useEffect(() => {
+    getNotificationList();
+  }, []);
+
+  const getNotificationList = async () => {
+    try {
+      //Api call
+      let pageNumberOfNotificationList = 1;
+      const axiosRes = await getNotificationDContext(pageNumberOfNotificationList);
+      // console.log("axiosRes******** after get notification list", axiosRes);
+      if (axiosRes.status === "success") {
+        setNotificationList(axiosRes.list);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <Navbar className="header-nav" expand="lg">
@@ -59,7 +80,7 @@ const Header = () => {
             </Navbar.Brand>
             <Nav className="mx-auto me-0 mob-none">
               <Link to='/new' className="homeicon">
-                <BiHome/>
+                <BiHome />
               </Link>
               <div className="text-lightgray" href="#">
                 <DarkModeSwitch />
@@ -76,7 +97,7 @@ const Header = () => {
                         <div className="arrowshape"></div>
                         <div className="notification-head">
                           <h4>Notifications</h4>
-                          <h6>Mark all as read</h6>
+                          {/* <h6>Mark all as read</h6> */}
                         </div>
 
 
@@ -100,6 +121,20 @@ const Header = () => {
                             </p>
                           </div>
                         </div>
+                        {/* {
+                          notificationList.length ?
+                            notificationList.map((singleNotification) => (
+                              <SingleNotificationList
+                                key={singleNotification._id}
+                                singleNotification={singleNotification}
+                              />
+                            ))
+                            :
+                            <div className="empty-bar">
+                              <img src="/images/empty.png" alt='dummy' />
+                              <h4>No Notification</h4>
+                            </div>
+                        } */}
 
 
 

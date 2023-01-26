@@ -28,8 +28,8 @@ export default function HighLight(props) {
 
     const hashTag = async (name) => {
         // alert(name)
-        var newStr = name.replace('#', '')
-        localStorage.setItem('hashTagName', newStr);
+        // var newStr = name.replace('#', '')
+        localStorage.setItem('hashTagName', name);
         navigate('/hashtagPosts')
     }
 

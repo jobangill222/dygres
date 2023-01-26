@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { BsPencil, BsFileMedicalFill, BsBell } from 'react-icons/bs';
 import { BiSearch, BiLayerMinus } from 'react-icons/bi';
 import { MdHowToVote, MdOutlineWhatshot } from 'react-icons/md';
@@ -7,11 +7,11 @@ import { DContext } from "../../Context/DContext";
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import { useNavigate } from "react-router-dom";
-// import UserListModal from "../Modals/UserListModal";
+import ViewAllAwardsIGot from "../Modals/ViewAllAwardsIGot";
 
 const Sidebar = () => {
     const navigate = useNavigate();
-    const { user, userStats, setSelectedIDForPopup, setPopupType } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, setPopupType, setSearchState, } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -37,12 +37,29 @@ const Sidebar = () => {
         setSelectedIDForPopup(user._id)
     }
 
+    const [awardIGotPopupState, setAwardIGotPopupState] = useState(false);
+    const viewAwardIGot = async () => {
+        setAwardIGotPopupState(true);
+    }
+
+
+    const searchTyping = async (e) => {
+
+        if (e.target.value === "") {
+            setSearchState(null);
+        } else {
+            setSearchState(e.target.value)
+        }
+
+    }
+
     return (
         <>
+            {awardIGotPopupState && <ViewAllAwardsIGot awardIGotPopupState={awardIGotPopupState} setAwardIGotPopupState={setAwardIGotPopupState} />}
 
             <div className="sidebar-profile">
                 <div className="feature-image">
-                    <img src="/images/feature-img.png" alt="feature-img" />
+                    <img src={user && user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" />
                     <div className="edit-bar">
                         {/* <input type="file" className="uploadimg-input" /> */}
                         <Link to="/profile">
@@ -69,7 +86,7 @@ const Sidebar = () => {
                             <p className="text-secondry">{userStats?.totalFollowers}</p>
                             <h6 className="text-offwhite">Followers</h6>
                         </li>
-                        <li>
+                        <li onClick={viewAwardIGot}>
                             <p className="text-secondry">{userStats?.totalAwards}</p>
                             <h6 className="text-offwhite">Awards</h6>
                         </li>
@@ -85,7 +102,7 @@ const Sidebar = () => {
                     </ul>
                     <div className="search-input-form">
                         <form className="user-searchform">
-                            <input type="text" className="bg-gray" placeholder="Search" />
+                            <input type="text" className="bg-gray" placeholder="Search" onChange={searchTyping} />
                             <button className="bg-lightgray text-lightgray"><BiSearch /></button>
                         </form>
                     </div>

@@ -11,19 +11,19 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const MostVoted = () => {
 
-    const { popupType, getMostVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { popupType, getMostVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, searchState } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
         getMostVotedPosts();
-    }, []);
+    }, [searchState]);
 
     const getMostVotedPosts = async () => {
         try {
             setIsLoading(true);
             //Api call
             let pageNumberOfPostList = 1;
-            const axiosRes = await getMostVotedPostDContext(pageNumberOfPostList);
+            const axiosRes = await getMostVotedPostDContext(searchState, pageNumberOfPostList);
             // console.log("axiosRes******** after get most votes posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
@@ -40,8 +40,7 @@ const MostVoted = () => {
         let currentPage = localStorage.getItem("currentPage");
         let pageNumberOfPostList = parseInt(currentPage) + 1;
         // console.log("appendNextList function call", pageNumberOfPostList);
-
-        const axiosRes = await getMostVotedPostDContext(pageNumberOfPostList);
+        const axiosRes = await getMostVotedPostDContext(searchState, pageNumberOfPostList);
         // console.log(
         //     "axiosRes********* after get most voted posts on page",
         //     pageNumberOfPostList,

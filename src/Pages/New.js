@@ -7,7 +7,7 @@ import Loader from "../Components/Loader";
 
 const New = () => {
   //Functions to call api
-  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading } = useContext(DContext);
+  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, searchState } = useContext(DContext);
 
 
   //State for active tab like: global , follwing, officials
@@ -86,7 +86,7 @@ const New = () => {
     }
     setPlaceholderState(title[Math.floor(Math.random() * title.length)]);
 
-  }, [activeTabState]);
+  }, [activeTabState, searchState]);
 
 
 
@@ -106,7 +106,7 @@ const New = () => {
       //Api call
       setPostList([]);
       let pageNumberOfPostList = 1;
-      const axiosRes = await getGlobalPostDContext(pageNumberOfPostList);
+      const axiosRes = await getGlobalPostDContext(searchState, pageNumberOfPostList);
       console.log("axiosRes********* after get global posts on page 1", axiosRes);
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
@@ -127,7 +127,7 @@ const New = () => {
       setIsLoading(true);
       //Api call
       let pageNumberOfPostList = 1;
-      const axiosRes = await getFollowingPostDContext(pageNumberOfPostList);
+      const axiosRes = await getFollowingPostDContext(searchState, pageNumberOfPostList);
       console.log("axiosRes********* after get following posts", axiosRes);
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
@@ -147,10 +147,10 @@ const New = () => {
     let axiosRes;
 
     if (activeTabState === "Global") {
-      axiosRes = await getGlobalPostDContext(pageNumberOfPostList);
+      axiosRes = await getGlobalPostDContext(searchState, pageNumberOfPostList);
     }
     if (activeTabState === "Following") {
-      axiosRes = await getFollowingPostDContext(pageNumberOfPostList);
+      axiosRes = await getFollowingPostDContext(searchState, pageNumberOfPostList);
     }
     console.log(
       "axiosRes********* after get global posts on page",
@@ -174,6 +174,9 @@ const New = () => {
 
   return (
     <>
+
+      {/* {console.log('activePostListTab', activePostListTab)} */}
+
       {isLoading && <Loader />}
 
       <InfiniteScroll

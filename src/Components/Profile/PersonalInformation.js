@@ -9,6 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
+import Loader from "../../Components/Loader";
 
 const PersonalInformation = () => {
   //Otp Modal
@@ -28,6 +29,7 @@ const PersonalInformation = () => {
     changePasswordDContext,
     getEmailOtpInsideLoginDContext,
     verifyOtpInsideLoginDContext,
+    isLoading, setIsLoading
   } = useContext(DContext);
 
   const [personalInfoFieldStates, setPersonalInfoFieldStates] = useState({
@@ -90,6 +92,9 @@ const PersonalInformation = () => {
 
   //Submit form to update data
   const submitHandler = async () => {
+
+    setIsLoading(true);
+
     console.log("Update personal info function calls");
     console.log("personalInfoFieldStates", personalInfoFieldStates);
 
@@ -105,6 +110,8 @@ const PersonalInformation = () => {
     toast(axiosRes.message);
     setFileState(null)
     setIsSaveState(true)
+
+    setIsLoading(false);
   };
 
   //Set file state
@@ -241,7 +248,10 @@ const PersonalInformation = () => {
 
   return (
     <>
-      {console.log("personalInfoFiledsState", personalInfoFieldStates)}
+
+      {isLoading && <Loader />}
+
+      {/* {console.log("personalInfoFiledsState", personalInfoFieldStates)} */}
 
       <div className="Profile-Upload-media">
         <Row>
@@ -294,7 +304,8 @@ const PersonalInformation = () => {
                       }
                     >
                       <div className="imagebarupload">
-                        <Button className="bg-primary text-white ">
+
+                        <Button className={fileState === null && personalInfoFieldStates.isPhotoVerify === 3 ? 'bg-primary text-white typefilenone' : personalInfoFieldStates.isPhotoVerify === 1 ? 'bg-primary text-white typefilenone' : 'primary text-white'}>
                           <input type="file" onChange={uploadVerificationImage} />
                           <BsUpload className="me-2" />
                           Upload Image
@@ -309,8 +320,8 @@ const PersonalInformation = () => {
                         {/* {console.log('personalInfoFieldStatespersonalInfoFieldStates', personalInfoFieldStates)} */}
                         {fileState !== null && <p className="succesful">Image Selected successfully.</p>}
                         {fileState === null && personalInfoFieldStates.isPhotoVerify === 3 && <p className="succesful">Your human verification is under review.</p>}
-                        {personalInfoFieldStates.isPhotoVerify === 2 && <p className="succesful">Human Verification rejected, please Upload image again.</p>}
-                        {personalInfoFieldStates.isPhotoVerify === 1 && <p className="succesful">Human Verified.</p>}
+                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 2 && <p className="succesful">Human Verification rejected, please Upload image again.</p>}
+                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 1 && <p className="succesful">Human Verified.</p>}
 
                       </div>
                     </div>

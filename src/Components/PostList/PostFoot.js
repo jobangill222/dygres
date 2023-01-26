@@ -344,7 +344,7 @@ const PostFoot = (props) => {
                 <Dropdown.Item onClick={() => setIsEditFieldOpen(true)} disabled={isPostEditableState ? true : false} >
                   <p><BsPencil />
                     Edit Post</p>
-                  <Countdown date={moment(created_at) + 1800 * 1000} renderer={editRenderer} >
+                  <Countdown date={moment(created_at) + 3600 * 1000} renderer={editRenderer} >
                   </Countdown>
 
                 </Dropdown.Item>
@@ -353,7 +353,7 @@ const PostFoot = (props) => {
                     <RiDeleteBin6Line />
                     Delete Post
                   </p>
-                  <Countdown date={moment(created_at) + 3600 * 1000} renderer={deleteRenderer} >
+                  <Countdown date={moment(created_at) + 1800 * 1000} renderer={deleteRenderer} >
                   </Countdown>
                 </Dropdown.Item>
               </Dropdown.Menu>

@@ -13,19 +13,19 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const Hot = () => {
 
-    const { popupType, getHotPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { popupType, getHotPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, searchState } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
         getHotPosts();
-    }, []);
+    }, [searchState]);
 
     const getHotPosts = async () => {
         try {
             setIsLoading(true);
             //Api call
             let pageNumberOfPostList = 1;
-            const axiosRes = await getHotPostDContext(pageNumberOfPostList);
+            const axiosRes = await getHotPostDContext(searchState, pageNumberOfPostList);
             // console.log("axiosRes******** after get hot posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
@@ -42,8 +42,7 @@ const Hot = () => {
         let currentPage = localStorage.getItem("currentPage");
         let pageNumberOfPostList = parseInt(currentPage) + 1;
         // console.log("appendNextList function call", pageNumberOfPostList);
-
-        const axiosRes = await getHotPostDContext(pageNumberOfPostList);
+        const axiosRes = await getHotPostDContext(searchState, pageNumberOfPostList);
         // console.log(
         //     "axiosRes********* after get hot posts on page",
         //     pageNumberOfPostList,

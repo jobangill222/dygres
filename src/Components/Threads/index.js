@@ -137,6 +137,7 @@ const Threads = (props) => {
                     </Form>
                 </div>}
 
+                {/* {console.log('commentListState.length', commentListState.length)} */}
                 {commentListState.length ?
                     <>
                         {commentID ? '' : <h4>Threads</h4>}
@@ -167,9 +168,9 @@ const Threads = (props) => {
 
                         })}
                     </>
-                    // : commentID ? <span className='no-comment'>No Reply</span>
-                    // : <span className='no-comment'>No comments</span>}
-                    : ""}
+                    : commentID ? <span className='no-comment'>No Reply</span>
+                        : <span className='no-comment'>No comments</span>
+                }
 
 
                 {paginationData?.currentPage < paginationData?.totalNumberOfPages ?

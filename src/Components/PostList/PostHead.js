@@ -133,12 +133,9 @@ const PostHead = (props) => {
   };
 
 
-
   const viewAllAwardsOfPost = async () => {
     setPostIDForAwardOfPost(postID)
   }
-
-
 
   const userProfileDetail = async (userID) => {
     localStorage.setItem('sessionUserID', userID);

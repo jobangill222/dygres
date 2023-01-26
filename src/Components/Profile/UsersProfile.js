@@ -69,8 +69,9 @@ const UsersProfile = () => {
 
     return (
         <>
+            {console.log('check,check', user)}
             <div className="profile-feature-image">
-                <img src="/images/feature.png" alt="feature-img" />
+                <img src={user && user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" />
             </div>
             <div className="profile-user-detail">
                 <Container>

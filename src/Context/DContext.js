@@ -35,8 +35,9 @@ export const DProvider = (props) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-
   const [postIDForSinglePostState, setPostIDForSinglePostState] = useState(null);
+
+  const [searchState, setSearchState] = useState(null);
 
 
   useEffect(() => {
@@ -309,14 +310,17 @@ export const DProvider = (props) => {
     }
   };
 
-  const getGlobalPostDContext = async (pageNumberOfPostList) => {
+  const getGlobalPostDContext = async (search, pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
-        method: "get",
+        method: "post",
         url: `${BASE_URL}/post/get-global-posts?page=${pageNumberOfPostList}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
+        data: {
+          search: search
+        }
       });
       return axiosRes.data;
     } catch (err) {
@@ -327,14 +331,17 @@ export const DProvider = (props) => {
     }
   };
 
-  const getFollowingPostDContext = async (pageNumberOfPostList) => {
+  const getFollowingPostDContext = async (search, pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
-        method: "get",
+        method: "post",
         url: `${BASE_URL}/post/get-following-posts?page=${pageNumberOfPostList}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
+        data: {
+          search: search
+        }
       });
       return axiosRes.data;
     } catch (err) {
@@ -508,14 +515,17 @@ export const DProvider = (props) => {
     }
   };
 
-  const getMostVotedPostDContext = async (pageNumberOfPostList) => {
+  const getMostVotedPostDContext = async (search, pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
-        method: "get",
+        method: "post",
         url: `${BASE_URL}/post/most-voted-posts?page=${pageNumberOfPostList}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
+        data: {
+          search: search
+        }
       });
       return axiosRes.data;
     } catch (err) {
@@ -526,14 +536,17 @@ export const DProvider = (props) => {
     }
   };
 
-  const getHotPostDContext = async (pageNumberOfPostList) => {
+  const getHotPostDContext = async (search, pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
-        method: "get",
+        method: "post",
         url: `${BASE_URL}/post/hot-posts?page=${pageNumberOfPostList}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
+        data: {
+          search: search
+        }
       });
       return axiosRes.data;
     } catch (err) {
@@ -544,14 +557,17 @@ export const DProvider = (props) => {
     }
   };
 
-  const getNotVotedPostDContext = async (pageNumberOfPostList) => {
+  const getNotVotedPostDContext = async (search, pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
-        method: "get",
+        method: "post",
         url: `${BASE_URL}/post/not-voted-posts?page=${pageNumberOfPostList}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
+        data: {
+          search: search
+        }
       });
       return axiosRes.data;
     } catch (err) {
@@ -870,7 +886,7 @@ export const DProvider = (props) => {
   };
 
 
-  const getpostsByHashTagDContext = async (hashtagName, pageNumberOfPostList) => {
+  const getpostsByHashTagDContext = async (search, hashtagName, pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -879,6 +895,7 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
+          search: search,
           hashtagName: hashtagName,
         },
       });
@@ -1056,6 +1073,48 @@ export const DProvider = (props) => {
   };
 
 
+
+  const getUsersAllAwardsTheyGet = async () => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/post/get-users-all-award-they-get`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get all award of user api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
+
+  const updateCoverImageDContext = async (bodyFormData) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/profile/upload-cover-image`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: bodyFormData,
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      const updatedDetails = await getUserDetailsDContext();
+      setUser(updatedDetails.data);
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while upload cover image (DContext.js) - ", err);
+    }
+  };
+
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -1081,12 +1140,14 @@ export const DProvider = (props) => {
     setPostIDForRetweet,
     isLoading,
     setIsLoading,
+    postIDForSinglePostState,
+    setPostIDForSinglePostState,
+    searchState,
+    setSearchState,
     // Methods
     userLogin,
     userSignup,
     userResetPassword,
-    postIDForSinglePostState,
-    setPostIDForSinglePostState,
     userGetOtp,
     userEnterOtp,
     getGenInformationDContext,
@@ -1134,6 +1195,8 @@ export const DProvider = (props) => {
     checkUsernameExistDContext,
     getFollowersDContext,
     getFollowingDContext,
+    getUsersAllAwardsTheyGet,
+    updateCoverImageDContext
   };
   return (
     <>

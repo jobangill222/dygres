@@ -1,60 +1,91 @@
 import React, { useEffect, useState } from 'react'
-
+import { useNavigate } from "react-router-dom";
 export default function SingleNotificationContent(props) {
 
     const { singleNotification } = props;
 
-    const [notificationMessage, setNotificationMessage] = useState("");
+    const navigate = useNavigate();
+
+    const viewUsersProfile = async (userID) => {
+        localStorage.setItem('sessionUserID', userID);
+        navigate('/UsersProfile')
+    }
 
 
-    useEffect(() => {
-        var name;
-        var text;
+    const viewPost = async (postID) => {
+        localStorage.setItem('PostIdForSinglePost', postID);
+        navigate('/SinglePostDetail')
+    }
 
-        if (singleNotification.actionPerformed == "tag_in_post") {
-            name = singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username;
-            text = "tag you in a post.";
-            setNotificationMessage(name + " " + text)
-        }
-        else if (singleNotification.actionPerformed == "follow") {
-            name = singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username;
-            text = "start follow you.";
-            setNotificationMessage(name + " " + text)
-        }
-        else if (singleNotification.actionPerformed == "agree_post") {
-            name = singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username;
-            text = "agree with your post.";
-            setNotificationMessage(name + " " + text)
-        }
-        else if (singleNotification.actionPerformed == "disagree_post") {
-            name = singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username;
-            text = "disagree with your post.";
-            setNotificationMessage(name + " " + text)
-        }
-        else if (singleNotification.actionPerformed == "comment_on_post") {
-            name = singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username;
-            text = "comment on your post.";
-            setNotificationMessage(name + " " + text)
-        }
-        else if (singleNotification.actionPerformed == "agree_comment") {
-            name = singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username;
-            text = "agree with your comment.";
-            setNotificationMessage(name + " " + text)
-        }
-        else if (singleNotification.actionPerformed == "disagree_comment") {
-            name = singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username;
-            text = "disagree with your comment.";
-            setNotificationMessage(name + " " + text)
-        }
-        else {
-            setNotificationMessage('sss');
-        }
-    })
 
 
     return (
         <>
-            <p className="notify">{notificationMessage}</p>
+            {
+                singleNotification.actionPerformed === "tag_in_post" ?
+                    <>
+                        <div>
+                            <p onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                            <p className="notify">tag you in a post</p>
+                            <p onClick={() => viewPost(singleNotification?.postID)}>post</p>
+                        </div>
+                    </>
+                    :
+                    singleNotification.actionPerformed === "follow" ?
+                        <>
+                            <div>
+                                <p onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                <p className="notify">start following you.</p>
+                            </div>
+                        </>
+                        :
+                        singleNotification.actionPerformed === "agree_post" ?
+                            <>
+                                <div>
+                                    <p onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                    <p className="notify">agree with your</p>
+                                    <p onClick={() => viewPost(singleNotification?.postID)}>post</p>
+                                </div>
+                            </>
+                            :
+                            singleNotification.actionPerformed === "disagree_post" ?
+                                <>
+                                    <div>
+                                        <p onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                        <p className="notify">disagree with your</p>
+                                        <p onClick={() => viewPost(singleNotification?.postID)}>post</p>
+                                    </div>
+                                </>
+                                // :
+                                // singleNotification.actionPerformed === "comment_on_post" ?
+                                //     <>
+                                //         <div>
+                                //             <p onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                //             <p className="notify">comment on your</p>
+                                //             <p onClick={() => viewPost(singleNotification?.postID)}>post</p>
+                                //         </div>
+                                //     </>
+                                //     :
+                                //     singleNotification.actionPerformed === "agree_comment" ?
+                                //         <>
+                                //             <div>
+                                //                 <p onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                //                 <p className="notify">agree with your comment.</p>
+                                //                 <p onClick={() => viewPost(singleNotification?.postID)}>view post</p>
+                                //             </div>
+                                //         </>
+                                //         :
+                                //         singleNotification.actionPerformed === "disagree_comment" ?
+                                //             <>
+                                //                 <div>
+                                //                     <p onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                //                     <p className="notify">disagree with your comment.</p>
+                                //                     <p onClick={() => viewPost(singleNotification?.postID)}>view post</p>
+                                //                 </div>
+                                //             </>
+                                : ''
+            }
+
         </>
     )
 }

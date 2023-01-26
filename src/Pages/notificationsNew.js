@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import { DContext } from "../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
-
+import Loader from "../Components/Loader";
 import SingleNotificationList from "../Components/Notification/SingleNotificationList";
 
-const Notifications = () => {
+const NotificationsNew = () => {
 
-    const { getNotificationDContext, notificationList, setNotificationList, deleteAllNotificationDContext } = useContext(DContext);
+    const { getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext } = useContext(DContext);
 
     useEffect(() => {
         setNotificationList([]);
@@ -16,16 +16,20 @@ const Notifications = () => {
 
     const getNotificationList = async () => {
         try {
+            setIsLoading(true);
+
             //Api call
             let pageNumberOfNotificationList = 1;
             const axiosRes = await getNotificationDContext(pageNumberOfNotificationList);
-            console.log("axiosRes******** after get notification list", axiosRes);
+            // console.log("axiosRes******** after get notification list", axiosRes);
             if (axiosRes.status === "success") {
                 setNotificationList(axiosRes.list);
             }
         } catch (err) {
             console.log(err);
         }
+        setIsLoading(false);
+
     };
 
 
@@ -56,6 +60,7 @@ const Notifications = () => {
 
     return (
         <>
+            {isLoading && <Loader />}
 
             <InfiniteScroll
                 dataLength={notificationList.length}
@@ -67,10 +72,10 @@ const Notifications = () => {
 
             <div className="Notfy-block">
                 <div className="relative notification-title">
-                    <h4>Notifications</h4>
+                    <h4>Notifications</Newh4>
                     {notificationList.length ?
                         <ul>
-                            <li><button className="btn-nill" type="button">Mark all as read</button></li>
+                            {/* <li><button className="btn-nill" type="button">Mark all as read</button></li> */}
                             <li><button className="btn-nill" type="button" onClick={deleteAllNotification} >Clear all</button></li>
                         </ul>
                         : ""}
@@ -101,4 +106,4 @@ const Notifications = () => {
     );
 }
 
-export default Notifications;
+export default NotificationsNew;
