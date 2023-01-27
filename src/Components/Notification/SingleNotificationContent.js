@@ -26,8 +26,8 @@ export default function SingleNotificationContent(props) {
                     <>
                         <div className='notification-text'>
                             <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                            <p>tag you in a post</p>
-                            <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post</p>
+                            <p>tag you in a </p>
+                            <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post.</p>
                         </div>
                     </>
                     :
@@ -44,7 +44,7 @@ export default function SingleNotificationContent(props) {
                                 <div className='notification-text'>
                                     <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
                                     <p>agree with your</p>
-                                    <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post</p>
+                                    <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post.</p>
                                 </div>
                             </>
                             :
@@ -53,7 +53,7 @@ export default function SingleNotificationContent(props) {
                                     <div className='notification-text'>
                                         <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
                                         <p>disagree with your</p>
-                                        <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post</p>
+                                        <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post.</p>
                                     </div>
                                 </>
                                 // :

@@ -60,12 +60,13 @@ const Sidebar = () => {
             <div className="sidebar-profile">
                 <div className="feature-image">
                     <img src={user && user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" />
-                    <div className="edit-bar">
-                        {/* <input type="file" className="uploadimg-input" /> */}
-                        <Link to="/profile">
+
+                    {/* <input type="file" className="uploadimg-input" /> */}
+                    <Link to="/profile">
+                        <div className="edit-bar">
                             <BsPencil className="text-primary" />
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 </div>
                 <div className="User-detail">
                     <OverlayTrigger placement="top" overlay={tooltip}>

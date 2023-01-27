@@ -21,6 +21,8 @@ const Profile = () => {
         </Tooltip>
     );
 
+    const [verificationLevelState, setVerificationLevelState] = useState(0);
+
     const verificationtooltip = (
         <Tooltip id="verificationtooltip">
             {/* {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"} */}
@@ -31,7 +33,6 @@ const Profile = () => {
     // console.log('user', user)
 
 
-    const [verificationLevelState, setVerificationLevelState] = useState(0);
     //Verification Level
     useEffect(() => {
         getLevel();

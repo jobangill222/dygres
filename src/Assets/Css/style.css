@@ -1990,6 +1990,7 @@ ul.profiletabsbar li:last-child a {
   font-size: 20px;
   line-height: 30px;
   color: var(--darkmode-offwhite);
+  cursor: pointer;
 }
 
 .notification-content .user-active-timer li.text-green {
@@ -2349,8 +2350,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .upload-media-verify button {
   position: relative;
 }
-[darkmode] .upload-media-verify ,
-[darkmode]  .imagebarupload{
+[darkmode] .upload-media-verify,
+[darkmode] .imagebarupload {
   background: transparent !important;
 }
 .upload-media-verify button input[type="file"] {
@@ -3384,8 +3385,8 @@ p.uploaded-note b {
   label.form-check-label {
   color: #ffffff;
 }
-[darkmode] .Userdetail-editorbar p.word-note{
-   color: #ffffff;
+[darkmode] .Userdetail-editorbar p.word-note {
+  color: #ffffff;
 }
 /* .arrowshape {
     position: absolute;
