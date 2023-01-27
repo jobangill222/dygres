@@ -12,8 +12,9 @@ import { useNavigate } from "react-router-dom";
 
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
-TimeAgo.addDefaultLocale(en)
+import { verificationLevel } from "../../helper/verificationLevel";
+// import en from 'javascript-time-ago/locale/en'
+// TimeAgo.addDefaultLocale(en)
 
 
 
@@ -93,15 +94,21 @@ const PostHead = (props) => {
   }, [is_follow]);
 
 
-  const [verificationLevelState, setVerificationLevelState] = useState(0);
+  const [verificationLevelState, setVerificationLevelState] = useState(false);
   //Verification Level
   useEffect(() => {
-    setVerificationLevelState(postUserDetails?.isEmailVerify === 1 && postUserDetails?.isPhotoVerify === 0 ? '1' : postUserDetails?.isPhotoVerify === 1 ? "2" : "0");
+    getLevel();
   }, [postUserDetails])
+
+  const getLevel = async () => {
+    const res = await verificationLevel(postUserDetails?.isEmailVerify, postUserDetails?.isPhotoVerify);
+    setVerificationLevelState(res);
+  }
+
 
   const verificationtooltip = (
     <Tooltip id="verificationtooltip">
-      {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"}
+      {verificationLevelState && verificationLevelState === '1' ? 'Verified Email' : verificationLevelState === '2' ? "Verified Human" : "No Verification"}
     </Tooltip>
   );
 

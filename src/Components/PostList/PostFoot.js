@@ -300,7 +300,8 @@ const PostFoot = (props) => {
 
 
           <li>
-            <div className={isthreadopen ? 'accordionhead active' : 'accordionhead'} isthreadopen={isthreadopen ? isthreadopen : ""} onClick={() => setIsthreadopen(!isthreadopen)}>
+            {/* <div className={isthreadopen ? 'accordionhead active' : 'accordionhead'} isthreadopen={isthreadopen ? isthreadopen : ""} onClick={() => setIsthreadopen(!isthreadopen)}> */}
+            <div className={isthreadopen ? 'accordionhead active' : 'accordionhead'} onClick={() => setIsthreadopen(!isthreadopen)}>
               <FaComments />
               <span className="number">{commentCount}</span>Threads
             </div>

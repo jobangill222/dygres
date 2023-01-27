@@ -48,6 +48,19 @@ a:hover {
   --darkmode-gray2xl: #343434;
 }
 
+.notification-text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.notification-text p {
+  margin: 0px 5px 0px 0px !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 30px !important;
+}
+
 /* Loader */
 .loader {
   position: fixed;

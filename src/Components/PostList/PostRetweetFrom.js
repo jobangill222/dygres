@@ -3,8 +3,9 @@ import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
-TimeAgo.addDefaultLocale(en)
+// import en from 'javascript-time-ago/locale/en'
+// TimeAgo.addDefaultLocale(en)
+import { verificationLevel } from "../../helper/verificationLevel";
 
 export default function PostRetweetFrom(props) {
 
@@ -15,12 +16,18 @@ export default function PostRetweetFrom(props) {
     const [verificationLevelState, setVerificationLevelState] = useState(0);
     //Verification Level
     useEffect(() => {
-        setVerificationLevelState(parentPostDetail[0]?.user[0]?.isEmailVerify === 1 && parentPostDetail[0]?.user[0]?.isPhotoVerify === 0 ? '1' : parentPostDetail[0]?.user[0]?.isPhotoVerify === 1 ? "2" : "0");
+        getLevel();
     }, [parentPostDetail])
+
+    const getLevel = async () => {
+        const res = await verificationLevel(parentPostDetail[0]?.user[0]?.isEmailVerify, parentPostDetail[0]?.user[0]?.isPhotoVerify);
+        setVerificationLevelState(res);
+    }
 
     const verificationtooltip = (
         <Tooltip id="verificationtooltip">
-            {parentPostDetail[0]?.user[0]?.isEmailVerify === 1 && parentPostDetail[0]?.user[0]?.isPhotoVerify === 0 ? 'Verified Email' : parentPostDetail[0]?.user[0]?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"}
+            {/* {parentPostDetail[0]?.user[0]?.isEmailVerify === 1 && parentPostDetail[0]?.user[0]?.isPhotoVerify === 0 ? 'Verified Email' : parentPostDetail[0]?.user[0]?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"} */}
+            {verificationLevelState && verificationLevelState === '1' ? 'Verified Email' : verificationLevelState === '2' ? "Verified Human" : "No Verification"}
         </Tooltip>
     );
 

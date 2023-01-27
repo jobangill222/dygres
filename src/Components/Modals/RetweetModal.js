@@ -9,8 +9,9 @@ import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
-TimeAgo.addDefaultLocale(en)
+// import en from 'javascript-time-ago/locale/en'
+// TimeAgo.addDefaultLocale(en)
+import { verificationLevel } from "../../helper/verificationLevel";
 
 export default function SingleAward(props) {
 
@@ -38,22 +39,24 @@ export default function SingleAward(props) {
         setPostDetailForRetweet(axiosRes.list[0])
 
         //Userlevel verification
-        if (axiosRes.list[0]?.user?.isEmailVerify === 1 && axiosRes.list[0]?.user?.isPhotoVerify === 0) {
-            setUserVerificationLevel(1);
-        }
-        else if (axiosRes.list[0]?.user?.isPhotoVerify === 1) {
-            setUserVerificationLevel(2);
-        }
-        else {
-            setUserVerificationLevel(0);
-        }
+        // if (axiosRes.list[0]?.user?.isEmailVerify === 1 && axiosRes.list[0]?.user?.isPhotoVerify === 0) {
+        //     setUserVerificationLevel(1);
+        // }
+        // else if (axiosRes.list[0]?.user?.isPhotoVerify === 1) {
+        //     setUserVerificationLevel(2);
+        // }
+        // else {
+        //     setUserVerificationLevel(0);
+        // }
+        const res = await verificationLevel(axiosRes.list[0]?.user?.isEmailVerify, axiosRes.list[0]?.user?.isPhotoVerify);
+        setUserVerificationLevel(res);
 
     }
 
 
     const verificationtooltip = (
         <Tooltip id="verificationtooltip">
-            {userVerificationLevel === 1 ? 'Verified Email' : userVerificationLevel === 2 ? "Verified Human" : "No Verification"}
+            {userVerificationLevel === '1' ? 'Verified Email' : userVerificationLevel === '2' ? "Verified Human" : "No Verification"}
         </Tooltip>
     );
 

@@ -9,6 +9,7 @@ import { DContext } from "../../Context/DContext";
 import ViewAllAwardsIGot from '../Modals/ViewAllAwardsIGot';
 import { toast } from "react-toastify";
 import Loader from "../../Components/Loader";
+import { verificationLevel } from "../../helper/verificationLevel";
 
 const Profile = () => {
 
@@ -22,7 +23,8 @@ const Profile = () => {
 
     const verificationtooltip = (
         <Tooltip id="verificationtooltip">
-            {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"}
+            {/* {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"} */}
+            {verificationLevelState && verificationLevelState === '1' ? 'Verified Email' : verificationLevelState === '2' ? "Verified Human" : "No Verification"}
         </Tooltip>
     );
 
@@ -32,8 +34,13 @@ const Profile = () => {
     const [verificationLevelState, setVerificationLevelState] = useState(0);
     //Verification Level
     useEffect(() => {
-        setVerificationLevelState(user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0");
+        getLevel();
     }, [user])
+
+    const getLevel = async () => {
+        const res = await verificationLevel(user?.isEmailVerify, user?.isPhotoVerify);
+        setVerificationLevelState(res);
+    }
 
 
     const myFollowers = async () => {

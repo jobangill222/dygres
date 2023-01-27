@@ -4,6 +4,7 @@ import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import UsersProfileTabs from "./UsersProfileTabs";
 import { DContext } from "../../Context/DContext";
+import { verificationLevel } from "../../helper/verificationLevel";
 
 
 const UsersProfile = () => {
@@ -58,12 +59,19 @@ const UsersProfile = () => {
     const [verificationLevelState, setVerificationLevelState] = useState(0);
     //Verification Level
     useEffect(() => {
-        setVerificationLevelState(user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0");
+        getLevel();
     }, [user])
+
+    const getLevel = async () => {
+        const res = await verificationLevel(user?.isEmailVerify, user?.isPhotoVerify);
+        setVerificationLevelState(res);
+    }
+
 
     const verificationtooltip = (
         <Tooltip id="verificationtooltip">
-            {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"}
+            {/* {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"} */}
+            {verificationLevelState && verificationLevelState === '1' ? 'Verified Email' : verificationLevelState === '2' ? "Verified Human" : "No Verification"}
         </Tooltip>
     );
 

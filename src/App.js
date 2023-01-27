@@ -60,15 +60,14 @@ function App() {
           <Routes>
             {/* {console.log('check the user state context - ', userToken)} */}
 
-            <Route path="*" element={<NotFound />} />
             <Route element={<NoHeaderLayout />}>
               <Route exact path="/notfound" element={<NotFound />} />
             </Route>
 
-            <Route exact path="/login" element={<Login />} />
 
             {!userToken ? (
               <Route element={<AuthLayout />}>
+                <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<SignUp />} />
                 <Route exact path="/getotp" element={<GetOtp />} />
                 <Route exact path="/enterotp" element={<EnterOtp />} />
@@ -82,6 +81,8 @@ function App() {
               <>
                 <Route element={<SiteLayout />}>
                   <Route exact path="/login" element={<New />} />
+                  <Route exact path="/signup" element={<New />} />
+
                   <Route exact path="/new" element={<New />} />
                   <Route exact path="/hot" element={<Hot />} />
                   <Route exact path="/most-voted" element={<MostVoted />} />
@@ -152,6 +153,9 @@ function App() {
               <Route exact path="admin/userverification" element={<UserVerification />}
               />
             </Route>
+
+            {/* <Route path="*" element={<NotFound />} /> */}
+
 
           </Routes>
         </Router>
