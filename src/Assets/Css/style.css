@@ -1001,7 +1001,23 @@ ul.profiletabsbar li:last-child a {
   font-size: 12px;
   line-height: 19px;
 }
+.Dropdown-listing .arrowbar {
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.Dropdown-listing .arrowbar .notification-content .notification-text p {
+  font-size: 14px !important;
+}
 
+.Dropdown-listing .arrowbar .notification-content .levelbar {
+  top: -16px !important;
+  margin: 0 !important;
+}
+
+.Dropdown-listing .arrowbar .notification-content .user-detail-bar {
+  margin-top: 0px !important;
+}
 .hoverdropdown .dropdown-menu .dropdown-item span svg {
   margin-right: 2px;
 }
@@ -2333,7 +2349,10 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .upload-media-verify button {
   position: relative;
 }
-
+[darkmode] .upload-media-verify ,
+[darkmode]  .imagebarupload{
+  background: transparent !important;
+}
 .upload-media-verify button input[type="file"] {
   position: absolute;
   left: 0;
@@ -2938,7 +2957,7 @@ p.uploaded-note b {
 }
 
 [darkmode] p.uploaded-note {
-  background: #383838;
+  background: #383838 !important;
 }
 
 [darkmode] body {
@@ -3058,7 +3077,7 @@ p.uploaded-note b {
 }
 
 [darkmode] .digital-feeds {
-  background: var(--darkmode-lightblack);
+  background: var(--darkmode-lightblack) !important;
   box-shadow: none;
 }
 
@@ -3264,7 +3283,7 @@ p.uploaded-note b {
 [darkmode] .form-select,
 [darkmode] .form-control,
 [darkmode] .form-control {
-  background: var(--base-inputautofill);
+  background: var(--base-inputautofill) !important;
   border: 2px solid #565656;
   color: var(--base-purewhite);
 }
@@ -3280,7 +3299,6 @@ p.uploaded-note b {
 
 [darkmode] .upload-media-verify {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px dashed var(--base-purewhite);
 }
 
 [darkmode] .passwrd-verify .resetbtn {
@@ -3364,9 +3382,11 @@ p.uploaded-note b {
   .authcheckbox
   .form-check
   label.form-check-label {
-  color: #35a0da;
+  color: #ffffff;
 }
-
+[darkmode] .Userdetail-editorbar p.word-note{
+   color: #ffffff;
+}
 /* .arrowshape {
     position: absolute;
     right: 0;
@@ -3446,6 +3466,7 @@ ul.sidebar-menu {
 }
 
 .notify-add .btndot::after {
+  display: none;
   content: "";
   width: 9px;
   height: 9px;

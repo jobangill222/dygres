@@ -102,7 +102,7 @@ const Header = () => {
 
 
 
-                        <div className="notification-body">
+                        {/* <div className="notification-body">
                           <div className="notification-list">
                             <ul>
                               <li>
@@ -120,8 +120,8 @@ const Header = () => {
                               Methew Reed started Following you
                             </p>
                           </div>
-                        </div>
-                        {/* {
+                        </div> */}
+                        {
                           notificationList.length ?
                             notificationList.map((singleNotification) => (
                               <SingleNotificationList
@@ -134,7 +134,7 @@ const Header = () => {
                               <img src="/images/empty.png" alt='dummy' />
                               <h4>No Notification</h4>
                             </div>
-                        } */}
+                        }
 
 
 
