@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,8 +7,25 @@ import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { BsBell, BsSearch } from "react-icons/bs";
 import { BiHome } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { DContext } from "../../Context/DContext";
 
 const Header = () => {
+
+    const navigate = useNavigate();
+
+    const { setUser, setUserToken } = useContext(DContext);
+
+    //Logout Functionality
+    const logoutHandler = async (e) => {
+        console.log("logout handler call");
+        setUser(null);
+        setUserToken(null);
+        // localStorage.clear();
+        localStorage.removeItem("accessToken");
+        navigate("/login");
+    };
+    //End logout functionality
 
     return (
         <>
@@ -42,7 +59,7 @@ const Header = () => {
                                     <div className="arrowshape"></div>
                                     <h4 className="text-silver">Account</h4>
                                     <ul>
-                                        <li className="text-secondry" >
+                                        <li className="text-secondry" onClick={logoutHandler}>
                                             <MdLogout />
                                             Log Out
                                         </li>

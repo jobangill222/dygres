@@ -17,7 +17,7 @@ const DigitalTabs = (props) => {
   const { setActiveTabState } = props;
 
   //Global states
-  const { postList, popupType, postIDForAwardOfPost, postIDForRetweet } = useContext(DContext);
+  const { postList, popupType, postIDForAwardOfPost, postIDForRetweet, fontSizeState, setFontSizeState } = useContext(DContext);
 
   // Change state when click on count of agree disagree etc and change popupstate to true to open
   const [popupOpenStatus, setPopupOpenStatus] = useState(false);
@@ -44,6 +44,11 @@ const DigitalTabs = (props) => {
   }, [postIDForRetweet])
 
 
+  const changeFontSize = async (size) => {
+    localStorage.setItem("fontSize", size);
+    setFontSizeState(size);
+  }
+
   return (
     <>
 
@@ -53,66 +58,77 @@ const DigitalTabs = (props) => {
       {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
       {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
+      <div className='tabswithbutotn'>
+        <Tabs
+          defaultActiveKey="Global"
+          id="uncontrolled-tab-example"
+          className="digital-tabs"
+          onSelect={(e) => setActiveTabState(e)}
+        >
 
-      <Tabs
-        defaultActiveKey="Global"
-        id="uncontrolled-tab-example"
-        className="digital-tabs"
-        onSelect={(e) => setActiveTabState(e)}
-      >
-
-        <Tab eventKey="Global" title="Global">
-          {/* {console.log("post list in global tab render", postList)} */}
-          {postList.length ?
-            postList.map((post, index) => (
-              <DigitalTabContent
-                key={index * Math.random(100000)}
-                setActiveTabState={setActiveTabState}
-                post={post}
-              />
-            ))
-            : <div className="empty-bar">
-              <img src="/images/empty.png" alt='dummy' />
-              <h4>No Posts</h4>
-            </div>
-          }
-        </Tab>
+          <Tab eventKey="Global" title="Global">
+            {/* {console.log("post list in global tab render", postList)} */}
+            {postList.length ?
+              postList.map((post, index) => (
+                <DigitalTabContent
+                  key={index * Math.random(100000)}
+                  setActiveTabState={setActiveTabState}
+                  post={post}
+                />
+              ))
+              : <div className="empty-bar">
+                <img src="/images/empty.png" alt='dummy' />
+                <h4>No Posts</h4>
+              </div>
+            }
+          </Tab>
 
 
-        <Tab eventKey="Following" title="Following">
-          {/* {console.log("post list in folowing tab", postList)} */}
-          {postList.length ?
-            postList.map((post) => (
-              <DigitalTabContent
-                key={post._id}
-                setActiveTabState={setActiveTabState}
-                post={post}
-              />
-            ))
-            :
-            <div className="empty-bar">
-              <img src="/images/empty.png" alt='dummy' />
-              <h4>You’re not following anyone at the moment. :(</h4>
-            </div>
-          }
-        </Tab>
+          <Tab eventKey="Following" title="Following">
+            {/* {console.log("post list in folowing tab", postList)} */}
+            {postList.length ?
+              postList.map((post) => (
+                <DigitalTabContent
+                  key={post._id}
+                  setActiveTabState={setActiveTabState}
+                  post={post}
+                />
+              ))
+              :
+              <div className="empty-bar">
+                <img src="/images/empty.png" alt='dummy' />
+                <h4>You’re not following anyone at the moment. :(</h4>
+              </div>
+            }
+          </Tab>
 
-        <Tab eventKey="Official" title="Official">
-          {postList.length ?
-            postList.map((post) => (
-              <DigitalTabContent
-                key={post._id}
-                setActiveTabState={setActiveTabState}
-                post={post}
-              />
-            ))
-            : <div className="empty-bar">
-              <img src="/images/empty.png" alt='dummy' />
-              <h4>No Posts</h4>
-            </div>
-          }
-        </Tab>
-      </Tabs>
+          <Tab eventKey="Official" title="Official">
+            {postList.length ?
+              postList.map((post) => (
+                <DigitalTabContent
+                  key={post._id}
+                  setActiveTabState={setActiveTabState}
+                  post={post}
+                />
+              ))
+              : <div className="empty-bar">
+                <img src="/images/empty.png" alt='dummy' />
+                <h4>No Posts</h4>
+              </div>
+            }
+          </Tab>
+        </Tabs>
+
+
+        <div className='buttonoverall-size'>
+          <ul>
+            <li><button className={fontSizeState === 'small' ? 'active sm' : 'sm'} onClick={() => changeFontSize('small')} >sm</button></li>
+            <li><button className={fontSizeState === 'medium' ? 'active sm' : 'sm'} onClick={() => changeFontSize('medium')} >md</button></li>
+            <li><button className={fontSizeState === 'large' ? 'active sm' : 'sm'} onClick={() => changeFontSize('large')} >lg</button></li>
+          </ul>
+        </div>
+      </div>
+
     </>
   );
 };

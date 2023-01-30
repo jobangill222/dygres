@@ -4,11 +4,13 @@ import axios from "axios";
 // COnstants
 import { BASE_URL } from "../Config";
 // import { isCompositeComponent } from "react-dom/test-utils";
+// import { useNavigate } from "react-router-dom";
 
 export const DContext = React.createContext();
 
 export const DProvider = (props) => {
 
+  // const navigate = useNavigate();
 
   // State variables
   const [user, setUser] = useState(null);
@@ -39,8 +41,17 @@ export const DProvider = (props) => {
 
   const [searchState, setSearchState] = useState(null);
 
+  const [fontSizeState, setFontSizeState] = useState(null);
 
   useEffect(() => {
+
+    const fontSize = localStorage.getItem("fontSize");
+    if (fontSize) {
+      setFontSizeState(fontSize)
+    } else {
+      setFontSizeState('medium')
+    }
+
     const accessToken = localStorage.getItem("accessToken");
 
     if (accessToken) {
@@ -52,6 +63,7 @@ export const DProvider = (props) => {
           localStorage.removeItem("accessToken");
           setUser(null);
           setUserStats(null);
+          // navigate("/login");
         }
         else {
           setUser(userDetails.data);
@@ -1144,6 +1156,8 @@ export const DProvider = (props) => {
     setPostIDForSinglePostState,
     searchState,
     setSearchState,
+    fontSizeState,
+    setFontSizeState,
     // Methods
     userLogin,
     userSignup,

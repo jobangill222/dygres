@@ -33,15 +33,15 @@ const Login = () => {
       if (axiosRes.status === "success") {
         localStorage.setItem("accessToken", axiosRes.accessToken);
 
-        console.log("login console", axiosRes);
-
+        // if (axiosRes.data.role === "admin") {
+        //   navigate("/admin/dashboard");
+        // } else {
         setUser(axiosRes.data);
         setUserToken(axiosRes.accessToken);
         setUserStats(axiosRes.userStats);
 
-        // toast(axiosRes.message);
-        // navigate("/editprofile");
         navigate("/new");
+        // }
 
       } else {
         const errorMessage = axiosRes.message;

@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Assets/Css/style.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navigate, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./hooks/useThemeContext";
 import Notifications from "./Pages/Notifications";
 import New from "./Pages/New";
@@ -46,6 +46,7 @@ import WhatsMind from "./Components/WhatsMind";
 import UsersProfile from "./Components/Profile/UsersProfile";
 import { DProvider } from "./Context/DContext";
 
+
 function App() {
   // Context Variables
   const { userToken } = useContext(DContext);
@@ -76,12 +77,13 @@ function App() {
                   path="/resetpassword"
                   element={<ResetPassword />}
                 />
+                <Route path="*" element={<Navigate to='/login' />} />
+
               </Route>
             ) : (
               <>
                 <Route element={<SiteLayout />}>
-                  <Route exact path="/login" element={<New />} />
-                  <Route exact path="/signup" element={<New />} />
+                  <Route path="*" element={<Navigate to='/new' />} />
 
                   <Route exact path="/new" element={<New />} />
                   <Route exact path="/hot" element={<Hot />} />
@@ -123,22 +125,7 @@ function App() {
                   />
                 </Route>
 
-                {/* <Route element={<AdminLayout />}>
-                  <Route exact path="/dashboard" element={<Dashboard />} />
-                  <Route exact path="/users" element={<Users />} />
-                  <Route exact path="/post" element={<Post />} />
-                  <Route
-                    exact
-                    path="/sendnotification"
-                    element={<SendNotification />}
-                  />
-                  <Route exact path="/flagpost" element={<FlagPost />} />
-                  <Route
-                    exact
-                    path="/userverification"
-                    element={<UserVerification />}
-                  />
-                </Route> */}
+
 
 
               </>
@@ -154,7 +141,7 @@ function App() {
               />
             </Route>
 
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
 
 
           </Routes>

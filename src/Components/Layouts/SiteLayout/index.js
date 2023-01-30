@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from 'react-bootstrap/Container';
 import {
-     Outlet
+    Outlet
 } from "react-router-dom";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FooterMob from "../FooterMob";
-
+import { DContext } from "../../../Context/DContext";
 
 const SiteLayout = () => {
 
+    const { fontSizeState } = useContext(DContext);
 
     return (
         <>
 
             <Header />
-            <div className='body-wrapper'>
+            <div className={fontSizeState ? `${fontSizeState} body-wrapper` : `body-wrapper`}>
                 <Container className='somewhere-full'>
                     <Row className='somewhere-pad-0'>
                         <Col className="sidebar-menu" lg="3">
@@ -29,7 +30,7 @@ const SiteLayout = () => {
                     </Row>
                 </Container>
             </div>
-            <FooterMob/>
+            <FooterMob />
 
         </>
     );

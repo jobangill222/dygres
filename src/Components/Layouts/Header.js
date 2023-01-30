@@ -44,7 +44,9 @@ const Header = () => {
 
   //Get notifications
   useEffect(() => {
-    getNotificationList();
+    if (user) {
+      getNotificationList();
+    }
   }, []);
 
   const getNotificationList = async () => {

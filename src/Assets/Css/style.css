@@ -588,7 +588,7 @@ input.form-control {
 }
 .navbar-nav a.homeicon {
   margin-right: 30px;
-  font-size: 20px;
+  font-size: 26px;
   cursor: pointer;
 }
 .thredsbar .sidebar-profile .sidebar-menu li a.active,
@@ -887,7 +887,14 @@ ul.profiletabsbar li:last-child a {
   justify-content: space-between;
   padding: 30px 0 15px 0;
   flex-wrap: wrap;
-  border-top: 0.5px solid var(--base-border);
+  border-style: solid;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient(to left, #98d185, #40adc3);
 }
 
 .action-bar ul {
@@ -4071,13 +4078,61 @@ ul.sidebar-menu {
     position: relative;
     padding: 10px 20px;
   }
+  .thredsbar::-webkit-scrollbar {
+    width: 20px;
+  }
 
+  /* Track */
+  .thredsbar::-webkit-scrollbar-track {
+    border-radius: 0px;
+  }
+
+  /* Handle */
+  .thredsbar::-webkit-scrollbar-thumb {
+    background: url("../../../public/images/scrollericon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 0px;
+    cursor: pointer;
+  }
+
+  /* Handle on hover */
+  .thredsbar::-webkit-scrollbar-thumb:hover {
+  }
   .action-bar ul li {
     margin-left: 15px;
     font-size: 14px;
     font-weight: normal;
   }
+  .tabswithbutotn {
+    position: relative;
+  }
 
+  .tabswithbutotn .buttonoverall-size {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .tabswithbutotn .buttonoverall-size ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .tabswithbutotn .buttonoverall-size ul li button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+    border: none;
+    text-transform: capitalize;
+  }
+
+  .tabswithbutotn .buttonoverall-size ul li {
+    margin-left: 10px;
+  }
   .hoverdropdown button,
   .action-bar ul li .accordion-button {
     line-height: 17px;
