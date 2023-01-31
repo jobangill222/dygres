@@ -58,7 +58,7 @@ export const DProvider = (props) => {
       setUserToken(accessToken);
       const checkAuth = async () => {
         const userDetails = await getUserDetailsDContext();
-        console.log('userDetails,userDetails', userDetails);
+        // console.log('userDetails,userDetails', userDetails);
         if (userDetails.status === "error") {
           localStorage.removeItem("accessToken");
           setUser(null);
@@ -1127,6 +1127,28 @@ export const DProvider = (props) => {
   };
 
 
+
+
+  //Admin
+  const allUserListDContext = async (search, pageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/all-user-list?page=${pageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          search: search
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get all user api (DContext.js) - ", err);
+    }
+  }
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -1210,7 +1232,8 @@ export const DProvider = (props) => {
     getFollowersDContext,
     getFollowingDContext,
     getUsersAllAwardsTheyGet,
-    updateCoverImageDContext
+    updateCoverImageDContext,
+    allUserListDContext
   };
   return (
     <>

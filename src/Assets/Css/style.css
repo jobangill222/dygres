@@ -3720,14 +3720,15 @@ ul.sidebar-menu {
   line-height: 38px;
   letter-spacing: 0.03em;
   text-transform: capitalize;
-  color: var(--base-primary);
   border-bottom: 1px solid var(--base-primary);
   margin-bottom: 20px;
   padding-bottom: 10px;
   display: inline-block;
   padding-right: 30px;
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
-
 [darkmode] .dashboard-boxes .dash-boxes-in ul.userstatus li h5 {
   color: var(--base-text-lightgray) !important;
 }

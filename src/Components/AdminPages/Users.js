@@ -1,25 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
-import { BsThreeDotsVertical, BsFilePost, BsFlag } from 'react-icons/bs';
-import { MdBlock } from 'react-icons/md';
-import { BiIdCard, BiSearch } from 'react-icons/bi';
+// import { BsThreeDotsVertical, BsFilePost, BsFlag } from 'react-icons/bs';
+// import { MdBlock } from 'react-icons/md';
+import { BiSearch } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
+// Context
+import { DContext } from "../../Context/DContext";
+import { toast } from "react-toastify";
+import SingleUserList from "./SingleUserList";
+
 const Users = () => {
+
+    const { allUserListDContext } = useContext(DContext);
+
+    const [userList, setUserList] = useState([]);
+
+    useEffect(() => {
+        localStorage.setItem('userPageNumber', 1);
+        getUser();
+    }, [])
+
+    const getUser = async () => {
+        const search = null;
+        const pageNumber = 1;
+        const axiosRes = await allUserListDContext(search, pageNumber);
+        if (axiosRes.status === "success") {
+            setUserList(axiosRes.list);
+        } else {
+            toast(axiosRes.message);
+        }
+    }
 
     // Aggree Modal
     const [showBlock, setShowBlock] = useState(false);
     const BlockClose = () => setShowBlock(false);
-    const BlockShow = () => setShowBlock(true);
+    // const BlockShow = () => setShowBlock(true);
 
     return (
         <>
+
+            {console.log('userListuserList', userList)}
             <Container>
                 <div className="dashboard-title-bar">
                     <Row>
@@ -48,33 +75,11 @@ const Users = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Hannah Koph </td>
-                                <td>@iamhannah</td>
-                                <td>hannah@gmail.com</td>
-                                <td>
-                                    <div className="number-bar">
-                                        <p>+91 9874563210</p>
-                                        <div className="user-dropdown">
-                                            <BsThreeDotsVertical />
-                                            <ul className="Dropdown-listing">
-                                                <li className="text-secondry">
-                                                    <Link onClick={BlockShow}><MdBlock />Block</Link>
-                                                </li>
-                                                <li className="text-secondry">
-                                                    <Link to="/admin/post"><BsFilePost />Posts</Link>
-                                                </li>
-                                                <li className="text-secondry">
-                                                    <Link to="/admin/flagpost"><BsFlag />Flagged Posts</Link>
-                                                </li>
-                                                <li className="text-secondry">
-                                                    <Link to="/admin/userverification"><BiIdCard />User Verification</Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+
+                            {userList.map((singleUser) => (
+                                <SingleUserList />
+                            ))}
+
                         </tbody>
                     </Table>
                 </div>
