@@ -139,6 +139,7 @@ const EditProfile = () => {
                       accept="image/*"
                       type="file"
                       onChange={uploadProfileImage}
+                      title="Select 152*152 px image"
                     />
                     <TbCameraPlus />
                   </div>

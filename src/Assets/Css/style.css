@@ -61,6 +61,10 @@ a:hover {
   line-height: 30px !important;
 }
 
+.report_reasons {
+  cursor: pointer;
+}
+
 /* Loader */
 .loader {
   position: fixed;
@@ -513,7 +517,6 @@ input.form-control {
 }
 
 .user-detail-listing li p {
-  font-family: "Lato";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -539,11 +542,14 @@ input.form-control {
   margin: 23px 0 28px 0;
 }
 
-.search-input-form form.user-searchform {
+.search-input-form .user-searchform {
   position: relative;
 }
+.share-popup .modal-dialog {
+  max-width: 600px !important;
+}
 
-.search-input-form form.user-searchform input {
+.search-input-form .user-searchform input {
   padding: 15px 45px 15px 25px;
   width: 100%;
   font-weight: 400;
@@ -555,11 +561,11 @@ input.form-control {
   box-shadow: 0px 0px 5px #8080803d;
 }
 
-.search-input-form form.user-searchform input::placeholder {
+.search-input-form .user-searchform input::placeholder {
   color: var(--base-placeholder);
 }
 
-.search-input-form form.user-searchform button {
+.search-input-form .user-searchform button {
   border: none;
   background: transparent;
   padding: 0;
@@ -569,7 +575,26 @@ input.form-control {
   right: 15px;
   transform: translate(0px, -50%);
 }
+.search-input-form {
+  position: relative;
+}
 
+.search-input-form ul {
+  position: absolute;
+  top: 40px;
+  background: #ffffff;
+  width: 100%;
+  height: 124px;
+  z-index: 2;
+  overflow: scroll;
+  border: 1px solid #e8e3e357;
+}
+
+.search-input-form ul li {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #e8e3e357;
+}
 .sidebar-profile .sidebar-menu li a {
   position: relative;
   padding: 20px 20px 20px 50px;
@@ -892,9 +917,9 @@ ul.profiletabsbar li:last-child a {
   border-right: 0 !important;
   border-bottom: 0 !important;
   border: 3px solid;
-  border-image-slice: 1;
+  border-image-slice: 1 !important;
   border-width: 2px;
-  border-image-source: linear-gradient(to left, #98d185, #40adc3);
+  border-image-source: linear-gradient(to left, #98d185, #40adc3) !important;
 }
 
 .action-bar ul {
@@ -929,7 +954,11 @@ ul.profiletabsbar li:last-child a {
 
 .action-bar ul li svg {
   margin-right: 6px;
+  font-size: 20px;
   transition: 0.3s ease;
+}
+.share-popup .modal-body {
+  height: auto !important;
 }
 
 .action-bar ul li span.number {
@@ -1503,7 +1532,6 @@ ul.profiletabsbar li:last-child a {
   border: 0.2px solid var(--base-border);
   border-radius: 40px;
   padding: 15px 20px;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -1513,7 +1541,6 @@ ul.profiletabsbar li:last-child a {
 } */
 .Actions-modal .Awrds-li h4 {
   margin: 0;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -1643,7 +1670,6 @@ ul.profiletabsbar li:last-child a {
   position: absolute;
   right: 0;
   top: -20px;
-  font-family: "Lato";
   font-style: normal;
   font-weight: 500;
   line-height: 22px;
@@ -1686,7 +1712,6 @@ ul.profiletabsbar li:last-child a {
 }
 
 .Editreportmodal form label.form-label {
-  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -2893,7 +2918,37 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin-bottom: 5px;
   display: block;
 }
+.tabswithbutotn {
+  position: relative;
+}
 
+.tabswithbutotn .buttonoverall-size {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.tabswithbutotn .buttonoverall-size ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.tabswithbutotn .buttonoverall-size ul li button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8acc8d;
+  text-transform: capitalize;
+  border-image-width: 1;
+}
+.tabswithbutotn .buttonoverall-size ul li button.active {
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+}
+.tabswithbutotn .buttonoverall-size ul li {
+  margin-left: 10px;
+}
 .verification-bar .verification-media-upload .verify-content .formbar h5 {
   margin: 0;
   font-style: normal;
@@ -3187,17 +3242,14 @@ p.uploaded-note b {
   margin-top: 0;
 }
 
-[darkmode] .followbtn {
-  border: 1.78846px solid var(--base-purewhite);
-  color: var(--base-purewhite);
-}
-
 [darkmode] .reply-post form .replyinput .form-control {
   background: var(--darkmode-offgray);
   border: 1px solid #d3d3d3;
   color: var(--base-placeholder);
 }
-
+.user-detail-bar .detailleft .follow-bar .followbtn {
+  margin-bottom: 7px;
+}
 [darkmode] .reply-post form .btn {
   color: var(--base-purewhite);
 }
@@ -3720,14 +3772,27 @@ ul.sidebar-menu {
   line-height: 38px;
   letter-spacing: 0.03em;
   text-transform: capitalize;
-  border-bottom: 1px solid var(--base-primary);
   margin-bottom: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   display: inline-block;
-  padding-right: 30px;
+  padding-right: 20px;
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
+  border-style: solid;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  border: 3px solid;
+  border-image-slice: 1 !important;
+  border-width: 2px;
+  border-image-source: linear-gradient(to left, #98d185, #40adc3) !important;
+}
+[darkmode] .tabswithbutotn .buttonoverall-size ul li button {
+  color: #ffffff;
+}
+[darkmode] .tabswithbutotn .buttonoverall-size ul li button.active {
+  color: #000000;
 }
 [darkmode] .dashboard-boxes .dash-boxes-in ul.userstatus li h5 {
   color: var(--base-text-lightgray) !important;
@@ -3767,8 +3832,10 @@ ul.sidebar-menu {
 }
 
 .empty-bar img {
-  max-width: 25%;
+  max-width: 100%;
   margin: 0 auto 30px auto;
+  height: 200px;
+  object-fit: contain;
 }
 
 .empty-bar p {
@@ -3785,13 +3852,41 @@ ul.sidebar-menu {
 .digital-feeds .digital-feeds.diffrentiate-bar .Description-bar {
   border: none;
 }
-
+.small .digital-feeds .Description-bar p {
+  font-size: 16px;
+}
+.tabswithbutotn .buttonoverall-size ul li .sm {
+  font-size: 16px;
+}
+.tabswithbutotn .buttonoverall-size ul li .md {
+  font-size: 19px;
+}
+.tabswithbutotn .buttonoverall-size ul li .lg {
+  font-size: 22px;
+}
+.medium .digital-feeds .Description-bar p {
+  font-size: 19px;
+}
+.large .digital-feeds .Description-bar p {
+  font-size: 22px;
+}
+.sidebar-profile .feature-image {
+  position: relative;
+  height: 200px;
+  object-fit: contain;
+  overflow: hidden;
+}
 /* Responsive css  */
 @media (max-width: 1599px) {
   .account-verify .verify-input button {
     font-size: 14px;
   }
-
+  .sidebar-profile .feature-image {
+    position: relative;
+    height: 100px;
+    object-fit: contain;
+    overflow: hidden;
+  }
   .account-verify .verify-input input.form-control {
     margin-right: 20px;
   }
@@ -4056,11 +4151,6 @@ ul.sidebar-menu {
     margin-bottom: 15px;
   }
 
-  .digital-feeds .Description-bar p {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
   .sidebar-profile .sidebar-menu li a svg {
     font-size: 18px;
     margin-right: 15px;
@@ -4106,34 +4196,7 @@ ul.sidebar-menu {
     font-size: 14px;
     font-weight: normal;
   }
-  .tabswithbutotn {
-    position: relative;
-  }
 
-  .tabswithbutotn .buttonoverall-size {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  .tabswithbutotn .buttonoverall-size ul {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  .tabswithbutotn .buttonoverall-size ul li button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
-    border: none;
-    text-transform: capitalize;
-  }
-
-  .tabswithbutotn .buttonoverall-size ul li {
-    margin-left: 10px;
-  }
   .hoverdropdown button,
   .action-bar ul li .accordion-button {
     line-height: 17px;
@@ -4144,11 +4207,6 @@ ul.sidebar-menu {
   .Description-bar p {
     font-size: 16px;
     line-height: 24px;
-  }
-
-  .sidebar-profile .feature-image {
-    position: relative;
-    height: 100px;
   }
 
   .sidebar-profile .feature-image img {
@@ -4162,7 +4220,7 @@ ul.sidebar-menu {
     margin-bottom: 5px;
   }
 
-  .search-input-form form.user-searchform input {
+  .search-input-form .user-searchform input {
     padding: 10px 45px 10px 15px;
     width: 100%;
     font-weight: 400;

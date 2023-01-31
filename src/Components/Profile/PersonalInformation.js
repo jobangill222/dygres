@@ -143,7 +143,7 @@ const PersonalInformation = () => {
     // e.preventDefault()
     // console.log("data-----", data);
     if (data.newPassword !== data.confirmNewPassword) {
-      toast("Password and Confirm password should be same");
+      toast("Password and Confirm password should be same.");
       return;
     }
 
@@ -219,7 +219,7 @@ const PersonalInformation = () => {
     e.preventDefault();
     console.log("otpState", otpState);
     if (!otpState) {
-      toast("Please enter OTP");
+      toast("Please enter OTP.");
     } else {
       try {
         const axiosRes = await verifyOtpInsideLoginDContext(

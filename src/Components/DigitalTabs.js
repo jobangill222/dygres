@@ -123,8 +123,8 @@ const DigitalTabs = (props) => {
         <div className='buttonoverall-size'>
           <ul>
             <li><button className={fontSizeState === 'small' ? 'active sm' : 'sm'} onClick={() => changeFontSize('small')} >sm</button></li>
-            <li><button className={fontSizeState === 'medium' ? 'active sm' : 'sm'} onClick={() => changeFontSize('medium')} >md</button></li>
-            <li><button className={fontSizeState === 'large' ? 'active sm' : 'sm'} onClick={() => changeFontSize('large')} >lg</button></li>
+            <li><button className={fontSizeState === 'medium' ? 'active md' : 'md'} onClick={() => changeFontSize('medium')} >md</button></li>
+            <li><button className={fontSizeState === 'large' ? 'active lg' : 'lg'} onClick={() => changeFontSize('large')} >lg</button></li>
           </ul>
         </div>
       </div>

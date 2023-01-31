@@ -10,8 +10,13 @@ import { useNavigate } from "react-router-dom";
 import ViewAllAwardsIGot from "../Modals/ViewAllAwardsIGot";
 
 const Sidebar = () => {
+
+    // const suggestions = ["demo393", "dem", "demo", "de", "demo3", "demo39", "date", "elderberry"];
+
+
     const navigate = useNavigate();
-    const { user, userStats, setSelectedIDForPopup, setPopupType, setSearchState, } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, setPopupType, searchState, setSearchState, searchSuggestionDContext, showSuggestions, setShowSuggestions } = useContext(DContext);
+
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -24,7 +29,6 @@ const Sidebar = () => {
     const openViewProfile = async () => {
         navigate("/profile");
     }
-
 
 
     const myFollowers = async () => {
@@ -43,19 +47,37 @@ const Sidebar = () => {
     }
 
 
-    const searchTyping = async (e) => {
-
-        if (e.target.value === "") {
-            setSearchState(null);
-        } else {
-            setSearchState(e.target.value)
+    //Search
+    const [suggestionList, setSuggestionList] = useState([]);
+    const searchTyping = async (event) => {
+        const value = event.target.value;
+        setSearchState(value);
+        if (!value) {
+            setShowSuggestions(false);
+            return;
+        }
+        else {
+            navigate("/new");
+            setShowSuggestions(true);
+            const axiosRes = await searchSuggestionDContext(value);
+            setSuggestionList(axiosRes.list)
         }
 
-    }
+    };
+
+    const searchClick = (suggestion) => {
+        setSearchState(suggestion);
+        setShowSuggestions(false);
+    };
+
+    //End search
 
     return (
         <>
             {awardIGotPopupState && <ViewAllAwardsIGot awardIGotPopupState={awardIGotPopupState} setAwardIGotPopupState={setAwardIGotPopupState} />}
+
+
+
 
             <div className="sidebar-profile">
                 <div className="feature-image">
@@ -101,12 +123,39 @@ const Sidebar = () => {
                         <li>Begginer <img src="/images/beginer.png" alt="icons" /></li> */}
                         <li>{user?.bio ? user.bio : 'No bio'}</li>
                     </ul>
-                    <div className="search-input-form">
+
+
+                    {/* <div className="search-input-form">
                         <form className="user-searchform">
-                            <input type="text" className="bg-gray" placeholder="Search" onChange={searchTyping} />
+                            <input type="text" className="bg-gray" placeholder="Search" value={searchState ? searchState : ''} onChange={searchTyping} />
                             <button className="bg-lightgray text-lightgray"><BiSearch /></button>
                         </form>
+                    </div> */}
+
+                    <div className='search-input-form'>
+                        <div className="user-searchform">
+                            <input
+                                type="text"
+                                value={searchState}
+                                onChange={searchTyping}
+                                placeholder="Search"
+                                className="bg-gray"
+                                value={searchState ? searchState : ''}
+                            />
+                            <button className="bg-lightgray text-lightgray"><BiSearch /></button>
+                        </div>
+
+                        {showSuggestions && (
+                            <ul>
+                                {suggestionList.map((suggestion) => (
+                                    <li key={suggestion} onClick={() => searchClick(suggestion)}>
+                                        {suggestion}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
+
                 </div>
                 {/* Menu start here */}
                 <ul className="sidebar-menu">

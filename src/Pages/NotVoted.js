@@ -12,19 +12,22 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 const NotVoted = () => {
 
 
-    const { popupType, getNotVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, searchState } = useContext(DContext);
+    const { popupType, getNotVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState, setShowSuggestions } = useContext(DContext);
 
     useEffect(() => {
+        setSearchState(null)
+        setShowSuggestions(false)
         localStorage.setItem("currentPage", 1);
         getNotVotedPosts();
-    }, [searchState]);
+    }, []);
 
     const getNotVotedPosts = async () => {
         try {
             setIsLoading(true);
             //Api call
             let pageNumberOfPostList = 1;
-            const axiosRes = await getNotVotedPostDContext(searchState, pageNumberOfPostList);
+            const search = null;
+            const axiosRes = await getNotVotedPostDContext(search, pageNumberOfPostList);
             // console.log("axiosRes******** after get not voted posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
@@ -41,7 +44,8 @@ const NotVoted = () => {
         let currentPage = localStorage.getItem("currentPage");
         let pageNumberOfPostList = parseInt(currentPage) + 1;
         // console.log("appendNextList function call", pageNumberOfPostList);
-        const axiosRes = await getNotVotedPostDContext(searchState, pageNumberOfPostList);
+        const search = null;
+        const axiosRes = await getNotVotedPostDContext(search, pageNumberOfPostList);
         // console.log(
         //     "axiosRes********* after get not voted posts on page",
         //     pageNumberOfPostList,

@@ -40,6 +40,8 @@ export const DProvider = (props) => {
   const [postIDForSinglePostState, setPostIDForSinglePostState] = useState(null);
 
   const [searchState, setSearchState] = useState(null);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
 
   const [fontSizeState, setFontSizeState] = useState(null);
 
@@ -1127,6 +1129,26 @@ export const DProvider = (props) => {
   };
 
 
+  const searchSuggestionDContext = async (search) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/profile/search-suggestion`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          search: search,
+        }
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hit search suggestion api (DContext.js) - ", err);
+    }
+  };
+
+
 
 
   //Admin
@@ -1178,6 +1200,8 @@ export const DProvider = (props) => {
     setPostIDForSinglePostState,
     searchState,
     setSearchState,
+    showSuggestions,
+    setShowSuggestions,
     fontSizeState,
     setFontSizeState,
     // Methods
@@ -1233,6 +1257,7 @@ export const DProvider = (props) => {
     getFollowingDContext,
     getUsersAllAwardsTheyGet,
     updateCoverImageDContext,
+    searchSuggestionDContext,
     allUserListDContext
   };
   return (

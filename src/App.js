@@ -88,17 +88,12 @@ function App() {
                   <Route exact path="/new" element={<New />} />
                   <Route exact path="/hot" element={<Hot />} />
                   <Route exact path="/most-voted" element={<MostVoted />} />
+                  <Route exact path="/not-voted" element={<NotVoted />} />
                   <Route exact path="/hashtagPosts" element={<HashTagPosts />} />
                   <Route exact path="/SinglePostDetail" element={<SinglePostDetail />} />
 
-
-                  <Route
-                    exact
-                    path="/notification"
-                    element={<Notifications />}
-                  />
-                  <Route exact path="/not-voted" element={<NotVoted />} />
-                  <Route exact path="/not-voted" element={<TopLatestPost />} />
+                  <Route exact path="/notification" element={<Notifications />} />
+                  {/* <Route exact path="/not-voted" element={<TopLatestPost />} /> */}
                   <Route exact path="/posthead" element={<PostHead />} />
                   <Route exact path="/whatsmind" element={<WhatsMind />} />
 

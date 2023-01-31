@@ -170,7 +170,7 @@ const Profile = () => {
                                     {/* <Link to="/"><BsFillImageFill />Edit Cover</Link> */}
                                     <button onChange={uploadCoverImage}>
                                         <BsFillImageFill />
-                                        <input type='file' />Edit Cover
+                                        <input type='file' title="Select 1920*422 px image" />Edit Cover
                                     </button>
 
                                 </li>

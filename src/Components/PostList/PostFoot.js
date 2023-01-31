@@ -147,7 +147,7 @@ const PostFoot = (props) => {
     console.log('reportReason', reportReason);
     console.log('reportDescription', reportDescription);
     if (!reportReason) {
-      toast("Please select reason.")
+      toast("Please select report reason.")
     } else {
       const reportAxiosRes = await reportPostDContext(postID, reportReason, reportDescription)
       console.log('reportAxiosRes', reportAxiosRes);
@@ -510,33 +510,33 @@ const PostFoot = (props) => {
         <Modal.Body>
           <ul className="report-tabs">
 
-            <li onClick={() => selectReportReason('abuse or harassment')} className={reportReason && reportReason.includes("abuse or harassment") && 'active'}>abuse or harassment</li>
-            <li onClick={() => selectReportReason('child exploitation')} className={reportReason && reportReason.includes("child exploitation") && 'active'}>child exploitation</li>
-            <li onClick={() => selectReportReason('copyright or trademark infringement')} className={reportReason && reportReason.includes("copyright or trademark infringement") && 'active'}>copyright or trademark infringement</li>
-            <li onClick={() => selectReportReason('cyberbullying')} className={reportReason && reportReason.includes("cyberbullying") && 'active'}>cyberbullying</li>
-            <li onClick={() => selectReportReason('deepfake')} className={reportReason && reportReason.includes("deepfake") && 'active'}>deepfake</li>
-            <li onClick={() => selectReportReason('doxxing')} className={reportReason && reportReason.includes("doxxing") && 'active'}>doxxing</li>
-            <li onClick={() => selectReportReason('election or political interference')} className={reportReason && reportReason.includes("election or political interference") && 'active'}>election or political interference</li>
-            <li onClick={() => selectReportReason('explicit adult content')} className={reportReason && reportReason.includes("explicit adult content") && 'active'}>explicit adult content</li>
-            <li onClick={() => selectReportReason('graphic violence')} className={reportReason && reportReason.includes("graphic violence") && 'active'}>graphic violence</li>
-            <li onClick={() => selectReportReason('hate speech or hateful conduct')} className={reportReason && reportReason.includes("hate speech or hateful conduct") && 'active'}>hate speech or hateful conduct</li>
-            <li onClick={() => selectReportReason('impersonating a dygres team member')} className={reportReason && reportReason.includes("impersonating a dygres team member") && 'active'}>impersonating a dygres team member</li>
-            <li onClick={() => selectReportReason('misleading or deceptive identity')} className={reportReason && reportReason.includes("misleading or deceptive identity") && 'active'}>misleading or deceptive identity</li>
-            <li onClick={() => selectReportReason('phishing')} className={reportReason && reportReason.includes("phishing") && 'active'}>phishing</li>
-            <li onClick={() => selectReportReason('platform manipulation')} className={reportReason && reportReason.includes("platform manipulation") && 'active'}>platform manipulation</li>
-            <li onClick={() => selectReportReason('sensitive or offensive media')} className={reportReason && reportReason.includes("sensitive or offensive media") && 'active'}>sensitive or offensive media</li>
-            <li onClick={() => selectReportReason('sexual exploitation or sexual violence')} className={reportReason && reportReason.includes("sexual exploitation or sexual violence") && 'active'}>sexual exploitation or sexual violence</li>
-            <li onClick={() => selectReportReason('someone is impersonating me')} className={reportReason && reportReason.includes("someone is impersonating me") && 'active'}>someone is impersonating me</li>
-            <li onClick={() => selectReportReason('spam')} className={reportReason && reportReason.includes("spam") && 'active'}>spam</li>
-            <li onClick={() => selectReportReason('suicide baiting')} className={reportReason && reportReason.includes("suicide baiting") && 'active'}>suicide baiting</li>
-            <li onClick={() => selectReportReason('suicide or self-harm risk')} className={reportReason && reportReason.includes("suicide or self-harm risk") && 'active'}>suicide or self-harm risk</li>
-            <li onClick={() => selectReportReason('suspected bot')} className={reportReason && reportReason.includes("suspected bot") && 'active'}>suspected bot</li>
-            <li onClick={() => selectReportReason('terrorism or violent extremism')} className={reportReason && reportReason.includes("terrorism or violent extremism") && 'active'}>terrorism or violent extremism</li>
-            <li onClick={() => selectReportReason('tragedy cooldown period')} className={reportReason && reportReason.includes("tragedy cooldown period") && 'active'}>tragedy cooldown period</li>
-            <li onClick={() => selectReportReason('unlabeled manipulated or deceptive media')} className={reportReason && reportReason.includes("unlabeled manipulated or deceptive media") && 'active'}>unlabeled manipulated or deceptive media</li>
-            <li onClick={() => selectReportReason('unlabeled synthetic or AI generated content')} className={reportReason && reportReason.includes("unlabeled synthetic or AI generated content") && 'active'}>unlabeled synthetic or AI generated content</li>
-            <li onClick={() => selectReportReason('violence')} className={reportReason && reportReason.includes("violence") && 'active'}>violence</li>
-            <li onClick={() => selectReportReason('witch hunting')} className={reportReason && reportReason.includes("witch hunting") && 'active'}>witch hunting</li>
+            <li onClick={() => selectReportReason('abuse or harassment')} className={reportReason && reportReason.includes("abuse or harassment") ? 'active report_reasons' : 'report_reasons'}>abuse or harassment</li>
+            <li onClick={() => selectReportReason('child exploitation')} className={reportReason && reportReason.includes("child exploitation") ? 'active report_reasons' : 'report_reasons'}>child exploitation</li>
+            <li onClick={() => selectReportReason('copyright or trademark infringement')} className={reportReason && reportReason.includes("copyright or trademark infringement") ? 'active report_reasons' : 'report_reasons'}>copyright or trademark infringement</li>
+            <li onClick={() => selectReportReason('cyberbullying')} className={reportReason && reportReason.includes("cyberbullying") ? 'active report_reasons' : 'report_reasons'}>cyberbullying</li>
+            <li onClick={() => selectReportReason('deepfake')} className={reportReason && reportReason.includes("deepfake") ? 'active report_reasons' : 'report_reasons'}>deepfake</li>
+            <li onClick={() => selectReportReason('doxxing')} className={reportReason && reportReason.includes("doxxing") ? 'active report_reasons' : 'report_reasons'}>doxxing</li>
+            <li onClick={() => selectReportReason('election or political interference')} className={reportReason && reportReason.includes("election or political interference") ? 'active report_reasons' : 'report_reasons'}>election or political interference</li>
+            <li onClick={() => selectReportReason('explicit adult content')} className={reportReason && reportReason.includes("explicit adult content") ? 'active report_reasons' : 'report_reasons'}>explicit adult content</li>
+            <li onClick={() => selectReportReason('graphic violence')} className={reportReason && reportReason.includes("graphic violence") ? 'active report_reasons' : 'report_reasons'}>graphic violence</li>
+            <li onClick={() => selectReportReason('hate speech or hateful conduct')} className={reportReason && reportReason.includes("hate speech or hateful conduct") ? 'active report_reasons' : 'report_reasons'}>hate speech or hateful conduct</li>
+            <li onClick={() => selectReportReason('impersonating a dygres team member')} className={reportReason && reportReason.includes("impersonating a dygres team member") ? 'active report_reasons' : 'report_reasons'}>impersonating a dygres team member</li>
+            <li onClick={() => selectReportReason('misleading or deceptive identity')} className={reportReason && reportReason.includes("misleading or deceptive identity") ? 'active report_reasons' : 'report_reasons'}>misleading or deceptive identity</li>
+            <li onClick={() => selectReportReason('phishing')} className={reportReason && reportReason.includes("phishing") ? 'active report_reasons' : 'report_reasons'}>phishing</li>
+            <li onClick={() => selectReportReason('platform manipulation')} className={reportReason && reportReason.includes("platform manipulation") ? 'active report_reasons' : 'report_reasons'}>platform manipulation</li>
+            <li onClick={() => selectReportReason('sensitive or offensive media')} className={reportReason && reportReason.includes("sensitive or offensive media") ? 'active report_reasons' : 'report_reasons'}>sensitive or offensive media</li>
+            <li onClick={() => selectReportReason('sexual exploitation or sexual violence')} className={reportReason && reportReason.includes("sexual exploitation or sexual violence") ? 'active report_reasons' : 'report_reasons'}>sexual exploitation or sexual violence</li>
+            <li onClick={() => selectReportReason('someone is impersonating me')} className={reportReason && reportReason.includes("someone is impersonating me") ? 'active report_reasons' : 'report_reasons'}>someone is impersonating me</li>
+            <li onClick={() => selectReportReason('spam')} className={reportReason && reportReason.includes("spam") ? 'active report_reasons' : 'report_reasons'}>spam</li>
+            <li onClick={() => selectReportReason('suicide baiting')} className={reportReason && reportReason.includes("suicide baiting") ? 'active report_reasons' : 'report_reasons'}>suicide baiting</li>
+            <li onClick={() => selectReportReason('suicide or self-harm risk')} className={reportReason && reportReason.includes("suicide or self-harm risk") ? 'active report_reasons' : 'report_reasons'}>suicide or self-harm risk</li>
+            <li onClick={() => selectReportReason('suspected bot')} className={reportReason && reportReason.includes("suspected bot") ? 'active report_reasons' : 'report_reasons'}>suspected bot</li>
+            <li onClick={() => selectReportReason('terrorism or violent extremism')} className={reportReason && reportReason.includes("terrorism or violent extremism") ? 'active report_reasons' : 'report_reasons'}>terrorism or violent extremism</li>
+            <li onClick={() => selectReportReason('tragedy cooldown period')} className={reportReason && reportReason.includes("tragedy cooldown period") ? 'active report_reasons' : 'report_reasons'}>tragedy cooldown period</li>
+            <li onClick={() => selectReportReason('unlabeled manipulated or deceptive media')} className={reportReason && reportReason.includes("unlabeled manipulated or deceptive media") ? 'active report_reasons' : 'report_reasons'}>unlabeled manipulated or deceptive media</li>
+            <li onClick={() => selectReportReason('unlabeled synthetic or AI generated content')} className={reportReason && reportReason.includes("unlabeled synthetic or AI generated content") ? 'active report_reasons' : 'report_reasons'}>unlabeled synthetic or AI generated content</li>
+            <li onClick={() => selectReportReason('violence.')} className={reportReason && reportReason.includes("violence.") ? 'active report_reasons' : 'report_reasons'}>violence</li>
+            <li onClick={() => selectReportReason('witch hunting')} className={reportReason && reportReason.includes("witch hunting") ? 'active report_reasons' : 'report_reasons'}>witch hunting</li>
 
           </ul>
           <Form>
