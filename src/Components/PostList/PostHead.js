@@ -23,7 +23,7 @@ const PostHead = (props) => {
   const navigate = useNavigate();
 
   //Context
-  const { user, setUserStats, postList, setPostList, followUnfollowDContext, setPostIDForAwardOfPost } = useContext(DContext);
+  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost } = useContext(DContext);
 
   //Props
   const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward, postID } = props;
@@ -55,7 +55,7 @@ const PostHead = (props) => {
       };
     });
 
-    await followUnfollowDContext(postUserID);
+    await followUserDContext(postUserID);
   }
 
 
@@ -80,7 +80,7 @@ const PostHead = (props) => {
       };
     });
 
-    await followUnfollowDContext(postUserID);
+    await unFollowUserDContext(postUserID);
   }
 
 

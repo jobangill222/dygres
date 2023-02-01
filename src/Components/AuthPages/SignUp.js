@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 // Context
 import { DContext } from "../../Context/DContext";
 import { useForm } from "react-hook-form";
+import Loader from "../Loader";
 
 const SignUp = () => {
   //Checkbox value of age
@@ -19,8 +20,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   // const {userSignup} = useContext(DContext)
-  const { userSignup, setUser, setUserToken, setUserStats } =
-    useContext(DContext);
+  const { userSignup, setUser, setUserToken, setUserStats, isLoading, setIsLoading } = useContext(DContext);
 
   const {
     register,
@@ -36,6 +36,7 @@ const SignUp = () => {
       return;
     }
     try {
+      setIsLoading(true);
       const axiosRes = await userSignup(data);
       console.log("axiosRes", axiosRes);
       if (axiosRes.status === "success") {
@@ -55,6 +56,8 @@ const SignUp = () => {
         const errorMessage = axiosRes.message;
         toast(errorMessage);
       }
+      setIsLoading(false);
+
     } catch (err) {
       console.log(err);
     }
@@ -77,6 +80,9 @@ const SignUp = () => {
 
   return (
     <>
+
+      {isLoading && <Loader />}
+
       <div className="Auth-bar">
         <Container>
           <div className="Authbar-innerbox">

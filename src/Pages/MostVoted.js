@@ -11,11 +11,11 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const MostVoted = () => {
 
-    const { popupType, getMostVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState, setShowSuggestions } = useContext(DContext);
+    const { popupType, getMostVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState } = useContext(DContext);
 
     useEffect(() => {
         setSearchState(null)
-        setShowSuggestions(false)
+        // setShowSuggestions(false)
         localStorage.setItem("currentPage", 1);
         getMostVotedPosts();
     }, []);

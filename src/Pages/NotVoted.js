@@ -12,11 +12,11 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 const NotVoted = () => {
 
 
-    const { popupType, getNotVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState, setShowSuggestions } = useContext(DContext);
+    const { popupType, getNotVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState } = useContext(DContext);
 
     useEffect(() => {
         setSearchState(null)
-        setShowSuggestions(false)
+        // setShowSuggestions(false)
         localStorage.setItem("currentPage", 1);
         getNotVotedPosts();
     }, []);

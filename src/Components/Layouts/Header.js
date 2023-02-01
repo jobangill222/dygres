@@ -68,22 +68,47 @@ const Header = () => {
       <Navbar className="header-nav" expand="lg">
         <Container>
           <div className="mainheader">
-            <Navbar.Brand>
-              <Link to="/new">
-                <img className="lightmode" src="/images/logo.png" alt="logo" />
-              </Link>
-              <Link to="/new">
-                <img
-                  className="darkmode"
-                  src="/images/logowhite.png"
-                  alt="logo"
-                />
-              </Link>
-            </Navbar.Brand>
+
+
+            {userToken ? (
+              <>
+                <Navbar.Brand>
+                  <Link to="/new">
+                    <img className="lightmode" src="/images/logo.png" alt="logo" />
+                  </Link>
+                  <Link to="/new">
+                    <img
+                      className="darkmode"
+                      src="/images/logowhite.png"
+                      alt="logo"
+                    />
+                  </Link>
+                </Navbar.Brand>
+              </>
+            ) : <>
+              <Navbar.Brand>
+                <Link to="/login">
+                  <img className="lightmode" src="/images/logo.png" alt="logo" />
+                </Link>
+                <Link to="/login">
+                  <img
+                    className="darkmode"
+                    src="/images/logowhite.png"
+                    alt="logo"
+                  />
+                </Link>
+              </Navbar.Brand>
+            </>}
+
+
             <Nav className="mx-auto me-0 mob-none">
-              <Link to='/new' className="homeicon">
-                <BiHome />
-              </Link>
+              {userToken ? (
+                <>
+                  <Link to='/new' className="homeicon">
+                    <BiHome />
+                  </Link>
+                </>
+              ) : null}
               <div className="text-lightgray" href="#">
                 <DarkModeSwitch />
               </div>

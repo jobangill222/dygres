@@ -12,25 +12,32 @@ import { DContext } from "../../../Context/DContext";
 
 const SiteLayout = () => {
 
-    const { fontSizeState } = useContext(DContext);
+    const { fontSizeState, showSuggestions, setShowSuggestions } = useContext(DContext);
+
+    const hideSuggestion = () => {
+        if (showSuggestions) {
+            setShowSuggestions(false)
+        }
+    }
 
     return (
         <>
-
-            <Header />
-            <div className={fontSizeState ? `${fontSizeState} body-wrapper` : `body-wrapper`}>
-                <Container className='somewhere-full'>
-                    <Row className='somewhere-pad-0'>
-                        <Col className="sidebar-menu" lg="3">
-                            <Sidebar />
-                        </Col>
-                        <Col className='mainwrapper' lg="9">
-                            <Outlet />
-                        </Col>
-                    </Row>
-                </Container>
+            <div onClick={hideSuggestion}>
+                <Header />
+                <div className={fontSizeState ? `${fontSizeState} body-wrapper` : `body-wrapper`}>
+                    <Container className='somewhere-full'>
+                        <Row className='somewhere-pad-0'>
+                            <Col className="sidebar-menu" lg="3">
+                                <Sidebar />
+                            </Col>
+                            <Col className='mainwrapper' lg="9">
+                                <Outlet />
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+                <FooterMob />
             </div>
-            <FooterMob />
 
         </>
     );

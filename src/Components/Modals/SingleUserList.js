@@ -10,7 +10,7 @@ export default function SingleUserList(props) {
     // console.log('userListing', userListing)
 
     //Global state and functions
-    const { user, postList, setPostList, setUserStats, followUnfollowDContext } = useContext(DContext);
+    const { user, postList, setPostList, setUserStats, followUserDContext, unFollowUserDContext } = useContext(DContext);
 
     //States
     const [isFollowStateUserList, setIsFollowStateUserList] = useState(0);
@@ -48,7 +48,7 @@ export default function SingleUserList(props) {
             };
         });
 
-        await followUnfollowDContext(userListing?.user?._id);
+        await followUserDContext(userListing?.user?._id);
         setIsFollowStateUserList(1);
     }
 
@@ -72,7 +72,7 @@ export default function SingleUserList(props) {
             };
         });
 
-        await followUnfollowDContext(userListing?.user?._id);
+        await unFollowUserDContext(userListing?.user?._id);
         setIsFollowStateUserList(0);
     }
 

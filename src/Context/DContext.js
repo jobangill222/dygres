@@ -492,11 +492,32 @@ export const DProvider = (props) => {
     }
   }
 
-  const followUnfollowDContext = async (userID) => {
+
+
+  const followUserDContext = async (userID) => {
     try {
       const axiosRes = await axios({
         method: "post",
-        url: `${BASE_URL}/profile/follow-unfollow`,
+        url: `${BASE_URL}/profile/follow-user`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          userID: userID,
+        },
+      });
+      return axiosRes.data;
+    }
+    catch (err) {
+      console.log("Some issue while hit follow un follow api in (DContext.js)", err);
+    }
+  }
+
+  const unFollowUserDContext = async (userID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/profile/un-follow-user`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
@@ -1225,7 +1246,8 @@ export const DProvider = (props) => {
     reportPostDContext,
     deletePostDContext,
     editPostDContext,
-    followUnfollowDContext,
+    followUserDContext,
+    unFollowUserDContext,
     getMyPostsDContext,
     getMostVotedPostDContext,
     getHotPostDContext,

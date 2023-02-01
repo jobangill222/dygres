@@ -72,6 +72,11 @@ const Sidebar = () => {
 
     //End search
 
+
+    const ignoreUpperClick = (event) => {
+        event.stopPropagation();
+    }
+
     return (
         <>
             {awardIGotPopupState && <ViewAllAwardsIGot awardIGotPopupState={awardIGotPopupState} setAwardIGotPopupState={setAwardIGotPopupState} />}
@@ -141,6 +146,7 @@ const Sidebar = () => {
                                 placeholder="Search"
                                 className="bg-gray"
                                 value={searchState ? searchState : ''}
+                                onClick={ignoreUpperClick}
                             />
                             <button className="bg-lightgray text-lightgray"><BiSearch /></button>
                         </div>

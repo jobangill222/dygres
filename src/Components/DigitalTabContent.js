@@ -108,6 +108,8 @@ const DigitalTabContent = (props) => {
 
                   created_at={created_at}
 
+                  postListingType={postListingType}
+
                 />
               }
 

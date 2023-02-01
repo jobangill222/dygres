@@ -32,19 +32,20 @@ import { MdOutlineTimer } from "react-icons/md";
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
+
 TimeAgo.addDefaultLocale(en)
 
 
 const PostFoot = (props) => {
 
-  const timeAgo = new TimeAgo('en-US')
 
+  // const timeAgo = new TimeAgo('en-US')
 
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet, setPostIDForSinglePostState } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -264,6 +265,15 @@ const PostFoot = (props) => {
   const Completionist = () => <span style={{ color: "red" }}><MdOutlineTimer />Time over</span>;
 
 
+
+  const viewPost = async (postID) => {
+    localStorage.setItem('PostIdForSinglePost', postID);
+    setPostIDForSinglePostState(postID);
+    const baseURL = window.location.origin;
+    window.open(`${baseURL}/SinglePostDetail`, "_blank");
+  }
+
+
   return (
     <>
       <div className="action-bar">
@@ -321,6 +331,8 @@ const PostFoot = (props) => {
               Report</div>
           </li>
 
+
+
           {user?._id !== postUserID && <li>
             <div className="" onClick={retweetPost}>
               <HiSpeakerphone />
@@ -328,6 +340,10 @@ const PostFoot = (props) => {
             <div className="list-text" onClick={retweetPost}>
               {/* <span className="number">2</span> */}
               Amplify</div>
+          </li>}
+
+          {postListingType !== 'singlePost' && <li onClick={() => viewPost(postID)} >
+            <p>View post</p>
           </li>}
 
 

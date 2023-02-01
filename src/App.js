@@ -77,13 +77,13 @@ function App() {
                   path="/resetpassword"
                   element={<ResetPassword />}
                 />
-                <Route path="*" element={<Navigate to='/login' />} />
+                {/* <Route path="*" element={<Navigate to='/login' />} /> */}
 
               </Route>
             ) : (
               <>
                 <Route element={<SiteLayout />}>
-                  <Route path="*" element={<Navigate to='/new' />} />
+                  {/* <Route path="*" element={<Navigate to='/new' />} /> */}
 
                   <Route exact path="/new" element={<New />} />
                   <Route exact path="/hot" element={<Hot />} />
