@@ -17,6 +17,7 @@ import { BiCopy } from "react-icons/bi";
 import { ImForward } from "react-icons/im";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { HiSpeakerphone } from "react-icons/hi";
+import { BsArrowUpRightSquareFill } from "react-icons/bs";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -343,6 +344,7 @@ const PostFoot = (props) => {
           </li>}
 
           {postListingType !== 'singlePost' && <li onClick={() => viewPost(postID)} >
+            <div><BsArrowUpRightSquareFill /></div>
             <p>View post</p>
           </li>}
 

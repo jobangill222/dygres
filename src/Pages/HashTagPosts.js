@@ -11,15 +11,15 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const HashTagPosts = () => {
 
-    const { popupType, getpostsByHashTagDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState } = useContext(DContext);
+    const { popupType, getpostsByHashTagDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, hashTagClickState, setHashTagClickState } = useContext(DContext);
 
     useEffect(() => {
-        setSearchState(null)
-        // setShowSuggestions(false)
         // setPostList([]);
         localStorage.setItem("currentPage", 1);
         getposts();
-    }, []);
+        setHashTagClickState(false);
+
+    }, [hashTagClickState]);
 
     const getposts = async () => {
         try {

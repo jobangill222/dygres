@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -13,6 +13,8 @@ import { DContext } from "../../Context/DContext";
 import { useForm } from "react-hook-form";
 import Loader from "../Loader";
 
+import SignupModal from "../Modals/SingupModal";
+
 const SignUp = () => {
   //Checkbox value of age
   const ref = useRef(null);
@@ -21,6 +23,10 @@ const SignUp = () => {
 
   // const {userSignup} = useContext(DContext)
   const { userSignup, setUser, setUserToken, setUserStats, isLoading, setIsLoading } = useContext(DContext);
+
+
+  //SignupModal
+  const [isShowSignupPopup, setIsShowSignupModal] = useState(false);
 
   const {
     register,
@@ -40,23 +46,21 @@ const SignUp = () => {
       const axiosRes = await userSignup(data);
       console.log("axiosRes", axiosRes);
       if (axiosRes.status === "success") {
-        localStorage.setItem("accessToken", axiosRes.accessToken);
+        // localStorage.setItem("accessToken", axiosRes.accessToken);
+        // setUser(axiosRes.data);
+        // setUserToken(axiosRes.accessToken);
+        // setUserStats(axiosRes.userStats);
+        // navigate("/new");
 
-        console.log("login console", axiosRes);
+        setIsShowSignupModal(true)
 
-        setUser(axiosRes.data);
-        setUserToken(axiosRes.accessToken);
-        setUserStats(axiosRes.userStats);
-
-        // toast(axiosRes.message);
-        // navigate("/editprofile");
-        navigate("/new");
 
       } else {
         const errorMessage = axiosRes.message;
         toast(errorMessage);
       }
       setIsLoading(false);
+
 
     } catch (err) {
       console.log(err);
@@ -78,10 +82,19 @@ const SignUp = () => {
     },
   };
 
+
+
+
+
+
   return (
     <>
 
       {isLoading && <Loader />}
+
+      {/* <SignupModal /> */}
+
+      {isShowSignupPopup && <SignupModal setIsShowSignupModal={setIsShowSignupModal} />}
 
       <div className="Auth-bar">
         <Container>
@@ -156,11 +169,11 @@ const SignUp = () => {
               <Button variant="primary" type="submit">
                 Join dygres
               </Button>
-              <div className="Noted-bar">
+              {/* <div className="Noted-bar">
                 <h6>
                   Already have an account? <Link to="/login"> Login here</Link>
                 </h6>
-              </div>
+              </div> */}
               <div className="terms-condition">
                 <Link to="/forgotpassword">Terms & Conditions</Link>
               </div>

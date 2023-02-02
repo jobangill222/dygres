@@ -6,9 +6,11 @@ import SingleNotificationList from "../Components/Notification/SingleNotificatio
 
 const Notifications = () => {
 
-    const { getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext } = useContext(DContext);
+    const { getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext, setSearchState } = useContext(DContext);
 
     useEffect(() => {
+        setSearchState(null)
+
         setNotificationList([]);
         localStorage.setItem("notificationCurrentPage", 1);
         getNotificationList();

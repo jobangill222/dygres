@@ -14,7 +14,7 @@ import RetweetModal from "./Modals/RetweetModal";
 const DigitalTabs = (props) => {
 
   //Active Tabs
-  const { setActiveTabState } = props;
+  const { activeTabState, setActiveTabState } = props;
 
   //Global states
   const { postList, popupType, postIDForAwardOfPost, postIDForRetweet, fontSizeState, setFontSizeState } = useContext(DContext);
@@ -52,6 +52,8 @@ const DigitalTabs = (props) => {
   return (
     <>
 
+      {/* {console.log('sss', activeTabState)} */}
+
       {/* Modal */}
       {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
@@ -64,6 +66,7 @@ const DigitalTabs = (props) => {
           id="uncontrolled-tab-example"
           className="digital-tabs"
           onSelect={(e) => setActiveTabState(e)}
+          activeKey={activeTabState}
         >
 
           <Tab eventKey="Global" title="Global">
@@ -82,7 +85,6 @@ const DigitalTabs = (props) => {
               </div>
             }
           </Tab>
-
 
           <Tab eventKey="Following" title="Following">
             {/* {console.log("post list in folowing tab", postList)} */}
@@ -117,6 +119,7 @@ const DigitalTabs = (props) => {
               </div>
             }
           </Tab>
+
         </Tabs>
 
 

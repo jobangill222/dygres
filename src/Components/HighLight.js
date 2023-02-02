@@ -8,7 +8,7 @@ export default function HighLight(props) {
     const navigate = useNavigate();
 
 
-    const { checkUsernameExistDContext } = useContext(DContext);
+    const { checkUsernameExistDContext, setSearchState, setHashTagClickState } = useContext(DContext);
 
     const myArray = content.split(" ");
 
@@ -29,6 +29,8 @@ export default function HighLight(props) {
     const hashTag = async (name) => {
         // alert(name)
         // var newStr = name.replace('#', '')
+        setSearchState(null)
+        setHashTagClickState(true);
         localStorage.setItem('hashTagName', name);
         navigate('/hashtagPosts')
     }

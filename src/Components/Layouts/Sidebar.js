@@ -11,12 +11,8 @@ import ViewAllAwardsIGot from "../Modals/ViewAllAwardsIGot";
 
 const Sidebar = () => {
 
-    // const suggestions = ["demo393", "dem", "demo", "de", "demo3", "demo39", "date", "elderberry"];
-
-
     const navigate = useNavigate();
-    const { user, userStats, setSelectedIDForPopup, setPopupType, searchState, setSearchState, searchSuggestionDContext, showSuggestions, setShowSuggestions } = useContext(DContext);
-
+    const { user, userStats, setSelectedIDForPopup, setPopupType, searchState, setSearchState, searchSuggestionDContext, showSuggestions, setShowSuggestions, setHashTagClickState } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -57,17 +53,26 @@ const Sidebar = () => {
             return;
         }
         else {
-            navigate("/new");
             setShowSuggestions(true);
             const axiosRes = await searchSuggestionDContext(value);
             setSuggestionList(axiosRes.list)
+            // navigate("/new");
         }
-
     };
 
-    const searchClick = (suggestion) => {
-        setSearchState(suggestion);
+    const searchClickHashTag = (name) => {
+        setHashTagClickState(true);
+        setSearchState(name);
         setShowSuggestions(false);
+        localStorage.setItem('hashTagName', name)
+        navigate("/hashtagPosts");
+    };
+
+    const searchClickUserName = (name, userID) => {
+        setSearchState(name);
+        setShowSuggestions(false);
+        localStorage.setItem('sessionUserID', userID)
+        navigate("/UsersProfile");
     };
 
     //End search
@@ -80,9 +85,6 @@ const Sidebar = () => {
     return (
         <>
             {awardIGotPopupState && <ViewAllAwardsIGot awardIGotPopupState={awardIGotPopupState} setAwardIGotPopupState={setAwardIGotPopupState} />}
-
-
-
 
             <div className="sidebar-profile">
                 <div className="feature-image">
@@ -152,10 +154,17 @@ const Sidebar = () => {
                         </div>
 
                         {showSuggestions && (
+
                             <ul>
-                                {suggestionList.map((suggestion) => (
-                                    <li key={suggestion} onClick={() => searchClick(suggestion)}>
-                                        {suggestion}
+                                {searchState && searchState[0] === "#" && suggestionList.map((suggestion) => (
+                                    <li key={suggestion?.name} onClick={() => searchClickHashTag(suggestion?.name)}>
+                                        {suggestion?.name}
+                                    </li>
+                                ))}
+                                {searchState && searchState[0] !== "#" && suggestionList.map((suggestion) => (
+                                    <li key={suggestion?.username} onClick={() => searchClickUserName(suggestion?.username, suggestion?._id)}>
+                                        <img src={suggestion?.profileImage !== null ? suggestion.profileImage : '/images/user-120.png'} alt='icon' />
+                                        {suggestion?.username}
                                     </li>
                                 ))}
                             </ul>

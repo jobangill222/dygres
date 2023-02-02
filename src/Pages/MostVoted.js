@@ -15,7 +15,7 @@ const MostVoted = () => {
 
     useEffect(() => {
         setSearchState(null)
-        // setShowSuggestions(false)
+
         localStorage.setItem("currentPage", 1);
         getMostVotedPosts();
     }, []);

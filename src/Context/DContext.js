@@ -42,6 +42,9 @@ export const DProvider = (props) => {
   const [searchState, setSearchState] = useState(null);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  const [hashTagClickState, setHashTagClickState] = useState(false);
+
+
 
   const [fontSizeState, setFontSizeState] = useState(null);
 
@@ -1223,6 +1226,8 @@ export const DProvider = (props) => {
     setSearchState,
     showSuggestions,
     setShowSuggestions,
+    hashTagClickState,
+    setHashTagClickState,
     fontSizeState,
     setFontSizeState,
     // Methods

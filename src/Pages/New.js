@@ -7,7 +7,7 @@ import Loader from "../Components/Loader";
 
 const New = () => {
   //Functions to call api
-  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, searchState } = useContext(DContext);
+  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, setSearchState } = useContext(DContext);
 
 
   //State for active tab like: global , follwing, officials
@@ -76,6 +76,8 @@ const New = () => {
 
   //For render post list render when change tab and post something
   useEffect(() => {
+    setSearchState(null)
+
     setPostList([]);
     localStorage.setItem("currentPage", 1);
     if (activeTabState === "Global") {
@@ -84,17 +86,18 @@ const New = () => {
     if (activeTabState === "Following") {
       getFollowingPosts();
     }
+    if (activeTabState === "Official") {
+      // getOfficialPosts();
+    }
     setPlaceholderState(title[Math.floor(Math.random() * title.length)]);
 
-  }, [activeTabState, searchState]);
+  }, [activeTabState]);
 
 
 
   useEffect(() => {
     localStorage.setItem("currentPage", 1);
-    if (activeTabState === "Global") {
-      getGlobalPosts();
-    }
+    getGlobalPosts();
     setIsPostState("0");
   }, [isPostState]);
 
@@ -106,7 +109,8 @@ const New = () => {
       //Api call
       setPostList([]);
       let pageNumberOfPostList = 1;
-      const axiosRes = await getGlobalPostDContext(searchState, pageNumberOfPostList);
+      const search = null;
+      const axiosRes = await getGlobalPostDContext(search, pageNumberOfPostList);
       console.log("axiosRes********* after get global posts on page 1", axiosRes);
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
@@ -127,7 +131,8 @@ const New = () => {
       setIsLoading(true);
       //Api call
       let pageNumberOfPostList = 1;
-      const axiosRes = await getFollowingPostDContext(searchState, pageNumberOfPostList);
+      const search = null;
+      const axiosRes = await getFollowingPostDContext(search, pageNumberOfPostList);
       console.log("axiosRes********* after get following posts", axiosRes);
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
@@ -147,10 +152,12 @@ const New = () => {
     let axiosRes;
 
     if (activeTabState === "Global") {
-      axiosRes = await getGlobalPostDContext(searchState, pageNumberOfPostList);
+      const search = null;
+      axiosRes = await getGlobalPostDContext(search, pageNumberOfPostList);
     }
     if (activeTabState === "Following") {
-      axiosRes = await getFollowingPostDContext(searchState, pageNumberOfPostList);
+      const search = null;
+      axiosRes = await getFollowingPostDContext(search, pageNumberOfPostList);
     }
     console.log(
       "axiosRes********* after get global posts on page",
@@ -163,19 +170,8 @@ const New = () => {
     }
   };
 
-
-
-
-
-
-
-
-
-
   return (
     <>
-
-      {/* {console.log('activePostListTab', activePostListTab)} */}
 
       {isLoading && <Loader />}
 
@@ -194,7 +190,7 @@ const New = () => {
       </InfiniteScroll>
 
       <WhatsMind setIsPostState={setIsPostState} placeholderState={placeholderState} />
-      <DigitalTabs setActiveTabState={setActiveTabState} postList={postList} />
+      <DigitalTabs setActiveTabState={setActiveTabState} activeTabState={activeTabState} postList={postList} />
     </>
   );
 };

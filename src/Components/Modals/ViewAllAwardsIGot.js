@@ -50,7 +50,10 @@ const ViewAllAwardsIGot = (props) => {
                                 </li>
                             )) : <>
                                 {/* <img src="/images/empty.png" alt='dummy' /> */}
-                                <h4>No Award</h4>
+                                <div className="empty-bar">
+                                    <img src="/images/empty.png" alt='dummy' />
+                                    <h4>No Award</h4>
+                                </div>
                             </>}
 
                             {/* <li className="text-whitesure">

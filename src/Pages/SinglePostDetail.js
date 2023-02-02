@@ -16,6 +16,7 @@ const MostVoted = () => {
 
     useEffect(() => {
         setSearchState(null)
+
         // localStorage.setItem("currentPage", 1);
         getPostDetail();
     }, [postIDForSinglePostState]);

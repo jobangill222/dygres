@@ -13,11 +13,10 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const Hot = () => {
 
-    const { popupType, getHotPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState, setShowSuggestions } = useContext(DContext);
+    const { popupType, getHotPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState } = useContext(DContext);
 
     useEffect(() => {
-        setSearchState(null);
-        setShowSuggestions(false)
+        setSearchState(null)
         localStorage.setItem("currentPage", 1);
         getHotPosts();
     }, []);
