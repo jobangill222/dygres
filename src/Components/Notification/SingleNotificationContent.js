@@ -7,14 +7,14 @@ export default function SingleNotificationContent(props) {
     const navigate = useNavigate();
 
     const viewUsersProfile = async (userID) => {
-        localStorage.setItem('sessionUserID', userID);
-        navigate('/UsersProfile')
+        // localStorage.setItem('sessionUserID', userID);
+        navigate('/UsersProfile/' + userID)
     }
 
 
     const viewPost = async (postID) => {
-        localStorage.setItem('PostIdForSinglePost', postID);
-        navigate('/SinglePostDetail')
+        // localStorage.setItem('PostIdForSinglePost', postID);
+        navigate('/SinglePostDetail/' + postID)
     }
 
 
@@ -26,8 +26,8 @@ export default function SingleNotificationContent(props) {
                     <>
                         <div className='notification-text'>
                             <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                            <p>tag you in a </p>
-                            <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post.</p>
+                            <p>tagged you in a </p>
+                            <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression!</p>
                         </div>
                     </>
                     :
@@ -35,7 +35,7 @@ export default function SingleNotificationContent(props) {
                         <>
                             <div className='notification-text'>
                                 <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                                <p>start following you.</p>
+                                <p>is now following you!</p>
                             </div>
                         </>
                         :
@@ -43,8 +43,8 @@ export default function SingleNotificationContent(props) {
                             <>
                                 <div className='notification-text'>
                                     <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                                    <p>agree with your</p>
-                                    <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post.</p>
+                                    <p>agrees with your</p>
+                                    <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression.</p>
                                 </div>
                             </>
                             :
@@ -52,8 +52,8 @@ export default function SingleNotificationContent(props) {
                                 <>
                                     <div className='notification-text'>
                                         <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                                        <p>disagree with your</p>
-                                        <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>post.</p>
+                                        <p>disagrees with your</p>
+                                        <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression.</p>
                                     </div>
                                 </>
                                 // :
@@ -62,7 +62,7 @@ export default function SingleNotificationContent(props) {
                                 //         <div className='notification-text'>
                                 //             <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
                                 //             <p>comment on your</p>
-                                //             <p onClick={() => viewPost(singleNotification?.postID)}>post</p>
+                                //             <p onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
                                 //         </div>
                                 //     </>
                                 //     :
@@ -70,7 +70,7 @@ export default function SingleNotificationContent(props) {
                                 //         <>
                                 //             <div className='notification-text'>
                                 //                 <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                                //                 <p>agree with your comment.</p>
+                                //                 <p>agrees with your comment.</p>
                                 //                 <p onClick={() => viewPost(singleNotification?.postID)}>view post</p>
                                 //             </div>
                                 //         </>
@@ -79,7 +79,7 @@ export default function SingleNotificationContent(props) {
                                 //             <>
                                 //                 <div className='notification-text'>
                                 //                     <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                                //                     <p>disagree with your comment.</p>
+                                //                     <p>disagrees with your comment.</p>
                                 //                     <p onClick={() => viewPost(singleNotification?.postID)}>view post</p>
                                 //                 </div>
                                 //             </>

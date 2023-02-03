@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 
 export default function SignupModal(props) {
 
-    const { setIsShowSignupModal } = props;
+    const { setIsShowSignupModal, username } = props;
 
     const closePopup = async () => {
         setIsShowSignupModal(false)
@@ -15,20 +15,25 @@ export default function SignupModal(props) {
     return (
         <>
             <Modal
-                className="Actions-modal awards-modal"
+                className="Actions-modal awards-modal welcomepopup"
                 show={true}
                 onHide={closePopup}
                 centered
             >
-                <Modal.Header closeButton>
-                    <Modal.Title>Welcome</Modal.Title>
+                <Modal.Header >
+                    <Modal.Title>WELCOME TO THE REBELLION!</Modal.Title>
 
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
-
-                        <h1>Welcome to dygres</h1>
-
+                        <div className='welcomepopupbar'>
+                            <p><b>@{username},</b> thank you for reserving your username and joining the dygres beta.dygres will go LIVE on <b>XXXX (DATE).</b></p>
+                            <p>Keep an eye on your inbox as we will be sending out important login details closer to release day. Make sure to check your spam folder, just in case.</p>
+                            <h4>Conversation is more fun with your friends.</h4>
+                            <p>Want to be a social network hero?</p>
+                            <p><span>Share dygres</span> with your friends.</p>
+                            <button className='btnprimary' onClick={closePopup} >Return to landing page</button>
+                        </div>
                     </Row>
                 </Modal.Body>
             </Modal>

@@ -136,7 +136,7 @@ const PostFoot = (props) => {
   const EditReportClose = () => setEditreportshow(false);
   const EditReport = async (postID) => {
     if (isReport) {
-      toast('Already reported');
+      toast('You have already reported this content. Thank you for your patience while we process your report.');
     } else {
       setEditreportshow(true);
     }
@@ -149,7 +149,7 @@ const PostFoot = (props) => {
     console.log('reportReason', reportReason);
     console.log('reportDescription', reportDescription);
     if (!reportReason) {
-      toast("Please select report reason.")
+      toast("Please select the reason(s) for your report.")
     } else {
       const reportAxiosRes = await reportPostDContext(postID, reportReason, reportDescription)
       console.log('reportAxiosRes', reportAxiosRes);
@@ -158,7 +158,7 @@ const PostFoot = (props) => {
         setPostReportCount(newReportCount);
         setIsReport(true);
         setEditreportshow(false);
-        toast('Thank you, your report has been successfully submitted.');
+        toast('we wrote a longer thing for this already.');
       }
       else {
         toast(reportAxiosRes.message);
@@ -268,10 +268,10 @@ const PostFoot = (props) => {
 
 
   const viewPost = async (postID) => {
-    localStorage.setItem('PostIdForSinglePost', postID);
+    // localStorage.setItem('PostIdForSinglePost', postID);
     setPostIDForSinglePostState(postID);
     const baseURL = window.location.origin;
-    window.open(`${baseURL}/SinglePostDetail`, "_blank");
+    window.open(`${baseURL}/SinglePostDetail/` + postID, "_blank");
   }
 
 

@@ -11,8 +11,11 @@ import ViewPostsAwardModal from "../Modals/ViewPostsAwardModal";
 import RetweetModal from "../Modals/RetweetModal";
 
 import Loader from "../Loader";
+import { useParams } from "react-router-dom";
 
 const UsersProfileTabs = (props) => {
+
+    let { userIDForProfile } = useParams();
 
     const { user } = props;
 
@@ -31,8 +34,8 @@ const UsersProfileTabs = (props) => {
             //Api call
             let pageNumberOfPostList = 1;
             // const userID = "newuse1r674";
-            const sessionUserID = localStorage.getItem('sessionUserID');
-            const axiosRes = await getOtherUserPostsByUserIDDContext(sessionUserID, pageNumberOfPostList);
+            // const sessionUserID = localStorage.getItem('sessionUserID');
+            const axiosRes = await getOtherUserPostsByUserIDDContext(userIDForProfile, pageNumberOfPostList);
             // console.log("axiosRes********* after get my posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
@@ -55,8 +58,8 @@ const UsersProfileTabs = (props) => {
         let axiosRes;
 
         // const userID = "newuse1r674";
-        const sessionUserID = localStorage.getItem('sessionUserID');
-        axiosRes = await getOtherUserPostsByUserIDDContext(sessionUserID, pageNumberOfPostList);
+        // const sessionUserID = localStorage.getItem('sessionUserID');
+        axiosRes = await getOtherUserPostsByUserIDDContext(userIDForProfile, pageNumberOfPostList);
         // console.log(
         //     "axiosRes********* after get my posts on page",
         //     pageNumberOfPostList,

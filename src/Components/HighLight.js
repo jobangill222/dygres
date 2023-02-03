@@ -20,8 +20,8 @@ export default function HighLight(props) {
             navigate('/notfound')
         }
         else {
-            localStorage.setItem('sessionUserID', axiosRes.detail._id);
-            navigate('/UsersProfile')
+            // localStorage.setItem('sessionUserID', axiosRes.detail._id);
+            navigate('/UsersProfile/' + axiosRes.detail._id)
 
         }
     }

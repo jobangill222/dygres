@@ -52,7 +52,7 @@ const Threads = (props) => {
     //Submit post
     const submitComment = async () => {
         if (!createCommentState) {
-            toast("Comment cannot be empty.");
+            toast("Maybe enter some text before you clickety-click?");
         } else {
             try {
                 const axiosRes = await createCommentDContext(postID, commentID, createCommentState);

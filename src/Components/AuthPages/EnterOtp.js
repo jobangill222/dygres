@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -14,29 +14,29 @@ import { useForm } from "react-hook-form";
 
 const EnterOtp = () => {
 
-    const {userEnterOtp} = useContext(DContext)
+    const { userEnterOtp } = useContext(DContext)
     const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const handleRegistration = async(data) => {
+    const handleRegistration = async (data) => {
         // e.preventDefault()
         console.log(data);
 
-        try{
+        try {
 
-            const axiosRes = await userEnterOtp(data) 
-            console.log('axiosRes' , axiosRes); 
-            if(axiosRes.status === 'success'){ 
+            const axiosRes = await userEnterOtp(data)
+            console.log('axiosRes', axiosRes);
+            if (axiosRes.status === 'success') {
                 toast(axiosRes.message);
                 navigate("/resetpassword");
-            }else{
+            } else {
                 const errorMessage = axiosRes.message;
                 toast(errorMessage);
             }
-        }catch(err){
+        } catch (err) {
             console.log(err)
         }
-    } 
+    }
     const handleError = (errors) => {
         console.log(errors);
     };
@@ -45,10 +45,10 @@ const EnterOtp = () => {
         otp: {
             required: "Please enter OTP.",
             minLength: {
-              value: 6,
-              message: "OTP must have at least 6 characters"
+                value: 6,
+                message: "OTP must have at least 6 characters"
             }
-          }
+        }
     };
 
 
@@ -64,12 +64,12 @@ const EnterOtp = () => {
                             <Form.Group className="authinputbar" controlId="formBasicEmail">
                                 <Form.Label>Enter OTP</Form.Label>
                                 <Form.Control type="number" placeholder="e.g. 123456"
-                                name="otp" 
-                                {...register('otp', registerOptions.otp)}
+                                    name="otp"
+                                    {...register('otp', registerOptions.otp)}
                                 // value={otp} 
                                 // onChange={e => setOtp(e.target.value)}
-                            />
-                            <small className="text-danger">
+                                />
+                                <small className="text-danger">
                                     {errors?.otp && errors.otp.message}
                                 </small>
                             </Form.Group>

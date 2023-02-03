@@ -123,7 +123,7 @@ const PersonalInformationOld = () => {
                 URL.revokeObjectURL(verificationImageRef.current.src); // free memory
             };
         } else {
-            toast("Only png, jpg and jpeg allowed.");
+            toast("Unsupported image format. Please upload a png, jpg, or .jpeg instead.");
         }
     };
 
@@ -140,7 +140,7 @@ const PersonalInformationOld = () => {
         // e.preventDefault()
         console.log("data-----", data);
         if (data.newPassword !== data.confirmNewPassword) {
-            toast("Password and Confirm password should be same");
+            toast("One of these things is not like the other. These passwords do not match.");
             return;
         }
 
@@ -216,7 +216,7 @@ const PersonalInformationOld = () => {
         e.preventDefault();
         console.log("otpState", otpState);
         if (!otpState) {
-            toast("Please enter OTP");
+            toast("Please enter your OTP");
         } else {
             try {
                 const axiosRes = await verifyOtpInsideLoginDContext(
@@ -231,7 +231,7 @@ const PersonalInformationOld = () => {
                             isEmailVerify: 1,
                         };
                     });
-                    toast('Verfication complete.');
+                    toast('Verification Complete.');
                     setShowEmailOtpPopup(false);
                 } else {
                     const errorMessage = axiosRes.message;

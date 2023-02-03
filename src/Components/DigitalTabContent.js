@@ -41,15 +41,11 @@ const DigitalTabContent = (props) => {
   }
 
   const navigate = useNavigate();
-  // const viewSinglePost = async () => {
-  //   localStorage.setItem('PostIdForSinglePost', _id);
-  //   navigate('/SinglePostDetail')
-  // }
 
   const viewParentPostDetail = async (postID) => {
-    localStorage.setItem('PostIdForSinglePost', postID);
+    // localStorage.setItem('PostIdForSinglePost', postID);
     setPostIDForSinglePostState(postID);
-    navigate('/SinglePostDetail')
+    navigate('/SinglePostDetail/' + postID)
   }
 
   useEffect(() => {
@@ -73,10 +69,6 @@ const DigitalTabContent = (props) => {
 
               {isEditFieldOpen === false &&
                 <>
-                  {/* <div onClick={viewSinglePost}> */}
-                  {/* <h5>View post</h5> */}
-                  {/* </div> */}
-
                   <PostContent postContent={postContent} />
                   {parentPostID !== null &&
                     <div onClick={() => viewParentPostDetail(parentPostID)}>

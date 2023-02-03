@@ -586,6 +586,7 @@ input.form-control {
   position: absolute;
   top: 45%;
   right: 15px;
+  font-size: 18px;
   transform: translate(0px, -50%);
 }
 .search-input-form {
@@ -977,6 +978,12 @@ ul.profiletabsbar li:last-child a {
 .action-bar ul li .accordion-button {
   margin: 0;
 }
+.digital-feeds .digital-feeds {
+  margin-bottom: 0;
+}
+.digital-feeds .thredsbar span.no-comment {
+  margin-top: 0 !important;
+}
 
 .action-bar ul li:first-child {
   margin-left: 0;
@@ -1319,9 +1326,62 @@ ul.profiletabsbar li:last-child a {
   align-items: center;
   position: relative;
 }
+.welcomepopup .modal-header {
+  justify-content: center !important;
+  padding: 0 0 20px 0;
+}
 
+.welcomepopup .welcomepopupbar {
+  text-align: center;
+}
+.welcomepopup .welcomepopupbar p span {
+  color: #21a0da;
+}
+.welcomepopup .welcomepopupbar p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  /* or 167% */
+  text-align: center;
+  color: #545456;
+  margin-bottom: 5px;
+}
+.welcomepopup .modal-body {
+  padding: 20px 0 !important;
+  height: auto !important;
+}
+.welcomepopup .welcomepopupbar p b {
+  color: #171717;
+}
+[darkmode] .welcomepopup .welcomepopupbar p b,
+[darkmode] .welcomepopup .welcomepopupbar h4 {
+  color: #ffffff;
+}
+.welcomepopup .welcomepopupbar h4 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+  text-align: center;
+  margin-top: 30px;
+  color: #171717;
+  margin-bottom: 20px;
+}
+
+.welcomepopup .welcomepopupbar button.btnprimary {
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+  border-radius: 5px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border: none;
+  padding: 13px 22px;
+  cursor: pointer;
+}
 .reply-post form .replyinput {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .reply-post form .replyinput .form-control {

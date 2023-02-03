@@ -71,8 +71,8 @@ const Sidebar = () => {
     const searchClickUserName = (name, userID) => {
         setSearchState(name);
         setShowSuggestions(false);
-        localStorage.setItem('sessionUserID', userID)
-        navigate("/UsersProfile");
+        // localStorage.setItem('sessionUserID', userID)
+        navigate("/UsersProfile/" + userID);
     };
 
     //End search

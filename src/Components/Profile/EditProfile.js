@@ -101,10 +101,10 @@ const EditProfile = () => {
     console.log("imageType", imageType);
 
     if (imageSize > 10485760) {
-      toast("Image should should be 10 MB.");
+      toast("Images must be smaller than 10 MB.");
     }
     else if (imageType !== "image/png" && imageType !== "image/ppg" && imageType !== "image/jpeg") {
-      toast("Only png, jpg and jpeg allowed.");
+      toast("Unsupported image format. Please upload a png, jpg, or .jpeg instead.");
     }
     else {
       const url = URL.createObjectURL(e.target.files[0]);

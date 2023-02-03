@@ -6,8 +6,11 @@ import UsersProfileTabs from "./UsersProfileTabs";
 import { DContext } from "../../Context/DContext";
 import { verificationLevel } from "../../helper/verificationLevel";
 
+import { useParams } from "react-router-dom";
 
 const UsersProfile = () => {
+
+    let { userIDForProfile } = useParams();
 
     const { getOtherUserDetailByUserIDDContext, setSelectedIDForPopup, setPopupType } = useContext(DContext);
 
@@ -35,9 +38,9 @@ const UsersProfile = () => {
     const getData = async () => {
         try {
             //Api call
-            const sessionUserID = localStorage.getItem('sessionUserID');
+            // const sessionUserID = localStorage.getItem('sessionUserID');
 
-            const axiosRes = await getOtherUserDetailByUserIDDContext(sessionUserID);
+            const axiosRes = await getOtherUserDetailByUserIDDContext(userIDForProfile);
             console.log("axiosRes==========********* data", axiosRes);
             if (axiosRes.status === "success") {
                 setUser(axiosRes.data)

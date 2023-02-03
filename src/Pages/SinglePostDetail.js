@@ -8,28 +8,33 @@ import Loader from "../Components/Loader";
 import UserListModal from "../Components/Modals/UserListModal";
 import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
 import RetweetModal from "../Components/Modals/RetweetModal";
+import { useParams } from "react-router-dom";
 
-const MostVoted = () => {
+const SinglePostDetail = () => {
+
+    let { postIdForSinglePost } = useParams();
+
+    // console.log("SinglePostID", SinglePostID);
 
     const { popupType, getSinglePostDetailDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, postIDForSinglePostState, setSearchState } = useContext(DContext);
 
 
     useEffect(() => {
         setSearchState(null)
-
         // localStorage.setItem("currentPage", 1);
         getPostDetail();
+
     }, [postIDForSinglePostState]);
 
     const getPostDetail = async () => {
         try {
             setIsLoading(true);
             //Api call
-            const PostIdForSinglePost = localStorage.getItem('PostIdForSinglePost');
+            // const PostIdForSinglePost = localStorage.getItem('PostIdForSinglePost');
 
             // const postID = "63c7c179d5618a6185825361";
-            const axiosRes = await getSinglePostDetailDContext(PostIdForSinglePost);
-            console.log("axiosRes******** after get hashtag posts", axiosRes);
+            const axiosRes = await getSinglePostDetailDContext(postIdForSinglePost);
+            // console.log("axiosRes******** after single post detail posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
             }
@@ -98,4 +103,4 @@ const MostVoted = () => {
     );
 }
 
-export default MostVoted;
+export default SinglePostDetail;

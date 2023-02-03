@@ -74,10 +74,10 @@ const Profile = () => {
         console.log("imageType", imageType);
 
         if (imageSize > 10485760) {
-            toast("Image should should be 10 MB.");
+            toast("Images must be smaller than 10 MB.");
         }
         else if (imageType !== "image/png" && imageType !== "image/ppg" && imageType !== "image/jpeg") {
-            toast("Only png, jpg and jpeg allowed.");
+            toast("Unsupported image format. Please upload a png, jpg, or .jpeg instead.");
         }
         else {
             const url = URL.createObjectURL(e.target.files[0]);
@@ -170,7 +170,7 @@ const Profile = () => {
                                     {/* <Link to="/"><BsFillImageFill />Edit Cover</Link> */}
                                     <button onChange={uploadCoverImage}>
                                         <BsFillImageFill />
-                                        <input type='file' title="Select 1920*422 px image" />Edit Cover
+                                        <input type='file' title="Cover image must be 1920 x 422 px." />Edit Cover
                                     </button>
 
                                 </li>

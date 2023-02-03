@@ -42,8 +42,8 @@ export default function SingleNotificationHead(props) {
     const navigate = useNavigate();
 
     const viewUsersProfile = async (userID) => {
-        localStorage.setItem('sessionUserID', userID);
-        navigate('/UsersProfile')
+        // localStorage.setItem('sessionUserID', userID);
+        navigate('/UsersProfile/' + userID)
     }
 
 

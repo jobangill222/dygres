@@ -28,6 +28,8 @@ const SignUp = () => {
   //SignupModal
   const [isShowSignupPopup, setIsShowSignupModal] = useState(false);
 
+  let axiosRes;
+
   const {
     register,
     handleSubmit,
@@ -36,23 +38,25 @@ const SignUp = () => {
   const handleRegistration = async (data) => {
     // e.preventDefault()
     console.log(data);
+    localStorage.setItem('signupusername', data.username);
+
 
     if (!ref.current.checked) {
-      toast("Please verify your age to join dygres.");
+      toast("dygres is only available for humans aged 16 and above. Please verify your age to continue with registration.");
       return;
     }
     try {
       setIsLoading(true);
-      const axiosRes = await userSignup(data);
+      axiosRes = await userSignup(data);
       console.log("axiosRes", axiosRes);
       if (axiosRes.status === "success") {
-        // localStorage.setItem("accessToken", axiosRes.accessToken);
-        // setUser(axiosRes.data);
-        // setUserToken(axiosRes.accessToken);
-        // setUserStats(axiosRes.userStats);
-        // navigate("/new");
+        localStorage.setItem("accessToken", axiosRes.accessToken);
+        setUser(axiosRes.data);
+        setUserToken(axiosRes.accessToken);
+        setUserStats(axiosRes.userStats);
+        navigate("/new");
 
-        setIsShowSignupModal(true)
+        // setIsShowSignupModal(true)
 
 
       } else {
@@ -85,16 +89,13 @@ const SignUp = () => {
 
 
 
-
-
   return (
     <>
 
       {isLoading && <Loader />}
 
-      {/* <SignupModal /> */}
+      {/* {isShowSignupPopup && <SignupModal setIsShowSignupModal={setIsShowSignupModal} username={localStorage.getItem('signupusername')} />} */}
 
-      {isShowSignupPopup && <SignupModal setIsShowSignupModal={setIsShowSignupModal} />}
 
       <div className="Auth-bar">
         <Container>
@@ -169,11 +170,11 @@ const SignUp = () => {
               <Button variant="primary" type="submit">
                 Join dygres
               </Button>
-              {/* <div className="Noted-bar">
+              <div className="Noted-bar">
                 <h6>
                   Already have an account? <Link to="/login"> Login here</Link>
                 </h6>
-              </div> */}
+              </div>
               <div className="terms-condition">
                 <Link to="/forgotpassword">Terms & Conditions</Link>
               </div>

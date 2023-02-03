@@ -19,7 +19,7 @@ const PostEdit = (props) => {
 
     const saveEditPost = async () => {
         if (!editContent) {
-            toast("Consider entering text into the box before clicking submit.");
+            toast("Hmm… you might consider entering some text before clicking submit.");
         } else {
             const editPostAxiosRes = await editPostDContext(postID, editContent);
             // console.log('editPostAxiosReseditPostAxiosReseditPostAxiosRes' , editPostAxiosRes);

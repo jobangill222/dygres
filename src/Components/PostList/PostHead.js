@@ -145,8 +145,8 @@ const PostHead = (props) => {
   }
 
   const userProfileDetail = async (userID) => {
-    localStorage.setItem('sessionUserID', userID);
-    navigate('/UsersProfile')
+    // localStorage.setItem('sessionUserID', userID);
+    navigate('/UsersProfile/' + userID)
   }
 
   return (

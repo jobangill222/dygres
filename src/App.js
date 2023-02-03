@@ -61,9 +61,9 @@ function App() {
           <Routes>
             {/* {console.log('check the user state context - ', userToken)} */}
 
-            <Route element={<NoHeaderLayout />}>
+            {/* <Route element={<NoHeaderLayout />}>
               <Route exact path="/notfound" element={<NotFound />} />
-            </Route>
+            </Route> */}
 
 
             {!userToken ? (
@@ -77,20 +77,19 @@ function App() {
                   path="/resetpassword"
                   element={<ResetPassword />}
                 />
-                {/* <Route path="*" element={<Navigate to='/login' />} /> */}
+                <Route path="*" element={<Navigate to='/login' />} />
 
               </Route>
             ) : (
               <>
                 <Route element={<SiteLayout />}>
-                  {/* <Route path="*" element={<Navigate to='/new' />} /> */}
 
                   <Route exact path="/new" element={<New />} />
                   <Route exact path="/hot" element={<Hot />} />
                   <Route exact path="/most-voted" element={<MostVoted />} />
                   <Route exact path="/not-voted" element={<NotVoted />} />
                   <Route exact path="/hashtagPosts" element={<HashTagPosts />} />
-                  <Route exact path="/SinglePostDetail" element={<SinglePostDetail />} />
+                  <Route exact path="/SinglePostDetail/:postIdForSinglePost" element={<SinglePostDetail />} />
 
                   <Route exact path="/notification" element={<Notifications />} />
                   {/* <Route exact path="/not-voted" element={<TopLatestPost />} /> */}
@@ -101,7 +100,7 @@ function App() {
 
                 <Route element={<ProfileLayout />}>
                   <Route exact path="/profile" element={<Profile />} />
-                  <Route exact path="/Usersprofile" element={<UsersProfile />} />
+                  <Route exact path="/Usersprofile/:userIDForProfile" element={<UsersProfile />} />
 
                   <Route exact path="/profiletabs" element={<ProfileTabs />} />
                   <Route
@@ -121,6 +120,7 @@ function App() {
                 </Route>
 
 
+                <Route path="*" element={<Navigate to='/new' />} />
 
 
               </>

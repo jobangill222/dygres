@@ -17,7 +17,7 @@ const WhatsMind = (props) => {
   //Submit post
   const submitPost = async () => {
     if (!createPostState) {
-      toast("Consider entering text into the box before clicking submit.");
+      toast("Hmm… you might consider entering some text before clicking submit.");
     } else {
       // console.log("createPostState", createPostState);
       //   alert("Post successfully.");
