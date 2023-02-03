@@ -9,7 +9,7 @@ export default function SignupModal(props) {
 
     const closePopup = async () => {
         setIsShowSignupModal(false)
-        window.location.replace('https://www.google.com/');
+        window.location.replace('https://dygres.com/');
     }
 
     return (
@@ -31,7 +31,8 @@ export default function SignupModal(props) {
                             <p>Keep an eye on your inbox as we will be sending out important login details closer to release day. Make sure to check your spam folder, just in case.</p>
                             <h4>Conversation is more fun with your friends.</h4>
                             <p>Want to be a social network hero?</p>
-                            <p><span>Share dygres</span> with your friends.</p>
+                            <p>Share dygres with your friends.</p>
+
                             <button className='btnprimary' onClick={closePopup} >Return to landing page</button>
                         </div>
                     </Row>

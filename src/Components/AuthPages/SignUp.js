@@ -50,13 +50,13 @@ const SignUp = () => {
       axiosRes = await userSignup(data);
       console.log("axiosRes", axiosRes);
       if (axiosRes.status === "success") {
-        localStorage.setItem("accessToken", axiosRes.accessToken);
-        setUser(axiosRes.data);
-        setUserToken(axiosRes.accessToken);
-        setUserStats(axiosRes.userStats);
-        navigate("/new");
+        // localStorage.setItem("accessToken", axiosRes.accessToken);
+        // setUser(axiosRes.data);
+        // setUserToken(axiosRes.accessToken);
+        // setUserStats(axiosRes.userStats);
+        // navigate("/new");
 
-        // setIsShowSignupModal(true)
+        setIsShowSignupModal(true)
 
 
       } else {
@@ -94,7 +94,7 @@ const SignUp = () => {
 
       {isLoading && <Loader />}
 
-      {/* {isShowSignupPopup && <SignupModal setIsShowSignupModal={setIsShowSignupModal} username={localStorage.getItem('signupusername')} />} */}
+      {isShowSignupPopup && <SignupModal setIsShowSignupModal={setIsShowSignupModal} username={localStorage.getItem('signupusername')} />}
 
 
       <div className="Auth-bar">
@@ -170,11 +170,11 @@ const SignUp = () => {
               <Button variant="primary" type="submit">
                 Join dygres
               </Button>
-              <div className="Noted-bar">
+              {/* <div className="Noted-bar">
                 <h6>
                   Already have an account? <Link to="/login"> Login here</Link>
                 </h6>
-              </div>
+              </div> */}
               <div className="terms-condition">
                 <Link to="/forgotpassword">Terms & Conditions</Link>
               </div>
