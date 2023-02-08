@@ -1,36 +1,46 @@
 import React from 'react'
 import { BsThreeDotsVertical, BsFilePost, BsFlag } from 'react-icons/bs';
-import { MdBlock } from 'react-icons/md';
-import { BiIdCard, BiSearch } from 'react-icons/bi';
+// import { MdBlock } from 'react-icons/md';
+import { BiIdCard } from 'react-icons/bi';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import BlockUser from "./BlockUser";
 
-export default function SingleUserList() {
+export default function SingleUserList(props) {
 
+    const { singleUser } = props;
+    const navigate = useNavigate();
+
+    const goToUserVerification = async (userIDForVerification) => {
+        navigate('/admin/userverification/' + userIDForVerification)
+    }
 
     return (
         <>
             <tr>
-                <td>Hannah Koph </td>
-                <td>@iamhannah</td>
-                <td>hannah@gmail.com</td>
+                <td>{singleUser?.name ? singleUser.name : 'No Name'} </td>
+                <td>@{singleUser?.username}</td>
+                <td>{singleUser?.email}</td>
                 <td>
                     <div className="number-bar">
-                        <p>+91 9874563210</p>
+                        <p>{singleUser?.phoneNumber ? singleUser.phoneNumber : "No Phone Number"}</p>
                         <div className="user-dropdown">
                             <BsThreeDotsVertical />
                             <ul className="Dropdown-listing">
-                                <li className="text-secondry">
-                                    {/* <Link onClick={BlockShow}><MdBlock />Block</Link> */}
+                                {/* <li className="text-secondry">
                                     <Link ><MdBlock />Block</Link>
-                                </li>
+                                </li> */}
+                                <BlockUser userID={singleUser._id} isBlock={singleUser.isBlock} />
+
                                 <li className="text-secondry">
                                     <Link to="/admin/post"><BsFilePost />Posts</Link>
                                 </li>
                                 <li className="text-secondry">
                                     <Link to="/admin/flagpost"><BsFlag />Flagged Posts</Link>
                                 </li>
-                                <li className="text-secondry">
-                                    <Link to="/admin/userverification"><BiIdCard />User Verification</Link>
+                                <li className="text-secondry" onClick={() => goToUserVerification(singleUser?._id)}>
+                                    {/* <Link to="/admin/userverification"><BiIdCard />User Verification</Link> */}
+                                    <BiIdCard />User Verification
                                 </li>
                             </ul>
                         </div>

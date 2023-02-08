@@ -1201,6 +1201,86 @@ export const DProvider = (props) => {
     }
   }
 
+  const sendNotificationToAllDContext = async (data) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/notification/send-notification-to-all-user`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          notification: data.notification
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get all user api (DContext.js) - ", err);
+    }
+  }
+
+
+  const humanVerificationDetailDContext = async (userID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/userDetail-for-verification`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          userID: userID
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get human verification detail api (DContext.js) - ", err);
+    }
+  }
+
+
+  const acceptRejectHumanVerificationDContext = async (userID, action) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/accept-reject-human-verification`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          userID: userID,
+          action: action
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while accept reject human verification (DContext.js) - ", err);
+    }
+  }
+
+
+  const blockUnblockUserDContext = async (userID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/block-unblock-user`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          userID: userID,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while block user (DContext.js) - ", err);
+    }
+  }
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -1291,7 +1371,11 @@ export const DProvider = (props) => {
     getUsersAllAwardsTheyGet,
     updateCoverImageDContext,
     searchSuggestionDContext,
-    allUserListDContext
+    allUserListDContext,
+    sendNotificationToAllDContext,
+    humanVerificationDetailDContext,
+    acceptRejectHumanVerificationDContext,
+    blockUnblockUserDContext
   };
   return (
     <>

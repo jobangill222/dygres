@@ -304,7 +304,7 @@ const PostFoot = (props) => {
 
           <li onClick={viewAwardModal} >
             <FaGift />
-            <span className="number">{awardCount}</span>Award
+            <span className="number">{awardCount}</span>Awards
           </li>
 
           {awardPopupOpenStatus && <AwardModal selectedPostIDForAwardPopup={selectedPostIDForAwardPopup} setSelectedPostIDForAwardPopup={setSelectedPostIDForAwardPopup} awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} setAwardCount={setAwardCount} />}
@@ -329,7 +329,7 @@ const PostFoot = (props) => {
             <BsFillFlagFill />
             <div className="list-text">
               <span className="number">{postReportCount}</span>
-              Report</div>
+              Reports</div>
           </li>
 
 

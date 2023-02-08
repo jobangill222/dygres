@@ -21,7 +21,7 @@ import ProfileLayout from "./Components/Layouts/ProfileLayout";
 import EditProfileLayout from "./Components/Layouts/EditProfileLayout";
 import AuthLayout from "./Components/Layouts/AuthLayout";
 import AdminLayout from "./Components/Layouts/AdminLayout";
-import NoHeaderLayout from "./Components/Layouts/NoHeaderLayout";
+// import NoHeaderLayout from "./Components/Layouts/NoHeaderLayout";
 import Login from "./Components/AuthPages/Login";
 import SignUp from "./Components/AuthPages/SignUp";
 import GetOtp from "./Components/AuthPages/GetOtp";
@@ -33,7 +33,7 @@ import Post from "./Components/AdminPages/Post";
 import SendNotification from "./Components/AdminPages/SendNotification";
 import FlagPost from "./Components/AdminPages/FlagPost";
 import UserVerification from "./Components/AdminPages/UserVerification";
-import TopLatestPost from "./Components/TopLatestPost";
+// import TopLatestPost from "./Components/TopLatestPost";
 import NotFound from "./Pages/NotFound";
 import { useContext } from "react";
 import { DContext } from "./Context/DContext";
@@ -77,7 +77,7 @@ function App() {
                   path="/resetpassword"
                   element={<ResetPassword />}
                 />
-                <Route path="*" element={<Navigate to='/signup' />} />
+                <Route path="*" element={<Navigate to='/login' />} />
 
               </Route>
             ) : (
@@ -132,7 +132,7 @@ function App() {
               <Route exact path="admin/post" element={<Post />} />
               <Route exact path="admin/sendnotification" element={<SendNotification />} />
               <Route exact path="admin/flagpost" element={<FlagPost />} />
-              <Route exact path="admin/userverification" element={<UserVerification />}
+              <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />}
               />
             </Route>
 

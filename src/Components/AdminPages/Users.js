@@ -21,14 +21,16 @@ const Users = () => {
     const { allUserListDContext } = useContext(DContext);
 
     const [userList, setUserList] = useState([]);
+    const [searchByUsernameState, setSearchByUsernameState] = useState(null);
+
 
     useEffect(() => {
         localStorage.setItem('userPageNumber', 1);
         getUser();
-    }, [])
+    }, [searchByUsernameState])
 
     const getUser = async () => {
-        const search = null;
+        const search = searchByUsernameState;
         const pageNumber = 1;
         const axiosRes = await allUserListDContext(search, pageNumber);
         if (axiosRes.status === "success") {
@@ -42,6 +44,15 @@ const Users = () => {
     const [showBlock, setShowBlock] = useState(false);
     const BlockClose = () => setShowBlock(false);
     // const BlockShow = () => setShowBlock(true);
+
+
+
+    //Search
+    const searchTyping = async (event) => {
+        const value = event.target.value;
+        setSearchByUsernameState(value);
+    };
+
 
     return (
         <>
@@ -58,7 +69,10 @@ const Users = () => {
                                 </div>
                                 <Form.Group className="searchbar" controlId="exampleForm.ControlInput1">
                                     <BiSearch />
-                                    <Form.Control type="text" placeholder="Search for users" />
+                                    <Form.Control type="text"
+                                        value={searchByUsernameState}
+                                        onChange={searchTyping}
+                                        placeholder="Search for users" />
                                 </Form.Group>
                             </div>
                         </Col>
@@ -77,7 +91,7 @@ const Users = () => {
                         <tbody>
 
                             {userList.map((singleUser) => (
-                                <SingleUserList />
+                                <SingleUserList key={singleUser._id} singleUser={singleUser} />
                             ))}
 
                         </tbody>
