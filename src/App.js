@@ -72,13 +72,8 @@ function App() {
                 <Route exact path="/signup" element={<SignUp />} />
                 <Route exact path="/getotp" element={<GetOtp />} />
                 <Route exact path="/enterotp" element={<EnterOtp />} />
-                <Route
-                  exact
-                  path="/resetpassword"
-                  element={<ResetPassword />}
-                />
+                <Route exact path="/resetpassword" element={<ResetPassword />} />
                 <Route path="*" element={<Navigate to='/login' />} />
-
               </Route>
             ) : (
               <>
@@ -103,25 +98,15 @@ function App() {
                   <Route exact path="/Usersprofile/:userIDForProfile" element={<UsersProfile />} />
 
                   <Route exact path="/profiletabs" element={<ProfileTabs />} />
-                  <Route
-                    exact
-                    path="/profiletabcontent"
-                    element={<ProfileTabContent />}
-                  />
+                  <Route exact path="/profiletabcontent" element={<ProfileTabContent />} />
                 </Route>
 
                 <Route element={<EditProfileLayout />}>
                   <Route exact path="/editprofile" element={<EditProfile />} />
-                  <Route
-                    exact
-                    path="/personalinformation"
-                    element={<PersonalInformation />}
-                  />
+                  <Route exact path="/personalinformation" element={<PersonalInformation />} />
                 </Route>
 
-
                 <Route path="*" element={<Navigate to='/new' />} />
-
 
               </>
             )}

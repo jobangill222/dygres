@@ -578,6 +578,32 @@ input.form-control {
   color: var(--base-placeholder);
 }
 
+ul.socialmediaicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  list-style: none;
+}
+
+ul.socialmediaicon li {
+  margin: 0 10px;
+}
+ul.socialmediaicon li a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+  text-decoration: none;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #000000;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
 .search-input-form .user-searchform button {
   border: none;
   background: transparent;
