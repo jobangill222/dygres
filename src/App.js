@@ -73,7 +73,7 @@ function App() {
                 <Route exact path="/getotp" element={<GetOtp />} />
                 <Route exact path="/enterotp" element={<EnterOtp />} />
                 <Route exact path="/resetpassword" element={<ResetPassword />} />
-                <Route path="*" element={<Navigate to='/login' />} />
+                <Route path="*" element={<Navigate to='/signup' />} />
               </Route>
             ) : (
               <>

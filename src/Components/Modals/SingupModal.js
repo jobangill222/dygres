@@ -11,7 +11,9 @@ export default function SignupModal(props) {
 
     const closePopup = async () => {
         setIsShowSignupModal(false)
-        window.location.replace('https://dygres.com/');
+        // window.location.replace('https://dygres.com/');
+        window.location.replace('http://54.164.159.66/');
+
     }
 
     return (
