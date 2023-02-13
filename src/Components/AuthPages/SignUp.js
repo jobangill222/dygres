@@ -15,6 +15,9 @@ import Loader from "../Loader";
 
 import SignupModal from "../Modals/SingupModal";
 
+import TermConditionModal from "../Modals/TermConditionModal";
+
+
 const SignUp = () => {
   //Checkbox value of age
   const ref = useRef(null);
@@ -27,6 +30,9 @@ const SignUp = () => {
 
   //SignupModal
   const [isShowSignupPopup, setIsShowSignupModal] = useState(false);
+
+  const [isShowTermConditionPopup, setIsShowTermConditionModal] = useState(false);
+
 
   let axiosRes;
 
@@ -75,13 +81,33 @@ const SignUp = () => {
   };
 
   const registerOptions = {
-    email: { required: "Enter Email Address" },
-    username: { required: "Enter Username" },
+    email: {
+      required: "Enter Email Address",
+      pattern: {
+        value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+        message: "Enter a valid email address",
+      },
+    },
+    username: {
+      required: "Enter Username",
+      maxLength: {
+        value: 20,
+        message: "Username should be less than 20 characters",
+      },
+      pattern: {
+        value: /^[a-zA-Z0-9.]+$/,
+        message: "Username can only contain alphanumeric characters",
+      },
+    },
     password: {
-      required: "Enter Password.",
+      required: "Enter Password",
       minLength: {
         value: 8,
         message: "Password must have at least 8 characters",
+      },
+      pattern: {
+        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        message: "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
       },
     },
   };
@@ -96,12 +122,13 @@ const SignUp = () => {
 
       {isShowSignupPopup && <SignupModal setIsShowSignupModal={setIsShowSignupModal} username={localStorage.getItem('signupusername')} />}
 
+      {isShowTermConditionPopup && <TermConditionModal isShowTermConditionPopup={isShowTermConditionPopup} setIsShowTermConditionModal={setIsShowTermConditionModal} />}
 
       <div className="Auth-bar">
         <Container>
           <div className="Authbar-innerbox">
             <h4>Sign up</h4>
-            <p>Enter your details and get started with Dygres</p>
+            <p>Enter your details and get started with dygres</p>
             <form onSubmit={handleSubmit(handleRegistration, handleError)}>
               <Form.Group className="authinputbar" controlId="formBasicEmail">
                 <Form.Label>Your email</Form.Label>
@@ -170,13 +197,14 @@ const SignUp = () => {
               <Button variant="primary" type="submit">
                 Join dygres
               </Button>
-              {/* <div className="Noted-bar">
+              <div className="Noted-bar">
                 <h6>
                   Already have an account? <Link to="/login"> Login here</Link>
                 </h6>
-              </div> */}
-              <div className="terms-condition">
-                <Link to="/forgotpassword">Terms & Conditions</Link>
+              </div>
+              <div className="terms-condition" onClick={() => setIsShowTermConditionModal(true)}>
+                {/* <Link to="/forgotpassword">Terms & Conditions</Link> */}
+                <Link >Terms & Conditions</Link>
               </div>
             </form>
           </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
+import TermConditionModal from "../Modals/TermConditionModal";
 
 // Context
 import { DContext } from "../../Context/DContext";
@@ -58,7 +59,7 @@ const Login = () => {
   const registerOptions = {
     email: { required: "Enter Email Address or Username" },
     password: {
-      required: "Enter Password.",
+      required: "Enter Password",
       minLength: {
         value: 8,
         message: "Password must have at least 8 characters",
@@ -78,8 +79,15 @@ const Login = () => {
         setLoginField({...loginField});
     }*/
 
+
+  const [isShowTermConditionPopup, setIsShowTermConditionModal] = useState(false);
+
   return (
     <>
+
+      {isShowTermConditionPopup && <TermConditionModal isShowTermConditionPopup={isShowTermConditionPopup} setIsShowTermConditionModal={setIsShowTermConditionModal} />}
+
+
       {/* {console.log("userStats in login page", userStats)}; */}
       <div className="Auth-bar">
         <Container>
@@ -137,8 +145,8 @@ const Login = () => {
                   Don’t have an account? <Link to="/signup">Sign up here</Link>
                 </h6>
               </div>
-              <div className="terms-condition">
-                <Link to="/forgotpassword">Terms & Conditions</Link>
+              <div className="terms-condition" onClick={() => setIsShowTermConditionModal(true)}>
+                <Link >Terms & Conditions</Link>
               </div>
             </form>
           </div>
