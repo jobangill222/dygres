@@ -16,6 +16,8 @@ import {
 import { BiCopy } from "react-icons/bi";
 import { ImForward } from "react-icons/im";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { BsFlag } from "react-icons/bs"
+
 import { HiSpeakerphone } from "react-icons/hi";
 import { BsArrowUpRightSquareFill } from "react-icons/bs";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -23,10 +25,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Countdown from 'react-countdown';
-import { DContext } from "../../Context/DContext";
+import { DContext } from "../../../Context/DContext";
 import { toast } from "react-toastify";
 
-import AwardModal from "../Modals/AwardModal";
+import AwardModal from "../../Modals/AwardModal";
 import { MdOutlineTimer } from "react-icons/md";
 
 
@@ -43,10 +45,31 @@ const PostFoot = (props) => {
   // const timeAgo = new TimeAgo('en-US')
 
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, isFlag } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet, setPostIDForSinglePostState } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet, setPostIDForSinglePostState, flagUnflagPostDContext } = useContext(DContext);
+
+  //Flag Unflag state
+  const [isPostFlagState, setIsPostFlagState] = useState(false);
+  useEffect(() => {
+    console.log('isFlag', isFlag)
+    if (isFlag === 1) {
+      setIsPostFlagState(true);
+    } else {
+      setIsPostFlagState(false)
+    }
+  }, [isFlag]);
+
+  const flagUnflagHandler = async (postID) => {
+    const axiosRes = await flagUnflagPostDContext(postID);
+    if (axiosRes.action === 'un-flag') {
+      setIsPostFlagState(false);
+    }
+    else {
+      setIsPostFlagState(true);
+    }
+  }
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -206,19 +229,6 @@ const PostFoot = (props) => {
     setPopupType(type);
   }
 
-  const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
-  const [selectedPostIDForAwardPopup, setSelectedPostIDForAwardPopup] = useState(postID); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
-  const viewAwardModal = () => {
-    setAwardPopupOpenStatus(true);
-    setSelectedPostIDForAwardPopup(postID)
-  }
-
-
-  const retweetPost = async () => {
-    setPostIDForRetweet(postID)
-    // console.log('type', type);
-  }
-
 
   //Make multiselect report reason
   const selectReportReason = async (reason) => {
@@ -265,21 +275,11 @@ const PostFoot = (props) => {
 
   const Completionist = () => <span style={{ color: "red" }}><MdOutlineTimer />Time over</span>;
 
-
-
-  const viewPost = async (postID) => {
-    // localStorage.setItem('PostIdForSinglePost', postID);
-    setPostIDForSinglePostState(postID);
-    const baseURL = window.location.origin;
-    window.open(`${baseURL}/SinglePostDetail/` + postID, "_blank");
-  }
-
-
   return (
     <>
       <div className="action-bar">
         <ul className="actionleftbar">
-          <li>
+          {/* <li>
             <div
               className={isAgree ? `active` : ""}
               onClick={() => !isPostDisable && AgreePost(postID)}><AiFillLike />
@@ -287,27 +287,34 @@ const PostFoot = (props) => {
             <div className="list-text" onClick={() => viewUserListPopup('agree-post-user-list')} >
               <span className="number">{postAgreeCount}</span>
               Agree</div>
+          </li> */}
+          <li onClick={() => viewUserListPopup('agree-post-user-list')}>
+            <div>
+              <AiFillLike />
+            </div>
+            <div className="list-text"  >
+              <span className="number">{postAgreeCount}</span>
+              Agree</div>
           </li>
 
-          <li>
+
+          {/* <li>
             <div className={isDisAgree ? `active` : ""}
               onClick={() => !isPostDisable && DisAgreePost(postID)}><AiFillDislike />
             </div>
             <div className="list-text" onClick={() => viewUserListPopup('disagree-post-user-list')} >
               <span className="number">{postDisAgreeCount}</span>
               Disagree</div>
+          </li> */}
+          <li onClick={() => viewUserListPopup('disagree-post-user-list')} >
+            <div>
+              <AiFillDislike />
+            </div>
+            <div className="list-text" >
+              <span className="number">{postDisAgreeCount}</span>
+              Disagree</div>
           </li>
 
-
-          {/* <li onClick={AwardsShow}> */}
-          {/* {console.log('awardPopupOpenStatus', awardPopupOpenStatus)} */}
-
-          <li onClick={viewAwardModal} >
-            <FaGift />
-            <span className="number">{awardCount}</span>Awards
-          </li>
-
-          {awardPopupOpenStatus && <AwardModal selectedPostIDForAwardPopup={selectedPostIDForAwardPopup} setSelectedPostIDForAwardPopup={setSelectedPostIDForAwardPopup} awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} setAwardCount={setAwardCount} />}
 
 
           <li>
@@ -319,74 +326,31 @@ const PostFoot = (props) => {
           </li>
 
 
-          {/* <li >
-            <div className={isReport ? `active` : ""} onClick={() => EditReport(postID)}><BsFillFlagFill /></div>
-            <div className="list-text" onClick={() => viewUserListPopup('report-post-user-list')}>
+          <li onClick={() => viewUserListPopup('report-post-user-list')}>
+            <div ><BsFillFlagFill /></div>
+            <div className="list-text" >
               <span className="number">{postReportCount}</span>
               Report</div>
-          </li> */}
-          <li onClick={() => EditReport(postID)} >
+          </li>
+          {/* <li onClick={() => EditReport(postID)} >
             <BsFillFlagFill />
             <div className="list-text">
               <span className="number">{postReportCount}</span>
               Reports</div>
-          </li>
+          </li> */}
 
-
-
-          {user?._id !== postUserID && <li>
-            <div className="" onClick={retweetPost}>
-              <HiSpeakerphone />
-            </div>
-            <div className="list-text" onClick={retweetPost}>
-              {/* <span className="number">2</span> */}
-              Amplify</div>
-          </li>}
-
-          {postListingType !== 'singlePost' && <li onClick={() => viewPost(postID)} >
-            <div><BsArrowUpRightSquareFill /></div>
-            <p>View post</p>
-          </li>}
-
-
-          <li>
-            <Dropdown className="hoverdropdown">
-              <Dropdown.Toggle
-                className="p-0 bg-transparent border-0 text-lightgray"
-                variant="success"
-                id="dropdown-basic"
-              >
-                {user?._id === postUserID && <BsThreeDots />}
-
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={() => setIsEditFieldOpen(true)} disabled={isPostEditableState ? true : false} >
-                  <p><BsPencil />
-                    Edit Post</p>
-                  <Countdown date={moment(created_at) + 3600 * 1000} renderer={editRenderer} >
-                  </Countdown>
-
-                </Dropdown.Item>
-                <Dropdown.Item onClick={showDeletePostPopupWarning} disabled={isPostDeletableableState ? true : false}>
-                  <p>
-                    <RiDeleteBin6Line />
-                    Delete Post
-                  </p>
-                  <Countdown date={moment(created_at) + 1800 * 1000} renderer={deleteRenderer} >
-                  </Countdown>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-
-          </li>
 
         </ul>
-        <ul className="actionrytbar">
-          <li onClick={ShareShow}>
-            <ImForward />
-            Share
+
+
+        <ul className="actionrytbar flagbtnbar">
+          <li >
+            {console.log('isPostFlagState', isPostFlagState)}
+            <Button className="bg-primary text-white" onClick={() => flagUnflagHandler(postID)} ><BsFlag />{isPostFlagState ? 'Remove from flag' : 'Flag Post'}</Button>
+            <Button className="bg-danger text-white" onClick={showDeletePostPopupWarning}><RiDeleteBin6Line />Delete Post</Button>
           </li>
         </ul>
+
       </div>
       {/* Delete modal */}
       <Modal
@@ -411,110 +375,6 @@ const PostFoot = (props) => {
 
 
 
-
-
-      {/* Awards modal */}
-      {/* <Modal
-        className="Actions-modal awards-modal z-1050"
-        show={showAwards}
-        onHide={AwardsClose}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Awards</Modal.Title>
-          <button onClick={ShowAddMore} className="btn-add">
-            Buy more
-            <AiOutlinePlus />
-          </button>
-        </Modal.Header>
-        <Modal.Body>
-          <Row>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <img src="/gif/thumbsdown2.gif" alt="img" />
-                <h4>Owned: 56</h4>
-              </div>
-            </Col>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <img src="/gif/thumbsdown2.gif" alt="img" />
-                <h4>Owned: 56</h4>
-              </div>
-            </Col>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <img src="/gif/thumbsdown2.gif" alt="img" />
-                <h4>Owned: 56</h4>
-              </div>
-            </Col>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <img src="/gif/thumbsdown2.gif" alt="img" />
-                <h4>Owned: 56</h4>
-              </div>
-            </Col>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <img src="/gif/thumbsdown2.gif" alt="img" />
-                <h4>Owned: 56</h4>
-              </div>
-            </Col>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <img src="/gif/thumbsdown2.gif" alt="img" />
-                <h4>Owned: 56</h4>
-              </div>
-            </Col>
-          </Row>
-        </Modal.Body>
-        <Modal.Footer></Modal.Footer>
-      </Modal>
-      BuyAwards modal 
-      <Modal
-        className="Actions-modal buymore-modal "
-        show={showBuyAwards}
-        onHide={ShowBuyAwardsClose}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Buy awards</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Row>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <p className="Begde-bar">X100</p>
-                <div className="awards-img">
-                  <img src="/images/awards.png" alt="img" />
-                </div>
-                <h5>Package Name</h5>
-                <h3>₹599</h3>
-              </div>
-            </Col>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <p className="Begde-bar">X100</p>
-                <div className="awards-img">
-                  <img src="/images/awards.png" alt="img" />
-                </div>
-                <h5>Package Name</h5>
-                <h3>₹599</h3>
-              </div>
-            </Col>
-            <Col className="col-md-4">
-              <div className="Awrds-li">
-                <p className="Begde-bar">X100</p>
-                <div className="awards-img">
-                  <img src="/images/awards.png" alt="img" />
-                </div>
-                <h5>Package Name</h5>
-                <h3>₹599</h3>
-              </div>
-            </Col>
-          </Row>
-        </Modal.Body>
-        <Modal.Footer></Modal.Footer>
-      </Modal> */}
       {/* Edit Report */}
       <Modal
         className="Actions-modal Editreportmodal"

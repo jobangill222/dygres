@@ -4,9 +4,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { BsInfoCircle } from "react-icons/bs";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 // Context
 import { DContext } from "../../Context/DContext";
@@ -15,7 +20,7 @@ import Loader from "../Loader";
 
 import SignupModal from "../Modals/SingupModal";
 
-import TermConditionModal from "../Modals/TermConditionModal";
+import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
 
 
 const SignUp = () => {
@@ -31,7 +36,7 @@ const SignUp = () => {
   //SignupModal
   const [isShowSignupPopup, setIsShowSignupModal] = useState(false);
 
-  const [isShowTermConditionPopup, setIsShowTermConditionModal] = useState(false);
+  const [isShowFoundationalRulePopup, setIsShowFoundationalRuleModal] = useState(false);
 
 
   let axiosRes;
@@ -95,8 +100,8 @@ const SignUp = () => {
         message: "Username should be less than 20 characters",
       },
       pattern: {
-        value: /^[a-zA-Z0-9.]+$/,
-        message: "Username can only contain alphanumeric characters",
+        value: /^[a-z0-9]+$/,
+        message: "Username must be 20 characters max, lower case, and can only contain alphanumeric characters without spaces",
       },
     },
     password: {
@@ -114,6 +119,17 @@ const SignUp = () => {
 
 
 
+  const renderTooltip = (props) => (
+    <Tooltip style={{ width: "400px", wordBreak: "break-all" }} className='infotooltip' id="button-tooltip" {...props}>
+      <ul>
+        <li>Username must be 20 characters max.</li>
+        <li>Username must be in lower case.</li>
+        <li>Username can only contain alphanumeric characters without spaces.</li>
+      </ul>
+    </Tooltip>
+  );
+
+
 
   return (
     <>
@@ -122,7 +138,7 @@ const SignUp = () => {
 
       {isShowSignupPopup && <SignupModal setIsShowSignupModal={setIsShowSignupModal} username={localStorage.getItem('signupusername')} />}
 
-      {isShowTermConditionPopup && <TermConditionModal isShowTermConditionPopup={isShowTermConditionPopup} setIsShowTermConditionModal={setIsShowTermConditionModal} />}
+      {isShowFoundationalRulePopup && <FoundationalRuleModal isShowFoundationalRulePopup={isShowFoundationalRulePopup} setIsShowFoundationalRuleModal={setIsShowFoundationalRuleModal} />}
 
       <div className="Auth-bar">
         <Container>
@@ -150,7 +166,20 @@ const SignUp = () => {
                 className="authinputbar"
                 controlId="formBasicPassword"
               >
-                <Form.Label>Your Username</Form.Label>
+                <Form.Label>Your Username
+
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    <Button> <BsInfoCircle /></Button>
+                    {/* <BsInfoCircle /> */}
+
+                  </OverlayTrigger>
+
+
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter Username"
@@ -202,9 +231,9 @@ const SignUp = () => {
                   Already have an account? <Link to="/login"> Login here</Link>
                 </h6>
               </div>
-              <div className="terms-condition" onClick={() => setIsShowTermConditionModal(true)}>
+              <div className="terms-condition" onClick={() => setIsShowFoundationalRuleModal(true)}>
                 {/* <Link to="/forgotpassword">Terms & Conditions</Link> */}
-                <Link >Terms & Conditions</Link>
+                <Link >Foundational Rules</Link>
               </div>
             </form>
           </div>

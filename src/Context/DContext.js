@@ -1281,6 +1281,46 @@ export const DProvider = (props) => {
     }
   }
 
+
+  const flagUnflagPostDContext = async (postID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/posts/flag-unflag-post`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while flag unflag post (DContext.js) - ", err);
+    }
+  }
+
+
+  const getUsersFlaggedPostDContext = async (userID, pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/posts/users-flagged-post?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          userID: userID,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get flagged post of user (DContext.js) - ", err);
+    }
+  }
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -1375,7 +1415,9 @@ export const DProvider = (props) => {
     sendNotificationToAllDContext,
     humanVerificationDetailDContext,
     acceptRejectHumanVerificationDContext,
-    blockUnblockUserDContext
+    blockUnblockUserDContext,
+    flagUnflagPostDContext,
+    getUsersFlaggedPostDContext
   };
   return (
     <>

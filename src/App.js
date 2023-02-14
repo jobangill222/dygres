@@ -73,7 +73,7 @@ function App() {
                 <Route exact path="/getotp" element={<GetOtp />} />
                 <Route exact path="/enterotp" element={<EnterOtp />} />
                 <Route exact path="/resetpassword" element={<ResetPassword />} />
-                <Route path="*" element={<Navigate to='/signup' />} />
+                <Route path="*" element={<Navigate to='/login' />} />
               </Route>
             ) : (
               <>
@@ -114,9 +114,9 @@ function App() {
             <Route element={<AdminLayout />}>
               <Route exact path="admin/dashboard" element={<Dashboard />} />
               <Route exact path="admin/users" element={<Users />} />
-              <Route exact path="admin/post" element={<Post />} />
+              <Route exact path="admin/post/:userID" element={<Post />} />
               <Route exact path="admin/sendnotification" element={<SendNotification />} />
-              <Route exact path="admin/flagpost" element={<FlagPost />} />
+              <Route exact path="admin/flagpost/:userID" element={<FlagPost />} />
               <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />}
               />
             </Route>

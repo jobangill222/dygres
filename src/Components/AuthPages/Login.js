@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
-import TermConditionModal from "../Modals/TermConditionModal";
+import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
 
 // Context
 import { DContext } from "../../Context/DContext";
@@ -80,12 +80,12 @@ const Login = () => {
     }*/
 
 
-  const [isShowTermConditionPopup, setIsShowTermConditionModal] = useState(false);
+  const [isShowFoundationalRulePopup, setIsShowFoundationalRuleModal] = useState(false);
 
   return (
     <>
 
-      {isShowTermConditionPopup && <TermConditionModal isShowTermConditionPopup={isShowTermConditionPopup} setIsShowTermConditionModal={setIsShowTermConditionModal} />}
+      {isShowFoundationalRulePopup && <FoundationalRuleModal isShowFoundationalRulePopup={isShowFoundationalRulePopup} setIsShowFoundationalRuleModal={setIsShowFoundationalRuleModal} />}
 
 
       {/* {console.log("userStats in login page", userStats)}; */}
@@ -145,8 +145,8 @@ const Login = () => {
                   Don’t have an account? <Link to="/signup">Sign up here</Link>
                 </h6>
               </div>
-              <div className="terms-condition" onClick={() => setIsShowTermConditionModal(true)}>
-                <Link >Terms & Conditions</Link>
+              <div className="terms-condition" onClick={() => setIsShowFoundationalRuleModal(true)}>
+                <Link >Foundational Rules</Link>
               </div>
             </form>
           </div>

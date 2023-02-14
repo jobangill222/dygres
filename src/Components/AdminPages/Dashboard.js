@@ -60,7 +60,7 @@ const Dashboard = () => {
                                         </div>
                                         <h5>Posts</h5>
                                     </li>
-                                    <li><MdKeyboardArrowRight /></li>
+                                    {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
                                     <li><h4>300k</h4></li>
@@ -83,7 +83,7 @@ const Dashboard = () => {
                                         </div>
                                         <h5>Agree</h5>
                                     </li>
-                                    <li><MdKeyboardArrowRight /></li>
+                                    {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
                                     <li><h4>300k</h4></li>
@@ -106,7 +106,7 @@ const Dashboard = () => {
                                         </div>
                                         <h5>Disagree</h5>
                                     </li>
-                                    <li><MdKeyboardArrowRight /></li>
+                                    {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
                                     <li><h4>40k</h4></li>
@@ -129,7 +129,7 @@ const Dashboard = () => {
                                         </div>
                                         <h5>Awards</h5>
                                     </li>
-                                    <li><MdKeyboardArrowRight /></li>
+                                    {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
                                     <li><h4>40k</h4></li>
@@ -152,7 +152,7 @@ const Dashboard = () => {
                                         </div>
                                         <h5>Threads</h5>
                                     </li>
-                                    <li><MdKeyboardArrowRight /></li>
+                                    {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
                                     <li><h4>40k</h4></li>

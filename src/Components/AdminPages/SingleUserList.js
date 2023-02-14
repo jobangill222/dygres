@@ -15,11 +15,20 @@ export default function SingleUserList(props) {
         navigate('/admin/userverification/' + userIDForVerification)
     }
 
+
+    const userDetails = async (userID) => {
+        navigate('/admin/post/' + userID)
+    }
+
+    const usersFlaggedPost = async (userID) => {
+        navigate('/admin/flagpost/' + userID)
+    }
+
     return (
         <>
             <tr>
                 <td>{singleUser?.name ? singleUser.name : 'No Name'} </td>
-                <td>@{singleUser?.username}</td>
+                <td>{singleUser?.username}</td>
                 <td>{singleUser?.email}</td>
                 <td>
                     <div className="number-bar">
@@ -32,11 +41,12 @@ export default function SingleUserList(props) {
                                 </li> */}
                                 <BlockUser userID={singleUser._id} isBlock={singleUser.isBlock} />
 
-                                <li className="text-secondry">
-                                    <Link to="/admin/post"><BsFilePost />Posts</Link>
+                                <li className="text-secondry" onClick={() => userDetails(singleUser._id)} >
+                                    {/* <Link to="/admin/post"><BsFilePost />Posts</Link> */}
+                                    <Link><BsFilePost />Posts</Link>
                                 </li>
-                                <li className="text-secondry">
-                                    <Link to="/admin/flagpost"><BsFlag />Flagged Posts</Link>
+                                <li className="text-secondry" onClick={() => usersFlaggedPost(singleUser._id)}>
+                                    <BsFlag />Flagged Posts
                                 </li>
                                 <li className="text-secondry" onClick={() => goToUserVerification(singleUser?._id)}>
                                     {/* <Link to="/admin/userverification"><BiIdCard />User Verification</Link> */}
