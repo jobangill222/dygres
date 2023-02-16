@@ -61,13 +61,13 @@ const SignUp = () => {
       axiosRes = await userSignup(data);
       console.log("axiosRes", axiosRes);
       if (axiosRes.status === "success") {
-        // localStorage.setItem("accessToken", axiosRes.accessToken);
-        // setUser(axiosRes.data);
-        // setUserToken(axiosRes.accessToken);
-        // setUserStats(axiosRes.userStats);
-        // navigate("/new");
+        localStorage.setItem("accessToken", axiosRes.accessToken);
+        setUser(axiosRes.data);
+        setUserToken(axiosRes.accessToken);
+        setUserStats(axiosRes.userStats);
+        navigate("/new");
 
-        setIsShowSignupModal(true)
+        // setIsShowSignupModal(true)
 
 
       } else {
