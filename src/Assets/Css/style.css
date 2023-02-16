@@ -2886,7 +2886,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .usertable table thead th {
-  background: var(--base-tablebg);
+  background: linear-gradient(180deg, rgb(33 160 218 / 10%) -28.9%, rgb(157 211 130 / 10%) 100%), #FFFFFF;
   padding: 15px 30px !important;
   font-weight: 600;
   font-size: 18px;
@@ -2937,7 +2937,12 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .usertable table tbody tr td .number-bar .user-dropdown svg {
   cursor: pointer;
 }
-
+.usertable table tbody tr td , .usertable table tbody tr th{
+  vertical-align: middle;
+}
+.usertable table img {
+  width: 50px;
+}
 .Admin-modal .modal-footer {
   border: none;
   justify-content: center;
@@ -3094,7 +3099,70 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .tabswithbutotn {
   position: relative;
 }
+.usertable table img {
+  width: 50px;
+}
 
+.flexbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 0 10px 0;
+}
+
+.flexbar ul.admintable-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flexbar ul.admintable-tabs a.tabbtn {
+  background: #ECECEC;
+  border-radius: 5px;
+  width: 190px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #8B8B8B;
+}
+
+.flexbar ul.admintable-tabs a.tabbtn.active {
+  background: linear-gradient(180deg, #21A0DA -28.9%, #9DD382 100%), #FFFFFF;
+  border-radius: 5px;
+  color: #000000;
+}
+
+.flexbar ul.admintable-tabs a.addbtn {
+  border-radius: 6px;
+  border-style: solid;
+  border: 3px solid;
+  border-image-slice: 1 !important;
+  border-width: 2px;
+  border-image-source: linear-gradient(to left, #98d185, #40adc3) !important;
+  width: 155px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  background: linear-gradient(180deg, #21A0DA -28.9%, #9DD382 100%), #FFFFFF;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.user-dropdown .Dropdown-listing .deltebtn {
+  color: #DE210D !important;
+}
 .tabswithbutotn .buttonoverall-size {
   position: absolute;
   top: 0;
@@ -3129,6 +3197,13 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-size: 20px;
   line-height: 24px;
   color: var(--base-secondry);
+}
+.addawards-editorbar {
+  margin-top: 30px;
+}
+
+.addawards-editorbar .editor-input select.form-select {
+  width: 100%;
 }
 
 .verification-bar .formbarbtn {

@@ -50,6 +50,7 @@ import AwardList from "./Components/AdminPages/Awards/AwardList";
 
 
 import { DProvider } from "./Context/DContext";
+import AddAward from "./Components/AdminPages/Awards/AddAward";
 
 
 function App() {
@@ -123,6 +124,7 @@ function App() {
               <Route exact path="admin/sendnotification" element={<SendNotification />} />
               <Route exact path="admin/flagpost/:userID" element={<FlagPost />} />
               <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />} />
+              <Route exact path="admin/addaward" element={<AddAward />} />
 
               <Route exact path="admin/awardList" element={<AwardList />} />
 

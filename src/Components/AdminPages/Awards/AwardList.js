@@ -1,13 +1,13 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 import Container from "react-bootstrap/esm/Container";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 
-import { BsThreeDotsVertical, BsFlag } from 'react-icons/bs';
-// import { MdBlock } from 'react-icons/md';
-import { BiIdCard } from 'react-icons/bi';
+import { BsThreeDotsVertical, BsPencil } from 'react-icons/bs';
+import { AiOutlineDelete } from 'react-icons/ai';
 
 
 export default function AwardList() {
@@ -21,6 +21,19 @@ export default function AwardList() {
                     </Col>
                     <Col lg="6">
 
+                    </Col>
+                </Row>
+                <Row>
+                    <Col lg="12">
+                      <div className='flexbar'>
+                      <ul className='admintable-tabs'>
+                        <li><Link className='tabbtn active' to='/'>Awards</Link></li>
+                        <li><Link className='tabbtn' to='/'>Packages</Link></li>
+                       </ul>
+                       <ul className='admintable-tabs'>
+                        <li><Link className='addbtn' to='/admin/addaward'>+Add award</Link></li>
+                       </ul>
+                      </div>
                     </Col>
                 </Row>
             </div>
@@ -50,10 +63,10 @@ export default function AwardList() {
                                         <ul className="Dropdown-listing">
 
                                             <li className="text-secondry" >
-                                                <BsFlag />Edit
+                                                <BsPencil />Edit
                                             </li>
-                                            <li className="text-secondry" >
-                                                <BiIdCard />Delete
+                                            <li className="text-secondry deltebtn" >
+                                                <AiOutlineDelete />Delete
                                             </li>
                                         </ul>
                                     </div>
