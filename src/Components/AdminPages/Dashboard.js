@@ -121,7 +121,8 @@ const Dashboard = () => {
                             </div>
                         </Col>
                         <Col lg="3" md="6" sm="12">
-                            <div className="dash-boxes-in">
+                            <Link to="/admin/awardList" className="dash-boxes-in">
+                                {/* <div className="dash-boxes-in"> */}
                                 <ul className="userstatus">
                                     <li>
                                         <div className="iconbar">
@@ -129,7 +130,7 @@ const Dashboard = () => {
                                         </div>
                                         <h5>Awards</h5>
                                     </li>
-                                    {/* <li><MdKeyboardArrowRight /></li> */}
+                                    <li><MdKeyboardArrowRight /></li>
                                 </ul>
                                 <ul className="weekly-status">
                                     <li><h4>40k</h4></li>
@@ -141,7 +142,8 @@ const Dashboard = () => {
                                         <h5>This week</h5>
                                     </li>
                                 </ul>
-                            </div>
+                                {/* </div> */}
+                            </Link>
                         </Col>
                         <Col lg="3" md="6" sm="12">
                             <div className="dash-boxes-in">

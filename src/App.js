@@ -44,6 +44,11 @@ import PostHead from "./Components/PostList/PostHead";
 import WhatsMind from "./Components/WhatsMind";
 
 import UsersProfile from "./Components/Profile/UsersProfile";
+
+import AwardList from "./Components/AdminPages/Awards/AwardList";
+
+
+
 import { DProvider } from "./Context/DContext";
 
 
@@ -117,8 +122,11 @@ function App() {
               <Route exact path="admin/post/:userID" element={<Post />} />
               <Route exact path="admin/sendnotification" element={<SendNotification />} />
               <Route exact path="admin/flagpost/:userID" element={<FlagPost />} />
-              <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />}
-              />
+              <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />} />
+
+              <Route exact path="admin/awardList" element={<AwardList />} />
+
+
             </Route>
 
             <Route path="*" element={<NotFound />} />
