@@ -1321,6 +1321,108 @@ export const DProvider = (props) => {
     }
   }
 
+
+  const getAwardListDContext = async (type) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/award-list`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          type: type,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get all awards (DCOntext.js) - ", err);
+    }
+  }
+
+
+  const addAwardDContext = async (bodyFormData) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/add-award`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: bodyFormData,
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while add award (DContext.js) - ", err);
+    }
+  };
+
+
+  const awardDetailByIdDContext = async (awardID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/award-detail-by-id`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          awardID: awardID,
+        }
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get single ward detail (DContext.js) - ", err);
+    }
+  };
+
+
+  const editAwardDContext = async (bodyFormData) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/edit-award`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: bodyFormData
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while edit award (DContext.js) - ", err);
+    }
+  };
+
+
+  const deleteAwardDContext = async (awardID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/delete-award`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          awardID: awardID,
+        }
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while delete award (DContext.js) - ", err);
+    }
+  };
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -1417,7 +1519,12 @@ export const DProvider = (props) => {
     acceptRejectHumanVerificationDContext,
     blockUnblockUserDContext,
     flagUnflagPostDContext,
-    getUsersFlaggedPostDContext
+    getUsersFlaggedPostDContext,
+    getAwardListDContext,
+    addAwardDContext,
+    awardDetailByIdDContext,
+    editAwardDContext,
+    deleteAwardDContext
   };
   return (
     <>

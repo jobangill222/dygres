@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react'
+import React, { useState, useRef, useContext, useEffect } from 'react'
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/esm/Container";
@@ -12,11 +12,49 @@ import { useForm } from "react-hook-form";
 import { DContext } from "../../../Context/DContext";
 import { useNavigate } from "react-router-dom";
 
-export default function AddAward() {
 
-    const { isLoading, setIsLoading, addAwardDContext } = useContext(DContext);
+import { useParams } from "react-router-dom";
 
+
+
+export default function EditAward() {
+
+    const { isLoading, setIsLoading, awardDetailByIdDContext, editAwardDContext } = useContext(DContext);
     const navigate = useNavigate();
+
+    let { awardID } = useParams();
+
+    // Define State
+    const [awardFiledsState, setAwardFieldsState] = useState({
+        name: "",
+        status: "",
+        image: "",
+    });
+
+    useEffect(() => {
+        getAwardDetails(awardID);
+    }, [awardID])
+
+    const getAwardDetails = async (awardID) => {
+        // console.log('awardDetailByIdDContextawardDetailByIdDContext=----', awardID)
+        const axiosRes = await awardDetailByIdDContext(awardID);
+        console.log('axiosResaxiosResaxiosResaxiosResaxiosRes', axiosRes)
+        //Set values in state
+        let dataFields = {
+            name: axiosRes.data[0]?.name
+                ? axiosRes.data[0].name
+                : "",
+            image: axiosRes.data[0]?.image
+                ? axiosRes.data[0].image
+                : "/images/user172.png",
+            status: axiosRes.data[0]?.status ? axiosRes.data[0].status : "",
+        };
+        setAwardFieldsState(dataFields);
+
+        setFile(axiosRes.data[0]?.image)
+        // console.log('awardFiledsStateawardFiledsStateawardFiledsState', awardFiledsState)
+    }
+
 
     //Set file state
     const [file, setFile] = useState();
@@ -27,7 +65,7 @@ export default function AddAward() {
 
         const imageSize = e.target.files[0].size;
         const imageType = e.target.files[0].type;
-        console.log("imageType", imageType);
+        // console.log("imageType", imageType);
 
         if (imageSize > 10485760) {
             toast("Images must be smaller than 10 MB.");
@@ -47,15 +85,23 @@ export default function AddAward() {
     };
 
 
-
-
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setValue, reset
     } = useForm();
+
+    useEffect(() => {
+        // console.log(awardFiledsState);
+        if (awardFiledsState.name !== "") {
+            // console.log("apply fields");
+            reset(awardFiledsState);
+        }
+    }, [awardFiledsState]);
+
     const handleRegistration = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         if (!file) {
             toast("Please upload thumbnail.");
@@ -63,25 +109,23 @@ export default function AddAward() {
         }
         try {
             setIsLoading(true);
-
             //Convert to Bodyfrom data
             var bodyFormData = new FormData();
+            bodyFormData.append("awardID", awardID);
             bodyFormData.append("name", data.name);
             bodyFormData.append("status", data.status);
             bodyFormData.append("image", file);
 
-            const axiosRes = await addAwardDContext(bodyFormData);
+            const axiosRes = await editAwardDContext(bodyFormData);
 
-            console.log('axiosRes', axiosRes)
             if (axiosRes.status === "success") {
-                toast('Award added successfully.');
+                toast('Award edit successfully.');
                 navigate("/admin/awardList");
             } else {
                 toast('Unable to create award.');
             }
 
             setIsLoading(false);
-
 
         } catch (err) {
             console.log(err);
@@ -109,7 +153,7 @@ export default function AddAward() {
             <div className="dashboard-title-bar addawardsadmin">
                 <Row>
                     <Col lg="6">
-                        <h4>Add award</h4>
+                        <h4>Edit award</h4>
                     </Col>
                 </Row>
                 <div className="addawards-editorbar">
@@ -122,6 +166,8 @@ export default function AddAward() {
                                         type="text"
                                         placeholder="Enter award name"
                                         {...register("name", registerOptions.name)}
+                                        onChange={(e) => setValue('name', e.target.value)}
+
                                     />
                                     <small className="text-danger">
                                         {errors?.name && errors.name.message}
@@ -155,7 +201,7 @@ export default function AddAward() {
                                     <div className="Uploaded-user">
                                         <div className="Imagebar">
                                             <img
-                                                src="/images/user172.png"
+                                                src={awardFiledsState?.image ? awardFiledsState.image : "/images/user172.png"}
                                                 alt="icon"
                                                 id="output"
                                                 ref={imageRef}
@@ -177,7 +223,7 @@ export default function AddAward() {
 
                                 <div className="text-start mt-3 save-form-btn" >
                                     <Button className="bg-primary text-white" type="submit">
-                                        Add award
+                                        Edit award
                                     </Button>
                                 </div>
                             </form>
