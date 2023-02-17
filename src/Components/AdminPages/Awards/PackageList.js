@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState }  from 'react'
 import { Link } from "react-router-dom";
 
 import Container from "react-bootstrap/esm/Container";
@@ -6,13 +6,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 
-
-
 import { DContext } from "../../../Context/DContext";
+
 import SingleAwardList from "./SingleAwardList";
 
-export default function AwardList() {
-
+export default function PackageList() {
     const { getAwardListDContext } = useContext(DContext);
 
     useEffect(() => {
@@ -31,11 +29,10 @@ export default function AwardList() {
 
     return (
         <Container>
-            {console.log('awardListState', awardListState)}
             <div className="dashboard-title-bar">
                 <Row>
                     <Col lg="6">
-                        <h4>Awards</h4>
+                        <h4>Add package</h4>
                     </Col>
                     <Col lg="6">
 
@@ -45,11 +42,11 @@ export default function AwardList() {
                     <Col lg="12">
                         <div className='flexbar'>
                             <ul className='admintable-tabs'>
-                                <li><Link className='tabbtn active' to='/'>Awards</Link></li>
-                                <li><Link className='tabbtn' to='/admin/packagelist'>Packages</Link></li>
+                                <li><Link className='tabbtn ' to='/admin/awardList'>Awards</Link></li>
+                                <li><Link className='tabbtn active' to='/'>Packages</Link></li>
                             </ul>
                             <ul className='admintable-tabs'>
-                                <li><Link className='addbtn' to='/admin/addaward'>+Add award</Link></li>
+                                <li><Link className='addbtn' to='/admin/addpackage'>+Add Package</Link></li>
                             </ul>
                         </div>
                     </Col>

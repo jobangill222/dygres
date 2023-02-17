@@ -3138,7 +3138,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   color: #000000;
 }
 
-.flexbar ul.admintable-tabs a.addbtn {
+.addbtn {
   border-radius: 6px;
   border-style: solid;
   border: 3px solid;
@@ -3162,6 +3162,16 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 .user-dropdown .Dropdown-listing .deltebtn {
   color: #DE210D !important;
+}
+.addpack {
+  margin: 30px 0;
+}
+.crosicon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
 }
 .tabswithbutotn .buttonoverall-size {
   position: absolute;
@@ -3913,17 +3923,6 @@ ul.sidebar-menu {
   margin-top: 20px;
 }
 
-/* .image-uploaded-class button.bg-primary {
-  opacity: 0;
-  transform: translate(0px, 10px);
-  visibility: hidden;
-}
-
-.image-uploaded-class:hover button.bg-primary {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(0px, 0px);
-} */
 .imagebarupload {
   display: flex;
   align-items: center;
@@ -4123,6 +4122,38 @@ ul.sidebar-menu {
   height: 200px;
   object-fit: contain;
   overflow: hidden;
+}
+.package-listtb {
+  max-width: 420px;
+}
+
+.package-listtb tr td , .package-listtb tr th {
+  border: none;
+  vertical-align: middle;
+}
+
+.package-listtb tr th {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #AAAAAA;
+}
+.package-listtb tr td img {
+  border: 0.4px solid #DDDDDD;
+  border-radius: 119.628px;
+  margin-right: 12px;
+  width: 51px;
+  height: 51px;
+}
+.package-listtb tr td {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #171717;
+}
+
+.package-listtb tr td:first-child {
+  color: #aaaaaa;
 }
 /* Responsive css  */
 @media (max-width: 1599px) {
