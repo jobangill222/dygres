@@ -177,7 +177,7 @@ export default function AddAward() {
 
                                 <div className="text-start mt-3 save-form-btn" >
                                     <Button className="bg-primary text-white" type="submit">
-                                        Add award
+                                        Submit
                                     </Button>
                                 </div>
                             </form>

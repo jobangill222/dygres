@@ -45,15 +45,17 @@ import WhatsMind from "./Components/WhatsMind";
 
 import UsersProfile from "./Components/Profile/UsersProfile";
 
-import AwardList from "./Components/AdminPages/Awards/AwardList";
-
-
 
 import { DProvider } from "./Context/DContext";
+
+import AwardList from "./Components/AdminPages/Awards/AwardList";
 import AddAward from "./Components/AdminPages/Awards/AddAward";
 import EditAward from "./Components/AdminPages/Awards/EditAward";
+
 import PackageList from "./Components/AdminPages/Awards/PackageList";
 import AddPackage from "./Components/AdminPages/Awards/AddPackage";
+import EditPackage from "./Components/AdminPages/Awards/EditPackage";
+
 
 
 function App() {
@@ -127,14 +129,15 @@ function App() {
               <Route exact path="admin/sendnotification" element={<SendNotification />} />
               <Route exact path="admin/flagpost/:userID" element={<FlagPost />} />
               <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />} />
-              
-              <Route exact path="admin/addaward" element={<AddAward />} />
-              <Route exact path="admin/addpackage" element={<AddPackage />} />
-              <Route exact path="admin/packagelist" element={<PackageList />} />
-              <Route exact path="admin/editaward/:awardID" element={<EditAward />} />
 
               <Route exact path="admin/awardList" element={<AwardList />} />
+              <Route exact path="admin/addaward" element={<AddAward />} />
+              <Route exact path="admin/editaward/:awardID" element={<EditAward />} />
 
+
+              <Route exact path="admin/packagelist" element={<PackageList />} />
+              <Route exact path="admin/addpackage" element={<AddPackage />} />
+              <Route exact path="admin/editpackage/:packageID" element={<EditPackage />} />
 
 
             </Route>

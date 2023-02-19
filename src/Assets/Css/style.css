@@ -2886,7 +2886,12 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .usertable table thead th {
-  background: linear-gradient(180deg, rgb(33 160 218 / 10%) -28.9%, rgb(157 211 130 / 10%) 100%), #FFFFFF;
+  background: linear-gradient(
+      180deg,
+      rgb(33 160 218 / 10%) -28.9%,
+      rgb(157 211 130 / 10%) 100%
+    ),
+    #ffffff;
   padding: 15px 30px !important;
   font-weight: 600;
   font-size: 18px;
@@ -2937,7 +2942,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .usertable table tbody tr td .number-bar .user-dropdown svg {
   cursor: pointer;
 }
-.usertable table tbody tr td , .usertable table tbody tr th{
+.usertable table tbody tr td,
+.usertable table tbody tr th {
   vertical-align: middle;
 }
 .usertable table img {
@@ -3117,7 +3123,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .flexbar ul.admintable-tabs a.tabbtn {
-  background: #ECECEC;
+  background: #ececec;
   border-radius: 5px;
   width: 190px;
   height: 45px;
@@ -3129,11 +3135,11 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-size: 16px;
   line-height: 19px;
   text-align: center;
-  color: #8B8B8B;
+  color: #8b8b8b;
 }
 
 .flexbar ul.admintable-tabs a.tabbtn.active {
-  background: linear-gradient(180deg, #21A0DA -28.9%, #9DD382 100%), #FFFFFF;
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   border-radius: 5px;
   color: #000000;
 }
@@ -3154,14 +3160,14 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
-  background: linear-gradient(180deg, #21A0DA -28.9%, #9DD382 100%), #FFFFFF;
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
 }
 .user-dropdown .Dropdown-listing .deltebtn {
-  color: #DE210D !important;
+  color: #de210d !important;
 }
 .addpack {
   margin: 30px 0;
@@ -4127,7 +4133,8 @@ ul.sidebar-menu {
   max-width: 420px;
 }
 
-.package-listtb tr td , .package-listtb tr th {
+.package-listtb tr td,
+.package-listtb tr th {
   border: none;
   vertical-align: middle;
 }
@@ -4136,10 +4143,10 @@ ul.sidebar-menu {
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
 .package-listtb tr td img {
-  border: 0.4px solid #DDDDDD;
+  border: 0.4px solid #dddddd;
   border-radius: 119.628px;
   margin-right: 12px;
   width: 51px;
@@ -4733,9 +4740,9 @@ ul.sidebar-menu {
     display: block;
   }
 
-  .mob-none {
+  /* .mob-none {
     display: none !important;
-  }
+  } */
 
   .mainheader {
     padding: 15px 0;

@@ -109,6 +109,7 @@ const Header = () => {
                   </Link>
                 </>
               ) : null}
+
               <div className="text-lightgray" href="#">
                 <DarkModeSwitch />
               </div>
@@ -212,21 +213,28 @@ const Header = () => {
                 </>
               ) : null}
             </Nav>
-            <div className="mobilemenu">
-              <ul className="web-none">
-                <li>
-                  <Link to="/notfound">
-                    <BsSearch />
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/notification">
-                    <BsBell />
-                  </Link>
-                </li>
-              </ul>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            </div>
+
+
+
+            {userToken ? (
+              <div className="mobilemenu">
+                <ul className="web-none">
+                  <li>
+                    <Link to="/notfound">
+                      <BsSearch />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/notification">
+                      <BsBell />
+                    </Link>
+                  </li>
+                </ul>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              </div>
+            ) : null}
+
+
           </div>
           <Navbar.Collapse id="basic-navbar-nav">
             <ul className="sidebar-menu">

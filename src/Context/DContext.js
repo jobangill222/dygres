@@ -1423,6 +1423,158 @@ export const DProvider = (props) => {
       console.log("Some issue while delete award (DContext.js) - ", err);
     }
   };
+
+
+  const getAllPackageListAdminDContext = async () => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/admin/award/package-list`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get admin package (DContext.js) - ", err);
+    }
+  };
+
+
+  const createPackageAdminDContext = async (bodyFormData) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/create-package`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: bodyFormData,
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while add award (DContext.js) - ", err);
+    }
+  };
+
+
+  const editpackageAdminDContext = async (bodyFormData) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/edit-package`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: bodyFormData
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while edit package (DContext.js) - ", err);
+    }
+  };
+
+
+  const packageDetailByIdAdminDContext = async (packageID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/package-detail-by-id`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          packageID: packageID,
+        }
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get single ward detail (DContext.js) - ", err);
+    }
+  };
+
+
+  const removeAwardFromPackageAdminDContext = async (packageID, awardID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/remove-award-from-package`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          packageID: packageID,
+          awardID: awardID
+        }
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while delete package (DContext.js) - ", err);
+    }
+  };
+
+
+  const addAwardToPackageAdminDContext = async (packageID, awardID, awardCount) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/add-award-to-package`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          packageID: packageID,
+          awardID: awardID,
+          awardCount: awardCount
+        }
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while add award to package (DContext.js) - ", err);
+    }
+  };
+
+
+  const deletePackageAdminDContext = async (packageID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/award/delete-package`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          packageID: packageID,
+        }
+      });
+
+      console.log("axiosRes=========", axiosRes);
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while delete package (DContext.js) - ", err);
+    }
+  };
+
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -1524,7 +1676,14 @@ export const DProvider = (props) => {
     addAwardDContext,
     awardDetailByIdDContext,
     editAwardDContext,
-    deleteAwardDContext
+    deleteAwardDContext,
+    getAllPackageListAdminDContext,
+    createPackageAdminDContext,
+    editpackageAdminDContext,
+    packageDetailByIdAdminDContext,
+    removeAwardFromPackageAdminDContext,
+    addAwardToPackageAdminDContext,
+    deletePackageAdminDContext
   };
   return (
     <>

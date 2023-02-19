@@ -223,7 +223,7 @@ export default function EditAward() {
 
                                 <div className="text-start mt-3 save-form-btn" >
                                     <Button className="bg-primary text-white" type="submit">
-                                        Edit award
+                                        Submit
                                     </Button>
                                 </div>
                             </form>

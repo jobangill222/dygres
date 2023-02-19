@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 
+import Loader from "../../Loader";
 
 
 import { DContext } from "../../../Context/DContext";
@@ -13,9 +14,10 @@ import SingleAwardList from "./SingleAwardList";
 
 export default function AwardList() {
 
-    const { getAwardListDContext } = useContext(DContext);
+    const { isLoading, setIsLoading, getAwardListDContext } = useContext(DContext);
 
     useEffect(() => {
+        setIsLoading(true);
         getAwards();
     }, []);
 
@@ -27,11 +29,14 @@ export default function AwardList() {
         if (axiosRes.status === "success") {
             setAwardListState(axiosRes.list);
         }
+        setIsLoading(false);
     }
 
     return (
         <Container>
-            {console.log('awardListState', awardListState)}
+            {isLoading && <Loader />}
+
+            {/* {console.log('awardListState', awardListState)} */}
             <div className="dashboard-title-bar">
                 <Row>
                     <Col lg="6">
@@ -71,7 +76,7 @@ export default function AwardList() {
                         {awardListState.length ? awardListState.map((singleAward) => (
                             <SingleAwardList key={singleAward._id} singleAward={singleAward} awardListState={awardListState} setAwardListState={setAwardListState} />
                         )) : <div className="empty-bar">
-                            <img src="/images/avatr.jpg" alt='dummy' />
+                            <img src="/images/empty.png" alt='dummy' />
                             <h4>Empty List</h4>
                         </div>}
 

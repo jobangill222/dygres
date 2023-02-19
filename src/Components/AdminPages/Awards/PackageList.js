@@ -1,34 +1,40 @@
-import React, { useContext, useEffect, useState }  from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 
 import Container from "react-bootstrap/esm/Container";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
+import Loader from "../../Loader";
 
 import { DContext } from "../../../Context/DContext";
 
-import SingleAwardList from "./SingleAwardList";
+import SinglePackageList from "./SinglePackageList";
 
 export default function PackageList() {
-    const { getAwardListDContext } = useContext(DContext);
+    const { isLoading, setIsLoading, getAllPackageListAdminDContext } = useContext(DContext);
 
     useEffect(() => {
-        getAwards();
+        setIsLoading(true);
+        getPackageList();
     }, []);
 
 
-    const [awardListState, setAwardListState] = useState([]);
-    const getAwards = async () => {
-        const type = 'all';
-        const axiosRes = await getAwardListDContext(type);
+    const [packageListState, setPackageListState] = useState([]);
+    const getPackageList = async () => {
+        const axiosRes = await getAllPackageListAdminDContext();
+        console.log('axiosResaxiosResaxiosResaxiosRes', axiosRes)
         if (axiosRes.status === "success") {
-            setAwardListState(axiosRes.list);
+            setPackageListState(axiosRes.list);
         }
+        setIsLoading(false);
     }
 
     return (
         <Container>
+            {isLoading && <Loader />}
+
+            {/* {console.log('packageListStatepackageListStatepackageListState', packageListState)} */}
             <div className="dashboard-title-bar">
                 <Row>
                     <Col lg="6">
@@ -58,21 +64,20 @@ export default function PackageList() {
                 <Table size="sm">
                     <thead>
                         <tr>
-                            <th>Award Image</th>
-                            <th>Award Name</th>
-                            <th>Status</th>
+                            <th>Package Image</th>
+                            <th>Package Name</th>
+                            <th>No. Of Awards</th>
+                            <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        {awardListState.length ? awardListState.map((singleAward) => (
-                            <SingleAwardList key={singleAward._id} singleAward={singleAward} awardListState={awardListState} setAwardListState={setAwardListState} />
+                        {packageListState.length ? packageListState.map((singlePackage) => (
+                            <SinglePackageList key={singlePackage._id} singlePackage={singlePackage} packageListState={packageListState} setPackageListState={setPackageListState} />
                         )) : <div className="empty-bar">
-                            <img src="/images/avatr.jpg" alt='dummy' />
+                            <img src="/images/empty.png" alt='dummy' />
                             <h4>Empty List</h4>
                         </div>}
-
-
 
                     </tbody>
                 </Table>
