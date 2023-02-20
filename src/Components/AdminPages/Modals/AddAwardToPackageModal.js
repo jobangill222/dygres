@@ -72,43 +72,48 @@ export default function AddAwardToPackageModal(props) {
                 <Modal.Body>
 
                     <Form>
+                        <div className='selectawards-scrollbar'>
+                            <Row>
 
-                        <Row>
-                            {paidAwardListState.length ? paidAwardListState.map((award) => (
-                                <Col className="col-md-4" key={award._id} onClick={() => setSelectedAwardState(award._id)} >
-                                    <div className="Awrds-li">
-                                        <div className={selectedAwardState && selectedAwardState.includes(award._id) ? 'active awards - img' : 'awards - img'}>
-                                            < img src={award?.image ? award.image : "/gif/thumbsdown2.gif"} alt="img" />
-                                            <h5>{award?.name ? award?.name : ''}</h5>
+                                {paidAwardListState.length ? paidAwardListState.map((award) => (
+                                    <Col className="col-md-3" key={award._id} onClick={() => setSelectedAwardState(award._id)} >
+                                        <div className="Awrds-li">
+                                            <div className={selectedAwardState && selectedAwardState.includes(award._id) ? 'active awards - img' : 'awards - img'}>
+                                                <img src={award?.image ? award.image : "/gif/thumbsdown2.gif"} alt="img" />
+                                                <h5>{award?.name ? award?.name : ''}</h5>
+                                            </div>
                                         </div>
+                                    </Col>
+                                )) : <>
+                                    {/* <img src="/images/empty.png" alt='dummy' /> */}
+                                    <div className="empty-bar">
+                                        <img src="/images/empty.png" alt='dummy' />
+                                        <h4>No Award</h4>
                                     </div>
-                                </Col>
-                            )) : <>
-                                {/* <img src="/images/empty.png" alt='dummy' /> */}
-                                <div className="empty-bar">
-                                    <img src="/images/empty.png" alt='dummy' />
-                                    <h4>No Award</h4>
-                                </div>
-                            </>}
-
-                        </Row>
-
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Award Count</Form.Label>
-                            <Form.Control
-                                type="number"
-                                placeholder="Enter Award Count."
-                                onChange={(e) => setAwardCountState(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
+                                </>}
 
 
-                        <Form.Group>
-                            <Button variant="primary" type="submit" onClick={addAwardToPackageSubmit}  >
-                                Submit
-                            </Button>
-                        </Form.Group>
+                            </Row>
+                        </div>
+                        <div className='awardscountbar'>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Award Count</Form.Label>
+                                <Form.Control
+                                    type="number"
+                                    placeholder="Enter Award Count."
+                                    onChange={(e) => setAwardCountState(e.target.value)}
+                                    required
+                                />
+                            </Form.Group>
+
+
+                            <Form.Group>
+                                <Button variant="primary" type="submit" onClick={addAwardToPackageSubmit}  >
+                                    Submit
+                                </Button>
+                            </Form.Group>
+                        </div>
+
                     </Form>
                 </Modal.Body >
             </Modal >

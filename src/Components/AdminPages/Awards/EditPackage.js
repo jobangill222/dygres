@@ -189,10 +189,15 @@ export default function EditAward() {
                         <Col lg="6">
                             <h4>Edit Package</h4>
                         </Col>
+                        <Col lg="6">
+                            <div className='addpack m-0 align-right' onClick={() => setAddAwardPopupState(true)}>
+                                <Link className='addbtn' >+ Add Award</Link>
+                            </div>
+                        </Col>
                     </Row>
                     <div className="addawards-editorbar">
                         <Row>
-                            <Col lg="6">
+                            <Col lg="6" className='addpackbox'>
                                 <form onSubmit={handleSubmit(handleRegistration, handleError)}>
                                     <Form.Group className="editor-input" controlId="">
                                         <Form.Label>Package name</Form.Label>
@@ -269,10 +274,9 @@ export default function EditAward() {
                                 </form>
 
 
+                            </Col>
+                            <Col lg="6" className='particitionbar addpackbox'>
 
-                                <div className='addpack' onClick={() => setAddAwardPopupState(true)}>
-                                    <Link className='addbtn' >+ Add Award</Link>
-                                </div>
 
                                 <Table className='package-listtb'>
                                     <thead>
@@ -293,21 +297,18 @@ export default function EditAward() {
                                                 <td><button className='crosicon' onClick={() => removeAwadFromPackage(awardDetail.awardID._id)} ><FaTimes /></button></td>
                                             </tr>
                                         )) :
-                                            <div className="empty-bar">
-                                                <img src="/images/empty.png" alt='dummy' />
-                                                <h4>Empty List</h4>
-                                            </div>}
+                                            null}
 
                                     </tbody>
                                 </Table>
 
-                                {/* {awardOfPackageState.length === 0 ?
-                                <div className="empty-bar">
-                                    <img src="/images/empty.png" alt='dummy' />
-                                    <h4>Empty List</h4>
-                                </div>
-                                :
-                                null} */}
+                                {awardOfPackageState.length === 0 ?
+                                    <div className="empty-bar">
+                                        <img src="/images/empty.png" alt='dummy' />
+                                        <h4>Empty List</h4>
+                                    </div>
+                                    :
+                                    null}
 
 
 

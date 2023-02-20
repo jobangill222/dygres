@@ -71,7 +71,8 @@ const SinglePostList = (props) => {
                                 <>
                                     <PostContent postContent={postContent} />
                                     {parentPostID !== null &&
-                                        <div onClick={() => viewParentPostDetail(parentPostID)}>
+                                        // <div onClick={() => viewParentPostDetail(parentPostID)}>
+                                        <div >
                                             <PostRetweetFrom parentPostDetail={parentPostDetail} />
                                         </div>
                                     }

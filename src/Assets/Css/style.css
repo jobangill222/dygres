@@ -4095,9 +4095,21 @@ ul.sidebar-menu {
   font-size: 16px;
   margin: 0;
 }
-
+.particitionbar {
+  border: 3px solid;
+  border-image-slice: 1 !important;
+  border-width: 2px;
+  border-image-source: linear-gradient(to left, #98d185, #40adc3) !important;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.addpackbox {
+  padding: 0 50px;
+}
 .digital-feeds .digital-feeds.diffrentiate-bar {
   margin-left: 30px;
+  margin-bottom: 20px;
   margin-top: 20px;
   border: 1px solid #d3d3d3;
 }
@@ -4130,7 +4142,7 @@ ul.sidebar-menu {
   overflow: hidden;
 }
 .package-listtb {
-  max-width: 420px;
+  max-width: 100%;
 }
 
 .package-listtb tr td,
@@ -4161,6 +4173,61 @@ ul.sidebar-menu {
 
 .package-listtb tr td:first-child {
   color: #aaaaaa;
+}
+.addpack.align-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.selectawards-scrollbar {
+  max-height: 340px;
+  overflow: scroll;
+}
+
+.Editreportmodal .Awrds-li img,
+.Actions-modal .Awrds-li img {
+  margin-bottom: 20px;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+.selectawards-scrollbar .Awrds-li svg.showicon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(to left, #98d185, #40adc3) !important;
+  padding: 5px;
+  font-size: 16px;
+  color: #ffffff;
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  display: none;
+}
+.selectawards-scrollbar .Awrds-li .active svg.showicon {
+  opacity: 1;
+  display: block;
+}
+.thredsbar .thredsbar .thredsbar {
+  max-height: 100% !important;
+}
+.selectawards-scrollbar .Awrds-li .awards {
+  border: 1px solid transparent;
+}
+.selectawards-scrollbar .Awrds-li .active {
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid;
+  border-image-slice: 1 !important;
+  border-width: 1px;
+  border-image-source: linear-gradient(to left, #98d185, #40adc3) !important;
+}
+.Editreportmodal .modal-body {
+  height: auto;
+  overflow: hidden;
+}
+.awardscountbar button.btn {
+  margin-top: 20px;
 }
 /* Responsive css  */
 @media (max-width: 1599px) {
@@ -4299,10 +4366,6 @@ ul.sidebar-menu {
 
   .dashboard-title-bar select.form-select {
     font-size: 18px;
-  }
-
-  .dashboard-title-bar .row {
-    align-items: center;
   }
 
   .dashboard-boxes .dash-boxes-in ul.weekly-status li h4 {
@@ -4758,7 +4821,14 @@ ul.sidebar-menu {
   .btn-outline-primary {
     padding: 10px 20px;
   }
-
+  .addpack.m-0 {
+    margin: 0;
+  }
+  .addpack.align-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
   .mobilemenu ul.web-none {
     display: flex;
     align-items: center;

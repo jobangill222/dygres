@@ -37,20 +37,38 @@ export default function SingleNotificationList(props) {
     return (
         <>
 
-            <div className="relative notification-content unreadmark">
-                <div className="user-detail-bar">
-                    <div className="detailleft">
-                        <SingleNotificationHead singleNotification={singleNotification} />
-                    </div>
-                    <div className="user-active-timer">
-                        <ul>
-                            <li onClick={handleShow} className="text-green"><RiDeleteBin6Line /></li>
-                        </ul>
+            {singleNotification?.actionPerformed === "from_admin" ?
+
+                <div className="relative notification-content unreadmark">
+                    <div className="user-detail-bar">
+                        <div className="admin-notification-text notification-text">
+                            <p className='notify'>{singleNotification?.description}</p>
+                            {/* <p>gray</p>
+                            <p className='notify'>{singleNotification?.description}</p> */}
+                        </div>
+                        <div className="user-active-timer">
+                            <ul>
+                                <li onClick={handleShow} className="text-green"><RiDeleteBin6Line /></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <SingleNotificationContent singleNotification={singleNotification} />
-            </div>
+                :
+                <div className="relative notification-content unreadmark">
+                    <div className="user-detail-bar">
+                        <div className="detailleft">
+                            <SingleNotificationHead singleNotification={singleNotification} />
+                        </div>
+                        <div className="user-active-timer">
+                            <ul>
+                                <li onClick={handleShow} className="text-green"><RiDeleteBin6Line /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <SingleNotificationContent singleNotification={singleNotification} />
+                </div>
 
+            }
 
             {/* Delete modal */}
             <Modal className="Actions-modal  deletemodal" show={show} onHide={handleClose} centered>
