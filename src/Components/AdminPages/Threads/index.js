@@ -114,7 +114,7 @@ const Threads = (props) => {
     return (
         <>
 
-            <div className='accordionitem' ref={scollToRef}>
+            <div className='accordionitem p-0' ref={scollToRef}>
 
 
                 {commentListState.length ?
