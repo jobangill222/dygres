@@ -82,9 +82,13 @@ const UserVerification = () => {
                         </div>
                     </div>
                     <div className="verification-media-upload">
-                        <div className="mediabar">
-                            <img src={humanVerificationDetailState && humanVerificationDetailState?.verificationImage ? humanVerificationDetailState.verificationImage : "/images/user-verify.png"} alt="img" />
-                        </div>
+                        {humanVerificationDetailState && humanVerificationDetailState.isPhotoVerify === 3 ?
+                            <div className="mediabar">
+                                <img src={humanVerificationDetailState && humanVerificationDetailState?.verificationImage ? humanVerificationDetailState.verificationImage : "/images/user-verify.png"} alt="img" />
+                            </div>
+                            : null
+                        }
+
                         <div className="verify-content">
                             <div className="formbar">
                                 <label>E-mail:</label>
@@ -113,7 +117,7 @@ const UserVerification = () => {
                                                 <Button className="bg-primary text-white">Declined</Button>
                                             </>
                                             : <>
-                                                <Button className="bg-primary text-white">No Human Verification Request</Button>
+                                                <Button className="bg-primary text-white">No Verification Request</Button>
                                             </>
                                 }
                             </div>

@@ -40,40 +40,52 @@ export default function ThreadFoot(props) {
         }
     }, [is_disagree])
 
+
+    const [agreeDisagreeButtonDisableState, setAgreeDisagreeButtonDisableState] = useState(false);
+
+
     // Aggree Comment
     const agreeComment = async (commentID) => {
-        const agreeAxiosRes = await agreeUnagreeCommentDContext(commentID);
-        if (agreeAxiosRes.status === "success") {
-            if (agreeAxiosRes.action === "agree") {
-                let newAgreeCountWhenAgree = agreeCountState + 1;
-                setAgreeCountState(newAgreeCountWhenAgree);
-                setIsAgreeState(true);
+        if (!agreeDisagreeButtonDisableState) {
+            setAgreeDisagreeButtonDisableState(true)
+            const agreeAxiosRes = await agreeUnagreeCommentDContext(commentID);
+            if (agreeAxiosRes.status === "success") {
+                if (agreeAxiosRes.action === "agree") {
+                    let newAgreeCountWhenAgree = agreeCountState + 1;
+                    setAgreeCountState(newAgreeCountWhenAgree);
+                    setIsAgreeState(true);
+                } else {
+                    let newAgreeCountWhenUnagree = agreeCountState - 1;
+                    setAgreeCountState(newAgreeCountWhenUnagree);
+                    setIsAgreeState(false);
+                }
             } else {
-                let newAgreeCountWhenUnagree = agreeCountState - 1;
-                setAgreeCountState(newAgreeCountWhenUnagree);
-                setIsAgreeState(false);
+                toast(agreeAxiosRes.message);
             }
-        } else {
-            toast(agreeAxiosRes.message);
+            setAgreeDisagreeButtonDisableState(false)
         }
     };
 
     // DisAggree Comment
     const DisagreeComment = async (commentID) => {
-        const disagreeAxiosRes = await disagreeUnDisagreeCommentDContext(commentID);
-        if (disagreeAxiosRes.status === "success") {
-            if (disagreeAxiosRes.action === "disagree") {
-                let newDisAgreeCountWhenDisAgree = disagreeCountState + 1;
-                setDisagreeCountState(newDisAgreeCountWhenDisAgree);
-                setIsDisagreeState(true);
-            } else {
-                let newDisAgreeCountWhenUnDisagree = disagreeCountState - 1;
-                setDisagreeCountState(newDisAgreeCountWhenUnDisagree);
-                setIsDisagreeState(false);
+        if (!agreeDisagreeButtonDisableState) {
+            setAgreeDisagreeButtonDisableState(true)
+            const disagreeAxiosRes = await disagreeUnDisagreeCommentDContext(commentID);
+            if (disagreeAxiosRes.status === "success") {
+                if (disagreeAxiosRes.action === "disagree") {
+                    let newDisAgreeCountWhenDisAgree = disagreeCountState + 1;
+                    setDisagreeCountState(newDisAgreeCountWhenDisAgree);
+                    setIsDisagreeState(true);
+                } else {
+                    let newDisAgreeCountWhenUnDisagree = disagreeCountState - 1;
+                    setDisagreeCountState(newDisAgreeCountWhenUnDisagree);
+                    setIsDisagreeState(false);
+                }
             }
-        }
-        else {
-            toast(disagreeAxiosRes.message);
+            else {
+                toast(disagreeAxiosRes.message);
+            }
+            setAgreeDisagreeButtonDisableState(false)
         }
     };
 

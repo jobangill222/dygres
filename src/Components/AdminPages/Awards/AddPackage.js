@@ -77,7 +77,7 @@ export default function AddPackage() {
             console.log('axiosRes', axiosRes)
             if (axiosRes.status === "success") {
                 toast('Package create successfully, Please add award with this package.');
-                navigate("/admin/packagelist");
+                navigate("/admin/editpackage/" + axiosRes.data._id);
             } else {
                 toast('Unable to create package.');
             }

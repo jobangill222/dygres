@@ -7,7 +7,7 @@ import Loader from "../Components/Loader";
 
 const New = () => {
   //Functions to call api
-  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, setSearchState } = useContext(DContext);
+  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, setSearchState, getOfficialPostDContext } = useContext(DContext);
 
 
   //State for active tab like: global , follwing, officials
@@ -87,7 +87,7 @@ const New = () => {
       getFollowingPosts();
     }
     if (activeTabState === "Official") {
-      // getOfficialPosts();
+      getOfficialPosts();
     }
     setPlaceholderState(title[Math.floor(Math.random() * title.length)]);
 
@@ -143,6 +143,25 @@ const New = () => {
     }
   };
 
+
+  //Get Official post
+  const getOfficialPosts = async () => {
+    try {
+      setIsLoading(true);
+      //Api call
+      let pageNumberOfPostList = 1;
+      const search = null;
+      const axiosRes = await getOfficialPostDContext(search, pageNumberOfPostList);
+      console.log("axiosRes********* after get official posts", axiosRes);
+      if (axiosRes.status === "success") {
+        setPostList(axiosRes.list);
+      }
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   //Append next post list
   const appendNextList = async () => {
     let currentPage = localStorage.getItem("currentPage");
@@ -158,6 +177,10 @@ const New = () => {
     if (activeTabState === "Following") {
       const search = null;
       axiosRes = await getFollowingPostDContext(search, pageNumberOfPostList);
+    }
+    if (activeTabState === "Official") {
+      const search = null;
+      axiosRes = await getOfficialPostDContext(search, pageNumberOfPostList);
     }
     console.log(
       "axiosRes********* after get global posts on page",

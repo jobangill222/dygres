@@ -94,40 +94,50 @@ const PostFoot = (props) => {
   }, [is_report]);
 
 
+  const [agreeDisagreeButtonDisableState, setAgreeDisagreeButtonDisableState] = useState(false);
+
   // Aggree Modal
   const AgreePost = async (postID) => {
-    const agreeAxiosRes = await agreeUnagreePost(postID);
-    if (agreeAxiosRes.status === "success") {
-      if (agreeAxiosRes.action === "agree") {
-        let newAgreeCountWhenAgree = postAgreeCount + 1;
-        setPostAgreeCount(newAgreeCountWhenAgree);
-        setIsAgree(true);
+    if (!agreeDisagreeButtonDisableState) {
+      setAgreeDisagreeButtonDisableState(true)
+      const agreeAxiosRes = await agreeUnagreePost(postID);
+      if (agreeAxiosRes.status === "success") {
+        if (agreeAxiosRes.action === "agree") {
+          let newAgreeCountWhenAgree = postAgreeCount + 1;
+          setPostAgreeCount(newAgreeCountWhenAgree);
+          setIsAgree(true);
+        } else {
+          let newAgreeCountWhenUnagree = postAgreeCount - 1;
+          setPostAgreeCount(newAgreeCountWhenUnagree);
+          setIsAgree(false);
+        }
       } else {
-        let newAgreeCountWhenUnagree = postAgreeCount - 1;
-        setPostAgreeCount(newAgreeCountWhenUnagree);
-        setIsAgree(false);
+        toast(agreeAxiosRes.message);
       }
-    } else {
-      toast(agreeAxiosRes.message);
+      setAgreeDisagreeButtonDisableState(false)
     }
   };
 
   // DisAggree Modal
   const DisAgreePost = async (postID) => {
-    const disagreeAxiosRes = await disAgreeUnDisAgreePost(postID);
-    if (disagreeAxiosRes.status === "success") {
-      if (disagreeAxiosRes.action === "disagree") {
-        let newDisAgreeCountWhenDisAgree = postDisAgreeCount + 1;
-        setPostDisAgreeCount(newDisAgreeCountWhenDisAgree);
-        setIsDisAgree(true);
-      } else {
-        let newDisAgreeCountWhenUnDisagree = postDisAgreeCount - 1;
-        setPostDisAgreeCount(newDisAgreeCountWhenUnDisagree);
-        setIsDisAgree(false);
+    if (!agreeDisagreeButtonDisableState) {
+      setAgreeDisagreeButtonDisableState(true)
+      const disagreeAxiosRes = await disAgreeUnDisAgreePost(postID);
+      if (disagreeAxiosRes.status === "success") {
+        if (disagreeAxiosRes.action === "disagree") {
+          let newDisAgreeCountWhenDisAgree = postDisAgreeCount + 1;
+          setPostDisAgreeCount(newDisAgreeCountWhenDisAgree);
+          setIsDisAgree(true);
+        } else {
+          let newDisAgreeCountWhenUnDisagree = postDisAgreeCount - 1;
+          setPostDisAgreeCount(newDisAgreeCountWhenUnDisagree);
+          setIsDisAgree(false);
+        }
       }
-    }
-    else {
-      toast(disagreeAxiosRes.message);
+      else {
+        toast(disagreeAxiosRes.message);
+      }
+      setAgreeDisagreeButtonDisableState(false)
     }
   };
 

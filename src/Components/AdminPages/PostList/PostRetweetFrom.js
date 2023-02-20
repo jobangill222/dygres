@@ -20,14 +20,16 @@ export default function PostRetweetFrom(props) {
     }, [parentPostDetail])
 
     const getLevel = async () => {
-        const res = await verificationLevel(parentPostDetail[0]?.user[0]?.isEmailVerify, parentPostDetail[0]?.user[0]?.isPhotoVerify);
+        // const res = await verificationLevel(parentPostDetail[0]?.user[0]?.isEmailVerify, parentPostDetail[0]?.user[0]?.isPhotoVerify);
+        const res = await verificationLevel(parentPostDetail[0]?.user[0]?.level, parentPostDetail[0]?.user[0]?.isOfficial);
+
         setVerificationLevelState(res);
     }
 
     const verificationtooltip = (
         <Tooltip id="verificationtooltip">
             {/* {parentPostDetail[0]?.user[0]?.isEmailVerify === 1 && parentPostDetail[0]?.user[0]?.isPhotoVerify === 0 ? 'Verified Email' : parentPostDetail[0]?.user[0]?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"} */}
-            {verificationLevelState && verificationLevelState === '1' ? 'Verified Email' : verificationLevelState === '2' ? "Verified Human" : "No Verification"}
+            {verificationLevelState && verificationLevelState === 4 ? 'Verified official account' : verificationLevelState === 1 ? 'Verified Email' : verificationLevelState === 2 ? "Verified Human" : "New account"}
         </Tooltip>
     );
 
@@ -52,12 +54,14 @@ export default function PostRetweetFrom(props) {
                                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(parentPostDetail[0]?.created_at)._d.getTime())}</h5>
                             </div>
                             <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                                <div className="levelbar text-darkwhite level1">
-                                    Level {verificationLevelState}
-                                    {/* <h6 className="level1-circle">
-                                    <span className="text-white lvlstar">{parentPostDetail[0]?.user[0]?.isEmailVerify === 1 && parentPostDetail[0]?.user[0]?.isPhotoVerify === 0 ? '1' : parentPostDetail[0]?.user[0]?.isPhotoVerify === 1 ? "2" : "0"}</span>
-                                </h6> */}
-                                </div>
+                                {verificationLevelState === 4 ?
+                                    <div className="levelbar text-darkwhite level1">
+                                        Official
+                                    </div> :
+                                    <div className="levelbar text-darkwhite level1">
+                                        Level {verificationLevelState}
+                                    </div>
+                                }
                             </OverlayTrigger>
                         </div>
                     </div>

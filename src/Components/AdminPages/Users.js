@@ -85,6 +85,7 @@ const Users = () => {
                                 <th>Display Name</th>
                                 <th>Username</th>
                                 <th>E-mail</th>
+                                <th>Official Status</th>
                                 <th>Phone number</th>
                             </tr>
                         </thead>

@@ -306,7 +306,14 @@ const PersonalInformation = () => {
                       <div className="imagebarupload">
 
                         <Button className={fileState === null && personalInfoFieldStates.isPhotoVerify === 3 ? 'bg-primary text-white typefilenone' : personalInfoFieldStates.isPhotoVerify === 1 ? 'bg-primary text-white typefilenone' : 'primary text-white'}>
-                          <input type="file" onChange={uploadVerificationImage} />
+                          {/* {console.log('personalInfoFieldStates.isEmailVerify', personalInfoFieldStates.isEmailVerify)} */}
+
+                          {personalInfoFieldStates.isEmailVerify === 0 ?
+                            <input onClick={() => toast('Please verify email first.')} />
+                            :
+                            <input type="file" onChange={uploadVerificationImage} />
+
+                          }
                           <BsUpload className="me-2" />
                           Upload Image
                         </Button>

@@ -22,6 +22,9 @@ const PostHead = (props) => {
 
   const navigate = useNavigate();
 
+  // Create formatter (English).
+  const timeAgo = new TimeAgo('en-US')
+
   //Context
   const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost } = useContext(DContext);
 
@@ -29,22 +32,16 @@ const PostHead = (props) => {
   const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward, postID } = props;
 
   //State
-  const [isFollowState, setIsFollowState] = useState(0);
-
-  // Create formatter (English).
-  const timeAgo = new TimeAgo('en-US')
-
-
-
+  // const [isFollowState, setIsFollowState] = useState(0);
 
   // When is_follow change or new list come then set in state
-  useEffect(() => {
-    if (is_follow === 1) {
-      setIsFollowState(1);
-    } else {
-      setIsFollowState(0);
-    }
-  }, [is_follow]);
+  // useEffect(() => {
+  //   if (is_follow === 1) {
+  //     setIsFollowState(1);
+  //   } else {
+  //     setIsFollowState(0);
+  //   }
+  // }, [is_follow]);
 
 
   const [verificationLevelState, setVerificationLevelState] = useState(false);
@@ -54,14 +51,18 @@ const PostHead = (props) => {
   }, [postUserDetails])
 
   const getLevel = async () => {
-    const res = await verificationLevel(postUserDetails?.isEmailVerify, postUserDetails?.isPhotoVerify);
+
+    console.log('postUserDetailspostUserDetailspostUserDetails', postUserDetails)
+    //const res = await verificationLevel(postUserDetails?.isEmailVerify, postUserDetails?.isPhotoVerify);
+    const res = await verificationLevel(postUserDetails?.level, postUserDetails?.isOfficial);
+
     setVerificationLevelState(res);
   }
 
 
   const verificationtooltip = (
     <Tooltip id="verificationtooltip">
-      {verificationLevelState && verificationLevelState === '1' ? 'Verified Email' : verificationLevelState === '2' ? "Verified Human" : "No Verification"}
+      {verificationLevelState && verificationLevelState === 4 ? 'Verified official account' : verificationLevelState === 1 ? 'Verified Email' : verificationLevelState === 2 ? "Verified Human" : "New account"}
     </Tooltip>
   );
 
@@ -125,12 +126,15 @@ const PostHead = (props) => {
                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(created_at)._d.getTime())}</h5>
               </div>
               <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                <div className="levelbar text-darkwhite level1">
-                  Level {verificationLevelState}
-                  {/* <h6 className="level1-circle">
-                  <span className="text-white lvlstar">{postUserDetails?.isEmailVerify === 1 && postUserDetails?.isPhotoVerify === 0 ? '1' : postUserDetails?.isPhotoVerify === 1 ? "2" : "0"}</span>
-                </h6> */}
-                </div>
+                {verificationLevelState === 4 ?
+                  <div className="levelbar text-darkwhite level1">
+                    Official
+                  </div> :
+                  <div className="levelbar text-darkwhite level1">
+                    Level {verificationLevelState}
+                  </div>
+                }
+
               </OverlayTrigger>
             </div>
           </div>

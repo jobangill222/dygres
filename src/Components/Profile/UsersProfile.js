@@ -66,7 +66,9 @@ const UsersProfile = () => {
     }, [user])
 
     const getLevel = async () => {
-        const res = await verificationLevel(user?.isEmailVerify, user?.isPhotoVerify);
+        // const res = await verificationLevel(user?.isEmailVerify, user?.isPhotoVerify);
+        const res = await verificationLevel(user?.level, user?.isOfficial);
+
         setVerificationLevelState(res);
     }
 
@@ -74,7 +76,7 @@ const UsersProfile = () => {
     const verificationtooltip = (
         <Tooltip id="verificationtooltip">
             {/* {user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? 'Verified Email' : user?.isPhotoVerify === 1 ? "Verified Human" : "No Verification"} */}
-            {verificationLevelState && verificationLevelState === '1' ? 'Verified Email' : verificationLevelState === '2' ? "Verified Human" : "No Verification"}
+            {verificationLevelState && verificationLevelState === 4 ? 'Verified official account' : verificationLevelState === 1 ? 'Verified Email' : verificationLevelState === 2 ? "Verified Human" : "New account"}
         </Tooltip>
     );
 
@@ -101,9 +103,14 @@ const UsersProfile = () => {
                                     <h6 className="text-lightgray">@{user?.username}</h6>
                                 </div>
                                 <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                                    <div className="levelbar text-darkwhite level1">Level {verificationLevelState}
-                                        {/* <h6 className="level1-circle"><span className="text-white lvlstar">{user?.isEmailVerify === 1 && user?.isPhotoVerify === 0 ? '1' : user?.isPhotoVerify === 1 ? "2" : "0"}</span></h6> */}
-                                    </div>
+                                    {verificationLevelState === 4 ?
+                                        <div className="levelbar text-darkwhite level1">
+                                            Official
+                                        </div> :
+                                        <div className="levelbar text-darkwhite level1">
+                                            Level {verificationLevelState}
+                                        </div>
+                                    }
                                 </OverlayTrigger>
                                 <ul className="user-detail-listing">
                                     <li>

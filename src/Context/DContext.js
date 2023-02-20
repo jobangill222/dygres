@@ -354,6 +354,27 @@ export const DProvider = (props) => {
     }
   };
 
+  const getOfficialPostDContext = async (search, pageNumberOfPostList) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/get-official-posts?page=${pageNumberOfPostList}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          search: search
+        }
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit get official post api (DContext.js) - ",
+        err
+      );
+    }
+  };
+
   const getFollowingPostDContext = async (search, pageNumberOfPostList) => {
     try {
       const axiosRes = await axios({
@@ -500,8 +521,6 @@ export const DProvider = (props) => {
       console.log("Some issue while hit edit post api in (DContext.js)", err);
     }
   }
-
-
 
   const followUserDContext = async (userID) => {
     try {
@@ -813,7 +832,6 @@ export const DProvider = (props) => {
     }
   }
 
-
   const getAwardListToSendDContext = async (selectedPostIDForAwardPopup) => {
     try {
       const axiosRes = await axios({
@@ -832,7 +850,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const getPackagesToBuyDContext = async () => {
     try {
       const axiosRes = await axios({
@@ -847,7 +864,6 @@ export const DProvider = (props) => {
       console.log("Some issue while hitting get pckage list api (DCOntext.js) - ", err);
     }
   };
-
 
   const BuyAwardDContext = async (packageID) => {
     try {
@@ -885,7 +901,6 @@ export const DProvider = (props) => {
       console.log("Some issue while send award api (DCOntext.js) - ", err);
     }
   };
-
 
   const getOtherUserDetailByUserIDDContext = async (userID) => {
     try {
@@ -928,7 +943,6 @@ export const DProvider = (props) => {
       );
     }
   };
-
 
   const getpostsByHashTagDContext = async (search, hashtagName, pageNumberOfPostList) => {
     try {
@@ -973,7 +987,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const getAwardOfPostDContext = async (postID) => {
     try {
       const axiosRes = await axios({
@@ -995,7 +1008,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const getNotificationDContext = async (pageNumberOfNotificationList) => {
     try {
       const axiosRes = await axios({
@@ -1013,7 +1025,6 @@ export const DProvider = (props) => {
       );
     }
   };
-
 
   const deleteNotificationDContext = async (notificationID) => {
     try {
@@ -1036,7 +1047,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const deleteAllNotificationDContext = async (notificationID) => {
     try {
       const axiosRes = await axios({
@@ -1054,7 +1064,6 @@ export const DProvider = (props) => {
       );
     }
   };
-
 
   const checkUsernameExistDContext = async (username) => {
     try {
@@ -1076,7 +1085,6 @@ export const DProvider = (props) => {
       );
     }
   };
-
 
   const getFollowersDContext = async (selectedIDForPopup, PageNumber) => {
     try {
@@ -1116,8 +1124,6 @@ export const DProvider = (props) => {
     }
   };
 
-
-
   const getUsersAllAwardsTheyGet = async () => {
     try {
       const axiosRes = await axios({
@@ -1135,7 +1141,6 @@ export const DProvider = (props) => {
       );
     }
   };
-
 
   const updateCoverImageDContext = async (bodyFormData) => {
     try {
@@ -1157,7 +1162,6 @@ export const DProvider = (props) => {
       console.log("Some issue while upload cover image (DContext.js) - ", err);
     }
   };
-
 
   const searchSuggestionDContext = async (search) => {
     try {
@@ -1574,6 +1578,25 @@ export const DProvider = (props) => {
     }
   };
 
+  const officialUnofficialUserAdminDContext = async (userID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/official-unofficial-user`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          userID: userID,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while offical unofficial user (DContext.js) - ", err);
+    }
+  }
+
 
   // Variables and methods to be shared globally
   const value = {
@@ -1625,6 +1648,7 @@ export const DProvider = (props) => {
     verifyOtpInsideLoginDContext,
     createPostDContext,
     getGlobalPostDContext,
+    getOfficialPostDContext,
     getFollowingPostDContext,
     agreeUnagreePost,
     disAgreeUnDisAgreePost,
@@ -1683,7 +1707,8 @@ export const DProvider = (props) => {
     packageDetailByIdAdminDContext,
     removeAwardFromPackageAdminDContext,
     addAwardToPackageAdminDContext,
-    deletePackageAdminDContext
+    deletePackageAdminDContext,
+    officialUnofficialUserAdminDContext
   };
   return (
     <>

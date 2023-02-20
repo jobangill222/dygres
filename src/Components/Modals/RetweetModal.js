@@ -48,7 +48,10 @@ export default function SingleAward(props) {
         // else {
         //     setUserVerificationLevel(0);
         // }
-        const res = await verificationLevel(axiosRes.list[0]?.user?.isEmailVerify, axiosRes.list[0]?.user?.isPhotoVerify);
+
+        // const res = await verificationLevel(axiosRes.list[0]?.user?.isEmailVerify, axiosRes.list[0]?.user?.isPhotoVerify);
+        const res = await verificationLevel(axiosRes.list[0]?.user?.level, axiosRes.list[0]?.user?.isOfficial);
+
         setUserVerificationLevel(res);
 
     }
@@ -56,7 +59,9 @@ export default function SingleAward(props) {
 
     const verificationtooltip = (
         <Tooltip id="verificationtooltip">
-            {userVerificationLevel === '1' ? 'Verified Email' : userVerificationLevel === '2' ? "Verified Human" : "No Verification"}
+            {/* {userVerificationLevel === '1' ? 'Verified Email' : userVerificationLevel === '2' ? "Verified Human" : "No Verification"} */}
+            {userVerificationLevel && userVerificationLevel === 4 ? 'Verified official account' : userVerificationLevel === 1 ? 'Verified Email' : userVerificationLevel === 2 ? "Verified Human" : "New account"}
+
         </Tooltip>
     );
 
@@ -214,12 +219,14 @@ export default function SingleAward(props) {
                                             </div>
                                             {/* {console.log('userVerificationLeveluserVerificationLevel', userVerificationLevel)} */}
                                             <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                                                <div className="levelbar text-darkwhite level1">
-                                                    Level {userVerificationLevel}
-                                                    {/* <h6 className="level1-circle">
-                                                    <span className="text-white lvlstar">{userVerificationLevel}</span>
-                                                </h6> */}
-                                                </div>
+                                                {userVerificationLevel === 4 ?
+                                                    <div className="levelbar text-darkwhite level1">
+                                                        Official
+                                                    </div> :
+                                                    <div className="levelbar text-darkwhite level1">
+                                                        Level {userVerificationLevel}
+                                                    </div>
+                                                }
                                             </OverlayTrigger>
                                         </div>
                                     </div>
