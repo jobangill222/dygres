@@ -60,7 +60,7 @@ import EditPackage from "./Components/AdminPages/Awards/EditPackage";
 
 function App() {
   // Context Variables
-  const { userToken } = useContext(DContext);
+  const { user, userToken } = useContext(DContext);
 
   return (
     <>
@@ -88,61 +88,59 @@ function App() {
               </Route>
             ) : (
               <>
-                <Route element={<SiteLayout />}>
-
-                  <Route exact path="/new" element={<New />} />
-                  <Route exact path="/hot" element={<Hot />} />
-                  <Route exact path="/most-voted" element={<MostVoted />} />
-                  <Route exact path="/not-voted" element={<NotVoted />} />
-                  <Route exact path="/hashtagPosts" element={<HashTagPosts />} />
-                  <Route exact path="/SinglePostDetail/:postIdForSinglePost" element={<SinglePostDetail />} />
-
-                  <Route exact path="/notification" element={<Notifications />} />
-                  {/* <Route exact path="/not-voted" element={<TopLatestPost />} /> */}
-                  <Route exact path="/posthead" element={<PostHead />} />
-                  <Route exact path="/whatsmind" element={<WhatsMind />} />
-
-                </Route>
-
-                <Route element={<ProfileLayout />}>
-                  <Route exact path="/profile" element={<Profile />} />
-                  <Route exact path="/Usersprofile/:userIDForProfile" element={<UsersProfile />} />
-
-                  <Route exact path="/profiletabs" element={<ProfileTabs />} />
-                  <Route exact path="/profiletabcontent" element={<ProfileTabContent />} />
-                </Route>
-
-                <Route element={<EditProfileLayout />}>
-                  <Route exact path="/editprofile" element={<EditProfile />} />
-                  <Route exact path="/personalinformation" element={<PersonalInformation />} />
-                </Route>
-
-                <Route path="*" element={<Navigate to='/new' />} />
+                {user?.role === 'user' ?
+                  <>
+                    <Route element={<SiteLayout />}>
+                      <Route exact path="/new" element={<New />} />
+                      <Route exact path="/hot" element={<Hot />} />
+                      <Route exact path="/most-voted" element={<MostVoted />} />
+                      <Route exact path="/not-voted" element={<NotVoted />} />
+                      <Route exact path="/hashtagPosts" element={<HashTagPosts />} />
+                      <Route exact path="/SinglePostDetail/:postIdForSinglePost" element={<SinglePostDetail />} />
+                      <Route exact path="/notification" element={<Notifications />} />
+                      {/* <Route exact path="/not-voted" element={<TopLatestPost />} /> */}
+                      <Route exact path="/posthead" element={<PostHead />} />
+                      <Route exact path="/whatsmind" element={<WhatsMind />} />
+                    </Route>
+                    <Route element={<ProfileLayout />}>
+                      <Route exact path="/profile" element={<Profile />} />
+                      <Route exact path="/Usersprofile/:userIDForProfile" element={<UsersProfile />} />
+                      <Route exact path="/profiletabs" element={<ProfileTabs />} />
+                      <Route exact path="/profiletabcontent" element={<ProfileTabContent />} />
+                    </Route>
+                    <Route element={<EditProfileLayout />}>
+                      <Route exact path="/editprofile" element={<EditProfile />} />
+                      <Route exact path="/personalinformation" element={<PersonalInformation />} />
+                    </Route>
+                    <Route path="*" element={<Navigate to='/new' />} />
+                  </> :
+                  user?.role === 'admin' ?
+                    <>
+                      <Route element={<AdminLayout />}>
+                        <Route exact path="admin/dashboard" element={<Dashboard />} />
+                        <Route exact path="admin/users" element={<Users />} />
+                        <Route exact path="admin/post/:userID" element={<Post />} />
+                        <Route exact path="admin/sendnotification" element={<SendNotification />} />
+                        <Route exact path="admin/flagpost/:userID" element={<FlagPost />} />
+                        <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />} />
+                        <Route exact path="admin/awardList" element={<AwardList />} />
+                        <Route exact path="admin/addaward" element={<AddAward />} />
+                        <Route exact path="admin/editaward/:awardID" element={<EditAward />} />
+                        <Route exact path="admin/packagelist" element={<PackageList />} />
+                        <Route exact path="admin/addpackage" element={<AddPackage />} />
+                        <Route exact path="admin/editpackage/:packageID" element={<EditPackage />} />
+                      </Route>
+                      <Route path="*" element={<Navigate to='/admin/dashboard' />} />
+                    </>
+                    : null
+                }
 
               </>
             )}
 
-            <Route element={<AdminLayout />}>
-              <Route exact path="admin/dashboard" element={<Dashboard />} />
-              <Route exact path="admin/users" element={<Users />} />
-              <Route exact path="admin/post/:userID" element={<Post />} />
-              <Route exact path="admin/sendnotification" element={<SendNotification />} />
-              <Route exact path="admin/flagpost/:userID" element={<FlagPost />} />
-              <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />} />
-
-              <Route exact path="admin/awardList" element={<AwardList />} />
-              <Route exact path="admin/addaward" element={<AddAward />} />
-              <Route exact path="admin/editaward/:awardID" element={<EditAward />} />
 
 
-              <Route exact path="admin/packagelist" element={<PackageList />} />
-              <Route exact path="admin/addpackage" element={<AddPackage />} />
-              <Route exact path="admin/editpackage/:packageID" element={<EditPackage />} />
-
-
-            </Route>
-
-            <Route path="*" element={<NotFound />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
 
 
           </Routes>

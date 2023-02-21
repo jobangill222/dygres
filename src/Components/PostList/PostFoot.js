@@ -14,7 +14,8 @@ import {
   BsWhatsapp,
 } from "react-icons/bs";
 import { BiCopy } from "react-icons/bi";
-import { ImForward } from "react-icons/im";
+import { TiTickOutline } from "react-icons/ti";
+import { ImDrive, ImForward } from "react-icons/im";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { HiSpeakerphone } from "react-icons/hi";
 import { BsArrowUpRightSquareFill } from "react-icons/bs";
@@ -28,6 +29,7 @@ import { toast } from "react-toastify";
 
 import AwardModal from "../Modals/AwardModal";
 import { MdOutlineTimer } from "react-icons/md";
+import useCopy from "use-copy";
 
 
 import moment from "moment";
@@ -203,10 +205,7 @@ const PostFoot = (props) => {
 
 
 
-  // Share Modal
-  const [ReportShare, setshareShow] = useState(false);
-  const shareClose = () => setshareShow(false);
-  const ShareShow = () => setshareShow(true);
+
 
 
 
@@ -283,6 +282,31 @@ const PostFoot = (props) => {
     const baseURL = window.location.origin;
     window.open(`${baseURL}/SinglePostDetail/` + postID, "_blank");
   }
+
+
+
+
+
+  // Share Modal
+  const [shareLinkUrl, setShareLinkUrl] = useState(null);
+
+  const [shareShowModalState, setShareShowModalState] = useState(false);
+  const shareClose = () => setShareShowModalState(false);
+  const ShareShow = async () => {
+    setShareShowModalState(true);
+    const baseURL = window.location.origin;
+    setShareLinkUrl(`${baseURL}/SinglePostDetail/` + postID)
+  }
+
+  //Copy functionality
+  const [copied, copy, setCopied] = useCopy(shareLinkUrl ? shareLinkUrl : null);
+  const copyText = () => {
+    copy();
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  };
 
 
   return (
@@ -586,10 +610,13 @@ const PostFoot = (props) => {
           </Form>
         </Modal.Body >
       </Modal >
+
+
+
       {/* Share Post */}
       < Modal
         className="Actions-modal share-popup"
-        show={ReportShare}
+        show={shareShowModalState}
         onHide={shareClose}
         centered
       >
@@ -635,16 +662,10 @@ const PostFoot = (props) => {
               <p>Twitter</p>
             </li>
           </ul>
-          <Form>
-            <Form.Group className="mb-3" controlId="">
-              <Form.Control placeholder="https://example.com/article/social-share-modal" />
-            </Form.Group>
-            <Form.Group>
-              <Button type="submit">
-                <BiCopy />
-              </Button>
-            </Form.Group>
-          </Form>
+          <div className='shareurl-bar'>
+            <p >{shareLinkUrl ? shareLinkUrl : null}</p>
+            {copied ? <><div className='copiedbar'><TiTickOutline /> <p className='copytext'>Copied</p></div></> : <a onClick={copyText}><BiCopy /></a>}
+          </div>
         </Modal.Body>
       </Modal >
     </>

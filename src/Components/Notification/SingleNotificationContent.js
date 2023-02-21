@@ -56,34 +56,36 @@ export default function SingleNotificationContent(props) {
                                         <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression.</p>
                                     </div>
                                 </>
-                                // :
-                                // singleNotification.actionPerformed === "comment_on_post" ?
-                                //     <>
-                                //         <div className='notification-text'>
-                                //             <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                                //             <p>comment on your</p>
-                                //             <p onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
-                                //         </div>
-                                //     </>
-                                //     :
-                                //     singleNotification.actionPerformed === "agree_comment" ?
-                                //         <>
-                                //             <div className='notification-text'>
-                                //                 <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                                //                 <p>agrees with your comment.</p>
-                                //                 <p onClick={() => viewPost(singleNotification?.postID)}>view post</p>
-                                //             </div>
-                                //         </>
-                                //         :
-                                //         singleNotification.actionPerformed === "disagree_comment" ?
-                                //             <>
-                                //                 <div className='notification-text'>
-                                //                     <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
-                                //                     <p>disagrees with your comment.</p>
-                                //                     <p onClick={() => viewPost(singleNotification?.postID)}>view post</p>
-                                //                 </div>
-                                //             </>
-                                : ''
+                                :
+                                singleNotification.actionPerformed === "comment_on_post" ?
+                                    <>
+                                        <div className='notification-text'>
+                                            <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                            <p>comment on your</p>
+                                            <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
+                                        </div>
+                                    </>
+                                    :
+                                    singleNotification.actionPerformed === "agree_comment" ?
+                                        <>
+                                            <div className='notification-text'>
+                                                <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                                <p>agrees with your</p>
+                                                <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
+                                                <p>comment.</p>
+                                            </div>
+                                        </>
+                                        :
+                                        singleNotification.actionPerformed === "disagree_comment" ?
+                                            <>
+                                                <div className='notification-text'>
+                                                    <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
+                                                    <p>disagrees with your</p>
+                                                    <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
+                                                    <p>comment.</p>
+                                                </div>
+                                            </>
+                                            : ''
             }
 
         </>
