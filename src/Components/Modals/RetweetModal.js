@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 import HighLight from "../HighLight"
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
+import { MentionsInput, Mention } from 'react-mentions';
+
+
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
@@ -19,7 +22,7 @@ export default function SingleAward(props) {
 
     const { viewRetweetPopup, setViewRetweetPopup } = props;
 
-    const { postIDForRetweet, setPostIDForRetweet, getSinglePostDetailDContext, createPostDContext, setUserStats, setIsPostState } = useContext(DContext);
+    const { postIDForRetweet, setPostIDForRetweet, getSinglePostDetailDContext, createPostDContext, setUserStats, setIsPostState, suggestionWhilePostingDContext } = useContext(DContext);
 
     const closePopup = async () => {
         setViewRetweetPopup(false)
@@ -165,6 +168,44 @@ export default function SingleAward(props) {
 
 
 
+    //Suggestion of user
+    //Suggestion of user
+    const fetchSuggestionList = async (trigger, query, callback) => {
+        // Call your API to fetch matching items based on the trigger and query
+        if (trigger === '@') {
+            const results = await suggestionWhilePostingDContext(query && query);
+            const newArray = results.list.map(item => {
+                return {
+                    id: item._id,
+                    profileImage: item?.profileImage ? item.profileImage : '/images/user.png',
+                    display: item.username
+                };
+            });
+            callback(newArray);
+
+        } else if (trigger === '#') {
+            const results = await suggestionWhilePostingDContext("#" + query);
+            const newArray = results.list.map(item => {
+                return {
+                    id: item._id,
+                    display: item.name
+                };
+            });
+            callback(newArray);
+        }
+    };
+
+
+    const handleUserSuggestion = (id, display) => {
+        setCreatePostState(createPostState.replace(/@[^\s]*\s?$/, `@${display} `));
+    };
+    const handleHashSuggestion = (id, display) => {
+        setCreatePostState(createPostState.replace(/#[^\s]*\s?$/, `${display} `));
+    };
+
+
+
+
     return (
         <>
             {console.log('postDetailForRetweet,postDetailForRetweet', postDetailForRetweet)}
@@ -180,7 +221,7 @@ export default function SingleAward(props) {
 
                         <div className="user-preview">
                             <div className="Description-bar">
-                                <Form>
+                                {/* <Form>
                                     <Form.Group className='feedtype-textarea' controlId="formBasicEmail">
                                         <Form.Control type="text" style={{ height: '110px' }}
                                             as="textarea"
@@ -194,7 +235,63 @@ export default function SingleAward(props) {
                                                 setCreatePostState(e.target.value);
                                             }} />
                                     </Form.Group>
-                                </Form>
+                                </Form> */}
+                                <MentionsInput
+                                    className='whatsmind-inputbar'
+                                    as="textarea"
+                                    rows={6}
+                                    maxLength={420}
+                                    placeholder={placeholder}
+                                    name="content"
+                                    value={createPostState}
+                                    max="420"
+                                    onChange={(e) => {
+                                        setCreatePostState(e.target.value)
+                                    }}
+                                >
+                                    <Mention
+                                        trigger='@'
+                                        data={(query, callback) => fetchSuggestionList('@', query, callback)}
+                                        onAdd={handleUserSuggestion}
+                                        displayTransform={(id, display) => `@${display + ' '}`}
+                                        renderSuggestion={(
+                                            suggestion,
+                                            search,
+                                            highlightedDisplay,
+                                            index,
+                                            focused
+                                        ) => (
+                                            <div className={`user-suggestion ${focused ? 'focused' : ''}`}>
+                                                <img src={suggestion.profileImage} />
+                                                <div className="user-suggestion-details">
+                                                    <div className="user-suggestion-name">{highlightedDisplay}</div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    />
+
+
+                                    <Mention
+                                        trigger='#'
+                                        data={(query, callback) => fetchSuggestionList('#', query, callback)}
+                                        onAdd={handleHashSuggestion}
+                                        displayTransform={(id, display) => `#${display + ' '}`}
+                                        renderSuggestion={(
+                                            suggestion,
+                                            search,
+                                            highlightedDisplay,
+                                            index,
+                                            focused
+                                        ) => (
+                                            <div className={`user-suggestion ${focused ? 'focused' : ''}`}>
+                                                <div className="user-suggestion-details">
+                                                    <div className="user-suggestion-name">{highlightedDisplay}</div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    />
+
+                                </MentionsInput>
                                 {/* <p className="word-note">Character {createPostState.length}/420</p> */}
                                 <p className="word-note">{420 - createPostState.length}</p>
 

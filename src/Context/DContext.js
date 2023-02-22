@@ -1183,6 +1183,26 @@ export const DProvider = (props) => {
   };
 
 
+  const suggestionWhilePostingDContext = async (value) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/profile/suggestion-while-posting`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          value: value,
+        }
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hit search suggestion api (DContext.js) - ", err);
+    }
+  };
+
+
 
 
   //Admin
@@ -1689,6 +1709,7 @@ export const DProvider = (props) => {
     getUsersAllAwardsTheyGet,
     updateCoverImageDContext,
     searchSuggestionDContext,
+    suggestionWhilePostingDContext,
     allUserListDContext,
     sendNotificationToAllDContext,
     humanVerificationDetailDContext,

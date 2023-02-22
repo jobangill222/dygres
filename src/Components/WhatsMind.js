@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 import { DContext } from "../Context/DContext";
+import { MentionsInput, Mention } from 'react-mentions';
 
 const WhatsMind = (props) => {
   //To change state when post is posted
@@ -12,7 +13,7 @@ const WhatsMind = (props) => {
   const [createPostState, setCreatePostState] = useState("");
 
   // Function to all api
-  const { createPostDContext, setUserStats } = useContext(DContext);
+  const { createPostDContext, setUserStats, suggestionWhilePostingDContext } = useContext(DContext);
 
   //Submit post
   const submitPost = async () => {
@@ -44,72 +45,110 @@ const WhatsMind = (props) => {
     }
   };
 
-  // const title = [
-  //   "A penny for your thoughts",
-  //   "A penny for your thoughts? Hell, how about a dime?",
-  //   "Share your thoughts",
-  //   "INSERT IDEA TO CONTINUE",
-  //   "Welcome to idea central… population, you!",
-  //   "Express thyself, mortal!",
-  //   "Hello human, want to talk? 🙂",
-  //   "What’s up?",
-  //   "What’s on your mind?",
-  //   "Welcome earthling, what do you have to share today?",
-  //   "Ready to dygres?",
-  //   "The worlds worst kept secret",
-  //   "BREAKING NEWS!",
-  //   "The world is waiting… to hear from you!",
-  //   "I was today years old when…",
-  //   "How are you feeling today?",
-  //   "How’s your week going?",
-  //   "Anything you need to talk about?",
 
-  //   "Say something",
-  //   "Unload word hoard here",
-  //   "Time to empty the mental library?",
-  //   "Need to talk? We’re listening.",
-  //   "Express your thoughts",
-  //   "Never be afraid to express yourself",
-  //   "Unleash your brainchildren",
-  //   "Speak up, we want to hear from you.",
-  //   "The world is waiting…",
-  //   "It was a dark and stormy night",
-  //   "It was the best of times, it was the worst of times.",
-  //   "It’s creativity time! :D",
 
-  //   "How’s it going?",
-  //   "How are you today?",
-  //   "Let your dreams blossom",
-  //   "Tappity tap tappity tap tap",
-  //   "Caps lock is not actually cruise control for cool.",
-  //   "Caps lock may be cruise control for cool, but you still have to steer",
-  //   "Thought cabinet unlocked",
-  //   "New thought/idea unlocked",
-  //   "This may be the greatest/best thing you've ever written",
-  //   "Ready for your magnum opus?",
-  //   "Write your little heart out",
-  //   "Share your dygressions",
-  //   "Let’s dygres",
-  //   "Shall we dygres?",
-  //   "Is it sharing time already?",
-  //   "Think brain, think!",
-  //   "Another day, another dygression.",
-  //   "What would you like to dygres on today?",
-  //   "How will you be dygressing today?",
-  //   "Great to see you again!",
-  //   "Welcome back to another amazing idea",
-  //   "Incredible thoughts",
-  //   "Show us your genius",
-  // ];
+  //Suggestion of user
+  const fetchSuggestionList = async (trigger, query, callback) => {
+    // Call your API to fetch matching items based on the trigger and query
+    if (trigger === '@') {
+      const results = await suggestionWhilePostingDContext(query && query);
+      const newArray = results.list.map(item => {
+        return {
+          id: item._id,
+          profileImage: item?.profileImage ? item.profileImage : '/images/user.png',
+          display: item.username
+        };
+      });
+      callback(newArray);
 
-  // const placeholder = title[Math.floor(Math.random() * title.length)];
+    } else if (trigger === '#') {
+      const results = await suggestionWhilePostingDContext("#" + query);
+      const newArray = results.list.map(item => {
+        return {
+          id: item._id,
+          display: item.name
+        };
+      });
+      callback(newArray);
+    }
+  };
+
+
+  const handleUserSuggestion = (id, display) => {
+    setCreatePostState(createPostState.replace(/@[^\s]*\s?$/, `@${display} `));
+  };
+  const handleHashSuggestion = (id, display) => {
+    setCreatePostState(createPostState.replace(/#[^\s]*\s?$/, `${display} `));
+  };
+
 
   return (
     <>
       <div className="Whatsmind-bar">
         <Form>
           <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">
-            <Form.Control
+
+            <MentionsInput
+              className='whatsmind-inputbar'
+              as="textarea"
+              rows={6}
+              maxLength={420}
+              placeholder={placeholderState}
+              name="content"
+              value={createPostState}
+              max="420"
+              onChange={(e) => {
+                setCreatePostState(e.target.value)
+              }}
+            >
+              <Mention
+                trigger='@'
+                data={(query, callback) => fetchSuggestionList('@', query, callback)}
+                onAdd={handleUserSuggestion}
+                displayTransform={(id, display) => `@${display + ' '}`}
+                renderSuggestion={(
+                  suggestion,
+                  search,
+                  highlightedDisplay,
+                  index,
+                  focused
+                ) => (
+                  <div className={`user-suggestion ${focused ? 'focused' : ''}`}>
+                    <img src={suggestion.profileImage} />
+                    <div className="user-suggestion-details">
+                      <div className="user-suggestion-name">{highlightedDisplay}</div>
+                    </div>
+                  </div>
+                )}
+              />
+
+
+              <Mention
+                trigger='#'
+                data={(query, callback) => fetchSuggestionList('#', query, callback)}
+                onAdd={handleHashSuggestion}
+                displayTransform={(id, display) => `#${display + ' '}`}
+                renderSuggestion={(
+                  suggestion,
+                  search,
+                  highlightedDisplay,
+                  index,
+                  focused
+                ) => (
+                  <div className={`user-suggestion ${focused ? 'focused' : ''}`}>
+                    <div className="user-suggestion-details">
+                      <div className="user-suggestion-name">{highlightedDisplay}</div>
+                    </div>
+                  </div>
+                )}
+              />
+
+            </MentionsInput>
+
+
+
+
+            {/* <Form.Control
               as="textarea"
               rows={6}
               maxLength={420}
@@ -120,7 +159,7 @@ const WhatsMind = (props) => {
               onChange={(e) => {
                 setCreatePostState(e.target.value);
               }}
-            />
+            /> */}
             {/* <p className="word-note">Character {createPostState.length}/420</p> */}
             <p className="word-note">{420 - createPostState.length}</p>
 

@@ -111,7 +111,7 @@ const New = () => {
       let pageNumberOfPostList = 1;
       const search = null;
       const axiosRes = await getGlobalPostDContext(search, pageNumberOfPostList);
-      console.log("axiosRes********* after get global posts on page 1", axiosRes);
+      // console.log("axiosRes********* after get global posts on page 1", axiosRes);
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
       }
@@ -182,11 +182,11 @@ const New = () => {
       const search = null;
       axiosRes = await getOfficialPostDContext(search, pageNumberOfPostList);
     }
-    console.log(
-      "axiosRes********* after get global posts on page",
-      pageNumberOfPostList,
-      axiosRes
-    );
+    // console.log(
+    //   "axiosRes********* after get global posts on page",
+    //   pageNumberOfPostList,
+    //   axiosRes
+    // );
     if (axiosRes.status === "success") {
       setPostList((current) => [...current, ...axiosRes.list]);
       localStorage.setItem("currentPage", pageNumberOfPostList);
