@@ -54,21 +54,46 @@ import { toast } from "react-toastify";
 
 function AppRouter() {
     // Context Variables
-    const { user, userToken } = useContext(DContext);
+    const { user, userStats, userToken } = useContext(DContext);
     const navigate = useNavigate();
     const location = useLocation();
 
 
     useEffect(() => {
-        console.log('useruuseruserser', user)
-        let pathName = location.pathname;
-        if (user && user.isEmailVerify === 0 && user.isEmailVerificationReminderSent === 1) {
-            if (pathName !== "/personalinformation") {
-                toast('Please verify your email to access site.')
-                navigate('/personalinformation');
+        console.log('useruseruser', user)
+        if (user && user.role === 'user') {
+            let pathName = location.pathname;
+
+            //Email verification
+            if (user && user.isEmailVerify === 0 && user.isEmailVerificationReminderSent === 1) {
+                if (pathName !== "/personalinformation") {
+                    toast('Please verify your email to access site.')
+                    navigate('/personalinformation');
+                    return
+                }
             }
+
+            //Human verification pending
+            if (userStats && userStats.totalFollowers > 49000 && user.isPhotoVerify === 0) {
+                if (pathName !== "/personalinformation") {
+                    toast('Please do image verification to access site.')
+                    navigate('/personalinformation');
+                    return
+                }
+            }
+
+            //Verification rejected
+            if (userStats && userStats.totalFollowers > 49000 && user.isPhotoVerify === 2) {
+                if (pathName !== "/personalinformation") {
+                    toast('Please do image verification to access site.')
+                    navigate('/personalinformation');
+                    return
+                }
+            }
+
         }
     }, [user, location]);
+
 
     return (
         <>

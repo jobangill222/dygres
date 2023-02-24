@@ -28,7 +28,7 @@ const Dashboard = () => {
     const getData = async () => {
         setIsLoading(true);
         const axiosRes = await dashboardDataAdminDContext(selectedTypeState);
-        // console.log('axiosResaxiosRes', axiosRes);
+        console.log('axiosResaxiosRes', axiosRes);
         setDashboardData(axiosRes.data);
         setIsLoading(false);
     }
@@ -70,7 +70,9 @@ const Dashboard = () => {
                                     <li><MdKeyboardArrowRight /></li>
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>{dashboardData && dashboardData.currentUsers}</h4></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.pastUsers}</h4><h6>Past</h6></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.currentUsers}</h4><h6>Current</h6></li>
+
                                     <li>
                                         <div className={dashboardData && dashboardData.usersPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
@@ -93,7 +95,8 @@ const Dashboard = () => {
                                     {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>{dashboardData && dashboardData.currentPosts}</h4></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.pastPosts}</h4><h6>Past</h6></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.currentPosts}</h4><h6>Current</h6></li>
                                     {/* <li>
                                         <h6 className='numberbar'>9</h6>
                                         <h5>Past {selectedTypeState}</h5>
@@ -120,7 +123,8 @@ const Dashboard = () => {
                                     {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>{dashboardData && dashboardData.currentAgreePosts}</h4></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.pastAgreePosts}</h4><h6>Past</h6></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.currentAgreePosts}</h4><h6>Current</h6></li>
                                     <li>
                                         <div className={dashboardData && dashboardData.agreePostsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
@@ -143,7 +147,8 @@ const Dashboard = () => {
                                     {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>{dashboardData && dashboardData.currentDisagreePosts}</h4></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.pastDisagreePosts}</h4><h6>Past</h6></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.currentDisagreePosts}</h4><h6>Current</h6></li>
                                     <li>
                                         <div className={dashboardData && dashboardData.disagreePostsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
@@ -167,7 +172,8 @@ const Dashboard = () => {
                                     <li><MdKeyboardArrowRight /></li>
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>{dashboardData && dashboardData.currentPostAwards}</h4></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.pastPostAwards}</h4><h6>Past</h6></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.currentPostAwards}</h4><h6>Current</h6></li>
                                     <li>
                                         <div className={dashboardData && dashboardData.postAwardsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
@@ -191,7 +197,8 @@ const Dashboard = () => {
                                     {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>{dashboardData && dashboardData.currentComments}</h4></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.pastComments}</h4><h6>Past</h6></li>
+                                    <li className='listatus'><h4>{dashboardData && dashboardData.currentComments}</h4><h6>Current</h6></li>
                                     <li>
                                         <div className={dashboardData && dashboardData.commentsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />

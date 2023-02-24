@@ -764,6 +764,17 @@ textarea {
   max-height: 150px !important;
   overflow: scroll !important;
 }
+ul.weekly-status li.listatus {
+  text-align: left;
+}
+ul.weekly-status li.listatus h6 {
+  font-size: 12px;
+}
+ul.weekly-status li.listatus h4 {
+  font-size: 18px !important;
+  line-height: 1 !important;
+  margin-bottom: 5px !important;
+}
 .valuebar.up svg {
   transform: rotate(180deg);
 }
