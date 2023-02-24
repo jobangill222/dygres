@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -8,20 +8,50 @@ import { MdKeyboardArrowRight, MdThumbUpAlt, MdThumbDownAlt } from 'react-icons/
 import { BsArrowDown, BsFilePost } from 'react-icons/bs';
 import { FaGift, FaComments } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+import { DContext } from "../../Context/DContext";
+import Loader from "../Loader";
+
 
 const Dashboard = () => {
+
+    const { isLoading, setIsLoading, dashboardDataAdminDContext } = useContext(DContext);
+
+    const selectedDashboardTypeSession = localStorage.getItem('selectedDashboardTypeSession');
+
+    const [selectedTypeState, setSelectedTypeState] = useState(selectedDashboardTypeSession ? selectedDashboardTypeSession : 'day');
+    const [dashboardData, setDashboardData] = useState(null);
+
+    useEffect(() => {
+        getData();
+    }, [selectedTypeState])
+
+    const getData = async () => {
+        setIsLoading(true);
+        const axiosRes = await dashboardDataAdminDContext(selectedTypeState);
+        // console.log('axiosResaxiosRes', axiosRes);
+        setDashboardData(axiosRes.data);
+        setIsLoading(false);
+    }
+
     return (
         <>
+            {isLoading && <Loader />}
+
             <Container>
                 <div className="dashboard-title-bar">
                     <Row>
                         <Col lg="8"><h4>Dashboard</h4></Col>
                         <Col lg="4">
-                            <Form.Select aria-label="Default select example">
-                                <option>Monthly</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <Form.Select aria-label="Default select example" onChange={(e) => {
+                                setSelectedTypeState(e.target.value)
+                                localStorage.setItem('selectedDashboardTypeSession', e.target.value)
+                            }
+                            }
+                            >
+                                <option value="day" selected={selectedTypeState === 'day' ? 'true' : null} >Daily</option>
+                                <option value="week" selected={selectedTypeState === 'week' ? 'true' : null}>Weekly</option>
+                                <option value="month" selected={selectedTypeState === 'month' ? 'true' : null}>Monthly</option>
+                                <option value="year" selected={selectedTypeState === 'year' ? 'true' : null}>Yearly</option>
                             </Form.Select>
                         </Col>
                     </Row>
@@ -40,13 +70,13 @@ const Dashboard = () => {
                                     <li><MdKeyboardArrowRight /></li>
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>404k</h4></li>
+                                    <li><h4>{dashboardData && dashboardData.currentUsers}</h4></li>
                                     <li>
-                                        <div className="valuebar up">
+                                        <div className={dashboardData && dashboardData.usersPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
-                                            <p>0.8%</p>
+                                            <p>{dashboardData && dashboardData.usersPercentage} %</p>
                                         </div>
-                                        <h5>This week</h5>
+                                        <h5>This {selectedTypeState}</h5>
                                     </li>
                                 </ul>
                             </Link>
@@ -63,13 +93,17 @@ const Dashboard = () => {
                                     {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>300k</h4></li>
+                                    <li><h4>{dashboardData && dashboardData.currentPosts}</h4></li>
+                                    {/* <li>
+                                        <h6 className='numberbar'>9</h6>
+                                        <h5>Past {selectedTypeState}</h5>
+                                    </li> */}
                                     <li>
-                                        <div className="valuebar down">
+                                        <div className={dashboardData && dashboardData.postsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
-                                            <p>0.8%</p>
+                                            <p>{dashboardData && dashboardData.postsPercentage} %</p>
                                         </div>
-                                        <h5>This week</h5>
+                                        <h5>This {selectedTypeState}</h5>
                                     </li>
                                 </ul>
                             </div>
@@ -86,13 +120,13 @@ const Dashboard = () => {
                                     {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>300k</h4></li>
+                                    <li><h4>{dashboardData && dashboardData.currentAgreePosts}</h4></li>
                                     <li>
-                                        <div className="valuebar down">
+                                        <div className={dashboardData && dashboardData.agreePostsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
-                                            <p>0.8%</p>
+                                            <p>{dashboardData && dashboardData.agreePostsPercentage} %</p>
                                         </div>
-                                        <h5>This week</h5>
+                                        <h5>This {selectedTypeState}</h5>
                                     </li>
                                 </ul>
                             </div>
@@ -109,13 +143,13 @@ const Dashboard = () => {
                                     {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>40k</h4></li>
+                                    <li><h4>{dashboardData && dashboardData.currentDisagreePosts}</h4></li>
                                     <li>
-                                        <div className="valuebar down">
+                                        <div className={dashboardData && dashboardData.disagreePostsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
-                                            <p>0.8%</p>
+                                            <p>{dashboardData && dashboardData.disagreePostsPercentage} %</p>
                                         </div>
-                                        <h5>This week</h5>
+                                        <h5>This {selectedTypeState}</h5>
                                     </li>
                                 </ul>
                             </div>
@@ -133,13 +167,13 @@ const Dashboard = () => {
                                     <li><MdKeyboardArrowRight /></li>
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>40k</h4></li>
+                                    <li><h4>{dashboardData && dashboardData.currentPostAwards}</h4></li>
                                     <li>
-                                        <div className="valuebar down">
+                                        <div className={dashboardData && dashboardData.postAwardsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
-                                            <p>0.8%</p>
+                                            <p>{dashboardData && dashboardData.postAwardsPercentage} %</p>
                                         </div>
-                                        <h5>This week</h5>
+                                        <h5>This {selectedTypeState}</h5>
                                     </li>
                                 </ul>
                                 {/* </div> */}
@@ -157,13 +191,13 @@ const Dashboard = () => {
                                     {/* <li><MdKeyboardArrowRight /></li> */}
                                 </ul>
                                 <ul className="weekly-status">
-                                    <li><h4>40k</h4></li>
+                                    <li><h4>{dashboardData && dashboardData.currentComments}</h4></li>
                                     <li>
-                                        <div className="valuebar down">
+                                        <div className={dashboardData && dashboardData.commentsPercentageStatus === 'down' ? "valuebar down" : "valuebar up"}>
                                             <BsArrowDown />
-                                            <p>0.8%</p>
+                                            <p>{dashboardData && dashboardData.commentsPercentage} %</p>
                                         </div>
-                                        <h5>This week</h5>
+                                        <h5>This {selectedTypeState}</h5>
                                     </li>
                                 </ul>
                             </div>

@@ -278,7 +278,10 @@ export const DProvider = (props) => {
     try {
       const axiosRes = await axios({
         method: "post",
-        url: `${BASE_URL}/auth/forgot-password`,
+        url: `${BASE_URL}/profile/send-email-otp-verification-inside-login`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
         data: {
           email: email,
         },
@@ -1617,6 +1620,25 @@ export const DProvider = (props) => {
     }
   }
 
+  const dashboardDataAdminDContext = async (type) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/dashboard`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          type: type,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get dashboard data (DContext.js) - ", err);
+    }
+  }
+
 
   // Variables and methods to be shared globally
   const value = {
@@ -1729,7 +1751,8 @@ export const DProvider = (props) => {
     removeAwardFromPackageAdminDContext,
     addAwardToPackageAdminDContext,
     deletePackageAdminDContext,
-    officialUnofficialUserAdminDContext
+    officialUnofficialUserAdminDContext,
+    dashboardDataAdminDContext
   };
   return (
     <>

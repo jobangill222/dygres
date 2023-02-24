@@ -764,6 +764,14 @@ textarea {
   max-height: 150px !important;
   overflow: scroll !important;
 }
+.valuebar.up svg {
+  transform: rotate(180deg);
+}
+.weekly-status li .numberbar {
+  font-size: 20px;
+  color: #000000;
+  margin: 0 !important;
+}
 .Whatsmind-bar form textarea,
 .whatsmind-inputbar__input {
   background: var(--base-lightgray);

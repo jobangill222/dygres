@@ -15,10 +15,11 @@ import Button from 'react-bootstrap/Button';
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 import SingleUserList from "./SingleUserList";
+import Loader from "../Loader";
 
 const Users = () => {
 
-    const { allUserListDContext } = useContext(DContext);
+    const { isLoading, setIsLoading, allUserListDContext } = useContext(DContext);
 
     const [userList, setUserList] = useState([]);
     const [searchByUsernameState, setSearchByUsernameState] = useState(null);
@@ -30,6 +31,7 @@ const Users = () => {
     }, [searchByUsernameState])
 
     const getUser = async () => {
+        setIsLoading(true);
         const search = searchByUsernameState;
         const pageNumber = 1;
         const axiosRes = await allUserListDContext(search, pageNumber);
@@ -38,6 +40,7 @@ const Users = () => {
         } else {
             toast(axiosRes.message);
         }
+        setIsLoading(false);
     }
 
     // Aggree Modal
@@ -57,7 +60,8 @@ const Users = () => {
     return (
         <>
 
-            {console.log('userListuserList', userList)}
+            {/* {console.log('userListuserList', userList)} */}
+            {isLoading && <Loader />}
             <Container>
                 <div className="dashboard-title-bar">
                     <Row>

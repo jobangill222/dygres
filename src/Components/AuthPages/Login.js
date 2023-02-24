@@ -10,12 +10,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
 
+import Loader from "../Loader";
+
 // Context
 import { DContext } from "../../Context/DContext";
 
 const Login = () => {
   // Context Variables
-  const { userLogin, setUser, setUserToken, setUserStats } =
+  const { userLogin, setUser, setUserToken, setUserStats, isLoading, setIsLoading } =
     useContext(DContext);
 
   const {
@@ -25,8 +27,7 @@ const Login = () => {
   } = useForm();
   const handleRegistration = async (data) => {
     // e.preventDefault()
-    console.log(data);
-
+    setIsLoading(true);
     try {
       const axiosRes = await userLogin(data);
 
@@ -53,6 +54,7 @@ const Login = () => {
     } catch (err) {
       console.log(err);
     }
+    setIsLoading(false);
   };
   const handleError = (errors) => {
     console.log(errors);
@@ -86,6 +88,8 @@ const Login = () => {
 
   return (
     <>
+
+      {isLoading && <Loader />}
 
       {isShowFoundationalRulePopup && <FoundationalRuleModal isShowFoundationalRulePopup={isShowFoundationalRulePopup} setIsShowFoundationalRuleModal={setIsShowFoundationalRuleModal} />}
 
