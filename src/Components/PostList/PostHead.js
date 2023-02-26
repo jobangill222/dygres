@@ -23,7 +23,7 @@ const PostHead = (props) => {
   const navigate = useNavigate();
 
   //Context
-  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost } = useContext(DContext);
+  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost, setIsShowRulesModal } = useContext(DContext);
 
   //Props
   const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward, postID } = props;
@@ -178,16 +178,18 @@ const PostHead = (props) => {
                 <h6 className="text-lightgray">@{postUserDetails?.username}</h6>
                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(created_at)._d.getTime())}</h5>
               </div>
-              <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                {verificationLevelState === 4 ?
-                  <div className="levelbar text-darkwhite level1">
-                    Official
-                  </div> :
-                  <div className="levelbar text-darkwhite level1">
-                    Level {verificationLevelState}
-                  </div>
-                }
-              </OverlayTrigger>
+              <div className="rules-tag" onClick={() => setIsShowRulesModal(true)}>
+                <OverlayTrigger placement="top" overlay={verificationtooltip} >
+                  {verificationLevelState === 4 ?
+                    <div className="levelbar text-darkwhite level1">
+                      Official
+                    </div> :
+                    <div className="levelbar text-darkwhite level1">
+                      Level {verificationLevelState}
+                    </div>
+                  }
+                </OverlayTrigger>
+              </div>
             </div>
           </div>
 

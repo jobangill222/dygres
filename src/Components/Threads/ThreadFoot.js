@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { AiFillLike } from 'react-icons/ai';
+import { AiFillLike, AiFillDislike } from 'react-icons/ai';
 import { FaComments } from 'react-icons/fa';
 import { toast } from "react-toastify";
 // import Form from 'react-bootstrap/Form';
@@ -129,7 +129,7 @@ export default function ThreadFoot(props) {
 
                     <li>
                         <div
-                            className={isDisagreeState ? 'active' : ""} onClick={() => DisagreeComment(commentID)}><AiFillLike /></div>
+                            className={isDisagreeState ? 'active' : ""} onClick={() => DisagreeComment(commentID)}><AiFillDislike /></div>
                         <div className2="list-text" onClick={() => viewPopup('disagreed-comment-user-list')} >
                             <span className="number">{disagreeCountState}</span>
                             Disagree

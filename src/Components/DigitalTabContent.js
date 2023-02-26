@@ -16,7 +16,7 @@ const DigitalTabContent = (props) => {
   const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, award_count, is_report, userID, _id, is_follow, created_at, parentPostID, parentPostDetail
     , postAward } = props.post;
 
-  const { postListingType } = props;
+  const { postListingType, specificCommentFirst } = props;
 
 
   const { setPostIDForSinglePostState } = useContext(DContext);
@@ -45,8 +45,9 @@ const DigitalTabContent = (props) => {
   const viewParentPostDetail = async (postID) => {
     // localStorage.setItem('PostIdForSinglePost', postID);
     setPostIDForSinglePostState(postID);
-    navigate('/SinglePostDetail/' + postID)
+    navigate('/SinglePostDetail/' + postID + '/' + null)
   }
+
 
   useEffect(() => {
     // console.log('postListingType', postListingType);
@@ -113,7 +114,7 @@ const DigitalTabContent = (props) => {
           {isThreadBoxOpen &&
             <>
               <div className="thredsbar">
-                <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} commentID="" setCommentCount={setCommentCount} />
+                <Threads isThreadBoxOpen={isThreadBoxOpen} postID={_id} commentID="" setCommentCount={setCommentCount} specificCommentFirst={specificCommentFirst} />
               </div>
             </>
           }

@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 
 const SinglePostDetail = () => {
 
-    let { postIdForSinglePost } = useParams();
+    let { postIdForSinglePost, specificCommentFirst } = useParams();
 
     // console.log("SinglePostID", SinglePostID);
 
@@ -91,6 +91,7 @@ const SinglePostDetail = () => {
                             key={post._id}
                             post={post}
                             postListingType='singlePost'
+                            specificCommentFirst={specificCommentFirst}
                         />
                     ))
                     :

@@ -22,7 +22,7 @@ export default function SingleAward(props) {
 
     const { viewRetweetPopup, setViewRetweetPopup } = props;
 
-    const { postIDForRetweet, setPostIDForRetweet, getSinglePostDetailDContext, createPostDContext, setUserStats, setIsPostState, suggestionWhilePostingDContext } = useContext(DContext);
+    const { postIDForRetweet, setPostIDForRetweet, getSinglePostDetailDContext, createPostDContext, setUserStats, setIsPostState, suggestionWhilePostingDContext, setIsShowRulesModal } = useContext(DContext);
 
     const closePopup = async () => {
         setViewRetweetPopup(false)
@@ -315,16 +315,18 @@ export default function SingleAward(props) {
                                                 <h5 className="text-lightgray greentime">{timeAgo.format(moment(postDetailForRetweet?.created_at)._d.getTime())}</h5>
                                             </div>
                                             {/* {console.log('userVerificationLeveluserVerificationLevel', userVerificationLevel)} */}
-                                            <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                                                {userVerificationLevel === 4 ?
-                                                    <div className="levelbar text-darkwhite level1">
-                                                        Official
-                                                    </div> :
-                                                    <div className="levelbar text-darkwhite level1">
-                                                        Level {userVerificationLevel}
-                                                    </div>
-                                                }
-                                            </OverlayTrigger>
+                                            <div className="rules-tag" onClick={() => setIsShowRulesModal(true)}>
+                                                <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                                                    {userVerificationLevel === 4 ?
+                                                        <div className="levelbar text-darkwhite level1">
+                                                            Official
+                                                        </div> :
+                                                        <div className="levelbar text-darkwhite level1">
+                                                            Level {userVerificationLevel}
+                                                        </div>
+                                                    }
+                                                </OverlayTrigger>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

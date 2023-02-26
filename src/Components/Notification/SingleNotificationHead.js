@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from "react-router-dom";
 
 import Tooltip from 'react-bootstrap/tooltip';
@@ -10,14 +10,17 @@ import TimeAgo from 'javascript-time-ago'
 // TimeAgo.addDefaultLocale(en)
 import { verificationLevel } from '../../helper/verificationLevel';
 
+import { DContext } from "../../Context/DContext";
+
+
 export default function SingleNotificationHead(props) {
 
     const { singleNotification } = props;
 
+    const { setIsShowRulesModal } = useContext(DContext);
+
 
     //Userlevel verification
-
-
     const [verificationLevelState, setVerificationLevelState] = useState(0);
     //Verification Level
     useEffect(() => {
@@ -61,16 +64,18 @@ export default function SingleNotificationHead(props) {
                         <h6 className="text-lightgray">@{singleNotification.fromUserID?.username}</h6>
                         <h5 className="text-lightgray greentime">{timeAgo.format(moment(singleNotification.created_at)._d.getTime())}</h5>
                     </div>
-                    <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                        {verificationLevelState === 4 ?
-                            <div className="levelbar text-darkwhite level1">
-                                Official
-                            </div> :
-                            <div className="levelbar text-darkwhite level1">
-                                Level {verificationLevelState}
-                            </div>
-                        }
-                    </OverlayTrigger>
+                    <div className="rules-tag" onClick={() => setIsShowRulesModal(true)}>
+                        <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                            {verificationLevelState === 4 ?
+                                <div className="levelbar text-darkwhite level1">
+                                    Official
+                                </div> :
+                                <div className="levelbar text-darkwhite level1">
+                                    Level {verificationLevelState}
+                                </div>
+                            }
+                        </OverlayTrigger>
+                    </div>
                 </div>
             </div>
         </>

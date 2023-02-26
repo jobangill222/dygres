@@ -54,13 +54,13 @@ import { toast } from "react-toastify";
 
 function AppRouter() {
     // Context Variables
-    const { user, userStats, userToken } = useContext(DContext);
+    const { user, setUser, userStats, userToken, setUserToken } = useContext(DContext);
     const navigate = useNavigate();
     const location = useLocation();
 
 
     useEffect(() => {
-        console.log('useruseruser', user)
+        // console.log('useruseruser', user)
         if (user && user.role === 'user') {
             let pathName = location.pathname;
 
@@ -72,7 +72,6 @@ function AppRouter() {
                     return
                 }
             }
-
             //Human verification pending
             if (userStats && userStats.totalFollowers > 49000 && user.isPhotoVerify === 0) {
                 if (pathName !== "/personalinformation") {
@@ -81,12 +80,22 @@ function AppRouter() {
                     return
                 }
             }
-
             //Verification rejected
             if (userStats && userStats.totalFollowers > 49000 && user.isPhotoVerify === 2) {
                 if (pathName !== "/personalinformation") {
                     toast('Please do image verification to access site.')
                     navigate('/personalinformation');
+                    return
+                }
+            }
+            //User blocked
+            if (user && user.isBlock === 1) {
+                if (pathName !== "/login") {
+                    setUser(null);
+                    setUserToken(null);
+                    localStorage.removeItem("accessToken");
+                    toast('Your account has been blocked.')
+                    navigate('/login');
                     return
                 }
             }
@@ -118,7 +127,7 @@ function AppRouter() {
                                     <Route exact path="/most-voted" element={<MostVoted />} />
                                     <Route exact path="/not-voted" element={<NotVoted />} />
                                     <Route exact path="/hashtagPosts" element={<HashTagPosts />} />
-                                    <Route exact path="/SinglePostDetail/:postIdForSinglePost" element={<SinglePostDetail />} />
+                                    <Route exact path="/SinglePostDetail/:postIdForSinglePost/:specificCommentFirst?" element={<SinglePostDetail />} />
                                     <Route exact path="/notification" element={<Notifications />} />
                                     {/* <Route exact path="/not-voted" element={<TopLatestPost />} /> */}
                                     <Route exact path="/posthead" element={<PostHead />} />

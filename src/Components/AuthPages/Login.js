@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -19,6 +19,10 @@ const Login = () => {
   // Context Variables
   const { userLogin, setUser, setUserToken, setUserStats, isLoading, setIsLoading } =
     useContext(DContext);
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
 
   const {
     register,

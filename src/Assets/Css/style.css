@@ -738,6 +738,44 @@ textarea {
 .whatsmind-inputbar .whatsmind-inputbar__highlighter {
   display: none;
 }
+
+.rules-tag {
+  cursor: pointer;
+}
+
+.rules-sestion .modal-dialog {
+  max-width: 460px !important;
+}
+
+.rules-sestion .modal-dialog .modal-header {
+  padding: 0 0 10px 0 !important;
+  justify-content: flex-start !important;
+}
+
+.rules-sestion .modal-dialog .rule-section p {
+  text-align: left !important;
+  font-size: 18px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.rules-sestion .modal-dialog .modal-body {
+  padding: 10px 0 0 0 !important;
+}
+
+.rules-sestion .modal-dialog .rule-section p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  background: var(--base-primary) !important;
+  border-radius: 50%;
+}
+
+button.bg-primary.text-white.btn.btn-primary {
+}
 .Whatsmind-bar form .word-note {
   margin-top: 5px;
 }

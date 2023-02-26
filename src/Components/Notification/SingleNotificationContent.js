@@ -13,8 +13,12 @@ export default function SingleNotificationContent(props) {
 
 
     const viewPost = async (postID) => {
-        // localStorage.setItem('PostIdForSinglePost', postID);
         navigate('/SinglePostDetail/' + postID)
+    }
+
+
+    const viewPostSpecificCommentFirst = async (postID, commentID) => {
+        navigate('/SinglePostDetail/' + postID + '/' + commentID)
     }
 
 
@@ -62,7 +66,7 @@ export default function SingleNotificationContent(props) {
                                         <div className='notification-text'>
                                             <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
                                             <p>comment on your</p>
-                                            <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
+                                            <p className="notify" onClick={() => viewPostSpecificCommentFirst(singleNotification?.postID, singleNotification?.commentID)}>dygression</p>
                                         </div>
                                     </>
                                     :
@@ -71,7 +75,7 @@ export default function SingleNotificationContent(props) {
                                             <div className='notification-text'>
                                                 <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
                                                 <p>agrees with your</p>
-                                                <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
+                                                <p className="notify" onClick={() => viewPostSpecificCommentFirst(singleNotification?.postID, singleNotification?.commentID)}>dygression</p>
                                                 <p>comment.</p>
                                             </div>
                                         </>
@@ -81,7 +85,7 @@ export default function SingleNotificationContent(props) {
                                                 <div className='notification-text'>
                                                     <p className="notify" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</p>
                                                     <p>disagrees with your</p>
-                                                    <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
+                                                    <p className="notify" onClick={() => viewPostSpecificCommentFirst(singleNotification?.postID, singleNotification?.commentID)}>dygression</p>
                                                     <p>comment.</p>
                                                 </div>
                                             </>

@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 
 const Threads = (props) => {
 
-    const { isThreadBoxOpen, postID, setCommentCount, commentID, clickTypeState } = props;
+    const { isThreadBoxOpen, postID, setCommentCount, commentID, clickTypeState, specificCommentFirst } = props;
 
     const [commentListState, setCommentListState] = useState([]);
 
@@ -33,13 +33,14 @@ const Threads = (props) => {
     }, [isThreadBoxOpen]);
 
     const getComment = async () => {
-        console.log('aaa');
+        console.log('get comment function call site');
         let axiosRes;
         let initialPageNumberOfComment = 1;
         if (commentID) {
             axiosRes = await getCommentOfCommentDContext(commentID, initialPageNumberOfComment);
         } else {
-            axiosRes = await getPostCommentDContext(postID, initialPageNumberOfComment);
+            // const specificCommentIDFirst = null;
+            axiosRes = await getPostCommentDContext(postID, specificCommentFirst, initialPageNumberOfComment);
         }
         console.log('axiosRes get comments', axiosRes)
         setPaginationData(axiosRes.paginationData)
@@ -101,10 +102,11 @@ const Threads = (props) => {
         if (commentID) {
             axiosRes = await getCommentOfCommentDContext(commentID, pageNumberOfComment);
         } else {
-            axiosRes = await getPostCommentDContext(postID, pageNumberOfComment);
+            // const specificCommentIDFirst = null;
+            axiosRes = await getPostCommentDContext(postID, specificCommentFirst, pageNumberOfComment);
         }
-        console.log('axiosRes get comments', axiosRes)
-        console.log('axioaxiosRes.list.lengthsRes', axiosRes.list.length)
+        // console.log('axiosRes get comments', axiosRes)
+        // console.log('axioaxiosRes.list.lengthsRes', axiosRes.list.length)
         if (axiosRes.list.length) {
             console.log('append list');
             setPaginationData(axiosRes.paginationData)

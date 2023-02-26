@@ -51,6 +51,8 @@ export const DProvider = (props) => {
   //Font Size
   const [fontSizeState, setFontSizeState] = useState(null);
 
+  //Rule State
+  const [isShowRulesModal, setIsShowRulesModal] = useState(false);
 
   useEffect(() => {
 
@@ -698,7 +700,7 @@ export const DProvider = (props) => {
     }
   };
 
-  const getPostCommentDContext = async (PostID, pageNumberOfComment) => {
+  const getPostCommentDContext = async (PostID, specificCommentFirst, pageNumberOfComment) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -708,6 +710,7 @@ export const DProvider = (props) => {
         },
         data: {
           postID: PostID,
+          specificCommentIDFirst: specificCommentFirst
         },
       });
       return axiosRes.data;
@@ -1675,6 +1678,8 @@ export const DProvider = (props) => {
     setHashTagClickState,
     fontSizeState,
     setFontSizeState,
+    isShowRulesModal,
+    setIsShowRulesModal,
     // Methods
     userLogin,
     userSignup,

@@ -12,7 +12,7 @@ const UsersProfile = () => {
 
     let { userIDForProfile } = useParams();
 
-    const { getOtherUserDetailByUserIDDContext, setSelectedIDForPopup, setPopupType } = useContext(DContext);
+    const { getOtherUserDetailByUserIDDContext, setSelectedIDForPopup, setPopupType, setIsShowRulesModal } = useContext(DContext);
 
     const [user, setUser] = useState();
     const [userStats, setUserStats] = useState();
@@ -102,16 +102,18 @@ const UsersProfile = () => {
                                 <div className="user-availbility">
                                     <h6 className="text-lightgray">@{user?.username}</h6>
                                 </div>
-                                <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                                    {verificationLevelState === 4 ?
-                                        <div className="levelbar text-darkwhite level1">
-                                            Official
-                                        </div> :
-                                        <div className="levelbar text-darkwhite level1">
-                                            Level {verificationLevelState}
-                                        </div>
-                                    }
-                                </OverlayTrigger>
+                                <div className="rules-tag" onClick={() => setIsShowRulesModal(true)}>
+                                    <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                                        {verificationLevelState === 4 ?
+                                            <div className="levelbar text-darkwhite level1">
+                                                Official
+                                            </div> :
+                                            <div className="levelbar text-darkwhite level1">
+                                                Level {verificationLevelState}
+                                            </div>
+                                        }
+                                    </OverlayTrigger>
+                                </div>
                                 <ul className="user-detail-listing">
                                     <li>
                                         <p className="text-secondry">{userStats?.totalPosts}</p>

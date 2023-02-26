@@ -45,7 +45,7 @@ const SinglePostList = (props) => {
     const viewParentPostDetail = async (postID) => {
         // localStorage.setItem('PostIdForSinglePost', postID);
         setPostIDForSinglePostState(postID);
-        navigate('/SinglePostDetail/' + postID)
+        navigate('/SinglePostDetail/' + postID + '/' + null)
     }
 
     useEffect(() => {

@@ -29,13 +29,13 @@ const Threads = (props) => {
     }, [isThreadBoxOpen]);
 
     const getComment = async () => {
-        console.log('aaa');
         let axiosRes;
         let initialPageNumberOfComment = 1;
         if (commentID) {
             axiosRes = await getCommentOfCommentDContext(commentID, initialPageNumberOfComment);
         } else {
-            axiosRes = await getPostCommentDContext(postID, initialPageNumberOfComment);
+            const specificCommentIDFirst = null;
+            axiosRes = await getPostCommentDContext(postID, specificCommentIDFirst, initialPageNumberOfComment);
         }
         console.log('axiosRes get comments', axiosRes)
         setPaginationData(axiosRes.paginationData)
@@ -97,7 +97,8 @@ const Threads = (props) => {
         if (commentID) {
             axiosRes = await getCommentOfCommentDContext(commentID, pageNumberOfComment);
         } else {
-            axiosRes = await getPostCommentDContext(postID, pageNumberOfComment);
+            const specificCommentIDFirst = null;
+            axiosRes = await getPostCommentDContext(postID, specificCommentIDFirst, pageNumberOfComment);
         }
         console.log('axiosRes get comments', axiosRes)
         console.log('axioaxiosRes.list.lengthsRes', axiosRes.list.length)

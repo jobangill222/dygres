@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -14,11 +14,13 @@ import { DContext } from "../../Context/DContext";
 import { useNavigate } from "react-router-dom";
 import SingleNotificationList from '../Notification/SingleNotificationList';
 
+import RulesModal from "../Modals/RulesModal";
+
 const Header = () => {
   const navigate = useNavigate();
 
   // Context Variables
-  const { user, setUser, userToken, setUserToken, notificationList, setNotificationList, getNotificationDContext } = useContext(DContext);
+  const { user, setUser, userToken, setUserToken, notificationList, setNotificationList, getNotificationDContext, isShowRulesModal, setIsShowRulesModal } = useContext(DContext);
   // console.log("console user Details in header", user);
 
   //Logout Functionality
@@ -63,8 +65,12 @@ const Header = () => {
     }
   };
 
+
   return (
     <>
+
+      {isShowRulesModal && <RulesModal setIsShowRulesModal={setIsShowRulesModal} />}
+
       <Navbar className="header-nav" expand="lg">
         <Container>
           <div className="mainheader">

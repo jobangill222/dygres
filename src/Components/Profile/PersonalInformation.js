@@ -181,12 +181,20 @@ const PersonalInformation = () => {
         value: 8,
         message: "New password must have at least 8 characters",
       },
+      pattern: {
+        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        message: "New Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
+      },
     },
     confirmNewPassword: {
       required: "Enter Confirm password.",
       minLength: {
         value: 8,
         message: "Confirm password must have at least 8 characters",
+      },
+      pattern: {
+        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        message: "Confirm password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
       },
     },
   };

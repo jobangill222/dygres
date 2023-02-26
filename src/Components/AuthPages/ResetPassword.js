@@ -51,18 +51,26 @@ const ResetPassword = () => {
 
     const registerOptions = {
         password: {
-            required: "Enter Password.",
+            required: "Enter Password",
             minLength: {
                 value: 8,
-                message: "Password must have at least 8 characters"
-            }
+                message: "Password must have at least 8 characters",
+            },
+            pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                message: "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
+            },
         },
         confirmPassword: {
             required: "Enter confirm password.",
             minLength: {
                 value: 8,
                 message: "Confirm password must have at least 8 characters"
-            }
+            },
+            pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                message: "Confirm password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
+            },
         }
     };
 

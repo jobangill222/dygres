@@ -16,6 +16,8 @@ import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 import SingleUserList from "./SingleUserList";
 import Loader from "../Loader";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 
 const Users = () => {
 
@@ -35,6 +37,7 @@ const Users = () => {
         const search = searchByUsernameState;
         const pageNumber = 1;
         const axiosRes = await allUserListDContext(search, pageNumber);
+        console.log('axiosResaxiosResaxiosRes', axiosRes)
         if (axiosRes.status === "success") {
             setUserList(axiosRes.list);
         } else {
@@ -57,11 +60,42 @@ const Users = () => {
     };
 
 
+
+    //Append next post list
+    const appendNextList = async () => {
+        let currentAdminUserListPage = localStorage.getItem("userPageNumber");
+        let pageNumberOfPostList = parseInt(currentAdminUserListPage) + 1;
+        const search = searchByUsernameState;
+        const axiosRes = await allUserListDContext(search, pageNumberOfPostList);
+        if (axiosRes.status === "success") {
+            setUserList((current) => [...current, ...axiosRes.list]);
+            localStorage.setItem("userPageNumber", pageNumberOfPostList);
+        }
+    };
+
+
     return (
         <>
 
             {/* {console.log('userListuserList', userList)} */}
             {isLoading && <Loader />}
+
+
+            <InfiniteScroll
+                dataLength={userList.length}
+                next={appendNextList}
+                hasMore={true}
+                // loader={<h4>Loading...</h4>}
+                endMessage={
+                    <p style={{ textAlign: "center" }}>
+                        <b>Yay! You have seen it all</b>
+                    </p>
+                }
+            >
+                {/* {postList} */}
+            </InfiniteScroll>
+
+
             <Container>
                 <div className="dashboard-title-bar">
                     <Row>

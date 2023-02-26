@@ -13,7 +13,7 @@ import { verificationLevel } from "../../helper/verificationLevel";
 
 const Profile = () => {
 
-    const { user, userStats, setSelectedIDForPopup, setPopupType, updateCoverImageDContext, isLoading, setIsLoading } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, setPopupType, updateCoverImageDContext, isLoading, setIsLoading, setIsShowRulesModal } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -137,16 +137,18 @@ const Profile = () => {
                                     <h6 className="text-lightgray">@{user?.username}</h6>
                                 </div>
                                 {/* {console.log('useruseruser', user)} */}
-                                <OverlayTrigger placement="top" overlay={verificationtooltip}>
-                                    {verificationLevelState === 4 ?
-                                        <div className="levelbar text-darkwhite level1">
-                                            Official
-                                        </div> :
-                                        <div className="levelbar text-darkwhite level1">
-                                            Level {verificationLevelState}
-                                        </div>
-                                    }
-                                </OverlayTrigger>
+                                <div className="rules-tag" onClick={() => setIsShowRulesModal(true)}>
+                                    <OverlayTrigger placement="top" overlay={verificationtooltip}>
+                                        {verificationLevelState === 4 ?
+                                            <div className="levelbar text-darkwhite level1">
+                                                Official
+                                            </div> :
+                                            <div className="levelbar text-darkwhite level1">
+                                                Level {verificationLevelState}
+                                            </div>
+                                        }
+                                    </OverlayTrigger>
+                                </div>
                                 <ul className="user-detail-listing">
                                     <li>
                                         <p className="text-secondry">{userStats?.totalPosts}</p>
