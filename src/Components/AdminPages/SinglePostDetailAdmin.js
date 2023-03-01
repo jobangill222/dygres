@@ -18,7 +18,7 @@ const SinglePostDetailAdmin = () => {
     // let { postIdForSinglePost, specificCommentFirst } = useParams();
     let { postIdForSinglePost, specificCommentFirst } = useParams();
 
-    const { popupType, getSinglePostDetailDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, postIDForSinglePostState, setSearchState } = useContext(DContext);
+    const { popupType, getSinglePostDetailDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, postIDForSinglePostState, setSearchState } = useContext(DContext);
 
 
     useEffect(() => {
@@ -67,12 +67,7 @@ const SinglePostDetailAdmin = () => {
         }
     }, [postIDForAwardOfPost])
 
-    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    // useEffect(() => {
-    //     if (postIDForRetweet) {
-    //         setViewRetweetPopup(true);
-    //     }
-    // }, [postIDForRetweet])
+
 
     return (
         <>

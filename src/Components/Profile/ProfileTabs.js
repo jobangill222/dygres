@@ -16,7 +16,7 @@ const ProfileTabs = (props) => {
 
     const { user } = props;
 
-    const { postList, popupType, setPostList, getMyPostsDContext, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { postList, popupType, setPostList, getMyPostsDContext, postIDForAwardOfPost, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
         localStorage.setItem("currentPage", 1);
@@ -77,13 +77,6 @@ const ProfileTabs = (props) => {
         }
     }, [postIDForAwardOfPost])
 
-
-    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    // useEffect(() => {
-    //     if (postIDForRetweet) {
-    //         setViewRetweetPopup(true);
-    //     }
-    // }, [postIDForRetweet])
 
     return (
         <>

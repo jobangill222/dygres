@@ -17,7 +17,7 @@ const DigitalTabs = (props) => {
   const { activeTabState, setActiveTabState } = props;
 
   //Global states
-  const { postList, popupType, postIDForAwardOfPost, postIDForRetweet, fontSizeState, setFontSizeState } = useContext(DContext);
+  const { postList, popupType, postIDForAwardOfPost, fontSizeState, setFontSizeState } = useContext(DContext);
 
   // Change state when click on count of agree disagree etc and change popupstate to true to open
   const [popupOpenStatus, setPopupOpenStatus] = useState(false);
@@ -35,13 +35,6 @@ const DigitalTabs = (props) => {
     }
   }, [postIDForAwardOfPost])
 
-
-  // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-  // useEffect(() => {
-  //   if (postIDForRetweet) {
-  //     setViewRetweetPopup(true);
-  //   }
-  // }, [postIDForRetweet])
 
 
   const changeFontSize = async (size) => {

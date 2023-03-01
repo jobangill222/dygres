@@ -47,10 +47,10 @@ const PostFoot = (props) => {
   // const timeAgo = new TimeAgo('en-US')
 
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, amplify_count } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, amplify_count, isPostByOfficial } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet, setPostIDForSinglePostState } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForSinglePostState } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -317,21 +317,13 @@ const PostFoot = (props) => {
   }, [amplify_count])
 
   const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-  // useEffect(() => {
-  //   if (postIDForRetweet) {
-  //     setViewRetweetPopup(true);
-  //   }
-  // }, [postIDForRetweet])
+
 
 
   const retweetPost = async () => {
-    // console.log('aaa', user?._id)
-    // console.log('bbb', postUserID)
-    // console.log('postID', postID)
 
     if (user._id !== postUserID) {
       setViewRetweetPopup(true)
-      setPostIDForRetweet(postID)
     }
 
   }
@@ -339,9 +331,7 @@ const PostFoot = (props) => {
   return (
     <>
 
-      {/* {console.log('viewRetweetPopupviewRetweetPopup', viewRetweetPopup)}; */}
-
-      {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} amplifyCountState={amplifyCountState} setAmplifyCountState={setAmplifyCountState} />}
+      {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} amplifyCountState={amplifyCountState} setAmplifyCountState={setAmplifyCountState} postIDForRetweet={postID} isPostByOfficial={isPostByOfficial} />}
 
       <div className="action-bar">
         <ul className="actionleftbar">

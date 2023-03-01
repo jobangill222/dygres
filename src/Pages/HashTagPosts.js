@@ -11,7 +11,7 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const HashTagPosts = () => {
 
-    const { popupType, getpostsByHashTagDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, hashTagClickState, setHashTagClickState } = useContext(DContext);
+    const { popupType, getpostsByHashTagDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, hashTagClickState, setHashTagClickState } = useContext(DContext);
 
     useEffect(() => {
         // setPostList([]);
@@ -92,12 +92,7 @@ const HashTagPosts = () => {
         }
     }, [postIDForAwardOfPost])
 
-    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    // useEffect(() => {
-    //     if (postIDForRetweet) {
-    //         setViewRetweetPopup(true);
-    //     }
-    // }, [postIDForRetweet])
+
 
     return (
         <>

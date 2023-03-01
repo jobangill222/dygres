@@ -31,8 +31,7 @@ export const DProvider = (props) => {
   const [selectedIDForPopup, setSelectedIDForPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc or either userID to get following followers)
   const [postIDForAwardOfPost, setPostIDForAwardOfPost] = useState(null); //postID for show all awards of posts in post Head component
 
-  //Retweet PostID
-  const [postIDForRetweet, setPostIDForRetweet] = useState(null); //store post id for retweet
+
 
   //For loading 
   const [isLoading, setIsLoading] = useState(false);
@@ -1714,8 +1713,6 @@ export const DProvider = (props) => {
     setPopupType,
     postIDForAwardOfPost,
     setPostIDForAwardOfPost,
-    postIDForRetweet,
-    setPostIDForRetweet,
     isLoading,
     setIsLoading,
     searchState,

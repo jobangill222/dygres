@@ -12,7 +12,7 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 const NotVoted = () => {
 
 
-    const { popupType, getNotVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState } = useContext(DContext);
+    const { popupType, getNotVotedPostDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, setSearchState } = useContext(DContext);
 
     useEffect(() => {
         setSearchState(null)
@@ -82,12 +82,7 @@ const NotVoted = () => {
         }
     }, [postIDForAwardOfPost])
 
-    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    // useEffect(() => {
-    //     if (postIDForRetweet) {
-    //         setViewRetweetPopup(true);
-    //     }
-    // }, [postIDForRetweet])
+
 
     return (
         <>

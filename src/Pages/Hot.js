@@ -13,7 +13,7 @@ import RetweetModal from "../Components/Modals/RetweetModal";
 
 const Hot = () => {
 
-    const { popupType, getHotPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState } = useContext(DContext);
+    const { popupType, getHotPostDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, setSearchState } = useContext(DContext);
 
     useEffect(() => {
         setSearchState(null)
@@ -73,13 +73,6 @@ const Hot = () => {
         }
     }, [postIDForAwardOfPost])
 
-
-    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    // useEffect(() => {
-    //     if (postIDForRetweet) {
-    //         setViewRetweetPopup(true);
-    //     }
-    // }, [postIDForRetweet])
 
     return (
         <>

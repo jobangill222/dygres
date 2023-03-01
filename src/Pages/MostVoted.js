@@ -11,7 +11,7 @@ import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
 
 const MostVoted = () => {
 
-    const { popupType, getMostVotedPostDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, setSearchState } = useContext(DContext);
+    const { popupType, getMostVotedPostDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, setSearchState } = useContext(DContext);
 
     useEffect(() => {
         setSearchState(null)
@@ -81,12 +81,6 @@ const MostVoted = () => {
         }
     }, [postIDForAwardOfPost])
 
-    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    // useEffect(() => {
-    //     if (postIDForRetweet) {
-    //         setViewRetweetPopup(true);
-    //     }
-    // }, [postIDForRetweet])
 
     return (
         <>

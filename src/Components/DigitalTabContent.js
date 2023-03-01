@@ -105,6 +105,8 @@ const DigitalTabContent = (props) => {
 
                   amplify_count={amplify_count}
 
+                  isPostByOfficial={isPostByOfficial}
+
                 />
               }
 

@@ -16,7 +16,7 @@ const SinglePostDetail = () => {
 
     // console.log("SinglePostID", SinglePostID);
 
-    const { popupType, getSinglePostDetailDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, postIDForSinglePostState, setSearchState } = useContext(DContext);
+    const { popupType, getSinglePostDetailDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, postIDForSinglePostState, setSearchState } = useContext(DContext);
 
 
     useEffect(() => {
@@ -64,12 +64,7 @@ const SinglePostDetail = () => {
         }
     }, [postIDForAwardOfPost])
 
-    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    // useEffect(() => {
-    //     if (postIDForRetweet) {
-    //         setViewRetweetPopup(true);
-    //     }
-    // }, [postIDForRetweet])
+
 
     return (
         <>

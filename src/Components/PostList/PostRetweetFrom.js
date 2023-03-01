@@ -5,7 +5,7 @@ import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 // TimeAgo.addDefaultLocale(en)
-import { verificationLevel } from "../../helper/verificationLevel";
+import { levelBelowPost } from "../../helper/levelBelowPost";
 
 export default function PostRetweetFrom(props) {
 
@@ -21,7 +21,7 @@ export default function PostRetweetFrom(props) {
 
     const getLevel = async () => {
         // const res = await verificationLevel(parentPostDetail[0]?.user[0]?.isEmailVerify, parentPostDetail[0]?.user[0]?.isPhotoVerify);
-        const res = await verificationLevel(parentPostDetail[0]?.user[0]?.level, parentPostDetail[0]?.user[0]?.isOfficial);
+        const res = await levelBelowPost(parentPostDetail[0]?.isPostByOfficial, parentPostDetail[0]?.user[0]?.level, parentPostDetail[0]?.user[0]?.isOfficial);
 
         setVerificationLevelState(res);
     }

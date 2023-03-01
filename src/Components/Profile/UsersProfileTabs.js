@@ -19,7 +19,7 @@ const UsersProfileTabs = (props) => {
 
     const { user } = props;
 
-    const { postList, popupType, setPostList, getOtherUserPostsByUserIDDContext, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading } = useContext(DContext);
+    const { postList, popupType, setPostList, getOtherUserPostsByUserIDDContext, postIDForAwardOfPost, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
         // setPostList([]);
@@ -90,12 +90,6 @@ const UsersProfileTabs = (props) => {
     }, [postIDForAwardOfPost])
 
 
-    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    // useEffect(() => {
-    //     if (postIDForRetweet) {
-    //         setViewRetweetPopup(true);
-    //     }
-    // }, [postIDForRetweet])
 
     return (
         <>

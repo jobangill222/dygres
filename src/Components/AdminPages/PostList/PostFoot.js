@@ -48,7 +48,7 @@ const PostFoot = (props) => {
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, isFlag, amplify_count } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet, setPostIDForSinglePostState, flagUnflagPostDContext } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForSinglePostState, flagUnflagPostDContext } = useContext(DContext);
 
   //Flag Unflag state
   const [isPostFlagState, setIsPostFlagState] = useState(false);

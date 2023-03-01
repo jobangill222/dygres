@@ -14,19 +14,18 @@ import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 // TimeAgo.addDefaultLocale(en)
-import { verificationLevel } from "../../helper/verificationLevel";
+import { levelBelowPost } from "../../helper/levelBelowPost";
 
 export default function SingleAward(props) {
 
     const timeAgo = new TimeAgo('en-US')
 
-    const { viewRetweetPopup, setViewRetweetPopup, amplifyCountState, setAmplifyCountState } = props;
+    const { viewRetweetPopup, setViewRetweetPopup, amplifyCountState, setAmplifyCountState, postIDForRetweet, isPostByOfficial } = props;
 
-    const { postIDForRetweet, setPostIDForRetweet, getSinglePostDetailDContext, createPostDContext, setUserStats, setIsPostState, suggestionWhilePostingDContext, setIsShowRulesModal } = useContext(DContext);
+    const { getSinglePostDetailDContext, createPostDContext, setUserStats, setIsPostState, suggestionWhilePostingDContext, setIsShowRulesModal } = useContext(DContext);
 
     const closePopup = async () => {
         setViewRetweetPopup(false)
-        setPostIDForRetweet(null)
     }
 
     useEffect(() => {
@@ -53,7 +52,7 @@ export default function SingleAward(props) {
         // }
 
         // const res = await verificationLevel(axiosRes.list[0]?.user?.isEmailVerify, axiosRes.list[0]?.user?.isPhotoVerify);
-        const res = await verificationLevel(axiosRes.list[0]?.user?.level, axiosRes.list[0]?.user?.isOfficial);
+        const res = await levelBelowPost(isPostByOfficial, axiosRes.list[0]?.user?.level, axiosRes.list[0]?.user?.isOfficial);
 
         setUserVerificationLevel(res);
 
@@ -155,7 +154,6 @@ export default function SingleAward(props) {
                     setCreatePostState("");
 
                     setViewRetweetPopup(false)
-                    setPostIDForRetweet(null)
 
                     let newAmplifyCount = amplifyCountState + 1;
                     setAmplifyCountState(newAmplifyCount);
@@ -211,7 +209,10 @@ export default function SingleAward(props) {
 
     return (
         <>
-            {console.log('postDetailForRetweet,postDetailForRetweet', postDetailForRetweet)}
+            {console.log('viewRetweetPopup,viewRetweetPopup', viewRetweetPopup)}
+            {console.log('postIDForRetweet,postIDForRetweet', postIDForRetweet)}
+
+
             {/* Aggree modal */}
             <Modal className="Actions-modal" show={viewRetweetPopup} onHide={closePopup} centered >
 
