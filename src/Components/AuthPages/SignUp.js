@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { BsInfoCircle } from "react-icons/bs";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -61,13 +62,13 @@ const SignUp = () => {
       axiosRes = await userSignup(data);
       console.log("axiosRes", axiosRes);
       if (axiosRes.status === "success") {
-        // localStorage.setItem("accessToken", axiosRes.accessToken);
-        // setUser(axiosRes.data);
-        // setUserToken(axiosRes.accessToken);
-        // setUserStats(axiosRes.userStats);
-        // navigate("/new");
+        localStorage.setItem("accessToken", axiosRes.accessToken);
+        setUser(axiosRes.data);
+        setUserToken(axiosRes.accessToken);
+        setUserStats(axiosRes.userStats);
+        navigate("/new");
 
-        setIsShowSignupModal(true)
+        setIsShowSignupModal(false)
 
 
       } else {
@@ -100,7 +101,7 @@ const SignUp = () => {
         message: "Username should be less than 20 characters",
       },
       pattern: {
-        value: /^[a-z0-9]+$/,
+        value: /^[a-z0-9_.]+$/,
         message: "Username must be 20 characters max, lower case, and can only contain alphanumeric characters without spaces",
       },
     },
@@ -112,10 +113,11 @@ const SignUp = () => {
       },
       pattern: {
         value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        message: "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
+        message: "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special characters without spaces",
       },
     },
   };
+
 
 
 
@@ -130,6 +132,20 @@ const SignUp = () => {
   );
 
 
+  const renderTooltipPassword = (props) => (
+    <Tooltip style={{ width: "400px", wordBreak: "break-all" }} className='infotooltip' id="button-tooltip" {...props}>
+      <ul>
+        <li>Password must have at least 8 characters.</li>
+        <li>Password must contain at least one lowercase letter, one uppercase letter, one number, and one special characters without spaces</li>
+      </ul>
+    </Tooltip>
+  );
+
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <>
@@ -174,8 +190,6 @@ const SignUp = () => {
                     overlay={renderTooltip}
                   >
                     <Button> <BsInfoCircle /></Button>
-                    {/* <BsInfoCircle /> */}
-
                   </OverlayTrigger>
 
 
@@ -185,6 +199,7 @@ const SignUp = () => {
                   placeholder="Enter Username"
                   name="username"
                   {...register("username", registerOptions.username)}
+
                 // value={password}
                 // onChange={e => setPassword(e.target.value)}
                 />
@@ -198,9 +213,18 @@ const SignUp = () => {
                 className="authinputbar"
                 controlId="formBasicPassword"
               >
-                <Form.Label>Your password</Form.Label>
+                <Form.Label>Your password
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltipPassword}
+                  >
+                    <Button> <BsInfoCircle /></Button>
+                  </OverlayTrigger>
+
+                </Form.Label>
                 <Form.Control
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="Enter Password"
                   name="password"
                   {...register("password", registerOptions.password)}
@@ -210,7 +234,17 @@ const SignUp = () => {
                 <small className="text-danger">
                   {errors?.password && errors.password.message}
                 </small>
+
+                <div className='cursor-pointer' onClick={handleTogglePassword}>
+                  {showPassword ?
+                    <p>< AiOutlineEyeInvisible /></p>
+                    :
+                    <p><AiOutlineEye /></p>
+                  }
+                </div>
+
               </Form.Group>
+
 
               <Form.Group
                 className="authinputbar authcheckbox"

@@ -31,6 +31,8 @@ import AwardModal from "../Modals/AwardModal";
 import { MdOutlineTimer } from "react-icons/md";
 import useCopy from "use-copy";
 
+import RetweetModal from "../../Components/Modals/RetweetModal";
+
 
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
@@ -45,7 +47,7 @@ const PostFoot = (props) => {
   // const timeAgo = new TimeAgo('en-US')
 
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, amplify_count } = props;
 
   //Functions to call api
   const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet, setPostIDForSinglePostState } = useContext(DContext);
@@ -94,6 +96,9 @@ const PostFoot = (props) => {
     }
     setPostReportCount(report_count);
   }, [is_report]);
+
+
+
 
 
   const [agreeDisagreeButtonDisableState, setAgreeDisagreeButtonDisableState] = useState(false);
@@ -157,9 +162,9 @@ const PostFoot = (props) => {
   const [reportDescription, setReportDescription] = useState("");
   const submitReport = async (e) => {
     e.preventDefault();
-    console.log('post Id to be report', postID);
-    console.log('reportReason', reportReason);
-    console.log('reportDescription', reportDescription);
+    // console.log('post Id to be report', postID);
+    // console.log('reportReason', reportReason);
+    // console.log('reportDescription', reportDescription);
     if (!reportReason) {
       toast("Please select the reason(s) for your report.")
     } else {
@@ -223,10 +228,7 @@ const PostFoot = (props) => {
   }
 
 
-  const retweetPost = async () => {
-    setPostIDForRetweet(postID)
-    // console.log('type', type);
-  }
+
 
 
   //Make multiselect report reason
@@ -309,8 +311,38 @@ const PostFoot = (props) => {
   };
 
 
+  const [amplifyCountState, setAmplifyCountState] = useState(0);
+  useEffect(() => {
+    setAmplifyCountState(amplify_count)
+  }, [amplify_count])
+
+  const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+  // useEffect(() => {
+  //   if (postIDForRetweet) {
+  //     setViewRetweetPopup(true);
+  //   }
+  // }, [postIDForRetweet])
+
+
+  const retweetPost = async () => {
+    // console.log('aaa', user?._id)
+    // console.log('bbb', postUserID)
+    // console.log('postID', postID)
+
+    if (user._id !== postUserID) {
+      setViewRetweetPopup(true)
+      setPostIDForRetweet(postID)
+    }
+
+  }
+
   return (
     <>
+
+      {/* {console.log('viewRetweetPopupviewRetweetPopup', viewRetweetPopup)}; */}
+
+      {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} amplifyCountState={amplifyCountState} setAmplifyCountState={setAmplifyCountState} />}
+
       <div className="action-bar">
         <ul className="actionleftbar">
           <li>
@@ -368,14 +400,14 @@ const PostFoot = (props) => {
 
 
 
-          {user?._id !== postUserID && <li>
+          <li >
             <div className="" onClick={retweetPost}>
               <HiSpeakerphone />
             </div>
-            <div className="list-text" onClick={retweetPost}>
-              {/* <span className="number">2</span> */}
+            <div className="list-text" onClick={retweetPost} >
+              <span className="number">{amplifyCountState}</span>
               Amplify</div>
-          </li>}
+          </li>
 
           {postListingType !== 'singlePost' && <li onClick={() => viewPost(postID)} >
             <div><BsArrowUpRightSquareFill /></div>

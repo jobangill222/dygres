@@ -134,7 +134,7 @@ export default function EditAward() {
             const axiosRes = await editpackageAdminDContext(bodyFormData);
 
             if (axiosRes.status === "success") {
-                toast('PAckage edit successfully.');
+                toast('Package edit successfully.');
                 navigate("/admin/packageList");
             } else {
                 toast('Unable to create package.');
@@ -215,7 +215,7 @@ export default function EditAward() {
 
 
                                     <Form.Group className="editor-input" controlId="">
-                                        <Form.Label>Package Amount</Form.Label>
+                                        <Form.Label>Package Amount($)</Form.Label>
                                         <Form.Control
                                             type="number"
                                             placeholder="Enter package amount"

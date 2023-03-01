@@ -24,7 +24,7 @@ export const DProvider = (props) => {
   const [notificationList, setNotificationList] = useState([]);
 
   //State for is post or not to paas dependency in use effect for render updated list when post 
-  const [isPostState, setIsPostState] = useState("0");
+  const [isPostState, setIsPostState] = useState(false);
 
   //State For Popup UserList
   const [popupType, setPopupType] = useState(null); // like popup for user agreed or disagreed to comment or user agree disagree to post based on this hit api in component/modal/User list
@@ -1209,6 +1209,21 @@ export const DProvider = (props) => {
   };
 
 
+  const getHashtagDContext = async () => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/post/trending-hashtags`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get hashtag list (DContext.js) - ", err);
+    }
+  }
 
 
   //Admin
@@ -1228,6 +1243,41 @@ export const DProvider = (props) => {
       return axiosRes.data;
     } catch (err) {
       console.log("Some issue while get all user api (DContext.js) - ", err);
+    }
+  }
+
+  const getReportListDContext = async (pageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/posts/report-post-list?page=${pageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get report list api (DContext.js) - ", err);
+    }
+  }
+
+  const blockedUserListDContext = async (search, pageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/blocked-user-list?page=${pageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          search: search
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get blocked user api (DContext.js) - ", err);
     }
   }
 
@@ -1737,7 +1787,10 @@ export const DProvider = (props) => {
     updateCoverImageDContext,
     searchSuggestionDContext,
     suggestionWhilePostingDContext,
+    getHashtagDContext,
     allUserListDContext,
+    getReportListDContext,
+    blockedUserListDContext,
     sendNotificationToAllDContext,
     humanVerificationDetailDContext,
     acceptRejectHumanVerificationDContext,

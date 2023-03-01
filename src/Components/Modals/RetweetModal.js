@@ -20,7 +20,7 @@ export default function SingleAward(props) {
 
     const timeAgo = new TimeAgo('en-US')
 
-    const { viewRetweetPopup, setViewRetweetPopup } = props;
+    const { viewRetweetPopup, setViewRetweetPopup, amplifyCountState, setAmplifyCountState } = props;
 
     const { postIDForRetweet, setPostIDForRetweet, getSinglePostDetailDContext, createPostDContext, setUserStats, setIsPostState, suggestionWhilePostingDContext, setIsShowRulesModal } = useContext(DContext);
 
@@ -143,7 +143,7 @@ export default function SingleAward(props) {
             try {
                 const axiosRes = await createPostDContext(createPostState, postIDForRetweet);
                 if (axiosRes.status === "success") {
-                    setIsPostState("1");
+                    setIsPostState(true);
                     // Update user stats state
                     setUserStats((previousState) => {
                         return {
@@ -156,6 +156,9 @@ export default function SingleAward(props) {
 
                     setViewRetweetPopup(false)
                     setPostIDForRetweet(null)
+
+                    let newAmplifyCount = amplifyCountState + 1;
+                    setAmplifyCountState(newAmplifyCount);
 
                 } else {
                     toast(axiosRes.message);

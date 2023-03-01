@@ -14,7 +14,7 @@ const SinglePostList = (props) => {
     // Prop Destrucutring
     // console.log("props.post", props.post);
     const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, award_count, is_report, userID, _id, is_follow, created_at, parentPostID, parentPostDetail
-        , postAward, isFlag } = props.post;
+        , postAward, isFlag, amplify_count, isPostByOfficial } = props.post;
 
     const { postListingType } = props;
 
@@ -42,10 +42,10 @@ const SinglePostList = (props) => {
 
     const navigate = useNavigate();
 
-    const viewParentPostDetail = async (postID) => {
+    const viewParentPostDetailAdmin = async (postID) => {
         // localStorage.setItem('PostIdForSinglePost', postID);
         setPostIDForSinglePostState(postID);
-        navigate('/SinglePostDetail/' + postID + '/' + null)
+        navigate('/admin/post/single-post/' + postID)
     }
 
     useEffect(() => {
@@ -63,7 +63,7 @@ const SinglePostList = (props) => {
 
                 <div className="accordionitem" >
                     <div className="digital-feeds ">
-                        <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} postAward={postAward} postID={_id} />
+                        <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} postAward={postAward} postID={_id} isPostByOfficial={isPostByOfficial} />
                         <div className="user-preview">
 
 
@@ -71,8 +71,8 @@ const SinglePostList = (props) => {
                                 <>
                                     <PostContent postContent={postContent} />
                                     {parentPostID !== null &&
-                                        // <div onClick={() => viewParentPostDetail(parentPostID)}>
-                                        <div >
+                                        <div onClick={() => viewParentPostDetailAdmin(parentPostID)}>
+                                            {/* <div > */}
                                             <PostRetweetFrom parentPostDetail={parentPostDetail} />
                                         </div>
                                     }
@@ -104,6 +104,8 @@ const SinglePostList = (props) => {
                                     postListingType={postListingType}
 
                                     isFlag={isFlag}
+
+                                    amplify_count={amplify_count}
                                 />
                             }
 

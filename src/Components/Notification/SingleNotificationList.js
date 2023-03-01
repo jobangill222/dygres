@@ -42,7 +42,8 @@ export default function SingleNotificationList(props) {
                 <div className="relative notification-content unreadmark">
                     <div className="user-detail-bar">
                         <div className="admin-notification-text notification-text">
-                            <p className='notify'>{singleNotification?.description}</p>
+                            <p className='notify'>Admin notification - </p>
+                            <p>{singleNotification?.description}</p>
                             {/* <p>gray</p>
                             <p className='notify'>{singleNotification?.description}</p> */}
                         </div>

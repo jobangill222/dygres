@@ -78,12 +78,12 @@ const ProfileTabs = (props) => {
     }, [postIDForAwardOfPost])
 
 
-    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    useEffect(() => {
-        if (postIDForRetweet) {
-            setViewRetweetPopup(true);
-        }
-    }, [postIDForRetweet])
+    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    // useEffect(() => {
+    //     if (postIDForRetweet) {
+    //         setViewRetweetPopup(true);
+    //     }
+    // }, [postIDForRetweet])
 
     return (
         <>
@@ -110,7 +110,7 @@ const ProfileTabs = (props) => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
-            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
+            {/* {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />} */}
 
             <Tabs defaultActiveKey="Timeline" id="" className="digital-tabs" >
 

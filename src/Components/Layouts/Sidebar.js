@@ -2,12 +2,19 @@ import React, { useContext, useState } from "react";
 import { BsPencil, BsFileMedicalFill, BsBell } from 'react-icons/bs';
 import { BiSearch, BiLayerMinus } from 'react-icons/bi';
 import { MdHowToVote, MdOutlineWhatshot } from 'react-icons/md';
+
+import { GrNotes } from 'react-icons/gr';
+
+
+
 import { Link } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import { useNavigate } from "react-router-dom";
 import ViewAllAwardsIGot from "../Modals/ViewAllAwardsIGot";
+import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
+
 
 const Sidebar = () => {
 
@@ -82,9 +89,15 @@ const Sidebar = () => {
         event.stopPropagation();
     }
 
+
+    const [isShowFoundationalRulePopup, setIsShowFoundationalRuleModal] = useState(false);
+
+
     return (
         <>
             {awardIGotPopupState && <ViewAllAwardsIGot awardIGotPopupState={awardIGotPopupState} setAwardIGotPopupState={setAwardIGotPopupState} />}
+
+            {isShowFoundationalRulePopup && <FoundationalRuleModal isShowFoundationalRulePopup={isShowFoundationalRulePopup} setIsShowFoundationalRuleModal={setIsShowFoundationalRuleModal} />}
 
             <div className="sidebar-profile">
                 <div className="feature-image">
@@ -177,8 +190,15 @@ const Sidebar = () => {
                     <li><Link exact to="/new"><BsFileMedicalFill /> New</Link></li>
                     <li><Link to="/hot"><MdOutlineWhatshot />Hot</Link></li>
                     <li><Link to="/most-voted"><MdHowToVote />Most Votes</Link></li>
-                    <li><Link to="/not-voted"><BiLayerMinus />Least Votes</Link></li>
+                    {/* <li><Link to="/not-voted"><BiLayerMinus />Least Votes</Link></li> */}
+
+                    <li><Link to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li>
+
+
                     <li><Link to="/notification"><BsBell />Notifications</Link></li>
+                    <li><Link onClick={() => setIsShowFoundationalRuleModal(true)} ><GrNotes />Foundational Rules</Link></li>
+
+
                 </ul>
                 {/* Menu ends here */}
             </div>

@@ -366,10 +366,12 @@ input.form-control {
 }
 
 .user-dropdown {
-  margin-left: 60px;
+  margin-left: 30px;
   position: relative;
 }
-
+.helpicon {
+  margin-left: 30px;
+}
 .container {
   max-width: 100%;
   padding: 0 160px;
@@ -738,7 +740,12 @@ textarea {
 .whatsmind-inputbar .whatsmind-inputbar__highlighter {
   display: none;
 }
-
+.notification-text img {
+  width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  object-fit: contain;
+}
 .rules-tag {
   cursor: pointer;
 }
@@ -956,6 +963,7 @@ ul.profiletabsbar li:last-child a {
 }
 
 .user-detail-bar .detailleft .avatar-img.active::after {
+  display: none;
   content: "";
   position: absolute;
   bottom: 0;
@@ -1057,7 +1065,58 @@ ul.profiletabsbar li:last-child a {
   display: flex;
   align-items: center;
 }
+.Uploaded-user {
+  position: relative;
+}
 
+.Uploaded-user p {
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+  left: 132px;
+  z-index: 2;
+  /* background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff !important; */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  cursor: pointer;
+}
+.red-list {
+  background: red;
+}
+.usertable table tbody tr td .sendbtn {
+  text-align: right;
+}
+
+.usertable table tbody tr td .sendbtn .btn {
+  width: auto;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+.profile-feature-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(281.05deg, #526eff00 -16.09%, #adbafd00 92.77%);
+  box-shadow: inset 0px -96px 64px 2px rgb(0 0 0 / 28%);
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.sidebar-profile .sidebar-menu li a svg path {
+  stroke: #aaaaaa !important;
+}
+
+.sidebar-profile .sidebar-menu li a:hover svg path {
+  stroke: #61bc53 !important;
+}
 .user-detail-bar .detailleft .awards-bar li img {
   margin-right: 6px;
   font-style: normal;
@@ -1067,8 +1126,16 @@ ul.profiletabsbar li:last-child a {
   width: 50px;
   border-radius: 50%;
   background: #9c9c9c;
+  height: 50px;
+  object-fit: cover;
 }
-
+.Auth-bar .Authbar-innerbox form .authinputbar p {
+  position: absolute;
+  top: 70%;
+  right: 20px;
+  font-size: 15px;
+  transform: translate(0px, -50%);
+}
 .digital-feeds .user-active-timer ul li {
   font-style: normal;
   font-weight: 500;
@@ -1496,9 +1563,9 @@ ul.profiletabsbar li:last-child a {
   transform: translate(0px, 0px);
 }
 
-.user-detail-bar .detailleft .user-detail .user-availbility h5.redtime::after {
+/* .user-detail-bar .detailleft .user-detail .user-availbility h5.redtime::after {
   background: red;
-}
+} */
 
 /* .user-detail-bar .detailleft .user-detail .user-availbility h5.greentime::after {
     background: var(--base-green);
@@ -4597,7 +4664,7 @@ ul.sidebar-menu {
 
   .user-dropdown,
   .header-nav .navbar-nav a.nav-link {
-    margin-left: 50px;
+    margin-left: 30px;
   }
 
   .digital-tabs {

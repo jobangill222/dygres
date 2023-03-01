@@ -45,7 +45,7 @@ const PostFoot = (props) => {
   // const timeAgo = new TimeAgo('en-US')
 
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, isFlag } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, isFlag, amplify_count } = props;
 
   //Functions to call api
   const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForRetweet, setPostIDForSinglePostState, flagUnflagPostDContext } = useContext(DContext);
@@ -332,12 +332,16 @@ const PostFoot = (props) => {
               <span className="number">{postReportCount}</span>
               Report</div>
           </li>
-          {/* <li onClick={() => EditReport(postID)} >
-            <BsFillFlagFill />
-            <div className="list-text">
-              <span className="number">{postReportCount}</span>
-              Reports</div>
-          </li> */}
+
+
+          <li >
+            <div className="" >
+              <HiSpeakerphone />
+            </div>
+            <div className="list-text"  >
+              <span className="number">{amplify_count}</span>
+              Amplify</div>
+          </li>
 
 
         </ul>

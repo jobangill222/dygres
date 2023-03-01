@@ -69,7 +69,7 @@ export default function SinglePackageList(props) {
                         <img src={singlePackage?.image} alt="img" />
                     </div>
                     <h5>{singlePackage?.name}</h5>
-                    <h3>₹{singlePackage?.amount}</h3>
+                    <h3>${singlePackage?.amount}</h3>
 
                     <h6 onClick={viewAwardOfPackage} className="award_of_package" >View award</h6>
 

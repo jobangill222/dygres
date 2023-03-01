@@ -98,7 +98,7 @@ const New = () => {
   useEffect(() => {
     localStorage.setItem("currentPage", 1);
     getGlobalPosts();
-    setIsPostState("0");
+    setIsPostState(false);
   }, [isPostState]);
 
 
@@ -212,7 +212,7 @@ const New = () => {
         {/* {postList} */}
       </InfiniteScroll>
 
-      <WhatsMind setIsPostState={setIsPostState} placeholderState={placeholderState} />
+      <WhatsMind setIsPostState={setIsPostState} setActiveTabState={setActiveTabState} placeholderState={placeholderState} />
       <DigitalTabs setActiveTabState={setActiveTabState} activeTabState={activeTabState} postList={postList} />
     </>
   );

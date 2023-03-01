@@ -4,16 +4,16 @@ import { BsThreeDotsVertical, BsFilePost, BsFlag } from 'react-icons/bs';
 import { BiIdCard } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import BlockUser from "./BlockUser";
 import Form from 'react-bootstrap/Form';
 import { DContext } from "../../Context/DContext";
+import { MdBlock } from 'react-icons/md';
 
 
-export default function SingleUserList(props) {
+export default function BlockedSingleUserList(props) {
 
-    const { singleUser } = props;
+    const { singleUser, blockedUserList, setBlockedUserList } = props;
 
-    const { officialUnofficialUserAdminDContext } = useContext(DContext);
+    const { officialUnofficialUserAdminDContext, blockUnblockUserDContext } = useContext(DContext);
 
     const navigate = useNavigate();
 
@@ -32,9 +32,14 @@ export default function SingleUserList(props) {
 
 
     const [isOfficialState, setIsOfficialState] = useState(false);
+    const [isBlockState, setIsBlockState] = useState(false);
+
     useEffect(() => {
         if (singleUser?.isOfficial && singleUser?.isOfficial === 1) {
             setIsOfficialState(true)
+        }
+        if (singleUser.isBlock === 1) {
+            setIsBlockState(true);
         }
     }, [])
 
@@ -48,16 +53,23 @@ export default function SingleUserList(props) {
     }
 
 
-    const [isBlockState, setIsBlockState] = useState(false);
-    useEffect(() => {
-        if (singleUser.isBlock === 1) {
-            setIsBlockState(true);
-        }
-    }, [singleUser.isBlock])
+
+
+
+    const blockSubmitHandler = async () => {
+        // const axiosRes = await blockUnblockUserDContext(singleUser?._id)
+        // console.log('axiosResaxiosRes', axiosRes)
+
+        const result = blockedUserList.filter(user => user._id !== singleUser?._id);
+        setBlockedUserList(result);
+
+        console.log('blockedUserListblockedUserList', blockedUserList)
+    }
+
 
     return (
         <>
-            <tr className={isBlockState ? 'red-list' : ''}>
+            <tr>
                 <td>{singleUser?.name ? singleUser.name : 'No Name'} </td>
                 <td>{singleUser?.username}</td>
                 <td>{singleUser?.email}</td>
@@ -77,7 +89,21 @@ export default function SingleUserList(props) {
                                 {/* <li className="text-secondry">
                                     <Link ><MdBlock />Block</Link>
                                 </li> */}
-                                <BlockUser userID={singleUser._id} isBlock={singleUser.isBlock} isBlockState={isBlockState} setIsBlockState={setIsBlockState} />
+
+                                <li className="text-secondry">
+                                    {isBlockState ?
+                                        <>
+                                            <Link onClick={blockSubmitHandler}>
+                                                <MdBlock />UnBlock
+                                            </Link>
+                                        </>
+                                        : <>
+                                            <Link onClick={blockSubmitHandler} >
+                                                <MdBlock />Block
+                                            </Link>
+                                        </>
+                                    }
+                                </li>
 
                                 <li className="text-secondry" onClick={() => userDetails(singleUser._id)} >
                                     {/* <Link to="/admin/post"><BsFilePost />Posts</Link> */}

@@ -82,12 +82,12 @@ const NotVoted = () => {
         }
     }, [postIDForAwardOfPost])
 
-    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    useEffect(() => {
-        if (postIDForRetweet) {
-            setViewRetweetPopup(true);
-        }
-    }, [postIDForRetweet])
+    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    // useEffect(() => {
+    //     if (postIDForRetweet) {
+    //         setViewRetweetPopup(true);
+    //     }
+    // }, [postIDForRetweet])
 
     return (
         <>
@@ -106,9 +106,9 @@ const NotVoted = () => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
-            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
+            {/* {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />} */}
 
-            <h4 className="pagetitle">Not Voted</h4>
+            <h4 className="pagetitle">Least Voted</h4>
             {
                 postList.length ?
                     postList.map((post) => (

@@ -92,12 +92,12 @@ const HashTagPosts = () => {
         }
     }, [postIDForAwardOfPost])
 
-    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    useEffect(() => {
-        if (postIDForRetweet) {
-            setViewRetweetPopup(true);
-        }
-    }, [postIDForRetweet])
+    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    // useEffect(() => {
+    //     if (postIDForRetweet) {
+    //         setViewRetweetPopup(true);
+    //     }
+    // }, [postIDForRetweet])
 
     return (
         <>
@@ -117,9 +117,9 @@ const HashTagPosts = () => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
-            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
+            {/* {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />} */}
 
-            <h4 className="pagetitle">HashTag</h4>
+            <h4 className="pagetitle">{localStorage.getItem('hashTagName')}</h4>
 
             {
                 postList.length ?

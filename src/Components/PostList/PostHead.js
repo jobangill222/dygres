@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
-import { verificationLevel } from "../../helper/verificationLevel";
+import { levelBelowPost } from "../../helper/levelBelowPost";
 // import en from 'javascript-time-ago/locale/en'
 // TimeAgo.addDefaultLocale(en)
 
@@ -26,7 +26,7 @@ const PostHead = (props) => {
   const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost, setIsShowRulesModal } = useContext(DContext);
 
   //Props
-  const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward, postID } = props;
+  const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward, postID, isPostByOfficial } = props;
 
   //State
   const [isFollowState, setIsFollowState] = useState(0);
@@ -102,7 +102,7 @@ const PostHead = (props) => {
 
   const getLevel = async () => {
     // const res = await verificationLevel(postUserDetails?.isEmailVerify, postUserDetails?.isPhotoVerify);
-    const res = await verificationLevel(postUserDetails?.level, postUserDetails?.isOfficial);
+    const res = await levelBelowPost(isPostByOfficial, postUserDetails?.level, postUserDetails?.isOfficial);
 
     setVerificationLevelState(res);
   }
@@ -167,7 +167,7 @@ const PostHead = (props) => {
                 {user?._id !== postUserID &&
                   <>
                     {isFollowState === 0 && <button className='followbtn' onClick={followUser} type='button'>Follow</button>}
-                    {isFollowState === 1 && <button className='followbtn' onClick={UnfollowUser} type='button'>Un-Follow</button>}
+                    {isFollowState === 1 && <button className='followbtn' onClick={UnfollowUser} type='button'>Unfollow</button>}
                   </>
                 }
 

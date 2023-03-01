@@ -36,10 +36,27 @@ export default function HighLight(props) {
     }
 
 
+    const regex = /^(http|https):\/\/[^ "]+$/;
+    function isUrl(str) {
+        return regex.test(str);
+    }
+
     return (
         <>
             <span> {myArray.map((singleWord, i) =>
-                <span key={i} onClick={() => { if (singleWord.length > 1 && singleWord[0] === '@') { userDetail(singleWord) } if (singleWord.length > 1 && singleWord[0] === '#') { hashTag(singleWord) } }} className={singleWord.length > 1 && singleWord[0] === '@' ? "text-primary-highlight" : singleWord.length > 1 && singleWord[0] === '#' ? "text-primary-highlight" : ""}>
+                <span key={i} onClick={() => {
+                    if (singleWord.length > 1 && singleWord[0] === '@') {
+                        userDetail(singleWord)
+                    }
+                    if (singleWord.length > 1 && singleWord[0] === '#') {
+                        hashTag(singleWord)
+                    }
+                    if (isUrl(singleWord)) {
+                        window.open(singleWord, '_blank');
+                    }
+                }
+                }
+                    className={singleWord.length > 1 && singleWord[0] === '@' ? "text-primary-highlight" : singleWord.length > 1 && singleWord[0] === '#' ? "text-primary-highlight" : isUrl(singleWord) ? "text-primary-highlight" : ""}>
                     {singleWord}{' '}
                 </span>
             )

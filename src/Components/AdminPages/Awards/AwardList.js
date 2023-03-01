@@ -75,15 +75,20 @@ export default function AwardList() {
 
                         {awardListState.length ? awardListState.map((singleAward) => (
                             <SingleAwardList key={singleAward._id} singleAward={singleAward} awardListState={awardListState} setAwardListState={setAwardListState} />
-                        )) : <div className="empty-bar">
-                            <img src="/images/empty.png" alt='dummy' />
-                            <h4>Empty List</h4>
-                        </div>}
+                        )) : null}
 
 
 
                     </tbody>
                 </Table>
+
+                {awardListState.length === 0 ?
+                    <div className="empty-bar">
+                        <img src="/images/empty.png" alt='dummy' />
+                        <h4>Empty List</h4>
+                    </div> : null
+                }
+
             </div>
         </Container>
     )

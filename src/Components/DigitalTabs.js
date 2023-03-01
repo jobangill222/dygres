@@ -36,12 +36,12 @@ const DigitalTabs = (props) => {
   }, [postIDForAwardOfPost])
 
 
-  const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-  useEffect(() => {
-    if (postIDForRetweet) {
-      setViewRetweetPopup(true);
-    }
-  }, [postIDForRetweet])
+  // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+  // useEffect(() => {
+  //   if (postIDForRetweet) {
+  //     setViewRetweetPopup(true);
+  //   }
+  // }, [postIDForRetweet])
 
 
   const changeFontSize = async (size) => {
@@ -52,14 +52,13 @@ const DigitalTabs = (props) => {
   return (
     <>
 
-      {/* {console.log('sss', activeTabState)} */}
-
       {/* Modal */}
       {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
       {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
-      {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
+      {/* {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />} */}
+
       <div className='tabswithbutotn'>
         <Tabs
           defaultActiveKey="Global"

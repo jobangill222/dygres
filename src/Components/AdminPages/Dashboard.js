@@ -83,7 +83,8 @@ const Dashboard = () => {
                             </Link>
                         </Col>
                         <Col lg="3" md="6" sm="12">
-                            <div className="dash-boxes-in">
+                            {/* <div className="dash-boxes-in"> */}
+                            <Link to="/admin/report-list" className="dash-boxes-in">
                                 <ul className="userstatus">
                                     <li>
                                         <div className="iconbar">
@@ -91,7 +92,7 @@ const Dashboard = () => {
                                         </div>
                                         <h5>Posts</h5>
                                     </li>
-                                    {/* <li><MdKeyboardArrowRight /></li> */}
+                                    <li><MdKeyboardArrowRight /></li>
                                 </ul>
                                 <ul className="weekly-status">
                                     <li className='listatus'><h4>{dashboardData && dashboardData.pastPosts}</h4><h6>Past</h6></li>
@@ -108,7 +109,8 @@ const Dashboard = () => {
                                         <h5>This {selectedTypeState}</h5>
                                     </li>
                                 </ul>
-                            </div>
+                            </Link>
+                            {/* </div> */}
                         </Col>
                         <Col lg="3" md="6" sm="12">
                             <div className="dash-boxes-in">

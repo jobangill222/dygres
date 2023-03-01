@@ -52,7 +52,7 @@ const ViewAllAwardsIGot = (props) => {
                                 {/* <img src="/images/empty.png" alt='dummy' /> */}
                                 <div className="empty-bar">
                                     <img src="/images/empty.png" alt='dummy' />
-                                    <h4>No Award</h4>
+                                    <h4>No Awards</h4>
                                 </div>
                             </>}
 

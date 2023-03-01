@@ -1,25 +1,28 @@
 import React, { useEffect, useContext, useState } from "react";
-import DigitalTabContent from "../Components/DigitalTabContent";
-import { DContext } from "../Context/DContext";
+import SinglePostList from "./SinglePostList";
+import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
-import Loader from "../Components/Loader";
+import Loader from "../Loader";
+import Container from "react-bootstrap/esm/Container";
+
 
 // Import Modals
-import UserListModal from "../Components/Modals/UserListModal";
-import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
-import RetweetModal from "../Components/Modals/RetweetModal";
+import UserListModal from "./Modals/UserListModal";
+import ViewPostsAwardModal from "../Modals/ViewPostsAwardModal";
+import RetweetModal from "../Modals/RetweetModal";
 import { useParams } from "react-router-dom";
 
-const SinglePostDetail = () => {
+const SinglePostDetailAdmin = () => {
 
+
+    // let { postIdForSinglePost, specificCommentFirst } = useParams();
     let { postIdForSinglePost, specificCommentFirst } = useParams();
-
-    // console.log("SinglePostID", SinglePostID);
 
     const { popupType, getSinglePostDetailDContext, postList, setPostList, postIDForAwardOfPost, postIDForRetweet, isLoading, setIsLoading, postIDForSinglePostState, setSearchState } = useContext(DContext);
 
 
     useEffect(() => {
+        setPostList([])
         setSearchState(null)
         // localStorage.setItem("currentPage", 1);
         getPostDetail();
@@ -34,7 +37,7 @@ const SinglePostDetail = () => {
 
             // const postID = "63c7c179d5618a6185825361";
             const axiosRes = await getSinglePostDetailDContext(postIdForSinglePost);
-            // console.log("axiosRes******** after single post detail posts", axiosRes);
+            console.log("axiosRes******** after single post detail posts", axiosRes);
             if (axiosRes.status === "success") {
                 setPostList(axiosRes.list);
             }
@@ -82,26 +85,33 @@ const SinglePostDetail = () => {
 
             {/* {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />} */}
 
-            <h4 className="pagetitle">Post Detail</h4>
+            <Container>
 
-            {
-                postList.length ?
-                    postList.map((post) => (
-                        <DigitalTabContent
-                            key={post._id}
-                            post={post}
-                            postListingType='singlePost'
-                            specificCommentFirst={specificCommentFirst}
-                        />
-                    ))
-                    :
-                    <div className="empty-bar">
-                        <img src="/images/empty.png" alt='dummy' />
-                        <h4>No Posts</h4>
-                    </div>
-            }
+                <h4 className="pagetitle">Post Detail</h4>
+
+
+
+                {
+                    postList.length ?
+                        postList.map((post) => (
+                            <SinglePostList
+                                key={post._id}
+                                post={post}
+                                postListingType='singlePost'
+                                specificCommentFirst={specificCommentFirst}
+                            />
+                        ))
+                        :
+                        <div className="empty-bar">
+                            <img src="/images/empty.png" alt='dummy' />
+                            <h4>No Posts</h4>
+                        </div>
+                }
+
+            </Container>
+
         </>
     );
 }
 
-export default SinglePostDetail;
+export default SinglePostDetailAdmin;

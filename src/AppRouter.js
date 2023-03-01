@@ -9,6 +9,8 @@ import SinglePostDetail from "./Pages/SinglePostDetail";
 
 import MostVoted from "./Pages/MostVoted";
 import NotVoted from "./Pages/NotVoted";
+import TrendiingHashtags from "./Pages/TrendiingHashtags";
+
 import Profile from "./Components/Profile/Profile";
 import ProfileTabs from "./Components/Profile/ProfileTabs";
 import ProfileTabContent from "./Components/Profile/ProfileTabTimeline";
@@ -25,6 +27,7 @@ import EnterOtp from "./Components/AuthPages/EnterOtp";
 import ResetPassword from "./Components/AuthPages/ResetPassword";
 import Dashboard from "./Components/AdminPages/Dashboard";
 import Users from "./Components/AdminPages/Users";
+import BlockedUserList from "./Components/AdminPages/BlockedUserList";
 import Post from "./Components/AdminPages/Post";
 import SendNotification from "./Components/AdminPages/SendNotification";
 import FlagPost from "./Components/AdminPages/FlagPost";
@@ -47,6 +50,11 @@ import EditAward from "./Components/AdminPages/Awards/EditAward";
 import PackageList from "./Components/AdminPages/Awards/PackageList";
 import AddPackage from "./Components/AdminPages/Awards/AddPackage";
 import EditPackage from "./Components/AdminPages/Awards/EditPackage";
+
+import SinglePostDetailAdmin from "./Components/AdminPages/SinglePostDetailAdmin";
+
+import ReportList from "./Components/AdminPages/ReportList";
+
 import { useNavigate, useLocation } from 'react-router-dom';
 import { toast } from "react-toastify";
 
@@ -67,7 +75,7 @@ function AppRouter() {
             //Email verification
             if (user && user.isEmailVerify === 0 && user.isEmailVerificationReminderSent === 1) {
                 if (pathName !== "/personalinformation") {
-                    toast('Please verify your email to access site.')
+                    toast('To continue using dygres, please verify your email address by clicking the verify e-mail button.')
                     navigate('/personalinformation');
                     return
                 }
@@ -75,7 +83,7 @@ function AppRouter() {
             //Human verification pending
             if (userStats && userStats.totalFollowers > 49000 && user.isPhotoVerify === 0) {
                 if (pathName !== "/personalinformation") {
-                    toast('Please do image verification to access site.')
+                    toast('You have reached 50k followers, please submit your image for verification via the upload image button. Please make sure to follow the instructions.')
                     navigate('/personalinformation');
                     return
                 }
@@ -83,7 +91,7 @@ function AppRouter() {
             //Verification rejected
             if (userStats && userStats.totalFollowers > 49000 && user.isPhotoVerify === 2) {
                 if (pathName !== "/personalinformation") {
-                    toast('Please do image verification to access site.')
+                    toast('You have reached 50k followers, please submit your image for verification via the upload image button. Please make sure to follow the instructions.')
                     navigate('/personalinformation');
                     return
                 }
@@ -125,7 +133,11 @@ function AppRouter() {
                                     <Route exact path="/new" element={<New />} />
                                     <Route exact path="/hot" element={<Hot />} />
                                     <Route exact path="/most-voted" element={<MostVoted />} />
-                                    <Route exact path="/not-voted" element={<NotVoted />} />
+                                    {/* <Route exact path="/not-voted" element={<NotVoted />} /> */}
+
+                                    <Route exact path="/trending-hashtags" element={<TrendiingHashtags />} />
+
+
                                     <Route exact path="/hashtagPosts" element={<HashTagPosts />} />
                                     <Route exact path="/SinglePostDetail/:postIdForSinglePost/:specificCommentFirst?" element={<SinglePostDetail />} />
                                     <Route exact path="/notification" element={<Notifications />} />
@@ -150,7 +162,12 @@ function AppRouter() {
                                     <Route element={<AdminLayout />}>
                                         <Route exact path="admin/dashboard" element={<Dashboard />} />
                                         <Route exact path="admin/users" element={<Users />} />
+                                        <Route exact path="admin/blocked-user" element={<BlockedUserList />} />
                                         <Route exact path="admin/post/:userID" element={<Post />} />
+
+                                        <Route exact path="admin/post/single-post/:postIdForSinglePost" element={<SinglePostDetailAdmin />} />
+
+
                                         <Route exact path="admin/sendnotification" element={<SendNotification />} />
                                         <Route exact path="admin/flagpost/:userID" element={<FlagPost />} />
                                         <Route exact path="admin/userverification/:userIDForVerification" element={<UserVerification />} />
@@ -160,6 +177,12 @@ function AppRouter() {
                                         <Route exact path="admin/packagelist" element={<PackageList />} />
                                         <Route exact path="admin/addpackage" element={<AddPackage />} />
                                         <Route exact path="admin/editpackage/:packageID" element={<EditPackage />} />
+
+                                        <Route exact path="admin/report-list" element={<ReportList />} />
+
+
+
+
                                     </Route>
                                     <Route path="*" element={<Navigate to='/admin/dashboard' />} />
                                 </>

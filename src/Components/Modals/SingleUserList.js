@@ -94,7 +94,7 @@ export default function SingleUserList(props) {
                         user._id !== userListing?.user?._id ?
                             isFollowStateUserList === 0 ? <button className="followbtn" type="button" onClick={followUserInUserList}>Follow</button> :
                                 <button className="followbtn" type="button" onClick={UnfollowUserInUserList}>
-                                    Un-Follow
+                                    Unfollow
                                 </button> : ''
                     }
 

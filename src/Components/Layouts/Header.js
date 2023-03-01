@@ -5,6 +5,8 @@ import Navbar from "react-bootstrap/Navbar";
 import DarkModeSwitch from "./DarkModeSwitch";
 import { AiOutlineEye } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
+import { BsQuestionCircle } from "react-icons/bs";
+
 import { Link } from "react-router-dom";
 import { BsPencil, BsFileMedicalFill, BsBell, BsSearch } from "react-icons/bs";
 import { BiLayerMinus, BiHome } from "react-icons/bi";
@@ -15,6 +17,9 @@ import { useNavigate } from "react-router-dom";
 import SingleNotificationList from '../Notification/SingleNotificationList';
 
 import RulesModal from "../Modals/RulesModal";
+
+import HelpCenterModal from "../Modals/HelpCenterModal";
+
 
 const Header = () => {
   const navigate = useNavigate();
@@ -65,11 +70,16 @@ const Header = () => {
     }
   };
 
+  const [isShowHelpCenterModal, setIsShowHelpCenterModal] = useState(false);
+
 
   return (
     <>
 
       {isShowRulesModal && <RulesModal setIsShowRulesModal={setIsShowRulesModal} />}
+
+      {isShowHelpCenterModal && <HelpCenterModal isShowHelpCenterModal={isShowHelpCenterModal} setIsShowHelpCenterModal={setIsShowHelpCenterModal} />}
+
 
       <Navbar className="header-nav" expand="lg">
         <Container>
@@ -118,6 +128,10 @@ const Header = () => {
 
               <div className="text-lightgray" href="#">
                 <DarkModeSwitch />
+              </div>
+
+              <div className="cursor-pointer helpicon" href="#" onClick={() => setIsShowHelpCenterModal(true)}>
+                <BsQuestionCircle />
               </div>
 
               {userToken ? (

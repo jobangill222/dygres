@@ -334,9 +334,9 @@ const PersonalInformation = () => {
                         /> */}
                         {/* {console.log('personalInfoFieldStatespersonalInfoFieldStates', personalInfoFieldStates)} */}
                         {fileState !== null && <p className="succesful">Image Selected successfully.</p>}
-                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 3 && <p className="succesful">Your human verification is under review.</p>}
-                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 2 && <p className="succesful">Human Verification rejected, please Upload image again.</p>}
-                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 1 && <p className="succesful">Human Verified.</p>}
+                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 3 && <p className="succesful">Your verification is under review.</p>}
+                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 2 && <p className="succesful">Verification rejected, please Upload image again.</p>}
+                        {fileState === null && personalInfoFieldStates.isPhotoVerify === 1 && <p className="succesful">Verified.</p>}
 
                       </div>
                     </div>

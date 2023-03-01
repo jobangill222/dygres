@@ -5,11 +5,10 @@ import { DContext } from "../../Context/DContext";
 
 export default function BlockUser(props) {
 
-    const { userID, isBlock } = props;
+    const { userID, isBlock, isBlockState, setIsBlockState } = props;
 
     const { blockUnblockUserDContext } = useContext(DContext);
 
-    const [isBlockState, setIsBlockState] = useState(false);
 
     useEffect(() => {
         if (isBlock === 1) {

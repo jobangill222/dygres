@@ -14,16 +14,16 @@ import Button from 'react-bootstrap/Button';
 // Context
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
-import SingleUserList from "./SingleUserList";
+import BlockedSingleUserList from "./BlockedSingleUserList";
 import Loader from "../Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 
-const Users = () => {
+const BlockedUserList = () => {
 
-    const { isLoading, setIsLoading, allUserListDContext } = useContext(DContext);
+    const { isLoading, setIsLoading, blockedUserListDContext } = useContext(DContext);
 
-    const [userList, setUserList] = useState([]);
+    const [blockedUserList, setBlockedUserList] = useState([]);
     const [searchByUsernameState, setSearchByUsernameState] = useState(null);
 
 
@@ -36,10 +36,10 @@ const Users = () => {
         setIsLoading(true);
         const search = searchByUsernameState;
         const pageNumber = 1;
-        const axiosRes = await allUserListDContext(search, pageNumber);
+        const axiosRes = await blockedUserListDContext(search, pageNumber);
         console.log('axiosResaxiosResaxiosRes', axiosRes)
         if (axiosRes.status === "success") {
-            setUserList(axiosRes.list);
+            setBlockedUserList(axiosRes.list);
         } else {
             toast(axiosRes.message);
         }
@@ -66,9 +66,9 @@ const Users = () => {
         let currentAdminUserListPage = localStorage.getItem("userPageNumber");
         let pageNumberOfPostList = parseInt(currentAdminUserListPage) + 1;
         const search = searchByUsernameState;
-        const axiosRes = await allUserListDContext(search, pageNumberOfPostList);
+        const axiosRes = await blockedUserListDContext(search, pageNumberOfPostList);
         if (axiosRes.status === "success") {
-            setUserList((current) => [...current, ...axiosRes.list]);
+            setBlockedUserList((current) => [...current, ...axiosRes.list]);
             localStorage.setItem("userPageNumber", pageNumberOfPostList);
         }
     };
@@ -82,7 +82,7 @@ const Users = () => {
 
 
             <InfiniteScroll
-                dataLength={userList.length}
+                dataLength={blockedUserList.length}
                 next={appendNextList}
                 hasMore={true}
                 // loader={<h4>Loading...</h4>}
@@ -99,22 +99,12 @@ const Users = () => {
             <Container>
                 <div className="dashboard-title-bar">
                     <Row>
-
-                        <Col lg="6"><h4>users</h4>
-
-                        </Col>
-
-
+                        <Col lg="6"><h4>Blocked users</h4></Col>
                         <Col lg="6">
                             <div className="Titlebar-btns">
-                                <div className="sendbtn">
+                                {/* <div className="sendbtn">
                                     <Link to="/admin/sendnotification">Send Notification</Link>
-                                </div>
-
-                                <div className="sendbtn">
-                                    <Link to="/admin/blocked-user">Blocked User</Link>
-                                </div>
-
+                                </div> */}
                                 <Form.Group className="searchbar" controlId="exampleForm.ControlInput1">
                                     <BiSearch />
                                     <Form.Control type="text"
@@ -139,8 +129,8 @@ const Users = () => {
                         </thead>
                         <tbody>
 
-                            {userList.map((singleUser) => (
-                                <SingleUserList key={singleUser._id} singleUser={singleUser} />
+                            {blockedUserList.map((singleUser) => (
+                                <BlockedSingleUserList key={singleUser._id} singleUser={singleUser} blockedUserList={blockedUserList} setBlockedUserList={setBlockedUserList} />
                             ))}
 
                         </tbody>
@@ -164,4 +154,4 @@ const Users = () => {
     );
 }
 
-export default Users;
+export default BlockedUserList;

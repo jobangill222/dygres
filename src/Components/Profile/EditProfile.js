@@ -10,7 +10,15 @@ import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 
+import { BsInfoCircle } from "react-icons/bs";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+// import { useCallbackPrompt } from "../../hooks/hooks";
+
+
 const EditProfile = () => {
+
+  // useCallbackPrompt();
 
   // const navigate = useNavigate();
 
@@ -56,6 +64,7 @@ const EditProfile = () => {
   useEffect(() => {
     // console.log('Get General info page in useEffect');
     getGenInfoOnPage();
+
   }, []);
 
   //Change values onChange and save in state
@@ -117,6 +126,18 @@ const EditProfile = () => {
     }
   };
 
+
+
+  const renderTooltip = (props) => (
+    <Tooltip style={{ width: "400px", wordBreak: "break-all" }} className='infotooltip' id="button-tooltip" {...props}>
+      {/* <ul>
+        <li>Username must be 20 characters max.</li>
+      </ul> */}
+      Select 152*152 px image
+    </Tooltip>
+  );
+
+
   return (
     <>
 
@@ -126,13 +147,30 @@ const EditProfile = () => {
         <Row>
           <Col lg="6">
             <div className="Uploaded-user">
+
+
+
+              <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <p> <BsInfoCircle /></p>
+              </OverlayTrigger>
+
               <div className="Imagebar">
+
+
+
                 <img
                   src={genInfoFiledsState.profileImage}
                   alt="icon"
                   id="output"
                   ref={imageRef}
                 />
+
+
+
                 <div className="userup-in">
                   <div className="typefile">
                     <input
@@ -143,6 +181,7 @@ const EditProfile = () => {
                     />
                     <TbCameraPlus />
                   </div>
+
                 </div>
               </div>
             </div>

@@ -11,7 +11,7 @@ import Loader from "../Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 import SinglePostList from "./SinglePostList";
 import UserListModal from "./Modals/UserListModal";
-import ViewPostsAwardModal from "./Modals/ViewPostsAwardModal";
+// import ViewPostsAwardModal from "./Modals/ViewPostsAwardModal";
 
 const Post = () => {
 
@@ -29,12 +29,12 @@ const Post = () => {
 
 
     // Award of posts
-    const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
-    useEffect(() => {
-        if (postIDForAwardOfPost) {
-            setViewMoreAwardOfPost(true);
-        }
-    }, [postIDForAwardOfPost])
+    // const [viewMoreAwardOfPost, setViewMoreAwardOfPost] = useState(false);
+    // useEffect(() => {
+    //     if (postIDForAwardOfPost) {
+    //         setViewMoreAwardOfPost(true);
+    //     }
+    // }, [postIDForAwardOfPost])
 
 
     useEffect(() => {
@@ -90,7 +90,7 @@ const Post = () => {
 
             {isLoading && <Loader />}
             {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
-            {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
+            {/* {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />} */}
 
             <Container>
                 <div className="dashboard-title-bar">

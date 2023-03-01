@@ -7,7 +7,7 @@ import Loader from "../Components/Loader";
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
 import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
-import RetweetModal from "../Components/Modals/RetweetModal";
+// import RetweetModal from "../Components/Modals/RetweetModal";
 
 const MostVoted = () => {
 
@@ -81,12 +81,12 @@ const MostVoted = () => {
         }
     }, [postIDForAwardOfPost])
 
-    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    useEffect(() => {
-        if (postIDForRetweet) {
-            setViewRetweetPopup(true);
-        }
-    }, [postIDForRetweet])
+    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    // useEffect(() => {
+    //     if (postIDForRetweet) {
+    //         setViewRetweetPopup(true);
+    //     }
+    // }, [postIDForRetweet])
 
     return (
         <>
@@ -105,7 +105,7 @@ const MostVoted = () => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
-            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
+            {/* {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />} */}
 
             <h4 className="pagetitle">Most Voted</h4>
 

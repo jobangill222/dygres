@@ -133,7 +133,7 @@ export default function AddPackage() {
 
 
                                 <Form.Group className="editor-input" controlId="">
-                                    <Form.Label>Package Amount</Form.Label>
+                                    <Form.Label>Package Amount($)</Form.Label>
                                     <Form.Control
                                         type="number"
                                         placeholder="Enter package amount"

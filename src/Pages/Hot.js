@@ -74,12 +74,12 @@ const Hot = () => {
     }, [postIDForAwardOfPost])
 
 
-    const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
-    useEffect(() => {
-        if (postIDForRetweet) {
-            setViewRetweetPopup(true);
-        }
-    }, [postIDForRetweet])
+    // const [viewRetweetPopup, setViewRetweetPopup] = useState(false);
+    // useEffect(() => {
+    //     if (postIDForRetweet) {
+    //         setViewRetweetPopup(true);
+    //     }
+    // }, [postIDForRetweet])
 
     return (
         <>
@@ -99,7 +99,7 @@ const Hot = () => {
 
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
-            {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />}
+            {/* {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />} */}
 
             <h4 className="pagetitle">Hot</h4>
 

@@ -7,7 +7,7 @@ import { MentionsInput, Mention } from 'react-mentions';
 
 const WhatsMind = (props) => {
   //To change state when post is posted
-  const { setIsPostState, placeholderState } = props;
+  const { setIsPostState, placeholderState, setActiveTabState } = props;
 
   //Set create post state
   const [createPostState, setCreatePostState] = useState("");
@@ -26,7 +26,7 @@ const WhatsMind = (props) => {
         const parentPostID = null;
         const axiosRes = await createPostDContext(createPostState, parentPostID);
         if (axiosRes.status === "success") {
-          setIsPostState("1");
+          setIsPostState(true);
           // Update user stats state
           setUserStats((previousState) => {
             return {
@@ -36,6 +36,7 @@ const WhatsMind = (props) => {
           });
 
           setCreatePostState("");
+          setActiveTabState('Global')
         } else {
           toast(axiosRes.message);
         }

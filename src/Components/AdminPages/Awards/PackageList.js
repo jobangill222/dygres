@@ -74,13 +74,17 @@ export default function PackageList() {
 
                         {packageListState.length ? packageListState.map((singlePackage) => (
                             <SinglePackageList key={singlePackage._id} singlePackage={singlePackage} packageListState={packageListState} setPackageListState={setPackageListState} />
-                        )) : <div className="empty-bar">
-                            <img src="/images/empty.png" alt='dummy' />
-                            <h4>Empty List</h4>
-                        </div>}
+                        )) : null}
 
                     </tbody>
                 </Table>
+
+                {packageListState.length === 0 ?
+                    <div className="empty-bar">
+                        <img src="/images/empty.png" alt='dummy' />
+                        <h4>Empty List</h4>
+                    </div> : null
+                }
             </div>
         </Container>
     )

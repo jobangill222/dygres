@@ -14,7 +14,7 @@ const DigitalTabContent = (props) => {
   // Prop Destrucutring
   // console.log("props.post", props.post);
   const { content, user, agree_count, is_agree, disagree_count, is_disagree, report_count, comment_count, award_count, is_report, userID, _id, is_follow, created_at, parentPostID, parentPostDetail
-    , postAward } = props.post;
+    , postAward, amplify_count, isPostByOfficial } = props.post;
 
   const { postListingType, specificCommentFirst } = props;
 
@@ -45,7 +45,7 @@ const DigitalTabContent = (props) => {
   const viewParentPostDetail = async (postID) => {
     // localStorage.setItem('PostIdForSinglePost', postID);
     setPostIDForSinglePostState(postID);
-    navigate('/SinglePostDetail/' + postID + '/' + null)
+    navigate('/SinglePostDetail/' + postID)
   }
 
 
@@ -64,7 +64,7 @@ const DigitalTabContent = (props) => {
 
         <div className="accordionitem" >
           <div className="digital-feeds ">
-            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} postAward={postAward} postID={_id} />
+            <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} postAward={postAward} postID={_id} isPostByOfficial={isPostByOfficial} />
             <div className="user-preview">
 
 
@@ -102,6 +102,8 @@ const DigitalTabContent = (props) => {
                   created_at={created_at}
 
                   postListingType={postListingType}
+
+                  amplify_count={amplify_count}
 
                 />
               }
