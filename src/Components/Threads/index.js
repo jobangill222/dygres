@@ -125,7 +125,10 @@ const Threads = (props) => {
                 {clickTypeState === 'reply' && <div className='reply-post'>
                     <Form>
                         <Form.Group className='replyinput' controlId="formBasicEmail">
-                            <Form.Control type="text" name="comment"
+                            <Form.Control
+                                as='textarea'
+                                type="text"
+                                name="comment"
                                 value={createCommentState}
                                 max="420"
                                 onChange={(e) => {
@@ -189,7 +192,10 @@ const Threads = (props) => {
                 {clickTypeState !== 'reply' && <div className='reply-post'>
                     <Form>
                         <Form.Group className='replyinput' controlId="formBasicEmail">
-                            <Form.Control type="text" name="comment"
+                            <Form.Control
+                                as='textarea'
+                                type="text"
+                                name="comment"
                                 value={createCommentState}
                                 max="420"
                                 onChange={(e) => {

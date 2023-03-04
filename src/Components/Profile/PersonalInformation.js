@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 import Loader from "../../Components/Loader";
+import usePrompt from "../../hooks/usePrompt";
+
 
 const PersonalInformation = () => {
   //Otp Modal
@@ -29,7 +31,8 @@ const PersonalInformation = () => {
     changePasswordDContext,
     getEmailOtpInsideLoginDContext,
     verifyOtpInsideLoginDContext,
-    isLoading, setIsLoading
+    isLoading, setIsLoading,
+    isDataChangeState, setIsDataChangeState
   } = useContext(DContext);
 
   const [personalInfoFieldStates, setPersonalInfoFieldStates] = useState({
@@ -78,6 +81,8 @@ const PersonalInformation = () => {
 
   const [isSaveState, setIsSaveState] = useState(false);
   useEffect(() => {
+    //Set state that no data change when page load
+    setIsDataChangeState(false)
     // console.log("Get personal info in use Effect");
     getPersonalInfoData();
     setIsSaveState(false)
@@ -85,6 +90,7 @@ const PersonalInformation = () => {
 
   //Change values onChange and save in state
   const changeValue = async (e) => {
+    setIsDataChangeState(true)
     const { name, value } = e.target;
     personalInfoFieldStates[name] = value;
     setPersonalInfoFieldStates({ ...personalInfoFieldStates });
@@ -112,6 +118,8 @@ const PersonalInformation = () => {
     setIsSaveState(true)
 
     setIsLoading(false);
+
+    setIsDataChangeState(false)
   };
 
   //Set file state
@@ -125,6 +133,7 @@ const PersonalInformation = () => {
       imageType === "image/jpeg"
     ) {
       setFileState(e.target.files[0]);
+      setIsDataChangeState(true)
     } else {
       toast("Unsupported image format. Please upload a png, jpg, or .jpeg instead.");
     }
@@ -182,7 +191,7 @@ const PersonalInformation = () => {
         message: "New password must have at least 8 characters",
       },
       pattern: {
-        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        value: /^(?=.*[!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?])(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?]{8,}$/,
         message: "New Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
       },
     },
@@ -193,7 +202,7 @@ const PersonalInformation = () => {
         message: "Confirm password must have at least 8 characters",
       },
       pattern: {
-        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        value: /^(?=.*[!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?])(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?]{8,}$/,
         message: "Confirm password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
       },
     },
@@ -253,6 +262,10 @@ const PersonalInformation = () => {
       }
     }
   };
+
+
+  //Restrict to another screen if changes
+  usePrompt("Are you sure you want to leave?", isDataChangeState);
 
   return (
     <>
@@ -351,7 +364,7 @@ const PersonalInformation = () => {
                 <Form.Group className="editor-input" controlId="">
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     placeholder="Enter Phone Number"
                     name="phoneNumber"
                     value={personalInfoFieldStates.phoneNumber}

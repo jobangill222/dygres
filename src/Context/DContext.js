@@ -53,7 +53,15 @@ export const DProvider = (props) => {
   //Rule State
   const [isShowRulesModal, setIsShowRulesModal] = useState(false);
 
+
+  //Form data change State
+  const [isDataChangeState, setIsDataChangeState] = useState(false);
+  const [isShowDataSaveConfirmationPopup, setIsShowDataSaveConfirmationPopup] = useState(false);
+  const [saveTxStateForRetry, setsaveTxStateForRetry] = useState(false);
+
+
   useEffect(() => {
+
 
     const fontSize = localStorage.getItem("fontSize");
     if (fontSize) {
@@ -76,6 +84,7 @@ export const DProvider = (props) => {
           // navigate("/login");
         }
         else {
+
           setUser(userDetails.data);
           setUserStats(userDetails.userStats);
         }
@@ -85,6 +94,8 @@ export const DProvider = (props) => {
       setUserToken(false);
     }
   }, []);
+
+
 
   // Global Functions
   const userLogin = async ({ email, password }) => {
@@ -1224,6 +1235,26 @@ export const DProvider = (props) => {
     }
   }
 
+  const notificationOnOffDContext = async (type) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/user/notification/on-off-notification`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          type: type
+        }
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get hashtag list (DContext.js) - ", err);
+    }
+  }
+
+
 
   //Admin
   const allUserListDContext = async (search, pageNumber) => {
@@ -1692,6 +1723,62 @@ export const DProvider = (props) => {
   }
 
 
+  const getSignupLoginStatusDContext = async (type) => {
+    try {
+      const axiosRes = await axios({
+        method: "get",
+        url: `${BASE_URL}/admin/user/get-signup-login-status`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while get signup login status (DContext.js) - ", err);
+    }
+  }
+
+  const changeSignupLoginStatusDContext = async (type) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/change-signup-login-status`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          type: type,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while change signup login status (DContext.js) - ", err);
+    }
+  }
+
+
+  const deleteUserDContext = async (userID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/admin/user/delete-user`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          userID: userID,
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while delete user (DContext.js) - ", err);
+    }
+  }
+
+
   // Variables and methods to be shared globally
   const value = {
     // State Variables
@@ -1727,6 +1814,11 @@ export const DProvider = (props) => {
     setFontSizeState,
     isShowRulesModal,
     setIsShowRulesModal,
+    isDataChangeState,
+    setIsDataChangeState,
+    isShowDataSaveConfirmationPopup, setIsShowDataSaveConfirmationPopup,
+    saveTxStateForRetry, setsaveTxStateForRetry,
+
     // Methods
     userLogin,
     userSignup,
@@ -1744,6 +1836,7 @@ export const DProvider = (props) => {
     getGlobalPostDContext,
     getOfficialPostDContext,
     getFollowingPostDContext,
+    getUserDetailsDContext,
     agreeUnagreePost,
     disAgreeUnDisAgreePost,
     reportPostDContext,
@@ -1785,6 +1878,8 @@ export const DProvider = (props) => {
     searchSuggestionDContext,
     suggestionWhilePostingDContext,
     getHashtagDContext,
+    notificationOnOffDContext,
+
     allUserListDContext,
     getReportListDContext,
     blockedUserListDContext,
@@ -1807,7 +1902,10 @@ export const DProvider = (props) => {
     addAwardToPackageAdminDContext,
     deletePackageAdminDContext,
     officialUnofficialUserAdminDContext,
-    dashboardDataAdminDContext
+    dashboardDataAdminDContext,
+    getSignupLoginStatusDContext,
+    changeSignupLoginStatusDContext,
+    deleteUserDContext
   };
   return (
     <>

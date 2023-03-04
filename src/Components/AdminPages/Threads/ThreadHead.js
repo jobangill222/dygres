@@ -10,8 +10,11 @@ import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 // TimeAgo.addDefaultLocale(en)
 import { verificationLevel } from '../../../helper/verificationLevel';
+import { useNavigate } from "react-router-dom";
 
 export default function ThreadHead(props) {
+
+    const navigate = useNavigate();
 
     const { user, created_at } = props;
 
@@ -53,6 +56,12 @@ export default function ThreadHead(props) {
     );
 
 
+    const viewUsersProfileFromComments = async (userID) => {
+        // localStorage.setItem('sessionUserID', userID);
+        navigate('/admin/post/' + userID)
+    }
+
+
     return (
         <>
             <div className="user-detail-bar">
@@ -62,7 +71,7 @@ export default function ThreadHead(props) {
                             <img src={user?.profileImage ? BASE_URL + `/` + user?.profileImage : `/images/user.png`} alt="user-img" />
                         </div>
                         <div className="user-detail">
-                            <div className='follow-bar'>
+                            <div className='follow-bar' onClick={() => viewUsersProfileFromComments(user._id)}>
                                 <h4 className="text-secondry">{user?.name ? user?.name : user?.username}</h4>
                                 {/* <button className='followbtn' type='button'>Follow</button> */}
                             </div>

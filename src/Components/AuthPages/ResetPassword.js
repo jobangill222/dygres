@@ -58,7 +58,7 @@ const ResetPassword = () => {
                 message: "Password must have at least 8 characters",
             },
             pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                value: /^(?=.*[!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?])(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?]{8,}$/,
                 message: "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
             },
         },
@@ -69,7 +69,7 @@ const ResetPassword = () => {
                 message: "Confirm password must have at least 8 characters"
             },
             pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                value: /^(?=.*[!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?])(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?]{8,}$/,
                 message: "Confirm password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
             },
         }
@@ -97,43 +97,50 @@ const ResetPassword = () => {
                         <form onSubmit={handleSubmit(handleRegistration, handleError)}>
                             <Form.Group className="authinputbar" controlId="formBasicEmail">
                                 <Form.Label>Type new password</Form.Label>
-                                <Form.Control type={showPassword ? 'text' : 'password'}
-                                    placeholder="Enter new password"
-                                    name="password"
-                                    {...register('password', registerOptions.password)}
-                                // value={password} 
-                                // onChange={e => setPassword(e.target.value)}
-                                />
+                                <div className='formerrorset'>
+                                    <Form.Control type={showPassword ? 'text' : 'password'}
+                                        placeholder="Enter new password"
+                                        name="password"
+                                        {...register('password', registerOptions.password)}
+                                    // value={password} 
+                                    // onChange={e => setPassword(e.target.value)}
+                                    />
+                                    <div className='cursor-pointer eyeset' onClick={handleTogglePassword}>
+                                        {showPassword ?
+                                            <p>< AiOutlineEyeInvisible /></p>
+                                            :
+                                            <p><AiOutlineEye /></p>
+                                        }
+                                    </div>
+                                </div>
                                 <small className="text-danger">
                                     {errors?.password && errors.password.message}
                                 </small>
-                                <div className='cursor-pointer' onClick={handleTogglePassword}>
-                                    {showPassword ?
-                                        <p>< AiOutlineEyeInvisible /></p>
-                                        :
-                                        <p><AiOutlineEye /></p>
-                                    }
-                                </div>
+
                             </Form.Group>
                             <Form.Group className="authinputbar" controlId="formBasicEmail">
                                 <Form.Label>Re-type new password</Form.Label>
-                                <Form.Control type={showConfirmPassword ? 'text' : 'password'}
-                                    placeholder="Enter new password again"
-                                    name="confirmPassword"
-                                    {...register('confirmPassword', registerOptions.confirmPassword)}
-                                // value={confirmPassword} 
-                                // onChange={e => setConfirmPassword(e.target.value)}
-                                />
+
+                                <div className='formerrorset'>
+                                    <Form.Control type={showConfirmPassword ? 'text' : 'password'}
+                                        placeholder="Enter new password again"
+                                        name="confirmPassword"
+                                        {...register('confirmPassword', registerOptions.confirmPassword)}
+                                    // value={confirmPassword} 
+                                    // onChange={e => setConfirmPassword(e.target.value)}
+                                    />
+                                    <div className='cursor-pointer eyeset' onClick={handleToggleConfirmPassword}>
+                                        {showConfirmPassword ?
+                                            <p>< AiOutlineEyeInvisible /></p>
+                                            :
+                                            <p><AiOutlineEye /></p>
+                                        }
+                                    </div>
+                                </div>
                                 <small className="text-danger">
                                     {errors?.confirmPassword && errors.confirmPassword.message}
                                 </small>
-                                <div className='cursor-pointer' onClick={handleToggleConfirmPassword}>
-                                    {showConfirmPassword ?
-                                        <p>< AiOutlineEyeInvisible /></p>
-                                        :
-                                        <p><AiOutlineEye /></p>
-                                    }
-                                </div>
+
                             </Form.Group>
                             <Button variant="primary" type="submit"   >
                                 Submit

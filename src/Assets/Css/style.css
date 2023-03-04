@@ -364,7 +364,159 @@ input.form-control {
   padding: 0 !important;
   margin: 0;
 }
+ul {
+}
 
+ul.trending-hashtag-list {
+  background: #ffffff;
+  box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: calc(50% - 10px);
+  margin-bottom: 25px;
+}
+.trending-list-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+ul.trending-hashtag-list li {
+  margin-right: 20px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+  color: #6e7180;
+}
+ul {
+}
+
+ul.trending-hashtag-list {
+  background: #ffffff;
+  box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: calc(50% - 10px);
+  margin-bottom: 25px;
+}
+
+.trending-list-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul.trending-hashtag-list li {
+  margin-right: 20px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+  /* identical to box height, or 136% */
+  color: #6e7180;
+}
+
+ul.trending-hashtag-list li.hashtaglist {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: #00c350;
+}
+ul.trending-hashtag-list li.hashtagcounts {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #aaaaaa;
+}
+.notification-title h4 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.notification-title h4 ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.notification-title h4 ul li.mute {
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+  color: #ffffff;
+}
+.restrict-logins {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.restrict-logins li {
+  margin-right: 20px;
+}
+
+.restrict-logins li p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.restrict-logins li .form-switch {
+  padding: 0;
+}
+
+.restrict-logins li .form-switch input {
+  width: 40px;
+  margin: 8px 0 0 0;
+  cursor: pointer;
+}
+.notification-title h4 ul li.mute::after {
+  content: "";
+  width: 3px;
+  height: 43px;
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+  position: absolute;
+  top: -6px;
+  left: 13px;
+  transform: rotate(30deg);
+}
+.notification-title h4 ul li {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.beforeproceed-sestion .beforeproceed {
+  margin-bottom: 10px;
+}
+.beforeproceed-sestion .modal-footer {
+  justify-content: center;
+}
+ul.trending-hashtag-list li.hashtaglist {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: #00c350;
+}
+.trending-hashtag-list li.hashtagcounts {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #aaaaaa;
+}
 .user-dropdown {
   margin-left: 30px;
   position: relative;
@@ -756,7 +908,7 @@ textarea {
 
 .rules-sestion .modal-dialog .modal-header {
   padding: 0 0 10px 0 !important;
-  justify-content: flex-start !important;
+  justify-content: flex-start;
 }
 
 .rules-sestion .modal-dialog .rule-section p {
@@ -1134,6 +1286,14 @@ ul.profiletabsbar li:last-child a {
   top: 70%;
   right: 20px;
   font-size: 15px;
+  transform: translate(0px, -50%);
+}
+.formerrorset {
+  position: relative;
+}
+.formerrorset .eyeset p {
+  margin: 0;
+  top: 50% !important;
   transform: translate(0px, -50%);
 }
 .digital-feeds .user-active-timer ul li {
@@ -1644,6 +1804,7 @@ ul.profiletabsbar li:last-child a {
   padding: 25px 90px 25px 25px !important;
   font-weight: 400;
   font-size: 18px;
+  height: 60px;
   line-height: 22px;
 }
 
@@ -2831,6 +2992,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   float: none !important;
   width: 24px;
   height: 24px;
+  position: relative;
 }
 
 .Auth-bar .Authbar-innerbox form .authcheckbox .form-check {

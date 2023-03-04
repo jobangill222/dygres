@@ -4,7 +4,7 @@ import { DContext } from "../../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 // import { BASE_URL } from '../../Config/index';
 import SingleUserList from "./SingleUserList";
-import { FaThumbsUp , FaThumbsDown } from "react-icons/fa";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 const UserListModal = (props) => {
 
@@ -16,7 +16,7 @@ const UserListModal = (props) => {
     const [userList, setUserList] = useState([]);
 
     // Aggree Modal
-    const AggreeListClose = () => {
+    const closeUserListModal = () => {
         setPopupOpenStatus(false);
         setSelectedIDForPopup(null);
         setPopupType(null)
@@ -120,17 +120,17 @@ const UserListModal = (props) => {
             </InfiniteScroll>
 
             {/* Aggree modal */}
-            <Modal className="Actions-modal" show={popupOpenStatus} onHide={AggreeListClose} centered >
+            <Modal className="Actions-modal" show={popupOpenStatus} onHide={closeUserListModal} centered >
 
                 <Modal.Header closeButton>
                     <Modal.Title>{
                         popupType === 'followers-list' ? 'Followers'
                             : popupType === 'following-list' ? 'Following'
-                                : popupType === 'agree-post-user-list' ? <FaThumbsUp/>
-                                    : popupType === 'disagree-post-user-list' ? <FaThumbsDown/>
+                                : popupType === 'agree-post-user-list' ? <FaThumbsUp />
+                                    : popupType === 'disagree-post-user-list' ? <FaThumbsDown />
                                         : popupType === 'report-post-user-list' ? "Report By"
-                                            : popupType === 'agreed-comment-user-list' ? <FaThumbsUp/>
-                                                : popupType === 'disagreed-comment-user-list' ? <FaThumbsDown/>
+                                            : popupType === 'agreed-comment-user-list' ? <FaThumbsUp />
+                                                : popupType === 'disagreed-comment-user-list' ? <FaThumbsDown />
                                                     : ""}</Modal.Title>
                 </Modal.Header>
 

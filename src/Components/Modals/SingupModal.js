@@ -29,7 +29,7 @@ export default function SignupModal(props) {
                 <Modal.Body>
                     <Row>
                         <div className='welcomepopupbar'>
-                            <p><b>@{username},</b> thank you for reserving your username and joining the dygres beta. dygres will go LIVE on <b>01/03/2023.</b></p>
+                            <p><b>@{username},</b> thank you for reserving your username and joining the dygres beta. dygres will go live early March</p>
                             <p>Keep an eye on your inbox as we will be sending out important login details closer to release day. Make sure to check your spam folder, just in case.</p>
                             <h4>Conversation is more fun with your friends.</h4>
                             <p>Want to be a social network hero?</p>

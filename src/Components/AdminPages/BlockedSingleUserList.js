@@ -1,19 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { BsThreeDotsVertical, BsFilePost, BsFlag } from 'react-icons/bs';
-// import { MdBlock } from 'react-icons/md';
+import { AiFillDelete } from 'react-icons/ai';
 import { BiIdCard } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import { DContext } from "../../Context/DContext";
 import { MdBlock } from 'react-icons/md';
+import { toast } from "react-toastify";
 
 
 export default function BlockedSingleUserList(props) {
 
     const { singleUser, blockedUserList, setBlockedUserList } = props;
 
-    const { officialUnofficialUserAdminDContext, blockUnblockUserDContext } = useContext(DContext);
+    const { officialUnofficialUserAdminDContext, blockUnblockUserDContext, deleteUserDContext } = useContext(DContext);
 
     const navigate = useNavigate();
 
@@ -57,13 +58,23 @@ export default function BlockedSingleUserList(props) {
 
 
     const blockSubmitHandler = async () => {
-        // const axiosRes = await blockUnblockUserDContext(singleUser?._id)
+        const axiosRes = await blockUnblockUserDContext(singleUser?._id)
         // console.log('axiosResaxiosRes', axiosRes)
-
         const result = blockedUserList.filter(user => user._id !== singleUser?._id);
         setBlockedUserList(result);
 
-        console.log('blockedUserListblockedUserList', blockedUserList)
+        // console.log('blockedUserListblockedUserList', blockedUserList)
+    }
+
+
+    const deleteUserhandler = async (userID) => {
+        const axiosRes = await deleteUserDContext(userID);
+        if (axiosRes.status === 'success') {
+            const result = blockedUserList.filter(user => user._id !== singleUser?._id);
+            setBlockedUserList(result);
+        } else {
+            toast(axiosRes.message);
+        }
     }
 
 
@@ -93,12 +104,18 @@ export default function BlockedSingleUserList(props) {
                                 <li className="text-secondry">
                                     {isBlockState ?
                                         <>
-                                            <Link onClick={blockSubmitHandler}>
+                                            <Link onClick={(e) => {
+                                                blockSubmitHandler();
+                                                e.preventDefault()
+                                            }} to='/'>
                                                 <MdBlock />UnBlock
                                             </Link>
                                         </>
                                         : <>
-                                            <Link onClick={blockSubmitHandler} >
+                                            <Link onClick={(e) => {
+                                                blockSubmitHandler();
+                                                e.preventDefault()
+                                            }} to='/' >
                                                 <MdBlock />Block
                                             </Link>
                                         </>
@@ -107,7 +124,9 @@ export default function BlockedSingleUserList(props) {
 
                                 <li className="text-secondry" onClick={() => userDetails(singleUser._id)} >
                                     {/* <Link to="/admin/post"><BsFilePost />Posts</Link> */}
-                                    <Link><BsFilePost />Posts</Link>
+                                    <Link onClick={(e) => {
+                                        e.preventDefault();
+                                    }} to="/"><BsFilePost />Posts</Link>
                                 </li>
                                 <li className="text-secondry" onClick={() => usersFlaggedPost(singleUser._id)}>
                                     <BsFlag />Flagged Posts
@@ -115,6 +134,9 @@ export default function BlockedSingleUserList(props) {
                                 <li className="text-secondry" onClick={() => goToUserVerification(singleUser?._id)}>
                                     {/* <Link to="/admin/userverification"><BiIdCard />User Verification</Link> */}
                                     <BiIdCard />User Verification
+                                </li>
+                                <li className="text-secondry" onClick={() => deleteUserhandler(singleUser?._id)}>
+                                    <AiFillDelete />Delete User
                                 </li>
                             </ul>
                         </div>

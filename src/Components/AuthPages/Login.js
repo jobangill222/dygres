@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 import Loader from "../Loader";
 
@@ -90,6 +91,12 @@ const Login = () => {
 
   const [isShowFoundationalRulePopup, setIsShowFoundationalRuleModal] = useState(false);
 
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
 
@@ -125,14 +132,24 @@ const Login = () => {
                 controlId="formBasicPassword"
               >
                 <Form.Label>Your password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Enter Password"
-                  name="password"
-                  {...register("password", registerOptions.password)}
-                // value={loginField?.password}
-                // onChange={e => changeValue(e)}
-                />
+                <div className='formerrorset'>
+                  <Form.Control
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Enter Password"
+                    name="password"
+                    {...register("password", registerOptions.password)}
+                  // value={loginField?.password}
+                  // onChange={e => changeValue(e)}
+                  />
+
+                  <div className='cursor-pointer eyeset' onClick={handleTogglePassword}>
+                    {showPassword ?
+                      <p>< AiOutlineEyeInvisible /></p>
+                      :
+                      <p><AiOutlineEye /></p>
+                    }
+                  </div>
+                </div>
                 <small className="text-danger">
                   {errors?.password && errors.password.message}
                 </small>
@@ -156,7 +173,9 @@ const Login = () => {
                 </h6>
               </div>
               <div className="terms-condition" onClick={() => setIsShowFoundationalRuleModal(true)}>
-                <Link >Foundational Rules</Link>
+                <Link onClick={(e) => {
+                  e.preventDefault();
+                }} to="/">Foundational Rules</Link>
               </div>
             </form>
           </div>

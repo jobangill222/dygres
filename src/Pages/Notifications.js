@@ -1,19 +1,29 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { DContext } from "../Context/DContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "../Components/Loader";
 import SingleNotificationList from "../Components/Notification/SingleNotificationList";
+import { BsFillBellFill, BsFillBellSlashFill } from "react-icons/bs";
+import { AiFillLike, AiFillTag } from "react-icons/ai";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import Button from "react-bootstrap/Button";
+
 
 const Notifications = () => {
 
-    const { getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext, setSearchState } = useContext(DContext);
+    const { user, getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext, setSearchState, notificationOnOffDContext } = useContext(DContext);
+
 
     useEffect(() => {
         setSearchState(null)
-
         setNotificationList([]);
+
+        notiOnOffStatus();
+
         localStorage.setItem("notificationCurrentPage", 1);
         getNotificationList();
+
     }, []);
 
     const getNotificationList = async () => {
@@ -42,11 +52,6 @@ const Notifications = () => {
         // console.log("appendNextList function call", pageNumberOfNotificationList);
 
         const axiosRes = await getNotificationDContext(pageNumberOfNotificationList);
-        // console.log(
-        //     "axiosRes********* after get hot posts on page",
-        //     pageNumberOfNotificationList,
-        //     axiosRes
-        // );
         if (axiosRes.status === "success") {
             setNotificationList((current) => [...current, ...axiosRes.list]);
             localStorage.setItem("notificationCurrentPage", pageNumberOfNotificationList);
@@ -59,6 +64,50 @@ const Notifications = () => {
         await deleteAllNotificationDContext();
         setNotificationList([]);
     }
+
+    const [allNotificationOnOffState, setAllNotificationOnOffState] = useState(false);
+    const [taggedNotificationOnOffStatus, setTaggedNotificationOnOffStatus] = useState(false);
+    const [agreeNotificationOnOffState, setAgreeNotificationOnOffState] = useState(false);
+
+    const notiOnOffStatus = () => {
+        setAllNotificationOnOffState(user.muteAllNotification)
+        setTaggedNotificationOnOffStatus(user.muteTaggedNotification)
+        setAgreeNotificationOnOffState(user.muteAgreeNotification)
+    }
+
+
+    const submitHandler = async (type) => {
+        const axiosRes = await notificationOnOffDContext(type);
+        setAllNotificationOnOffState(axiosRes.user.muteAllNotification)
+        setTaggedNotificationOnOffStatus(axiosRes.user.muteTaggedNotification)
+        setAgreeNotificationOnOffState(axiosRes.user.muteAgreeNotification)
+    }
+
+
+
+    const renderAllNotificationTooltip = (props) => (
+        <Tooltip style={{ width: "400px", wordBreak: "break-all" }} className='infotooltip' id="button-tooltip" {...props}>
+            <ul>
+                <li>{!allNotificationOnOffState ? "Tap to mute all notifications." : " Tap to un-mute all notifications."}</li>
+            </ul>
+        </Tooltip>
+    );
+
+    const renderTaggedNotificationTooltip = (props) => (
+        <Tooltip style={{ width: "400px", wordBreak: "break-all" }} className='infotooltip' id="button-tooltip" {...props}>
+            <ul>
+                <li>{!taggedNotificationOnOffStatus ? "Tap to mute tagged notifications." : " Tap to un-mute tagged notifications."}</li>
+            </ul>
+        </Tooltip>
+    );
+
+    const renderAgreeNotificationTooltip = (props) => (
+        <Tooltip style={{ width: "400px", wordBreak: "break-all" }} className='infotooltip' id="button-tooltip" {...props}>
+            <ul>
+                <li>{!agreeNotificationOnOffState ? "Tap to mute agree notifications." : " Tap to un-mute agree notifications."}</li>
+            </ul>
+        </Tooltip>
+    );
 
     return (
         <>
@@ -74,7 +123,23 @@ const Notifications = () => {
 
             <div className="Notfy-block">
                 <div className="relative notification-title">
-                    <h4>Notifications</h4>
+
+                    <h4>Notifications
+                        <ul>
+                            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={renderAllNotificationTooltip} >
+                                <li onClick={() => submitHandler('all')} className={allNotificationOnOffState ? 'mute' : ''}><BsFillBellFill /></li>
+                            </OverlayTrigger>
+
+                            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={renderTaggedNotificationTooltip}>
+                                <li onClick={() => submitHandler('tag')} className={taggedNotificationOnOffStatus ? 'mute' : ''}><AiFillTag /></li>
+                            </OverlayTrigger>
+
+                            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={renderAgreeNotificationTooltip} >
+                                <li onClick={() => submitHandler('agree')} className={agreeNotificationOnOffState ? 'mute likeicon' : 'likeicon'}><AiFillLike /></li>
+                            </OverlayTrigger>
+                        </ul>
+                    </h4>
+
                     {notificationList.length ?
                         <ul>
                             {/* <li><button className="btn-nill" type="button">Mark all as read</button></li> */}

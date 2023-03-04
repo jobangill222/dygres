@@ -10,6 +10,11 @@ import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
 import RetweetModal from "../Components/Modals/RetweetModal";
 import { useParams } from "react-router-dom";
 
+
+import Container from 'react-bootstrap/Container';
+import Col from "react-bootstrap/esm/Col";
+import Row from "react-bootstrap/esm/Row";
+
 const SinglePostDetail = () => {
 
     let { postIdForSinglePost, specificCommentFirst } = useParams();
@@ -26,6 +31,9 @@ const SinglePostDetail = () => {
 
     }, [postIDForSinglePostState]);
 
+
+    const [isPostDeletedState, setIsPostDeletedState] = useState(0);
+
     const getPostDetail = async () => {
         try {
             setIsLoading(true);
@@ -36,6 +44,11 @@ const SinglePostDetail = () => {
             const axiosRes = await getSinglePostDetailDContext(postIdForSinglePost);
             // console.log("axiosRes******** after single post detail posts", axiosRes);
             if (axiosRes.status === "success") {
+                if (axiosRes.list[0]?.isDeleted === 1) {
+                    setIsPostDeletedState(1)
+                } else {
+                    setIsPostDeletedState(2);
+                }
                 setPostList(axiosRes.list);
             }
             else {
@@ -76,25 +89,47 @@ const SinglePostDetail = () => {
             {viewMoreAwardOfPost && <ViewPostsAwardModal viewMoreAwardOfPost={viewMoreAwardOfPost} setViewMoreAwardOfPost={setViewMoreAwardOfPost} />}
 
             {/* {viewRetweetPopup && <RetweetModal viewRetweetPopup={viewRetweetPopup} setViewRetweetPopup={setViewRetweetPopup} />} */}
+            {isPostDeletedState === 1 ?
+                <div className="notfound">
+                    <Container>
+                        <Row>
+                            <Col lg="12">
+                                <div className="notfound-content">
+                                    <h2>404</h2>
+                                    <h4>Opps! Post Not Found</h4>
+                                    <p>Sorry, the post you're looking for doesn't exist.</p>
 
-            <h4 className="pagetitle">Post Detail</h4>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+                :
 
-            {
-                postList.length ?
-                    postList.map((post) => (
-                        <DigitalTabContent
-                            key={post._id}
-                            post={post}
-                            postListingType='singlePost'
-                            specificCommentFirst={specificCommentFirst}
-                        />
-                    ))
-                    :
-                    <div className="empty-bar">
-                        <img src="/images/empty.png" alt='dummy' />
-                        <h4>No Posts</h4>
-                    </div>
+                isPostDeletedState === 2 ?
+                    <>
+                        <h4 className="pagetitle">Post Detail</h4>
+
+                        {
+                            postList.length ?
+                                postList.map((post) => (
+                                    <DigitalTabContent
+                                        key={post._id}
+                                        post={post}
+                                        postListingType='singlePost'
+                                        specificCommentFirst={specificCommentFirst}
+                                    />
+                                ))
+                                :
+                                <div className="empty-bar">
+                                    <img src="/images/empty.png" alt='dummy' />
+                                    <h4>No Posts</h4>
+                                </div>
+                        }
+                    </>
+                    : null
             }
+
         </>
     );
 }

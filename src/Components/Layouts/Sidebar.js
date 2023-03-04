@@ -196,7 +196,10 @@ const Sidebar = () => {
 
 
                     <li><Link to="/notification"><BsBell />Notifications</Link></li>
-                    <li><Link onClick={() => setIsShowFoundationalRuleModal(true)} ><GrNotes />Foundational Rules</Link></li>
+                    <li><Link onClick={(e) => {
+                        setIsShowFoundationalRuleModal(true);
+                        e.preventDefault();
+                    }} to="/" ><GrNotes />Foundational Rules</Link></li>
 
 
                 </ul>

@@ -8,11 +8,13 @@ const Hot = () => {
 
     const navigate = useNavigate();
 
-    const { isLoading, setIsLoading, getHashtagDContext, setSearchState, setHashTagClickState } = useContext(DContext);
+    const { setPostList, isLoading, setIsLoading, getHashtagDContext, setSearchState, setHashTagClickState } = useContext(DContext);
 
     const [hashtagListState, setHashtagListState] = useState([]);
 
     useEffect(() => {
+        setPostList([]);
+
         getHashtags();
     }, []);
 
@@ -36,18 +38,31 @@ const Hot = () => {
             {isLoading && <Loader />}
 
             <h4 className="pagetitle">Trending Hashtags</h4>
+            <div className='trending-list-row'>
+                {hashtagListState.length ?
+                    hashtagListState.map((list, index) => (
+                        <>
 
-            {hashtagListState.length ?
-                hashtagListState.map((list) => (
-                    <>
-                        <p onClick={() => viewHashtagPost(list.hashtagDetails[0].name)} >{list.hashtagDetails[0].name} - {list.hashtagCount}</p>
-                    </>
-                ))
-                :
-                <div className="empty-bar">
+                            <ul className="trending-hashtag-list cursor-pointer" onClick={() => viewHashtagPost(list.hashtagDetails[0].name)} >
+                                <li>{index + 1}</li>
+                                <li className='hashtaglist '>
+                                    {list.hashtagDetails[0].name}
+                                </li>
+                                <li className="hashtagcounts">{list.hashtagCount} dygressions</li>
+                            </ul>
+                        </>
+                    ))
+                    :
+                    null
+                }
+            </div>
+
+            {!hashtagListState.length ?
+                < div className="empty-bar">
                     <img src="/images/empty.png" alt='dummy' />
                     <h4>Empty List</h4>
                 </div>
+                : null
             }
         </>
     );

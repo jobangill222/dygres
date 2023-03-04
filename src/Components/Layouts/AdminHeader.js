@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,12 +9,34 @@ import { BsBell, BsSearch } from "react-icons/bs";
 import { BiHome } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
+import Form from 'react-bootstrap/Form';
 
 const Header = () => {
 
     const navigate = useNavigate();
 
-    const { setUser, setUserToken } = useContext(DContext);
+    const { setUser, setUserToken, getSignupLoginStatusDContext, changeSignupLoginStatusDContext } = useContext(DContext);
+
+    const [isSiteLoginDisable, setIsSiteLoginDisable] = useState(false);
+    const [isSiteSignupDisable, setIsSiteSignupDisable] = useState(false);
+
+
+    useEffect(() => {
+        getSiteStatus();
+    }, [])
+
+    const getSiteStatus = async () => {
+        const axiosRes = await getSignupLoginStatusDContext();
+        setIsSiteLoginDisable(axiosRes.data.isLoginDisable)
+        setIsSiteSignupDisable(axiosRes.data.isSignupDisable);
+    }
+
+    const siteStatusHandler = async (type) => {
+        const axiosRes = await changeSignupLoginStatusDContext(type);
+        setIsSiteLoginDisable(axiosRes.data.isLoginDisable)
+        setIsSiteSignupDisable(axiosRes.data.isSignupDisable);
+    }
+
 
     //Logout Functionality
     const logoutHandler = async (e) => {
@@ -45,6 +67,24 @@ const Header = () => {
                             </Link>
                         </Navbar.Brand>
                         <Nav className="mx-auto me-0 mob-none">
+                            <ul className='restrict-logins'>
+                                <li onClick={() => siteStatusHandler('login')} >
+                                    <p>Login Restrict</p>
+                                    <Form.Check
+                                        type="switch"
+                                        checked={isSiteLoginDisable}
+                                        id="login-switch"
+                                    />
+                                </li>
+                                <li onClick={() => siteStatusHandler('signup')} >
+                                    <p>SignUp Restrict</p>
+                                    <Form.Check
+                                        type="switch"
+                                        checked={isSiteSignupDisable}
+                                        id="signup-switch"
+                                    />
+                                </li>
+                            </ul>
                             <Link to='/admin/dashboard' className="homeicon">
                                 <BiHome />
                             </Link>

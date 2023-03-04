@@ -8,7 +8,6 @@ import { DContext } from "./Context/DContext";
 import { ToastContainer } from "react-toastify";
 import { DProvider } from "./Context/DContext";
 import AppRouter from "./AppRouter";
-import history from "./history";
 
 function App() {
   // Context Variables
@@ -17,7 +16,7 @@ function App() {
   return (
     <>
       <ThemeProvider>
-        <Router history={history}>
+        <Router>
           <DProvider>
           </DProvider>
           <AppRouter />

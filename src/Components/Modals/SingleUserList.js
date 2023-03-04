@@ -1,13 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { BASE_URL } from '../../Config/index';
 import { DContext } from "../../Context/DContext";
+import { useNavigate } from "react-router-dom";
 
 export default function SingleUserList(props) {
+
+    const navigate = useNavigate();
 
     //props
     const { userListing } = props;
 
-    // console.log('userListing', userListing)
+    console.log('userListing', userListing)
 
     //Global state and functions
     const { user, postList, setPostList, setUserStats, followUserDContext, unFollowUserDContext } = useContext(DContext);
@@ -77,21 +79,27 @@ export default function SingleUserList(props) {
     }
 
 
+    const viewUsersProfileFromListing = async (userID) => {
+        // localStorage.setItem('sessionUserID', userID);
+        navigate('/UsersProfile/' + userID)
+    }
+
     // console.log('userListinguserListinguserListing', userListing);
     return (
         <>
 
             <ul key={userListing?.user?._id} className="aggree-li">
                 <li>
-                    <img src={userListing.user?.profileImage ? BASE_URL + `/` + userListing.user?.profileImage : `/images/user.png`} alt="userimg" />
-                    <div className="user-del">
-                        <h4>{userListing.user.name ? userListing.user.name : userListing.user.username}</h4>
+                    <img src={userListing?.user?.profileImage ? userListing.user?.profileImage : `/images/user.png`} alt="userimg" />
+                    <div className="user-del cursor-pointer" onClick={() => viewUsersProfileFromListing(userListing.user._id)} >
+                        <h4>{userListing?.user?.name ? userListing.user.name : userListing?.user?.username}</h4>
                         <h6>@{userListing?.user?.username}</h6>
                     </div>
                 </li>
+
                 <li>
                     {
-                        user._id !== userListing?.user?._id ?
+                        user._id !== userListing?.user?._id && userListing?.user?.isDeleted !== 1 ?
                             isFollowStateUserList === 0 ? <button className="followbtn" type="button" onClick={followUserInUserList}>Follow</button> :
                                 <button className="followbtn" type="button" onClick={UnfollowUserInUserList}>
                                     Unfollow

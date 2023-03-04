@@ -18,14 +18,14 @@ export default function HelpCenterModal(props) {
                 onHide={closePopup}
                 centered
             >
-                <Modal.Header >
-                    <Modal.Title>Help Center</Modal.Title>
+                <Modal.Header  >
+                    <Modal.Title className='justify-content-center'>Contact Support</Modal.Title>
 
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
-                        <div className='welcomepopupbar rule-section'>
-                            <p>support@dygres.com</p>
+                        <div className='welcomepopupbar'>
+                            <p>Get in touch via email: <b>support@dygres.com</b></p>
                         </div>
                     </Row>
                 </Modal.Body>

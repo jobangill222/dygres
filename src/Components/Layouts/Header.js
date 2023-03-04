@@ -20,12 +20,15 @@ import RulesModal from "../Modals/RulesModal";
 
 import HelpCenterModal from "../Modals/HelpCenterModal";
 
+import DataSaveConfirmationModal from "../Modals/DataSaveConfirmationModal";
+
+
 
 const Header = () => {
   const navigate = useNavigate();
 
   // Context Variables
-  const { user, setUser, userToken, setUserToken, notificationList, setNotificationList, getNotificationDContext, isShowRulesModal, setIsShowRulesModal } = useContext(DContext);
+  const { user, setUser, userToken, setUserToken, notificationList, setNotificationList, getNotificationDContext, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup } = useContext(DContext);
   // console.log("console user Details in header", user);
 
   //Logout Functionality
@@ -77,6 +80,8 @@ const Header = () => {
     <>
 
       {isShowRulesModal && <RulesModal setIsShowRulesModal={setIsShowRulesModal} />}
+
+      {isShowDataSaveConfirmationPopup && <DataSaveConfirmationModal />}
 
       {isShowHelpCenterModal && <HelpCenterModal isShowHelpCenterModal={isShowHelpCenterModal} setIsShowHelpCenterModal={setIsShowHelpCenterModal} />}
 

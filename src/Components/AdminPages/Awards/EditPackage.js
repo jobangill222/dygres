@@ -191,7 +191,9 @@ export default function EditAward() {
                         </Col>
                         <Col lg="6">
                             <div className='addpack m-0 align-right' onClick={() => setAddAwardPopupState(true)}>
-                                <Link className='addbtn' >+ Add Award</Link>
+                                <Link className='addbtn' onClick={(e) => {
+                                    e.preventDefault();
+                                }} to="/" >+ Add Award</Link>
                             </div>
                         </Col>
                     </Row>

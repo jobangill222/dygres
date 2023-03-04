@@ -1,19 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { BsThreeDotsVertical, BsFilePost, BsFlag } from 'react-icons/bs';
-// import { MdBlock } from 'react-icons/md';
+import { AiFillDelete } from 'react-icons/ai';
 import { BiIdCard } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import BlockUser from "./BlockUser";
 import Form from 'react-bootstrap/Form';
 import { DContext } from "../../Context/DContext";
+import { toast } from "react-toastify";
 
 
 export default function SingleUserList(props) {
 
-    const { singleUser } = props;
+    const { singleUser, userList, setUserList } = props;
 
-    const { officialUnofficialUserAdminDContext } = useContext(DContext);
+    const { officialUnofficialUserAdminDContext, deleteUserDContext } = useContext(DContext);
 
     const navigate = useNavigate();
 
@@ -55,6 +56,18 @@ export default function SingleUserList(props) {
         }
     }, [singleUser.isBlock])
 
+
+    const deleteUserhandler = async (userID) => {
+        const axiosRes = await deleteUserDContext(userID);
+        if (axiosRes.status === 'success') {
+            const result = userList.filter(user => user._id !== singleUser?._id);
+            setUserList(result);
+        } else {
+            toast(axiosRes.message);
+        }
+    }
+
+
     return (
         <>
             <tr className={isBlockState ? 'red-list' : ''}>
@@ -81,7 +94,9 @@ export default function SingleUserList(props) {
 
                                 <li className="text-secondry" onClick={() => userDetails(singleUser._id)} >
                                     {/* <Link to="/admin/post"><BsFilePost />Posts</Link> */}
-                                    <Link><BsFilePost />Posts</Link>
+                                    <Link onClick={(e) => {
+                                        e.preventDefault();
+                                    }} to="/"><BsFilePost />Posts</Link>
                                 </li>
                                 <li className="text-secondry" onClick={() => usersFlaggedPost(singleUser._id)}>
                                     <BsFlag />Flagged Posts
@@ -90,6 +105,11 @@ export default function SingleUserList(props) {
                                     {/* <Link to="/admin/userverification"><BiIdCard />User Verification</Link> */}
                                     <BiIdCard />User Verification
                                 </li>
+
+                                <li className="text-secondry" onClick={() => deleteUserhandler(singleUser?._id)}>
+                                    <AiFillDelete />Delete User
+                                </li>
+
                             </ul>
                         </div>
                     </div>

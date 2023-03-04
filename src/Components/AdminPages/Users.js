@@ -140,7 +140,7 @@ const Users = () => {
                         <tbody>
 
                             {userList.map((singleUser) => (
-                                <SingleUserList key={singleUser._id} singleUser={singleUser} />
+                                <SingleUserList key={singleUser._id} singleUser={singleUser} userList={userList} setUserList={setUserList} />
                             ))}
 
                         </tbody>

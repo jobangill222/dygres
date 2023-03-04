@@ -35,12 +35,18 @@ export default function BlockUser(props) {
 
             {isBlockState ?
                 <>
-                    <Link onClick={submitHandler}>
+                    <Link onClick={(e) => {
+                        submitHandler()
+                        e.preventDefault();
+                    }} to="/">
                         <MdBlock />UnBlock
                     </Link>
                 </>
                 : <>
-                    <Link onClick={submitHandler} >
+                    <Link onClick={(e) => {
+                        submitHandler()
+                        e.preventDefault();
+                    }} to="/">
                         <MdBlock />Block
                     </Link>
                 </>

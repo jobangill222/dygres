@@ -13,17 +13,15 @@ import { toast } from "react-toastify";
 import { BsInfoCircle } from "react-icons/bs";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-// import { useCallbackPrompt } from "../../hooks/hooks";
+import usePrompt from "../../hooks/usePrompt";
 
 
 const EditProfile = () => {
 
-  // useCallbackPrompt();
-
   // const navigate = useNavigate();
 
   //Import Api functions from DContext file
-  const { getGenInformationDContext, updateGenInformationDContext, isLoading, setIsLoading } =
+  const { getGenInformationDContext, updateGenInformationDContext, isLoading, setIsLoading, isDataChangeState, setIsDataChangeState } =
     useContext(DContext);
 
   // Define State
@@ -62,6 +60,9 @@ const EditProfile = () => {
   };
 
   useEffect(() => {
+
+    //Set state that no data change when page load
+    setIsDataChangeState(false)
     // console.log('Get General info page in useEffect');
     getGenInfoOnPage();
 
@@ -69,6 +70,7 @@ const EditProfile = () => {
 
   //Change values onChange and save in state
   const changeValue = async (e) => {
+    setIsDataChangeState(true);
     const { name, value } = e.target;
     genInfoFiledsState[name] = value;
     setGenInfoFieldsState({ ...genInfoFiledsState });
@@ -96,6 +98,9 @@ const EditProfile = () => {
     toast(axiosRes.message);
 
     setIsLoading(false);
+
+    setIsDataChangeState(false);
+
   };
 
   //Set file state
@@ -123,6 +128,7 @@ const EditProfile = () => {
       imageRef.current.onload = function () {
         URL.revokeObjectURL(imageRef.current.src); // free memory
       };
+      setIsDataChangeState(true);
     }
   };
 
@@ -137,9 +143,14 @@ const EditProfile = () => {
     </Tooltip>
   );
 
+  //Restrict to another screen if changes
+  usePrompt("Are you sure you want to leave?", isDataChangeState);
+
 
   return (
     <>
+
+      {console.log('isDataChangeState', isDataChangeState)}
 
       {isLoading && <Loader />}
 

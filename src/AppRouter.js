@@ -8,7 +8,7 @@ import SinglePostDetail from "./Pages/SinglePostDetail";
 
 
 import MostVoted from "./Pages/MostVoted";
-import NotVoted from "./Pages/NotVoted";
+// import NotVoted from "./Pages/NotVoted";
 import TrendiingHashtags from "./Pages/TrendiingHashtags";
 
 import Profile from "./Components/Profile/Profile";
@@ -62,18 +62,53 @@ import { toast } from "react-toastify";
 
 function AppRouter() {
     // Context Variables
-    const { user, setUser, userStats, userToken, setUserToken } = useContext(DContext);
+    const { user, setUser, userToken, setUserToken, getUserDetailsDContext } = useContext(DContext);
     const navigate = useNavigate();
     const location = useLocation();
 
 
     useEffect(() => {
-        // console.log('useruseruser', user)
-        if (user && user.role === 'user') {
+        conditionHandler();
+    }, [user, location]);
+
+
+    const conditionHandler = async () => {
+        const axiosRes = await getUserDetailsDContext();
+
+        const userData = axiosRes.data;
+        const userDataStats = axiosRes.userStats;
+        const siteStatus = axiosRes.siteStatus;
+
+        if (userData && userData.role === 'user') {
             let pathName = location.pathname;
 
+            //site Login disable
+            if (siteStatus.isLoginDisable) {
+                if (pathName !== "/login" || pathName !== "/signup") {
+                    setUser(null);
+                    setUserToken(null);
+                    localStorage.removeItem("accessToken");
+                    toast('Log in is currently disabled. Please check back later.')
+                    navigate('/login');
+                    return
+                }
+            }
+
+
+            //User delete
+            if (userData && userData.isDeleted === 1) {
+                if (pathName !== "/login" || pathName !== "/signup") {
+                    setUser(null);
+                    setUserToken(null);
+                    localStorage.removeItem("accessToken");
+                    toast('Your account has been deleted by admin.')
+                    navigate('/login');
+                    return
+                }
+            }
+
             //Email verification
-            if (user && user.isEmailVerify === 0 && user.isEmailVerificationReminderSent === 1) {
+            if (userData && userData.isEmailVerify === 0 && userData.isEmailVerificationReminderSent === 1) {
                 if (pathName !== "/personalinformation") {
                     toast('To continue using dygres, please verify your email address by clicking the verify e-mail button.')
                     navigate('/personalinformation');
@@ -81,7 +116,7 @@ function AppRouter() {
                 }
             }
             //Human verification pending
-            if (userStats && userStats.totalFollowers > 49000 && user.isPhotoVerify === 0) {
+            if (userDataStats && userDataStats.totalFollowers > 49000 && userData.isPhotoVerify === 0) {
                 if (pathName !== "/personalinformation") {
                     toast('You have reached 50k followers, please submit your image for verification via the upload image button. Please make sure to follow the instructions.')
                     navigate('/personalinformation');
@@ -89,7 +124,7 @@ function AppRouter() {
                 }
             }
             //Verification rejected
-            if (userStats && userStats.totalFollowers > 49000 && user.isPhotoVerify === 2) {
+            if (userDataStats && userDataStats.totalFollowers > 49000 && userData.isPhotoVerify === 2) {
                 if (pathName !== "/personalinformation") {
                     toast('You have reached 50k followers, please submit your image for verification via the upload image button. Please make sure to follow the instructions.')
                     navigate('/personalinformation');
@@ -97,7 +132,7 @@ function AppRouter() {
                 }
             }
             //User blocked
-            if (user && user.isBlock === 1) {
+            if (userData && userData.isBlock === 1) {
                 if (pathName !== "/login") {
                     setUser(null);
                     setUserToken(null);
@@ -109,7 +144,7 @@ function AppRouter() {
             }
 
         }
-    }, [user, location]);
+    }
 
 
     return (
@@ -139,7 +174,9 @@ function AppRouter() {
 
 
                                     <Route exact path="/hashtagPosts" element={<HashTagPosts />} />
-                                    <Route exact path="/SinglePostDetail/:postIdForSinglePost/:specificCommentFirst?" element={<SinglePostDetail />} />
+                                    {/* <Route exact path="/SinglePostDetail/:postIdForSinglePost/:specificCommentFirst?" element={<SinglePostDetail />} /> */}
+                                    <Route exact path="/SinglePostDetail/:postIdForSinglePost" element={<SinglePostDetail />} />
+
                                     <Route exact path="/notification" element={<Notifications />} />
                                     {/* <Route exact path="/not-voted" element={<TopLatestPost />} /> */}
                                     <Route exact path="/posthead" element={<PostHead />} />

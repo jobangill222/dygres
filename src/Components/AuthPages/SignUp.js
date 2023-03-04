@@ -62,11 +62,12 @@ const SignUp = () => {
       axiosRes = await userSignup(data);
       console.log("axiosRes", axiosRes);
       if (axiosRes.status === "success") {
-        localStorage.setItem("accessToken", axiosRes.accessToken);
-        setUser(axiosRes.data);
-        setUserToken(axiosRes.accessToken);
-        setUserStats(axiosRes.userStats);
-        navigate("/new");
+        // localStorage.setItem("accessToken", axiosRes.accessToken);
+        // setUser(axiosRes.data);
+        // setUserToken(axiosRes.accessToken);
+        // setUserStats(axiosRes.userStats);
+        toast('Account has been created successfully. Login to continue.');
+        navigate("/login");
 
         setIsShowSignupModal(false)
 
@@ -112,7 +113,7 @@ const SignUp = () => {
         message: "Password must have at least 8 characters",
       },
       pattern: {
-        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        value: /^(?=.*[!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?])(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#\$%\^&\*\(\)\-=_\+`~\[\]\{\}\|\\;:'",\.<>\/\?]{8,}$/,
         message: "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special characters without spaces",
       },
     },
@@ -136,7 +137,7 @@ const SignUp = () => {
     <Tooltip style={{ width: "400px", wordBreak: "break-all" }} className='infotooltip' id="button-tooltip" {...props}>
       <ul>
         <li>Password must have at least 8 characters.</li>
-        <li>Password must contain at least one lowercase letter, one uppercase letter, one number, and one special characters without spaces</li>
+        <li>Password must contain at least one lowercase letter, one uppercase letter, one number, and one special characters without spaces.</li>
       </ul>
     </Tooltip>
   );
@@ -223,25 +224,29 @@ const SignUp = () => {
                   </OverlayTrigger>
 
                 </Form.Label>
-                <Form.Control
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Enter Password"
-                  name="password"
-                  {...register("password", registerOptions.password)}
-                // value={password}
-                // onChange={e => setPassword(e.target.value)}
-                />
+                <div className='formerrorset'>
+                  <Form.Control
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Enter Password"
+                    name="password"
+                    {...register("password", registerOptions.password)}
+                  // value={password}
+                  // onChange={e => setPassword(e.target.value)}
+                  />
+                  <div className='cursor-pointer eyeset' onClick={handleTogglePassword}>
+                    {showPassword ?
+                      <p>< AiOutlineEyeInvisible /></p>
+                      :
+                      <p><AiOutlineEye /></p>
+                    }
+                  </div>
+                </div>
+
                 <small className="text-danger">
                   {errors?.password && errors.password.message}
                 </small>
 
-                <div className='cursor-pointer' onClick={handleTogglePassword}>
-                  {showPassword ?
-                    <p>< AiOutlineEyeInvisible /></p>
-                    :
-                    <p><AiOutlineEye /></p>
-                  }
-                </div>
+
 
               </Form.Group>
 
@@ -267,7 +272,9 @@ const SignUp = () => {
               </div> */}
               <div className="terms-condition" onClick={() => setIsShowFoundationalRuleModal(true)}>
                 {/* <Link to="/forgotpassword">Terms & Conditions</Link> */}
-                <Link >Foundational Rules</Link>
+                <Link onClick={(e) => {
+                  e.preventDefault();
+                }} to="/" >Foundational Rules</Link>
               </div>
             </form>
           </div>
