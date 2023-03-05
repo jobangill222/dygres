@@ -28,6 +28,8 @@ import ResetPassword from "./Components/AuthPages/ResetPassword";
 import Dashboard from "./Components/AdminPages/Dashboard";
 import Users from "./Components/AdminPages/Users";
 import BlockedUserList from "./Components/AdminPages/BlockedUserList";
+import VerificationRequestList from "./Components/AdminPages/VerificationRequestList";
+
 import Post from "./Components/AdminPages/Post";
 import SendNotification from "./Components/AdminPages/SendNotification";
 import FlagPost from "./Components/AdminPages/FlagPost";
@@ -200,6 +202,8 @@ function AppRouter() {
                                         <Route exact path="admin/dashboard" element={<Dashboard />} />
                                         <Route exact path="admin/users" element={<Users />} />
                                         <Route exact path="admin/blocked-user" element={<BlockedUserList />} />
+                                        <Route exact path="admin/verification-request-list" element={<VerificationRequestList />} />
+
                                         <Route exact path="admin/post/:userID" element={<Post />} />
 
                                         <Route exact path="admin/post/single-post/:postIdForSinglePost" element={<SinglePostDetailAdmin />} />

@@ -68,7 +68,8 @@ export default function BlockedSingleUserList(props) {
 
 
     const deleteUserhandler = async (userID) => {
-        const axiosRes = await deleteUserDContext(userID);
+        const deleteBy = 'admin';
+        const axiosRes = await deleteUserDContext(deleteBy, userID);
         if (axiosRes.status === 'success') {
             const result = blockedUserList.filter(user => user._id !== singleUser?._id);
             setBlockedUserList(result);
@@ -84,6 +85,8 @@ export default function BlockedSingleUserList(props) {
                 <td>{singleUser?.name ? singleUser.name : 'No Name'} </td>
                 <td>{singleUser?.username}</td>
                 <td>{singleUser?.email}</td>
+                <td>{singleUser?.isEmailVerify === 1 ? 'Yes' : 'No'}</td>
+
                 <td onClick={isOfficialToggle} >
                     <Form.Check
                         type="switch"

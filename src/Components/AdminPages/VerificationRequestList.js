@@ -14,16 +14,16 @@ import Button from 'react-bootstrap/Button';
 // Context
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
-import BlockedSingleUserList from "./BlockedSingleUserList";
+import SingleUserList from "./SingleUserList";
 import Loader from "../Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 
-const BlockedUserList = () => {
+const VerificationRequestList = () => {
 
-    const { isLoading, setIsLoading, blockedUserListDContext } = useContext(DContext);
+    const { isLoading, setIsLoading, allUserListDContext } = useContext(DContext);
 
-    const [blockedUserList, setBlockedUserList] = useState([]);
+    const [userList, setUserList] = useState([]);
     const [searchByUsernameState, setSearchByUsernameState] = useState(null);
 
 
@@ -36,10 +36,11 @@ const BlockedUserList = () => {
         setIsLoading(true);
         const search = searchByUsernameState;
         const pageNumber = 1;
-        const axiosRes = await blockedUserListDContext(search, pageNumber);
-        console.log('axiosResaxiosResaxiosRes', axiosRes)
+        const type = "verification-request";
+        const axiosRes = await allUserListDContext(type, search, pageNumber);
+        console.log('axiosResaxiosResaxiosRes verification request', axiosRes)
         if (axiosRes.status === "success") {
-            setBlockedUserList(axiosRes.list);
+            setUserList(axiosRes.list);
         } else {
             toast(axiosRes.message);
         }
@@ -66,9 +67,10 @@ const BlockedUserList = () => {
         let currentAdminUserListPage = localStorage.getItem("userPageNumber");
         let pageNumberOfPostList = parseInt(currentAdminUserListPage) + 1;
         const search = searchByUsernameState;
-        const axiosRes = await blockedUserListDContext(search, pageNumberOfPostList);
+        const type = "verification-request";
+        const axiosRes = await allUserListDContext(type, search, pageNumberOfPostList);
         if (axiosRes.status === "success") {
-            setBlockedUserList((current) => [...current, ...axiosRes.list]);
+            setUserList((current) => [...current, ...axiosRes.list]);
             localStorage.setItem("userPageNumber", pageNumberOfPostList);
         }
     };
@@ -82,7 +84,7 @@ const BlockedUserList = () => {
 
 
             <InfiniteScroll
-                dataLength={blockedUserList.length}
+                dataLength={userList.length}
                 next={appendNextList}
                 hasMore={true}
                 // loader={<h4>Loading...</h4>}
@@ -99,7 +101,11 @@ const BlockedUserList = () => {
             <Container>
                 <div className="dashboard-title-bar">
                     <Row>
-                        <Col lg="4"><h4>Blocked users</h4></Col>
+
+                        <Col lg="4"><h4>Verification Requests</h4>
+
+                        </Col>
+
 
                         <Col lg="8">
                             <div className="Titlebar-btns">
@@ -113,7 +119,7 @@ const BlockedUserList = () => {
                                 </div>
 
                                 <div className="sendbtn">
-                                    <Link to="/admin/verification-request-list">Verification Request</Link>
+                                    <Link to="/admin/blocked-user">Blocked User</Link>
                                 </div>
 
 
@@ -143,8 +149,8 @@ const BlockedUserList = () => {
                         </thead>
                         <tbody>
 
-                            {blockedUserList.map((singleUser) => (
-                                <BlockedSingleUserList key={singleUser._id} singleUser={singleUser} blockedUserList={blockedUserList} setBlockedUserList={setBlockedUserList} />
+                            {userList.map((singleUser) => (
+                                <SingleUserList key={singleUser._id} singleUser={singleUser} userList={userList} setUserList={setUserList} />
                             ))}
 
                         </tbody>
@@ -168,4 +174,4 @@ const BlockedUserList = () => {
     );
 }
 
-export default BlockedUserList;
+export default VerificationRequestList;

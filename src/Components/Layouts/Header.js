@@ -6,6 +6,7 @@ import DarkModeSwitch from "./DarkModeSwitch";
 import { AiOutlineEye } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
 import { BsQuestionCircle } from "react-icons/bs";
+import { AiFillDelete } from 'react-icons/ai';
 
 import { Link } from "react-router-dom";
 import { BsPencil, BsFileMedicalFill, BsBell, BsSearch } from "react-icons/bs";
@@ -21,6 +22,7 @@ import RulesModal from "../Modals/RulesModal";
 import HelpCenterModal from "../Modals/HelpCenterModal";
 
 import DataSaveConfirmationModal from "../Modals/DataSaveConfirmationModal";
+import DeleteAccountModal from "../Modals/DeleteAccountModal";
 
 
 
@@ -33,7 +35,7 @@ const Header = () => {
 
   //Logout Functionality
   const logoutHandler = async (e) => {
-    console.log("logout handler call");
+    // console.log("logout handler call");
     setUser(null);
     setUserToken(null);
     // localStorage.clear();
@@ -76,6 +78,11 @@ const Header = () => {
   const [isShowHelpCenterModal, setIsShowHelpCenterModal] = useState(false);
 
 
+  const [isDeleteAccountState, setIsDeleteAccountState] = useState(false);
+  const deleteAccount = async () => {
+    setIsDeleteAccountState(true)
+  }
+
   return (
     <>
 
@@ -84,6 +91,8 @@ const Header = () => {
       {isShowDataSaveConfirmationPopup && <DataSaveConfirmationModal />}
 
       {isShowHelpCenterModal && <HelpCenterModal isShowHelpCenterModal={isShowHelpCenterModal} setIsShowHelpCenterModal={setIsShowHelpCenterModal} />}
+
+      {isDeleteAccountState && <DeleteAccountModal isDeleteAccountState={isDeleteAccountState} setIsDeleteAccountState={setIsDeleteAccountState} />}
 
 
       <Navbar className="header-nav" expand="lg">
@@ -225,6 +234,14 @@ const Header = () => {
                             Edit Profile
                           </Link>
                         </li>
+
+                        <li className="text-secondry" onClick={deleteAccount} >
+                          {/* <Link to="/editprofile"> */}
+                          <AiFillDelete />
+                          Delete Account
+                          {/* </Link> */}
+                        </li>
+
                         <li className="text-secondry" onClick={logoutHandler}>
                           <MdLogout />
                           Log Out

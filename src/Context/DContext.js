@@ -1257,7 +1257,7 @@ export const DProvider = (props) => {
 
 
   //Admin
-  const allUserListDContext = async (search, pageNumber) => {
+  const allUserListDContext = async (type, search, pageNumber) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -1266,6 +1266,7 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
+          type: type,
           search: search
         },
       });
@@ -1759,7 +1760,7 @@ export const DProvider = (props) => {
   }
 
 
-  const deleteUserDContext = async (userID) => {
+  const deleteUserDContext = async (deleteBy, userID) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -1768,6 +1769,7 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
+          deleteBy: deleteBy,
           userID: userID,
         },
       });
