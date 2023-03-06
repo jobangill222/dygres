@@ -6,7 +6,7 @@
 //                     : isEmailVerify === 0 && isPhotoVerify === 0 ? '0' : 0
 // }
 export const levelBelowPost = async (isPostByOfficial, level, isOfficial) => {
-    return isPostByOfficial === 1 ? 4 :
-        isOfficial === 1 ? 4
-            : level
+    return isPostByOfficial === 1 ? 4
+        // : isOfficial === 1 ? 4
+        : level
 }

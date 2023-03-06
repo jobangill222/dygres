@@ -45,11 +45,13 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
   const handleRegistration = async (data) => {
     // e.preventDefault()
-    console.log(data);
+    // console.log(data);
+
     localStorage.setItem('signupusername', data.username);
 
 
@@ -162,16 +164,19 @@ const SignUp = () => {
           <div className="Authbar-innerbox">
             <h4>Sign up</h4>
             <p>Enter your details and get started with dygres</p>
+
+
             <form onSubmit={handleSubmit(handleRegistration, handleError)}>
               <Form.Group className="authinputbar" controlId="formBasicEmail">
                 <Form.Label>Your email</Form.Label>
                 <Form.Control
-                  type="email"
+                  type="text"
                   placeholder="Enter Email Address"
                   name="email"
                   {...register("email", registerOptions.email)}
                 // value={email}
                 // onChange={e => setEmail(e.target.value)}
+
                 />
                 <small className="text-danger">
                   {errors?.email && errors.email.message}
@@ -181,7 +186,7 @@ const SignUp = () => {
 
               <Form.Group
                 className="authinputbar"
-                controlId="formBasicPassword"
+                controlId="formBasicUsername"
               >
                 <Form.Label>Your Username
 
@@ -201,8 +206,14 @@ const SignUp = () => {
                   name="username"
                   {...register("username", registerOptions.username)}
 
-                // value={password}
-                // onChange={e => setPassword(e.target.value)}
+                  // value={username}
+                  onChange={async (e) => {
+                    e.target.value = e.target.value.toString().trim();
+                    setValue('username', e.target.value, {
+                      shouldValidate: true,
+                      shouldDirty: true
+                    })
+                  }}
                 />
                 <small className="text-danger">
                   {errors?.username && errors.username.message}
@@ -230,8 +241,15 @@ const SignUp = () => {
                     placeholder="Enter Password"
                     name="password"
                     {...register("password", registerOptions.password)}
-                  // value={password}
-                  // onChange={e => setPassword(e.target.value)}
+                    // value={password}
+                    // onChange={e => setPassword(e.target.value)}
+                    onChange={async (e) => {
+                      e.target.value = e.target.value.toString().trim();
+                      setValue('password', e.target.value, {
+                        shouldValidate: true,
+                        shouldDirty: true
+                      })
+                    }}
                   />
                   <div className='cursor-pointer eyeset' onClick={handleTogglePassword}>
                     {showPassword ?

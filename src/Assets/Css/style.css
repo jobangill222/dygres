@@ -2994,7 +2994,39 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   height: 24px;
   position: relative;
 }
+.dashboard-title-bar .sendbtn {
+  margin-right: 10px;
+}
 
+.table-toggle-checkbox {
+  padding: 0;
+  text-align: left;
+}
+.table-toggle-checkbox .form-check-input {
+  width: 34px;
+  margin: 0 !important;
+  position: relative;
+}
+.dashboard-title-bar .sendbtn a {
+  padding: 14px 10px !important;
+  display: block;
+  text-align: center;
+}
+.redbtn {
+  padding: 12px 50px;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18.5965px;
+  line-height: 22px;
+  transition: 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+.btn-danger[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .Auth-bar .Authbar-innerbox form .authcheckbox .form-check {
   padding: 0;
   margin: 0;

@@ -155,6 +155,10 @@ export default function EditAward() {
     const registerOptions = {
         name: {
             required: "Enter Package Name",
+            pattern: {
+                value: /^\s*\S.*$/,
+                message: "Enter valid package name",
+            },
         },
         amount: {
             required: "Please enter amount",
@@ -207,7 +211,7 @@ export default function EditAward() {
                                             type="text"
                                             placeholder="Enter award name"
                                             {...register("name", registerOptions.name)}
-                                            onChange={(e) => setValue('name', e.target.value)}
+                                        // onChange={(e) => setValue('name', e.target.value)}
 
                                         />
                                         <small className="text-danger">
@@ -222,7 +226,7 @@ export default function EditAward() {
                                             type="number"
                                             placeholder="Enter package amount"
                                             {...register("amount", registerOptions.amount)}
-                                            onChange={(e) => setValue('amount', e.target.value)}
+                                        // onChange={(e) => setValue('amount', e.target.value)}
                                         />
                                         <small className="text-danger">
                                             {errors?.amount && errors.amount.message}

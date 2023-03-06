@@ -26,11 +26,8 @@ export default function HighLight(props) {
     }
 
     const hashTag = async (name) => {
-        return;
-        setSearchState(null)
-        setHashTagClickState(true);
         localStorage.setItem('hashTagName', name);
-        navigate('/hashtagPosts')
+        navigate('/admin/hashtagPosts')
     }
 
 

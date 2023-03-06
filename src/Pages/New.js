@@ -99,6 +99,8 @@ const New = () => {
     localStorage.setItem("currentPage", 1);
     getGlobalPosts();
     setIsPostState(false);
+
+    setActiveTabState('Global')
   }, [isPostState]);
 
 

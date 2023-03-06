@@ -210,11 +210,12 @@ const Header = () => {
                     <AiOutlineSetting />
                   </Nav.Link> */}
                   <div className="relative user-dropdown">
+
                     <img
                       src={
                         user?.profileImage
-                          ? user?.profileImage
-                          : `images/user.png`
+                          ? user.profileImage
+                          : '/images/user.png'
                       }
                       alt="user-img"
                     />

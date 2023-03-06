@@ -96,6 +96,10 @@ export default function AddPackage() {
     const registerOptions = {
         name: {
             required: "Enter package Name",
+            pattern: {
+                value: /^\s*\S.*$/,
+                message: "Enter valid package name",
+            },
         },
         amount: {
             required: "Please enter amount",

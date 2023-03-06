@@ -68,9 +68,9 @@ export default function DeleteAccountModal(props) {
                         </Form.Group>
                     </Row>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer className='mt-3'>
                     <button className='btn btn-primary' onClick={closePopup} >Close </button>
-                    <button className='btn btn-primary' disabled={deleteFieldState && deleteFieldState.toLowerCase() === 'delete' ? false : true} onClick={deleteAccountHandler} >Delete</button>
+                    <button className='redbtn btn-danger' disabled={deleteFieldState && deleteFieldState.toLowerCase() === 'delete' ? false : true} onClick={deleteAccountHandler} >Delete</button>
 
                 </Modal.Footer>
             </Modal>

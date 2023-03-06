@@ -28,6 +28,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
   const handleRegistration = async (data) => {
@@ -138,8 +139,15 @@ const Login = () => {
                     placeholder="Enter Password"
                     name="password"
                     {...register("password", registerOptions.password)}
-                  // value={loginField?.password}
-                  // onChange={e => changeValue(e)}
+                    // value={loginField?.password}
+                    // onChange={e => changeValue(e)}
+                    onChange={async (e) => {
+                      e.target.value = e.target.value.toString().trim();
+                      setValue('password', e.target.value, {
+                        shouldValidate: true,
+                        shouldDirty: true
+                      })
+                    }}
                   />
 
                   <div className='cursor-pointer eyeset' onClick={handleTogglePassword}>

@@ -94,6 +94,10 @@ export default function AddAward() {
     const registerOptions = {
         name: {
             required: "Enter Award Name",
+            pattern: {
+                value: /^\s*\S.*$/,
+                message: "Enter Valid award name",
+            },
         },
         status: {
             required: "Please select type",

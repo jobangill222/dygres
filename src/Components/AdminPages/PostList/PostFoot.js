@@ -334,7 +334,7 @@ const PostFoot = (props) => {
           </li>
 
 
-          <li >
+          <li onClick={() => viewUserListPopup('apmlified-user-of-post-list')}>
             <div className="" >
               <HiSpeakerphone />
             </div>

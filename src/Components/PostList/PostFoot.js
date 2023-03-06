@@ -50,7 +50,7 @@ const PostFoot = (props) => {
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, amplify_count, isPostByOfficial } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForSinglePostState } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForSinglePostState, checkIsAlreadyAmplifyDContext } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -323,7 +323,15 @@ const PostFoot = (props) => {
   const retweetPost = async () => {
 
     if (user._id !== postUserID) {
-      setViewRetweetPopup(true)
+
+      const axiosRes = await checkIsAlreadyAmplifyDContext(postID);
+      if (axiosRes.status === 'success') {
+        setViewRetweetPopup(true)
+      } else {
+        toast(axiosRes.message);
+      }
+    } else {
+      viewUserListPopup('apmlified-user-of-post-list')
     }
 
   }
@@ -390,11 +398,11 @@ const PostFoot = (props) => {
 
 
 
-          <li >
+          <li>
             <div className="" onClick={retweetPost}>
               <HiSpeakerphone />
             </div>
-            <div className="list-text" onClick={retweetPost} >
+            <div className="list-text" onClick={() => viewUserListPopup('apmlified-user-of-post-list')} >
               <span className="number">{amplifyCountState}</span>
               Amplify</div>
           </li>

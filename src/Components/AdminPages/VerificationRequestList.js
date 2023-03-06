@@ -101,28 +101,26 @@ const VerificationRequestList = () => {
             <Container>
                 <div className="dashboard-title-bar">
                     <Row>
-
-                        <Col lg="4"><h4>Verification Requests</h4>
-
+                        <Col lg="2">
+                            <h4>Verification Requests</h4>
                         </Col>
-
-
-                        <Col lg="8">
+                        <Col lg="10">
                             <div className="Titlebar-btns">
-
                                 <div className="sendbtn">
                                     <Link to="/admin/sendnotification">Send Notification</Link>
                                 </div>
-
                                 <div className="sendbtn">
-                                    <Link to="/admin/users">All User</Link>
+                                    <Link to="/admin/users">All Users</Link>
                                 </div>
-
                                 <div className="sendbtn">
-                                    <Link to="/admin/blocked-user">Blocked User</Link>
+                                    <Link to="/admin/blocked-user">Blocked Users</Link>
                                 </div>
-
-
+                                <div className="sendbtn">
+                                    <Link to="/admin/official-user-list">Official Users</Link>
+                                </div>
+                                <div className="sendbtn">
+                                    <Link to="/admin/verification-request-list">Verification Requests</Link>
+                                </div>
                                 <Form.Group className="searchbar" controlId="exampleForm.ControlInput1">
                                     <BiSearch />
                                     <Form.Control type="text"
@@ -138,13 +136,13 @@ const VerificationRequestList = () => {
                     <Table size="sm">
                         <thead>
                             <tr>
-                                <th>Display Name</th>
-                                <th>Username</th>
-                                <th>E-mail</th>
-                                <th>Email Verified</th>
+                                <th className='align-middle'>Display Name</th>
+                                <th className='align-middle'>Username</th>
+                                <th className='align-middle'>E-mail</th>
+                                <th className='align-middle'>Email Verified</th>
 
-                                <th>Official Status</th>
-                                <th>Phone number</th>
+                                <th className='align-middle'>Official Status</th>
+                                <th className='align-middle'>Phone number</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -29,6 +29,8 @@ import Dashboard from "./Components/AdminPages/Dashboard";
 import Users from "./Components/AdminPages/Users";
 import BlockedUserList from "./Components/AdminPages/BlockedUserList";
 import VerificationRequestList from "./Components/AdminPages/VerificationRequestList";
+import OfficialUserList from "./Components/AdminPages/OfficialUserList";
+
 
 import Post from "./Components/AdminPages/Post";
 import SendNotification from "./Components/AdminPages/SendNotification";
@@ -54,6 +56,7 @@ import AddPackage from "./Components/AdminPages/Awards/AddPackage";
 import EditPackage from "./Components/AdminPages/Awards/EditPackage";
 
 import SinglePostDetailAdmin from "./Components/AdminPages/SinglePostDetailAdmin";
+import HashtagPostsAdmin from "./Components/AdminPages/HashtagPostsAdmin";
 
 import ReportList from "./Components/AdminPages/ReportList";
 
@@ -204,10 +207,14 @@ function AppRouter() {
                                         <Route exact path="admin/blocked-user" element={<BlockedUserList />} />
                                         <Route exact path="admin/verification-request-list" element={<VerificationRequestList />} />
 
+                                        <Route exact path="admin/official-user-list" element={<OfficialUserList />} />
+
+
                                         <Route exact path="admin/post/:userID" element={<Post />} />
 
                                         <Route exact path="admin/post/single-post/:postIdForSinglePost" element={<SinglePostDetailAdmin />} />
 
+                                        <Route exact path="admin/hashtagPosts" element={<HashtagPostsAdmin />} />
 
                                         <Route exact path="admin/sendnotification" element={<SendNotification />} />
                                         <Route exact path="admin/flagpost/:userID" element={<FlagPost />} />

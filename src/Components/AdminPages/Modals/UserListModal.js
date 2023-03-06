@@ -5,12 +5,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 // import { BASE_URL } from '../../Config/index';
 import SingleUserList from "./SingleUserList";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { HiSpeakerphone } from "react-icons/hi";
 
 const UserListModal = (props) => {
 
     const { popupOpenStatus, setPopupOpenStatus } = props;
 
-    const { selectedIDForPopup, setSelectedIDForPopup, popupType, setPopupType, getAgreedPostUserDContext, getDisAgreedPostUserDContext, getReportedPostUserDContext, getAgreedCommentUserDContext, getDisagreedCommentUserDContext, getFollowersDContext, getFollowingDContext } = useContext(DContext);
+    const { selectedIDForPopup, setSelectedIDForPopup, popupType, setPopupType, getAgreedPostUserDContext, getDisAgreedPostUserDContext, getReportedPostUserDContext, getAgreedCommentUserDContext, getDisagreedCommentUserDContext, getFollowersDContext, getFollowingDContext, getAmplifiedUsersOfPostDContext } = useContext(DContext);
     // console.log('user', user._id);
 
     const [userList, setUserList] = useState([]);
@@ -55,6 +56,9 @@ const UserListModal = (props) => {
             if (popupType === 'disagreed-comment-user-list') {
                 axiosRes = await getDisagreedCommentUserDContext(selectedIDForPopup, PageNumber);
             }
+            if (popupType === 'apmlified-user-of-post-list') {
+                axiosRes = await getAmplifiedUsersOfPostDContext(selectedIDForPopup, PageNumber);
+            }
             // console.log("axiosRes********* User List", axiosRes);
             if (axiosRes.status === "success") {
                 // console.log('axiosRes.listaxiosRes.list', axiosRes.list);
@@ -94,6 +98,9 @@ const UserListModal = (props) => {
         if (popupType === 'disagreed-comment-user-list') {
             axiosRes = await getDisagreedCommentUserDContext(selectedIDForPopup, PageNumber);
         }
+        if (popupType === 'apmlified-user-of-post-list') {
+            axiosRes = await getAmplifiedUsersOfPostDContext(selectedIDForPopup, PageNumber);
+        }
 
 
         console.log(
@@ -131,7 +138,8 @@ const UserListModal = (props) => {
                                         : popupType === 'report-post-user-list' ? "Report By"
                                             : popupType === 'agreed-comment-user-list' ? <FaThumbsUp />
                                                 : popupType === 'disagreed-comment-user-list' ? <FaThumbsDown />
-                                                    : ""}</Modal.Title>
+                                                    : popupType === 'apmlified-user-of-post-list' ? <HiSpeakerphone />
+                                                        : ""}</Modal.Title>
                 </Modal.Header>
 
 

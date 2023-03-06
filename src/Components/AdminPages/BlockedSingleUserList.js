@@ -8,7 +8,8 @@ import Form from 'react-bootstrap/Form';
 import { DContext } from "../../Context/DContext";
 import { MdBlock } from 'react-icons/md';
 import { toast } from "react-toastify";
-
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function BlockedSingleUserList(props) {
 
@@ -78,6 +79,8 @@ export default function BlockedSingleUserList(props) {
         }
     }
 
+    const [isShowDeleteUserConfirmationModal, setIsShowDeleteUserConfirmationModal] = useState(false);
+
 
     return (
         <>
@@ -89,6 +92,7 @@ export default function BlockedSingleUserList(props) {
 
                 <td onClick={isOfficialToggle} >
                     <Form.Check
+                        className='table-toggle-checkbox'
                         type="switch"
                         id="custom-switch"
                         checked={isOfficialState}
@@ -138,7 +142,7 @@ export default function BlockedSingleUserList(props) {
                                     {/* <Link to="/admin/userverification"><BiIdCard />User Verification</Link> */}
                                     <BiIdCard />User Verification
                                 </li>
-                                <li className="text-secondry" onClick={() => deleteUserhandler(singleUser?._id)}>
+                                <li className="text-secondry" onClick={() => setIsShowDeleteUserConfirmationModal(true)}>
                                     <AiFillDelete />Delete User
                                 </li>
                             </ul>
@@ -146,6 +150,27 @@ export default function BlockedSingleUserList(props) {
                     </div>
                 </td>
             </tr>
+
+
+            {isShowDeleteUserConfirmationModal &&
+                <>
+                    < Modal className="Actions-modal  deletemodal" show={isShowDeleteUserConfirmationModal} onHide={() => setIsShowDeleteUserConfirmationModal(false)} centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Delete User ?</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Are you sure you want to Delete this User ?</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-primary" onClick={() => setIsShowDeleteUserConfirmationModal(false)}>
+                                No
+                            </Button>
+                            <Button variant="primary" onClick={() => deleteUserhandler(singleUser?._id)}>
+                                Yes
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </>
+            }
+
         </>
     )
 }

@@ -14,16 +14,16 @@ import Button from 'react-bootstrap/Button';
 // Context
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
-import BlockedSingleUserList from "./BlockedSingleUserList";
+import SingleUserList from "./SingleUserList";
 import Loader from "../Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 
-const BlockedUserList = () => {
+const OfficialUserList = () => {
 
-    const { isLoading, setIsLoading, blockedUserListDContext } = useContext(DContext);
+    const { isLoading, setIsLoading, allUserListDContext } = useContext(DContext);
 
-    const [blockedUserList, setBlockedUserList] = useState([]);
+    const [userList, setUserList] = useState([]);
     const [searchByUsernameState, setSearchByUsernameState] = useState(null);
 
 
@@ -36,10 +36,11 @@ const BlockedUserList = () => {
         setIsLoading(true);
         const search = searchByUsernameState;
         const pageNumber = 1;
-        const axiosRes = await blockedUserListDContext(search, pageNumber);
+        const type = "officials";
+        const axiosRes = await allUserListDContext(type, search, pageNumber);
         console.log('axiosResaxiosResaxiosRes', axiosRes)
         if (axiosRes.status === "success") {
-            setBlockedUserList(axiosRes.list);
+            setUserList(axiosRes.list);
         } else {
             toast(axiosRes.message);
         }
@@ -66,9 +67,10 @@ const BlockedUserList = () => {
         let currentAdminUserListPage = localStorage.getItem("userPageNumber");
         let pageNumberOfPostList = parseInt(currentAdminUserListPage) + 1;
         const search = searchByUsernameState;
-        const axiosRes = await blockedUserListDContext(search, pageNumberOfPostList);
+        const type = "officials";
+        const axiosRes = await allUserListDContext(type, search, pageNumberOfPostList);
         if (axiosRes.status === "success") {
-            setBlockedUserList((current) => [...current, ...axiosRes.list]);
+            setUserList((current) => [...current, ...axiosRes.list]);
             localStorage.setItem("userPageNumber", pageNumberOfPostList);
         }
     };
@@ -82,7 +84,7 @@ const BlockedUserList = () => {
 
 
             <InfiniteScroll
-                dataLength={blockedUserList.length}
+                dataLength={userList.length}
                 next={appendNextList}
                 hasMore={true}
                 // loader={<h4>Loading...</h4>}
@@ -100,7 +102,7 @@ const BlockedUserList = () => {
                 <div className="dashboard-title-bar">
                     <Row>
                         <Col lg="2">
-                            <h4>Blocked Users</h4>
+                            <h4>Official Users</h4>
                         </Col>
                         <Col lg="10">
                             <div className="Titlebar-btns">
@@ -137,6 +139,7 @@ const BlockedUserList = () => {
                                 <th className='align-middle'>Display Name</th>
                                 <th className='align-middle'>Username</th>
                                 <th className='align-middle'>E-mail</th>
+
                                 <th className='align-middle'>Email Verified</th>
 
                                 <th className='align-middle'>Official Status</th>
@@ -145,8 +148,8 @@ const BlockedUserList = () => {
                         </thead>
                         <tbody>
 
-                            {blockedUserList.map((singleUser) => (
-                                <BlockedSingleUserList key={singleUser._id} singleUser={singleUser} blockedUserList={blockedUserList} setBlockedUserList={setBlockedUserList} />
+                            {userList.map((singleUser) => (
+                                <SingleUserList key={singleUser._id} singleUser={singleUser} userList={userList} setUserList={setUserList} />
                             ))}
 
                         </tbody>
@@ -170,4 +173,4 @@ const BlockedUserList = () => {
     );
 }
 
-export default BlockedUserList;
+export default OfficialUserList;

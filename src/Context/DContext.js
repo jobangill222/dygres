@@ -692,6 +692,42 @@ export const DProvider = (props) => {
     }
   };
 
+  const getAmplifiedUsersOfPostDContext = async (selectedPostID, PageNumber) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/amplified-post-user?page=${PageNumber}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: selectedPostID,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while hitting get amplified user of post api (DCOntext.js) - ", err);
+    }
+  };
+
+  const checkIsAlreadyAmplifyDContext = async (postID) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/check-is-already-amplified`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: {
+          postID: postID,
+        },
+      });
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while check post already amplified post api (DCOntext.js) - ", err);
+    }
+  };
+
   const getReportedPostUserDContext = async (selectedPostID, PageNumber) => {
     try {
       const axiosRes = await axios({
@@ -1852,6 +1888,8 @@ export const DProvider = (props) => {
     getNotVotedPostDContext,
     getAgreedPostUserDContext,
     getDisAgreedPostUserDContext,
+    getAmplifiedUsersOfPostDContext,
+    checkIsAlreadyAmplifyDContext,
     getReportedPostUserDContext,
     getPostCommentDContext,
     createCommentDContext,

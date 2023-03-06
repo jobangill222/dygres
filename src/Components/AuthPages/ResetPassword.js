@@ -21,7 +21,7 @@ const ResetPassword = () => {
     const navigate = useNavigate();
 
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
     const handleRegistration = async (data) => {
         // e.preventDefault()
         console.log('data-----', data);
@@ -102,8 +102,15 @@ const ResetPassword = () => {
                                         placeholder="Enter new password"
                                         name="password"
                                         {...register('password', registerOptions.password)}
-                                    // value={password} 
-                                    // onChange={e => setPassword(e.target.value)}
+                                        // value={password} 
+                                        // onChange={e => setPassword(e.target.value)}
+                                        onChange={async (e) => {
+                                            e.target.value = e.target.value.toString().trim();
+                                            setValue('password', e.target.value, {
+                                                shouldValidate: true,
+                                                shouldDirty: true
+                                            })
+                                        }}
                                     />
                                     <div className='cursor-pointer eyeset' onClick={handleTogglePassword}>
                                         {showPassword ?
@@ -126,8 +133,15 @@ const ResetPassword = () => {
                                         placeholder="Enter new password again"
                                         name="confirmPassword"
                                         {...register('confirmPassword', registerOptions.confirmPassword)}
-                                    // value={confirmPassword} 
-                                    // onChange={e => setConfirmPassword(e.target.value)}
+                                        // value={confirmPassword} 
+                                        // onChange={e => setConfirmPassword(e.target.value)}
+                                        onChange={async (e) => {
+                                            e.target.value = e.target.value.toString().trim();
+                                            setValue('confirmPassword', e.target.value, {
+                                                shouldValidate: true,
+                                                shouldDirty: true
+                                            })
+                                        }}
                                     />
                                     <div className='cursor-pointer eyeset' onClick={handleToggleConfirmPassword}>
                                         {showConfirmPassword ?

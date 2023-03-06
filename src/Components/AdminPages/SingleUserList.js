@@ -8,7 +8,8 @@ import BlockUser from "./BlockUser";
 import Form from 'react-bootstrap/Form';
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
-
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function SingleUserList(props) {
 
@@ -69,23 +70,28 @@ export default function SingleUserList(props) {
     }
 
 
+
+    const [isShowDeleteUserConfirmationModal, setIsShowDeleteUserConfirmationModal] = useState(false);
+
+
     return (
         <>
             <tr className={isBlockState ? 'red-list' : ''}>
-                <td>{singleUser?.name ? singleUser.name : 'No Name'} </td>
-                <td>{singleUser?.username}</td>
-                <td>{singleUser?.email}</td>
+                <td className='align-middle'>{singleUser?.name ? singleUser.name : 'No Name'} </td>
+                <td className='align-middle'>{singleUser?.username}</td>
+                <td className='align-middle'>{singleUser?.email}</td>
 
-                <td>{singleUser?.isEmailVerify === 1 ? 'Yes' : 'No'}</td>
+                <td className='align-middle'>{singleUser?.isEmailVerify === 1 ? 'Yes' : 'No'}</td>
 
-                <td onClick={isOfficialToggle} >
+                <td className='align-middle' onClick={isOfficialToggle} >
                     <Form.Check
+                        className='table-toggle-checkbox'
                         type="switch"
                         id="custom-switch"
                         checked={isOfficialState}
                     />
                 </td>
-                <td>
+                <td className='align-middle'>
                     <div className="number-bar">
                         <p>{singleUser?.phoneNumber ? singleUser.phoneNumber : "No Phone Number"}</p>
                         <div className="user-dropdown">
@@ -110,7 +116,11 @@ export default function SingleUserList(props) {
                                     <BiIdCard />User Verification
                                 </li>
 
-                                <li className="text-secondry" onClick={() => deleteUserhandler(singleUser?._id)}>
+                                {/* <li className="text-secondry" onClick={() => deleteUserhandler(singleUser?._id)}>
+                                    <AiFillDelete />Delete User
+                                </li> */}
+
+                                <li className="text-secondry" onClick={() => setIsShowDeleteUserConfirmationModal(true)}>
                                     <AiFillDelete />Delete User
                                 </li>
 
@@ -119,6 +129,26 @@ export default function SingleUserList(props) {
                     </div>
                 </td>
             </tr>
+
+            {isShowDeleteUserConfirmationModal &&
+                <>
+                    < Modal className="Actions-modal  deletemodal" show={isShowDeleteUserConfirmationModal} onHide={() => setIsShowDeleteUserConfirmationModal(false)} centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Delete User ?</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Are you sure you want to Delete this User ?</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-primary" onClick={() => setIsShowDeleteUserConfirmationModal(false)}>
+                                No
+                            </Button>
+                            <Button variant="primary" onClick={() => deleteUserhandler(singleUser?._id)}>
+                                Yes
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </>
+            }
+
         </>
     )
 }
