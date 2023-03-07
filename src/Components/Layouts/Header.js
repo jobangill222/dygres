@@ -30,7 +30,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   // Context Variables
-  const { user, setUser, userToken, setUserToken, notificationList, setNotificationList, getNotificationDContext, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup } = useContext(DContext);
+  const { user, setUser, userToken, setUserToken, notificationList, setNotificationList, getNotificationDContext, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup, isNewNotificationArrive } = useContext(DContext);
   // console.log("console user Details in header", user);
 
   //Logout Functionality
@@ -55,25 +55,24 @@ const Header = () => {
 
 
   //Get notifications
-  useEffect(() => {
-    if (user) {
-      getNotificationList();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user) {
+  //     getNotificationList();
+  //   }
+  // }, []);
 
-  const getNotificationList = async () => {
-    try {
-      //Api call
-      let pageNumberOfNotificationList = 1;
-      const axiosRes = await getNotificationDContext(pageNumberOfNotificationList);
-      // console.log("axiosRes******** after get notification list", axiosRes);
-      if (axiosRes.status === "success") {
-        setNotificationList(axiosRes.list);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getNotificationList = async () => {
+  //   try {
+  //     //Api call
+  //     let pageNumberOfNotificationList = 1;
+  //     const axiosRes = await getNotificationDContext(pageNumberOfNotificationList);
+  //     if (axiosRes.status === "success") {
+  //       setNotificationList(axiosRes.list);
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const [isShowHelpCenterModal, setIsShowHelpCenterModal] = useState(false);
 
@@ -150,7 +149,8 @@ const Header = () => {
 
               {userToken ? (
                 <>
-                  <div className="relative user-dropdown notify-add">
+                  {/* <div className="relative user-dropdown notify-add notification-come"> */}
+                  <div className={isNewNotificationArrive ? "relative user-dropdown notify-add notification-come" : "relative user-dropdown notify-add"}>
                     <Nav.Link className="text-lightgray btndot" href="#">
                       <BsBell />
                     </Nav.Link>

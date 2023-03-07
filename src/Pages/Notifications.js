@@ -12,17 +12,21 @@ import Button from "react-bootstrap/Button";
 
 const Notifications = () => {
 
-    const { user, getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext, setSearchState, notificationOnOffDContext } = useContext(DContext);
+    const { user, getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext, setSearchState, notificationOnOffDContext, getUserDetailsDContext, readAllNotificationDContext, setIsNewNotificationArrive } = useContext(DContext);
 
 
     useEffect(() => {
+
+
         setSearchState(null)
         setNotificationList([]);
 
         notiOnOffStatus();
+        setIsNewNotificationArrive(false)
 
         localStorage.setItem("notificationCurrentPage", 1);
         getNotificationList();
+        readAllNotification();
 
     }, []);
 
@@ -43,6 +47,7 @@ const Notifications = () => {
         setIsLoading(false);
 
     };
+
 
 
     //Append next post list
@@ -69,10 +74,13 @@ const Notifications = () => {
     const [taggedNotificationOnOffStatus, setTaggedNotificationOnOffStatus] = useState(false);
     const [agreeNotificationOnOffState, setAgreeNotificationOnOffState] = useState(false);
 
-    const notiOnOffStatus = () => {
-        setAllNotificationOnOffState(user.muteAllNotification)
-        setTaggedNotificationOnOffStatus(user.muteTaggedNotification)
-        setAgreeNotificationOnOffState(user.muteAgreeNotification)
+    const notiOnOffStatus = async () => {
+
+        const axiosRes = await getUserDetailsDContext();
+
+        setAllNotificationOnOffState(axiosRes.data?.muteAllNotification)
+        setTaggedNotificationOnOffStatus(axiosRes.data?.muteTaggedNotification)
+        setAgreeNotificationOnOffState(axiosRes.data?.muteAgreeNotification)
     }
 
 
@@ -83,6 +91,22 @@ const Notifications = () => {
         setAgreeNotificationOnOffState(axiosRes.user.muteAgreeNotification)
     }
 
+
+
+
+    const readAllNotification = async () => {
+        try {
+            const axiosRes = await readAllNotificationDContext();
+            // console.log("axiosRes******** after get notification list", axiosRes);
+            if (axiosRes.status === "success") {
+                console.log(axiosRes.message);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+        setIsLoading(false);
+
+    };
 
 
     const renderAllNotificationTooltip = (props) => (

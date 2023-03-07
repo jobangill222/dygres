@@ -2997,10 +2997,74 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .dashboard-title-bar .sendbtn {
   margin-right: 10px;
 }
+.notification-dropdown .user-detail-bar .user-active-timer li,
+.notification-dropdown .user-detail-bar .user-active-timer li svg {
+  margin: 0 !important;
+}
+.notification-dropdown .user-detail-bar .detailleft .avatar-img {
+  margin-right: 10px;
+}
+.notification-dropdown .user-detail-bar .detailleft .avatar-img img {
+  width: 36px;
+  height: 36px;
+}
+[darkmode] .helpicon svg {
+  color: #ffffff;
+}
+.notification-come {
+  position: relative;
+}
+.editor-same-line .imagebarupload {
+  max-width: 570px;
+}
 
+.editor-same-line p.uploaded-note {
+  max-width: 570px;
+}
+
+.editor-same-line .imagebarupload .verify-user-avatar img {
+  position: relative !important;
+  display: block !important;
+  width: 60px;
+  margin-left: 20px;
+}
+
+.uplaod-user-verify {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.uplaod-user-verify .verify-user-avatar img {
+  width: 50px;
+  margin-left: 20px;
+  height: 50px;
+  object-fit: contain;
+}
+.notification-come::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: red;
+  position: absolute;
+  top: 27px;
+  right: 0px;
+}
 .table-toggle-checkbox {
   padding: 0;
   text-align: left;
+}
+.notification-dropdown .notification-content {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.notification-dropdown
+  .user-detail-bar
+  .detailleft
+  .user-availbility
+  h5.text-lightgray.greentime {
+  display: none;
 }
 .table-toggle-checkbox .form-check-input {
   width: 34px;

@@ -309,7 +309,12 @@ const PersonalInformation = () => {
             <Row>
               <Col lg="12 ">
                 <Form.Group className="editor-input " controlId="">
-                  <Form.Label>Upload verification image</Form.Label>
+                  <div className='uplaod-user-verify'>
+                    <Form.Label>Upload verification image</Form.Label>
+                    <div className='verify-user-avatar'>
+                      <img src="/images/verificationAvtar.png" alt='image' />
+                    </div>
+                  </div>
                   <div className="editor-same-line">
                     {/* {console.log("fileState", fileState)} */}
                     {/* {console.log("personalInfoFieldStates.verificationImage", personalInfoFieldStates.verificationImage)} */}

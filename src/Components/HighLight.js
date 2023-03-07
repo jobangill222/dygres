@@ -36,7 +36,7 @@ export default function HighLight(props) {
     }
 
 
-    const regex = /^(http|https):\/\/[^ "]+$/;
+    const regex = /^(?:(?:https?|ftp):\/\/)?([^\s\/]+\.\S{2}|localhost[\:?\d]*)\S*$/;
     function isUrl(str) {
         return regex.test(str);
     }
@@ -52,7 +52,19 @@ export default function HighLight(props) {
                         hashTag(singleWord)
                     }
                     if (isUrl(singleWord)) {
-                        window.open(singleWord, '_blank');
+
+                        // alert(singleWord);
+                        if (singleWord.includes('https')) {
+                            window.open(singleWord, '_blank');
+                        }
+                        else if (singleWord.includes('http')) {
+                            window.open(singleWord, '_blank');
+                        }
+                        else {
+                            window.open('http://' + singleWord, '_blank');
+                        }
+
+
                     }
                 }
                 }

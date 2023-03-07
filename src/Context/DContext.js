@@ -59,6 +59,10 @@ export const DProvider = (props) => {
   const [isShowDataSaveConfirmationPopup, setIsShowDataSaveConfirmationPopup] = useState(false);
   const [saveTxStateForRetry, setsaveTxStateForRetry] = useState(false);
 
+  // For new notification icon
+  const [isNewNotificationArrive, setIsNewNotificationArrive] = useState(false);
+
+
 
   useEffect(() => {
 
@@ -1291,6 +1295,23 @@ export const DProvider = (props) => {
   }
 
 
+  const readAllNotificationDContext = async (type) => {
+    try {
+      const axiosRes = await axios({
+        method: "post",
+        url: `${BASE_URL}/user/notification/read-all-notification`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      });
+
+      return axiosRes.data;
+    } catch (err) {
+      console.log("Some issue while read all notification (DContext.js) - ", err);
+    }
+  }
+
+
 
   //Admin
   const allUserListDContext = async (type, search, pageNumber) => {
@@ -1856,6 +1877,7 @@ export const DProvider = (props) => {
     setIsDataChangeState,
     isShowDataSaveConfirmationPopup, setIsShowDataSaveConfirmationPopup,
     saveTxStateForRetry, setsaveTxStateForRetry,
+    isNewNotificationArrive, setIsNewNotificationArrive,
 
     // Methods
     userLogin,
@@ -1919,6 +1941,7 @@ export const DProvider = (props) => {
     suggestionWhilePostingDContext,
     getHashtagDContext,
     notificationOnOffDContext,
+    readAllNotificationDContext,
 
     allUserListDContext,
     getReportListDContext,

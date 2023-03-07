@@ -31,10 +31,39 @@ export default function HighLight(props) {
     }
 
 
+    const regex = /^(?:(?:https?|ftp):\/\/)?([^\s\/]+\.\S{2}|localhost[\:?\d]*)\S*$/;
+    function isUrl(str) {
+        return regex.test(str);
+    }
+
     return (
         <>
             <span> {myArray.map((singleWord, i) =>
-                <span key={i} onClick={() => { if (singleWord.length > 1 && singleWord[0] === '@') { userDetail(singleWord) } if (singleWord.length > 1 && singleWord[0] === '#') { hashTag(singleWord) } }} className={singleWord.length > 1 && singleWord[0] === '@' ? "text-primary-highlight" : singleWord.length > 1 && singleWord[0] === '#' ? "text-primary-highlight" : ""}>
+                <span key={i} onClick={() => {
+                    if (singleWord.length > 1 && singleWord[0] === '@') {
+                        userDetail(singleWord)
+                    }
+                    if (singleWord.length > 1 && singleWord[0] === '#') {
+                        hashTag(singleWord)
+                    }
+                    if (isUrl(singleWord)) {
+
+                        // alert(singleWord);
+                        if (singleWord.includes('https')) {
+                            window.open(singleWord, '_blank');
+                        }
+                        else if (singleWord.includes('http')) {
+                            window.open(singleWord, '_blank');
+                        }
+                        else {
+                            window.open('http://' + singleWord, '_blank');
+                        }
+
+
+                    }
+                }
+                }
+                    className={singleWord.length > 1 && singleWord[0] === '@' ? "text-primary-highlight" : singleWord.length > 1 && singleWord[0] === '#' ? "text-primary-highlight" : isUrl(singleWord) ? "text-primary-highlight" : ""}>
                     {singleWord}{' '}
                 </span>
             )

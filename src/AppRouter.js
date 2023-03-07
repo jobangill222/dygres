@@ -67,13 +67,15 @@ import { toast } from "react-toastify";
 
 function AppRouter() {
     // Context Variables
-    const { user, setUser, userToken, setUserToken, getUserDetailsDContext } = useContext(DContext);
+    const { user, setUser, userToken, setUserToken, getUserDetailsDContext, getNotificationDContext, setNotificationList, setIsNewNotificationArrive } = useContext(DContext);
     const navigate = useNavigate();
     const location = useLocation();
 
 
     useEffect(() => {
-        conditionHandler();
+        if (user) {
+            conditionHandler();
+        }
     }, [user, location]);
 
 
@@ -145,6 +147,23 @@ function AppRouter() {
                     toast('Your account has been blocked.')
                     navigate('/login');
                     return
+                }
+            }
+
+
+
+            if (pathName !== "/notification") {
+                let pageNumberOfNotificationList = 1;
+                const axiosRes = await getNotificationDContext(pageNumberOfNotificationList);
+                console.log("axiosRes******** after get notification list", axiosRes);
+                if (axiosRes.status === "success") {
+                    setNotificationList(axiosRes.list);
+
+                    if (axiosRes.list[0]?.isRead === 0) {
+                        setIsNewNotificationArrive(true)
+                    } else {
+                        setIsNewNotificationArrive(false)
+                    }
                 }
             }
 
