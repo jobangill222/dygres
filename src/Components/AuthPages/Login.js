@@ -185,6 +185,12 @@ const Login = () => {
                   e.preventDefault();
                 }} to="/">Foundational Rules</Link>
               </div>
+              <div className="terms-condition aboutdygres">
+                <Link onClick={(e) => {
+                  window.open('https://dygres.com/about/');
+                  e.preventDefault();
+                }} to="/" >About Dygres</Link>
+              </div>
             </form>
           </div>
         </Container>

@@ -283,17 +283,25 @@ const SignUp = () => {
               <Button variant="primary" type="submit">
                 Join dygres
               </Button>
-              {/* <div className="Noted-bar">
+              <div className="Noted-bar">
                 <h6>
                   Already have an account? <Link to="/login"> Login here</Link>
                 </h6>
-              </div> */}
+              </div>
               <div className="terms-condition" onClick={() => setIsShowFoundationalRuleModal(true)}>
                 {/* <Link to="/forgotpassword">Terms & Conditions</Link> */}
                 <Link onClick={(e) => {
                   e.preventDefault();
                 }} to="/" >Foundational Rules</Link>
               </div>
+
+              <div className="terms-condition aboutdygres"  >
+                <Link onClick={(e) => {
+                  window.open('https://dygres.com/about/');
+                  e.preventDefault();
+                }} to="/" >About Dygres</Link>
+              </div>
+
             </form>
           </div>
         </Container>

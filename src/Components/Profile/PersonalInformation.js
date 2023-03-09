@@ -11,6 +11,7 @@ import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 import Loader from "../../Components/Loader";
 import usePrompt from "../../hooks/usePrompt";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 
 const PersonalInformation = () => {
@@ -144,6 +145,7 @@ const PersonalInformation = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -261,6 +263,24 @@ const PersonalInformation = () => {
         console.log(err);
       }
     }
+  };
+
+
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const handleToggleCurrentPassword = () => {
+    setShowCurrentPassword(!showCurrentPassword);
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+
+
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const handleToggleConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
 
@@ -436,42 +456,95 @@ const PersonalInformation = () => {
 
             <Form.Group className="editor-input" controlId="">
               <Form.Label>Type old password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="......."
-                name="currentPassword"
-                {...register(
-                  "currentPassword",
-                  registerOptions.currentPassword
-                )}
-              />
+              <div className='formerrorset'>
+                <Form.Control
+                  type={showCurrentPassword ? 'text' : 'password'}
+                  placeholder="......."
+                  name="currentPassword"
+                  {...register(
+                    "currentPassword",
+                    registerOptions.currentPassword
+                  )}
+
+                  onChange={async (e) => {
+                    e.target.value = e.target.value.toString().trim();
+                    setValue('currentPassword', e.target.value, {
+                      shouldValidate: true,
+                      shouldDirty: true
+                    })
+                  }}
+                />
+                <div className='cursor-pointer eyeset' onClick={handleToggleCurrentPassword}>
+                  {showCurrentPassword ?
+                    <p>< AiOutlineEyeInvisible /></p>
+                    :
+                    <p><AiOutlineEye /></p>
+                  }
+                </div>
+              </div>
               <small className="text-danger">
                 {errors?.currentPassword && errors.currentPassword.message}
               </small>
             </Form.Group>
             <Form.Group className="editor-input" controlId="">
               <Form.Label>Type new password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="......."
-                name="newPassword"
-                {...register("newPassword", registerOptions.newPassword)}
-              />
+              <div className='formerrorset'>
+                <Form.Control
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="......."
+                  name="newPassword"
+                  {...register("newPassword", registerOptions.newPassword)}
+
+                  onChange={async (e) => {
+                    e.target.value = e.target.value.toString().trim();
+                    setValue('newPassword', e.target.value, {
+                      shouldValidate: true,
+                      shouldDirty: true
+                    })
+                  }}
+                />
+
+                <div className='cursor-pointer eyeset' onClick={handleTogglePassword}>
+                  {showPassword ?
+                    <p>< AiOutlineEyeInvisible /></p>
+                    :
+                    <p><AiOutlineEye /></p>
+                  }
+                </div>
+              </div>
               <small className="text-danger">
                 {errors?.newPassword && errors.newPassword.message}
               </small>
             </Form.Group>
             <Form.Group className="editor-input" controlId="">
               <Form.Label>Re-type new password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="......."
-                name="confirmNewPassword"
-                {...register(
-                  "confirmNewPassword",
-                  registerOptions.confirmNewPassword
-                )}
-              />
+              <div className='formerrorset'>
+
+                <Form.Control
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="......."
+                  name="confirmNewPassword"
+                  {...register(
+                    "confirmNewPassword",
+                    registerOptions.confirmNewPassword
+                  )}
+
+                  onChange={async (e) => {
+                    e.target.value = e.target.value.toString().trim();
+                    setValue('confirmNewPassword', e.target.value, {
+                      shouldValidate: true,
+                      shouldDirty: true
+                    })
+                  }}
+                />
+                <div className='cursor-pointer eyeset' onClick={handleToggleConfirmPassword}>
+                  {showConfirmPassword ?
+                    <p>< AiOutlineEyeInvisible /></p>
+                    :
+                    <p><AiOutlineEye /></p>
+                  }
+                </div>
+              </div>
               <small className="text-danger">
                 {errors?.confirmNewPassword &&
                   errors.confirmNewPassword.message}

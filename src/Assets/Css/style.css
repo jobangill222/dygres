@@ -1294,6 +1294,9 @@ ul.profiletabsbar li:last-child a {
 .formerrorset .eyeset p {
   margin: 0;
   top: 50% !important;
+  position: absolute;
+  right: 20px;
+  font-size: 15px;
   transform: translate(0px, -50%);
 }
 .digital-feeds .user-active-timer ul li {
@@ -1933,7 +1936,7 @@ ul.profiletabsbar li:last-child a {
 } */
 .Actions-modal .modal-body {
   padding: 20px;
-  height: 350px;
+  height: 380px;
   overflow-y: scroll;
   border: none;
 }
@@ -3028,13 +3031,23 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   width: 60px;
   margin-left: 20px;
 }
-
+.aboutdygres a {
+  text-decoration: underline;
+}
+.terms-condition.aboutdygres {
+  margin-top: 6px !important;
+}
 .uplaod-user-verify {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-
+.sidebar-profile .sidebar-menu li.svggray:hover svg path {
+  fill: #61bc53 !important;
+}
+.sidebar-profile .sidebar-menu li.svggray svg path {
+  fill: #aaaaaa !important;
+}
 .uplaod-user-verify .verify-user-avatar img {
   width: 50px;
   margin-left: 20px;
@@ -3151,7 +3164,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .Auth-bar .Authbar-innerbox form .terms-condition {
   text-align: center;
   margin-top: 30px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   color: var(--base-primary);

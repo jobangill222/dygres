@@ -175,7 +175,7 @@ const PostFoot = (props) => {
         setPostReportCount(newReportCount);
         setIsReport(true);
         setEditreportshow(false);
-        toast('we wrote a longer thing for this already.');
+        toast('Report successfully submitted.');
       }
       else {
         toast(reportAxiosRes.message);

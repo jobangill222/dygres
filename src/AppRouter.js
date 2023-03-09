@@ -108,7 +108,7 @@ function AppRouter() {
                     setUser(null);
                     setUserToken(null);
                     localStorage.removeItem("accessToken");
-                    toast('Your account has been deleted by admin.')
+                    toast('Your account is has been deleted by an admin.')
                     navigate('/login');
                     return
                 }
@@ -144,7 +144,7 @@ function AppRouter() {
                     setUser(null);
                     setUserToken(null);
                     localStorage.removeItem("accessToken");
-                    toast('Your account has been blocked.')
+                    toast('Your account is currently blocked.')
                     navigate('/login');
                     return
                 }

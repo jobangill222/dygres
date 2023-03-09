@@ -4,6 +4,7 @@ import { BiSearch, BiLayerMinus } from 'react-icons/bi';
 import { MdHowToVote, MdOutlineWhatshot } from 'react-icons/md';
 
 import { GrNotes } from 'react-icons/gr';
+import { FcAbout } from 'react-icons/fc';
 
 
 
@@ -200,6 +201,12 @@ const Sidebar = () => {
                         setIsShowFoundationalRuleModal(true);
                         e.preventDefault();
                     }} to="/" ><GrNotes />Foundational Rules</Link></li>
+
+
+                    <li className='svggray'><Link onClick={(e) => {
+                        window.open('https://dygres.com/about/');
+                        e.preventDefault();
+                    }} to="/" ><FcAbout />About Us</Link></li>
 
 
                 </ul>
