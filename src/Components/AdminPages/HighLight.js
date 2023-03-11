@@ -38,7 +38,7 @@ export default function HighLight(props) {
 
     return (
         <>
-            <span> {myArray.map((singleWord, i) =>
+            <div style={{ display: 'flex', flexWrap: 'wrap', whiteSpace: 'pre-wrap' }} > {myArray.map((singleWord, i) =>
                 <span key={i} onClick={() => {
                     if (singleWord.length > 1 && singleWord[0] === '@') {
                         userDetail(singleWord)
@@ -67,7 +67,7 @@ export default function HighLight(props) {
                     {singleWord}{' '}
                 </span>
             )
-            }</span>
+            }</div>
 
             {/* <OtherProfile username={username} /> */}
         </>

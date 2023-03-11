@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -30,7 +30,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   // Context Variables
-  const { user, setUser, userToken, setUserToken, notificationList, setNotificationList, getNotificationDContext, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup, isNewNotificationArrive } = useContext(DContext);
+  const { user, setUser, userToken, setUserToken, notificationList, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup, isNewNotificationArrive } = useContext(DContext);
   // console.log("console user Details in header", user);
 
   //Logout Functionality
@@ -52,27 +52,6 @@ const Header = () => {
 
   //Javascript split method to get the name of the path in array
   const splitLocation = pathname.split("/");
-
-
-  //Get notifications
-  // useEffect(() => {
-  //   if (user) {
-  //     getNotificationList();
-  //   }
-  // }, []);
-
-  // const getNotificationList = async () => {
-  //   try {
-  //     //Api call
-  //     let pageNumberOfNotificationList = 1;
-  //     const axiosRes = await getNotificationDContext(pageNumberOfNotificationList);
-  //     if (axiosRes.status === "success") {
-  //       setNotificationList(axiosRes.list);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const [isShowHelpCenterModal, setIsShowHelpCenterModal] = useState(false);
 
