@@ -61,7 +61,7 @@ export default function SinglePackageList(props) {
 
             }
 
-            <Col className="col-md-4">
+            <Col md="12" lg="4">
                 <div className="Awrds-li">
                     {/* <p className="Begde-bar">X100</p> */}
                     <div className="awards-img">

@@ -4739,6 +4739,9 @@ ul.sidebar-menu {
 .digital-feeds .Description-bar div span {
   margin: 0 5px 0 0 !important;
 }
+.buymore-modal .Awrds-li h3 span {
+  font-size: 14px;
+}
 /* Responsive css  */
 @media (max-width: 1599px) {
   .account-verify .verify-input button {
@@ -5121,6 +5124,50 @@ ul.sidebar-menu {
 }
 
 @media (max-width: 990px) {
+  .navbar-collapse ul.sidebar-menu li a svg path {
+    stroke: var(--base-text-lightgray);
+}
+  .notification-title .user-detail-bar {
+    display: flex;
+}
+  .Mob-Footerbar .user-dropdown {
+    position: relative;
+    margin: 0;
+}
+.Mob-Footerbar .user-dropdown img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.Mob-Footerbar .user-dropdown .Dropdown-listing {
+    position: absolute;
+    top: inherit;
+    bottom: 40px;
+}
+.Mob-Footerbar .user-dropdown .Dropdown-listing ul li {
+    width: 100%;
+    margin: 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.Mob-Footerbar .user-dropdown .Dropdown-listing ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 28px;
+    cursor: pointer;
+    color: var(--base-secondry);
+    text-decoration: none;
+    width: 100%;
+}.header-nav .navbar-nav .user-dropdown {
+  display: none;
+}
+.header-nav .navbar-nav .notify-add {
+  display: block !important;
+}
   .thredsbar .thredsbar {
       padding: 5px;
   }
@@ -5262,10 +5309,12 @@ ul.sidebar-menu {
 
   .user-detail-bar .detailleft {
     display: block;
+    width: 100%;
   }
 
+
   .user-detail-bar .detailleft .awards-bar {
-    margin: 15px 0 15px 0px;
+    margin: 0px 0 0px 0px;
   }
 
   .action-bar ul li,
@@ -5461,12 +5510,20 @@ ul.sidebar-menu {
   .body-wrapper {
     padding: 80px 0 80px 0!important;
   }
-  .user-detail-bar {
-    display: block;
-}
+  
 .user-detail-bar .user-edit-cover ul {
     justify-content: flex-start;
 }
+.userleftside {
+  display: block;
+  align-items: flex-start;
+}
+.user-detail-bar .detailleft .avatar-img {
+  position: relative;
+  margin-right: 0;
+  margin-bottom: 10px;
+}
+
   ul.profiletabsbar li a {
     padding: 12px 30px;
     display: inline-block;
@@ -5608,6 +5665,17 @@ ul.sidebar-menu {
 }
 
 @media (max-width: 767px){
+  .awards-modal .modal-header button.btn-add {
+    padding: 10px 10px;
+    font-size: 14px;
+    line-height: 16px;
+}
+  .notification-text p {
+    font-size: 14px !important;
+}
+.notification-title h4 {
+  font-size: 18px;
+}
   .dashboard-title-bar .sendbtn {
     flex: 0 0 50%;
     max-width: 50%;
@@ -5654,9 +5722,23 @@ ul.sidebar-menu {
 }
 
 @media (max-width: 574px) {
-  
+  .btn-primary {
+    padding: 8px 14px;
+    font-size: 16px;
+}
+.user-detail-bar .detailleft .awards-bar li img {
+  width: 24px !important;
+  height: 24px !important;
+}
+.viewmorebtn {
+  font-size: 14px;
+  line-height: 1;
+}
   .user-detail-bar .detailleft .awards-bar {
     margin: 0;
+}
+.user-detail-bar .detailleft .follow-bar {
+  justify-content: space-between;
 }
 .Auth-bar .Authbar-innerbox form .authcheckbox .btn-simple {
   text-align: right;

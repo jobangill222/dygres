@@ -52,7 +52,7 @@ const FooterMob = () => {
                                     alt="user-main-img" />
                             </Link>
                         </li> */}
-                        <div className="relative user-dropdown">
+                        <li className="relative user-dropdown">
 
                             <img
                                 src={
@@ -92,7 +92,7 @@ const FooterMob = () => {
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </li>
                     </ul>
                 </div>
             ) : <div></div>}

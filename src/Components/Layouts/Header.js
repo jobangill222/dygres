@@ -7,8 +7,8 @@ import { AiOutlineEye } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
 import { BsQuestionCircle } from "react-icons/bs";
 import { AiFillDelete } from 'react-icons/ai';
-
 import { Link } from "react-router-dom";
+import { GrNotes } from 'react-icons/gr';
 import { BsPencil, BsFileMedicalFill, BsBell, BsSearch } from "react-icons/bs";
 import { BiLayerMinus, BiHome } from "react-icons/bi";
 import { MdHowToVote, MdOutlineWhatshot } from "react-icons/md";
@@ -60,6 +60,8 @@ const Header = () => {
   const deleteAccount = async () => {
     setIsDeleteAccountState(true)
   }
+
+  const [setIsShowFoundationalRuleModal] = useState(false);
 
   return (
     <>
@@ -272,14 +274,23 @@ const Header = () => {
                 <Link to="/hot">
                   <MdOutlineWhatshot />
                   hot
-                </Link>
+                </Link>   
               </li>
               <li className={splitLocation[1] === "notfound" ? "active" : ""}>
                 <Link to="/notfound">
                   <BiLayerMinus />
                   not voted
                 </Link>
+
               </li>
+              <li><Link to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li>
+
+
+                    <li><Link to="/notification"><BsBell />Notifications</Link></li>
+                    <li><Link onClick={(e) => {
+                        setIsShowFoundationalRuleModal(true);
+                        e.preventDefault();
+                    }} to="/" ><GrNotes />Foundational Rules</Link></li>
               <li className="logout" onClick={logoutHandler}>
                 <Link to="/logout">
                   <MdLogout />
