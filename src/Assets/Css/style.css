@@ -364,8 +364,6 @@ input.form-control {
   padding: 0 !important;
   margin: 0;
 }
-ul {
-}
 
 ul.trending-hashtag-list {
   background: #ffffff;
@@ -377,6 +375,14 @@ ul.trending-hashtag-list {
   justify-content: flex-start;
   width: calc(50% - 10px);
   margin-bottom: 25px;
+  background: #ffffff;
+}
+
+ul {
+}
+
+[darkmode] ul.trending-hashtag-list{
+background: #383838;
 }
 .trending-list-row {
   display: flex;
@@ -394,9 +400,6 @@ ul {
 }
 
 ul.trending-hashtag-list {
-  background: #ffffff;
-  box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
-  border-radius: 12px;
   padding: 25px;
   display: flex;
   align-items: center;
@@ -4432,7 +4435,9 @@ ul.sidebar-menu {
   background: var(--base-purewhite);
   height: 65px;
 }
-
+[darkmode] .Mob-Footerbar,[darkmode]  .Mob-Footerbar .mob-foot-menu li.Addpost a{
+  background: #383838;
+}
 .Mob-Footerbar .mob-foot-menu {
   display: flex;
   align-items: flex-start;
@@ -5159,7 +5164,6 @@ ul.sidebar-menu {
     font-size: 14px;
     line-height: 28px;
     cursor: pointer;
-    color: var(--base-secondry);
     text-decoration: none;
     width: 100%;
 }.header-nav .navbar-nav .user-dropdown {
@@ -5665,6 +5669,58 @@ ul.sidebar-menu {
 }
 
 @media (max-width: 767px){
+  .digital-feeds .digital-feeds.diffrentiate-bar {
+    margin-left: 0;
+}
+.user-detail-bar .detailleft .user-detail .user-availbility {
+  display: block;
+}
+  ul.trending-hashtag-list {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 15px;
+}
+ul.trending-hashtag-list li {
+  font-size: 18px !important;
+  margin-right: 10px;
+}
+.pagetitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  display: inline-block;
+  padding-right: 10px;
+}
+  .welcomepopup .modal-header {
+    justify-content: flex-start !important;
+    padding: 0 0 20px 0;
+}
+.terms-content h4 {
+  color: #212121;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.terms-content h5 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #212121;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.terms-content p {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 10px;
+}
   .awards-modal .modal-header button.btn-add {
     padding: 10px 10px;
     font-size: 14px;
@@ -5722,10 +5778,15 @@ ul.sidebar-menu {
 }
 
 @media (max-width: 574px) {
+  ul.trending-hashtag-list {
+    padding: 10px;
+    margin-bottom: 10px;
+}
   .btn-primary {
     padding: 8px 14px;
     font-size: 16px;
 }
+
 .user-detail-bar .detailleft .awards-bar li img {
   width: 24px !important;
   height: 24px !important;
@@ -5749,9 +5810,42 @@ ul.sidebar-menu {
   .cursor-pointer.helpicon {
     display: none;
 }
+.user-detail-bar .detailleft .awards-bar li img {
+  width: 24px !important;
+  height: 24px !important;
+}
 
+.user-detail-bar .detailleft .follow-bar {
+  justify-content: space-between;
+}
+.buymore-modal .Awrds-li h3 span {
+  font-size: 14px;
+}
+.notification-content .userleftside {
+  display: flex;
+}
+.notification-content .userleftside .avatar-img {
+  flex: 0 0 40px;
+  margin-bottom: 0;
+}
+.Dropdown-listing .arrowbar .notification-content .user-detail-bar .user-detail .rules-tag .levelbar {
+  top: 0 !important;
+}
+.Dropdown-listing .arrowbar .notification-content .user-detail-bar .user-detail .user-availbility {
+  margin: 0;
+}
+.notification-dropdown .notification-content .user-detail-bar {
+  display: flex;
+}
+.notification-dropdown .notification-content .notification-text {display: block;}
+.notification-dropdown .notification-content .notification-text p {
+  font-size: 14px !important;
+  display: inline !important;
+}
 .notification-dropdown {
-  width: 200px !important;
+  width: 270px !important;
+  left: inherit !important;
+  right: -50px !important;
 }
 .profile-user-detail .user-edit-cover ul li a {
   font-size: 14px;
