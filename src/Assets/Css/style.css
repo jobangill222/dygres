@@ -5527,12 +5527,10 @@ ul.sidebar-menu {
     justify-content: flex-start;
 }
 .userleftside {
-  display: block;
   align-items: flex-start;
 }
 .user-detail-bar .detailleft .avatar-img {
   position: relative;
-  margin-right: 0;
   margin-bottom: 10px;
 }
 
