@@ -23,6 +23,7 @@ import HelpCenterModal from "../Modals/HelpCenterModal";
 
 import DataSaveConfirmationModal from "../Modals/DataSaveConfirmationModal";
 import DeleteAccountModal from "../Modals/DeleteAccountModal";
+import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
 
 
 
@@ -61,7 +62,9 @@ const Header = () => {
     setIsDeleteAccountState(true)
   }
 
-  const [setIsShowFoundationalRuleModal] = useState(false);
+
+  const [isShowFoundationalRulePopup, setIsShowFoundationalRuleModal] = useState(false);
+
 
   return (
     <>
@@ -73,6 +76,8 @@ const Header = () => {
       {isShowHelpCenterModal && <HelpCenterModal isShowHelpCenterModal={isShowHelpCenterModal} setIsShowHelpCenterModal={setIsShowHelpCenterModal} />}
 
       {isDeleteAccountState && <DeleteAccountModal isDeleteAccountState={isDeleteAccountState} setIsDeleteAccountState={setIsDeleteAccountState} />}
+
+      {isShowFoundationalRulePopup && <FoundationalRuleModal isShowFoundationalRulePopup={isShowFoundationalRulePopup} setIsShowFoundationalRuleModal={setIsShowFoundationalRuleModal} />}
 
 
       <Navbar className="header-nav" expand="lg">
@@ -274,7 +279,7 @@ const Header = () => {
                 <Link to="/hot">
                   <MdOutlineWhatshot />
                   hot
-                </Link>   
+                </Link>
               </li>
               <li className={splitLocation[1] === "notfound" ? "active" : ""}>
                 <Link to="/notfound">
@@ -286,11 +291,11 @@ const Header = () => {
               <li><Link to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li>
 
 
-                    <li><Link to="/notification"><BsBell />Notifications</Link></li>
-                    <li><Link onClick={(e) => {
-                        setIsShowFoundationalRuleModal(true);
-                        e.preventDefault();
-                    }} to="/" ><GrNotes />Foundational Rules</Link></li>
+              <li><Link to="/notification"><BsBell />Notifications</Link></li>
+              <li><Link onClick={(e) => {
+                setIsShowFoundationalRuleModal(true);
+                e.preventDefault();
+              }} to="/" ><GrNotes />Foundational Rules</Link></li>
               <li className="logout" onClick={logoutHandler}>
                 <Link to="/logout">
                   <MdLogout />

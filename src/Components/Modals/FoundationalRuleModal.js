@@ -19,7 +19,7 @@ export default function FoundationalRuleModal(props) {
                 onHide={closePopup}
                 centered
             >
-                <Modal.Header >
+                <Modal.Header closeButton >
                     <Modal.Title>Foundational Rules</Modal.Title>
 
                 </Modal.Header>
