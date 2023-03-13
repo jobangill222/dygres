@@ -5675,6 +5675,12 @@ ul.sidebar-menu {
 }
 
 @media (max-width: 767px){
+  .digital-feeds .digital-feeds.diffrentiate-bar .user-availbility {
+    display: block;
+}
+.digital-feeds .digital-feeds.diffrentiate-bar .user-availbility h6.text-lightgray {
+    word-break: break-all;
+}
   .digital-feeds .digital-feeds.diffrentiate-bar {
     margin-left: 0;
 }
