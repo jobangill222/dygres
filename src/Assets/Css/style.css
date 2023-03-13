@@ -1314,7 +1314,12 @@ ul.profiletabsbar li:last-child a {
 .digital-feeds .Description-bar {
   padding-bottom: 24px;
 }
-
+.digital-feeds .Description-bar p div {
+  white-space: inherit !important;
+}
+.digital-feeds .Description-bar p div span {
+  margin: 0 5px 0 0;
+}t
 .report-tabs li.active {
   background: var(--base-primary);
   border-color: var(--base-primary);
@@ -4728,6 +4733,12 @@ ul.sidebar-menu {
 .thredsbar .accordionitem .accordionitem {
   max-height: initial;
 }
+.digital-feeds .Description-bar div {
+  white-space: inherit !important;
+}
+.digital-feeds .Description-bar div span {
+  margin: 0 5px 0 0 !important;
+}
 /* Responsive css  */
 @media (max-width: 1599px) {
   .account-verify .verify-input button {
@@ -5110,11 +5121,27 @@ ul.sidebar-menu {
 }
 
 @media (max-width: 990px) {
+  .thredsbar .thredsbar {
+      padding: 5px;
+  }
+  .thredsbar .thredsbar .accordionitem {
+      padding: 0;
+  }
+  .thredsbar .thredsbar .accordionitem .replyinput textarea {
+      padding: 10px !important;
+  }
+  .thredsbar .threads-rows::before {
+      left: -3px;
+  }
   [darkmode] .navbar-collapse ul.sidebar-menu li a {
     background: #000000;
   }
+  .somewhere-pad-0.row {
+    padding-top: 20px;
+}
   .header-nav .navbar-nav {
     flex-direction: row;
+    margin-right: 10px !important;
 }
 .header-nav .mobilemenu ul.web-none {
   display: none;
@@ -5163,9 +5190,7 @@ ul.sidebar-menu {
   }
 
   .Titlebar-btns {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    margin-top: 20px;
+    
   }
 
   .Titlebar-btns .sendbtn a {
@@ -5212,11 +5237,11 @@ ul.sidebar-menu {
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
   .digital-tabs {
-    padding-bottom: 50px;
+    padding-top: 50px;
 }
 .tabswithbutotn .buttonoverall-size {
   position: absolute;
-  top: 50px;
+  top: 0px;
   right: inherit;
   left: 0;
 }
@@ -5430,11 +5455,18 @@ ul.sidebar-menu {
   .navbar-collapse ul.sidebar-menu li a svg {
     margin-right: 10px;
   }
-
+  .header-nav .navbar-nav a.nav-link {
+    padding: 0px 0;
+}
   .body-wrapper {
-    padding: 95px 0 !important;
+    padding: 80px 0 80px 0!important;
   }
-
+  .user-detail-bar {
+    display: block;
+}
+.user-detail-bar .user-edit-cover ul {
+    justify-content: flex-start;
+}
   ul.profiletabsbar li a {
     padding: 12px 30px;
     display: inline-block;
@@ -5551,15 +5583,87 @@ ul.sidebar-menu {
   .Auth-bar .Authbar-innerbox {
     padding: 20px 20px;
   }
+  .dashboard-title-bar {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.dashboard-title-bar .sendbtn {
+  flex: 0 0 20%;
+  max-width: 20%;
+  margin: 20px 0px 0px 0;
+}
+
+.dashboard-title-bar .sendbtn a {
+  margin-top: 0px;
+  margin-right: 10px !important;
+  display: block;
+}
+
+.dashboard-title-bar .searchbar {
+  margin-top: 20px;
+}
+.Titlebar-btns {
+  flex-wrap: wrap;
+}
+}
+
+@media (max-width: 767px){
+  .dashboard-title-bar .sendbtn {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin: 10px 0px 0px 0;
+}
+.flexbar {
+  display: block;
+}
+.flexbar ul.admintable-tabs {
+  margin-top: 20px;
+}
+.Titlebar-btns {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+  .restrict-logins li {
+      margin: 0 5px 0 0 !important;
+      flex: 0 0 50px;
+      position: relative;
+      top: 8px;
+  }
+  
+  .restrict-logins li p {
+      font-size: 12px;
+  }
+  
+  .restrict-logins {
+      justify-content: flex-end;
+  }
+  
+  .restrict-logins li .form-switch input {
+      position: relative;
+      margin: 0 0 0 0;
+  }
+  .dashboard-boxes .dash-boxes-in {
+    padding: 10px 15px;
+    background: var(--base-purewhite);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 12px 20px 8px rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: block;
+}
+
 }
 
 @media (max-width: 574px) {
+  
   .user-detail-bar .detailleft .awards-bar {
     margin: 0;
 }
-  .body-wrapper {
-    padding: 110px 0 90px 0!important;
-  }
+.Auth-bar .Authbar-innerbox form .authcheckbox .btn-simple {
+  text-align: right;
+}
+.body-wrapper {
+  padding: 70px 0 90px 0!important;
+}
   .cursor-pointer.helpicon {
     display: none;
 }
