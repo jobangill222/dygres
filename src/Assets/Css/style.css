@@ -377,8 +377,11 @@ ul.trending-hashtag-list {
   margin-bottom: 25px;
   background: #ffffff;
 }
-
-ul {
+.sidebar-menu.col-lg-3 {
+    width: 30%;
+}
+.mainwrapper.col-lg-9 {
+    width: 70%;
 }
 
 [darkmode] ul.trending-hashtag-list{
@@ -4470,7 +4473,6 @@ ul.sidebar-menu {
 
 .Mob-Footerbar .mob-foot-menu li a {
   font-size: 24px;
-  color: var(--base-primary);
 }
 
 .Mob-Footerbar .mob-foot-menu li a img {
@@ -5129,6 +5131,12 @@ ul.sidebar-menu {
 }
 
 @media (max-width: 990px) {
+  .sidebar-menu.col-lg-3 {
+    width: 100%;
+}
+.mainwrapper.col-lg-9 {
+    width: 100%;
+}
   .navbar-collapse ul.sidebar-menu li a svg path {
     stroke: var(--base-text-lightgray);
 }
@@ -5774,10 +5782,51 @@ ul.trending-hashtag-list li {
     margin-bottom: 20px;
     display: block;
 }
+.Notfy-block .notification-content .detailleft .avatar-img {
+    flex: 0 0 60px;
+    margin-right: 10px;
+}
+.Notfy-block .notification-content .detailleft {
+    width: auto;
+}
+.Notfy-block .notification-content .detailleft {
+    width: auto;
+}
+.Notfy-block .notification-content .detailleft .avatar-img {
+    flex: 0 0 60px;
+    margin-right: 10px;
+}
+.header-nav .navbar-nav .notify-add .notification-dropdown {
+    padding: 10px;
+}
+.header-nav .navbar-nav .notify-add .notification-dropdown .detailleft .userleftside .user-detail .user-availbility h6.text-lightgray {
+  word-break: break-word;
+  white-space: normal;
+}
+.header-nav .navbar-nav .notify-add .notification-dropdown .notification-head {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.header-nav .navbar-nav .notify-add .notification-dropdown .detailleft {
+    max-width: 85%;
+}
+.header-nav .navbar-nav .notify-add .notification-dropdown .detailleft .userleftside {
+    width: 100%;
+}
+.header-nav .navbar-nav .notify-add .notification-dropdown .detailleft .userleftside .user-detail h4 {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
 
+.header-nav .navbar-nav .notify-add .notification-dropdown .user-detail-bar .notification-text {max-width: 85%;}
 }
 
 @media (max-width: 574px) {
+  .imagebarupload p.succesful {
+    margin: 0px 0 0 10px;
+    font-size: 12px;
+    line-height: 18px;
+}
   ul.trending-hashtag-list {
     padding: 10px;
     margin-bottom: 10px;
