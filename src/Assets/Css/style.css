@@ -383,7 +383,10 @@ ul.trending-hashtag-list {
 .mainwrapper.col-lg-9 {
     width: 70%;
 }
-
+[darkmode] .terms-content h4 ,
+  [darkmode] .terms-content h5 {
+  color: #ffffff;
+}
 [darkmode] ul.trending-hashtag-list{
 background: #383838;
 }
@@ -5321,7 +5324,7 @@ ul.sidebar-menu {
 
   .user-detail-bar .detailleft {
     display: block;
-    width: 100%;
+    /* width: 100%; */
   }
 
 
@@ -5582,7 +5585,7 @@ ul.sidebar-menu {
   }
 
   .digital-feeds {
-    padding: 15px 20px;
+    padding: 10px;
     margin-bottom: 20px;
   }
 
@@ -5678,6 +5681,29 @@ ul.sidebar-menu {
   .digital-feeds .digital-feeds.diffrentiate-bar .user-availbility {
     display: block;
 }
+.digital-feeds .avatar-img {
+  flex: 0 0 40px !important;
+  max-width: 40px;
+}
+
+.digital-feeds .avatar-img img {
+  width: 40px;
+  height: 40px;
+}
+.action-bar ul.actionleftbar {
+  flex: 0 0 90%;
+}
+.action-bar ul.actionleftbar li p {
+  font-size: 0;
+}
+.digital-feeds .user-active-timer ul li {
+    font-size: 12px;
+}
+.notification-content .notification-text {
+  max-width: 90%;
+  flex-wrap: wrap;
+}
+.Notfy-block .user-availbility {display: block !important;}
 .digital-feeds .digital-feeds.diffrentiate-bar .user-availbility h6.text-lightgray {
     word-break: break-all;
 }
@@ -5810,7 +5836,7 @@ ul.trending-hashtag-list li {
     padding-bottom: 10px;
 }
 .header-nav .navbar-nav .notify-add .notification-dropdown .detailleft {
-    max-width: 85%;
+    flex: 0 0 80%;
 }
 .header-nav .navbar-nav .notify-add .notification-dropdown .detailleft .userleftside {
     width: 100%;
