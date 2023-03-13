@@ -226,9 +226,6 @@ const Header = () => {
                           <MdLogout />
                           Log Out
                         </li>
-                        {/* <li className="text-secondry">
-                                            <Link to="/login"><MdLogout />Log In</Link>
-                                        </li> */}
                       </ul>
                     </div>
                   </div>
