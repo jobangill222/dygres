@@ -2069,7 +2069,9 @@ t .report-tabs li.active {
   display: block;
   color: #000000;
 }
-
+.user-detail-listing li:last-child {
+    margin: 0;
+}
 .Actions-modal .Awrds-li button {
   border: none;
   padding: 7px 16px;
@@ -5221,9 +5223,9 @@ ul.sidebar-menu {
     flex-direction: row;
     margin-right: 10px !important;
   }
-  .header-nav .mobilemenu ul.web-none {
+  .header-nav .mobilemenu ul.web-none li:last-child {
     display: none;
-  }
+}
   .header-nav .mobilemenu {
     margin-left: 20px;
   }
@@ -5502,9 +5504,11 @@ ul.sidebar-menu {
   }
 
   .mobilemenu ul.web-none li {
-    margin-right: 30px;
+    margin-right: 10px;
   }
-
+li.svggray svg path {
+    fill: var(--base-text-lightgray);
+}
   .mobilemenu ul.web-none li a {
     font-size: 20px;
     color: var(--base-default-text);
