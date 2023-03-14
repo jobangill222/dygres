@@ -387,6 +387,9 @@ ul.trending-hashtag-list {
 [darkmode] .terms-content h5 {
   color: #ffffff;
 }
+[darkmode] .digital-feeds .Description-bar {
+  color: var(--darkmode-offwhite);
+}
 [darkmode] ul.trending-hashtag-list {
   background: #383838;
 }
