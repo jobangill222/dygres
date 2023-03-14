@@ -2205,7 +2205,9 @@ ul.profiletabsbar li:last-child a {
   line-height: 29px;
   color: var(--base-secondry);
 }
-
+[darkmode] .buymore-modal .Awrds-li h3 {
+    color: #ffffff;
+}
 .buymore-modal .modal-body {
   padding: 20px 20px;
 }
