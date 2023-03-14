@@ -5139,6 +5139,20 @@ ul.sidebar-menu {
   }
 }
 
+@media (max-width: 1299px){
+  .action-bar ul li .list-text {font-size: 0;}
+  .action-bar ul li .list-text span.number {
+      font-size: 16px;
+  }
+  .action-bar ul li , .action-bar ul li p {
+      font-size: 0;
+  }
+  .action-bar ul li span.number {
+      font-size: 16px;
+  }
+}
+
+
 @media (min-width: 991px) {
   .navbar-expand-lg .navbar-collapse {
     display: none !important;
@@ -5699,6 +5713,9 @@ li.svggray svg path {
 }
 
 @media (max-width: 767px) {
+  .awards-modal .row .col-md-4 {
+    flex: 0 0 33.33%;
+}
   .digital-feeds .digital-feeds.diffrentiate-bar .user-availbility {
     display: block;
   }
@@ -5908,6 +5925,9 @@ li.svggray svg path {
 }
 
 @media (max-width: 574px) {
+  .awards-modal .row .col-md-4 {
+    flex: 0 0 50%;
+}
   .imagebarupload p.succesful {
     margin: 0px 0 0 10px;
     font-size: 12px;
