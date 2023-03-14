@@ -4294,7 +4294,9 @@ ul.sidebar-menu {
   background-repeat: no-repeat;
   background-size: contain;
 }
-
+[darkmode] .modal-content .modal-body .shareurl-bar {
+    background: #272728;
+}
 .user-active-timer ul li {
   font-size: 14px;
   line-height: 17px;
@@ -5107,6 +5109,13 @@ ul.sidebar-menu {
     line-height: 17px;
     border-radius: 8px;
   }
+}
+
+@media (max-width: 1440px){
+  .container {
+    max-width: 100%;
+    padding: 0 50px;
+}
 }
 
 @media (max-width: 1299px) {
