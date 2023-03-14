@@ -16,6 +16,7 @@ import { useLocation } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
 import { useNavigate } from "react-router-dom";
 import SingleNotificationList from '../Notification/SingleNotificationList';
+import { FcAbout } from 'react-icons/fc';
 
 import RulesModal from "../Modals/RulesModal";
 
@@ -269,39 +270,44 @@ const Header = () => {
                   <BsFileMedicalFill /> New
                 </Link>
               </li>
+              <li className={splitLocation[1] === "hot" ? "active" : ""}>
+                <Link to="/Hot">
+                  <MdOutlineWhatshot />
+                  Hot
+                </Link>
+              </li>
               <li className={splitLocation[1] === "most-voted" ? "active" : ""}>
-                <Link to="/most-voted">
+                <Link to="/Most-voted">
                   <MdHowToVote />
                   Most Voted
                 </Link>
               </li>
-              <li className={splitLocation[1] === "hot" ? "active" : ""}>
-                <Link to="/hot">
-                  <MdOutlineWhatshot />
-                  hot
-                </Link>
-              </li>
-              <li className={splitLocation[1] === "notfound" ? "active" : ""}>
-                <Link to="/notfound">
-                  <BiLayerMinus />
-                  not voted
-                </Link>
 
-              </li>
               <li><Link to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li>
 
 
               <li><Link to="/notification"><BsBell />Notifications</Link></li>
+
+
               <li><Link onClick={(e) => {
                 setIsShowFoundationalRuleModal(true);
                 e.preventDefault();
               }} to="/" ><GrNotes />Foundational Rules</Link></li>
+
+
+              <li className='svggray'><Link onClick={(e) => {
+                window.open('https://dygres.com/about/');
+                e.preventDefault();
+              }} to="/" ><FcAbout />About Us</Link></li>
+
               <li className="logout" onClick={logoutHandler}>
                 <Link to="/logout">
                   <MdLogout />
                   Logout
                 </Link>
               </li>
+
+
             </ul>
           </Navbar.Collapse>
         </Container>
