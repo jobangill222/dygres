@@ -3,7 +3,7 @@ import React from "react";
 import {
     Outlet
 } from "react-router-dom";
-import FooterMob from "../FooterMob";
+import AdminFooterMob from "../AdminFooterMob";
 
 import AdminHeader from "../AdminHeader";
 
@@ -17,7 +17,7 @@ const AdminLayout = () => {
             <div className='body-wrapper Adminlayout'>
                 <Outlet />
             </div>
-            <FooterMob />
+            <AdminFooterMob />
         </>
     );
 }

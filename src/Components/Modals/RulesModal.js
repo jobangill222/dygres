@@ -2,8 +2,8 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
-import { ImFacebook } from "react-icons/im";
-import { AiOutlineTwitter } from "react-icons/ai";
+// import { ImFacebook } from "react-icons/im";
+// import { AiOutlineTwitter } from "react-icons/ai";
 
 export default function RulesModal(props) {
 
@@ -21,7 +21,7 @@ export default function RulesModal(props) {
                 onHide={closePopup}
                 centered
             >
-                <Modal.Header >
+                <Modal.Header closeButton>
                     <Modal.Title>Levels</Modal.Title>
 
                 </Modal.Header>
