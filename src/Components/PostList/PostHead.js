@@ -114,6 +114,12 @@ const PostHead = (props) => {
     </Tooltip>
   );
 
+  const timerToolTip = (
+    <Tooltip id="timerToolTip">
+      Voting over after times up
+    </Tooltip>
+  );
+
   // const Completionist = () => console.log('You are good to go!')
 
   // Random component
@@ -224,11 +230,15 @@ const PostHead = (props) => {
         <div className="user-active-timer">
           <ul>
 
-            <li className="text-green">
-              {/* <MdOutlineTimer /> */}
-              {/* 3 day timer from post date */}
-              <Countdown date={moment(created_at) + 259200 * 1000} renderer={renderer}>
-              </Countdown>
+            <li className="text-green cursor-pointer ">
+
+              <OverlayTrigger placement="top" overlay={timerToolTip} >
+                <div>
+                  <Countdown date={moment(created_at) + 259200 * 1000} renderer={renderer}>
+                  </Countdown>
+                </div>
+              </OverlayTrigger>
+
             </li>
 
           </ul>

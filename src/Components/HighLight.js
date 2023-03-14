@@ -43,7 +43,7 @@ export default function HighLight(props) {
 
     return (
         <>
-            <div style={{ display: 'flex', flexWrap: 'wrap', whiteSpace: 'pre-wrap' }} >{myArray.map((singleWord, i) =>
+            {myArray.map((singleWord, i) =>
                 <span key={i} onClick={() => {
                     if (singleWord.length > 1 && singleWord[0] === '@') {
                         userDetail(singleWord)
@@ -68,12 +68,11 @@ export default function HighLight(props) {
                     }
                 }
                 }
-                    style={{ overflowWrap: 'break-word' }}
                     className={singleWord.length > 1 && singleWord[0] === '@' ? "text-primary-highlight" : singleWord.length > 1 && singleWord[0] === '#' ? "text-primary-highlight" : isUrl(singleWord) ? "text-primary-highlight" : ""}>
                     {singleWord}{' '}
                 </span>
             )
-            }</div>
+            }
 
             {/* <OtherProfile username={username} /> */}
         </>

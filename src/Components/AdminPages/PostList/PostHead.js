@@ -103,6 +103,13 @@ const PostHead = (props) => {
     navigate('/admin/post/' + userID)
   }
 
+
+  const timerToolTip = (
+    <Tooltip id="timerToolTip">
+      Voting over after times up
+    </Tooltip>
+  );
+
   return (
     <>
       <div className="user-detail-bar">
@@ -167,14 +174,17 @@ const PostHead = (props) => {
 
 
         </div>
-        <div className="user-active-timer">
+        <div className="user-active-timer cursor-pointer">
           <ul>
 
             <li className="text-green">
-              {/* <MdOutlineTimer /> */}
-              {/* 3 day timer from post date */}
-              <Countdown date={moment(created_at) + 259200 * 1000} renderer={renderer}>
-              </Countdown>
+              <OverlayTrigger placement="top" overlay={timerToolTip} >
+                <div>
+                  <Countdown date={moment(created_at) + 259200 * 1000} renderer={renderer}>
+                  </Countdown>
+                </div>
+              </OverlayTrigger>
+
             </li>
 
           </ul>
