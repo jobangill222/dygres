@@ -18,10 +18,9 @@ const UsersProfile = () => {
 
     let { userIDForProfile } = useParams();
 
-    const { user, getOtherUserDetailByUserIDDContext, setSelectedIDForPopup, setPopupType, setIsShowRulesModal, isLoading, setIsLoading, postList, setPostList, followUserDContext, unFollowUserDContext, setUserStats } = useContext(DContext);
+    const { user, getOtherUserDetailByUserIDDContext, setSelectedIDForPopup, setPopupType, setIsShowRulesModal, isLoading, setIsLoading, postList, setPostList, followUserDContext, unFollowUserDContext, setUserStats, isFollowOnUserProfileState, setIsFollowOnUserProfileState, othetUserStats, setOtherUserStats } = useContext(DContext);
 
     const [otherUser, setOtherUser] = useState();
-    const [othetUserStats, setOtherUserStats] = useState();
 
 
     useEffect(() => {
@@ -108,14 +107,13 @@ const UsersProfile = () => {
     );
 
 
-    //State
-    const [isFollowState, setIsFollowState] = useState(0);
+
     // When is_follow change or new list come then set in state
     useEffect(() => {
         if (otherUser?.is_follow === 1) {
-            setIsFollowState(1);
+            setIsFollowOnUserProfileState(1);
         } else {
-            setIsFollowState(0);
+            setIsFollowOnUserProfileState(0);
         }
     }, [otherUser?.is_follow]);
 
@@ -134,14 +132,16 @@ const UsersProfile = () => {
         // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
         setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
 
-        // Update user stats state
-        // setUserStats((previousState) => {
-        //     return {
-        //         ...previousState,
-        //         totalFollowing: previousState.totalFollowing + 1,
-        //     };
-        // });
-        setIsFollowState(1);
+        setIsFollowOnUserProfileState(1);
+
+        //Update other user stats
+        setOtherUserStats((previousState) => {
+            return {
+                ...previousState,
+                totalFollowers: previousState.totalFollowers + 1,
+            };
+        });
+
         await followUserDContext(otherUser?._id);
     }
 
@@ -159,14 +159,15 @@ const UsersProfile = () => {
         // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
         setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
 
-        // Update user stats state
-        // setUserStats((previousState) => {
-        //     return {
-        //         ...previousState,
-        //         totalFollowing: previousState.totalFollowing - 1,
-        //     };
-        // });
-        setIsFollowState(0);
+        setIsFollowOnUserProfileState(0);
+
+        //Update other user stats
+        setOtherUserStats((previousState) => {
+            return {
+                ...previousState,
+                totalFollowers: previousState.totalFollowers - 1,
+            };
+        });
 
         await unFollowUserDContext(otherUser?._id);
     }
@@ -244,8 +245,8 @@ const UsersProfile = () => {
                                                 </li>
                                                 <li>
                                                     <div className="follow-bar">
-                                                        {isFollowState === 0 && <button className='followbtn' onClick={followUser} type='button'>Follow</button>}
-                                                        {isFollowState === 1 && <button className='followbtn' onClick={UnfollowUser} type='button'>Unfollow</button>}
+                                                        {isFollowOnUserProfileState === 0 && <button className='followbtn' onClick={followUser} type='button'>Follow</button>}
+                                                        {isFollowOnUserProfileState === 1 && <button className='followbtn' onClick={UnfollowUser} type='button'>Unfollow</button>}
                                                     </div>
                                                 </li>
                                             </ul>

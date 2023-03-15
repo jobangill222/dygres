@@ -62,6 +62,12 @@ export const DProvider = (props) => {
   // For new notification icon
   const [isNewNotificationArrive, setIsNewNotificationArrive] = useState(false);
 
+  // follow state in view profile page
+  const [isFollowOnUserProfileState, setIsFollowOnUserProfileState] = useState(0);
+
+  //Other user stats
+  const [othetUserStats, setOtherUserStats] = useState();
+
 
 
   useEffect(() => {
@@ -1878,6 +1884,8 @@ export const DProvider = (props) => {
     isShowDataSaveConfirmationPopup, setIsShowDataSaveConfirmationPopup,
     saveTxStateForRetry, setsaveTxStateForRetry,
     isNewNotificationArrive, setIsNewNotificationArrive,
+    isFollowOnUserProfileState, setIsFollowOnUserProfileState,
+    othetUserStats, setOtherUserStats,
 
     // Methods
     userLogin,

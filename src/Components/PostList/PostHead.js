@@ -8,7 +8,7 @@ import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
@@ -21,9 +21,11 @@ import { levelBelowPost } from "../../helper/levelBelowPost";
 const PostHead = (props) => {
 
   const navigate = useNavigate();
+  const location = useLocation();
+
 
   //Context
-  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost, setIsShowRulesModal } = useContext(DContext);
+  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost, setIsShowRulesModal, setIsFollowOnUserProfileState, setOtherUserStats } = useContext(DContext);
 
   //Props
   const { postUserDetails, is_follow, postUserID, created_at, isPostDisable, setIsPostDisable, postAward, postID, isPostByOfficial } = props;
@@ -36,6 +38,7 @@ const PostHead = (props) => {
 
   //Follow to user and update post Listing
   const followUser = async () => {
+
     let newPostList = postList;
     postList.forEach((post, index) => {
       if (post.userID === postUserID) {
@@ -55,12 +58,27 @@ const PostHead = (props) => {
       };
     });
 
+    //When on other user profile page change main follow unfollow which are showing right side of stats
+    let pathName = location.pathname;
+    if (pathName.includes("UsersProfile")) {
+      setIsFollowOnUserProfileState(1);
+
+      //Update other user stats
+      setOtherUserStats((previousState) => {
+        return {
+          ...previousState,
+          totalFollowers: previousState.totalFollowers + 1,
+        };
+      });
+    }
+
     await followUserDContext(postUserID);
   }
 
 
   //Un-follow user and update Post Listing
   const UnfollowUser = async () => {
+
     let newPostList = postList;
     postList.forEach((post, index) => {
       if (post.userID === postUserID) {
@@ -79,6 +97,21 @@ const PostHead = (props) => {
         totalFollowing: previousState.totalFollowing - 1,
       };
     });
+
+
+    //When on other user profile page change main follow unfollow which are showing right side of stats
+    let pathName = location.pathname;
+    if (pathName.includes("UsersProfile")) {
+      setIsFollowOnUserProfileState(0);
+
+      //Update other user stats
+      setOtherUserStats((previousState) => {
+        return {
+          ...previousState,
+          totalFollowers: previousState.totalFollowers - 1,
+        };
+      });
+    }
 
     await unFollowUserDContext(postUserID);
   }
