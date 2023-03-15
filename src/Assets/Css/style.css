@@ -5979,6 +5979,9 @@ li.svggray svg path {
   .awards-modal .row .col-md-4 {
     flex: 0 0 50%;
 }
+.Whatsmind-bar {
+  margin-bottom: 20px;
+}
   .imagebarupload p.succesful {
     margin: 0px 0 0 10px;
     font-size: 12px;
