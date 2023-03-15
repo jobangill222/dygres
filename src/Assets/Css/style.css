@@ -55,12 +55,15 @@ a:hover {
   align-items: center;
   justify-content: flex-start;
 }
-
+[darkmode] .hoverdropdown .dropdown-menu .dropdown-item p {
+  color: #ffffff;
+}
 .notification-text p {
   margin: 0px 5px 0px 0px !important;
   font-weight: 400 !important;
   font-size: 18px !important;
   line-height: 30px !important;
+  color: var(--base-text-lightgray);
 }
 
 .report_reasons {
@@ -945,8 +948,7 @@ textarea {
   border-radius: 50%;
 }
 
-button.bg-primary.text-white.btn.btn-primary {
-}
+
 .Whatsmind-bar form .word-note {
   margin-top: 5px;
 }
@@ -1092,13 +1094,15 @@ ul.profiletabsbar li:last-child a {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-
+[darkmode] .Uploaded-user p {
+  color: #ffffff;
+}
 .digital-feeds {
   padding: 18px 25px;
   background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
   border-radius: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .user-detail-bar {
@@ -4223,6 +4227,12 @@ ul.sidebar-menu {
   padding-bottom: 20px;
 }
 
+ul.sidebar-menu {
+  height: 282px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .header-nav .navbar-brand .darkmode {
   display: none;
 }
@@ -5182,6 +5192,17 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 
 @media (max-width: 990px) {
+
+  .notification-come::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+    top: 8px;
+    right: 0px;
+}
   .sidebar-menu.col-lg-3 {
     width: 100%;
   }
