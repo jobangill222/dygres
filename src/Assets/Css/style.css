@@ -1006,6 +1006,10 @@ ul.weekly-status li.listatus h4 {
   font-size: 18px;
   line-height: 22px;
   margin-bottom: 9px;
+  color: #ffffff;
+}
+.whatsmind-inputbar__control {
+  margin-bottom: 15px;
 }
 .infotooltip ul {
   padding: 10px;
@@ -4205,11 +4209,13 @@ p.uploaded-note b {
   border: 1px solid #dddde3;
 }
 
-[darkmode] .hoverdropdown .dropdown-menu a.dropdown-item {
+[darkmode] .hoverdropdown .dropdown-menu a.dropdown-item:hover {
   color: var(--base-purewhite);
   background: #000000 !important;
 }
-
+[darkmode] .hoverdropdown .dropdown-menu a.dropdown-item {
+  color: var(--base-purewhite);
+}
 [darkmode] .report-tabs li {
   background: var(--darkmode-gray2xl);
   border: 2px solid var(--base-purewhite);
