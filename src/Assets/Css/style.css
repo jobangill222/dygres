@@ -5192,7 +5192,16 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 
 @media (max-width: 990px) {
-
+  ul.sidebar-menu {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: auto;
+}li.logout a {
+  border: none !important;
+}
+.digital-feeds .Description-bar div span {
+  margin: 0 3px 0 0 !important;
+}
   .notification-come::after {
     content: "";
     width: 8px;
