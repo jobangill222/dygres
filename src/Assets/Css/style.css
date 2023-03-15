@@ -1006,7 +1006,13 @@ ul.weekly-status li.listatus h4 {
   font-size: 18px;
   line-height: 22px;
   margin-bottom: 9px;
-  color: #ffffff;
+}
+.whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder{
+  color: var(--base-secondry);
+}
+[darkmode] .whatsmind-inputbar__control .whatsmind-inputbar__input ,
+  [darkmode] .whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder{
+  color: var(--base-purewhite);
 }
 .whatsmind-inputbar__control {
   margin-bottom: 15px;
