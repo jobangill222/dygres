@@ -10,15 +10,18 @@ import Row from "react-bootstrap/esm/Row";
 
 import { useParams } from "react-router-dom";
 import Loader from "../Loader";
+import { useNavigate } from "react-router-dom";
 
 const UsersProfile = () => {
 
+    const navigate = useNavigate();
+
     let { userIDForProfile } = useParams();
 
-    const { getOtherUserDetailByUserIDDContext, setSelectedIDForPopup, setPopupType, setIsShowRulesModal, isLoading, setIsLoading } = useContext(DContext);
+    const { user, getOtherUserDetailByUserIDDContext, setSelectedIDForPopup, setPopupType, setIsShowRulesModal, isLoading, setIsLoading, postList, setPostList, followUserDContext, unFollowUserDContext, setUserStats } = useContext(DContext);
 
-    const [user, setUser] = useState();
-    const [userStats, setUserStats] = useState();
+    const [otherUser, setOtherUser] = useState();
+    const [othetUserStats, setOtherUserStats] = useState();
 
 
     useEffect(() => {
@@ -27,18 +30,24 @@ const UsersProfile = () => {
         setSelectedIDForPopup(null);
         setPopupType(null)
 
-        getData();
+        //if My profile
+        if (user._id === userIDForProfile) {
+            navigate("/profile");
+        } else {
+            getData();
+        }
+
     }, [])
 
 
-    const myFollowers = async () => {
+    const followersList = async () => {
         setPopupType('followers-list');
-        setSelectedIDForPopup(user._id)
+        setSelectedIDForPopup(otherUser._id)
     }
 
-    const myFollowing = async () => {
+    const followingList = async () => {
         setPopupType('following-list');
-        setSelectedIDForPopup(user._id)
+        setSelectedIDForPopup(otherUser._id)
     }
 
 
@@ -59,8 +68,8 @@ const UsersProfile = () => {
                 } else {
                     setIsUserDeletedState(2)
                 }
-                setUser(axiosRes.data)
-                setUserStats(axiosRes.userStats)
+                setOtherUser(axiosRes.data)
+                setOtherUserStats(axiosRes.userStats)
             }
             setIsLoading(false);
 
@@ -72,7 +81,7 @@ const UsersProfile = () => {
 
     const tooltip = (
         <Tooltip id="tooltip">
-            {user?.thoughts ? user.thoughts : "crickets"}
+            {otherUser?.thoughts ? otherUser.thoughts : "*crickets*"}
         </Tooltip>
     );
 
@@ -81,11 +90,11 @@ const UsersProfile = () => {
     //Verification Level
     useEffect(() => {
         getLevel();
-    }, [user])
+    }, [otherUser])
 
     const getLevel = async () => {
         // const res = await verificationLevel(user?.isEmailVerify, user?.isPhotoVerify);
-        const res = await verificationLevel(user?.level, user?.isOfficial);
+        const res = await verificationLevel(otherUser?.level, otherUser?.isOfficial);
 
         setVerificationLevelState(res);
     }
@@ -97,6 +106,70 @@ const UsersProfile = () => {
             {verificationLevelState && verificationLevelState === 4 ? 'Verified official account' : verificationLevelState === 1 ? 'Verified Email' : verificationLevelState === 2 ? "Verified Human" : "New account"}
         </Tooltip>
     );
+
+
+    //State
+    const [isFollowState, setIsFollowState] = useState(0);
+    // When is_follow change or new list come then set in state
+    useEffect(() => {
+        if (otherUser?.is_follow === 1) {
+            setIsFollowState(1);
+        } else {
+            setIsFollowState(0);
+        }
+    }, [otherUser?.is_follow]);
+
+
+
+    //Follow to user and update post Listing
+    const followUser = async () => {
+        let newPostList = postList;
+        postList.forEach((post, index) => {
+            if (post.userID === otherUser?._id) {
+                console.log('condition hit of follow user');
+                newPostList[index] = { ...post, is_follow: 1 }
+            }
+        })
+        setPostList([...newPostList, { ...newPostList[0] }]);
+        // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+        setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
+
+        // Update user stats state
+        // setUserStats((previousState) => {
+        //     return {
+        //         ...previousState,
+        //         totalFollowing: previousState.totalFollowing + 1,
+        //     };
+        // });
+        setIsFollowState(1);
+        await followUserDContext(otherUser?._id);
+    }
+
+
+    //Un-follow user and update Post Listing
+    const UnfollowUser = async () => {
+        let newPostList = postList;
+        postList.forEach((post, index) => {
+            if (post.userID === otherUser?._id) {
+                console.log('condition hit of unfollow user');
+                newPostList[index] = { ...post, is_follow: 0 }
+            }
+        })
+        setPostList([...newPostList, { ...newPostList[0] }]);
+        // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+        setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
+
+        // Update user stats state
+        // setUserStats((previousState) => {
+        //     return {
+        //         ...previousState,
+        //         totalFollowing: previousState.totalFollowing - 1,
+        //     };
+        // });
+        setIsFollowState(0);
+
+        await unFollowUserDContext(otherUser?._id);
+    }
 
     return (
 
@@ -122,7 +195,7 @@ const UsersProfile = () => {
                 : isUserDeletedState === 2 ?
                     <>
                         <div className="profile-feature-image">
-                            <img src={user && user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" />
+                            <img src={otherUser && otherUser?.coverImage ? otherUser.coverImage : "/images/feature.png"} alt="feature-img" />
                         </div>
                         <div className="profile-user-detail">
                             <Container>
@@ -130,15 +203,15 @@ const UsersProfile = () => {
                                     <div className="detailleft">
                                         <OverlayTrigger placement="top" overlay={tooltip}>
                                             <div className="avatar-img">
-                                                <img src={user?.profileImage ? user.profileImage : `/images/u100.png`} alt="user-img" />
+                                                <img src={otherUser?.profileImage ? otherUser.profileImage : `/images/u100.png`} alt="user-img" />
                                             </div>
                                         </OverlayTrigger>
 
                                         <div className="user-detail">
 
-                                            <h4 className="text-secondry">{user?.name ? user.name : ""}</h4>
+                                            <h4 className="text-secondry">{otherUser?.name ? otherUser.name : ""}</h4>
                                             <div className="user-availbility">
-                                                <h6 className="text-lightgray">@{user?.username}</h6>
+                                                <h6 className="text-lightgray">@{otherUser?.username}</h6>
                                             </div>
                                             <div className="rules-tag" onClick={() => setIsShowRulesModal(true)}>
                                                 <OverlayTrigger placement="top" overlay={verificationtooltip}>
@@ -154,20 +227,26 @@ const UsersProfile = () => {
                                             </div>
                                             <ul className="user-detail-listing">
                                                 <li>
-                                                    <p className="text-secondry">{userStats?.totalPosts}</p>
+                                                    <p className="text-secondry">{othetUserStats?.totalPosts}</p>
                                                     <h6 className="text-offwhite">Posts</h6>
                                                 </li>
-                                                <li onClick={myFollowing}>
-                                                    <p className="text-secondry">{userStats?.totalFollowing}</p>
+                                                <li onClick={followingList}>
+                                                    <p className="text-secondry">{othetUserStats?.totalFollowing}</p>
                                                     <h6 className="text-offwhite">Following</h6>
                                                 </li>
-                                                <li onClick={myFollowers}>
-                                                    <p className="text-secondry">{userStats?.totalFollowers}</p>
+                                                <li onClick={followersList}>
+                                                    <p className="text-secondry">{othetUserStats?.totalFollowers}</p>
                                                     <h6 className="text-offwhite">Followers</h6>
                                                 </li>
                                                 <li>
-                                                    <p className="text-secondry">{userStats?.totalAwards}</p>
+                                                    <p className="text-secondry">{othetUserStats?.totalAwards}</p>
                                                     <h6 className="text-offwhite">Awards</h6>
+                                                </li>
+                                                <li>
+                                                    <div className="follow-bar">
+                                                        {isFollowState === 0 && <button className='followbtn' onClick={followUser} type='button'>Follow</button>}
+                                                        {isFollowState === 1 && <button className='followbtn' onClick={UnfollowUser} type='button'>Unfollow</button>}
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -188,7 +267,7 @@ const UsersProfile = () => {
                             </Container>
                         </div>
                         <Container>
-                            <UsersProfileTabs user={user} />
+                            <UsersProfileTabs otherUser={otherUser} />
                         </Container>
                     </>
                     : null

@@ -63,7 +63,7 @@ const SinglePostList = (props) => {
 
                 <div className="accordionitem" >
                     <div className="digital-feeds ">
-                        <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} setIsPostDisable={setIsPostDisable} postAward={postAward} postID={_id} isPostByOfficial={isPostByOfficial} />
+                        <PostHead postUserDetails={user} is_follow={is_follow} postUserID={userID} created_at={created_at} isPostDisable={isPostDisable} setIsPostDisable={setIsPostDisable} postAward={postAward} postID={_id} isPostByOfficial={isPostByOfficial} />
                         <div className="user-preview">
 
 

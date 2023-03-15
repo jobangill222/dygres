@@ -29,7 +29,7 @@ const PostHead = (props) => {
   const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost } = useContext(DContext);
 
   //Props
-  const { postUserDetails, is_follow, postUserID, created_at, setIsPostDisable, postAward, postID, isPostByOfficial } = props;
+  const { postUserDetails, is_follow, postUserID, created_at, isPostDisable, setIsPostDisable, postAward, postID, isPostByOfficial } = props;
 
   //State
   // const [isFollowState, setIsFollowState] = useState(0);
@@ -104,20 +104,35 @@ const PostHead = (props) => {
   }
 
 
-  const timerToolTip = (
-    <Tooltip id="timerToolTip">
-      Voting over after times up
+  const timerOngoingToolTip = (
+    <Tooltip id="timerOngoingToolTip">
+      Voting is locked when the timer runs out
     </Tooltip>
   );
+
+  const timerOverToolTip = (
+    <Tooltip id="timerOverToolTip">
+      Voting is now locked
+    </Tooltip>
+  );
+
+
+  const userThoughtToolTip = (
+    <Tooltip id="timerOverToolTip">
+      {postUserDetails?.thoughts ? postUserDetails.thoughts : '*crickets*'}
+    </Tooltip>
+  )
 
   return (
     <>
       <div className="user-detail-bar">
         <div className="detailleft">
           <div className="userleftside">
-            <div className="avatar-img active">
-              <img src={postUserDetails?.profileImage ? postUserDetails?.profileImage : `/images/user.png`} alt="user-img" />
-            </div>
+            <OverlayTrigger placement="top" overlay={userThoughtToolTip} >
+              <div className="avatar-img active">
+                <img src={postUserDetails?.profileImage ? postUserDetails?.profileImage : `/images/user.png`} alt="user-img" />
+              </div>
+            </OverlayTrigger>
             <div className="user-detail">
               <div className="follow-bar">
                 <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?._id)}>
@@ -174,11 +189,11 @@ const PostHead = (props) => {
 
 
         </div>
-        <div className="user-active-timer cursor-pointer">
+        <div className="user-active-timer">
           <ul>
 
             <li className="text-green">
-              <OverlayTrigger placement="top" overlay={timerToolTip} >
+              <OverlayTrigger placement="top" overlay={isPostDisable ? timerOverToolTip : timerOngoingToolTip} >
                 <div>
                   <Countdown date={moment(created_at) + 259200 * 1000} renderer={renderer}>
                   </Countdown>

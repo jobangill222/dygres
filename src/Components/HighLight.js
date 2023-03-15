@@ -10,7 +10,8 @@ export default function HighLight(props) {
 
     const { checkUsernameExistDContext, setSearchState, setHashTagClickState } = useContext(DContext);
 
-    const myArray = content.split(" ");
+    // const myArray = content.split(" ");
+    const myArray = content.replace(/\n/g, " ").split(" ");
 
     const userDetail = async (name) => {
         var newStr = name.replace('@', '')
@@ -36,14 +37,20 @@ export default function HighLight(props) {
     }
 
 
-    const regex = /^(?:(?:https?|ftp):\/\/)?([^\s\/]+\.\S{2}|localhost[\:?\d]*)\S*$/;
+    const urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
     function isUrl(str) {
-        return regex.test(str);
+        str = str.toString().trim();
+        return !!urlPattern.test(str);
     }
 
     return (
         <>
-            {myArray.map((singleWord, i) =>
+            <div style={{ display: 'flex', flexWrap: 'wrap', whiteSpace: 'pre-wrap' }} >{myArray.map((singleWord, i) =>
                 <span key={i} onClick={() => {
                     if (singleWord.length > 1 && singleWord[0] === '@') {
                         userDetail(singleWord)
@@ -72,7 +79,7 @@ export default function HighLight(props) {
                     {singleWord}{' '}
                 </span>
             )
-            }
+            }</div>
 
             {/* <OtherProfile username={username} /> */}
         </>

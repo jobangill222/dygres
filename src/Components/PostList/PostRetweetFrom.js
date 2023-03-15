@@ -6,6 +6,7 @@ import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 // TimeAgo.addDefaultLocale(en)
 import { levelBelowPost } from "../../helper/levelBelowPost";
+import HighLight from "../HighLight";
 
 export default function PostRetweetFrom(props) {
 
@@ -33,14 +34,23 @@ export default function PostRetweetFrom(props) {
         </Tooltip>
     );
 
+
+    const userThoughtToolTip = (
+        <Tooltip id="timerOverToolTip">
+            {parentPostDetail[0]?.user[0]?.thoughts || '*crickets*'}
+        </Tooltip>
+    )
+
     return (
         < div className="digital-feeds diffrentiate-bar" >
             <div className="user-detail-bar">
                 <div className="detailleft">
                     <div className="userleftside">
-                        <div className="avatar-img active">
-                            <img src={parentPostDetail[0]?.user[0]?.profileImage || `/images/user.png`} alt="user-img" />
-                        </div>
+                        <OverlayTrigger placement="top" overlay={userThoughtToolTip} >
+                            <div className="avatar-img active">
+                                <img src={parentPostDetail[0]?.user[0]?.profileImage || `/images/user.png`} alt="user-img" />
+                            </div>
+                        </OverlayTrigger>
                         <div className="user-detail">
                             <div className="follow-bar">
                                 <h4 className="text-secondry">
@@ -70,7 +80,8 @@ export default function PostRetweetFrom(props) {
             <div className="user-preview">
                 <div className="Description-bar">
                     <p>
-                        {parentPostDetail[0].content}
+                        {/* {parentPostDetail[0].content} */}
+                        <HighLight content={parentPostDetail[0]?.content} />
                     </p>
                 </div>
             </div>

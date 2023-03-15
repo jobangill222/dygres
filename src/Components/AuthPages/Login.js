@@ -120,8 +120,15 @@ const Login = () => {
                   placeholder="Enter Email Address / Username"
                   name="email"
                   {...register("email", registerOptions.email)}
-                // value={loginField?.email}
-                // onChange={changeValue}
+                  // value={loginField?.email}
+                  // onChange={changeValue}
+                  onChange={async (e) => {
+                    e.target.value = e.target.value.toString().trim();
+                    setValue('email', e.target.value, {
+                      shouldValidate: true,
+                      shouldDirty: true
+                    })
+                  }}
                 />
 
                 <small className="text-danger">

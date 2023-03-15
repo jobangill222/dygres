@@ -17,7 +17,7 @@ const UsersProfileTabs = (props) => {
 
     let { userIDForProfile } = useParams();
 
-    const { user } = props;
+    const { otherUser } = props;
 
     const { postList, popupType, setPostList, getOtherUserPostsByUserIDDContext, postIDForAwardOfPost, isLoading, setIsLoading } = useContext(DContext);
 
@@ -139,7 +139,7 @@ const UsersProfileTabs = (props) => {
 
                 {/* About section */}
                 <Tab eventKey="About" title="About">
-                    <UsersAbout user={user} />
+                    <UsersAbout otherUser={otherUser} />
                 </Tab>
             </Tabs>
         </>

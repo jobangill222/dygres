@@ -138,7 +138,9 @@ const Header = () => {
                 <>
                   {/* <div className="relative user-dropdown notify-add notification-come"> */}
                   <div className={isNewNotificationArrive ? "relative user-dropdown notify-add notification-come" : "relative user-dropdown notify-add"}>
-                    <Nav.Link className="text-lightgray btndot" href="#">
+                    <Nav.Link className="text-lightgray btndot" href="#" onClick={() => {
+                      navigate("/notification");
+                    }} >
                       <BsBell />
                     </Nav.Link>
                     <div className="Dropdown-listing notification-dropdown bg-white">

@@ -52,16 +52,25 @@ export default function SingleNotificationHead(props) {
     }
 
 
+    const userThoughtToolTip = (
+        <Tooltip id="timerOverToolTip">
+            {singleNotification.fromUserID?.thoughts ? singleNotification.fromUserID.thoughts : '*crickets*'}
+        </Tooltip>
+    )
+
+
     return (
         <>
             <div className="userleftside">
-                <div className="avatar-img active">
-                    <img src={singleNotification.fromUserID?.profileImage ? singleNotification.fromUserID?.profileImage : "/images/user.png"} alt="user-img" />
-                </div>
+                <OverlayTrigger placement="top" overlay={userThoughtToolTip}>
+                    <div className="avatar-img active">
+                        <img src={singleNotification?.fromUserID?.profileImage ? singleNotification.fromUserID?.profileImage : "/images/user.png"} alt="user-img" />
+                    </div>
+                </OverlayTrigger>
                 <div className="user-detail">
                     <h4 className="text-secondry" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</h4>
                     <div className="user-availbility">
-                        <h6 className="text-lightgray">@{singleNotification.fromUserID?.username}</h6>
+                        <h6 className="text-lightgray">@{singleNotification?.fromUserID?.username}</h6>
                         <h5 className="text-lightgray greentime">{timeAgo.format(moment(singleNotification.created_at)._d.getTime())}</h5>
                     </div>
                     <div className="rules-tag" onClick={() => setIsShowRulesModal(true)}>
