@@ -4207,6 +4207,7 @@ p.uploaded-note b {
 
 [darkmode] .hoverdropdown .dropdown-menu a.dropdown-item {
   color: var(--base-purewhite);
+  background: #000000 !important;
 }
 
 [darkmode] .report-tabs li {
@@ -5973,6 +5974,9 @@ li.svggray svg path {
     .notification-text {
     max-width: 85%;
   }
+  .action-bar {
+    align-items: flex-start;
+}
 }
 
 @media (max-width: 574px) {
