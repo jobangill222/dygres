@@ -4767,6 +4767,20 @@ ul.sidebar-menu {
 }
 /* Responsive css  */
 @media (max-width: 1599px) {
+  ul.trending-hashtag-list {
+    padding: 15px;
+}
+
+ul.trending-hashtag-list li {
+    margin-right: 10px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+ul.trending-hashtag-list li.hashtaglist {
+    font-size: 16px;
+    line-height: 28px;
+}
   .account-verify .verify-input button {
     font-size: 14px;
   }
@@ -5231,7 +5245,7 @@ ul.sidebar-menu {
     left: -3px;
   }
   [darkmode] .navbar-collapse ul.sidebar-menu li a {
-    background: #000000;
+    background: #383838;
   }
   .somewhere-pad-0.row {
     padding-top: 20px;
@@ -5716,6 +5730,10 @@ li.svggray svg path {
 }
 
 @media (max-width: 767px) {
+  .reply-post {
+    margin-top: 20px;
+}
+
   .awards-modal .row .col-md-4 {
     flex: 0 0 33.33%;
 }
