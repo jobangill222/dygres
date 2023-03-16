@@ -272,23 +272,27 @@ const Header = () => {
                   <BsFileMedicalFill /> New
                 </Link>
               </li>
-              <li className={splitLocation[1] === "hot" ? "active" : ""}>
+              <li className={splitLocation[1] === "Hot" ? "active" : ""}>
                 <Link to="/Hot">
                   <MdOutlineWhatshot />
                   Hot
                 </Link>
               </li>
-              <li className={splitLocation[1] === "most-voted" ? "active" : ""}>
+              <li className={splitLocation[1] === "Most-voted" ? "active" : ""}>
                 <Link to="/Most-voted">
                   <MdHowToVote />
                   Most Voted
                 </Link>
               </li>
 
-              <li><Link to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li>
+              <li className={splitLocation[1] === "trending-hashtags" ? "active" : ""}>
+                <Link to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link>
+              </li>
 
 
-              <li><Link to="/notification"><BsBell />Notifications</Link></li>
+              <li className={splitLocation[1] === "notification" ? "active" : ""}>
+                <Link to="/notification"><BsBell />Notifications</Link>
+              </li>
 
 
               <li><Link onClick={(e) => {

@@ -24,7 +24,7 @@ const Sidebar = () => {
 
     const tooltip = (
         <Tooltip id="tooltip">
-            {user?.thoughts ? user.thoughts : "crickets"}
+            {user?.thoughts ? user.thoughts : "*crickets*"}
         </Tooltip>
     );
 

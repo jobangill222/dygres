@@ -134,6 +134,15 @@ const UsersProfile = () => {
 
         setIsFollowOnUserProfileState(1);
 
+
+        //Update my stats
+        setUserStats((previousState) => {
+            return {
+                ...previousState,
+                totalFollowing: previousState.totalFollowing + 1,
+            };
+        });
+
         //Update other user stats
         setOtherUserStats((previousState) => {
             return {
@@ -160,6 +169,15 @@ const UsersProfile = () => {
         setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
 
         setIsFollowOnUserProfileState(0);
+
+
+        //Update my stats
+        setUserStats((previousState) => {
+            return {
+                ...previousState,
+                totalFollowing: previousState.totalFollowing - 1,
+            };
+        });
 
         //Update other user stats
         setOtherUserStats((previousState) => {

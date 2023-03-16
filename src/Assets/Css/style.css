@@ -948,7 +948,6 @@ textarea {
   border-radius: 50%;
 }
 
-
 .Whatsmind-bar form .word-note {
   margin-top: 5px;
 }
@@ -1007,12 +1006,16 @@ ul.weekly-status li.listatus h4 {
   line-height: 22px;
   margin-bottom: 9px;
 }
-.whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder{
-  color: var(--base-secondry);
+.whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder {
+  color: var(--base-placeholder);
 }
-[darkmode] .whatsmind-inputbar__control .whatsmind-inputbar__input ,
-  [darkmode] .whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder{
+[darkmode] .whatsmind-inputbar__control .whatsmind-inputbar__input {
   color: var(--base-purewhite);
+}
+[darkmode]
+  .whatsmind-inputbar__control
+  .whatsmind-inputbar__input::placeholder {
+  color: var(--base-placeholder);
 }
 .whatsmind-inputbar__control {
   margin-bottom: 15px;
@@ -2087,7 +2090,7 @@ t .report-tabs li.active {
   color: #000000;
 }
 .user-detail-listing li:last-child {
-    margin: 0;
+  margin: 0;
 }
 .Actions-modal .Awrds-li button {
   border: none;
@@ -2225,7 +2228,7 @@ t .report-tabs li.active {
   color: var(--base-secondry);
 }
 [darkmode] .buymore-modal .Awrds-li h3 {
-    color: #ffffff;
+  color: #ffffff;
 }
 .buymore-modal .modal-body {
   padding: 20px 20px;
@@ -4328,7 +4331,7 @@ ul.sidebar-menu {
   background-size: contain;
 }
 [darkmode] .modal-content .modal-body .shareurl-bar {
-    background: #272728;
+  background: #272728;
 }
 .user-active-timer ul li {
   font-size: 14px;
@@ -4792,18 +4795,18 @@ ul.sidebar-menu {
 @media (max-width: 1599px) {
   ul.trending-hashtag-list {
     padding: 15px;
-}
+  }
 
-ul.trending-hashtag-list li {
+  ul.trending-hashtag-list li {
     margin-right: 10px;
     font-size: 14px;
     line-height: 20px;
-}
+  }
 
-ul.trending-hashtag-list li.hashtaglist {
+  ul.trending-hashtag-list li.hashtaglist {
     font-size: 16px;
     line-height: 28px;
-}
+  }
   .account-verify .verify-input button {
     font-size: 14px;
   }
@@ -5159,11 +5162,11 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 }
 
-@media (max-width: 1440px){
+@media (max-width: 1440px) {
   .container {
     max-width: 100%;
     padding: 0 50px;
-}
+  }
 }
 
 @media (max-width: 1299px) {
@@ -5179,19 +5182,21 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 }
 
-@media (max-width: 1299px){
-  .action-bar ul li .list-text {font-size: 0;}
-  .action-bar ul li .list-text span.number {
-      font-size: 16px;
+@media (max-width: 1299px) {
+  .action-bar ul li .list-text {
+    font-size: 0;
   }
-  .action-bar ul li , .action-bar ul li p {
-      font-size: 0;
+  .action-bar ul li .list-text span.number {
+    font-size: 16px;
+  }
+  .action-bar ul li,
+  .action-bar ul li p {
+    font-size: 0;
   }
   .action-bar ul li span.number {
-      font-size: 16px;
+    font-size: 16px;
   }
 }
-
 
 @media (min-width: 991px) {
   .navbar-expand-lg .navbar-collapse {
@@ -5209,12 +5214,13 @@ ul.trending-hashtag-list li.hashtaglist {
     overflow-x: hidden;
     overflow-y: scroll;
     height: auto;
-}li.logout a {
-  border: none !important;
-}
-.digital-feeds .Description-bar div span {
-  margin: 0 3px 0 0 !important;
-}
+  }
+  li.logout a {
+    border: none !important;
+  }
+  .digital-feeds .Description-bar div span {
+    margin: 0 3px 0 0 !important;
+  }
   .notification-come::after {
     content: "";
     width: 8px;
@@ -5224,7 +5230,7 @@ ul.trending-hashtag-list li.hashtaglist {
     position: absolute;
     top: 8px;
     right: 0px;
-}
+  }
   .sidebar-menu.col-lg-3 {
     width: 100%;
   }
@@ -5299,7 +5305,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
   .header-nav .mobilemenu ul.web-none li:last-child {
     display: none;
-}
+  }
   .header-nav .mobilemenu {
     margin-left: 20px;
   }
@@ -5567,7 +5573,7 @@ ul.trending-hashtag-list li.hashtaglist {
     justify-content: flex-end;
   }
   .mobilemenu ul.web-none {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: flex-end;
   }
@@ -5580,9 +5586,9 @@ ul.trending-hashtag-list li.hashtaglist {
   .mobilemenu ul.web-none li {
     margin-right: 10px;
   }
-li.svggray svg path {
+  li.svggray svg path {
     fill: var(--base-text-lightgray);
-}
+  }
   .mobilemenu ul.web-none li a {
     font-size: 20px;
     color: var(--base-default-text);
@@ -5775,11 +5781,11 @@ li.svggray svg path {
 @media (max-width: 767px) {
   .reply-post {
     margin-top: 20px;
-}
+  }
 
   .awards-modal .row .col-md-4 {
     flex: 0 0 33.33%;
-}
+  }
   .digital-feeds .digital-feeds.diffrentiate-bar .user-availbility {
     display: block;
   }
@@ -5988,16 +5994,20 @@ li.svggray svg path {
   }
   .action-bar {
     align-items: flex-start;
-}
+  }
 }
 
 @media (max-width: 574px) {
+  .viewpostawardsmodal .awards-bar li {
+    flex: 0 0 42%;
+    max-width: 42%;
+  }
   .awards-modal .row .col-md-4 {
     flex: 0 0 50%;
-}
-.Whatsmind-bar {
-  margin-bottom: 20px;
-}
+  }
+  .Whatsmind-bar {
+    margin-bottom: 20px;
+  }
   .imagebarupload p.succesful {
     margin: 0px 0 0 10px;
     font-size: 12px;
