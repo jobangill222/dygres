@@ -1385,7 +1385,7 @@ t .report-tabs li.active {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 40px;
+  margin-left: 15px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
