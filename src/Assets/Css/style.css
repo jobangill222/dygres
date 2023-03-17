@@ -340,8 +340,8 @@ input.form-control {
 
 /* BS Container */
 .container {
-  max-width: 100%;
-  padding: 0 160px;
+  max-width: 1440px;
+  padding: 0 50px;
 }
 
 /* Header css  */
@@ -538,10 +538,6 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 .helpicon {
   margin-left: 30px;
-}
-.container {
-  max-width: 100%;
-  padding: 0 160px;
 }
 
 .user-dropdown .Dropdown-listing {
@@ -948,6 +944,7 @@ textarea {
   border-radius: 50%;
 }
 
+
 .Whatsmind-bar form .word-note {
   margin-top: 5px;
 }
@@ -1006,19 +1003,15 @@ ul.weekly-status li.listatus h4 {
   line-height: 22px;
   margin-bottom: 9px;
 }
-.whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder {
-  color: var(--base-placeholder);
+.whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder{
+  color: var(--base-secondry);
 }
-[darkmode] .whatsmind-inputbar__control .whatsmind-inputbar__input {
+[darkmode] .whatsmind-inputbar__control .whatsmind-inputbar__input ,
+[darkmode] .whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder{
   color: var(--base-purewhite);
 }
-[darkmode]
-  .whatsmind-inputbar__control
-  .whatsmind-inputbar__input::placeholder {
-  color: var(--base-placeholder);
-}
 .whatsmind-inputbar__control {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .infotooltip ul {
   padding: 10px;
@@ -1122,7 +1115,7 @@ ul.profiletabsbar li:last-child a {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 0px;
   flex-wrap: wrap;
   position: relative;
 }
@@ -1838,10 +1831,11 @@ t .report-tabs li.active {
   background: #f8f8f8;
   border: 1px solid #d3d3d3;
   border-radius: 8px;
-  padding: 25px 90px 25px 25px !important;
+  padding: 20px 90px 20px 20px !important;
   font-weight: 400;
   font-size: 18px;
   height: 60px;
+  overflow: hidden;
   line-height: 22px;
 }
 
@@ -1858,6 +1852,8 @@ t .report-tabs li.active {
   padding: 0;
   /* background: transparent !important; */
   border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   font-weight: 700;
   font-size: 22px;
   line-height: 26px;
@@ -1867,6 +1863,8 @@ t .report-tabs li.active {
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  top: 47%;
+  transform: translate(0px, -50%)
 }
 
 .action-bar .reply-post {
@@ -1911,7 +1909,9 @@ t .report-tabs li.active {
   top: 0;
   background: #c5c5c5;
 }
-
+[darkmode] .thredsbar .threads-rows::after {
+  background: #6c6c6c;
+}
 .thredsbar .threads-rows::before {
   content: "";
   position: absolute;
@@ -2090,7 +2090,7 @@ t .report-tabs li.active {
   color: #000000;
 }
 .user-detail-listing li:last-child {
-  margin: 0;
+    margin: 0;
 }
 .Actions-modal .Awrds-li button {
   border: none;
@@ -2228,7 +2228,7 @@ t .report-tabs li.active {
   color: var(--base-secondry);
 }
 [darkmode] .buymore-modal .Awrds-li h3 {
-  color: #ffffff;
+    color: #ffffff;
 }
 .buymore-modal .modal-body {
   padding: 20px 20px;
@@ -4090,7 +4090,7 @@ p.uploaded-note b {
 [darkmode] .form-select,
 [darkmode] .form-control,
 [darkmode] .form-control {
-  background: var(--base-inputautofill) !important;
+  background: #272728 !important;
   border: 2px solid #565656;
   color: var(--base-purewhite);
 }
@@ -4243,12 +4243,6 @@ ul.sidebar-menu {
   padding-bottom: 20px;
 }
 
-ul.sidebar-menu {
-  height: 282px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
 .header-nav .navbar-brand .darkmode {
   display: none;
 }
@@ -4331,7 +4325,7 @@ ul.sidebar-menu {
   background-size: contain;
 }
 [darkmode] .modal-content .modal-body .shareurl-bar {
-  background: #272728;
+    background: #272728;
 }
 .user-active-timer ul li {
   font-size: 14px;
@@ -4786,7 +4780,7 @@ ul.sidebar-menu {
   white-space: inherit !important;
 }
 .digital-feeds .Description-bar div span {
-  margin: 0 5px 0 0 !important;
+  margin: 0 3px 0 0 !important;
 }
 .buymore-modal .Awrds-li h3 span {
   font-size: 14px;
@@ -4795,18 +4789,18 @@ ul.sidebar-menu {
 @media (max-width: 1599px) {
   ul.trending-hashtag-list {
     padding: 15px;
-  }
+}
 
-  ul.trending-hashtag-list li {
+ul.trending-hashtag-list li {
     margin-right: 10px;
     font-size: 14px;
     line-height: 20px;
-  }
+}
 
-  ul.trending-hashtag-list li.hashtaglist {
+ul.trending-hashtag-list li.hashtaglist {
     font-size: 16px;
     line-height: 28px;
-  }
+}
   .account-verify .verify-input button {
     font-size: 14px;
   }
@@ -5087,7 +5081,7 @@ ul.sidebar-menu {
 
   .container {
     max-width: 100%;
-    padding: 0 120px;
+    padding: 0 50px;
   }
 
   .body-wrapper {
@@ -5121,12 +5115,12 @@ ul.sidebar-menu {
   .accordionitem::-webkit-scrollbar-thumb:hover {
   }
   .action-bar ul li {
-    margin-left: 15px;
-    font-size: 14px;
+    margin-left: 10px;
+    font-size: 12px;
     font-weight: normal;
   }
   .action-bar ul li p {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: normal;
   }
   .hoverdropdown button,
@@ -5162,19 +5156,23 @@ ul.sidebar-menu {
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1440px){
   .container {
     max-width: 100%;
     padding: 0 50px;
-  }
+}
 }
 
 @media (max-width: 1299px) {
   .container {
     max-width: 100%;
-    padding: 0 30px;
+    padding: 0 20px;
   }
-
+  .action-bar ul li svg {
+    margin-right: 4px;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
   .action-bar .flagbtnbar li button {
     margin-left: 0 !important;
     margin-top: 20px;
@@ -5182,21 +5180,19 @@ ul.sidebar-menu {
   }
 }
 
-@media (max-width: 1299px) {
-  .action-bar ul li .list-text {
-    font-size: 0;
-  }
+@media (max-width: 1299px){
+  .action-bar ul li .list-text {font-size: 12px;}
   .action-bar ul li .list-text span.number {
-    font-size: 16px;
+      font-size: 16px;
   }
-  .action-bar ul li,
-  .action-bar ul li p {
-    font-size: 0;
+  .action-bar ul li , .action-bar ul li p {
+      font-size: 12px;
   }
   .action-bar ul li span.number {
-    font-size: 16px;
+      font-size: 16px;
   }
 }
+
 
 @media (min-width: 991px) {
   .navbar-expand-lg .navbar-collapse {
@@ -5214,13 +5210,12 @@ ul.sidebar-menu {
     overflow-x: hidden;
     overflow-y: scroll;
     height: auto;
-  }
-  li.logout a {
-    border: none !important;
-  }
-  .digital-feeds .Description-bar div span {
-    margin: 0 3px 0 0 !important;
-  }
+}li.logout a {
+  border: none !important;
+}
+.digital-feeds .Description-bar div span {
+  margin: 0 3px 0 0 !important;
+}
   .notification-come::after {
     content: "";
     width: 8px;
@@ -5230,7 +5225,7 @@ ul.sidebar-menu {
     position: absolute;
     top: 8px;
     right: 0px;
-  }
+}
   .sidebar-menu.col-lg-3 {
     width: 100%;
   }
@@ -5305,7 +5300,7 @@ ul.sidebar-menu {
   }
   .header-nav .mobilemenu ul.web-none li:last-child {
     display: none;
-  }
+}
   .header-nav .mobilemenu {
     margin-left: 20px;
   }
@@ -5573,7 +5568,7 @@ ul.sidebar-menu {
     justify-content: flex-end;
   }
   .mobilemenu ul.web-none {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: flex-end;
   }
@@ -5586,9 +5581,9 @@ ul.sidebar-menu {
   .mobilemenu ul.web-none li {
     margin-right: 10px;
   }
-  li.svggray svg path {
+li.svggray svg path {
     fill: var(--base-text-lightgray);
-  }
+}
   .mobilemenu ul.web-none li a {
     font-size: 20px;
     color: var(--base-default-text);
@@ -5781,11 +5776,11 @@ ul.sidebar-menu {
 @media (max-width: 767px) {
   .reply-post {
     margin-top: 20px;
-  }
+}
 
   .awards-modal .row .col-md-4 {
     flex: 0 0 33.33%;
-  }
+}
   .digital-feeds .digital-feeds.diffrentiate-bar .user-availbility {
     display: block;
   }
@@ -5994,20 +5989,16 @@ ul.sidebar-menu {
   }
   .action-bar {
     align-items: flex-start;
-  }
+}
 }
 
 @media (max-width: 574px) {
-  .viewpostawardsmodal .awards-bar li {
-    flex: 0 0 42%;
-    max-width: 42%;
-  }
   .awards-modal .row .col-md-4 {
     flex: 0 0 50%;
-  }
-  .Whatsmind-bar {
-    margin-bottom: 20px;
-  }
+}
+.Whatsmind-bar {
+  margin-bottom: 20px;
+}
   .imagebarupload p.succesful {
     margin: 0px 0 0 10px;
     font-size: 12px;
