@@ -10,10 +10,11 @@ import ViewAllAwardsIGot from '../Modals/ViewAllAwardsIGot';
 import { toast } from "react-toastify";
 import Loader from "../../Components/Loader";
 import { verificationLevel } from "../../helper/verificationLevel";
+import UserListModal from "../Modals/UserListModal";
 
 const Profile = () => {
 
-    const { user, userStats, setSelectedIDForPopup, setPopupType, updateCoverImageDContext, isLoading, setIsLoading, setIsShowRulesModal } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, popupType, setPopupType, updateCoverImageDContext, isLoading, setIsLoading, setIsShowRulesModal } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -107,10 +108,20 @@ const Profile = () => {
     };
 
 
+    // Change state when click on count of agree disagree etc and change popupstate to true to open
+    const [popupOpenStatus, setPopupOpenStatus] = useState(false);
+    useEffect(() => {
+        if (popupType) {
+            setPopupOpenStatus(true);
+        }
+    }, [popupType])
+
     return (
         <>
 
             {isLoading && <Loader />}
+
+            {popupOpenStatus && <UserListModal popupOpenStatus={popupOpenStatus} setPopupOpenStatus={setPopupOpenStatus} />}
 
             {awardIGotPopupState && <ViewAllAwardsIGot awardIGotPopupState={awardIGotPopupState} setAwardIGotPopupState={setAwardIGotPopupState} />}
 
