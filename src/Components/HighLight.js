@@ -37,12 +37,16 @@ export default function HighLight(props) {
     }
 
 
-    const urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
-        '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
+    // const urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
+    //     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+    //     '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+    //     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+    //     '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+    //     '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
+
+    // Url pattern
+    const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+(com|org|net|edu|gov|mil|info|biz|io|in|co|me|ly)(\/[^\s]*)?$/i;
+
     function isUrl(str) {
         str = str.toString().trim();
         return !!urlPattern.test(str);

@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { MdHowToVote } from "react-icons/md";
+import { BiLayerMinus } from "react-icons/bi";
 
 const AdminFooterMob = () => {
 
@@ -132,17 +134,10 @@ const AdminFooterMob = () => {
             {userToken ? (
                 <div className="Mob-Footerbar">
                     <ul className="mob-foot-menu">
-                        <li><Link exact to="/new"><AiFillHome /></Link></li>
+                        <li><Link exact to="/new"><AiFillHome />Home</Link></li>
+                        <li><Link exact to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li>
                         <li className="Addpost"><Link exact to="/whatsmind"><BsPlus /></Link></li>
-                        {/* <li>
-                            <Link exact to="/profile">
-                                <img src={
-                                    user?.profileImage
-                                        ? user.profileImage
-                                        : '/images/user.png'}
-                                    alt="user-main-img" />
-                            </Link>
-                        </li> */}
+                        <li><Link exact to="/Most-voted"><MdHowToVote />Most Voted</Link></li>
                         <li className="relative user-dropdown">
 
                             <img
@@ -153,6 +148,7 @@ const AdminFooterMob = () => {
                                 }
                                 alt="user-img"
                             />
+                            Profile
                             <div className="Dropdown-listing bg-white">
                                 <div className="arrowshape"></div>
                                 <h4 className="text-silver">Account</h4>
