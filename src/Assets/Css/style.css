@@ -381,10 +381,12 @@ ul.trending-hashtag-list {
   background: #ffffff;
 }
 .sidebar-menu.col-lg-3 {
-  width: 30%;
+  width: 26%;
+  padding-left: 0;
 }
 .mainwrapper.col-lg-9 {
-  width: 70%;
+  width: 74%;
+  padding: 0;
 }
 [darkmode] .terms-content h4,
 [darkmode] .terms-content h5 {
@@ -5193,8 +5195,24 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 }
 
+@media (max-width: 1099px){
+  .digital-feeds{
+    padding: 15px 15px;
+  }
+  .action-bar ul li .list-text, .action-bar ul li .list-text span.number , .action-bar ul li, .action-bar ul li p{
+    font-size: 10px;
+}
+.action-bar ul li svg {
+  margin-right: 2px;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+}
 
 @media (min-width: 991px) {
+  .action-bar ul li .list-text, .action-bar ul li .list-text span.number, .action-bar ul li, .action-bar ul li p {
+    font-size: 14px;
+}
   .navbar-expand-lg .navbar-collapse {
     display: none !important;
     flex-basis: auto;
@@ -5206,6 +5224,10 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 
 @media (max-width: 990px) {
+  .somewhere-pad-0.row {
+    padding-left: 15px;
+    padding-right: 15px;
+}
   ul.sidebar-menu {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -5283,11 +5305,14 @@ ul.trending-hashtag-list li.hashtaglist {
     padding: 0;
   }
   .thredsbar .thredsbar .accordionitem .replyinput textarea {
-    padding: 10px !important;
-  }
+    padding: 10px 80px 10px 10px !important;
+    height: 40px;
+}
   .thredsbar .threads-rows::before {
-    left: -3px;
-  }
+    left: 2px;
+    width: 19px;
+    height: 12px;
+}
   [darkmode] .navbar-collapse ul.sidebar-menu li a {
     background: #383838;
   }
@@ -5698,10 +5723,12 @@ li.svggray svg path {
 
   .action-bar ul li,
   .action-bar ul li .accordion-button {
-    font-size: 0;
-    margin-left: 3px;
+    
+    margin-left: 10px;
   }
-
+  .action-bar ul li .list-text, .action-bar ul li .list-text span.number, .action-bar ul li, .action-bar ul li p {
+    font-size: 14px;
+}
   .action-bar ul li svg,
   .action-bar ul li .accordion-button svg {
     font-size: 18px;
@@ -5774,6 +5801,41 @@ li.svggray svg path {
 }
 
 @media (max-width: 767px) {
+  .Whatsmind-bar {
+    margin-bottom: 20px;
+}
+.thredsbar .accordionitem .user-detail-bar {
+  margin-top: 20px;
+}
+  .reply-post form .replyinput .form-control {
+    border-radius: 8px;
+    padding: 10px 60px 10px 10px !important;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    height: 40px;
+}
+.thredsbar {
+  position: relative;
+  padding: 15px 5px;
+}
+.thredsbar .accordionitem .accordionitem {
+  max-height: initial;
+  overflow: hidden;
+}
+.reply-post form .btn {
+  font-size: 14px;
+  right: 10px;
+}
+  .action-bar ul li .list-text, .action-bar ul li, .action-bar ul li p {
+    font-size: 0;
+}
+.action-bar ul li, .action-bar ul li .accordion-button {
+  margin-left: 10px;
+}
+.action-bar ul li .list-text span.number{
+  font-size: 14px !important;
+}
   .reply-post {
     margin-top: 20px;
 }
@@ -5995,6 +6057,12 @@ li.svggray svg path {
 @media (max-width: 574px) {
   .awards-modal .row .col-md-4 {
     flex: 0 0 50%;
+}
+.action-bar ul li, .action-bar ul li .accordion-button {
+  margin-left: 3px;
+}
+.action-bar ul li svg, .action-bar ul li .accordion-button svg {
+  font-size: 16px;
 }
 .Whatsmind-bar {
   margin-bottom: 20px;

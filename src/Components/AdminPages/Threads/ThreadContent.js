@@ -14,7 +14,7 @@ export default function ThreadContent(props) {
         <>
             <div className="Description-bar">
                 {/* <p>{finalPostContent}</p> */}
-                <HighLight content={content} />
+                <p><HighLight content={content} /></p>
             </div>
         </>
     )
