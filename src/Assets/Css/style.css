@@ -4477,7 +4477,7 @@ ul.sidebar-menu {
   width: 100%;
   left: 0;
   background: var(--base-purewhite);
-  height: 75px;
+  height: 65px;
 }
 [darkmode] .Mob-Footerbar,
 [darkmode] .Mob-Footerbar .mob-foot-menu li.Addpost a {
@@ -6092,9 +6092,9 @@ li.svggray svg path {
     line-height: 16px;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
-  font-size: 20px !important;
-  width: 20px !important;
-  height: 20px !important;
+  font-size: 30px !important;
+  width: 30px !important;
+  height: 30px !important;
   margin-bottom: 5px;
 }
   .awards-modal .row .col-md-4 {
