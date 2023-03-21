@@ -6097,6 +6097,11 @@ li.svggray svg path {
   height: 30px !important;
   margin-bottom: 5px;
 }
+.Mob-Footerbar .mob-foot-menu li.user-dropdown .Dropdown-listing ul li a svg {
+  font-size: 18px !important;
+  width: auto !important;
+  height: auto !important;
+}
   .awards-modal .row .col-md-4 {
     flex: 0 0 50%;
 }
