@@ -49,11 +49,21 @@ a:hover {
   --darkmode-offwhite: #afafaf;
   --darkmode-gray2xl: #343434;
 }
-
+.profile-feature-image {
+  -webkit-mask-image: linear-gradient(#000000 94%, #ffffff00);
+  mask-image: linear-gradient(#000000 94%, #ffffff00);
+}
 .notification-text {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+.notification-content .notification-text {
+  display: block;
+  flex: 0 0 90%;
+}
+.notification-content .notification-text p {
+  line-height: 20px !important;
 }
 [darkmode] .hoverdropdown .dropdown-menu .dropdown-item p {
   color: #ffffff;
@@ -5233,6 +5243,7 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 
 @media (max-width: 1099px){
+  
   .digital-feeds{
     padding: 15px 15px;
   }
@@ -5245,7 +5256,12 @@ ul.trending-hashtag-list li.hashtaglist {
   transition: 0.3s ease;
 }
 }
-
+@media (max-width: 1024px){
+  .profile-feature-image {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+}
 @media (min-width: 991px) {
   .action-bar ul li .list-text, .action-bar ul li .list-text span.number, .action-bar ul li, .action-bar ul li p {
     font-size: 14px;
@@ -5261,6 +5277,9 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 
 @media (max-width: 990px) {
+  .Mob-Footerbar .mob-foot-menu li a {
+    color: var(--base-secondry) !important;
+}
   .somewhere-pad-0.row {
     padding-left: 15px;
     padding-right: 15px;
@@ -6120,9 +6139,13 @@ li.svggray svg path {
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
   font-size: 30px !important;
-  width: 30px !important;
-  height: 30px !important;
-  margin-bottom: 5px;
+  width: 36px !important;
+  height: 36px !important;
+  margin-bottom: 0px;
+}.followbtn {
+  min-width: auto;
+  padding: 4px 7px;
+  font-weight: 500;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown .Dropdown-listing ul li a svg {
   font-size: 18px !important;
@@ -6294,8 +6317,8 @@ li.svggray svg path {
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
   font-size: 14px !important;
-  width: 14px !important;
-  height: 14px !important;
-  margin-bottom: 3px;
+  width: 30px !important;
+  height: 30px !important;
+  margin-bottom: 0px;
 }
 }
