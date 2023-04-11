@@ -7,13 +7,15 @@ import Loader from "../Components/Loader";
 // Import Modals
 import UserListModal from "../Components/Modals/UserListModal";
 import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
+import { useNavigate } from "react-router-dom";
 // import RetweetModal from "../Components/Modals/RetweetModal";
 
 const MostVoted = () => {
 
-    const { popupType, getMostVotedPostDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, setSearchState } = useContext(DContext);
-
+    const { popupType, getMostVotedPostDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, setSearchState,isDummyUser } = useContext(DContext);
+    const navigate = useNavigate();
     useEffect(() => {
+ 
         setSearchState(null)
 
         localStorage.setItem("currentPage", 1);

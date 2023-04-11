@@ -8,12 +8,13 @@ import { AiFillLike, AiFillTag } from "react-icons/ai";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Button from "react-bootstrap/Button";
+import { useNavigate } from 'react-router-dom';
 
 
 const Notifications = () => {
 
-    const { user, getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext, setSearchState, notificationOnOffDContext, getUserDetailsDContext, readAllNotificationDContext, setIsNewNotificationArrive } = useContext(DContext);
-
+    const { user, getNotificationDContext, isLoading, setIsLoading, notificationList, setNotificationList, deleteAllNotificationDContext, setSearchState, notificationOnOffDContext, getUserDetailsDContext, readAllNotificationDContext, setIsNewNotificationArrive,isDummyUser } = useContext(DContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
 

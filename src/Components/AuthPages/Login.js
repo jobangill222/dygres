@@ -31,6 +31,7 @@ const Login = () => {
     setValue,
     formState: { errors },
   } = useForm();
+  
   const handleRegistration = async (data) => {
     // e.preventDefault()
     setIsLoading(true);

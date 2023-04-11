@@ -20,7 +20,7 @@ import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
 const Sidebar = () => {
 
     const navigate = useNavigate();
-    const { user, userStats, setSelectedIDForPopup, setPopupType, searchState, setSearchState, searchSuggestionDContext, showSuggestions, setShowSuggestions, setHashTagClickState } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, setPopupType, searchState, setSearchState, searchSuggestionDContext, showSuggestions, setShowSuggestions, setHashTagClickState,isDummyUser } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -31,56 +31,91 @@ const Sidebar = () => {
     // console.log('user', user);
 
     const openViewProfile = async () => {
-        navigate("/profile");
+        if(isDummyUser()){
+            navigate('/login')
+        }else{
+            navigate("/profile");
+        }
+        
     }
 
 
     const myFollowers = async () => {
-        setPopupType('followers-list');
-        setSelectedIDForPopup(user._id)
+        if(isDummyUser()){
+            navigate('/login')
+        }else{
+            setPopupType('followers-list');
+            setSelectedIDForPopup(user._id)
+        }
+
     }
 
     const myFollowing = async () => {
-        setPopupType('following-list');
-        setSelectedIDForPopup(user._id)
+        if(isDummyUser()){
+            navigate('/login')
+        }else{
+            setPopupType('following-list');
+            setSelectedIDForPopup(user._id)
+        }
+
     }
 
     const [awardIGotPopupState, setAwardIGotPopupState] = useState(false);
     const viewAwardIGot = async () => {
+        if(isDummyUser()){
+            navigate('/login')
+        }else{
         setAwardIGotPopupState(true);
+        }
     }
 
 
     //Search
     const [suggestionList, setSuggestionList] = useState([]);
     const searchTyping = async (event) => {
-        const value = event.target.value;
-        setSearchState(value);
-        if (!value) {
-            setShowSuggestions(false);
-            return;
+        if(isDummyUser()){
+            navigate('/login')
+        }else{
+            const value = event.target.value;
+            setSearchState(value);
+            if (!value) {
+                setShowSuggestions(false);
+                return;
+            }
+            else {
+                setShowSuggestions(true);
+                const axiosRes = await searchSuggestionDContext(value);
+                setSuggestionList(axiosRes.list)
+                // navigate("/new");
+            }
         }
-        else {
-            setShowSuggestions(true);
-            const axiosRes = await searchSuggestionDContext(value);
-            setSuggestionList(axiosRes.list)
-            // navigate("/new");
-        }
+
+
     };
 
     const searchClickHashTag = (name) => {
-        setHashTagClickState(true);
-        setSearchState(name);
-        setShowSuggestions(false);
-        localStorage.setItem('hashTagName', name)
-        navigate("/hashtagPosts");
+        if(isDummyUser()){
+            navigate('/login')
+        }else{
+            setHashTagClickState(true);
+            setSearchState(name);
+            setShowSuggestions(false);
+            localStorage.setItem('hashTagName', name)
+            navigate("/hashtagPosts");
+        }
+
     };
 
     const searchClickUserName = (name, userID) => {
-        setSearchState(name);
-        setShowSuggestions(false);
-        // localStorage.setItem('sessionUserID', userID)
-        navigate("/UsersProfile/" + userID);
+        if(isDummyUser()){
+            navigate('/login')
+        }else{
+            setSearchState(name);
+            setShowSuggestions(false);
+            // localStorage.setItem('sessionUserID', userID)
+            navigate("/UsersProfile/" + userID);
+        }
+
     };
 
     //End search
@@ -89,6 +124,8 @@ const Sidebar = () => {
     const ignoreUpperClick = (event) => {
         event.stopPropagation();
     }
+
+
 
 
     const [isShowFoundationalRulePopup, setIsShowFoundationalRuleModal] = useState(false);
@@ -105,7 +142,7 @@ const Sidebar = () => {
                     <img src={user && user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" />
 
                     {/* <input type="file" className="uploadimg-input" /> */}
-                    <Link to="/profile">
+                    <Link to={isDummyUser()?'/login':"/trending-hashtags"}>
                         <div className="edit-bar">
                             <BsPencil className="text-primary" />
                         </div>
@@ -188,15 +225,15 @@ const Sidebar = () => {
                 </div>
                 {/* Menu start here */}
                 <ul className="sidebar-menu">
-                    <li><Link exact to="/new"><BsFileMedicalFill /> New</Link></li>
-                    <li><Link to="/hot"><MdOutlineWhatshot />Hot</Link></li>
-                    <li><Link to="/most-voted"><MdHowToVote />Most Votes</Link></li>
+                    <li><Link  exact to={isDummyUser()?'/login':"/new"}><BsFileMedicalFill /> New</Link></li>
+                    <li><Link to={isDummyUser()?'/login':"/hot"}><MdOutlineWhatshot />Hot</Link></li>
+                    <li><Link to={isDummyUser()?'/login':"/most-voted"}><MdHowToVote />Most Votes</Link></li>
                     {/* <li><Link to="/not-voted"><BiLayerMinus />Least Votes</Link></li> */}
 
-                    <li><Link to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li>
+                    <li><Link to={isDummyUser()?'/login':"/trending-hashtags"}><BiLayerMinus />Trending hashtags</Link></li>
 
 
-                    <li><Link to="/notification"><BsBell />Notifications</Link></li>
+                    <li><Link to={isDummyUser()?'/login':"/notification"}><BsBell />Notifications</Link></li>
                     <li><Link onClick={(e) => {
                         setIsShowFoundationalRuleModal(true);
                         e.preventDefault();

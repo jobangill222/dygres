@@ -9,13 +9,15 @@ import Loader from "../Components/Loader";
 import UserListModal from "../Components/Modals/UserListModal";
 import ViewPostsAwardModal from "../Components/Modals/ViewPostsAwardModal";
 import RetweetModal from "../Components/Modals/RetweetModal";
+import { useNavigate } from "react-router-dom";
 
 
 const Hot = () => {
-
-    const { popupType, getHotPostDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, setSearchState } = useContext(DContext);
+    const navigate = useNavigate();
+    const { popupType, getHotPostDContext, postList, setPostList, postIDForAwardOfPost, isLoading, setIsLoading, setSearchState,isDummyUser } = useContext(DContext);
 
     useEffect(() => {
+
         setSearchState(null)
         localStorage.setItem("currentPage", 1);
         getHotPosts();

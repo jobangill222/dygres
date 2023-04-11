@@ -176,14 +176,24 @@ function AppRouter() {
             <Routes>
 
                 {!userToken ? (
-                    <Route element={<AuthLayout />}>
-                        <Route exact path="/login" element={<Login />} />
-                        <Route exact path="/signup" element={<SignUp />} />
-                        <Route exact path="/getotp" element={<GetOtp />} />
-                        <Route exact path="/enterotp" element={<EnterOtp />} />
-                        <Route exact path="/resetpassword" element={<ResetPassword />} />
-                        <Route path="*" element={<Navigate to='/login' />} />
-                    </Route>
+                    <>
+                        <Route element={<AuthLayout />}>
+                            <Route exact path="/login" element={<Login />} />
+                            <Route exact path="/signup" element={<SignUp />} />
+                            <Route exact path="/getotp" element={<GetOtp />} />
+                            <Route exact path="/enterotp" element={<EnterOtp />} />
+                            <Route exact path="/resetpassword" element={<ResetPassword />} />
+
+
+
+                            <Route path="*" element={<Navigate to='/login' />} />
+                        </Route>
+                        <Route element={<SiteLayout />}>
+                            <Route exact path="/" element={<New />} />
+                        </Route>
+
+                    </>
+
                 ) : (
                     <>
                         {user?.role === 'user' ?

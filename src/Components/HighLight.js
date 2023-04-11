@@ -8,7 +8,7 @@ export default function HighLight(props) {
     const navigate = useNavigate();
 
 
-    const { checkUsernameExistDContext, setSearchState, setHashTagClickState } = useContext(DContext);
+    const { checkUsernameExistDContext, setSearchState, setHashTagClickState,isDummyUser } = useContext(DContext);
 
     // const myArray = content.split(" ");
     const myArray = content.replace(/\n/g, " ").split(" ");
@@ -30,10 +30,16 @@ export default function HighLight(props) {
     const hashTag = async (name) => {
         // alert(name)
         // var newStr = name.replace('#', '')
-        setSearchState(null)
-        setHashTagClickState(true);
-        localStorage.setItem('hashTagName', name);
-        navigate('/hashtagPosts')
+        if(isDummyUser()){
+            console.log("user not logged in");
+            navigate('/login')
+        }else{
+            setSearchState(null)
+            setHashTagClickState(true);
+            localStorage.setItem('hashTagName', name);
+            navigate('/hashtagPosts')
+        }
+
     }
 
 
@@ -63,7 +69,10 @@ export default function HighLight(props) {
                         hashTag(singleWord)
                     }
                     if (isUrl(singleWord)) {
-
+                        if(isDummyUser()){
+                            console.log("user is not logged in");
+                            navigate('/login');
+                        }else{
                         // alert(singleWord);
                         if (singleWord.includes('https')) {
                             window.open(singleWord, '_blank');
@@ -74,6 +83,9 @@ export default function HighLight(props) {
                         else {
                             window.open('http://' + singleWord, '_blank');
                         }
+                        }
+
+
 
 
                     }

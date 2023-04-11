@@ -8,11 +8,11 @@ const Hot = () => {
 
     const navigate = useNavigate();
 
-    const { setPostList, isLoading, setIsLoading, getHashtagDContext, setSearchState, setHashTagClickState } = useContext(DContext);
+    const { setPostList, isLoading, setIsLoading, getHashtagDContext, setSearchState, setHashTagClickState ,isDummyUser} = useContext(DContext);
 
     const [hashtagListState, setHashtagListState] = useState([]);
-
     useEffect(() => {
+
         setPostList([]);
 
         getHashtags();

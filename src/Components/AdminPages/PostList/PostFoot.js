@@ -45,7 +45,7 @@ const PostFoot = (props) => {
   // const timeAgo = new TimeAgo('en-US')
 
   //Props
-  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, isFlag, amplify_count } = props;
+  const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, isFlag, amplify_count,isDummyUser } = props;
 
   //Functions to call api
   const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForSinglePostState, flagUnflagPostDContext } = useContext(DContext);
@@ -225,8 +225,10 @@ const PostFoot = (props) => {
 
   // open popup by set state in selected postid which is global state and set popup type state
   const viewUserListPopup = async (type) => {
+
     setSelectedIDForPopup(postID)
     setPopupType(type);
+
   }
 
 

@@ -25,7 +25,7 @@ const PostHead = (props) => {
 
 
   //Context
-  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost, setIsShowRulesModal, setIsFollowOnUserProfileState, setOtherUserStats } = useContext(DContext);
+  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost, setIsShowRulesModal, setIsFollowOnUserProfileState, setOtherUserStats,isDummyUser } = useContext(DContext);
 
   //Props
   const { postUserDetails, is_follow, postUserID, created_at, isPostDisable, setIsPostDisable, postAward, postID, isPostByOfficial } = props;
@@ -39,81 +39,95 @@ const PostHead = (props) => {
   //Follow to user and update post Listing
   const followUser = async () => {
 
-    let newPostList = postList;
-    postList.forEach((post, index) => {
-      if (post.userID === postUserID) {
-        console.log('condition hit of follow user');
-        newPostList[index] = { ...post, is_follow: 1 }
-      }
-    })
-    setPostList([...newPostList, { ...newPostList[0] }]);
-    // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
-    setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
 
-    // Update user stats state
-    setUserStats((previousState) => {
-      return {
-        ...previousState,
-        totalFollowing: previousState.totalFollowing + 1,
-      };
-    });
-
-    //When on other user profile page change main follow unfollow which are showing right side of stats
-    let pathName = location.pathname;
-    if (pathName.includes("UsersProfile")) {
-      setIsFollowOnUserProfileState(1);
-
-      //Update other user stats
-      setOtherUserStats((previousState) => {
+    if(isDummyUser()){
+      // console.log("user is not logged in");
+      navigate('/login')
+    }else{
+      let newPostList = postList;
+      postList.forEach((post, index) => {
+        if (post.userID === postUserID) {
+          console.log('condition hit of follow user');
+          newPostList[index] = { ...post, is_follow: 1 }
+        }
+      })
+      setPostList([...newPostList, { ...newPostList[0] }]);
+      // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+      setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
+  
+      // Update user stats state
+      setUserStats((previousState) => {
         return {
           ...previousState,
-          totalFollowers: previousState.totalFollowers + 1,
+          totalFollowing: previousState.totalFollowing + 1,
         };
       });
+  
+      //When on other user profile page change main follow unfollow which are showing right side of stats
+      let pathName = location.pathname;
+      if (pathName.includes("UsersProfile")) {
+        setIsFollowOnUserProfileState(1);
+  
+        //Update other user stats
+        setOtherUserStats((previousState) => {
+          return {
+            ...previousState,
+            totalFollowers: previousState.totalFollowers + 1,
+          };
+        });
+      }
+  
+      await followUserDContext(postUserID);
     }
 
-    await followUserDContext(postUserID);
+
   }
 
 
   //Un-follow user and update Post Listing
   const UnfollowUser = async () => {
 
-    let newPostList = postList;
-    postList.forEach((post, index) => {
-      if (post.userID === postUserID) {
-        console.log('condition hit of unfollow user');
-        newPostList[index] = { ...post, is_follow: 0 }
-      }
-    })
-    setPostList([...newPostList, { ...newPostList[0] }]);
-    // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
-    setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
-
-    // Update user stats state
-    setUserStats((previousState) => {
-      return {
-        ...previousState,
-        totalFollowing: previousState.totalFollowing - 1,
-      };
-    });
-
-
-    //When on other user profile page change main follow unfollow which are showing right side of stats
-    let pathName = location.pathname;
-    if (pathName.includes("UsersProfile")) {
-      setIsFollowOnUserProfileState(0);
-
-      //Update other user stats
-      setOtherUserStats((previousState) => {
+    if(isDummyUser()){
+      navigate('/login')
+    }else{
+      let newPostList = postList;
+      postList.forEach((post, index) => {
+        if (post.userID === postUserID) {
+          console.log('condition hit of unfollow user');
+          newPostList[index] = { ...post, is_follow: 0 }
+        }
+      })
+      setPostList([...newPostList, { ...newPostList[0] }]);
+      // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
+      setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
+  
+      // Update user stats state
+      setUserStats((previousState) => {
         return {
           ...previousState,
-          totalFollowers: previousState.totalFollowers - 1,
+          totalFollowing: previousState.totalFollowing - 1,
         };
       });
+  
+  
+      //When on other user profile page change main follow unfollow which are showing right side of stats
+      let pathName = location.pathname;
+      if (pathName.includes("UsersProfile")) {
+        setIsFollowOnUserProfileState(0);
+  
+        //Update other user stats
+        setOtherUserStats((previousState) => {
+          return {
+            ...previousState,
+            totalFollowers: previousState.totalFollowers - 1,
+          };
+        });
+      }
+  
+      await unFollowUserDContext(postUserID);
     }
 
-    await unFollowUserDContext(postUserID);
+
   }
 
 
@@ -211,7 +225,12 @@ const PostHead = (props) => {
 
   const userProfileDetail = async (userID) => {
     // localStorage.setItem('sessionUserID', userID);
-    navigate('/UsersProfile/' + userID)
+    if(isDummyUser()){
+      navigate('/login')
+    }else{
+      navigate('/UsersProfile/' + userID)
+    }
+    
   }
 
   return (

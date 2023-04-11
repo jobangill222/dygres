@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // COnstants
 import { BASE_URL } from "../Config";
@@ -10,7 +11,7 @@ export const DContext = React.createContext();
 
 export const DProvider = (props) => {
 
-  // const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   // State variables
   const [user, setUser] = useState(null);
@@ -82,7 +83,12 @@ export const DProvider = (props) => {
 
     const accessToken = localStorage.getItem("accessToken");
 
-    if (accessToken) {
+    // if(!accessToken){
+    //   setDummyUser();
+    // }
+
+    let savedUserName = localStorage.getItem('savedusername');
+    if (accessToken && !(savedUserName==='dummyuser_notloggedin')) {
       setUserToken(accessToken);
       const checkAuth = async () => {
         const userDetails = await getUserDetailsDContext();
@@ -107,6 +113,36 @@ export const DProvider = (props) => {
 
 
 
+  //setup dummy user if user is not logged in
+  const setDummyUser = () =>{
+    console.log("setting up dummy user")
+    userLogin({email:'dummyuser@yopmail.com',password:'12345678'}).then(axiosRes=>{
+      localStorage.setItem('accessToken',axiosRes.accessToken);
+      localStorage.setItem('savedusername',axiosRes.data.username);
+      setUser(axiosRes.data);
+      setUserToken(axiosRes.accessToken);
+      setUserStats({
+        "totalPosts": 0,
+        "totalFollowers": 0,
+        "totalFollowing": 0,
+        "totalAwards": 0
+    });
+      //setUserStats(axiosRes.userStats);
+      console.log("dummy user logged in ",axiosRes)
+    });
+  };
+
+  const isDummyUser = () =>{
+    //console.log("dummy user check",user?.username);
+    let savedUserName = localStorage.getItem('savedusername')
+    if(savedUserName === 'dummyuser_notloggedin'){
+      return true;
+    }
+    return false;
+  }
+
+
+
   // Global Functions
   const userLogin = async ({ email, password }) => {
     try {
@@ -119,7 +155,8 @@ export const DProvider = (props) => {
           password: password,
         },
       });
-
+      console.log()
+      localStorage.setItem('savedusername',axiosRes.data.data.username);
       return axiosRes.data;
     } catch (err) {
       console.log("Some issue while login (DContext.js) - ", err);
@@ -1890,6 +1927,8 @@ export const DProvider = (props) => {
     // Methods
     userLogin,
     userSignup,
+    setDummyUser,
+    isDummyUser,
     userResetPassword,
     userGetOtp,
     userEnterOtp,

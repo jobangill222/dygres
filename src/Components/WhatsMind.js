@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 import { DContext } from "../Context/DContext";
 import { MentionsInput, Mention } from 'react-mentions';
+import { useNavigate } from "react-router-dom";
 
 const WhatsMind = (props) => {
   //To change state when post is posted
@@ -13,37 +14,47 @@ const WhatsMind = (props) => {
   const [createPostState, setCreatePostState] = useState("");
 
   // Function to all api
-  const { createPostDContext, setUserStats, suggestionWhilePostingDContext } = useContext(DContext);
+  const { createPostDContext, setUserStats, suggestionWhilePostingDContext,isDummyUser } = useContext(DContext);
 
+  const navigate = useNavigate();
   //Submit post
   const submitPost = async () => {
-    if (!createPostState) {
-      toast("Hmm… you might consider entering some text before clicking submit.");
-    } else {
-      // console.log("createPostState", createPostState);
-      //   alert("Post successfully.");
-      try {
-        const parentPostID = null;
-        const axiosRes = await createPostDContext(createPostState, parentPostID);
-        if (axiosRes.status === "success") {
-          setIsPostState(true);
-          // Update user stats state
-          setUserStats((previousState) => {
-            return {
-              ...previousState,
-              totalPosts: previousState.totalPosts + 1,
-            };
-          });
+    
 
-          setCreatePostState("");
-          setActiveTabState('Global')
-        } else {
-          toast(axiosRes.message);
+    if(isDummyUser()){
+      console.log("please login first");
+      navigate('/login')
+    }else{
+      if (!createPostState) {
+        toast("Hmm… you might consider entering some text before clicking submit.");
+      } else {
+        // console.log("createPostState", createPostState);
+        //   alert("Post successfully.");
+        try {
+          const parentPostID = null;
+          const axiosRes = await createPostDContext(createPostState, parentPostID);
+          if (axiosRes.status === "success") {
+            setIsPostState(true);
+            // Update user stats state
+            setUserStats((previousState) => {
+              return {
+                ...previousState,
+                totalPosts: previousState.totalPosts + 1,
+              };
+            });
+  
+            setCreatePostState("");
+            setActiveTabState('Global')
+          } else {
+            toast(axiosRes.message);
+          }
+        } catch (err) {
+          console.log(err);
         }
-      } catch (err) {
-        console.log(err);
       }
     }
+
+
   };
 
 

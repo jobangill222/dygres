@@ -32,7 +32,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   // Context Variables
-  const { user, setUser, userToken, setUserToken, notificationList, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup, isNewNotificationArrive } = useContext(DContext);
+  const { user, setUser, userToken, setUserToken, notificationList, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup, isNewNotificationArrive,isDummyUser } = useContext(DContext);
   // console.log("console user Details in header", user);
 
   //Logout Functionality
@@ -42,6 +42,7 @@ const Header = () => {
     setUserToken(null);
     // localStorage.clear();
     localStorage.removeItem("accessToken");
+    localStorage.removeItem('savedusername');
     navigate("/login");
   };
   //End logout functionality
@@ -208,7 +209,11 @@ const Header = () => {
                       }
                       alt="user-img"
                     />
-                    <div className="Dropdown-listing bg-white">
+
+                    {
+                        isDummyUser() ? null : 
+                        <>
+                      <div className="Dropdown-listing bg-white">
                       <div className="arrowshape"></div>
                       <h4 className="text-silver">Account</h4>
                       <ul>
@@ -231,13 +236,16 @@ const Header = () => {
                           Delete Account
                           {/* </Link> */}
                         </li>
-
                         <li className="text-secondry" onClick={logoutHandler}>
                           <MdLogout />
+                         
                           Log Out
                         </li>
                       </ul>
                     </div>
+                        </> 
+                    }
+
                   </div>
                 </>
               ) : null}
@@ -306,12 +314,20 @@ const Header = () => {
                 e.preventDefault();
               }} to="/" ><FcAbout />About Us</Link></li>
 
+              {isDummyUser ? 
+              <>
+              </>
+              : 
+              <>
               <li className="logout" onClick={logoutHandler}>
                 <Link to="/logout">
                   <MdLogout />
                   Logout
                 </Link>
               </li>
+              </>}
+
+
 
 
             </ul>

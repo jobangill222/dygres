@@ -4,7 +4,7 @@ import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import { BsFillImageFill, BsPencil } from 'react-icons/bs';
 import ProfileTabs from "./ProfileTabs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
 import ViewAllAwardsIGot from '../Modals/ViewAllAwardsIGot';
 import { toast } from "react-toastify";
@@ -13,8 +13,8 @@ import { verificationLevel } from "../../helper/verificationLevel";
 import UserListModal from "../Modals/UserListModal";
 
 const Profile = () => {
-
-    const { user, userStats, setSelectedIDForPopup, popupType, setPopupType, updateCoverImageDContext, isLoading, setIsLoading, setIsShowRulesModal } = useContext(DContext);
+    const navigate = useNavigate();
+    const { user, userStats, setSelectedIDForPopup, popupType, setPopupType, updateCoverImageDContext, isLoading, setIsLoading, setIsShowRulesModal,isDummyUser } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -36,6 +36,7 @@ const Profile = () => {
 
     //Verification Level
     useEffect(() => {
+  
         getLevel();
     }, [user])
 

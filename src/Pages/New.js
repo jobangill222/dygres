@@ -7,7 +7,7 @@ import Loader from "../Components/Loader";
 
 const New = () => {
   //Functions to call api
-  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, setSearchState, getOfficialPostDContext } = useContext(DContext);
+  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, setSearchState, getOfficialPostDContext,isDummyUser,setDummyUser } = useContext(DContext);
 
 
   //State for active tab like: global , follwing, officials
@@ -76,6 +76,10 @@ const New = () => {
 
   //For render post list render when change tab and post something
   useEffect(() => {
+    if(!(localStorage.getItem('accessToken'))){
+      setDummyUser();
+    }
+
     setSearchState(null)
 
     setPostList([]);
@@ -96,6 +100,7 @@ const New = () => {
 
 
   useEffect(() => {
+    // console.log("is dummy user",isDummyUser());
     localStorage.setItem("currentPage", 1);
     getGlobalPosts();
     setIsPostState(false);
