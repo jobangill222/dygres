@@ -7,7 +7,7 @@ import Loader from "../Components/Loader";
 
 const New = () => {
   //Functions to call api
-  const { getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, setSearchState, getOfficialPostDContext,isDummyUser,setDummyUser } = useContext(DContext);
+  const { user, getGlobalPostDContext, getFollowingPostDContext, postList, setPostList, isPostState, setIsPostState, isLoading, setIsLoading, setSearchState, getOfficialPostDContext, isDummyUser, setDummyUser } = useContext(DContext);
 
 
   //State for active tab like: global , follwing, officials
@@ -76,7 +76,7 @@ const New = () => {
 
   //For render post list render when change tab and post something
   useEffect(() => {
-    if(!(localStorage.getItem('accessToken'))){
+    if (!(localStorage.getItem('accessToken'))) {
       setDummyUser();
     }
 
@@ -95,7 +95,7 @@ const New = () => {
     }
     setPlaceholderState(title[Math.floor(Math.random() * title.length)]);
 
-  }, [activeTabState]);
+  }, [activeTabState, user]);
 
 
 
@@ -111,18 +111,17 @@ const New = () => {
 
   //Get global post
   const getGlobalPosts = async () => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       //Api call
       setPostList([]);
       let pageNumberOfPostList = 1;
       const search = null;
       const axiosRes = await getGlobalPostDContext(search, pageNumberOfPostList);
-      // console.log("axiosRes********* after get global posts on page 1", axiosRes);
+      console.log("axiosRes********* after get global posts on page 1", axiosRes);
       if (axiosRes.status === "success") {
         setPostList(axiosRes.list);
       }
-      setIsLoading(false);
 
       //Move to top
       window.scrollTo(0, 0);
@@ -130,6 +129,8 @@ const New = () => {
     } catch (err) {
       console.log(err);
     }
+    setIsLoading(false);
+
   };
 
   //Get Following post

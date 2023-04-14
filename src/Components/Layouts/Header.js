@@ -32,7 +32,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   // Context Variables
-  const { user, setUser, userToken, setUserToken, notificationList, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup, isNewNotificationArrive,isDummyUser } = useContext(DContext);
+  const { user, setUser, userToken, setUserToken, notificationList, isShowRulesModal, setIsShowRulesModal, isShowDataSaveConfirmationPopup, isNewNotificationArrive, isDummyUser } = useContext(DContext);
   // console.log("console user Details in header", user);
 
   //Logout Functionality
@@ -42,7 +42,7 @@ const Header = () => {
     setUserToken(null);
     // localStorage.clear();
     localStorage.removeItem("accessToken");
-    localStorage.removeItem('savedusername');
+    localStorage.removeItem('isDummyLoggedIn');
     navigate("/login");
   };
   //End logout functionality
@@ -52,6 +52,7 @@ const Header = () => {
 
   //destructuring pathname from location
   const { pathname } = location;
+
 
   //Javascript split method to get the name of the path in array
   const splitLocation = pathname.split("/");
@@ -104,10 +105,10 @@ const Header = () => {
               </>
             ) : <>
               <Navbar.Brand>
-                <Link to="/login">
+                <Link to="/">
                   <img className="lightmode" src="/images/logo.png" alt="logo" />
                 </Link>
-                <Link to="/login">
+                <Link to="/">
                   <img
                     className="darkmode"
                     src="/images/logowhite.png"
@@ -134,6 +135,14 @@ const Header = () => {
               <div className="cursor-pointer helpicon" href="#" onClick={() => setIsShowHelpCenterModal(true)}>
                 <BsQuestionCircle />
               </div>
+
+              {pathname === '/' ?
+                <div className="cursor-pointer loginbtn">
+                  <Link to='/login' >
+                    Login
+                  </Link>
+                </div>
+                : null}
 
               {userToken ? (
                 <>
@@ -211,39 +220,39 @@ const Header = () => {
                     />
 
                     {
-                        isDummyUser() ? null : 
+                      isDummyUser() ? null :
                         <>
-                      <div className="Dropdown-listing bg-white">
-                      <div className="arrowshape"></div>
-                      <h4 className="text-silver">Account</h4>
-                      <ul>
-                        <li className="text-secondry">
-                          <Link to="/profile">
-                            <AiOutlineEye />
-                            View Profile
-                          </Link>
-                        </li>
-                        <li className="text-secondry">
-                          <Link to="/editprofile">
-                            <BsPencil />
-                            Edit Profile
-                          </Link>
-                        </li>
+                          <div className="Dropdown-listing bg-white">
+                            <div className="arrowshape"></div>
+                            <h4 className="text-silver">Account</h4>
+                            <ul>
+                              <li className="text-secondry">
+                                <Link to="/profile">
+                                  <AiOutlineEye />
+                                  View Profile
+                                </Link>
+                              </li>
+                              <li className="text-secondry">
+                                <Link to="/editprofile">
+                                  <BsPencil />
+                                  Edit Profile
+                                </Link>
+                              </li>
 
-                        <li className="text-secondry" onClick={deleteAccount} >
-                          {/* <Link to="/editprofile"> */}
-                          <AiFillDelete />
-                          Delete Account
-                          {/* </Link> */}
-                        </li>
-                        <li className="text-secondry" onClick={logoutHandler}>
-                          <MdLogout />
-                         
-                          Log Out
-                        </li>
-                      </ul>
-                    </div>
-                        </> 
+                              <li className="text-secondry" onClick={deleteAccount} >
+                                {/* <Link to="/editprofile"> */}
+                                <AiFillDelete />
+                                Delete Account
+                                {/* </Link> */}
+                              </li>
+                              <li className="text-secondry" onClick={logoutHandler}>
+                                <MdLogout />
+
+                                Log Out
+                              </li>
+                            </ul>
+                          </div>
+                        </>
                     }
 
                   </div>
@@ -314,18 +323,18 @@ const Header = () => {
                 e.preventDefault();
               }} to="/" ><FcAbout />About Us</Link></li>
 
-              {isDummyUser ? 
-              <>
-              </>
-              : 
-              <>
-              <li className="logout" onClick={logoutHandler}>
-                <Link to="/logout">
-                  <MdLogout />
-                  Logout
-                </Link>
-              </li>
-              </>}
+              {isDummyUser ?
+                <>
+                </>
+                :
+                <>
+                  <li className="logout" onClick={logoutHandler}>
+                    <Link to="/logout">
+                      <MdLogout />
+                      Logout
+                    </Link>
+                  </li>
+                </>}
 
 
 

@@ -61,9 +61,9 @@ export default function ThreadHead(props) {
     );
 
 
-    const viewUsersProfileFromCmments = async (userID) => {
+    const viewUsersProfileFromCmments = async (username) => {
         // localStorage.setItem('sessionUserID', userID);
-        navigate('/UsersProfile/' + userID)
+        navigate('/UsersProfile/' + username)
     }
 
     return (
@@ -75,7 +75,7 @@ export default function ThreadHead(props) {
                             <img src={user?.profileImage ? BASE_URL + `/` + user?.profileImage : `/images/user.png`} alt="user-img" />
                         </div>
                         <div className="user-detail">
-                            <div className='follow-bar cursor-pointer' onClick={() => viewUsersProfileFromCmments(user._id)} >
+                            <div className='follow-bar cursor-pointer' onClick={() => viewUsersProfileFromCmments(user.username)} >
                                 <h4 className="text-secondry">{user?.name ? user?.name : user?.username}</h4>
                                 {/* <button className='followbtn' type='button'>Follow</button> */}
                             </div>

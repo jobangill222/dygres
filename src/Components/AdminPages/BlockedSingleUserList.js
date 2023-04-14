@@ -129,7 +129,7 @@ export default function BlockedSingleUserList(props) {
                                     }
                                 </li>
 
-                                <li className="text-secondry" onClick={() => userDetails(singleUser._id)} >
+                                <li className="text-secondry" onClick={() => userDetails(singleUser.username)} >
                                     {/* <Link to="/admin/post"><BsFilePost />Posts</Link> */}
                                     <Link onClick={(e) => {
                                         e.preventDefault();

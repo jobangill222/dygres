@@ -50,6 +50,7 @@ const Header = () => {
         setUserToken(null);
         // localStorage.clear();
         localStorage.removeItem("accessToken");
+
         navigate("/login");
     };
     //End logout functionality

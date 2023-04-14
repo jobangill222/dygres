@@ -135,7 +135,7 @@ const PostHead = (props) => {
             </OverlayTrigger>
             <div className="user-detail">
               <div className="follow-bar">
-                <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?._id)}>
+                <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?.username)}>
                   {postUserDetails?.name ? postUserDetails.name : postUserDetails?.username}
                 </h4>
 

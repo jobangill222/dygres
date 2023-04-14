@@ -50,7 +50,7 @@ const PostFoot = (props) => {
   const { agree_count, is_agree, disagree_count, is_disagree, report_count, commentCount, is_report, postUserID, postID, setIsEditFieldOpen, isPostDisable, awardCount, setAwardCount, created_at, postListingType, amplify_count, isPostByOfficial } = props;
 
   //Functions to call api
-  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForSinglePostState, checkIsAlreadyAmplifyDContext,isDummyUser } = useContext(DContext);
+  const { setUserStats, agreeUnagreePost, disAgreeUnDisAgreePost, reportPostDContext, deletePostDContext, user, postList, setPostList, setSelectedIDForPopup, setPopupType, setPostIDForSinglePostState, checkIsAlreadyAmplifyDContext, isDummyUser } = useContext(DContext);
 
   //Set states
   const [postAgreeCount, setPostAgreeCount] = useState(agree_count);
@@ -66,17 +66,17 @@ const PostFoot = (props) => {
 
   useEffect(() => {
     // console.log("isthreadopen", isthreadopen);
-    if(isDummyUser()){
-      
-    }else{
+    if (isDummyUser()) {
+
+    } else {
       props.onCommentBoxOpen(isthreadopen);
     }
-   
+
   }, [isthreadopen]);
 
   // useeffect to render count and pass true false status for active and un active footer options
   useEffect(() => {
-    
+
     if (is_agree === 1) {
       setIsAgree(true);
     } else {
@@ -112,9 +112,9 @@ const PostFoot = (props) => {
   // Aggree Modal
   const AgreePost = async (postID) => {
     console.log("aggree icon clicked")
-    if(isDummyUser()){
-     navigate('/login');
-    }else{
+    if (isDummyUser()) {
+      navigate('/login');
+    } else {
       if (!agreeDisagreeButtonDisableState) {
         setAgreeDisagreeButtonDisableState(true)
         const agreeAxiosRes = await agreeUnagreePost(postID);
@@ -139,43 +139,43 @@ const PostFoot = (props) => {
 
   // DisAggree Modal
 
-     
+
 
   const DisAgreePost = async (postID) => {
     console.log("disagree icon clicked")
-    if(isDummyUser()){
+    if (isDummyUser()) {
       navigate('/login');
-     }else{
-    if (!agreeDisagreeButtonDisableState) {
-      setAgreeDisagreeButtonDisableState(true)
-      const disagreeAxiosRes = await disAgreeUnDisAgreePost(postID);
-      if (disagreeAxiosRes.status === "success") {
-        if (disagreeAxiosRes.action === "disagree") {
-          let newDisAgreeCountWhenDisAgree = postDisAgreeCount + 1;
-          setPostDisAgreeCount(newDisAgreeCountWhenDisAgree);
-          setIsDisAgree(true);
-        } else {
-          let newDisAgreeCountWhenUnDisagree = postDisAgreeCount - 1;
-          setPostDisAgreeCount(newDisAgreeCountWhenUnDisagree);
-          setIsDisAgree(false);
+    } else {
+      if (!agreeDisagreeButtonDisableState) {
+        setAgreeDisagreeButtonDisableState(true)
+        const disagreeAxiosRes = await disAgreeUnDisAgreePost(postID);
+        if (disagreeAxiosRes.status === "success") {
+          if (disagreeAxiosRes.action === "disagree") {
+            let newDisAgreeCountWhenDisAgree = postDisAgreeCount + 1;
+            setPostDisAgreeCount(newDisAgreeCountWhenDisAgree);
+            setIsDisAgree(true);
+          } else {
+            let newDisAgreeCountWhenUnDisagree = postDisAgreeCount - 1;
+            setPostDisAgreeCount(newDisAgreeCountWhenUnDisagree);
+            setIsDisAgree(false);
+          }
         }
+        else {
+          toast(disagreeAxiosRes.message);
+        }
+        setAgreeDisagreeButtonDisableState(false)
       }
-      else {
-        toast(disagreeAxiosRes.message);
-      }
-      setAgreeDisagreeButtonDisableState(false)
     }
-  }
   };
 
   // Report Modal
   const [EditReportShow, setEditreportshow] = useState(false);
   const EditReportClose = () => setEditreportshow(false);
   const EditReport = async (postID) => {
-    if(isDummyUser()){
+    if (isDummyUser()) {
       console.log("user is not logged in");
       navigate('/login');
-    }else{
+    } else {
       if (isReport) {
         toast('You have already reported this content. Thank you for your patience while we process your report.');
       } else {
@@ -214,13 +214,13 @@ const PostFoot = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const showDeletePostPopupWarning = () => {
-    if(isDummyUser()){
+    if (isDummyUser()) {
       console.log("user is not logged in");
       navigate('/login');
-    }else{
+    } else {
       setShow(true);
     }
-    
+
   }
   const yesDeletePost = async () => {
 
@@ -253,9 +253,9 @@ const PostFoot = (props) => {
 
   // open popup by set state in selected postid which is global state and set popup type state
   const viewUserListPopup = async (type) => {
-    if(isDummyUser()){
+    if (isDummyUser()) {
       navigate('/login');
-    }else{
+    } else {
       setSelectedIDForPopup(postID)
       setPopupType(type);
     }
@@ -265,9 +265,9 @@ const PostFoot = (props) => {
   const [awardPopupOpenStatus, setAwardPopupOpenStatus] = useState(false);
   const [selectedPostIDForAwardPopup, setSelectedPostIDForAwardPopup] = useState(postID); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc)
   const viewAwardModal = () => {
-    if(isDummyUser()){
+    if (isDummyUser()) {
       navigate('/login');
-    }else{
+    } else {
       setAwardPopupOpenStatus(true);
       setSelectedPostIDForAwardPopup(postID);
 
@@ -329,13 +329,13 @@ const PostFoot = (props) => {
   const viewPost = async (postID) => {
     // localStorage.setItem('PostIdForSinglePost', postID);
 
-    if(isDummyUser()){
+    if (isDummyUser()) {
       console.log("user is not logged in");
       navigate('/login');
-    }else{
-    setPostIDForSinglePostState(postID);
-    const baseURL = window.location.origin;
-    window.open(`${baseURL}/SinglePostDetail/` + postID, "_blank");
+    } else {
+      setPostIDForSinglePostState(postID);
+      const baseURL = window.location.origin;
+      window.open(`${baseURL}/SinglePostDetail/` + postID, "_blank");
     }
 
 
@@ -352,10 +352,10 @@ const PostFoot = (props) => {
   const shareClose = () => setShareShowModalState(false);
   const ShareShow = async () => {
 
-    if(isDummyUser()){
+    if (isDummyUser()) {
       console.log("user is not logged in");
       navigate('/login');
-    }else{
+    } else {
 
       setShareShowModalState(true);
       const baseURL = window.location.origin;

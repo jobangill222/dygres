@@ -22,7 +22,7 @@ export default function SingleUserList(props) {
             <ul key={userListing?.user?._id} className="aggree-li">
                 <li>
                     <img src={userListing?.user?.profileImage ? userListing.user?.profileImage : `/images/user.png`} alt="userimg" />
-                    <div className="user-del cursor-pointer" onClick={() => viewUsersProfileFromListing(userListing.user._id)} >
+                    <div className="user-del cursor-pointer" onClick={() => viewUsersProfileFromListing(userListing.user.username)} >
                         <h4>{userListing.user.name ? userListing.user.name : userListing.user.username}</h4>
                         <h6>@{userListing?.user?.username}</h6>
                     </div>

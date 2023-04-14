@@ -22,7 +22,7 @@ export default function HighLight(props) {
         }
         else {
             // localStorage.setItem('sessionUserID', axiosRes.detail._id);
-            navigate('/admin/post/' + axiosRes.detail._id)
+            navigate('/admin/post/' + axiosRes.detail.username)
 
         }
     }

@@ -20,7 +20,7 @@ import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
 const Sidebar = () => {
 
     const navigate = useNavigate();
-    const { user, userStats, setSelectedIDForPopup, setPopupType, searchState, setSearchState, searchSuggestionDContext, showSuggestions, setShowSuggestions, setHashTagClickState,isDummyUser } = useContext(DContext);
+    const { user, userStats, setSelectedIDForPopup, setPopupType, searchState, setSearchState, searchSuggestionDContext, showSuggestions, setShowSuggestions, setHashTagClickState, isDummyUser } = useContext(DContext);
 
     const tooltip = (
         <Tooltip id="tooltip">
@@ -31,19 +31,19 @@ const Sidebar = () => {
     // console.log('user', user);
 
     const openViewProfile = async () => {
-        if(isDummyUser()){
+        if (isDummyUser()) {
             navigate('/login')
-        }else{
+        } else {
             navigate("/profile");
         }
-        
+
     }
 
 
     const myFollowers = async () => {
-        if(isDummyUser()){
+        if (isDummyUser()) {
             navigate('/login')
-        }else{
+        } else {
             setPopupType('followers-list');
             setSelectedIDForPopup(user._id)
         }
@@ -51,9 +51,9 @@ const Sidebar = () => {
     }
 
     const myFollowing = async () => {
-        if(isDummyUser()){
+        if (isDummyUser()) {
             navigate('/login')
-        }else{
+        } else {
             setPopupType('following-list');
             setSelectedIDForPopup(user._id)
         }
@@ -62,10 +62,10 @@ const Sidebar = () => {
 
     const [awardIGotPopupState, setAwardIGotPopupState] = useState(false);
     const viewAwardIGot = async () => {
-        if(isDummyUser()){
+        if (isDummyUser()) {
             navigate('/login')
-        }else{
-        setAwardIGotPopupState(true);
+        } else {
+            setAwardIGotPopupState(true);
         }
     }
 
@@ -73,11 +73,17 @@ const Sidebar = () => {
     //Search
     const [suggestionList, setSuggestionList] = useState([]);
     const searchTyping = async (event) => {
-        if(isDummyUser()){
+        if (isDummyUser()) {
             navigate('/login')
-        }else{
-            const value = event.target.value;
-            setSearchState(value);
+        } else {
+            let value;
+            if (event.target.value[0] === '@') {
+                value = event.target.value.replace(/^./, "");
+            } else {
+                value = event.target.value;
+            }
+
+            setSearchState(event.target.value);
             if (!value) {
                 setShowSuggestions(false);
                 return;
@@ -94,9 +100,9 @@ const Sidebar = () => {
     };
 
     const searchClickHashTag = (name) => {
-        if(isDummyUser()){
+        if (isDummyUser()) {
             navigate('/login')
-        }else{
+        } else {
             setHashTagClickState(true);
             setSearchState(name);
             setShowSuggestions(false);
@@ -106,14 +112,14 @@ const Sidebar = () => {
 
     };
 
-    const searchClickUserName = (name, userID) => {
-        if(isDummyUser()){
+    const searchClickUserName = (username, userID) => {
+        if (isDummyUser()) {
             navigate('/login')
-        }else{
-            setSearchState(name);
+        } else {
+            setSearchState(username);
             setShowSuggestions(false);
             // localStorage.setItem('sessionUserID', userID)
-            navigate("/UsersProfile/" + userID);
+            navigate("/UsersProfile/" + username);
         }
 
     };
@@ -142,7 +148,7 @@ const Sidebar = () => {
                     <img src={user && user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" />
 
                     {/* <input type="file" className="uploadimg-input" /> */}
-                    <Link to={isDummyUser()?'/login':"/trending-hashtags"}>
+                    <Link to={isDummyUser() ? '/login' : "/trending-hashtags"}>
                         <div className="edit-bar">
                             <BsPencil className="text-primary" />
                         </div>
@@ -198,7 +204,6 @@ const Sidebar = () => {
                                 onChange={searchTyping}
                                 placeholder="Search"
                                 className="bg-gray"
-                                value={searchState ? searchState : ''}
                                 onClick={ignoreUpperClick}
                             />
                             <button className="bg-lightgray text-lightgray"><BiSearch /></button>
@@ -225,15 +230,15 @@ const Sidebar = () => {
                 </div>
                 {/* Menu start here */}
                 <ul className="sidebar-menu">
-                    <li><Link  exact to={isDummyUser()?'/login':"/new"}><BsFileMedicalFill /> New</Link></li>
-                    <li><Link to={isDummyUser()?'/login':"/hot"}><MdOutlineWhatshot />Hot</Link></li>
-                    <li><Link to={isDummyUser()?'/login':"/most-voted"}><MdHowToVote />Most Votes</Link></li>
+                    <li><Link exact to={isDummyUser() ? '/login' : "/new"}><BsFileMedicalFill /> New</Link></li>
+                    <li><Link to={isDummyUser() ? '/login' : "/hot"}><MdOutlineWhatshot />Hot</Link></li>
+                    <li><Link to={isDummyUser() ? '/login' : "/most-voted"}><MdHowToVote />Most Votes</Link></li>
                     {/* <li><Link to="/not-voted"><BiLayerMinus />Least Votes</Link></li> */}
 
-                    <li><Link to={isDummyUser()?'/login':"/trending-hashtags"}><BiLayerMinus />Trending hashtags</Link></li>
+                    <li><Link to={isDummyUser() ? '/login' : "/trending-hashtags"}><BiLayerMinus />Trending hashtags</Link></li>
 
 
-                    <li><Link to={isDummyUser()?'/login':"/notification"}><BsBell />Notifications</Link></li>
+                    <li><Link to={isDummyUser() ? '/login' : "/notification"}><BsBell />Notifications</Link></li>
                     <li><Link onClick={(e) => {
                         setIsShowFoundationalRuleModal(true);
                         e.preventDefault();

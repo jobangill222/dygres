@@ -31,23 +31,29 @@ const Login = () => {
     setValue,
     formState: { errors },
   } = useForm();
-  
+
   const handleRegistration = async (data) => {
     // e.preventDefault()
     setIsLoading(true);
     try {
+      console.log('data', data)
       const axiosRes = await userLogin(data);
 
-      console.log("axiosRes", axiosRes);
+      console.log("axiosRes login", axiosRes);
       if (axiosRes.status === "success") {
         localStorage.setItem("accessToken", axiosRes.accessToken);
 
         if (axiosRes.data.role === "admin") {
+          localStorage.removeItem('isDummyLoggedIn');
           setUser(axiosRes.data);
           setUserToken(axiosRes.accessToken);
           setUserStats(axiosRes.userStats);
           navigate("/admin/dashboard");
+        }
+        else if (axiosRes.data.role === "dummy") {
+          toast('Invalid Email address or username');
         } else {
+          localStorage.removeItem('isDummyLoggedIn');
           setUser(axiosRes.data);
           setUserToken(axiosRes.accessToken);
           setUserStats(axiosRes.userStats);

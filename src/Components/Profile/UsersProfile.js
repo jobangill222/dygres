@@ -30,7 +30,7 @@ const UsersProfile = () => {
         setPopupType(null)
 
         //if My profile
-        if (user._id === userIDForProfile) {
+        if (user.username === userIDForProfile) {
             navigate("/profile");
         } else {
             getData();

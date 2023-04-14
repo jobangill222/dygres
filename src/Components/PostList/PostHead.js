@@ -25,7 +25,7 @@ const PostHead = (props) => {
 
 
   //Context
-  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost, setIsShowRulesModal, setIsFollowOnUserProfileState, setOtherUserStats,isDummyUser } = useContext(DContext);
+  const { user, setUserStats, postList, setPostList, followUserDContext, unFollowUserDContext, setPostIDForAwardOfPost, setIsShowRulesModal, setIsFollowOnUserProfileState, setOtherUserStats, isDummyUser } = useContext(DContext);
 
   //Props
   const { postUserDetails, is_follow, postUserID, created_at, isPostDisable, setIsPostDisable, postAward, postID, isPostByOfficial } = props;
@@ -40,10 +40,10 @@ const PostHead = (props) => {
   const followUser = async () => {
 
 
-    if(isDummyUser()){
+    if (isDummyUser()) {
       // console.log("user is not logged in");
       navigate('/login')
-    }else{
+    } else {
       let newPostList = postList;
       postList.forEach((post, index) => {
         if (post.userID === postUserID) {
@@ -54,7 +54,7 @@ const PostHead = (props) => {
       setPostList([...newPostList, { ...newPostList[0] }]);
       // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
       setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
-  
+
       // Update user stats state
       setUserStats((previousState) => {
         return {
@@ -62,12 +62,12 @@ const PostHead = (props) => {
           totalFollowing: previousState.totalFollowing + 1,
         };
       });
-  
+
       //When on other user profile page change main follow unfollow which are showing right side of stats
       let pathName = location.pathname;
       if (pathName.includes("UsersProfile")) {
         setIsFollowOnUserProfileState(1);
-  
+
         //Update other user stats
         setOtherUserStats((previousState) => {
           return {
@@ -76,7 +76,7 @@ const PostHead = (props) => {
           };
         });
       }
-  
+
       await followUserDContext(postUserID);
     }
 
@@ -87,9 +87,9 @@ const PostHead = (props) => {
   //Un-follow user and update Post Listing
   const UnfollowUser = async () => {
 
-    if(isDummyUser()){
+    if (isDummyUser()) {
       navigate('/login')
-    }else{
+    } else {
       let newPostList = postList;
       postList.forEach((post, index) => {
         if (post.userID === postUserID) {
@@ -100,7 +100,7 @@ const PostHead = (props) => {
       setPostList([...newPostList, { ...newPostList[0] }]);
       // setTimeout(() => setPostList(newPostList.slice(0, -1)), 500)
       setTimeout(() => setPostList((prevState) => prevState.slice(0, -1)), 100)
-  
+
       // Update user stats state
       setUserStats((previousState) => {
         return {
@@ -108,13 +108,13 @@ const PostHead = (props) => {
           totalFollowing: previousState.totalFollowing - 1,
         };
       });
-  
-  
+
+
       //When on other user profile page change main follow unfollow which are showing right side of stats
       let pathName = location.pathname;
       if (pathName.includes("UsersProfile")) {
         setIsFollowOnUserProfileState(0);
-  
+
         //Update other user stats
         setOtherUserStats((previousState) => {
           return {
@@ -123,7 +123,7 @@ const PostHead = (props) => {
           };
         });
       }
-  
+
       await unFollowUserDContext(postUserID);
     }
 
@@ -223,14 +223,14 @@ const PostHead = (props) => {
     setPostIDForAwardOfPost(postID)
   }
 
-  const userProfileDetail = async (userID) => {
+  const userProfileDetail = async (username) => {
     // localStorage.setItem('sessionUserID', userID);
-    if(isDummyUser()){
+    if (isDummyUser()) {
       navigate('/login')
-    }else{
-      navigate('/UsersProfile/' + userID)
+    } else {
+      navigate('/UsersProfile/' + username)
     }
-    
+
   }
 
   return (
@@ -245,7 +245,7 @@ const PostHead = (props) => {
             </OverlayTrigger>
             <div className="user-detail">
               <div className="follow-bar">
-                <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?._id)}>
+                <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?.username)}>
                   {postUserDetails?.name ? postUserDetails.name : postUserDetails?.username}
                 </h4>
                 {user?._id !== postUserID &&

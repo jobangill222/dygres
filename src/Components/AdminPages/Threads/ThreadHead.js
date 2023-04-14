@@ -71,7 +71,7 @@ export default function ThreadHead(props) {
                             <img src={user?.profileImage ? BASE_URL + `/` + user?.profileImage : `/images/user.png`} alt="user-img" />
                         </div>
                         <div className="user-detail">
-                            <div className='follow-bar' onClick={() => viewUsersProfileFromComments(user._id)}>
+                            <div className='follow-bar' onClick={() => viewUsersProfileFromComments(user.username)}>
                                 <h4 className="text-secondry">{user?.name ? user?.name : user?.username}</h4>
                                 {/* <button className='followbtn' type='button'>Follow</button> */}
                             </div>

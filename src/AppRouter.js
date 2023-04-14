@@ -173,21 +173,21 @@ function AppRouter() {
 
     return (
         <>
+
             <Routes>
 
                 {!userToken ? (
                     <>
+
                         <Route element={<AuthLayout />}>
                             <Route exact path="/login" element={<Login />} />
                             <Route exact path="/signup" element={<SignUp />} />
                             <Route exact path="/getotp" element={<GetOtp />} />
                             <Route exact path="/enterotp" element={<EnterOtp />} />
                             <Route exact path="/resetpassword" element={<ResetPassword />} />
-
-
-
                             <Route path="*" element={<Navigate to='/login' />} />
                         </Route>
+
                         <Route element={<SiteLayout />}>
                             <Route exact path="/" element={<New />} />
                         </Route>
@@ -196,9 +196,10 @@ function AppRouter() {
 
                 ) : (
                     <>
-                        {user?.role === 'user' ?
+                        {user?.role === 'user' || user?.role === 'dummy' ?
                             <>
                                 <Route element={<SiteLayout />}>
+
                                     <Route exact path="/new" element={<New />} />
                                     <Route exact path="/hot" element={<Hot />} />
                                     <Route exact path="/most-voted" element={<MostVoted />} />

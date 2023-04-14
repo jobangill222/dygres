@@ -46,9 +46,9 @@ export default function SingleNotificationHead(props) {
 
     const navigate = useNavigate();
 
-    const viewUsersProfile = async (userID) => {
+    const viewUsersProfile = async (username) => {
         // localStorage.setItem('sessionUserID', userID);
-        navigate('/UsersProfile/' + userID)
+        navigate('/UsersProfile/' + username)
     }
 
 
@@ -68,7 +68,7 @@ export default function SingleNotificationHead(props) {
                     </div>
                 </OverlayTrigger>
                 <div className="user-detail">
-                    <h4 className="text-secondry" onClick={() => viewUsersProfile(singleNotification?.fromUserID._id)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</h4>
+                    <h4 className="text-secondry" onClick={() => viewUsersProfile(singleNotification?.fromUserID?.username)}>{singleNotification.fromUserID?.name ? singleNotification.fromUserID?.name : singleNotification.fromUserID?.username}</h4>
                     <div className="user-availbility">
                         <h6 className="text-lightgray">@{singleNotification?.fromUserID?.username}</h6>
                         <h5 className="text-lightgray greentime">{timeAgo.format(moment(singleNotification.created_at)._d.getTime())}</h5>

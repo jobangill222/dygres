@@ -58,9 +58,19 @@ a:hover {
   align-items: center;
   justify-content: flex-start;
 }
-.notification-content .notification-text {
+.loginbtn {
+  margin-left: 30px;
+  color: #72c39d;
+}
+.notification-dropdown .notification-content .notification-text {
+  flex: 0 0 90%;
+}
+.admin-notification-text{
   display: block;
   flex: 0 0 90%;
+}
+.Dropdown-listing .arrowbar .notification-content .notification-text p{
+  line-height: 24px !important;
 }
 .notification-content .notification-text p {
   line-height: 20px !important;
