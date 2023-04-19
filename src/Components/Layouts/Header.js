@@ -108,6 +108,9 @@ const Header = () => {
                 <Link to="/">
                   <img className="lightmode" src="/images/logo.png" alt="logo" />
                 </Link>
+
+
+
                 <Link to="/">
                   <img
                     className="darkmode"
@@ -120,13 +123,18 @@ const Header = () => {
 
 
             <Nav className="mx-auto me-0 mob-none">
+
               {userToken ? (
                 <>
                   <Link to='/new' className="homeicon">
                     <BiHome />
                   </Link>
                 </>
-              ) : null}
+              ) :
+                <Link to='/' className="homeicon">
+                  <BiHome />
+                </Link>
+              }
 
               <div className="text-lightgray" href="#">
                 <DarkModeSwitch />

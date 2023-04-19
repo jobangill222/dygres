@@ -5395,7 +5395,7 @@ ul.trending-hashtag-list li.hashtaglist {
     padding: 0 15px;
   }
   .header-nav .navbar-nav a.homeicon {
-    display: none;
+    display: block;
   }
   .helpicon {
     margin-left: 15px;
