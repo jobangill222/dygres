@@ -89,7 +89,8 @@ export default function EditAward() {
         register,
         handleSubmit,
         formState: { errors },
-        setValue, reset
+        setValue,
+        reset
     } = useForm();
 
     useEffect(() => {

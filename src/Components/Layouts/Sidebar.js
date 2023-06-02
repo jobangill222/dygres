@@ -148,7 +148,7 @@ const Sidebar = () => {
                     <img src={user && user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" />
 
                     {/* <input type="file" className="uploadimg-input" /> */}
-                    <Link to={isDummyUser() ? '/login' : "/trending-hashtags"}>
+                    <Link to={isDummyUser() ? '/login' : "/editprofile"}>
                         <div className="edit-bar">
                             <BsPencil className="text-primary" />
                         </div>

@@ -4697,6 +4697,7 @@ ul.sidebar-menu {
 .digital-feeds .digital-feeds.diffrentiate-bar .Description-bar {
   border: none;
 }
+
 .small .digital-feeds .Description-bar p {
   font-size: 16px;
 }
@@ -5863,6 +5864,18 @@ li.svggray svg path {
 }
 
 @media (max-width: 767px) {
+  .digital-feeds .Description-bar p{
+    font-size: 18px !important;
+  }
+  .medium .digital-feeds .Description-bar p {
+    font-size: 19px !important;
+}
+.large .digital-feeds .Description-bar p {
+  font-size: 22px !important;
+}
+.small .digital-feeds .Description-bar p {
+  font-size: 16px !important;
+}
   .user-detail-bar .detailleft .avatar-img {
     margin-right: 5px !important;
 }
