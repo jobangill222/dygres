@@ -22,10 +22,14 @@ const UsersProfileTabs = (props) => {
     const { postList, popupType, setPostList, getOtherUserPostsByUserIDDContext, postIDForAwardOfPost, isLoading, setIsLoading } = useContext(DContext);
 
     useEffect(() => {
+
+        //Hide popup
+        setPopupOpenStatus(false)
+
         // setPostList([]);
         localStorage.setItem("currentPage", 1);
         getMyPosts();
-    }, [])
+    }, [userIDForProfile])
 
     const getMyPosts = async () => {
         // console.log('sss');

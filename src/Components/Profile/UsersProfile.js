@@ -22,10 +22,9 @@ const UsersProfile = () => {
 
     const [otherUser, setOtherUser] = useState();
 
-
     useEffect(() => {
 
-        //Hide userlist modal
+        //Make userlst modal type and id null
         setSelectedIDForPopup(null);
         setPopupType(null)
 
@@ -36,7 +35,7 @@ const UsersProfile = () => {
             getData();
         }
 
-    }, [])
+    }, [userIDForProfile])
 
 
     const followersList = async () => {
