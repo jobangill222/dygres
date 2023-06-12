@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 import { DContext } from "../Context/DContext";
 import { MentionsInput, Mention } from 'react-mentions';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const WhatsMind = (props) => {
   //To change state when post is posted
@@ -14,17 +14,31 @@ const WhatsMind = (props) => {
   const [createPostState, setCreatePostState] = useState("");
 
   // Function to all api
-  const { createPostDContext, setUserStats, suggestionWhilePostingDContext,isDummyUser } = useContext(DContext);
+  const { createPostDContext, setUserStats, suggestionWhilePostingDContext, isDummyUser } = useContext(DContext);
+
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const text = searchParams.get('text');
+
+  useEffect(() => {
+    if (text) {
+      setCreatePostState(text)
+    }
+  }, [text])
+
+
+
 
   const navigate = useNavigate();
   //Submit post
   const submitPost = async () => {
-    
 
-    if(isDummyUser()){
+
+    if (isDummyUser()) {
       console.log("please login first");
       navigate('/login')
-    }else{
+    } else {
       if (!createPostState) {
         toast("Hmm… you might consider entering some text before clicking submit.");
       } else {
@@ -42,9 +56,20 @@ const WhatsMind = (props) => {
                 totalPosts: previousState.totalPosts + 1,
               };
             });
-  
+
             setCreatePostState("");
             setActiveTabState('Global')
+
+            searchParams.delete('text');
+            const newSearch = searchParams.toString();
+
+            navigate({
+              pathname: location.pathname,
+              search: newSearch,
+            });
+
+
+
           } else {
             toast(axiosRes.message);
           }
