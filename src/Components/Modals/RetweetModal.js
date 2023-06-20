@@ -209,8 +209,8 @@ export default function SingleAward(props) {
 
     return (
         <>
-            {console.log('viewRetweetPopup,viewRetweetPopup', viewRetweetPopup)}
-            {console.log('postIDForRetweet,postIDForRetweet', postIDForRetweet)}
+            {/* {console.log('viewRetweetPopup,viewRetweetPopup', viewRetweetPopup)}
+            {console.log('postIDForRetweet,postIDForRetweet', postIDForRetweet)} */}
 
 
             {/* Aggree modal */}
@@ -338,8 +338,14 @@ export default function SingleAward(props) {
                             <div className="user-preview">
                                 <div className="Description-bar">
                                     <p>
-                                        {/* {postDetailForRetweet?.content} */}
-                                        <HighLight content={postDetailForRetweet?.content ? postDetailForRetweet?.content : " "} />
+                                        {/* <HighLight content={postDetailForRetweet?.content ? postDetailForRetweet?.content : " "} /> */}
+                                        {postDetailForRetweet?.content.split('\n').map((line, index) => (
+                                            <React.Fragment key={index}>
+                                                {/* {parentPostDetail[0].content} */}
+                                                <HighLight content={line} />
+                                                <br />
+                                            </React.Fragment>
+                                        ))}
                                     </p>
                                 </div>
                             </div>

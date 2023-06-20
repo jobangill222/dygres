@@ -41,6 +41,10 @@ export default function PostRetweetFrom(props) {
         </Tooltip>
     )
 
+
+
+    const lines = parentPostDetail[0]?.content.split('\n');
+
     return (
         < div className="digital-feeds diffrentiate-bar" >
             <div className="user-detail-bar">
@@ -80,8 +84,13 @@ export default function PostRetweetFrom(props) {
             <div className="user-preview">
                 <div className="Description-bar">
                     <p>
-                        {/* {parentPostDetail[0].content} */}
-                        <HighLight content={parentPostDetail[0]?.content} />
+                        {lines.map((line, index) => (
+                            <React.Fragment key={index}>
+                                {/* {parentPostDetail[0].content} */}
+                                <HighLight content={line} />
+                                <br />
+                            </React.Fragment>
+                        ))}
                     </p>
                 </div>
             </div>

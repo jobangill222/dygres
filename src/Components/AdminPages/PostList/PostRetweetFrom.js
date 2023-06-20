@@ -80,8 +80,14 @@ export default function PostRetweetFrom(props) {
             <div className="user-preview">
                 <div className="Description-bar">
                     <p>
-                        {/* {parentPostDetail[0].content} */}
-                        <HighLight content={parentPostDetail[0]?.content} />
+                        {/* <HighLight content={parentPostDetail[0]?.content} /> */}
+                        {parentPostDetail[0]?.content.split('\n').map((line, index) => (
+                            <React.Fragment key={index}>
+                                {/* {parentPostDetail[0].content} */}
+                                <HighLight content={line} />
+                                <br />
+                            </React.Fragment>
+                        ))}
                     </p>
                 </div>
             </div>
