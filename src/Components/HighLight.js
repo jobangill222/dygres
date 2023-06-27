@@ -51,7 +51,8 @@ export default function HighLight(props) {
     //     '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
 
     // Url pattern
-    const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+(com|org|net|edu|gov|mil|info|biz|io|in|co|me|ly)(\/[^\s]*)?$/i;
+    // const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+(com|org|net|edu|gov|mil|info|biz|io|in|co|me|ly)(\/[^\s]*)?$/i;
+    const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(\/[^\s]*)?$/i;
 
     function isUrl(str) {
         str = str.toString().trim();

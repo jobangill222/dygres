@@ -8,6 +8,7 @@ const PostContent = ({ postContent }) => {
 
   const lines = postContent.split('\n');
 
+
   return (
     <>
       <div className="Description-bar">
@@ -19,7 +20,11 @@ const PostContent = ({ postContent }) => {
               <React.Fragment key={index}>
                 {/* {line} */}
                 <HighLight key={index} content={line} />
-                <br />
+                {line === "" ?
+                  <br />
+                  : null
+                }
+                {/* <br /> */}
               </React.Fragment>
             ))}
           </div>

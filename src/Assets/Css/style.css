@@ -1026,6 +1026,7 @@ ul.weekly-status li.listatus h4 {
   line-height: 22px;
   margin-bottom: 10px !important;
   height: 150px !important;
+  overflow-y: scroll !important;
 }
 .whatsmind-inputbar__control .whatsmind-inputbar__input::placeholder{
   color: var(--base-secondry);

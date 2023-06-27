@@ -15,7 +15,11 @@ const PostContent = ({ postContent }) => {
             <React.Fragment key={index}>
               {/* {line} */}
               <HighLight key={index} content={line} />
-              <br />
+              {line === "" ?
+                <br />
+                : null
+              }
+              {/* <br /> */}
             </React.Fragment>
           ))}
         </p>
