@@ -81,8 +81,8 @@ const EditProfile = () => {
 
     setIsLoading(true);
 
-    console.log("Update gen info function calls");
-    console.log("genInfoFiledsState", genInfoFiledsState);
+    // console.log("Update gen info function calls");
+    // console.log("genInfoFiledsState", genInfoFiledsState);
 
     //Convert to Bodyfrom data
     var bodyFormData = new FormData();
@@ -114,8 +114,9 @@ const EditProfile = () => {
     const imageType = e.target.files[0].type;
     console.log("imageType", imageType);
 
-    if (imageSize > 10485760) {
-      toast("Images must be smaller than 10 MB.");
+    // if (imageSize > 10485760) {
+    if (imageSize > 15728640) {
+      toast("Images must be smaller than 15 MB.");
     }
     else if (imageType !== "image/png" && imageType !== "image/ppg" && imageType !== "image/jpeg") {
       toast("Unsupported image format. Please upload a png, jpg, or .jpeg instead.");

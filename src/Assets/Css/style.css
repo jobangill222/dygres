@@ -1863,8 +1863,9 @@ t .report-tabs li.active {
   padding: 20px 90px 20px 20px !important;
   font-weight: 400;
   font-size: 18px;
-  height: 60px;
-  overflow: hidden;
+  height: 70px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   line-height: 22px;
 }
 
