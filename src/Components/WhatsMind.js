@@ -3,13 +3,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 import { DContext } from "../Context/DContext";
-// import { MentionsInput, Mention } from "react-mentions";
+import { MentionsInput, Mention } from "react-mentions";
 import { useLocation, useNavigate } from "react-router-dom";
 import { EditorContent, useEditor } from "@tiptap/react";
 
 import CharacterCount from "@tiptap/extension-character-count";
 import Document from "@tiptap/extension-document";
-import Mention from "@tiptap/extension-mention";
+// import Mention from "@tiptap/extension-mention";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 
@@ -21,15 +21,24 @@ import Placeholder from "@tiptap/extension-placeholder";
 
 import { MenuBar } from "./TextEditor/Menubar/Menubar";
 import suggestion from "./TextEditor/suggestion";
-import hashtagExtension from "./TextEditor/HashtagExtension";
 
+import FormBox from "./TextEditor/FormBox";
+import provideExampleValue from "./TextEditor/example-value";
 const WhatsMind = (props) => {
   //To change state when post is posted
   const { setIsPostState, placeholderState, setActiveTabState } = props;
 
   //Set create post state
   const [createPostState, setCreatePostState] = useState("");
+  const [mentionsValue, setMentionsValue] = useState("");
 
+  const handleMentionsChange = (event, newValue) => {
+    setMentionsValue(newValue);
+  };
+
+  const handleAddMention = (mention) => {
+    console.log("Added a new mention:", mention);
+  };
   // Function to all api
   const {
     createPostDContext,
@@ -135,61 +144,98 @@ const WhatsMind = (props) => {
   // text editor
   const limit = 280;
 
-  const editor = useEditor({
-    onUpdate: ({ editor }) => {
-      // console.log(editor.getJSON());
+  // const editor = useEditor({
+  //   onUpdate: ({ editor }) => {
+  //     // console.log(editor.getJSON());
+  //   },
+
+  //   extensions: [
+  //     TextStyle.configure({ types: [ListItem.name] }),
+  //     StarterKit.configure({
+  //       bulletList: {
+  //         keepMarks: true,
+  //         keepAttributes: false,
+  //       },
+  //       orderedList: {
+  //         keepMarks: true,
+  //         keepAttributes: false,
+  //       },
+  //     }),
+  //     // Place it here
+  //     Placeholder.configure({
+  //       placeholder: "Write something ….  ",
+  //     }),
+  //     TextAlign.configure({
+  //       types: ["heading", "paragraph"],
+  //     }),
+
+  //     // Mention.configure({
+  //     //   renderLabel({ options, node }) {
+  //     //     console.log(
+  //     //       `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`,
+  //     //       "renderlabel"
+  //     //     );
+  //     //   },
+  //     //   HTMLAttributes: {
+  //     //     class: "mention",
+  //     //   },
+  //     //   suggestion,
+  //     // }),
+
+  //     CharacterCount.configure({
+  //       limit,
+  //     }),
+  //   ],
+  //   // content: `
+  //   //   <p>Write your content here </p>
+  //   // `,
+  // });
+
+  // const percentage = editor
+  //   ? Math.round((100 / limit) * editor.storage.characterCount.characters())
+  //   : 0;
+
+  const users = [
+    {
+      id: "walter",
+      display: "Walter White",
     },
 
-    extensions: [
-      TextStyle.configure({ types: [ListItem.name] }),
-      StarterKit.configure({
-        bulletList: {
-          keepMarks: true,
-          keepAttributes: false,
-        },
-        orderedList: {
-          keepMarks: true,
-          keepAttributes: false,
-        },
-      }),
-      // Place it here
-      Placeholder.configure({
-        placeholder: "Write something ….  ",
-      }),
-      TextAlign.configure({
-        types: ["heading", "paragraph"],
-      }),
+    {
+      id: "jesse",
+      display: "Jesse Pinkman",
+    },
+    {
+      id: "gus",
+      display: 'Gustavo "Gus" Fring',
+    },
+    {
+      id: "saul",
+      display: "Saul Goodman",
+    },
+    {
+      id: "hank",
+      display: "Hank Schrader",
+    },
+    {
+      id: "skyler",
+      display: "Skyler White",
+    },
+    {
+      id: "mike",
+      display: "Mike Ehrmantraut",
+    },
+    {
+      id: "lydia",
+      display: "Lydìã Rôdarté-Qüayle",
+    },
+  ];
 
-      Mention.configure({
-        renderLabel({ options, node }) {
-          console.log(
-            `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`,
-            "renderlabel"
-          );
-        },
-        HTMLAttributes: {
-          class: "mention",
-        },
-        suggestion,
-      }),
-
-      CharacterCount.configure({
-        limit,
-      }),
-    ],
-    // content: `
-    //   <p>Write your content here </p>
-    // `,
-  });
-
-  const percentage = editor
-    ? Math.round((100 / limit) * editor.storage.characterCount.characters())
-    : 0;
-
+  const EnhancedFormBox = provideExampleValue(mentionsValue)(FormBox);
   return (
     <>
       <div className="Whatsmind-bar">
-        <MenuBar editor={editor} />
+        {/* <MenuBar editor={editor} />
         <div
           className="hashtag-popup-container"
           style={{ display: "none" }}
@@ -235,7 +281,19 @@ const WhatsMind = (props) => {
               </Button>
             </div>
           </div>
-        )}
+        )} */}
+        <EnhancedFormBox
+          value={mentionsValue}
+          data={users}
+          onChange={handleMentionsChange}
+          onAdd={handleAddMention}
+        />
+        {/* <FormBox data={users} /> */}
+        <div className="text-end">
+          <Button className="bg-primary text-white" onClick={submitPost}>
+            Submit
+          </Button>
+        </div>
         {/* <Form>
           <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">
             <MentionsInput
@@ -317,16 +375,16 @@ const WhatsMind = (props) => {
                 setCreatePostState(e.target.value);
               }}
             /> */}
-        {/* <p className="word-note">Character {createPostState.length}/420</p> */}
-        {/* <p className="word-note">{420 - createPostState.length}</p> */}
-        {/* <div className="text-end">
+        {/* <p className="word-note">Character {createPostState.length}/420</p>
+            <p className="word-note">{420 - createPostState.length}</p>
+            <div className="text-end">
               <Button className="bg-primary text-white" onClick={submitPost}>
                 Submit
               </Button>
             </div>
           </Form.Group>
-        </Form>  */}
-        {/* } */}
+        </Form> */}{" "}
+        {/* */}
       </div>
     </>
   );
