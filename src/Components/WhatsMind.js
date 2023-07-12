@@ -21,7 +21,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 
 import { MenuBar } from "./TextEditor/Menubar/Menubar";
 import suggestion from "./TextEditor/suggestion";
-import { MyEditor } from "./TextEditor/HashtagExtension";
+import hashtagExtension from "./TextEditor/HashtagExtension";
 
 const WhatsMind = (props) => {
   //To change state when post is posted
@@ -159,6 +159,7 @@ const WhatsMind = (props) => {
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
+
       Mention.configure({
         renderLabel({ options, node }) {
           console.log(
@@ -171,6 +172,7 @@ const WhatsMind = (props) => {
         },
         suggestion,
       }),
+
       CharacterCount.configure({
         limit,
       }),
@@ -187,10 +189,14 @@ const WhatsMind = (props) => {
   return (
     <>
       <div className="Whatsmind-bar">
-        {/* <MenuBar editor={editor} /> */}
-        {/* <EditorContent editor={editor} /> */}
-        <MyEditor />
-        {/* {editor && (
+        <MenuBar editor={editor} />
+        <div
+          className="hashtag-popup-container"
+          style={{ display: "none" }}
+        ></div>
+        <EditorContent editor={editor} />
+
+        {editor && (
           <div>
             <div
               className={`character-count ${
@@ -229,7 +235,7 @@ const WhatsMind = (props) => {
               </Button>
             </div>
           </div>
-        )} */}
+        )}
         {/* <Form>
           <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">
             <MentionsInput
