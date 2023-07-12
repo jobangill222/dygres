@@ -5753,9 +5753,9 @@ li.svggray svg path {
     margin-right: 10px;
   }
 
-  .text-end.save-form-btn {
+  .text-end .save-form-btn {
     text-align: left !important;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .editor-input .form-select {
@@ -6349,90 +6349,6 @@ li.svggray svg path {
 }
 
 
-
-/* text editor  */
-/* mention list */
-.items {
-  padding: 0.2rem;
-  position: relative;
-  border-radius: 0.5rem;
-  background: #FFF;
-  color: rgba(0, 0, 0, 0.8);
-  overflow: hidden;
-  font-size: 0.9rem;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0px 10px 20px rgba(0, 0, 0, 0.1);
+.editor{
+  margin-bottom: 10px;
 }
-
-.item {
-  display: block;
-  margin: 0;
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  border-radius: 0.4rem;
-  border: 1px solid transparent;
-  padding: 0.2rem 0.4rem;
-}
-.item.is-selected {
-  border-color: #000;
-}
-
-/* text editor  */
-.ProseMirror > * + * {
-  margin-top: 1.75em;
-}
- h1,
- h2,
- h3,
-h4,
-h5,
- h6 {
-  line-height: 1.1;
-}
-
-.mention {
-  border: 1px solid #000;
-  border-radius: 0.4rem;
-  padding: 0.1rem 0.3rem;
-  box-decoration-break: clone;
-}
-
-.character-count {
-  margin-top: 1rem;
-  display: flex;
-  align-items: center;
-  color: #68CEF8;
-}
-.character-count--warning {
-  color: #FB5151;
-}
-.character-count__graph {
-  margin-right: 0.5rem;
-}
-.character-count__text {
-  color: #868e96;
-}
-
-.ProseMirror p.is-editor-empty:first-child::before {
-  color: #adb5bd;
-  content: attr(data-placeholder);
-  float: left;
-  height: 0;
-  pointer-events: none;
-}
-
-/* hashtag list  */
-.hashtag-popup {
-  position: absolute;
-  z-index: 999;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 4px;
-  list-style: none;
-}
-
-
-/* menu bar */
-
-/* mention emoji style */
-

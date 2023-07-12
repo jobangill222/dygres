@@ -5,23 +5,8 @@ import { toast } from "react-toastify";
 import { DContext } from "../Context/DContext";
 // import { MentionsInput, Mention } from "react-mentions";
 import { useLocation, useNavigate } from "react-router-dom";
-import { EditorContent, useEditor } from "@tiptap/react";
 
-import CharacterCount from "@tiptap/extension-character-count";
-import Document from "@tiptap/extension-document";
-import Mention from "@tiptap/extension-mention";
-import Paragraph from "@tiptap/extension-paragraph";
-import Text from "@tiptap/extension-text";
-
-import StarterKit from "@tiptap/starter-kit";
-import TextAlign from "@tiptap/extension-text-align";
-import ListItem from "@tiptap/extension-list-item";
-import TextStyle from "@tiptap/extension-text-style";
-import Placeholder from "@tiptap/extension-placeholder";
-
-import { MenuBar } from "./TextEditor/Menubar/Menubar";
-import suggestion from "./TextEditor/suggestion";
-import FormBox from "./TextEditor/FormBox";
+import MyEditor from "./TextEditor/MyEditor";
 
 const WhatsMind = (props) => {
   //To change state when post is posted
@@ -125,168 +110,11 @@ const WhatsMind = (props) => {
     }
   };
 
-  const handleUserSuggestion = (id, display) => {
-    setCreatePostState(createPostState.replace(/@[^\s]*\s?$/, `@${display} `));
-  };
-  const handleHashSuggestion = (id, display) => {
-    setCreatePostState(createPostState.replace(/#[^\s]*\s?$/, `${display} `));
-  };
-
-  // text editor
-  const limit = 280;
-
-  const editor = useEditor({
-    onUpdate: ({ editor }) => {
-      // console.log(editor.getJSON());
-    },
-
-    extensions: [
-      TextStyle.configure({ types: [ListItem.name] }),
-      StarterKit.configure({
-        bulletList: {
-          keepMarks: true,
-          keepAttributes: false,
-        },
-        orderedList: {
-          keepMarks: true,
-          keepAttributes: false,
-        },
-      }),
-      // Place it here
-      Placeholder.configure({
-        placeholder: "Write something ….  ",
-      }),
-      TextAlign.configure({
-        types: ["heading", "paragraph"],
-      }),
-
-      Mention.configure({
-        renderLabel({ options, node }) {
-          console.log(
-            `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`,
-            "renderlabel"
-          );
-        },
-        HTMLAttributes: {
-          class: "mention",
-        },
-        suggestion,
-      }),
-
-      CharacterCount.configure({
-        limit,
-      }),
-    ],
-    // content: `
-    //   <p>Write your content here </p>
-    // `,
-  });
-
-  const percentage = editor
-    ? Math.round((100 / limit) * editor.storage.characterCount.characters())
-    : 0;
-
-  const users = [
-    {
-      id: "walter",
-      display: "Walter White",
-    },
-
-    {
-      id: "jesse",
-      display: "Jesse Pinkman",
-    },
-    {
-      id: "gus",
-      display: 'Gustavo "Gus" Fring',
-    },
-    {
-      id: "saul",
-      display: "Saul Goodman",
-    },
-    {
-      id: "hank",
-      display: "Hank Schrader",
-    },
-    {
-      id: "skyler",
-      display: "Skyler White",
-    },
-    {
-      id: "mike",
-      display: "Mike Ehrmantraut",
-    },
-    {
-      id: "lydia",
-      display: "Lydìã Rôdarté-Qüayle",
-    },
-  ];
-
-  const [mentionsValue, setMentionsValue] = useState("");
-
-  const handleMentionsChange = (event, newValue) => {
-    setMentionsValue(newValue);
-  };
-
-  const handleAddMention = (mention) => {
-    console.log("Added a new mention:", mention);
-  };
   return (
     <>
       <div className="Whatsmind-bar">
-        <FormBox
-          value={mentionsValue}
-          data={users}
-          onChange={handleMentionsChange}
-          onAdd={handleAddMention}
-        />
-        {/* <MenuBar editor={editor} />
-        <div
-          className="hashtag-popup-container"
-          style={{ display: "none" }}
-        ></div>
-        <EditorContent editor={editor} />
+        <MyEditor submitPost={submitPost} />
 
-        {editor && (
-          <div>
-            <div
-              className={`character-count ${
-                editor.storage.characterCount.characters() === limit
-                  ? "character-count--warning"
-                  : ""
-              }`}
-            >
-              <svg
-                height="20"
-                width="20"
-                viewBox="0 0 20 20"
-                className="character-count__graph"
-              >
-                <circle r="10" cx="10" cy="10" fill="#e9ecef" />
-                <circle
-                  r="5"
-                  cx="10"
-                  cy="10"
-                  fill="transparent"
-                  stroke="currentColor"
-                  strokeWidth="10"
-                  strokeDasharray={`calc(${percentage} * 31.4 / 100) 31.4`}
-                  transform="rotate(-90) translate(-20)"
-                />
-                <circle r="6" cx="10" cy="10" fill="white" />
-              </svg>
-
-              <div className="character-count__text">
-                {editor.storage.characterCount.characters()}/{limit} characters
-              </div>
-            </div>
-            <div className="text-end">
-              <Button className="bg-primary text-white" onClick={submitPost}>
-                Submit
-              </Button>
-            </div>
-          </div>
-        )} */}
         {/* <Form>
           <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">
             <MentionsInput
