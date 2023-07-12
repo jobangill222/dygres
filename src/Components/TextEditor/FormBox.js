@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { EditorState } from "draft-js";
+import { EditorState, convertToRaw } from "draft-js";
+
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { MentionsInput, Mention } from "react-mentions";
-
-const FormBox = ({ value, data, onChange, onAdd }) => {
+import styles from "./styles";
+const FormBox = ({ data, value, onChange, onAdd }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  // const [value, setValue] = useState("");
 
-  const handleEditorChange = (newEditorState) => {
-    setEditorState(newEditorState);
-    onChange(newEditorState);
-  };
+  // const handleEditorChange = (newEditorState) => {
+  //   setEditorState(newEditorState);
+  //   setValue(convertToRaw(newEditorState.getCurrentContent()).blocks[0].text);
+  // };
+
   const neverMatchingRegex = /($a)/;
 
   let dataEmo = [
@@ -48,7 +51,11 @@ const FormBox = ({ value, data, onChange, onAdd }) => {
       <MentionsInput
         value={value}
         onChange={onChange}
+        style={styles}
         placeholder={"Press '#' for hashtag, mention people using '@'"}
+        // value={editorState}
+        // onChange={handleEditorChange}
+        allowSpaceInQuery={true}
       >
         <Mention
           trigger="@"
@@ -56,22 +63,18 @@ const FormBox = ({ value, data, onChange, onAdd }) => {
           markup="@__id__"
           data={data}
           regex={/@(\S+)/}
-          style={{ backgroundColor: "lightblue" }}
+          style={styles}
           appendSpaceOnAdd
         />
         <Mention
           trigger="#"
+          displayTransform={(username) => `#${username}`}
           markup="#__id__"
-          data={queryEmojis}
           regex={neverMatchingRegex}
-          style={{ backgroundColor: "lightyellow" }}
+          data={queryEmojis}
           appendSpaceOnAdd
         />
       </MentionsInput>
-      <Editor
-        editorState={editorState}
-        onEditorStateChange={handleEditorChange}
-      />
     </div>
   );
 };
