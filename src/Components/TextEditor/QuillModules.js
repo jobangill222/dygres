@@ -11,5 +11,6 @@ export const modules = {
     [{ list: "ordered" }, { list: "bullet" }],
     ["user-list"], // Custom option for user list
   ],
+
   // Add custom blot for user list option
 };

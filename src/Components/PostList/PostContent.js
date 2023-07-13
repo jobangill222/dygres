@@ -1,37 +1,35 @@
-import React from "react";
-// import { highlightName } from "../../helper/highlightName";
-import HighLight from "../HighLight";
+import React, { useEffect, useRef } from "react";
+import { convertUrlsToLinks, createMarkup } from "../../helper/editorhelper";
+
 const PostContent = ({ postContent }) => {
+  const handleClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const clickedElement = event.target.textContent;
+    alert(`Clicked on ${clickedElement}`);
+  };
 
-  // console.log('postContentpostContent', postContent)
-  // const finalPostContent = highlightName(postContent);
+  const contentRef = useRef(null);
 
-  const lines = postContent.split('\n');
+  useEffect(() => {
+    if (contentRef.current) {
+      const atElements = contentRef.current.querySelectorAll(".highlighted");
 
+      atElements.forEach((element) => {
+        element.addEventListener("click", handleClick);
+      });
+    }
+  }, [postContent]);
+
+  let content = createMarkup(postContent);
 
   return (
     <>
-      <div className="Description-bar">
-        <p>
-          {/* <HighLight content={postContent} /> */}
-
-          <div>
-            {lines.map((line, index) => (
-              <React.Fragment key={index}>
-                {/* {line} */}
-                <HighLight key={index} content={line} />
-                {line === "" ?
-                  <br />
-                  : null
-                }
-                {/* <br /> */}
-              </React.Fragment>
-            ))}
-          </div>
-
-        </p>
-      </div>
-
+      <div
+        ref={contentRef}
+        className="Description-bar"
+        dangerouslySetInnerHTML={content}
+      ></div>
     </>
   );
 };

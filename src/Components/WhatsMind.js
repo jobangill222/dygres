@@ -64,6 +64,7 @@ const WhatsMind = (props) => {
             });
 
             setCreatePostState("");
+
             setActiveTabState("Global");
 
             searchParams.delete("text");
@@ -109,11 +110,16 @@ const WhatsMind = (props) => {
       callback(newArray);
     }
   };
-
+  console.log(createPostState);
   return (
     <>
       <div className="Whatsmind-bar">
-        <MyEditor submitPost={submitPost} />
+        <MyEditor setValue={setCreatePostState} value={createPostState} />
+        <div className="text-end">
+          <Button className="bg-primary text-white" onClick={submitPost}>
+            Submit
+          </Button>
+        </div>
 
         {/* <Form>
           <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">

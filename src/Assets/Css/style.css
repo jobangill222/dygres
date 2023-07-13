@@ -6352,3 +6352,9 @@ li.svggray svg path {
 .editor{
   margin-bottom: 10px;
 }
+
+.highlighted{
+  /* font-weight: bold; */
+  color:var(--base-primary)
+
+}
