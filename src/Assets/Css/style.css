@@ -12,8 +12,8 @@ body {
   background-color: var(--base-lightgray);
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
   color: var(--base-default-text);
   -webkit-font-smoothing: antialiased;
 }
@@ -70,7 +70,7 @@ a:hover {
   flex: 0 0 90%;
 }
 .Dropdown-listing .arrowbar .notification-content .notification-text p{
-  line-height: 24px !important;
+  line-height: 1.5rem !important;
 }
 .notification-content .notification-text p {
   line-height: 20px !important;
@@ -81,8 +81,8 @@ a:hover {
 .notification-text p {
   margin: 0px 5px 0px 0px !important;
   font-weight: 400 !important;
-  font-size: 18px !important;
-  line-height: 30px !important;
+  font-size: 1.125rem !important;
+  line-height: 1.875rem !important;
   color: var(--base-text-lightgray);
 }
 
@@ -129,7 +129,7 @@ a:hover {
   font-style: normal;
   font-weight: 600;
   font-size: 18.5965px;
-  line-height: 22px;
+  line-height: 1.375rem;
   transition: 0.3s ease-in-out;
 }
 
@@ -165,8 +165,8 @@ h6 {
 
 p {
   font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
   color: var(--base-default-text);
 }
 
@@ -221,8 +221,8 @@ select:-webkit-autofill:focus {
   border-radius: 5px;
   font-style: normal;
   font-weight: 500;
-  font-size: 18.5965px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   transition: 0.3s ease-in-out;
 }
 
@@ -243,7 +243,7 @@ input.form-control {
 }
 
 .Userdetail-editorbar p.word-note {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .level1 {
@@ -426,8 +426,8 @@ ul.trending-hashtag-list {
 ul.trending-hashtag-list li {
   margin-right: 20px;
   font-weight: 400;
-  font-size: 22px;
-  line-height: 30px;
+  font-size: 1.375rem;
+  line-height: 1.875rem;
   color: #6e7180;
 }
 ul {
@@ -451,8 +451,8 @@ ul.trending-hashtag-list {
 ul.trending-hashtag-list li {
   margin-right: 20px;
   font-weight: 400;
-  font-size: 22px;
-  line-height: 30px;
+  font-size: 1.375rem;
+  line-height: 1.875rem;
   /* identical to box height, or 136% */
   color: #6e7180;
 }
@@ -460,14 +460,14 @@ ul.trending-hashtag-list li {
 ul.trending-hashtag-list li.hashtaglist {
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
-  line-height: 30px;
+  font-size: 1.375rem;
+  line-height: 1.875rem;
   color: #00c350;
 }
 ul.trending-hashtag-list li.hashtagcounts {
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   text-align: right;
   color: #aaaaaa;
 }
@@ -498,7 +498,7 @@ ul.trending-hashtag-list li.hashtagcounts {
 
 .restrict-logins li p {
   margin: 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1;
 }
 
@@ -531,7 +531,7 @@ ul.trending-hashtag-list li.hashtagcounts {
   align-items: center;
   justify-content: center;
   margin-left: 10px;
-  font-size: 14px;
+  font-size: 0.875rem;
   cursor: pointer;
 }
 .beforeproceed-sestion .beforeproceed {
@@ -543,14 +543,14 @@ ul.trending-hashtag-list li.hashtagcounts {
 ul.trending-hashtag-list li.hashtaglist {
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
-  line-height: 30px;
+  font-size: 1.375rem;
+  line-height: 1.875rem;
   color: #00c350;
 }
 .trending-hashtag-list li.hashtagcounts {
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   text-align: right;
   color: #aaaaaa;
 }
@@ -581,8 +581,8 @@ ul.trending-hashtag-list li.hashtaglist {
 .user-dropdown .Dropdown-listing h4 {
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: .75rem;
+  line-height: 1.125rem;
   margin-bottom: 10px;
 }
 
@@ -593,8 +593,8 @@ ul.trending-hashtag-list li.hashtaglist {
   justify-content: flex-start;
   margin-bottom: 10px;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 28px;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
   cursor: pointer;
   color: var(--base-secondry);
   text-decoration: none;
@@ -608,8 +608,8 @@ ul.trending-hashtag-list li.hashtaglist {
 .user-dropdown .Dropdown-listing li svg {
   margin-right: 15px;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   display: flex;
   align-items: center;
 }
@@ -662,7 +662,7 @@ ul.trending-hashtag-list li.hashtaglist {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 0.875rem;
   cursor: pointer;
   border: 1px solid var(--base-purewhite);
   background: var(--base-purewhite);
@@ -710,8 +710,8 @@ ul.trending-hashtag-list li.hashtaglist {
 .user-detail-listing li p {
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
   text-align: center;
   margin-bottom: 5px;
 }
@@ -720,16 +720,16 @@ ul.trending-hashtag-list li.hashtaglist {
   margin: 0;
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 0.875rem;
+  line-height: 1rem;
   text-align: center;
 }
 
 .User-detail .username {
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 19px;
+  font-size: 1.125rem;
+  line-height: 1.188rem;
   margin: 15px 0 5px 0;
 }
 
@@ -756,7 +756,7 @@ ul.trending-hashtag-list li.hashtaglist {
   width: 100%;
   font-weight: 400;
   font-size: 15.8162px;
-  line-height: 19px;
+  line-height: 1.188rem;
   border-radius: 8px;
   border: 1px solid #afafaf;
   background: #fafafa;
@@ -787,7 +787,7 @@ ul.socialmediaicon li a {
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   text-decoration: none;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 1.25rem;
   color: #000000;
   transition: 0.5s ease;
   cursor: pointer;
@@ -795,13 +795,13 @@ ul.socialmediaicon li a {
 .terms-content h4 {
   color: #212121;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 1.375rem;
   margin-bottom: 10px;
   margin-top: 20px;
 }
 .terms-content p {
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.375rem;
   margin-bottom: 10px;
 }
 .terms-content h4:first-child {
@@ -811,17 +811,17 @@ ul.socialmediaicon li a {
   padding: 0;
   background: transparent !important;
   margin-left: 10px;
-  font-size: 16px;
+  font-size: 1rem;
   color: #000000 !important;
-  line-height: 1;
+  line-height: 1rem;
 }
 /* small.text-danger {
   line-height: 20px;
-  font-size: 14px;
+  font-size: 0.875rem;
   display: block;
 } */
 .terms-content h5 {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 500;
   color: #212121;
   margin-bottom: 10px;
@@ -835,7 +835,7 @@ ul.socialmediaicon li a {
   position: absolute;
   top: 45%;
   right: 15px;
-  font-size: 18px;
+  font-size: 1.125rem;
   transform: translate(0px, -50%);
 }
 .search-input-form {
@@ -878,8 +878,8 @@ ul.socialmediaicon li a {
   text-decoration: none;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 1rem;
+  line-height: 1.25rem;
   color: var(--base-text-lightgray);
   text-transform: capitalize;
   transition: 0.3s ease-in-out;
@@ -887,7 +887,7 @@ ul.socialmediaicon li a {
 }
 .navbar-nav a.homeicon {
   margin-right: 15px;
-  font-size: 24px;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 .thredsbar .sidebar-profile .sidebar-menu li a.active,
@@ -948,7 +948,7 @@ textarea {
 
 .rules-sestion .modal-dialog .rule-section p {
   text-align: left !important;
-  font-size: 18px;
+  font-size: 1.125rem;
   position: relative;
   padding-left: 20px;
 }
@@ -999,10 +999,10 @@ ul.weekly-status li.listatus {
   text-align: left;
 }
 ul.weekly-status li.listatus h6 {
-  font-size: 12px;
+  font-size: .75rem;
 }
 ul.weekly-status li.listatus h4 {
-  font-size: 18px !important;
+  font-size: 1.125rem !important;
   line-height: 1 !important;
   margin-bottom: 5px !important;
 }
@@ -1010,7 +1010,7 @@ ul.weekly-status li.listatus h4 {
   transform: rotate(180deg);
 }
 .weekly-status li .numberbar {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: #000000;
   margin: 0 !important;
 }
@@ -1022,8 +1022,8 @@ ul.weekly-status li.listatus h4 {
   border: 1px solid #aaaaaa;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px !important;
-  line-height: 22px;
+  font-size: 1.125rem !important;
+  line-height: 1.375rem;
   margin-bottom: 10px !important;
   height: 150px !important;
   overflow-y: scroll !important;
@@ -1049,7 +1049,7 @@ ul.weekly-status li.listatus h4 {
 }
 .infotooltip ul li {
   position: relative;
-  font-size: 14px;
+  font-size: 0.875rem;
   text-align: left;
   padding-left: 10px;
   margin-bottom: 10px;
@@ -1068,15 +1068,15 @@ ul.weekly-status li.listatus h4 {
   color: var(--base-placeholder);
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
 }
 
 .Whatsmind-bar form .word-note {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 17px;
+  font-size: 1rem;
+  line-height: 1.063rem;
   color: var(--base-darkgray);
   margin-bottom: 0;
 }
@@ -1096,8 +1096,8 @@ ul.profiletabsbar li a {
   background: var(--base-offgray);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   text-transform: capitalize;
   color: var(--base-offtextgray);
 }
@@ -1154,7 +1154,7 @@ ul.profiletabsbar li:last-child a {
   align-items: center;
   justify-content: flex-end;
   margin-top: 30px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   color: #40a1db;
 }
@@ -1180,8 +1180,8 @@ ul.profiletabsbar li:last-child a {
 .user-detail-bar .detailleft .user-detail h4 {
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   margin-bottom: 2px;
 }
 
@@ -1208,8 +1208,8 @@ ul.profiletabsbar li:last-child a {
 .user-detail-bar .detailleft .user-detail .user-availbility h5 {
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.063rem;
   margin-bottom: 0;
 }
 
@@ -1223,8 +1223,8 @@ ul.profiletabsbar li:last-child a {
   justify-content: flex-start;
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: .75rem;
+  line-height: .875rem;
   margin-top: 5px;
 }
 
@@ -1298,7 +1298,7 @@ ul.profiletabsbar li:last-child a {
 .usertable table tbody tr td .sendbtn .btn {
   width: auto;
   padding: 6px 10px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 .profile-feature-image::after {
   content: "";
@@ -1324,8 +1324,8 @@ ul.profiletabsbar li:last-child a {
   margin-right: 6px;
   font-style: normal;
   font-weight: 600;
-  font-size: 16.6025px;
-  line-height: 20px;
+  font-size: 1rem;
+  line-height: 1.25rem;
   width: 50px;
   border-radius: 50%;
   background: #9c9c9c;
@@ -1336,7 +1336,7 @@ ul.profiletabsbar li:last-child a {
   position: absolute;
   top: 70%;
   right: 20px;
-  font-size: 15px;
+  font-size: 0.938rem;
   transform: translate(0px, -50%);
 }
 .formerrorset {
@@ -1347,19 +1347,19 @@ ul.profiletabsbar li:last-child a {
   top: 50% !important;
   position: absolute;
   right: 20px;
-  font-size: 15px;
+  font-size: 0.938rem;
   transform: translate(0px, -50%);
 }
 .digital-feeds .user-active-timer ul li {
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.063rem;
 }
 
 .digital-feeds .user-active-timer ul li svg {
   margin-right: 5px;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .digital-feeds .Description-bar {
@@ -1380,8 +1380,8 @@ t .report-tabs li.active {
 .digital-feeds .Description-bar p {
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
   margin-bottom: 0;
   word-break: break-all;
 }
@@ -1417,16 +1417,16 @@ t .report-tabs li.active {
   margin-left: 15px;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   color: var(--base-text-lightgray);
   cursor: pointer;
   margin-bottom: 5px;
 }
 .action-bar ul li p {
   font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   color: var(--base-text-lightgray);
   cursor: pointer;
   margin-bottom: 0px;
@@ -1447,7 +1447,7 @@ t .report-tabs li.active {
 
 .action-bar ul li svg {
   margin-right: 6px;
-  font-size: 20px;
+  font-size: 1.25rem;
   transition: 0.3s ease;
 }
 .share-popup .modal-body {
@@ -1518,8 +1518,8 @@ t .report-tabs li.active {
   padding: 5px 10px;
   margin-bottom: 5px;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 28px;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
   display: flex;
   align-items: center;
   color: var(--base-secondry);
@@ -1538,16 +1538,16 @@ t .report-tabs li.active {
 .hoverdropdown .dropdown-menu .dropdown-item p {
   margin: 0;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 28px;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
   display: flex;
   align-items: center;
   color: var(--base-secondry);
 }
 
 .hoverdropdown .dropdown-menu .dropdown-item span {
-  font-size: 12px;
-  line-height: 19px;
+  font-size: .75rem;
+  line-height: 1.188rem;
 }
 .Dropdown-listing .arrowbar {
   height: 300px;
@@ -1555,7 +1555,7 @@ t .report-tabs li.active {
   overflow-x: hidden;
 }
 .Dropdown-listing .arrowbar .notification-content .notification-text p {
-  font-size: 14px !important;
+  font-size: 0.875rem !important;
 }
 
 .Dropdown-listing .arrowbar .notification-content .levelbar {
@@ -1588,8 +1588,8 @@ t .report-tabs li.active {
   justify-content: flex-start;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: var(--base-whitesure);
   margin-bottom: 10px;
 }
@@ -1605,8 +1605,8 @@ t .report-tabs li.active {
   padding: 20px 25px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 1rem;
+  line-height: 1.625rem;
   color: var(--base-default-text);
   border: none;
   min-height: auto !important;
@@ -1622,7 +1622,7 @@ t .report-tabs li.active {
 
 .user-edit button svg {
   margin-right: 10px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .user-edit button {
@@ -1637,8 +1637,8 @@ t .report-tabs li.active {
 .hoverdropdown button {
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   background: transparent !important;
   color: var(--base-text-lightgray);
   cursor: pointer;
@@ -1697,8 +1697,8 @@ t .report-tabs li.active {
 }
 
 .retweetmodal .digital-feeds.diffrentiate-bar .Description-bar p {
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
 }
 
 .thredsbar span.no-comment ~ .reply-post {
@@ -1732,8 +1732,8 @@ t .report-tabs li.active {
 .thredsbar h4 {
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-secondry);
   margin-bottom: 20px;
 }
@@ -1751,8 +1751,8 @@ t .report-tabs li.active {
   background: transparent;
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: .75rem;
+  line-height: .875rem;
   color: #60c1a3;
   transition: 0.3s ease;
   min-width: 92px;
@@ -1812,8 +1812,8 @@ t .report-tabs li.active {
 .welcomepopup .welcomepopupbar p {
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
   /* or 167% */
   text-align: center;
   color: #545456;
@@ -1833,8 +1833,8 @@ t .report-tabs li.active {
 .welcomepopup .welcomepopupbar h4 {
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   /* identical to box height */
   text-align: center;
   margin-top: 30px;
@@ -1862,11 +1862,11 @@ t .report-tabs li.active {
   border-radius: 8px;
   padding: 20px 90px 20px 20px !important;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.125rem;
   height: 70px;
   overflow-x: hidden;
   overflow-y: scroll;
-  line-height: 22px;
+  line-height: 1.375rem;
 }
 
 .Notfy-block {
@@ -1885,8 +1885,8 @@ t .report-tabs li.active {
   outline: none !important;
   box-shadow: none !important;
   font-weight: 700;
-  font-size: 22px;
-  line-height: 26px;
+  font-size: 1.375rem;
+  line-height: 1.625rem;
   letter-spacing: 0.02em;
   /* color: var(--base-primary) !important; */
   cursor: pointer;
@@ -1964,8 +1964,8 @@ t .report-tabs li.active {
 .user-detaiting-listing li {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-align: center;
   word-break: break-word;
   color: var(--base-text-lightgray);
@@ -1978,8 +1978,8 @@ t .report-tabs li.active {
 .Actions-modal .modal-header .modal-title.h4 {
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
-  line-height: 26px;
+  font-size: 1.375rem;
+  line-height: 1.625rem;
   color: #000000;
 }
 
@@ -1990,7 +1990,7 @@ t .report-tabs li.active {
 
 .Actions-modal .modal-header button.btn-close {
   opacity: 1;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   transition: 0.3s ease;
 }
@@ -2025,7 +2025,7 @@ t .report-tabs li.active {
   padding: 0;
   border: none;
   background: transparent;
-  font-size: 16px;
+  font-size: 1rem;
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   cursor: pointer;
   -webkit-background-clip: text;
@@ -2046,7 +2046,7 @@ t .report-tabs li.active {
   box-shadow: 0px 10px 30px #0000000d;
   padding: 15px;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .Actions-modal .modal-body .aggree-li {
@@ -2072,8 +2072,8 @@ t .report-tabs li.active {
 .Actions-modal .modal-body .aggree-li li .user-del h4 {
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: var(--base-secondry);
   margin: 0;
 }
@@ -2081,8 +2081,8 @@ t .report-tabs li.active {
 .Actions-modal .modal-body .aggree-li li .user-del h6 {
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.063rem;
   color: var(--base-text-lightgray);
   margin-bottom: 0;
 }
@@ -2105,8 +2105,8 @@ t .report-tabs li.active {
   padding: 15px 20px;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   display: inline-block;
   color: var(--base-text-lightgray);
 } */
@@ -2114,8 +2114,8 @@ t .report-tabs li.active {
   margin: 0;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   display: block;
   color: #000000;
 }
@@ -2159,8 +2159,8 @@ t .report-tabs li.active {
   border-radius: 40px;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: var(--base-secondry);
 }
 
@@ -2183,7 +2183,7 @@ t .report-tabs li.active {
 }
 
 .empty-bar h4 {
-  font-size: 24px;
+  font-size: 1.5rem;
   margin: 0;
 }
 
@@ -2216,16 +2216,16 @@ t .report-tabs li.active {
   right: 10px;
   margin: 0;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: var(--base-text-lightgray);
 }
 
 .buymore-modal .Awrds-li h5 {
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: var(--base-text-lightgray);
 }
 
@@ -2245,15 +2245,15 @@ t .report-tabs li.active {
   top: -20px;
   font-style: normal;
   font-weight: 500;
-  line-height: 22px;
+  line-height: 1.375rem;
   color: #aaaaaa;
-  font-size: 14px;
+  font-size: 0.875rem;
   margin: 0;
 }
 
 .buymore-modal .Awrds-li h3 {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 29px;
   color: var(--base-secondry);
 }
@@ -2278,8 +2278,8 @@ t .report-tabs li.active {
   padding: 9px 22px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   color: var(--base-text-lightgray);
   text-transform: capitalize;
   margin-bottom: 10px;
@@ -2289,8 +2289,8 @@ t .report-tabs li.active {
 .Editreportmodal form label.form-label {
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-secondry);
   display: block;
   text-align: left;
@@ -2302,8 +2302,8 @@ t .report-tabs li.active {
   border-radius: 8px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   color: #000000;
   padding: 14px 20px;
 }
@@ -2364,7 +2364,7 @@ t .report-tabs li.active {
 .share-media li p {
   font-weight: 400;
   font-size: 14.22px;
-  line-height: 17px;
+  line-height: 1.063rem;
   text-align: center;
   color: var(--base-text-lightgray);
   margin: 0;
@@ -2403,7 +2403,7 @@ t .report-tabs li.active {
 .share-media li p {
   font-weight: 400;
   font-size: 14.22px;
-  line-height: 17px;
+  line-height: 1.063rem;
   text-align: center;
   color: var(--base-text-lightgray);
   margin: 0;
@@ -2447,8 +2447,8 @@ t .report-tabs li.active {
 .notification-dropdown .notification-head h4 {
   font-style: normal;
   font-weight: 400 !important;
-  font-size: 18px !important;
-  line-height: 22px !important;
+  font-size: 1.125rem !important;
+  line-height: 1.375rem !important;
   color: var(--base-primary);
   margin: 0 !important;
 }
@@ -2456,8 +2456,8 @@ t .report-tabs li.active {
 .notification-dropdown .notification-head h6 {
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.063rem;
   color: var(--base-primary);
   margin: 0;
 }
@@ -2500,8 +2500,8 @@ t .report-tabs li.active {
 .notification-list ul li:last-child .userdetail h6 {
   font-style: normal;
   font-weight: 500;
-  font-size: 12.5743px;
-  line-height: 15px;
+  font-size: 0.75rem;
+  line-height: 0.938rem;
   color: var(--base-secondry);
   margin: 0;
 }
@@ -2509,8 +2509,8 @@ t .report-tabs li.active {
 .notification-list ul li:last-child .userdetail p {
   font-style: normal;
   font-weight: 400;
-  font-size: 9.77998px;
-  line-height: 12px;
+  font-size: 0.563rem;
+  line-height: 0.75rem;
   color: var(--base-text-lightgray);
   margin: 0;
 }
@@ -2519,8 +2519,8 @@ t .report-tabs li.active {
   margin: 0;
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 21px;
+  font-size: 1rem;
+  line-height: 1.313rem;
   color: var(--base-default-text);
 }
 
@@ -2528,8 +2528,8 @@ t .report-tabs li.active {
   margin: 0;
   font-style: normal;
   font-weight: 700;
-  font-size: 11px;
-  line-height: 21px;
+  font-size: 0.688rem;
+  line-height: 1.313rem;
   color: var(--base-default-text);
 }
 
@@ -2541,8 +2541,8 @@ t .report-tabs li.active {
 .notification-dropdown .notification-foot a {
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: var(--base-primary);
   border: none !important;
   background: transparent !important;
@@ -2571,8 +2571,8 @@ t .report-tabs li.active {
 .notification-title ul li .btn-nill {
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   color: var(--base-primary);
   border: none;
   background: transparent;
@@ -2584,8 +2584,8 @@ t .report-tabs li.active {
   border-bottom: 1px solid var(--base-border);
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
   color: var(--darkmode-offwhite);
   margin-bottom: 20px;
 }
@@ -2594,8 +2594,8 @@ t .report-tabs li.active {
   margin: 0;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
   color: var(--darkmode-offwhite);
   cursor: pointer;
 }
@@ -2677,7 +2677,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
-  line-height: 30px;
+  line-height: 1.875rem;
   color: var(--base-purewhite);
 }
 
@@ -2689,8 +2689,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   h6.text-lightgray {
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
   color: var(--base-purewhite);
 }
 
@@ -2698,7 +2698,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-style: normal;
   font-weight: 500;
   font-size: 12.9057px;
-  line-height: 15px;
+  line-height: 0.938rem;
   color: #939d9e;
 }
 
@@ -2718,7 +2718,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-style: normal;
   font-weight: 600;
   font-size: 18.5965px;
-  line-height: 22px;
+  line-height: 1.375rem;
   color: var(--base-purewhite);
   border-radius: 5px;
   padding: 14px 32px;
@@ -2743,8 +2743,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   padding: 13px 40px;
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   text-transform: capitalize;
   border: none !important;
   border-radius: 5px;
@@ -2788,8 +2788,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .aboutline h4 {
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-secondry);
   margin-bottom: 10px;
 }
@@ -2798,8 +2798,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin: 0;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
   color: var(--base-default-text);
 }
 
@@ -2861,11 +2861,11 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .Profile-Upload-media .save-form-btn button svg {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .Profile-Upload-media .save-form-btn button svg {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .editor-input {
@@ -2875,8 +2875,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .editor-input .form-label {
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-secondry);
   margin-bottom: 15px;
 }
@@ -2901,8 +2901,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .account-verify label.form-label {
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-secondry);
   margin-bottom: 15px;
 }
@@ -2921,8 +2921,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .account-verify .verify-input button {
   padding: 18px 30px;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-primary);
 }
 
@@ -3014,7 +3014,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .Auth-bar .Authbar-innerbox h4 {
   font-weight: 700;
   font-size: 32px;
-  line-height: 28px;
+  line-height: 1.75rem;
   display: flex;
   align-items: center;
   color: var(--base-primary);
@@ -3023,8 +3023,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 
 .Auth-bar .Authbar-innerbox p {
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: #000000;
   text-align: center;
 }
@@ -3041,8 +3041,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 
 .Auth-bar .Authbar-innerbox form .authinputbar label.form-label {
   font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
   color: var(--base-offwhite);
   margin-bottom: 8px;
   text-transform: capitalize;
@@ -3163,7 +3163,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-style: normal;
   font-weight: 500;
   font-size: 18.5965px;
-  line-height: 22px;
+  line-height: 1.375rem;
   transition: 0.3s ease-in-out;
   border: none;
   cursor: pointer;
@@ -3187,16 +3187,16 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   .form-check
   label.form-check-label {
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: #222446;
 }
 
 .Auth-bar .Authbar-innerbox form .authcheckbox .btn-simple a {
   text-decoration: none;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-align: right;
   color: var(--base-primary);
 }
@@ -3218,8 +3218,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .Auth-bar .Authbar-innerbox form .Noted-bar h6 {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: var(--base-offwhite);
   margin: 0;
 }
@@ -3233,8 +3233,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   text-align: center;
   margin-top: 30px;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: var(--base-primary);
 }
 
@@ -3244,8 +3244,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 
 .dashboard-title-bar h4 {
   font-weight: 600;
-  font-size: 46px;
-  line-height: 58px;
+  font-size: 2.875;
+  line-height: 3.625;
   display: flex;
   align-items: center;
   letter-spacing: 0.03em;
@@ -3262,8 +3262,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   padding: 16px 50px 16px 24px;
   font-style: normal;
   font-weight: 500;
-  font-size: 21.9591px;
-  line-height: 25px;
+  font-size: 1.313rem;
+  line-height: 1.563rem;
   color: #858688;
   appearance: none;
   background-image: url("../../../public/images/arrowdown.png");
@@ -3317,8 +3317,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin: 0;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-inputautofill);
 }
 
@@ -3338,8 +3338,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin: 0;
   font-style: normal;
   font-weight: 600;
-  font-size: 34.38px;
-  line-height: 41px;
+  font-size: 2.125rem;
+  line-height: 2.563rem;
   color: var(--base-secondry);
 }
 
@@ -3351,8 +3351,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 
 .dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar p {
   font-weight: 400;
-  font-size: 22.504px;
-  line-height: 27px;
+  font-size: 1.375rem;
+  line-height: 1.688rem;
   margin: 0 0 0 8px;
 }
 
@@ -3374,8 +3374,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin: 8px 0 0 0;
   font-style: normal;
   font-weight: 400;
-  font-size: 22.504px;
-  line-height: 27px;
+  font-size: 1.375rem;
+  line-height: 1.688rem;
   color: #4c4d4f;
 }
 
@@ -3404,8 +3404,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
     #ffffff;
   padding: 15px 30px !important;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 23px;
+  font-size: 1.125rem;
+  line-height: 1.438rem;
   letter-spacing: 0.03em;
   color: var(--base-primary);
   border: none;
@@ -3415,8 +3415,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   padding: 15px 30px;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
+  font-size: 1.125rem;
+  line-height: 1.438rem;
   color: #272727;
   border: none;
 }
@@ -3439,8 +3439,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin: 0;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
+  font-size: 1.125rem;
+  line-height: 1.438rem;
   color: #272727;
 }
 
@@ -3471,8 +3471,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .Admin-modal .modal-body p {
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-secondry);
   text-align: center;
   margin: 0;
@@ -3494,8 +3494,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   padding: 14px 25px;
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.063rem;
   color: var(--base-purewhite);
   background: var(--base-primary) !important;
   border-radius: 5px;
@@ -3512,8 +3512,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   border: 1px solid #dcdcdc;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   color: #272727;
 }
 
@@ -3523,7 +3523,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   left: 20px;
   transform: translate(0px, -50%);
   color: #b5b5c3;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .Titlebar-btns .searchbar input::placeholder {
@@ -3564,8 +3564,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   justify-content: flex-start;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: var(--base-secondry);
 }
 
@@ -3606,8 +3606,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .verification-bar .verification-media-upload .verify-content .formbar label {
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   color: #929292;
   margin-bottom: 5px;
   display: block;
@@ -3642,8 +3642,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   justify-content: center;
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.188rem;
   text-align: center;
   color: #8b8b8b;
 }
@@ -3668,8 +3668,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   justify-content: center;
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.063rem;
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -3690,7 +3690,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   border: none;
   cursor: pointer;
   padding: 0;
-  font-size: 16px;
+  font-size: 1rem;
 }
 .tabswithbutotn .buttonoverall-size {
   position: absolute;
@@ -3723,8 +3723,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   margin: 0;
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--base-secondry);
 }
 .addawards-editorbar {
@@ -3749,8 +3749,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 
 p.uploaded-note {
   margin: 5px 0 0 0;
-  font-size: 15px;
-  line-height: 1;
+  font-size: 0.938rem;
+  line-height: 1rem;
 }
 
 p.uploaded-note b {
@@ -3912,7 +3912,7 @@ p.uploaded-note b {
 }
 
 [darkmode] #theme-switch .switch-icon svg {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: var(--base-purewhite);
 }
 
@@ -4358,8 +4358,8 @@ ul.sidebar-menu {
     background: #272728;
 }
 .user-active-timer ul li {
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.063rem;
 }
 
 [darkmode] .Editreportmodal form textarea {
@@ -4377,7 +4377,7 @@ ul.sidebar-menu {
 
 .user-active-timer ul li svg {
   margin-right: 5px;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .Linechart,
@@ -4418,8 +4418,8 @@ ul.sidebar-menu {
 }
 
 .notfound-content p {
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   margin-bottom: 30px;
 }
 
@@ -4433,8 +4433,8 @@ ul.sidebar-menu {
   padding: 20px 25px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 1rem;
+  line-height: 1.625rem;
   color: var(--base-default-text);
   border: none;
 }
@@ -4455,8 +4455,8 @@ ul.sidebar-menu {
 
 .imagebarupload p.succesful {
   margin: 0px 0 0 10px;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 1rem;
+  line-height: 1.125rem;
 }
 .shareurl-bar {
   background: #ffffff;
@@ -4475,13 +4475,13 @@ ul.sidebar-menu {
   padding-right: 60px;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.063rem;
   color: #aaaaaa;
   word-break: break-all;
 }
 .shareurl-bar svg {
-  font-size: 20px;
+  font-size: 1.25rem;
   position: absolute;
   right: 20px;
   top: 50%;
@@ -4544,7 +4544,7 @@ ul.sidebar-menu {
   color: #ffffff;
 }
 .Mob-Footerbar .mob-foot-menu li a {
-  font-size: 16px;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4570,7 +4570,7 @@ ul.sidebar-menu {
   border-radius: 50%;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown .Dropdown-listing ul li a svg {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 .Mob-Footerbar .mob-foot-menu li a img {
   width: 30px;
@@ -4603,8 +4603,8 @@ ul.sidebar-menu {
 
 .pagetitle {
   font-weight: 600;
-  font-size: 30px;
-  line-height: 38px;
+  font-size: 1.875rem;
+  line-height: 2.375rem;
   letter-spacing: 0.03em;
   text-transform: capitalize;
   margin-bottom: 20px;
@@ -4674,7 +4674,7 @@ ul.sidebar-menu {
 }
 
 .empty-bar p {
-  font-size: 16px;
+  font-size: 1rem;
   margin: 0;
 }
 .particitionbar {
@@ -4701,22 +4701,22 @@ ul.sidebar-menu {
 }
 
 .small .digital-feeds .Description-bar p {
-  font-size: 16px;
+  font-size: 1rem;
 }
 .tabswithbutotn .buttonoverall-size ul li .sm {
-  font-size: 16px;
+  font-size: 1rem;
 }
 .tabswithbutotn .buttonoverall-size ul li .md {
   font-size: 19px;
 }
 .tabswithbutotn .buttonoverall-size ul li .lg {
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 .medium .digital-feeds .Description-bar p {
   font-size: 19px;
 }
 .large .digital-feeds .Description-bar p {
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 .sidebar-profile .feature-image {
   position: relative;
@@ -4736,8 +4736,8 @@ ul.sidebar-menu {
 
 .package-listtb tr th {
   font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: #aaaaaa;
 }
 .package-listtb tr td img {
@@ -4749,8 +4749,8 @@ ul.sidebar-menu {
 }
 .package-listtb tr td {
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: #171717;
 }
 
@@ -4780,7 +4780,7 @@ ul.sidebar-menu {
   right: 0;
   background: linear-gradient(to left, #98d185, #40adc3) !important;
   padding: 5px;
-  font-size: 16px;
+  font-size: 1rem;
   color: #ffffff;
   width: 25px;
   height: 25px;
@@ -4845,7 +4845,7 @@ ul.sidebar-menu {
   margin: 0 3px 0 0 !important;
 }
 .buymore-modal .Awrds-li h3 span {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 /* Responsive css  */
 @media (max-width: 1599px) {
@@ -4855,16 +4855,16 @@ ul.sidebar-menu {
 
 ul.trending-hashtag-list li {
     margin-right: 10px;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 
 ul.trending-hashtag-list li.hashtaglist {
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 1rem;
+    line-height: 1.75rem;
 }
   .account-verify .verify-input button {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .sidebar-profile .feature-image {
     position: relative;
@@ -4890,7 +4890,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .reply-post form .btn {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   input.form-control {
@@ -4902,9 +4902,9 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .editor-input .form-label {
-    font-size: 16px;
+    font-size: 1rem;
     margin-bottom: 10px;
-    line-height: 19px;
+    line-height: 1.188rem;
   }
 
   .header-nav .navbar-nav .user-dropdown img {
@@ -4929,8 +4929,8 @@ ul.trending-hashtag-list li.hashtaglist {
     border-radius: 8px;
     padding: 15px 90px 15px 15px;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 1rem;
+    line-height: 1.125rem;
   }
 
   .profile-feature-image {
@@ -4951,8 +4951,8 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .aboutline p {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .profile-user-detail .user-detail-bar .detailleft .avatar-img {
@@ -4966,7 +4966,7 @@ ul.trending-hashtag-list li.hashtaglist {
     .user-detail
     h4.text-secondry {
     font-size: 26px;
-    line-height: 28px;
+    line-height: 1.75rem;
   }
 
   .profile-user-detail
@@ -4975,7 +4975,7 @@ ul.trending-hashtag-list li.hashtaglist {
     .user-detail
     .user-availbility
     h6.text-lightgray {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .dashboard-title-bar h4 {
@@ -4993,38 +4993,38 @@ ul.trending-hashtag-list li.hashtaglist {
 
   .usertable table thead th,
   .usertable table tbody tr td {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .dashboard-title-bar select.form-select {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   .dashboard-boxes .dash-boxes-in ul.weekly-status li h4 {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .dashboard-boxes .dash-boxes-in ul.userstatus li h5 {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   .dashboard-boxes .dash-boxes-in ul.userstatus li .iconbar {
     width: 44px;
     height: 44px;
-    font-size: 20px !important;
+    font-size: 1.25rem !important;
     margin-right: 10px;
   }
 
   .dashboard-boxes .dash-boxes-in ul.userstatus li svg {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .dashboard-boxes .dash-boxes-in ul.weekly-status h5 {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   .dashboard-boxes .dash-boxes-in ul.weekly-status .valuebar p {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   .profile-user-detail .user-detail-listing {
@@ -5036,20 +5036,20 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .notification-content p.notify {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .Whatsmind-bar form textarea,
   .whatsmind-inputbar__input {
     height: 100px;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 15px;
   }
 
   .user-detaiting-listing li {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
   }
 
   .User-detail {
@@ -5089,26 +5089,26 @@ ul.trending-hashtag-list li.hashtaglist {
   .Whatsmind-bar form textarea,
   .whatsmind-inputbar__input {
     height: 120px !important;
-    font-size: 16px;
+    font-size: 1rem;
     position: relative !important;
   }
 
   .Whatsmind-bar form textarea::placeholder,
   .whatsmind-inputbar__input::placeholder {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .digital-feeds .user-active-timer ul li {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .digital-feeds .user-active-timer ul li svg {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   .User-detail .username {
     margin: 15px 0 10px 0;
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .user-detaiting-listing {
@@ -5117,7 +5117,7 @@ ul.trending-hashtag-list li.hashtaglist {
 
   .sidebar-profile .sidebar-menu li a {
     padding: 10px 10px 10px 15px;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .digital-feeds .Description-bar {
@@ -5131,13 +5131,13 @@ ul.trending-hashtag-list li.hashtaglist {
   .user-edit textarea.form-control,
   .user-edit input {
     padding: 15px;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     margin-bottom: 15px;
   }
 
   .sidebar-profile .sidebar-menu li a svg {
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-right: 15px;
   }
 
@@ -5165,7 +5165,7 @@ ul.trending-hashtag-list li.hashtaglist {
 
   /* Handle */
   .accordionitem::-webkit-scrollbar-thumb {
-    background: url("../../../public/images/scrollericon.png");
+    /* background: url("../../../public/images/scrollericon.png"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -5178,23 +5178,23 @@ ul.trending-hashtag-list li.hashtaglist {
   }
   .action-bar ul li {
     margin-left: 10px;
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: normal;
   }
   .action-bar ul li p {
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: normal;
   }
   .hoverdropdown button,
   .action-bar ul li .accordion-button {
-    line-height: 17px;
-    font-size: 14px;
+    line-height: 1.063rem;
+    font-size: 0.875rem;
     font-weight: normal;
   }
 
   .Description-bar p {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .sidebar-profile .feature-image img {
@@ -5204,7 +5204,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .user-detail-listing li p {
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-bottom: 5px;
   }
 
@@ -5212,8 +5212,8 @@ ul.trending-hashtag-list li.hashtaglist {
     padding: 10px 45px 10px 15px;
     width: 100%;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 0.875rem;
+    line-height: 1.063rem;
     border-radius: 8px;
   }
 }
@@ -5232,7 +5232,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
   .action-bar ul li svg {
     margin-right: 4px;
-    font-size: 16px;
+    font-size: 1rem;
     transition: 0.3s ease;
 }
   .action-bar .flagbtnbar li button {
@@ -5243,15 +5243,15 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 
 @media (max-width: 1299px){
-  .action-bar ul li .list-text {font-size: 12px;}
+  .action-bar ul li .list-text {font-size: .75rem;}
   .action-bar ul li .list-text span.number {
-      font-size: 16px;
+      font-size: 1rem;
   }
   .action-bar ul li , .action-bar ul li p {
-      font-size: 12px;
+      font-size: .75rem;
   }
   .action-bar ul li span.number {
-      font-size: 16px;
+      font-size: 1rem;
   }
 }
 
@@ -5265,7 +5265,7 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 .action-bar ul li svg {
   margin-right: 2px;
-  font-size: 14px;
+  font-size: 0.875rem;
   transition: 0.3s ease;
 }
 }
@@ -5277,7 +5277,7 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 @media (min-width: 991px) {
   .action-bar ul li .list-text, .action-bar ul li .list-text span.number, .action-bar ul li, .action-bar ul li p {
-    font-size: 14px;
+    font-size: 0.875rem;
 }
   .navbar-expand-lg .navbar-collapse {
     display: none !important;
@@ -5351,8 +5351,8 @@ ul.trending-hashtag-list li.hashtaglist {
     justify-content: flex-start;
     margin-bottom: 10px;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 28px;
+    font-size: 0.875rem;
+    line-height: 1.75rem;
     cursor: pointer;
     text-decoration: none;
     width: 100%;
@@ -5499,7 +5499,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .dashboard-title-bar select.form-select {
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-top: 20px;
   }
 
@@ -5543,7 +5543,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .profile-user-detail .user-edit-cover ul li a {
-    font-size: 16px;
+    font-size: 1rem;
     padding: 12px 20px;
   }
 
@@ -5556,7 +5556,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .notfound-content h4 {
-    font-size: 20px;
+    font-size: 1.25rem;
     margin-bottom: 20px;
   }
 
@@ -5566,7 +5566,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .notfound-content p {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .profile-user-detail .user-detail-bar .detailleft .avatar-img {
@@ -5587,7 +5587,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .notification-title ul li .btn-nill {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .profile-user-detail .user-detail-listing {
@@ -5675,7 +5675,7 @@ li.svggray svg path {
     fill: var(--base-text-lightgray);
 }
   .mobilemenu ul.web-none li a {
-    font-size: 20px;
+    font-size: 1.25rem;
     color: var(--base-default-text);
   }
 
@@ -5792,11 +5792,11 @@ li.svggray svg path {
     margin-left: 10px;
   }
   .action-bar ul li .list-text, .action-bar ul li .list-text span.number, .action-bar ul li, .action-bar ul li p {
-    font-size: 14px;
+    font-size: 0.875rem;
 }
   .action-bar ul li svg,
   .action-bar ul li .accordion-button svg {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   .hoverdropdown button,
@@ -5808,7 +5808,7 @@ li.svggray svg path {
   }
 
   .action-bar ul li span.number {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .thredsbar .threads-rows {
@@ -5867,16 +5867,16 @@ li.svggray svg path {
 
 @media (max-width: 767px) {
   .digital-feeds .Description-bar p{
-    font-size: 18px !important;
+    font-size: 1.125rem !important;
   }
   .medium .digital-feeds .Description-bar p {
     font-size: 19px !important;
 }
 .large .digital-feeds .Description-bar p {
-  font-size: 22px !important;
+  font-size: 1.375rem !important;
 }
 .small .digital-feeds .Description-bar p {
-  font-size: 16px !important;
+  font-size: 1rem !important;
 }
   .user-detail-bar .detailleft .avatar-img {
     margin-right: 5px !important;
@@ -5895,8 +5895,8 @@ li.svggray svg path {
     border-radius: 8px;
     padding: 10px 60px 10px 10px !important;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1rem;
     height: 40px;
 }
 .thredsbar {
@@ -5908,7 +5908,7 @@ li.svggray svg path {
   overflow: hidden;
 }
 .reply-post form .btn {
-  font-size: 14px;
+  font-size: 0.875rem;
   right: 10px;
   top: 40%;
 }
@@ -5919,7 +5919,7 @@ li.svggray svg path {
   margin-left: 10px;
 }
 .action-bar ul li .list-text span.number{
-  font-size: 14px !important;
+  font-size: 0.875rem !important;
 }
   .reply-post {
     margin-top: 20px;
@@ -5947,7 +5947,7 @@ li.svggray svg path {
     font-size: 0;
   }
   .digital-feeds .user-active-timer ul li {
-    font-size: 12px;
+    font-size: .75rem;
   }
   .notification-content .notification-text {
     max-width: 90%;
@@ -5975,13 +5975,13 @@ li.svggray svg path {
     margin-bottom: 15px;
   }
   ul.trending-hashtag-list li {
-    font-size: 18px !important;
+    font-size: 1.125rem !important;
     margin-right: 10px;
   }
   .pagetitle {
     font-weight: 600;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
     letter-spacing: 0.03em;
     text-transform: capitalize;
     margin-bottom: 20px;
@@ -5996,32 +5996,32 @@ li.svggray svg path {
   .terms-content h4 {
     color: #212121;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1rem;
     margin-bottom: 10px;
     margin-top: 20px;
   }
   .terms-content h5 {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     color: #212121;
     margin-bottom: 10px;
     margin-top: 10px;
   }
   .terms-content p {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
     margin-bottom: 10px;
   }
   .awards-modal .modal-header button.btn-add {
     padding: 10px 10px;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1rem;
   }
   .notification-text p {
-    font-size: 14px !important;
+    font-size: 0.875rem !important;
   }
   .notification-title h4 {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   .dashboard-title-bar .sendbtn {
     flex: 0 0 50%;
@@ -6046,7 +6046,7 @@ li.svggray svg path {
   }
 
   .restrict-logins li p {
-    font-size: 12px;
+    font-size: .75rem;
   }
 
   .restrict-logins {
@@ -6122,7 +6122,7 @@ li.svggray svg path {
     .userleftside
     .user-detail
     h4 {
-    font-size: 14px;
+    font-size: 0.875rem;
     margin-bottom: 2px;
   }
 
@@ -6144,7 +6144,7 @@ li.svggray svg path {
     padding-top: 40px;
 }
 .empty-bar h4 {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 .empty-bar img {
   margin: 0 auto 20px auto;
@@ -6159,8 +6159,8 @@ li.svggray svg path {
     right: 10px;
 }
   .Mob-Footerbar .mob-foot-menu li a, .Mob-Footerbar .mob-foot-menu li.user-dropdown {
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1rem;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
   font-size: 30px !important;
@@ -6173,7 +6173,7 @@ li.svggray svg path {
   font-weight: 500;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown .Dropdown-listing ul li a svg {
-  font-size: 18px !important;
+  font-size: 1.125rem !important;
   width: auto !important;
   height: auto !important;
 }
@@ -6185,15 +6185,15 @@ li.svggray svg path {
 }
 
 .action-bar ul li svg, .action-bar ul li .accordion-button svg {
-  font-size: 16px;
+  font-size: 1rem;
 }
 .Whatsmind-bar {
   margin-bottom: 20px;
 }
   .imagebarupload p.succesful {
     margin: 0px 0 0 10px;
-    font-size: 12px;
-    line-height: 18px;
+    font-size: .75rem;
+    line-height: 1.125rem;
   }
   ul.trending-hashtag-list {
     padding: 10px;
@@ -6201,7 +6201,7 @@ li.svggray svg path {
   }
   .btn-primary {
     padding: 8px 14px;
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .user-detail-bar .detailleft .awards-bar li img {
@@ -6209,7 +6209,7 @@ li.svggray svg path {
     height: 24px !important;
   }
   .viewmorebtn {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1;
   }
   .user-detail-bar .detailleft .awards-bar {
@@ -6236,7 +6236,7 @@ li.svggray svg path {
     justify-content: space-between;
   }
   .buymore-modal .Awrds-li h3 span {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .notification-content .userleftside {
     display: flex;
@@ -6269,7 +6269,7 @@ li.svggray svg path {
     display: block;
   }
   .notification-dropdown .notification-content .notification-text p {
-    font-size: 14px !important;
+    font-size: 0.875rem !important;
     display: inline !important;
   }
   .notification-dropdown {
@@ -6278,14 +6278,14 @@ li.svggray svg path {
     right: -50px !important;
   }
   .profile-user-detail .user-edit-cover ul li a {
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 10px 10px;
   }
   .profile-user-detail .user-edit-cover ul li a,
   .profile-user-detail .user-edit-cover ul li button {
     font-weight: 500;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
     border-radius: 5px;
     padding: 10px 10px;
   }
@@ -6311,7 +6311,7 @@ li.svggray svg path {
 
   .action-bar .flagbtnbar li button {
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .profiletabsbar {
@@ -6337,11 +6337,11 @@ li.svggray svg path {
 }
 @media (max-width: 360px){
   .Mob-Footerbar .mob-foot-menu li a, .Mob-Footerbar .mob-foot-menu li.user-dropdown {
-    font-size: 12px;
-    line-height: 14px;
+    font-size: .75rem;
+    line-height: .875rem;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
-  font-size: 14px !important;
+  font-size: 0.875rem !important;
   width: 30px !important;
   height: 30px !important;
   margin-bottom: 0px;
