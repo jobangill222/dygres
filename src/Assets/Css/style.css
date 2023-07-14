@@ -6361,7 +6361,7 @@ li.svggray svg path {
 }
 
 /* dropdown  */
-#user-dropdown {
+#user-dropdown, #user-edit-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
@@ -6375,12 +6375,12 @@ li.svggray svg path {
 }
 
 #user-dropdown div,
-#tag-dropdown div {
+#tag-dropdown div , #user-edit-dropdown div, #tag-edit-dropdown div{
   cursor: pointer;
   padding: 5px;
 }
 
-#tag-dropdown {
+#tag-dropdown, #tag-edit-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
