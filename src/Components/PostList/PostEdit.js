@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 import { DContext } from "../../Context/DContext";
 import { MentionsInput, Mention } from "react-mentions";
-import MyEditor from "../TextEditor/MyEditor";
+import Editor from "../TextEditor/Editor";
 
 const PostEdit = (props) => {
   //DContext
@@ -141,7 +141,7 @@ const PostEdit = (props) => {
                     </Form.Group>
                 </Form> */}{" "}
       </div>
-      <MyEditor value={editContent} setValue={setEditContent} />
+      <Editor value={editContent} setValue={setEditContent} />
       <div className="text-end">
         <Button
           className="outline-primary text-white "

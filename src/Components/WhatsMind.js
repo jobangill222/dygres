@@ -6,7 +6,7 @@ import { DContext } from "../Context/DContext";
 // import { MentionsInput, Mention } from "react-mentions";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import MyEditor from "./TextEditor/MyEditor";
+import Editor from "./TextEditor/Editor";
 
 const WhatsMind = (props) => {
   //To change state when post is posted
@@ -114,7 +114,7 @@ const WhatsMind = (props) => {
   return (
     <>
       <div className="Whatsmind-bar">
-        <MyEditor setValue={setCreatePostState} value={createPostState} />
+        <Editor setValue={setCreatePostState} value={createPostState} />
         <div className="text-end">
           <Button className="bg-primary text-white" onClick={submitPost}>
             Submit

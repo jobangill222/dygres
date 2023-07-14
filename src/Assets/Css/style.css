@@ -6351,6 +6351,7 @@ li.svggray svg path {
 
 .editor{
   margin-bottom: 10px;
+  position:relative;
 }
 
 .highlighted{
@@ -6358,3 +6359,37 @@ li.svggray svg path {
   color:var(--base-primary)
 
 }
+
+/* dropdown  */
+#user-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 10px;
+  width: 200px;
+  z-index: 10; /* Ensure the dropdown appears above other elements */
+}
+
+#user-dropdown div,
+#tag-dropdown div {
+  cursor: pointer;
+  padding: 5px;
+}
+
+#tag-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 10px;
+  width: 200px;
+  z-index: 1; /* Ensure the dropdown appears above other elements */
+}
+

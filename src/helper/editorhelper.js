@@ -40,3 +40,65 @@ export const handleDropdown = (
     }
   }
 };
+
+export const debounce = (func, delay) => {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => func.apply(this, args), delay);
+  };
+};
+
+export const searchQuery = async (
+  type,
+  suggestionWhilePostingDContext,
+  query,
+  setLoading,
+  setCachedList,
+  cachedList,
+  setList
+) => {
+  try {
+    setLoading(true);
+    // setQuery(query);
+
+    // Check if the results are already cached
+    if (cachedList[query]) {
+      setList(cachedList[query]);
+    } else {
+      const results = await suggestionWhilePostingDContext(query && query);
+      const newArray = results.list.map((item) => {
+        return {
+          id: item._id,
+          profileImage: item?.profileImage
+            ? item.profileImage
+            : "/images/user.png",
+          display: `${type === "@" ? `@${item.username}` : item.name}`,
+        };
+      });
+      // Cache the results
+      setCachedList((prevState) => ({
+        ...prevState,
+        [query]: newArray,
+      }));
+
+      setList(newArray);
+    }
+  } catch (error) {
+    console.log(error, "error user List ");
+  } finally {
+    setLoading(false);
+  }
+};
+
+export const modifyString = (str) => {
+  let modifiedStr = str;
+
+  if (str.startsWith("@")) {
+    modifiedStr = str.substring(1); // Remove '@' symbol from the beginning
+  } else if (str.startsWith("#")) {
+    modifiedStr = str.substring(1); // Remove '#' symbol from the beginning
+  }
+
+  return modifiedStr;
+};
