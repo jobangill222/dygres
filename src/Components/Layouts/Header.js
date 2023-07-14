@@ -17,6 +17,7 @@ import { DContext } from "../../Context/DContext";
 import { useNavigate } from "react-router-dom";
 import SingleNotificationList from '../Notification/SingleNotificationList';
 import { FcAbout } from 'react-icons/fc';
+import { TbUserPlus } from 'react-icons/tb';
 
 import RulesModal from "../Modals/RulesModal";
 
@@ -127,7 +128,7 @@ const Header = () => {
               {userToken ? (
                 <>
                   <Link to='/new' className="homeicon">
-                    <BiHome />
+                    <BiHome color="var(--base-primary)" />
                   </Link>
                 </>
               ) :
@@ -138,6 +139,13 @@ const Header = () => {
 
               <div className="text-lightgray" href="#">
                 <DarkModeSwitch />
+              </div>
+
+              <div className="text-lightgray" href="#">
+                <div className="user_icon">
+                  <span>6</span>
+                <TbUserPlus/>
+                </div>
               </div>
 
               <div className="cursor-pointer helpicon" href="#" onClick={() => setIsShowHelpCenterModal(true)}>

@@ -373,6 +373,7 @@ input.form-control {
 
 .header-nav .navbar-nav {
   display: flex;
+  column-gap: 30px;
   align-items: center;
   justify-content: flex-end;
 }
@@ -555,12 +556,12 @@ ul.trending-hashtag-list li.hashtaglist {
   color: #aaaaaa;
 }
 .user-dropdown {
-  margin-left: 30px;
   position: relative;
 }
-.helpicon {
+
+/* .helpicon {
   margin-left: 30px;
-}
+} */
 
 .user-dropdown .Dropdown-listing {
   position: absolute;
@@ -682,38 +683,41 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 
 .User-detail .usermain-img {
-  margin-top: -50px;
+  margin-top: -75px;
   position: relative;
   z-index: 2;
-  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  column-gap: 14px;
 }
 
 .User-detail .usermain-img img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 50%;
+  width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--base-green);
 }
 
 .user-detail-listing {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 .user-detail-listing li {
   text-align: center;
-  margin-right: 15px;
+  margin-right: 40px;
 }
 
 .user-detail-listing li p {
   font-style: normal;
   font-weight: 500;
-  font-size: 1.125rem;
+  font-size: 30px;
   line-height: 1.125rem;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 17px;
 }
 
 .user-detail-listing li h6 {
@@ -758,7 +762,7 @@ ul.trending-hashtag-list li.hashtaglist {
   font-size: 15.8162px;
   line-height: 1.188rem;
   border-radius: 8px;
-  border: 1px solid #afafaf;
+  border: 1px solid #d1d1d1;
   background: #fafafa;
   box-shadow: 0px 0px 5px #8080803d;
 }
@@ -886,7 +890,6 @@ ul.socialmediaicon li a {
   background-image: inherit;
 }
 .navbar-nav a.homeicon {
-  margin-right: 15px;
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -1161,6 +1164,7 @@ ul.profiletabsbar li:last-child a {
 
 .user-detail-bar .detailleft {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 }
@@ -2166,7 +2170,6 @@ t .report-tabs li.active {
 
 .levelbar {
   display: inline-flex !important;
-  top: -12px !important;
   position: relative;
 }
 
@@ -2650,13 +2653,14 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .profile-user-detail {
-  margin-top: -100px;
+  margin-top: 30px;
 }
 
 .profile-user-detail .user-detail-bar .detailleft .avatar-img {
-  width: 238px;
-  height: 238px;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
+  border: 5px solid var(--base-primary);
 }
 
 .profile-user-detail .user-detail-bar .detailleft .avatar-img img {
@@ -2676,9 +2680,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   h4.text-secondry {
   font-style: normal;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 48px;
   line-height: 1.875rem;
-  color: var(--base-purewhite);
 }
 
 .profile-user-detail
@@ -2689,15 +2692,17 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   h6.text-lightgray {
   font-style: normal;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 24px;
   line-height: 1.875rem;
-  color: var(--base-purewhite);
 }
-
+.text_level{
+  margin-top: 24px;
+  column-gap: 18px;
+}
 .profile-user-detail .user-detail-bar .detailleft .user-detail .levelbar {
   font-style: normal;
   font-weight: 500;
-  font-size: 12.9057px;
+  font-size: 18px;
   line-height: 0.938rem;
   color: #939d9e;
 }
@@ -2709,10 +2714,34 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .profile-user-detail .user-edit-cover ul li {
-  margin-left: 12px;
+  margin-bottom: 25px;
+}
+.green-button{
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18.5965px;
+  line-height: 1.375rem;
+  color: var(--base-green);
+  border: 1px solid var(--base-green);
+  border-radius: 5px;
+  padding: 11px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  background: var(--base-purewhite);
+}
+.green-button:hover{
+  background: var(--base-primary)!important;
+  color: var(--base-purewhite);
+  text-decoration: none !important;
 }
 
-.profile-user-detail .user-edit-cover ul li a,
+
 .profile-user-detail .user-edit-cover ul li button {
   background: rgb(0 0 0 / 30%);
   font-style: normal;
@@ -2769,7 +2798,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .profile-user-detail .user-detail-listing {
-  margin-top: 40px;
+  margin-top: 15px;
 }
 
 .notification-content.readmark p.notify {
@@ -4293,9 +4322,9 @@ ul.sidebar-menu {
   color: var(--base-purewhite);
 }
 
-.level1 {
+/* .level1 {
   color: var(--base-level1) !important;
-}
+} */
 
 [darkmode] .Whatsmind-bar form textarea {
   color: var(--base-purewhite);
@@ -4956,8 +4985,8 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .profile-user-detail .user-detail-bar .detailleft .avatar-img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
   }
 
   .profile-user-detail
@@ -4965,7 +4994,7 @@ ul.trending-hashtag-list li.hashtaglist {
     .detailleft
     .user-detail
     h4.text-secondry {
-    font-size: 26px;
+    font-size: 28px;
     line-height: 1.75rem;
   }
 
@@ -5057,13 +5086,13 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .User-detail .usermain-img img {
-    width: 80px;
-    height: 80px;
+    width: 130px;
+    height: 130px;
     object-fit: cover;
   }
 
   .User-detail .usermain-img {
-    margin-top: -60px;
+    margin-top: -75px;
   }
 
   .user-dropdown,
@@ -5209,7 +5238,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .search-input-form .user-searchform input {
-    padding: 10px 45px 10px 15px;
+    padding: 15px 45px 15px 15px;
     width: 100%;
     font-weight: 400;
     font-size: 0.875rem;
@@ -5481,9 +5510,7 @@ ul.trending-hashtag-list li.hashtaglist {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-  .digital-tabs {
-    padding-top: 50px;
-  }
+  
   .tabswithbutotn .buttonoverall-size {
     position: absolute;
     top: 0px;
@@ -5531,6 +5558,7 @@ ul.trending-hashtag-list li.hashtaglist {
     .user-detail
     h4.text-secondry {
     color: var(--base-primary);
+    font-size: 22px;
   }
 
   .profile-user-detail
@@ -5570,8 +5598,8 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .profile-user-detail .user-detail-bar .detailleft .avatar-img {
-    width: 110px;
-    height: 110px;
+    width: 180px;
+    height: 180px;
   }
 
   .action-bar ul li .accordion-button {
@@ -5600,11 +5628,13 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .profile-user-detail .user-detail-bar .detailleft {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
-
+  .profile-user-detail .user-edit-cover ul li {
+    margin-bottom: 10px;
+}
   .profile-user-detail {
-    margin-top: -60px;
+    margin-top: 30px;
     margin-bottom: 50px;
   }
 
@@ -5713,8 +5743,11 @@ li.svggray svg path {
   }
 
   .user-detail-bar .user-edit-cover ul {
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
+  profile-user-detail .user-edit-cover ul li {
+    margin-bottom: 15px;
+}
   .userleftside {
     align-items: flex-start;
   }
@@ -5776,7 +5809,7 @@ li.svggray svg path {
   }
 
   .profile-user-detail {
-    margin-top: -60px;
+    margin-top: 20px;
     margin-bottom: 0px;
   }
 
@@ -6137,9 +6170,19 @@ li.svggray svg path {
   .action-bar {
     align-items: flex-start;
 }
+.text_level{
+  margin-top: 0;
+}
+.profile-user-detail .user-edit-cover ul li {
+  margin-bottom: 8px;
+}
 }
 
 @media (max-width: 574px) {
+  .user-detail-bar .user-edit-cover ul {
+    justify-content: flex-start;
+}
+
   .digital-feeds .digital-feeds {
     padding-top: 40px;
 }
@@ -6346,4 +6389,44 @@ li.svggray svg path {
   height: 30px !important;
   margin-bottom: 0px;
 }
+}
+
+.profile-feature-image {
+  display: none;
+}
+
+.user-detail-bar {
+  align-items: flex-end;
+}
+.user-detail {
+  margin-top: 24px;
+}
+.navbar-nav svg {
+  font-size: 22px;
+  color: #AAAAAA;
+}
+.user_icon span{
+  color: var(--base-primary);
+  margin-top: 6px;
+}
+.user_icon{
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+}
+.sidebar-menu.col-lg-3{
+  margin-top: 65px;
+}
+.user_info_sidebar p{
+font-size: 15px;
+font-weight: 600;
+margin-bottom: 8px;
+}
+.user_info_sidebar a{
+  border: 1px solid var(--base-green);
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: var(--base-green);
+  font-size: 15px;
+  background: var(--base-purewhite);
 }

@@ -145,6 +145,7 @@ const Profile = () => {
                             <div className="user-detail">
 
                                 <h4 className="text-secondry">{user?.name ? user.name : ""}</h4>
+                                <div className="d-flex align-items-center text_level">
                                 <div className="user-availbility">
                                     <h6 className="text-lightgray">@{user?.username}</h6>
                                 </div>
@@ -161,7 +162,29 @@ const Profile = () => {
                                         }
                                     </OverlayTrigger>
                                 </div>
-                                <ul className="user-detail-listing">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="user-edit-cover">
+                            <ul>
+                                <li>
+                                    <Link className="green-button" to="/editprofile"><BsPencil />Edit profile</Link>
+                                </li>
+                                <li>
+                                    {/* <Link to="/"><BsFillImageFill />Edit Cover</Link> */}
+                                    {/* <button onChange={uploadCoverImage}>
+                                        <BsFillImageFill />
+                                        <input type='file' title="Cover image must be 1920 x 422 px." />Edit Cover
+                                    </button> */}
+                                </li>
+                                {file &&
+                                    <li onClick={submitHandler}>
+                                        <button className='savebtn' type='button'>Save</button>
+                                    </li>
+                                }
+                            </ul>
+                            <ul className="user-detail-listing">
                                     <li>
                                         <p className="text-secondry">{userStats?.totalPosts}</p>
                                         <h6 className="text-offwhite">Posts</h6>
@@ -179,28 +202,6 @@ const Profile = () => {
                                         <h6 className="text-offwhite">Awards</h6>
                                     </li>
                                 </ul>
-                            </div>
-
-                        </div>
-                        <div className="user-edit-cover">
-                            <ul>
-                                <li>
-                                    <Link to="/editprofile"><BsPencil />Edit profile</Link>
-                                </li>
-                                <li>
-                                    {/* <Link to="/"><BsFillImageFill />Edit Cover</Link> */}
-                                    <button onChange={uploadCoverImage}>
-                                        <BsFillImageFill />
-                                        <input type='file' title="Cover image must be 1920 x 422 px." />Edit Cover
-                                    </button>
-
-                                </li>
-                                {file &&
-                                    <li onClick={submitHandler}>
-                                        <button className='savebtn' type='button'>Save</button>
-                                    </li>
-                                }
-                            </ul>
                         </div>
                     </div>
 

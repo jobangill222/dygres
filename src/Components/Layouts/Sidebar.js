@@ -144,20 +144,24 @@ const Sidebar = () => {
             {isShowFoundationalRulePopup && <FoundationalRuleModal isShowFoundationalRulePopup={isShowFoundationalRulePopup} setIsShowFoundationalRuleModal={setIsShowFoundationalRuleModal} />}
 
             <div className="sidebar-profile">
-                <div className="feature-image">
+                {/* <div className="feature-image">
                     <img src={user && user?.coverImage ? user.coverImage : "/images/feature.png"} alt="feature-img" />
 
-                    {/* <input type="file" className="uploadimg-input" /> */}
+                    {/* <input type="file" className="uploadimg-input" />
                     <Link to={isDummyUser() ? '/login' : "/editprofile"}>
                         <div className="edit-bar">
                             <BsPencil className="text-primary" />
                         </div>
                     </Link>
-                </div>
+                </div> */}
                 <div className="User-detail">
                     <OverlayTrigger placement="top" overlay={tooltip}>
                         <div className="usermain-img">
                             <img src={user?.profileImage ? user.profileImage : `/images/user-120.png`} alt="user-main-img" />
+                            <div class="user_info_sidebar">
+                                <p>Amanpreet Singh</p>
+                                <Link to={isDummyUser() ? '/login' : "/editprofile"}><span><BsPencil/></span>&nbsp; Edit Profile</Link>
+                            </div>
                         </div>
                     </OverlayTrigger>
                     <ul className="user-detail-listing">
@@ -178,14 +182,14 @@ const Sidebar = () => {
                             <h6 className="text-offwhite">Awards</h6>
                         </li>
                     </ul>
-                    <h4 className="text-secondry username text-center">{user ? user?.name : user?.username}</h4>
+                    {/* <h4 className="text-secondry username text-center">{user ? user?.name : user?.username}</h4> */}
                     {/* <h4 className="text-secondry username text-center">Amanpreet</h4> */}
 
                     <ul className="user-detaiting-listing">
                         {/* <li>UI/UX Designer <img src="/images/ui-ux.png" alt="icons" /></li>
                         <li>Workoholic <img src="/images/workholic.png" alt="icons" /></li>
                         <li>Begginer <img src="/images/beginer.png" alt="icons" /></li> */}
-                        <li>{user?.bio ? user.bio : 'No bio'}</li>
+                        {/* <li>{user?.bio ? user.bio : 'No bio'}</li> */}
                     </ul>
 
 
