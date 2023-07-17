@@ -37,27 +37,20 @@ function EditEditor({ value, setValue }) {
 
   const insertUsername = (username) => {
     const quillRef = quillInstanceRef.current.getEditor();
-    const cursorPosition = quillRef.getSelection(true)?.index;
+    const cursorPosition = quillRef.getSelection(true)?.index + 1;
 
     const currentLine = quillRef.getText();
 
-    let split = currentLine.split(" ").length;
+    let split = currentLine.split(/\s+/).length;
 
-    const startIndex = cursorPosition - query.length + (split > 1 ? 0 : 1);
+    const startIndex = cursorPosition - query.length + (split > 1 ? 0 : 0);
     const endIndex = query.length;
 
     quillRef.deleteText(startIndex, endIndex);
 
-    quillRef.formatText(startIndex, username.length, "span", {
+    quillRef.insertText(startIndex, split > 1 && modifyString(username), {
       username: true,
     });
-    quillRef.insertText(
-      startIndex,
-      split > 1 ? username : modifyString(username),
-      {
-        username: true,
-      }
-    );
   };
 
   useEffect(() => {
