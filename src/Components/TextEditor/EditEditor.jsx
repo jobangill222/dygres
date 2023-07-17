@@ -96,9 +96,9 @@ function EditEditor({ value, setValue }) {
 
         const { top, left } = editor.getBounds(currentCursorPosition);
 
-        dropdown.style.top = `${top + 80}px`;
+        dropdown.style.top = `${top + 20}px`;
         dropdown.style.left = `${left}px`;
-        dropdown.style.display = "block";
+        dropdown.style.display = userLists.length === 0 ? "none" : "block";
       } else {
         let userDropdown = document.getElementById("user-edit-dropdown");
         if (userDropdown) {
@@ -130,11 +130,10 @@ function EditEditor({ value, setValue }) {
 
         const { top, left } = editor.getBounds(currentCursorPosition);
         console.log(top, left, "TOP LEFT >>>>>>>>>");
-        dropdown.style.top = `${top + 80}px`;
+        dropdown.style.top = `${top + 20}px`;
         dropdown.style.left = `${left}px`;
-        dropdown.style.display = "block";
+        dropdown.style.display = hashTag.length === 0 ? "none" : "block";
         dropdown.style.fontStyle = "bold";
-        console.log(dropdown.style.display, "display");
       } else {
         const tagDropdown = document.getElementById("tag-edit-dropdown");
         if (tagDropdown) {
@@ -166,7 +165,7 @@ function EditEditor({ value, setValue }) {
           ) : (
             userLists.map((user, index) => (
               <div key={index} onClick={() => handleSelectUser(user.display)}>
-                {user.display}
+                {user.display ? user?.display : "Not found "}
               </div>
             ))
           )}
@@ -179,7 +178,7 @@ function EditEditor({ value, setValue }) {
           ) : (
             hashTag.map((tag, index) => (
               <div key={index} onClick={() => handleSelectUser(tag.display)}>
-                {tag.display}
+                {tag.display ? tag.display : "not found"}
               </div>
             ))
           )}

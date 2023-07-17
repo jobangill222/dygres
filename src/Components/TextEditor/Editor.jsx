@@ -98,7 +98,7 @@ function Editor({ value, setValue }) {
 
         dropdown.style.top = `${top + 20}px`;
         dropdown.style.left = `${left}px`;
-        dropdown.style.display = "block";
+        dropdown.style.display = userLists.length === 0 ? "none" : "block";
       } else {
         let userDropdown = document.getElementById("user-dropdown");
         if (userDropdown) {
@@ -132,9 +132,8 @@ function Editor({ value, setValue }) {
         console.log(top, left, "TOP LEFT >>>>>>>>>");
         dropdown.style.top = `${top + 20}px`;
         dropdown.style.left = `${left}px`;
-        dropdown.style.display = "block";
+        dropdown.style.display = hashTag.length === 0 ? "none" : "block";
         dropdown.style.fontStyle = "bold";
-        console.log(dropdown.style.display, "display");
       } else {
         const tagDropdown = document.getElementById("tag-dropdown");
         if (tagDropdown) {
@@ -143,7 +142,8 @@ function Editor({ value, setValue }) {
       }
     });
 
-    console.log(value, "value");
+    console.log(userLists, "userLists");
+    console.log(hashTag, "hashtags");
   }, [value]);
 
   // Debounce function to delay API calls
@@ -166,7 +166,7 @@ function Editor({ value, setValue }) {
           ) : (
             userLists.map((user, index) => (
               <div key={index} onClick={() => handleSelectUser(user.display)}>
-                {user.display}
+                {user.display ? user?.display : "Not found "}
               </div>
             ))
           )}
@@ -179,7 +179,7 @@ function Editor({ value, setValue }) {
           ) : (
             hashTag.map((tag, index) => (
               <div key={index} onClick={() => handleSelectUser(tag.display)}>
-                {tag.display}
+                {tag.display ? tag.display : "not found"}
               </div>
             ))
           )}
