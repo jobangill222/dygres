@@ -3,8 +3,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 import { DContext } from "../Context/DContext";
-import { MentionsInput, Mention } from 'react-mentions';
+// import { MentionsInput, Mention } from "react-mentions";
 import { useLocation, useNavigate } from "react-router-dom";
+
+import Editor from "./TextEditor/Editor";
 
 const WhatsMind = (props) => {
   //To change state when post is posted
@@ -14,39 +16,43 @@ const WhatsMind = (props) => {
   const [createPostState, setCreatePostState] = useState("");
 
   // Function to all api
-  const { createPostDContext, setUserStats, suggestionWhilePostingDContext, isDummyUser } = useContext(DContext);
-
+  const {
+    createPostDContext,
+    setUserStats,
+    suggestionWhilePostingDContext,
+    isDummyUser,
+  } = useContext(DContext);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const text = searchParams.get('text');
+  const text = searchParams.get("text");
 
   useEffect(() => {
     if (text) {
-      setCreatePostState(text)
+      setCreatePostState(text);
     }
-  }, [text])
-
-
-
+  }, [text]);
 
   const navigate = useNavigate();
   //Submit post
   const submitPost = async () => {
-
-
     if (isDummyUser()) {
       console.log("please login first");
-      navigate('/login')
+      navigate("/login");
     } else {
       if (!createPostState) {
-        toast("Hmm… you might consider entering some text before clicking submit.");
+        toast(
+          "Hmm… you might consider entering some text before clicking submit."
+        );
       } else {
         // console.log("createPostState", createPostState);
         //   alert("Post successfully.");
         try {
           const parentPostID = null;
-          const axiosRes = await createPostDContext(createPostState, parentPostID);
+          const axiosRes = await createPostDContext(
+            createPostState,
+            parentPostID
+          );
           if (axiosRes.status === "success") {
             setIsPostState(true);
             // Update user stats state
@@ -58,18 +64,16 @@ const WhatsMind = (props) => {
             });
 
             setCreatePostState("");
-            setActiveTabState('Global')
 
-            searchParams.delete('text');
+            setActiveTabState("Global");
+
+            searchParams.delete("text");
             const newSearch = searchParams.toString();
 
             navigate({
               pathname: location.pathname,
               search: newSearch,
             });
-
-
-
           } else {
             toast(axiosRes.message);
           }
@@ -78,55 +82,49 @@ const WhatsMind = (props) => {
         }
       }
     }
-
-
   };
-
-
 
   //Suggestion of user
   const fetchSuggestionList = async (trigger, query, callback) => {
     // Call your API to fetch matching items based on the trigger and query
-    if (trigger === '@') {
+    if (trigger === "@") {
       const results = await suggestionWhilePostingDContext(query && query);
-      const newArray = results.list.map(item => {
+      const newArray = results.list.map((item) => {
         return {
           id: item._id,
-          profileImage: item?.profileImage ? item.profileImage : '/images/user.png',
-          display: item.username
+          profileImage: item?.profileImage
+            ? item.profileImage
+            : "/images/user.png",
+          display: item.username,
         };
       });
       callback(newArray);
-
-    } else if (trigger === '#') {
+    } else if (trigger === "#") {
       const results = await suggestionWhilePostingDContext("#" + query);
-      const newArray = results.list.map(item => {
+      const newArray = results.list.map((item) => {
         return {
           id: item._id,
-          display: item.name
+          display: item.name,
         };
       });
       callback(newArray);
     }
   };
-
-
-  const handleUserSuggestion = (id, display) => {
-    setCreatePostState(createPostState.replace(/@[^\s]*\s?$/, `@${display} `));
-  };
-  const handleHashSuggestion = (id, display) => {
-    setCreatePostState(createPostState.replace(/#[^\s]*\s?$/, `${display} `));
-  };
-
-
+  console.log(createPostState);
   return (
     <>
       <div className="Whatsmind-bar">
-        <Form>
-          <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">
+        <Editor setValue={setCreatePostState} value={createPostState} />
+        <div className="text-end">
+          <Button className="bg-primary text-white" onClick={submitPost}>
+            Submit
+          </Button>
+        </div>
 
+        {/* <Form>
+          <Form.Group className="mb-0" controlId="exampleForm.ControlTextarea1">
             <MentionsInput
-              className='whatsmind-inputbar'
+              className="whatsmind-inputbar"
               as="textarea"
               rows={6}
               maxLength={420}
@@ -135,14 +133,16 @@ const WhatsMind = (props) => {
               value={createPostState}
               max="420"
               onChange={(e) => {
-                setCreatePostState(e.target.value)
+                setCreatePostState(e.target.value);
               }}
             >
               <Mention
-                trigger='@'
-                data={(query, callback) => fetchSuggestionList('@', query, callback)}
+                trigger="@"
+                data={(query, callback) =>
+                  fetchSuggestionList("@", query, callback)
+                }
                 onAdd={handleUserSuggestion}
-                displayTransform={(id, display) => `@${display + ' '}`}
+                displayTransform={(id, display) => `@${display + " "}`}
                 renderSuggestion={(
                   suggestion,
                   search,
@@ -150,21 +150,26 @@ const WhatsMind = (props) => {
                   index,
                   focused
                 ) => (
-                  <div className={`user-suggestion ${focused ? 'focused' : ''}`}>
+                  <div
+                    className={`user-suggestion ${focused ? "focused" : ""}`}
+                  >
                     <img src={suggestion.profileImage} />
                     <div className="user-suggestion-details">
-                      <div className="user-suggestion-name">{highlightedDisplay}</div>
+                      <div className="user-suggestion-name">
+                        {highlightedDisplay}
+                      </div>
                     </div>
                   </div>
                 )}
               />
 
-
               <Mention
-                trigger='#'
-                data={(query, callback) => fetchSuggestionList('#', query, callback)}
+                trigger="#"
+                data={(query, callback) =>
+                  fetchSuggestionList("#", query, callback)
+                }
                 onAdd={handleHashSuggestion}
-                displayTransform={(id, display) => `#${display + ' '}`}
+                displayTransform={(id, display) => `#${display + " "}`}
                 renderSuggestion={(
                   suggestion,
                   search,
@@ -172,18 +177,18 @@ const WhatsMind = (props) => {
                   index,
                   focused
                 ) => (
-                  <div className={`user-suggestion ${focused ? 'focused' : ''}`}>
+                  <div
+                    className={`user-suggestion ${focused ? "focused" : ""}`}
+                  >
                     <div className="user-suggestion-details">
-                      <div className="user-suggestion-name">{highlightedDisplay}</div>
+                      <div className="user-suggestion-name">
+                        {highlightedDisplay}
+                      </div>
                     </div>
                   </div>
                 )}
               />
-
             </MentionsInput>
-
-
-
 
             {/* <Form.Control
               as="textarea"
@@ -197,16 +202,16 @@ const WhatsMind = (props) => {
                 setCreatePostState(e.target.value);
               }}
             /> */}
-            {/* <p className="word-note">Character {createPostState.length}/420</p> */}
-            <p className="word-note">{420 - createPostState.length}</p>
-
-            <div className="text-end">
+        {/* <p className="word-note">Character {createPostState.length}/420</p> */}
+        {/* <p className="word-note">{420 - createPostState.length}</p> */}
+        {/* <div className="text-end">
               <Button className="bg-primary text-white" onClick={submitPost}>
                 Submit
               </Button>
             </div>
           </Form.Group>
-        </Form>
+        </Form>  */}
+        {/* } */}
       </div>
     </>
   );

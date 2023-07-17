@@ -5790,9 +5790,9 @@ li.svggray svg path {
     margin-right: 10px;
   }
 
-  .text-end.save-form-btn {
+  .text-end .save-form-btn {
     text-align: left !important;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .editor-input .form-select {
@@ -6395,6 +6395,7 @@ li.svggray svg path {
 }
 }
 
+<<<<<<< HEAD
 .profile-feature-image {
   display: none;
 }
@@ -6434,3 +6435,50 @@ margin-bottom: 8px;
   font-size: 15px;
   background: var(--base-purewhite);
 }
+=======
+
+.editor{
+  margin-bottom: 10px;
+  position:relative;
+}
+
+.highlighted{
+  /* font-weight: bold; */
+  color:var(--base-primary)
+
+}
+
+/* dropdown  */
+#user-dropdown, #user-edit-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 10px;
+  width: 200px;
+  z-index: 10; /* Ensure the dropdown appears above other elements */
+}
+
+#user-dropdown div,
+#tag-dropdown div , #user-edit-dropdown div, #tag-edit-dropdown div{
+  cursor: pointer;
+  padding: 5px;
+}
+
+#tag-dropdown, #tag-edit-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 10px;
+  width: 200px;
+  z-index: 1; /* Ensure the dropdown appears above other elements */
+}
+
+>>>>>>> quill-editor
