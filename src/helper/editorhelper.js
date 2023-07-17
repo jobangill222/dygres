@@ -93,7 +93,7 @@ export const searchQuery = async (
 
 export const modifyString = (str) => {
   let modifiedStr = str;
-
+  console.log(str, "str");
   if (str.startsWith("@")) {
     modifiedStr = str.substring(1); // Remove '@' symbol from the beginning
   } else if (str.startsWith("#")) {

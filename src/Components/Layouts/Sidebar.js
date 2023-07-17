@@ -178,12 +178,12 @@ const Sidebar = () => {
               {isDummyUser() ? (
                 <div class="user_info_sidebar">
                   <p></p>
-                  <Link to={isDummyUser() ? "/login" : "/editprofile"}>
+                  {/* <Link to={isDummyUser() ? "/login" : "/editprofile"}>
                     <span>
                       <BsPencil />
                     </span>
                     &nbsp; Edit Profile
-                  </Link>
+                  </Link> */}
                 </div>
               ) : (
                 <div class="user_info_sidebar">

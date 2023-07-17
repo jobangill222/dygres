@@ -25,11 +25,13 @@ function Editor({ value, setValue }) {
       insertUsername(user);
     }
     const userDropdown = document.getElementById("user-dropdown");
+
     if (userDropdown) {
       userDropdown.style.display = "none";
     }
 
     const tagDropdown = document.getElementById("tag-dropdown");
+
     if (tagDropdown) {
       tagDropdown.style.display = "none";
     }
@@ -37,27 +39,20 @@ function Editor({ value, setValue }) {
 
   const insertUsername = (username) => {
     const quillRef = quillInstanceRef.current.getEditor();
-    const cursorPosition = quillRef.getSelection(true)?.index;
+    const cursorPosition = quillRef.getSelection(true)?.index + 1;
 
     const currentLine = quillRef.getText();
 
-    let split = currentLine.split(" ").length;
+    let split = currentLine.split(/\s+/).length;
 
-    const startIndex = cursorPosition - query.length + (split > 1 ? 0 : 1);
+    const startIndex = cursorPosition - query.length + (split > 1 ? 0 : 0);
     const endIndex = query.length;
 
     quillRef.deleteText(startIndex, endIndex);
 
-    quillRef.formatText(startIndex, username.length, "span", {
+    quillRef.insertText(startIndex, split > 1 && modifyString(username), {
       username: true,
     });
-    quillRef.insertText(
-      startIndex,
-      split > 1 ? username : modifyString(username),
-      {
-        username: true,
-      }
-    );
   };
 
   useEffect(() => {
@@ -126,10 +121,8 @@ function Editor({ value, setValue }) {
 
         setQuery(lastWord);
 
-        console.log(hashTag, "hashTag list -----");
-
         const { top, left } = editor.getBounds(currentCursorPosition);
-        console.log(top, left, "TOP LEFT >>>>>>>>>");
+
         dropdown.style.top = `${top + 20}px`;
         dropdown.style.left = `${left}px`;
         dropdown.style.display = hashTag.length === 0 ? "none" : "block";
@@ -142,8 +135,8 @@ function Editor({ value, setValue }) {
       }
     });
 
-    console.log(userLists, "userLists");
-    console.log(hashTag, "hashtags");
+    // console.log(userLists, "userLists");
+    // console.log(hashTag, "hashtags");
   }, [value]);
 
   // Debounce function to delay API calls
