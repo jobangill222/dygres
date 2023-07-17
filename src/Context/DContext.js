@@ -10,7 +10,6 @@ import { BASE_URL } from "../Config";
 export const DContext = React.createContext();
 
 export const DProvider = (props) => {
-
   //const navigate = useNavigate();
 
   // State variables
@@ -24,7 +23,7 @@ export const DProvider = (props) => {
   //Notifications
   const [notificationList, setNotificationList] = useState([]);
 
-  //State for is post or not to paas dependency in use effect for render updated list when post 
+  //State for is post or not to paas dependency in use effect for render updated list when post
   const [isPostState, setIsPostState] = useState(false);
 
   //State For Popup UserList
@@ -32,21 +31,17 @@ export const DProvider = (props) => {
   const [selectedIDForPopup, setSelectedIDForPopup] = useState(null); //Either be postID or comment ID to get user list whom agree or disagree and modal will open if there is any value change in this state(Define in component/DigitalTabs , Pages/Hot,new,Notvoted etc or either userID to get following followers)
   const [postIDForAwardOfPost, setPostIDForAwardOfPost] = useState(null); //postID for show all awards of posts in post Head component
 
-
-
-  //For loading 
+  //For loading
   const [isLoading, setIsLoading] = useState(false);
-
 
   //FOr search
   const [searchState, setSearchState] = useState(null);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-
   //For paas dependency when click on same page
-  const [postIDForSinglePostState, setPostIDForSinglePostState] = useState(null);
+  const [postIDForSinglePostState, setPostIDForSinglePostState] =
+    useState(null);
   const [hashTagClickState, setHashTagClickState] = useState(false);
-
 
   //Font Size
   const [fontSizeState, setFontSizeState] = useState(null);
@@ -54,31 +49,28 @@ export const DProvider = (props) => {
   //Rule State
   const [isShowRulesModal, setIsShowRulesModal] = useState(false);
 
-
   //Form data change State
   const [isDataChangeState, setIsDataChangeState] = useState(false);
-  const [isShowDataSaveConfirmationPopup, setIsShowDataSaveConfirmationPopup] = useState(false);
+  const [isShowDataSaveConfirmationPopup, setIsShowDataSaveConfirmationPopup] =
+    useState(false);
   const [saveTxStateForRetry, setsaveTxStateForRetry] = useState(false);
 
   // For new notification icon
   const [isNewNotificationArrive, setIsNewNotificationArrive] = useState(false);
 
   // follow state in view profile page
-  const [isFollowOnUserProfileState, setIsFollowOnUserProfileState] = useState(0);
+  const [isFollowOnUserProfileState, setIsFollowOnUserProfileState] =
+    useState(0);
 
   //Other user stats
   const [othetUserStats, setOtherUserStats] = useState();
 
-
-
   useEffect(() => {
-
-
     const fontSize = localStorage.getItem("fontSize");
     if (fontSize) {
-      setFontSizeState(fontSize)
+      setFontSizeState(fontSize);
     } else {
-      setFontSizeState('medium')
+      setFontSizeState("medium");
     }
 
     const accessToken = localStorage.getItem("accessToken");
@@ -87,8 +79,8 @@ export const DProvider = (props) => {
     //   setDummyUser();
     // }
 
-    let isDummyLoggedIn = localStorage.getItem('isDummyLoggedIn');
-    if (accessToken && !(isDummyLoggedIn === 'dummyuser')) {
+    let isDummyLoggedIn = localStorage.getItem("isDummyLoggedIn");
+    if (accessToken && !(isDummyLoggedIn === "dummyuser")) {
       setUserToken(accessToken);
       const checkAuth = async () => {
         const userDetails = await getUserDetailsDContext();
@@ -98,9 +90,7 @@ export const DProvider = (props) => {
           setUser(null);
           setUserStats(null);
           // navigate("/login");
-        }
-        else {
-
+        } else {
           setUser(userDetails.data);
           setUserStats(userDetails.userStats);
         }
@@ -111,15 +101,16 @@ export const DProvider = (props) => {
     }
   }, []);
 
-
-
   //setup dummy user if user is not logged in
   const setDummyUser = () => {
     // console.log("setting up dummy user")
-    dummyUserLogin({ email: 'dummyuser@yopmail.com', password: 'Dummy@123' }).then(axiosRes => {
+    dummyUserLogin({
+      email: "dummyuser@yopmail.com",
+      password: "Dummy@123",
+    }).then((axiosRes) => {
       // console.log('axiosRes--------', axiosRes)
-      localStorage.setItem('accessToken', axiosRes.accessToken);
-      localStorage.setItem('isDummyLoggedIn', axiosRes.data.username);
+      localStorage.setItem("accessToken", axiosRes.accessToken);
+      localStorage.setItem("isDummyLoggedIn", axiosRes.data.username);
       setUser({ username: "dummyuser" });
       // console.log("dummy user logged in ", axiosRes)
     });
@@ -127,13 +118,12 @@ export const DProvider = (props) => {
 
   const isDummyUser = () => {
     //console.log("dummy user check",user?.username);
-    let isDummyLoggedIn = localStorage.getItem('isDummyLoggedIn')
-    if (isDummyLoggedIn === 'dummyuser') {
+    let isDummyLoggedIn = localStorage.getItem("isDummyLoggedIn");
+    if (isDummyLoggedIn === "dummyuser") {
       return true;
     }
     return false;
-  }
-
+  };
 
   const dummyUserLogin = async ({ email, password }) => {
     try {
@@ -146,14 +136,12 @@ export const DProvider = (props) => {
           password: password,
         },
       });
-      localStorage.setItem('isDummyLoggedIn', axiosRes.data.data.username);
+      localStorage.setItem("isDummyLoggedIn", axiosRes.data.data.username);
       return axiosRes.data;
     } catch (err) {
       console.log("Some issue while login (DContext.js) - ", err);
     }
   };
-
-
 
   // Global Functions
 
@@ -174,7 +162,7 @@ export const DProvider = (props) => {
     }
   };
 
-  const userSignup = async ({ email, username, password }) => {
+  const userSignup = async ({ email, username, password, referradFrom }) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -184,6 +172,7 @@ export const DProvider = (props) => {
           email: email,
           username: username,
           password: password,
+          referradFrom: referradFrom,
         },
       });
 
@@ -380,7 +369,6 @@ export const DProvider = (props) => {
       const updatedDetails = await getUserDetailsDContext();
       setUser(updatedDetails.data);
       return axiosRes.data;
-
     } catch (err) {
       console.log("Some issue while login (DContext.js) - ", err);
     }
@@ -396,7 +384,7 @@ export const DProvider = (props) => {
         },
         data: {
           content: content,
-          parentPostID: parentPostID
+          parentPostID: parentPostID,
         },
       });
 
@@ -415,8 +403,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          search: search
-        }
+          search: search,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -436,8 +424,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          search: search
-        }
+          search: search,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -457,8 +445,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          search: search
-        }
+          search: search,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -532,7 +520,11 @@ export const DProvider = (props) => {
     }
   };
 
-  const reportPostDContext = async (postID, reportReason, reportDescription) => {
+  const reportPostDContext = async (
+    postID,
+    reportReason,
+    reportDescription
+  ) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -569,11 +561,10 @@ export const DProvider = (props) => {
         },
       });
       return axiosRes.data;
-    }
-    catch (err) {
+    } catch (err) {
       console.log("Some issue while hit delete post api in (DContext.js)", err);
     }
-  }
+  };
 
   const editPostDContext = async (postID, editContent) => {
     try {
@@ -589,11 +580,10 @@ export const DProvider = (props) => {
         },
       });
       return axiosRes.data;
-    }
-    catch (err) {
+    } catch (err) {
       console.log("Some issue while hit edit post api in (DContext.js)", err);
     }
-  }
+  };
 
   const followUserDContext = async (userID) => {
     try {
@@ -608,11 +598,13 @@ export const DProvider = (props) => {
         },
       });
       return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit follow un follow api in (DContext.js)",
+        err
+      );
     }
-    catch (err) {
-      console.log("Some issue while hit follow un follow api in (DContext.js)", err);
-    }
-  }
+  };
 
   const unFollowUserDContext = async (userID) => {
     try {
@@ -627,11 +619,13 @@ export const DProvider = (props) => {
         },
       });
       return axiosRes.data;
+    } catch (err) {
+      console.log(
+        "Some issue while hit follow un follow api in (DContext.js)",
+        err
+      );
     }
-    catch (err) {
-      console.log("Some issue while hit follow un follow api in (DContext.js)", err);
-    }
-  }
+  };
 
   const getMyPostsDContext = async (pageNumberOfPostList) => {
     try {
@@ -644,10 +638,7 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log(
-        "Some issue while hit get my post api (DContext.js) - ",
-        err
-      );
+      console.log("Some issue while hit get my post api (DContext.js) - ", err);
     }
   };
 
@@ -660,8 +651,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          search: search
-        }
+          search: search,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -681,8 +672,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          search: search
-        }
+          search: search,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -702,8 +693,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          search: search
-        }
+          search: search,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -728,7 +719,10 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get agreed post user api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get agreed post user api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -746,11 +740,17 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get dis-agreed post user api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get dis-agreed post user api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
-  const getAmplifiedUsersOfPostDContext = async (selectedPostID, PageNumber) => {
+  const getAmplifiedUsersOfPostDContext = async (
+    selectedPostID,
+    PageNumber
+  ) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -764,7 +764,10 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get amplified user of post api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get amplified user of post api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -782,7 +785,10 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while check post already amplified post api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while check post already amplified post api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -800,11 +806,18 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get reported post user api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get reported post user api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
-  const getPostCommentDContext = async (PostID, specificCommentFirst, pageNumberOfComment) => {
+  const getPostCommentDContext = async (
+    PostID,
+    specificCommentFirst,
+    pageNumberOfComment
+  ) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -814,12 +827,15 @@ export const DProvider = (props) => {
         },
         data: {
           postID: PostID,
-          specificCommentIDFirst: specificCommentFirst
+          specificCommentIDFirst: specificCommentFirst,
         },
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get 2 latest comment of post api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get 2 latest comment of post api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -902,11 +918,17 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get agreed comment user api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get agreed comment user api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
-  const getDisagreedCommentUserDContext = async (selectedPostID, PageNumber) => {
+  const getDisagreedCommentUserDContext = async (
+    selectedPostID,
+    PageNumber
+  ) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -920,11 +942,17 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get disagreed comment user api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get disagreed comment user api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
-  const getCommentOfCommentDContext = async (commentID, pageNumberOfComment) => {
+  const getCommentOfCommentDContext = async (
+    commentID,
+    pageNumberOfComment
+  ) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -938,9 +966,12 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get child comment of post api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get child comment of post api (DCOntext.js) - ",
+        err
+      );
     }
-  }
+  };
 
   const getAwardListToSendDContext = async (selectedPostIDForAwardPopup) => {
     try {
@@ -956,7 +987,10 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get award list to send api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get award list to send api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -971,7 +1005,10 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get pckage list api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get pckage list api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -989,7 +1026,10 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting payment link api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting payment link api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -1033,7 +1073,10 @@ export const DProvider = (props) => {
     }
   };
 
-  const getOtherUserPostsByUserIDDContext = async (userID, pageNumberOfPostList) => {
+  const getOtherUserPostsByUserIDDContext = async (
+    userID,
+    pageNumberOfPostList
+  ) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -1054,7 +1097,11 @@ export const DProvider = (props) => {
     }
   };
 
-  const getpostsByHashTagDContext = async (search, hashtagName, pageNumberOfPostList) => {
+  const getpostsByHashTagDContext = async (
+    search,
+    hashtagName,
+    pageNumberOfPostList
+  ) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -1085,8 +1132,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          postID: postID
-        }
+          postID: postID,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -1106,8 +1153,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          postID: postID
-        }
+          postID: postID,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -1145,8 +1192,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          notificationID: notificationID
-        }
+          notificationID: notificationID,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -1184,8 +1231,8 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          username: username
-        }
+          username: username,
+        },
       });
       return axiosRes.data;
     } catch (err) {
@@ -1211,7 +1258,10 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get followers user api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get followers user api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -1230,7 +1280,10 @@ export const DProvider = (props) => {
       });
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hitting get following user api (DCOntext.js) - ", err);
+      console.log(
+        "Some issue while hitting get following user api (DCOntext.js) - ",
+        err
+      );
     }
   };
 
@@ -1283,15 +1336,17 @@ export const DProvider = (props) => {
         },
         data: {
           search: search,
-        }
+        },
       });
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hit search suggestion api (DContext.js) - ", err);
+      console.log(
+        "Some issue while hit search suggestion api (DContext.js) - ",
+        err
+      );
     }
   };
-
 
   const suggestionWhilePostingDContext = async (value) => {
     try {
@@ -1303,15 +1358,17 @@ export const DProvider = (props) => {
         },
         data: {
           value: value,
-        }
+        },
       });
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while hit search suggestion api (DContext.js) - ", err);
+      console.log(
+        "Some issue while hit search suggestion api (DContext.js) - ",
+        err
+      );
     }
   };
-
 
   const getHashtagDContext = async () => {
     try {
@@ -1327,7 +1384,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while get hashtag list (DContext.js) - ", err);
     }
-  }
+  };
 
   const notificationOnOffDContext = async (type) => {
     try {
@@ -1338,16 +1395,15 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          type: type
-        }
+          type: type,
+        },
       });
 
       return axiosRes.data;
     } catch (err) {
       console.log("Some issue while get hashtag list (DContext.js) - ", err);
     }
-  }
-
+  };
 
   const readAllNotificationDContext = async (type) => {
     try {
@@ -1361,11 +1417,12 @@ export const DProvider = (props) => {
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while read all notification (DContext.js) - ", err);
+      console.log(
+        "Some issue while read all notification (DContext.js) - ",
+        err
+      );
     }
-  }
-
-
+  };
 
   //Admin
   const allUserListDContext = async (type, search, pageNumber) => {
@@ -1378,7 +1435,7 @@ export const DProvider = (props) => {
         },
         data: {
           type: type,
-          search: search
+          search: search,
         },
       });
 
@@ -1386,7 +1443,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while get all user api (DContext.js) - ", err);
     }
-  }
+  };
 
   const getReportListDContext = async (pageNumber) => {
     try {
@@ -1402,7 +1459,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while get report list api (DContext.js) - ", err);
     }
-  }
+  };
 
   const blockedUserListDContext = async (search, pageNumber) => {
     try {
@@ -1413,15 +1470,18 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          search: search
+          search: search,
         },
       });
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while get blocked user api (DContext.js) - ", err);
+      console.log(
+        "Some issue while get blocked user api (DContext.js) - ",
+        err
+      );
     }
-  }
+  };
 
   const sendNotificationToAllDContext = async (data) => {
     try {
@@ -1432,7 +1492,7 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          notification: data.notification
+          notification: data.notification,
         },
       });
 
@@ -1440,8 +1500,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while get all user api (DContext.js) - ", err);
     }
-  }
-
+  };
 
   const humanVerificationDetailDContext = async (userID) => {
     try {
@@ -1452,16 +1511,18 @@ export const DProvider = (props) => {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: {
-          userID: userID
+          userID: userID,
         },
       });
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while get human verification detail api (DContext.js) - ", err);
+      console.log(
+        "Some issue while get human verification detail api (DContext.js) - ",
+        err
+      );
     }
-  }
-
+  };
 
   const acceptRejectHumanVerificationDContext = async (userID, action) => {
     try {
@@ -1473,16 +1534,18 @@ export const DProvider = (props) => {
         },
         data: {
           userID: userID,
-          action: action
+          action: action,
         },
       });
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while accept reject human verification (DContext.js) - ", err);
+      console.log(
+        "Some issue while accept reject human verification (DContext.js) - ",
+        err
+      );
     }
-  }
-
+  };
 
   const blockUnblockUserDContext = async (userID) => {
     try {
@@ -1501,8 +1564,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while block user (DContext.js) - ", err);
     }
-  }
-
+  };
 
   const flagUnflagPostDContext = async (postID) => {
     try {
@@ -1521,8 +1583,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while flag unflag post (DContext.js) - ", err);
     }
-  }
-
+  };
 
   const getUsersFlaggedPostDContext = async (userID, pageNumberOfPostList) => {
     try {
@@ -1539,10 +1600,12 @@ export const DProvider = (props) => {
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while get flagged post of user (DContext.js) - ", err);
+      console.log(
+        "Some issue while get flagged post of user (DContext.js) - ",
+        err
+      );
     }
-  }
-
+  };
 
   const getAwardListDContext = async (type) => {
     try {
@@ -1560,8 +1623,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while get all awards (DCOntext.js) - ", err);
     }
-  }
-
+  };
 
   const addAwardDContext = async (bodyFormData) => {
     try {
@@ -1582,7 +1644,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const awardDetailByIdDContext = async (awardID) => {
     try {
       const axiosRes = await axios({
@@ -1593,17 +1654,19 @@ export const DProvider = (props) => {
         },
         data: {
           awardID: awardID,
-        }
+        },
       });
 
       console.log("axiosRes=========", axiosRes);
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while get single ward detail (DContext.js) - ", err);
+      console.log(
+        "Some issue while get single ward detail (DContext.js) - ",
+        err
+      );
     }
   };
-
 
   const editAwardDContext = async (bodyFormData) => {
     try {
@@ -1613,7 +1676,7 @@ export const DProvider = (props) => {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
-        data: bodyFormData
+        data: bodyFormData,
       });
 
       console.log("axiosRes=========", axiosRes);
@@ -1623,7 +1686,6 @@ export const DProvider = (props) => {
       console.log("Some issue while edit award (DContext.js) - ", err);
     }
   };
-
 
   const deleteAwardDContext = async (awardID) => {
     try {
@@ -1635,7 +1697,7 @@ export const DProvider = (props) => {
         },
         data: {
           awardID: awardID,
-        }
+        },
       });
 
       console.log("axiosRes=========", axiosRes);
@@ -1645,7 +1707,6 @@ export const DProvider = (props) => {
       console.log("Some issue while delete award (DContext.js) - ", err);
     }
   };
-
 
   const getAllPackageListAdminDContext = async () => {
     try {
@@ -1664,7 +1725,6 @@ export const DProvider = (props) => {
       console.log("Some issue while get admin package (DContext.js) - ", err);
     }
   };
-
 
   const createPackageAdminDContext = async (bodyFormData) => {
     try {
@@ -1685,7 +1745,6 @@ export const DProvider = (props) => {
     }
   };
 
-
   const editpackageAdminDContext = async (bodyFormData) => {
     try {
       const axiosRes = await axios({
@@ -1694,7 +1753,7 @@ export const DProvider = (props) => {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
-        data: bodyFormData
+        data: bodyFormData,
       });
 
       console.log("axiosRes=========", axiosRes);
@@ -1704,7 +1763,6 @@ export const DProvider = (props) => {
       console.log("Some issue while edit package (DContext.js) - ", err);
     }
   };
-
 
   const packageDetailByIdAdminDContext = async (packageID) => {
     try {
@@ -1716,17 +1774,19 @@ export const DProvider = (props) => {
         },
         data: {
           packageID: packageID,
-        }
+        },
       });
 
       console.log("axiosRes=========", axiosRes);
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while get single ward detail (DContext.js) - ", err);
+      console.log(
+        "Some issue while get single ward detail (DContext.js) - ",
+        err
+      );
     }
   };
-
 
   const removeAwardFromPackageAdminDContext = async (packageID, awardID) => {
     try {
@@ -1738,8 +1798,8 @@ export const DProvider = (props) => {
         },
         data: {
           packageID: packageID,
-          awardID: awardID
-        }
+          awardID: awardID,
+        },
       });
 
       console.log("axiosRes=========", axiosRes);
@@ -1750,8 +1810,11 @@ export const DProvider = (props) => {
     }
   };
 
-
-  const addAwardToPackageAdminDContext = async (packageID, awardID, awardCount) => {
+  const addAwardToPackageAdminDContext = async (
+    packageID,
+    awardID,
+    awardCount
+  ) => {
     try {
       const axiosRes = await axios({
         method: "post",
@@ -1762,18 +1825,20 @@ export const DProvider = (props) => {
         data: {
           packageID: packageID,
           awardID: awardID,
-          awardCount: awardCount
-        }
+          awardCount: awardCount,
+        },
       });
 
       console.log("axiosRes=========", axiosRes);
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while add award to package (DContext.js) - ", err);
+      console.log(
+        "Some issue while add award to package (DContext.js) - ",
+        err
+      );
     }
   };
-
 
   const deletePackageAdminDContext = async (packageID) => {
     try {
@@ -1785,7 +1850,7 @@ export const DProvider = (props) => {
         },
         data: {
           packageID: packageID,
-        }
+        },
       });
 
       console.log("axiosRes=========", axiosRes);
@@ -1811,9 +1876,12 @@ export const DProvider = (props) => {
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while offical unofficial user (DContext.js) - ", err);
+      console.log(
+        "Some issue while offical unofficial user (DContext.js) - ",
+        err
+      );
     }
-  }
+  };
 
   const dashboardDataAdminDContext = async (type) => {
     try {
@@ -1832,8 +1900,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while get dashboard data (DContext.js) - ", err);
     }
-  }
-
+  };
 
   const getSignupLoginStatusDContext = async (type) => {
     try {
@@ -1847,9 +1914,12 @@ export const DProvider = (props) => {
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while get signup login status (DContext.js) - ", err);
+      console.log(
+        "Some issue while get signup login status (DContext.js) - ",
+        err
+      );
     }
-  }
+  };
 
   const changeSignupLoginStatusDContext = async (type) => {
     try {
@@ -1866,10 +1936,12 @@ export const DProvider = (props) => {
 
       return axiosRes.data;
     } catch (err) {
-      console.log("Some issue while change signup login status (DContext.js) - ", err);
+      console.log(
+        "Some issue while change signup login status (DContext.js) - ",
+        err
+      );
     }
-  }
-
+  };
 
   const deleteUserDContext = async (deleteBy, userID) => {
     try {
@@ -1889,8 +1961,7 @@ export const DProvider = (props) => {
     } catch (err) {
       console.log("Some issue while delete user (DContext.js) - ", err);
     }
-  }
-
+  };
 
   // Variables and methods to be shared globally
   const value = {
@@ -1929,11 +2000,16 @@ export const DProvider = (props) => {
     setIsShowRulesModal,
     isDataChangeState,
     setIsDataChangeState,
-    isShowDataSaveConfirmationPopup, setIsShowDataSaveConfirmationPopup,
-    saveTxStateForRetry, setsaveTxStateForRetry,
-    isNewNotificationArrive, setIsNewNotificationArrive,
-    isFollowOnUserProfileState, setIsFollowOnUserProfileState,
-    othetUserStats, setOtherUserStats,
+    isShowDataSaveConfirmationPopup,
+    setIsShowDataSaveConfirmationPopup,
+    saveTxStateForRetry,
+    setsaveTxStateForRetry,
+    isNewNotificationArrive,
+    setIsNewNotificationArrive,
+    isFollowOnUserProfileState,
+    setIsFollowOnUserProfileState,
+    othetUserStats,
+    setOtherUserStats,
 
     // Methods
     userLogin,
@@ -2026,7 +2102,7 @@ export const DProvider = (props) => {
     dashboardDataAdminDContext,
     getSignupLoginStatusDContext,
     changeSignupLoginStatusDContext,
-    deleteUserDContext
+    deleteUserDContext,
   };
   return (
     <>

@@ -11,18 +11,22 @@ import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 
 import { BsInfoCircle } from "react-icons/bs";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import usePrompt from "../../hooks/usePrompt";
 
-
 const EditProfile = () => {
-
   // const navigate = useNavigate();
 
   //Import Api functions from DContext file
-  const { getGenInformationDContext, updateGenInformationDContext, isLoading, setIsLoading, isDataChangeState, setIsDataChangeState } =
-    useContext(DContext);
+  const {
+    getGenInformationDContext,
+    updateGenInformationDContext,
+    isLoading,
+    setIsLoading,
+    isDataChangeState,
+    setIsDataChangeState,
+  } = useContext(DContext);
 
   // Define State
   const [genInfoFiledsState, setGenInfoFieldsState] = useState({
@@ -60,12 +64,10 @@ const EditProfile = () => {
   };
 
   useEffect(() => {
-
     //Set state that no data change when page load
-    setIsDataChangeState(false)
+    setIsDataChangeState(false);
     // console.log('Get General info page in useEffect');
     getGenInfoOnPage();
-
   }, []);
 
   //Change values onChange and save in state
@@ -78,7 +80,6 @@ const EditProfile = () => {
 
   //Submit form to update data
   const submitHandler = async () => {
-
     setIsLoading(true);
 
     // console.log("Update gen info function calls");
@@ -100,7 +101,6 @@ const EditProfile = () => {
     setIsLoading(false);
 
     setIsDataChangeState(false);
-
   };
 
   //Set file state
@@ -109,7 +109,6 @@ const EditProfile = () => {
 
   //Upload Image function
   const uploadProfileImage = async (e) => {
-
     const imageSize = e.target.files[0].size;
     const imageType = e.target.files[0].type;
     console.log("imageType", imageType);
@@ -117,11 +116,15 @@ const EditProfile = () => {
     // if (imageSize > 10485760) {
     if (imageSize > 15728640) {
       toast("Images must be smaller than 15 MB.");
-    }
-    else if (imageType !== "image/png" && imageType !== "image/ppg" && imageType !== "image/jpeg") {
-      toast("Unsupported image format. Please upload a png, jpg, or .jpeg instead.");
-    }
-    else {
+    } else if (
+      imageType !== "image/png" &&
+      imageType !== "image/ppg" &&
+      imageType !== "image/jpeg"
+    ) {
+      toast(
+        "Unsupported image format. Please upload a png, jpg, or .jpeg instead."
+      );
+    } else {
       const url = URL.createObjectURL(e.target.files[0]);
       setFile(e.target.files[0]);
       // console.log('url' , url)
@@ -133,10 +136,13 @@ const EditProfile = () => {
     }
   };
 
-
-
   const renderTooltip = (props) => (
-    <Tooltip style={{ width: "400px", wordBreak: "break-all" }} className='infotooltip' id="button-tooltip" {...props}>
+    <Tooltip
+      style={{ width: "400px", wordBreak: "break-all" }}
+      className="infotooltip"
+      id="button-tooltip"
+      {...props}
+    >
       {/* <ul>
         <li>Username must be 20 characters max.</li>
       </ul> */}
@@ -147,11 +153,9 @@ const EditProfile = () => {
   //Restrict to another screen if changes
   usePrompt("Are you sure you want to leave?", isDataChangeState);
 
-
   return (
     <>
-
-      {console.log('isDataChangeState', isDataChangeState)}
+      {console.log("isDataChangeState", isDataChangeState)}
 
       {isLoading && <Loader />}
 
@@ -159,29 +163,29 @@ const EditProfile = () => {
         <Row>
           <Col lg="6">
             <div className="Uploaded-user">
-
-
-
               <OverlayTrigger
                 placement="right"
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
               >
-                <p> <BsInfoCircle /></p>
+                <p>
+                  {" "}
+                  <BsInfoCircle />
+                </p>
               </OverlayTrigger>
 
               <div className="Imagebar">
-
-
-
                 <img
                   src={genInfoFiledsState.profileImage}
                   alt="icon"
                   id="output"
                   ref={imageRef}
+                  style={
+                    genInfoFiledsState?.profileImage
+                      ? { border: "5px solid var(--base-green)" }
+                      : { border: "none" }
+                  }
                 />
-
-
 
                 <div className="userup-in">
                   <div className="typefile">
@@ -193,7 +197,6 @@ const EditProfile = () => {
                     />
                     <TbCameraPlus />
                   </div>
-
                 </div>
               </div>
             </div>
@@ -244,7 +247,9 @@ const EditProfile = () => {
                     placeholder="Enter Your News Flash here."
                     onChange={changeValue}
                   />
-                  <p className="word-note">{50 - genInfoFiledsState.thoughts.length}</p>
+                  <p className="word-note">
+                    {50 - genInfoFiledsState.thoughts.length}
+                  </p>
                 </Form.Group>
 
                 <Form.Group className="editor-input" controlId="">
@@ -260,7 +265,9 @@ const EditProfile = () => {
                     placeholder="Enter About Me"
                     onChange={changeValue}
                   />
-                  <p className="word-note">{120 - genInfoFiledsState.bio.length}</p>
+                  <p className="word-note">
+                    {120 - genInfoFiledsState.bio.length}
+                  </p>
                 </Form.Group>
               </Col>
             </Row>
