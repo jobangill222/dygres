@@ -49,22 +49,64 @@ export const debounce = (func, delay) => {
   };
 };
 
+// export const searchQuery = async (
+//   type,
+//   suggestionWhilePostingDContext,
+//   query,
+//   setLoading,
+//   setCachedList,
+//   cachedList,
+//   setList
+// ) => {
+//   try {
+//     setLoading(true);
+//     // setQuery(query);
+
+//     // Check if the results are already cached
+//     if (cachedList[query]) {
+//       setList(cachedList[query]);
+//     } else {
+//       const results = await suggestionWhilePostingDContext(query && query);
+//       const newArray = results.list.map((item) => {
+//         return {
+//           id: item._id,
+//           profileImage: item?.profileImage
+//             ? item.profileImage
+//             : "/images/user.png",
+//           display: `${type === "@" ? `@${item.username}` : item.name}`,
+//         };
+//       });
+//       // Cache the results
+//       setCachedList((prevState) => ({
+//         ...prevState,
+//         [query]: newArray,
+//       }));
+
+//       setList(newArray);
+//     }
+//   } catch (error) {
+//     console.log(error, "error user List ");
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
 export const searchQuery = async (
   type,
   suggestionWhilePostingDContext,
   query,
-  setLoading,
   setCachedList,
   cachedList,
   setList
 ) => {
   try {
-    setLoading(true);
     // setQuery(query);
 
     // Check if the results are already cached
     if (cachedList[query]) {
       setList(cachedList[query]);
+
+      return cachedList[query]; // Return the cached results
     } else {
       const results = await suggestionWhilePostingDContext(query && query);
       const newArray = results.list.map((item) => {
@@ -83,11 +125,13 @@ export const searchQuery = async (
       }));
 
       setList(newArray);
+
+      return newArray; // Return the new results obtained from the API
     }
   } catch (error) {
     console.log(error, "error user List ");
-  } finally {
-    setLoading(false);
+
+    return null; // Return null in case of an error
   }
 };
 
@@ -95,9 +139,9 @@ export const modifyString = (str) => {
   let modifiedStr = str;
   console.log(str, "str");
   if (str.startsWith("@")) {
-    modifiedStr = str.substring(1); // Remove '@' symbol from the beginning
+    modifiedStr = str.substring(1) + " "; // Remove '@' symbol from the beginning
   } else if (str.startsWith("#")) {
-    modifiedStr = str.substring(1); // Remove '#' symbol from the beginning
+    modifiedStr = str.substring(1) + " "; // Remove '#' symbol from the beginning
   }
 
   return modifiedStr;

@@ -6,16 +6,17 @@ import { modules } from "./QuillModules";
 import { DContext } from "../../Context/DContext";
 import { debounce, searchQuery, modifyString } from "../../helper/editorhelper";
 
-function EditEditor({ value, setValue }) {
+function Editor({ value, setValue }) {
   const { suggestionWhilePostingDContext } = useContext(DContext);
 
   const [selectedUser, setSelectedUser] = useState(null);
   const [userLists, setUserList] = useState([]);
   const [hashTag, setHashTagList] = useState([]);
   const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
   const [cachedUserList, setCachedUserList] = useState({});
   const [cachedHashTagList, setCachedHashTagList] = useState({});
+  const [showUserDropDown, setShowUserDropDown] = useState(false);
+  const [showTagDropDown, setShowTagDropDown] = useState(false);
 
   const quillInstanceRef = useRef(null);
 
@@ -24,15 +25,14 @@ function EditEditor({ value, setValue }) {
     if (user) {
       insertUsername(user);
     }
-    const userDropdown = document.getElementById("user-edit-dropdown");
-    if (userDropdown) {
-      userDropdown.style.display = "none";
-    }
 
-    const tagDropdown = document.getElementById("tag-edit-dropdown");
-    if (tagDropdown) {
-      tagDropdown.style.display = "none";
-    }
+    setTimeout(() => {
+      setShowUserDropDown(false);
+      setShowTagDropDown(false);
+    }, 100);
+
+    // Clear the selected user state to prevent showing the dropdowns again
+    setSelectedUser(null);
   };
 
   const insertUsername = (username) => {
@@ -64,13 +64,15 @@ function EditEditor({ value, setValue }) {
 
       const currentLineText = editor.getLine(currentCursorPosition);
       let lastElement = currentLineText[0]?.children?.head?.text;
+      const words = lastElement.split(/\s+/);
+      const lastWord = words[words.length - 1]; // Get the last word
+      let lastChar = lastElement.slice(-1);
 
-      const lastWord =
-        lastElement.split(" ").length >= 2
-          ? lastElement.split(" ").pop()
-          : lastElement;
-
-      if (lastWord.length > 1 && lastWord.startsWith("@")) {
+      if (
+        // lastWord.length > 1 &&
+        lastChar !== " " &&
+        lastWord.startsWith("@")
+      ) {
         const dropdown = document.getElementById("user-edit-dropdown");
         let withoutAt = lastWord.slice(1);
         setQuery(lastWord);
@@ -79,27 +81,25 @@ function EditEditor({ value, setValue }) {
             "@",
             suggestionWhilePostingDContext,
             withoutAt,
-            setLoading,
             setCachedUserList,
             cachedUserList,
             setUserList
-          ),
+          ).then((res) => {
+            const { top, left } = editor.getBounds(currentCursorPosition);
+            setShowUserDropDown(
+              res && res.length > 0 && words.length > 0 && lastChar !== " "
+            );
+
+            dropdown.style.top = `${top + 100}px`;
+            dropdown.style.left = `${left}px`;
+          }),
           500
         );
-
-        const { top, left } = editor.getBounds(currentCursorPosition);
-
-        dropdown.style.top = `${top + 20}px`;
-        dropdown.style.left = `${left}px`;
-        dropdown.style.display = userLists.length === 0 ? "none" : "block";
-      } else {
-        let userDropdown = document.getElementById("user-edit-dropdown");
-        if (userDropdown) {
-          userDropdown.style.display = "none";
-        }
-      }
-
-      if (lastWord.length > 1 && lastWord.startsWith("#")) {
+      } else if (
+        // lastWord.length > 1 &&
+        lastChar !== " " &&
+        lastWord.startsWith("#")
+      ) {
         const dropdown = document.getElementById("tag-edit-dropdown");
 
         setQuery(lastWord);
@@ -109,36 +109,33 @@ function EditEditor({ value, setValue }) {
             "#",
             suggestionWhilePostingDContext,
             lastWord,
-            setLoading,
             setCachedHashTagList,
             cachedHashTagList,
             setHashTagList
-          ),
+          ).then((res) => {
+            const { top, left } = editor.getBounds(currentCursorPosition);
+            console.log(
+              res && res.length > 0 && words.length > 0 && lastChar !== " ",
+              "Test Drop Dwon"
+            );
+            setShowTagDropDown(
+              res && res.length > 0 && words.length > 0 && lastChar !== " "
+            );
+            dropdown.style.top = `${top + 100}px`;
+            dropdown.style.left = `${left} px`;
+            dropdown.style.fontStyle = "bold";
+          }),
           500
         );
-
-        setQuery(lastWord);
-
-        console.log(hashTag, "hashTag list -----");
-
-        const { top, left } = editor.getBounds(currentCursorPosition);
-        console.log(top, left, "TOP LEFT >>>>>>>>>");
-        dropdown.style.top = `${top + 20}px`;
-        dropdown.style.left = `${left}px`;
-        dropdown.style.display = hashTag.length === 0 ? "none" : "block";
-        dropdown.style.fontStyle = "bold";
       } else {
-        const tagDropdown = document.getElementById("tag-edit-dropdown");
-        if (tagDropdown) {
-          tagDropdown.style.display = "none";
-        }
+        setShowUserDropDown(false);
+        setShowTagDropDown(false);
       }
     });
-
-    console.log(value, "value");
+    return () => {
+      editor.off("text-change");
+    };
   }, [value]);
-
-  // Debounce function to delay API calls
 
   return (
     <>
@@ -150,35 +147,41 @@ function EditEditor({ value, setValue }) {
           onChange={setValue}
           ref={quillInstanceRef}
         />
-        <div id="user-edit-dropdown" style={{ display: "none" }}>
-          {loading ? (
+        <div
+          id="user-edit-dropdown"
+          style={{ display: showUserDropDown ? "block" : "none" }}
+        >
+          {/* {loading ? (
             <div>
               <p>Loading....</p>
             </div>
-          ) : (
-            userLists.map((user, index) => (
-              <div key={index} onClick={() => handleSelectUser(user.display)}>
-                {user.display ? user?.display : "Not found "}
-              </div>
-            ))
-          )}
+          ) : ( */}
+          {userLists.map((user, index) => (
+            <div key={index} onClick={() => handleSelectUser(user.display)}>
+              {user.display ? user?.display : "Not found "}
+            </div>
+          ))}
+          {/* )} */}
         </div>
-        <div id="tag-edit-dropdown" style={{ display: "none" }}>
-          {loading ? (
+        <div
+          id="tag-edit-dropdown"
+          style={{ display: showTagDropDown ? "block" : "none" }}
+        >
+          {/* {loading ? (
             <div>
               <p>Loading....</p>
             </div>
-          ) : (
-            hashTag.map((tag, index) => (
-              <div key={index} onClick={() => handleSelectUser(tag.display)}>
-                {tag.display ? tag.display : "not found"}
-              </div>
-            ))
-          )}
+          ) : ( */}
+          {hashTag.map((tag, index) => (
+            <div key={index} onClick={() => handleSelectUser(tag.display)}>
+              {tag.display ? tag.display : "not found"}
+            </div>
+          ))}
+          {/* )} */}
         </div>
       </div>
     </>
   );
 }
 
-export default EditEditor;
+export default Editor;
