@@ -6557,14 +6557,14 @@ margin-bottom: 4px;
   box-shadow: 0px -2px 7px #8080803d;
 }
 [darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow {
-  border: 1px solid #b1b1b1;
+  border: 1px solid #565656;
   background: var(--darkmode-lightgray);  
   border-bottom: none;
   border-radius: 8px 8px 0 0;
   box-shadow: 0px -2px 7px #8080803d;
 }
 [darkmode] .Whatsmind-bar .editor .ql-container.ql-snow{
-  border: 1px solid #b1b1b1;
+  border: 1px solid #565656;
 }
 [darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow span{
 color: white;
