@@ -6570,3 +6570,6 @@ stroke: white;
 .Whatsmind-bar .editor .ql-snow .ql-picker{
   height: auto;
 }
+.Description-bar h1, h2, h3, h4, h5, h6{
+  word-wrap: break-word;
+}
