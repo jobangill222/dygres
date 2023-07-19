@@ -45,7 +45,7 @@ const FooterMob = () => {
                     <ul className="mob-foot-menu">
                         <li><Link exact to="/new"><AiFillHome /></Link></li>
                         {/* <li><Link exact to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li> */}
-                        <li className="Addpost"><Link exact to="/whatsmind"><BsPlus /></Link></li>
+                        <li className="Addpost"><Link exact to="/whatsmind"><img src="images/dygresPlusicon.png"/></Link></li>
                         {/* <li><Link exact to="/Most-voted"><MdHowToVote />Most Voted</Link></li> */}
                         <li className="relative user-dropdown">
 

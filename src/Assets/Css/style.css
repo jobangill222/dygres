@@ -4616,9 +4616,8 @@ ul.sidebar-menu {
   font-size: 1.125rem;
 }
 .Mob-Footerbar .mob-foot-menu li a img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: 100%;
+  height: auto;
 }
 
 .Mob-Footerbar .mob-foot-menu li.Addpost a:hover svg {
@@ -5291,6 +5290,18 @@ ul.trending-hashtag-list li.hashtaglist {
   .action-bar ul li span.number {
       font-size: 1rem;
   }
+  .User-detail .usermain-img {
+    margin-top: -75px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .user-detail-listing {
+    margin-top: 20px;
+  }
+  .user_info_sidebar {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 1099px){
@@ -5312,6 +5323,7 @@ ul.trending-hashtag-list li.hashtaglist {
     -webkit-mask-image: none;
     mask-image: none;
 }
+
 }
 @media (min-width: 991px) {
   .action-bar ul li .list-text, .action-bar ul li .list-text span.number, .action-bar ul li, .action-bar ul li p {
