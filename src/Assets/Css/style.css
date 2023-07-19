@@ -702,13 +702,12 @@ ul.trending-hashtag-list li.hashtaglist {
 .user-detail-listing {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  margin-top: 30px;
+justify-content: space-between;
+ margin-top: 30px;
 }
 
 .user-detail-listing li {
   text-align: center;
-  margin-right: 40px;
 }
 
 .user-detail-listing li p {
@@ -1201,7 +1200,6 @@ ul.profiletabsbar li:last-child a {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 10px;
 }
 
 .profile-user-detail .user-detail h4.text-secondry {
@@ -1476,8 +1474,19 @@ t .report-tabs li.active {
 }
 .copiedbar .content {
   font-size: 14px;
+  margin-bottom: 0;
+  color: white;
 }
-
+  .modal-content .input-group-text{
+    color: white;
+    background: var(--base-primary);
+  }
+  .welcomepopup .modal-header{
+    column-gap: 20px;
+  }
+  .modal-content{
+    border-radius: 20px;
+  }
 .copiedbar svg {
   top: 20px !important;
 }
@@ -1988,7 +1997,7 @@ t .report-tabs li.active {
   font-weight: 600;
   font-size: 1.375rem;
   line-height: 1.625rem;
-  color: #000000;
+  color: #404040;
 }
 
 .Actions-modal .modal-content {
@@ -4531,6 +4540,7 @@ ul.sidebar-menu {
   padding: 10px 10px;
   position: fixed;
   bottom: 0;
+  filter: drop-shadow(0px 8px 9px rgb(0,0,0,0.4));
   width: 100%;
   left: 0;
   background: var(--base-purewhite);
@@ -4553,8 +4563,8 @@ ul.sidebar-menu {
 }
 
 .Mob-Footerbar .mob-foot-menu li.Addpost a {
-  width: 67px;
-  height: 67px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4563,7 +4573,7 @@ ul.sidebar-menu {
   background: var(--base-purewhite);
   border: 0.5px solid var(--base-border);
   box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.06);
-  top: -40px;
+  top: -50px;
   position: relative;
   font-size: 52px;
   color: #b9b9b9;
@@ -4571,7 +4581,7 @@ ul.sidebar-menu {
 }
 .Mob-Footerbar .mob-foot-menu li a svg {
   color: #7e7e7e;
-  font-size: 26px;
+  font-size: 32px;
 }
 [darkmode] .Mob-Footerbar .mob-foot-menu li a svg{
   color: #ffffff;
@@ -4598,8 +4608,8 @@ ul.sidebar-menu {
   flex-direction: row;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown img {
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown .Dropdown-listing ul li a svg {
@@ -5099,11 +5109,6 @@ ul.trending-hashtag-list li.hashtaglist {
     margin-top: -75px;
   }
 
-  .user-dropdown,
-  .header-nav .navbar-nav a.nav-link {
-    margin-left: 30px;
-  }
-
   .digital-tabs {
     margin-top: 15px;
     position: relative;
@@ -5431,7 +5436,7 @@ ul.trending-hashtag-list li.hashtaglist {
     padding: 0 15px;
   }
   .header-nav .navbar-nav a.homeicon {
-    display: block;
+    display: none;
   }
   .helpicon {
     margin-left: 15px;
@@ -5518,7 +5523,6 @@ ul.trending-hashtag-list li.hashtaglist {
   .tabswithbutotn .buttonoverall-size {
     position: absolute;
     top: 0px;
-    right: inherit;
     left: 0;
   }
   .digital-feeds .Description-bar p div {
@@ -5900,6 +5904,12 @@ li.svggray svg path {
   .Titlebar-btns {
     flex-wrap: wrap;
   }
+  .sidebar-menu.col-lg-3{
+    margin-top: 0 !important;
+  }
+  .header-nav .navbar-nav{
+    column-gap: 4px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -5949,9 +5959,9 @@ li.svggray svg path {
   right: 10px;
   top: 40%;
 }
-  .action-bar ul li .list-text, .action-bar ul li, .action-bar ul li p {
+  /* .action-bar ul li .list-text, .action-bar ul li, .action-bar ul li p {
     font-size: 0;
-}
+} */
 .action-bar ul li, .action-bar ul li .accordion-button {
   margin-left: 10px;
 }
@@ -5978,7 +5988,7 @@ li.svggray svg path {
     height: 40px;
   }
   .action-bar ul.actionleftbar {
-    flex: 0 0 90%;
+    flex: 0 0 80%;
   }
   .action-bar ul.actionleftbar li p {
     font-size: 0;
@@ -6180,6 +6190,19 @@ li.svggray svg path {
 .profile-user-detail .user-edit-cover ul li {
   margin-bottom: 8px;
 }
+.action-bar ul li:nth-child(3){
+  display: none;
+}
+.action-bar ul li svg{
+  font-size: 18px;
+}
+.Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
+  font-size: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  margin-bottom: 0px;
+}
+
 }
 
 @media (max-width: 574px) {
@@ -6209,12 +6232,7 @@ li.svggray svg path {
     font-size: 0.875rem;
     line-height: 1rem;
 }
-.Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
-  font-size: 30px !important;
-  width: 36px !important;
-  height: 36px !important;
-  margin-bottom: 0px;
-}.followbtn {
+.followbtn {
   min-width: auto;
   padding: 4px 7px;
   font-weight: 500;
@@ -6381,18 +6399,47 @@ li.svggray svg path {
   .mobilemenu ul.web-none li {
     margin-right: 20px;
   }
+  .tabswithbutotn .buttonoverall-size{
+    right: inherit;
+    top: -50px;
+  }
+  .digital-tabs li .nav-link {
+  padding: 9px 15px;
+  }
+  .tabswithbutotn {
+    position: relative;
+    margin-top: 60px;
+  }
+  .actionrytbar {
+    flex: 0 0 20%;
+    text-align: end;
+    justify-content: flex-end !important;
+}
+.action-bar{
+  display: flex;
+  flex-direction: row;
+}
+#theme-switch .switch-thumb{
+  height: 23px;
+    left: 3px;
+    top: 3px;
+    width: 46px;
+}
+#theme-switch .switch-track{
+  height: 29px;
+  width: 73px; 
+}
+[darkmode] #theme-switch .switch-thumb {
+  left: 25px;
+}
 }
 @media (max-width: 360px){
   .Mob-Footerbar .mob-foot-menu li a, .Mob-Footerbar .mob-foot-menu li.user-dropdown {
     font-size: .75rem;
     line-height: .875rem;
 }
-.Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
-  font-size: 0.875rem !important;
-  width: 30px !important;
-  height: 30px !important;
-  margin-bottom: 0px;
-}
+
+
 }
 
 .profile-feature-image {
@@ -6402,9 +6449,9 @@ li.svggray svg path {
 .user-detail-bar {
   align-items: flex-end;
 }
-.user-detail {
+/* .user-detail {
   margin-top: 24px;
-}
+} */
 .navbar-nav svg {
   font-size: 22px;
   color: #AAAAAA;
@@ -6424,14 +6471,14 @@ li.svggray svg path {
 .user_info_sidebar p{
 font-size: 15px;
 font-weight: 600;
-margin-bottom: 8px;
+margin-bottom: 4px;
 }
 .user_info_sidebar a{
   border: 1px solid var(--base-green);
   border-radius: 12px;
-  padding: 8px 12px;
+  padding: 6px 10px;
   color: var(--base-green);
-  font-size: 15px;
+  font-size: 12px;
   background: var(--base-purewhite);
 }
 
@@ -6479,3 +6526,47 @@ margin-bottom: 8px;
   z-index: 1; /* Ensure the dropdown appears above other elements */
 }
 
+.Whatsmind-bar .editor .ql-container {
+  min-height: 200px;
+}
+.Whatsmind-bar .editor .ql-editor{
+  min-height: 194px;
+}
+.Whatsmind-bar .editor .ql-container.ql-snow{
+  border: 1px solid #dfdfdf;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0px 0px 5px #8080803d;
+}
+.Whatsmind-bar .editor .ql-toolbar.ql-snow {
+  border: 1px solid #dfdfdf;
+  background: var(--base-offgray);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0px -2px 7px #8080803d;
+}
+[darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow {
+  border: 1px solid #b1b1b1;
+  background: var(--darkmode-lightgray);  
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0px -2px 7px #8080803d;
+}
+[darkmode] .Whatsmind-bar .editor .ql-container.ql-snow{
+  border: 1px solid #b1b1b1;
+}
+[darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow span{
+color: white;
+stroke: white;
+}
+[darkmode] .Whatsmind-bar .editor .ql-snow .ql-stroke{
+stroke: white;
+}
+.ql-snow.ql-toolbar button:hover, .ql-snow .ql-toolbar button:hover, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.ql-active, .ql-snow .ql-toolbar button.ql-active, .ql-snow.ql-toolbar .ql-picker-label:hover, .ql-snow .ql-toolbar .ql-picker-label:hover, .ql-snow.ql-toolbar .ql-picker-label.ql-active, .ql-snow .ql-toolbar .ql-picker-label.ql-active, .ql-snow.ql-toolbar .ql-picker-item:hover, .ql-snow .ql-toolbar .ql-picker-item:hover, .ql-snow.ql-toolbar .ql-picker-item.ql-selected, .ql-snow .ql-toolbar .ql-picker-item.ql-selected{
+  color:var(--base-primary) !important;
+}
+.ql-snow.ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow.ql-toolbar button:focus .ql-stroke, .ql-snow .ql-toolbar button:focus .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button:hover .ql-stroke-miter, .ql-snow .ql-toolbar button:hover .ql-stroke-miter, .ql-snow.ql-toolbar button:focus .ql-stroke-miter, .ql-snow .ql-toolbar button:focus .ql-stroke-miter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter{
+  stroke: var(--base-primary) !important;
+}
+.Whatsmind-bar .editor .ql-snow .ql-picker{
+  height: auto;
+}
