@@ -641,7 +641,7 @@ ul.trending-hashtag-list li.hashtaglist {
   background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgb(204 204 204 / 15%);
   position: sticky;
-  top: 15px;
+  top: 75px;
 }
 
 .sidebar-profile .feature-image {
