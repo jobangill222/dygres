@@ -175,7 +175,7 @@ function AppRouter() {
         const axiosRes = await getNotificationDContext(
           pageNumberOfNotificationList
         );
-        console.log("axiosRes******** after get notification list", axiosRes);
+        // console.log("axiosRes******** after get notification list", axiosRes);
         if (axiosRes.status === "success") {
           setNotificationList(axiosRes.list);
 

@@ -110,11 +110,12 @@ const WhatsMind = (props) => {
       callback(newArray);
     }
   };
-  console.log(createPostState);
+  // console.log(createPostState);
+
   return (
     <>
       <div className="Whatsmind-bar">
-        <Editor setValue={setCreatePostState} value={createPostState} />
+        <Editor value={createPostState} setValue={setCreatePostState} userDropDown="create_post_user_dropdown" hashtagDropDown="create_post_hashtag_dropdown" placeholderState={placeholderState} />
         <div className="text-end">
           <Button className="bg-primary text-white" onClick={submitPost}>
             Submit

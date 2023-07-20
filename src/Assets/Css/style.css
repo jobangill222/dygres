@@ -6519,8 +6519,14 @@ margin-bottom: 4px;
 
 }
 
+
+#create_post_user_dropdown div, #create_post_hashtag_dropdown div , #edit_post_user_dropdown div, #tag-edit-dropdown div , #amplify_post_user_dropdown div , #apmlify_post_hashtag_dropdown div{
+  cursor: pointer; 
+  padding: 5px;
+}
+
 /* dropdown  */
-#user-dropdown, #user-edit-dropdown {
+#create_post_user_dropdown, #edit_post_user_dropdown , #amplify_post_user_dropdown{
   position: absolute;
   top: 100%;
   left: 0;
@@ -6533,13 +6539,7 @@ margin-bottom: 4px;
   z-index: 10; /* Ensure the dropdown appears above other elements */
 }
 
-#user-dropdown div,
-#tag-dropdown div , #user-edit-dropdown div, #tag-edit-dropdown div{
-  cursor: pointer;
-  padding: 5px;
-}
-
-#tag-dropdown, #tag-edit-dropdown {
+#create_post_hashtag_dropdown, #edit_post_hashtag_dropdown , #apmlify_post_hashtag_dropdown{
   position: absolute;
   top: 100%;
   left: 0;

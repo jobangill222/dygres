@@ -15,6 +15,7 @@ import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 // TimeAgo.addDefaultLocale(en)
 import { levelBelowPost } from "../../helper/levelBelowPost";
+import Editor from "../TextEditor/Editor";
 
 export default function SingleAward(props) {
 
@@ -240,7 +241,10 @@ export default function SingleAward(props) {
                                             }} />
                                     </Form.Group>
                                 </Form> */}
-                                <MentionsInput
+
+                                <Editor value={createPostState} setValue={setCreatePostState} userDropDown="amplify_post_user_dropdown" hashtagDropDown="apmlify_post_hashtag_dropdown" placeholderState={placeholder} />
+
+                                {/* <MentionsInput
                                     className='whatsmind-inputbar'
                                     as="textarea"
                                     rows={6}
@@ -295,7 +299,7 @@ export default function SingleAward(props) {
                                         )}
                                     />
 
-                                </MentionsInput>
+                                </MentionsInput> */}
                                 {/* <p className="word-note">Character {createPostState.length}/420</p> */}
                                 <p className="word-note">{420 - createPostState.length}</p>
 

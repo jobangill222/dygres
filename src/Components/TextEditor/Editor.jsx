@@ -6,7 +6,8 @@ import { modules } from "./QuillModules";
 import { DContext } from "../../Context/DContext";
 import { debounce, searchQuery, modifyString } from "../../helper/editorhelper";
 
-function Editor({ value, setValue }) {
+function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholderState }) { 
+
   const { suggestionWhilePostingDContext } = useContext(DContext);
 
   const [selectedUser, setSelectedUser] = useState(null);
@@ -54,6 +55,7 @@ function Editor({ value, setValue }) {
   };
 
   useEffect(() => {
+
     const editor = quillInstanceRef.current.getEditor();
 
     editor.on("text-change", () => {
@@ -64,78 +66,104 @@ function Editor({ value, setValue }) {
 
       const currentLineText = editor.getLine(currentCursorPosition);
       let lastElement = currentLineText[0]?.children?.head?.text;
-      const words = lastElement.split(/\s+/);
-      const lastWord = words[words.length - 1]; // Get the last word
-      let lastChar = lastElement.slice(-1);
 
-      if (
-        // lastWord.length > 1 &&
-        lastChar !== " " &&
-        lastWord.startsWith("@")
-      ) {
-        const dropdown = document.getElementById("user-dropdown");
-        let withoutAt = lastWord.slice(1);
-        setQuery(lastWord);
-        debounce(
-          searchQuery(
-            "@",
-            suggestionWhilePostingDContext,
-            withoutAt,
-            setCachedUserList,
-            cachedUserList,
-            setUserList
-          ).then((res) => {
-            const { top, left } = editor.getBounds(currentCursorPosition);
-            setShowUserDropDown(
-              res && res.length > 0 && words.length > 0 && lastChar !== " "
-            );
-
-            dropdown.style.top = `${top + 100}px`;
-            dropdown.style.left = `${left}px`;
-          }),
-          500
-        );
-      } else if (
-        // lastWord.length > 1 &&
-        lastChar !== " " &&
-        lastWord.startsWith("#")
-      ) {
-        const dropdown = document.getElementById("tag-dropdown");
-
-        setQuery(lastWord);
-        // debounceHashtagData(lastWord);
-        debounce(
-          searchQuery(
-            "#",
-            suggestionWhilePostingDContext,
-            lastWord,
-            setCachedHashTagList,
-            cachedHashTagList,
-            setHashTagList
-          ).then((res) => {
-            const { top, left } = editor.getBounds(currentCursorPosition);
-            console.log(
-              res && res.length > 0 && words.length > 0 && lastChar !== " ",
-              "Test Drop Dwon"
-            );
-            setShowTagDropDown(
-              res && res.length > 0 && words.length > 0 && lastChar !== " "
-            );
-            dropdown.style.top = `${top + 100}px`;
-            dropdown.style.left = `${left} px`;
-            dropdown.style.fontStyle = "bold";
-          }),
-          500
-        );
-      } else {
-        setShowUserDropDown(false);
-        setShowTagDropDown(false);
+      if(!lastElement){
+        setShowUserDropDown(false)
+        setShowTagDropDown(false)
+      }else{
+        const words = lastElement.split(/\s+/);
+        const lastWord = words[words.length - 1]; // Get the last word
+        let lastChar = lastElement.slice(-1);
+  
+        if (
+          // lastWord.length > 1 &&
+          lastChar !== " " &&
+          lastWord.startsWith("@")
+        ) {
+          const dropdown = document.getElementById(userDropDown);
+          let withoutAt = lastWord.slice(1);
+          setQuery(lastWord);
+          debounce(
+            searchQuery(
+              "@",
+              suggestionWhilePostingDContext,
+              withoutAt,
+              setCachedUserList,
+              cachedUserList,
+              setUserList
+            ).then((res) => {
+              const { top, left } = editor.getBounds(currentCursorPosition);
+              setShowUserDropDown(
+                res && res.length > 0 && words.length > 0 && lastChar !== " "
+              );
+  
+              dropdown.style.top = `${top + 100}px`;
+              dropdown.style.left = `${left}px`;
+            }),
+            500
+          );
+        } else if (
+          // lastWord.length > 1 &&
+          lastChar !== " " &&
+          lastWord.startsWith("#")
+        ) {
+          const dropdown = document.getElementById(hashtagDropDown);
+  
+          setQuery(lastWord);
+          // debounceHashtagData(lastWord);
+          debounce(
+            searchQuery(
+              "#",
+              suggestionWhilePostingDContext,
+              lastWord,
+              setCachedHashTagList,
+              cachedHashTagList,
+              setHashTagList
+            ).then((res) => {
+              const { top, left } = editor.getBounds(currentCursorPosition);
+              console.log(
+                res && res.length > 0 && words.length > 0 && lastChar !== " ",
+                "Test Drop Dwon"
+              );
+              setShowTagDropDown(
+                res && res.length > 0 && words.length > 0 && lastChar !== " "
+              );
+              dropdown.style.top = `${top + 100}px`;
+              dropdown.style.left = `${left} px`;
+              dropdown.style.fontStyle = "bold";
+            }),
+            500
+          );
+        } else {
+          setShowUserDropDown(false);
+          setShowTagDropDown(false);
+        }
       }
+      
     });
     return () => {
       editor.off("text-change");
     };
   }, [value]);
+
+
+
+  const handleTextChange = (content, delta, source, editor) => {
+
+    console.log('content.length' , content.length)
+
+    // Check if the text length exceeds the limit (420 characters)
+    if (content.length > 420) {
+      // Truncate the content to the first 420 characters
+      content = content.slice(0, 420);
+      // Update the editor's content with the truncated text
+      editor.setContents(editor.clipboard.convert(content));
+    }
+  
+    // Update the state with the new value
+    setValue(content);
+  };
+
 
   return (
     <>
@@ -144,11 +172,12 @@ function Editor({ value, setValue }) {
           theme="snow"
           modules={modules}
           value={value}
-          onChange={setValue}
+          onChange={handleTextChange}
           ref={quillInstanceRef}
+          placeholder={placeholderState}
         />
         <div
-          id="user-dropdown"
+          id={userDropDown}
           style={{ display: showUserDropDown ? "block" : "none" }}
         >
           {/* {loading ? (
@@ -164,7 +193,7 @@ function Editor({ value, setValue }) {
           {/* )} */}
         </div>
         <div
-          id="tag-dropdown"
+          id={hashtagDropDown}
           style={{ display: showTagDropDown ? "block" : "none" }}
         >
           {/* {loading ? (
@@ -177,9 +206,12 @@ function Editor({ value, setValue }) {
               {tag.display ? tag.display : "not found"}
             </div>
           ))}
-          {/* )} */}
+          
         </div>
       </div>
+
+      {/* <p>{420 - value.replace(/(<([^>]+)>)/gi, "").length}</p> */}
+
     </>
   );
 }

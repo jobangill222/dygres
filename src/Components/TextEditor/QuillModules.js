@@ -1,5 +1,3 @@
-const userList = ["User1", "User2", "User3"];
-
 export const modules = {
   toolbar: [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import Tooltip from 'react-bootstrap/tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import moment from "moment";
@@ -6,13 +6,27 @@ import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 // TimeAgo.addDefaultLocale(en)
 import { levelBelowPost } from "../../helper/levelBelowPost";
-import HighLight from "../HighLight";
+// import HighLight from "../HighLight";
+import { createMarkup } from "../../helper/editorhelper";
+import { useNavigate } from "react-router-dom";
+import { DContext } from "../../Context/DContext";
+
 
 export default function PostRetweetFrom(props) {
 
     const timeAgo = new TimeAgo('en-US')
 
     const { parentPostDetail } = props;
+    const navigate = useNavigate();
+
+
+    const {
+        checkUsernameExistDContext,
+        isDummyUser,
+        setSearchState,
+        setHashTagClickState
+    } = useContext(DContext);
+
 
     const [verificationLevelState, setVerificationLevelState] = useState(0);
     //Verification Level
@@ -43,7 +57,68 @@ export default function PostRetweetFrom(props) {
 
 
 
-    const lines = parentPostDetail[0]?.content.split('\n');
+    // const contentRef = useRef(null);
+
+    // useEffect(() => {
+    //     if (contentRef.current) {
+    //         const atElements = contentRef.current.querySelectorAll(".highlighted");
+
+    // atElements.forEach((element) => {
+    //     element.addEventListener("click", handleClick);
+    // });
+    // }
+    // }, [parentPostDetail[0]?.content]);
+
+    // let content = createMarkup(parentPostDetail[0]?.content);
+
+    // const lines = parentPostDetail[0]?.content.split('\n');
+
+
+    const handleClick = async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const name = String(event.target.textContent);
+        // console.log(name, "name");
+        let str = name[0];
+        if (str === "@") {
+            var newStr = name.replace("@", "");
+            // console.log(newStr, "newStr");
+            const axiosRes = await checkUsernameExistDContext(newStr);
+            // console.log('axiosResaxiosResaxiosResaxiosRes', axiosRes)
+            if (axiosRes.status === "error") {
+                navigate("/notfound");
+            } else {
+                // localStorage.setItem('sessionUserID', axiosRes.detail._id);
+                navigate("/UsersProfile/" + axiosRes.detail.username);
+            }
+        }
+
+        if (str === "#") {
+            if (isDummyUser()) {
+                // console.log("user not logged in");
+                navigate("/login");
+            } else {
+                setSearchState(null);
+                setHashTagClickState(true);
+                localStorage.setItem("hashTagName", name);
+                navigate("/hashtagPosts");
+            }
+        }
+    };
+
+    const contentRef = useRef(null);
+
+    useEffect(() => {
+        if (contentRef.current) {
+            const atElements = contentRef.current.querySelectorAll(".highlighted");
+
+            atElements.forEach((element) => {
+                element.addEventListener("click", handleClick);
+            });
+        }
+    }, [parentPostDetail[0]?.content]);
+
+    let content = createMarkup(parentPostDetail[0]?.content);
 
     return (
         < div className="digital-feeds diffrentiate-bar" >
@@ -83,15 +158,19 @@ export default function PostRetweetFrom(props) {
             </div>
             <div className="user-preview">
                 <div className="Description-bar">
-                    <p>
+                    {/* <p>
                         {lines.map((line, index) => (
                             <React.Fragment key={index}>
-                                {/* {parentPostDetail[0].content} */}
                                 <HighLight content={line} />
                                 <br />
                             </React.Fragment>
                         ))}
-                    </p>
+                    </p> */}
+                    <div
+                        ref={contentRef}
+                        className="Description-bar"
+                        dangerouslySetInnerHTML={content}
+                    ></div>
                 </div>
             </div>
         </div >

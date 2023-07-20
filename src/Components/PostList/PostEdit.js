@@ -6,7 +6,9 @@ import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 import { DContext } from "../../Context/DContext";
 import { MentionsInput, Mention } from "react-mentions";
-import EditEditor from "../TextEditor/EditEditor";
+
+import Editor from "../TextEditor/Editor";
+
 
 const PostEdit = (props) => {
   //DContext
@@ -141,7 +143,8 @@ const PostEdit = (props) => {
                     </Form.Group>
                 </Form> */}{" "}
       </div>
-      <EditEditor value={editContent} setValue={setEditContent} />
+      {/* <EditEditor value={editContent} setValue={setEditContent} /> */}
+      <Editor value={editContent} setValue={setEditContent} userDropDown="edit_post_user_dropdown" hashtagDropDown="edit_post_hashtag_dropdown" placeholderState="" />
       <div className="text-end">
         <Button
           className="outline-primary text-white "

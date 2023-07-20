@@ -97,7 +97,7 @@ const Header = () => {
     }
   };
 
-  console.log(shareLinkUrl, "share Link Url");
+
   return (
     <>
       {isShowRulesModal && (
