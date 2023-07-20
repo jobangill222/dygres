@@ -118,7 +118,7 @@ const WhatsMind = (props) => {
         <Editor value={createPostState} setValue={setCreatePostState} userDropDown="create_post_user_dropdown" hashtagDropDown="create_post_hashtag_dropdown" placeholderState={placeholderState} />
         <div className="text-end">
           <Button className="bg-primary text-white" onClick={submitPost}>
-            Submit
+            Post
           </Button>
         </div>
 

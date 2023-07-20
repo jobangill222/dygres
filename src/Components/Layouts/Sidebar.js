@@ -161,6 +161,7 @@ const Sidebar = () => {
         <div className="User-detail">
           <OverlayTrigger placement="top" overlay={tooltip}>
             <div className="usermain-img">
+              <div className="avatar_img">
               <img
                 src={
                   user?.profileImage
@@ -174,7 +175,7 @@ const Sidebar = () => {
                     : { border: "none" }
                 }
               />
-
+</div>
               {isDummyUser() ? (
                 <div class="user_info_sidebar">
                   <p></p>

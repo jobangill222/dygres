@@ -116,15 +116,25 @@ const Threads = (props) => {
 
     const scollToRef = useRef();
 
+    const textRef = React.useRef();
+    
+    React.useEffect(() => {
+        if (textRef && textRef.current) {
+          textRef.current.style.height = "0px";
+          const taHeight = textRef.current.scrollHeight;
+          textRef.current.style.height = taHeight + "px";
+        }
+      }, [createCommentState]);
+
 
     return (
         <>
 
-            <div className='accordionitem' ref={scollToRef}>
+            <div className='accordionitem scroll_slim' ref={scollToRef}>
 
                 {clickTypeState === 'reply' && <div className='reply-post'>
                     <Form>
-                        <Form.Group className='replyinput' controlId="formBasicEmail">
+                        {/* <Form.Group className='replyinput' controlId="formBasicEmail">
                             <Form.Control
                                 as='textarea'
                                 type="text"
@@ -135,7 +145,12 @@ const Threads = (props) => {
                                     setCreateCommentState(e.target.value);
                                 }}
                                 placeholder="What are your thoughts............?" />
-                        </Form.Group>
+                        </Form.Group> */}
+                        <textarea className="form-control" ref={textRef} onChange={(e) => {
+                                    setCreateCommentState(e.target.value);
+                                }}>
+                            {createCommentState}
+                        </textarea>
                         <Button className="btn " onClick={submitComment}>
                             Post
                         </Button>
@@ -191,7 +206,7 @@ const Threads = (props) => {
 
                 {clickTypeState !== 'reply' && <div className='reply-post'>
                     <Form>
-                        <Form.Group className='replyinput' controlId="formBasicEmail">
+                        {/* <Form.Group className='replyinput' controlId="formBasicEmail">
                             <Form.Control
                                 as='textarea'
                                 type="text"
@@ -202,7 +217,12 @@ const Threads = (props) => {
                                     setCreateCommentState(e.target.value);
                                 }}
                                 placeholder="What are your thoughts............?" />
-                        </Form.Group>
+                        </Form.Group> */}
+                        <textarea className="form-control" ref={textRef} onChange={(e) => {
+                                    setCreateCommentState(e.target.value);
+                                }}>
+                            {createCommentState}
+                        </textarea>
                         <Button className="btn " onClick={submitComment}>
                             Post
                         </Button>
