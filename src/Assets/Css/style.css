@@ -2684,6 +2684,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .user-detail-bar .detailleft .avatar-img {
   position: relative;
   margin-right: 18px;
+  margin-bottom: 18px;
 }
 
 .profile-user-detail
@@ -2732,12 +2733,12 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .green-button{
   font-style: normal;
   font-weight: 600;
-  font-size: 18.5965px;
+  font-size: 15.5965px;
   line-height: 1.375rem;
   color: var(--base-green);
   border: 1px solid var(--base-green);
   border-radius: 5px;
-  padding: 11px 25px;
+  padding: 9px 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5028,6 +5029,10 @@ ul.trending-hashtag-list li.hashtaglist {
   .verification-bar .verification-media-upload {
     margin-top: 20px;
   }
+  .text_level {
+    margin-top: 10px;
+    column-gap: 18px;
+}
 
   .Titlebar-btns .searchbar input {
     padding: 14px 17px 14px 50px !important;
@@ -5120,7 +5125,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .user-detail-listing {
-    margin-top: 10px;
+    margin-top: 25px;
   }
 
   .Whatsmind-bar form textarea,
@@ -5241,7 +5246,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .user-detail-listing li p {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
     margin-bottom: 5px;
   }
 
@@ -5810,6 +5815,15 @@ li.svggray svg path {
     text-align: left !important;
     margin-top: 20px;
   }
+  .text-end {
+    text-align: right!important;
+    display: flex;
+    column-gap: 20px;
+    justify-content: end;
+}
+.ql-snow .ql-picker{
+  height: auto;
+}
 
   .editor-input .form-select {
     padding: 11px 20px;
@@ -6584,4 +6598,25 @@ stroke: white;
 }
 .Description-bar h1, h2, h3, h4, h5, h6{
   word-wrap: break-word;
+}
+ul.user-detail-listing{
+  justify-content: space-between !important;
+}
+.user-edit-cover {
+  min-width: 321px;
+}
+.digital-feeds .Description-bar .ql-align-center {
+    text-align: center;
+}
+.digital-feeds .Description-bar .ql-align-right {
+    text-align: right;
+}
+.ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6 {
+    color: #545456;
+}
+[darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6 {
+    color: #AFAFAF;
+}
+.Description-bar h1, h2, h3, h4, h5, h6, p {
+  color: var(--base-default-text);
 }
