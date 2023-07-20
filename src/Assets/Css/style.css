@@ -4862,6 +4862,18 @@ ul.sidebar-menu {
   opacity: 1;
   display: block;
 }
+.whatsmind-bar-btn {
+  padding: 0 20px 20px 20px;
+}
+.auto-resizable-textarea{
+  resize: none; /* Prevent manual resizing */
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  min-height: var(--rows, 1.5rem);
+}
+.reply-post textarea.form-control {
+  min-height: 80px;
+  padding-right: 70px;
+}
 .upload-media-verify button input {
   display: block;
   position: absolute;
