@@ -130,7 +130,7 @@ const Threads = (props) => {
     return (
         <>
 
-            <div className='accordionitem' ref={scollToRef}>
+            <div className='accordionitem scroll_slim' ref={scollToRef}>
 
                 {clickTypeState === 'reply' && <div className='reply-post'>
                     <Form>

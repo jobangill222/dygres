@@ -117,7 +117,7 @@ const WhatsMind = (props) => {
         <Editor setValue={setCreatePostState} value={createPostState} />
         <div className="text-end whatsmind-bar-btn">
           <Button className="bg-primary text-white" onClick={submitPost}>
-            Submit
+            Post
           </Button>
         </div>
 

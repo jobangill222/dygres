@@ -18,7 +18,7 @@ import { DContext } from "../../Context/DContext";
 import { useNavigate } from "react-router-dom";
 import SingleNotificationList from "../Notification/SingleNotificationList";
 import { FcAbout } from "react-icons/fc";
-import { TbUserPlus } from "react-icons/tb";
+import { TbUser, TbUserPlus } from "react-icons/tb";
 
 import RulesModal from "../Modals/RulesModal";
 import ReferModal from "../Modals/ReferUserModal";
@@ -198,7 +198,7 @@ const Header = () => {
               <div className="text-lightgray user_icon" href="#">
                 <div className="user_icon">
                   <span>{user?.referradCount ? user.referradCount : 0}</span>
-                  <TbUserPlus onClick={ShareShow} />
+                  <TbUser onClick={ShareShow} />
                 </div>
               </div>
 

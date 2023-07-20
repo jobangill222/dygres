@@ -164,6 +164,7 @@ function Editor({ value, setValue }) {
           {/* )} */}
         </div>
         <div
+        className="scroll_slim"
           id="tag-dropdown"
           style={{ display: showTagDropDown ? "block" : "none" }}
         >
