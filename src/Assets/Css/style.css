@@ -1820,8 +1820,8 @@ t .report-tabs li.active {
   position: relative;
 }
 .welcomepopup .modal-header {
-  justify-content: center !important;
-  padding: 0 0 20px 0;
+  justify-content: space-between !important;
+  padding: 0 30px 20px 0;
 }
 
 .welcomepopup .welcomepopupbar {
@@ -1862,6 +1862,19 @@ t .report-tabs li.active {
   color: #171717;
   margin-bottom: 20px;
 }
+.usermain-img .avatar_img{
+  border-radius: 50% !important;
+  border: 6px solid transparent;
+  background: linear-gradient(rgba(62, 172, 198, 1), rgba(157, 211, 131, 1)) padding-box,
+  linear-gradient(to bottom, rgba(62, 172, 198, 1), rgba(157, 211, 131, 1)) border-box;
+}
+.usermain-img .avatar_img img{
+  border: none !important;
+}
+.avatar-img img{
+  border: none !important;
+}
+
 
 .welcomepopup .welcomepopupbar button.btnprimary {
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
@@ -2005,13 +2018,16 @@ t .report-tabs li.active {
 }
 
 .Actions-modal .modal-content {
-  padding: 20px;
+  padding: 34px 54px;
   border: none;
 }
 
 .Actions-modal .modal-header button.btn-close {
   opacity: 1;
   font-size: 1rem;
+  position: absolute;
+
+  right: 2rem;
   cursor: pointer;
   transition: 0.3s ease;
 }
@@ -2668,6 +2684,9 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   height: 100%;
   object-fit: cover;
 }
+.action-bar ul li:nth-child(3){
+  display: none;
+}
 
 .profile-user-detail {
   margin-top: 30px;
@@ -2676,9 +2695,10 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .profile-user-detail .user-detail-bar .detailleft .avatar-img {
   width: 400px;
   height: 400px;
-  border-radius: 50%;
-  border: 5px solid var(--base-primary);
-}
+  border-radius: 50% !important;
+  border: 6px solid transparent;
+  background: linear-gradient(rgba(62, 172, 198, 1), rgba(157, 211, 131, 1)) padding-box,
+  linear-gradient(to bottom, rgba(62, 172, 198, 1), rgba(157, 211, 131, 1)) border-box;}
 
 .profile-user-detail .user-detail-bar .detailleft .avatar-img img {
   width: 100%;
@@ -6072,7 +6092,7 @@ li.svggray svg path {
   }
   .welcomepopup .modal-header {
     justify-content: flex-start !important;
-    padding: 0 0 20px 0;
+    padding: 0 30px 20px 0;
   }
   .terms-content h4 {
     color: #212121;
@@ -6570,6 +6590,7 @@ margin-bottom: 4px;
 }
 
 .Whatsmind-bar .editor .ql-container {
+  border: none;
   min-height: 160px;
 }
 .Whatsmind-bar .editor .ql-editor{
@@ -6582,14 +6603,15 @@ margin-bottom: 4px;
   border-bottom: 1px solid rgb(223 223 223 / 52%) !important;
 }
 [darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow {
-  border: 1px solid #565656;
+  border: none;
   background: var(--darkmode-lightgray);  
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 0px -2px 7px #8080803d;
+  border-bottom: 1px solid rgb(0 0 0 / 30%) !important;
 }
-[darkmode] .Whatsmind-bar .editor .ql-container.ql-snow{
-  border: 1px solid #565656;
+[darkmode] .Whatsmind-bar .editor .ql-container{
+  border: none;
+}
+.user_icon{
+  cursor: pointer;
 }
 [darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow span{
 color: white;

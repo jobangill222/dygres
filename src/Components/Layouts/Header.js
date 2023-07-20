@@ -195,7 +195,7 @@ const Header = () => {
                 <DarkModeSwitch />
               </div>
 
-              <div className="text-lightgray" href="#">
+              <div className="text-lightgray user_icon" href="#">
                 <div className="user_icon">
                   <span>{user?.referradCount ? user.referradCount : 0}</span>
                   <TbUserPlus onClick={ShareShow} />
