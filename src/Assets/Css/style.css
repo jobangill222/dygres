@@ -924,7 +924,8 @@ textarea {
   background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgba(204, 204, 204, 0.15);
   border-radius: 20px;
-  padding: 25px;
+  overflow: hidden;
+  padding: 5px;
 }
 .whatsmind-inputbar .whatsmind-inputbar__highlighter {
   display: none;
@@ -1217,6 +1218,7 @@ ul.profiletabsbar li:last-child a {
 
 .user-detail-bar .detailleft .user-detail .user-availbility h6 {
   margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .user-detail-bar .detailleft .user-detail .levelbar {
@@ -1366,6 +1368,7 @@ ul.profiletabsbar li:last-child a {
 
 .digital-feeds .Description-bar {
   padding-bottom: 24px;
+  overflow-wrap: break-word;
 }
 .digital-feeds .Description-bar p div {
   white-space: inherit !important;
@@ -1582,6 +1585,7 @@ t .report-tabs li.active {
 
 .Dropdown-listing .arrowbar .notification-content .user-detail-bar {
   margin-top: 0px !important;
+  max-height: 55px;
 }
 .hoverdropdown .dropdown-menu .dropdown-item span svg {
   margin-right: 2px;
@@ -2813,6 +2817,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 
 .profile-user-detail .user-detail-listing {
   margin-top: 15px;
+  column-gap: 20px;
 }
 
 .notification-content.readmark p.notify {
@@ -3875,7 +3880,10 @@ p.uploaded-note b {
   border-color: #565656;
   outline: none !important;
 }
-
+#theme-switch .switch-icon svg {
+  font-size: 20px;
+  color: #FFAB08;
+}
 .action-bar ul li.active {
   font-weight: bold;
 }
@@ -4119,7 +4127,7 @@ p.uploaded-note b {
 
 [darkmode] .user-dropdown .Dropdown-listing ul li,
 [darkmode] .user-dropdown .Dropdown-listing ul li a {
-  color: var(--base-purewhite);
+  color: var(--base-purewhite) !important;
 }
 
 [darkmode] .user-dropdown .Dropdown-listing h4,
@@ -4965,7 +4973,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .Whatsmind-bar {
-    padding: 15px;
+    padding: 1px;
   }
 
   .reply-post form .replyinput .form-control {
@@ -6446,17 +6454,26 @@ li.svggray svg path {
   flex-direction: row;
 }
 #theme-switch .switch-thumb{
-  height: 23px;
+  height: 20px;
     left: 3px;
     top: 3px;
-    width: 46px;
+    width: 37px
 }
 #theme-switch .switch-track{
-  height: 29px;
-  width: 73px; 
+  height: 25px;
+  width: 65px; 
 }
 [darkmode] #theme-switch .switch-thumb {
   left: 25px;
+}
+[darkmode] #theme-switch .switch-icon svg {
+  font-size: 1rem;
+}
+#theme-switch .switch-icon svg {
+  font-size: 13px;
+}
+.header-nav .navbar-brand img {
+  max-width: 60%;
 }
 }
 @media (max-width: 360px){
@@ -6553,22 +6570,16 @@ margin-bottom: 4px;
 }
 
 .Whatsmind-bar .editor .ql-container {
-  min-height: 200px;
+  min-height: 160px;
 }
 .Whatsmind-bar .editor .ql-editor{
-  min-height: 194px;
+  min-height: 158px;
 }
-.Whatsmind-bar .editor .ql-container.ql-snow{
-  border: 1px solid #dfdfdf;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0px 0px 5px #8080803d;
-}
+
 .Whatsmind-bar .editor .ql-toolbar.ql-snow {
-  border: 1px solid #dfdfdf;
-  background: var(--base-offgray);
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 0px -2px 7px #8080803d;
+  border: none !important;
+  background: var(--base-purewhite);
+  border-bottom: 1px solid rgb(223 223 223 / 52%) !important;
 }
 [darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow {
   border: 1px solid #565656;
@@ -6596,7 +6607,8 @@ stroke: white;
 .Whatsmind-bar .editor .ql-snow .ql-picker{
   height: auto;
 }
-.Description-bar h1, h2, h3, h4, h5, h6{
+.Description-bar h1, .Description-bar h2, .Description-bar h3, .Description-bar h4, .Description-bar h5, .Description-bar h6, .Description-bar p{
+  color: var(--base-default-text);
   word-wrap: break-word;
 }
 ul.user-detail-listing{
@@ -6617,6 +6629,17 @@ ul.user-detail-listing{
 [darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6 {
     color: #AFAFAF;
 }
-.Description-bar h1, h2, h3, h4, h5, h6, p {
-  color: var(--base-default-text);
+
+.scroll_slim::-webkit-scrollbar{
+width: 6px;
+border-radius: 10px;
+}
+.scroll_slim::-webkit-scrollbar-track {
+  background: #e5fed15a;
+  border-radius: 10px;
+  width: 7px;
+}
+.scroll_slim::-webkit-scrollbar-thumb {
+  background: var(--base-green);
+  border-radius: 10px;
 }

@@ -235,8 +235,8 @@ const Header = () => {
                     >
                       <BsBell />
                     </Nav.Link>
-                    <div className="Dropdown-listing notification-dropdown bg-white">
-                      <div className="arrowbar">
+                    <div className=" Dropdown-listing notification-dropdown bg-white">
+                      <div className="scroll_slim arrowbar">
                         <div className="arrowshape"></div>
                         <div className="notification-head">
                           <h4>Notifications</h4>
