@@ -42,7 +42,7 @@ export default function ReferModal(props) {
           <div>
             <p className="mb-0 totalshare">
               {" "}
-              Total Shares: <span> {user?.referradCount}</span>
+              Total Shares: <span> {user?.referradCount ? user.referradCount : 0}</span>
             </p>
           </div>
         </Modal.Header>
