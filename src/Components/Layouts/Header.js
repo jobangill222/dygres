@@ -197,7 +197,7 @@ const Header = () => {
 
               <div className="text-lightgray" href="#">
                 <div className="user_icon">
-                  <span>{user?.referradCount}</span>
+                  <span>{user?.referradCount ? user.referradCount : 0}</span>
                   <TbUserPlus onClick={ShareShow} />
                 </div>
               </div>
