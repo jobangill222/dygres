@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { BsPencil } from "react-icons/bs";
-import { ImCross } from "react-icons/im";
+import { RxCross2 } from "react-icons/rx";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
@@ -144,13 +144,15 @@ const PostEdit = (props) => {
                 </Form> */}{" "}
       </div>
       {/* <EditEditor value={editContent} setValue={setEditContent} /> */}
+      <div className="editpost-editor">
       <Editor value={editContent} setValue={setEditContent} userDropDown="edit_post_user_dropdown" hashtagDropDown="edit_post_hashtag_dropdown" placeholderState="" />
-      <div className="text-end">
+      </div>
+      <div className="text-end edit-post-buttons">
         <Button
-          className="outline-primary text-white "
+          className="outline-primary cancel text-white "
           onClick={() => setIsEditFieldOpen(false)}
         >
-          <ImCross />
+          <RxCross2 />
           Cancel
         </Button>
         <Button className="bg-primary text-white" onClick={saveEditPost}>

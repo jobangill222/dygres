@@ -218,7 +218,7 @@ const UsersProfile = () => {
                         <div className="profile-user-detail">
                             <Container>
                                 <div className="user-detail-bar">
-                                    <div className="detailleft">
+                                    <div className="detailleft user_profile">
                                         <OverlayTrigger placement="top" overlay={tooltip}>
                                             <div className="avatar-img">
                                                 <img src={otherUser?.profileImage ? otherUser.profileImage : `/images/u100.png`} alt="user-img" />
@@ -270,16 +270,7 @@ const UsersProfile = () => {
                                         </div>
 
                                     </div>
-                                    <div className="user-edit-cover">
-                                        <ul>
-                                            <li>
-                                                {/* <Link to="/"><BsFillImageFill />Edit Cover</Link> */}
-                                            </li>
-                                            <li>
-                                                {/* <Link to="/editprofile"><BsPencil />Edit profile</Link> */}
-                                            </li>
-                                        </ul>
-                                    </div>
+                                   
                                 </div>
 
                             </Container>

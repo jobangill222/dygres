@@ -1571,6 +1571,7 @@ t .report-tabs li.active {
 }
 .Dropdown-listing .arrowbar {
   height: 300px;
+  padding: 0 5px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -6617,32 +6618,55 @@ background: linear-gradient(to right, rgba(157, 211, 131, 1), rgba(62, 172, 198,
   z-index: 1; /* Ensure the dropdown appears above other elements */
 }
 
-.Whatsmind-bar .editor .ql-container {
+ .editor .ql-container {
   border: none;
   min-height: 160px;
 }
-.Whatsmind-bar .editor .ql-editor{
+ .editor .ql-editor{
   min-height: 158px;
 }
-
-.Whatsmind-bar .editor .ql-toolbar.ql-snow {
+body .ql-container.ql-snow{
+  border: none;
+}
+.editpost-editor .editor .ql-toolbar.ql-snow{
+  background: var(--base-border);
+}
+.editpost-editor .editor .ql-container.ql-snow {
+  border: 1px solid #dfdfdf !important;
+  border-radius: 0 0 20px 20px;
+}
+.edit-post-buttons {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.edit-post-buttons .cancel{
+  padding: 11px 37px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+ .editor .ql-toolbar.ql-snow {
   border: none !important;
   background: var(--base-purewhite);
   border-bottom: 1px solid rgb(223 223 223 / 52%) !important;
   border-radius: 20px 20px 0 0;
 }
-[darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow {
+[darkmode]  .editor .ql-toolbar.ql-snow {
   border: none;
   background: var(--darkmode-lightgray);  
   border-bottom: 1px solid rgb(0 0 0 / 30%) !important;
 }
-[darkmode] .Whatsmind-bar .editor .ql-container{
+[darkmode]  .editor .ql-container{
   border: none;
 }
 .user_icon{
   cursor: pointer;
 }
-[darkmode] .Whatsmind-bar .editor .ql-toolbar.ql-snow span{
+[darkmode]  .editor .ql-toolbar.ql-snow span{
 color: white;
 stroke: white;
 }
@@ -6662,7 +6686,7 @@ stroke: white;
   color: var(--base-default-text);
   word-wrap: break-word;
 }
-[darkmode] .Description-bar h1, .Description-bar h2, .Description-bar h3, .Description-bar h4, .Description-bar h5, .Description-bar h6, .Description-bar p{
+[darkmode] .Description-bar h1, [darkmode] .Description-bar h2, [darkmode] .Description-bar h3, [darkmode] .Description-bar h4, [darkmode]  .Description-bar h5, [darkmode] .Description-bar h6, [darkmode] .Description-bar p{
   color: var(--darkmode-offwhite);
   word-wrap: break-word;
 }
@@ -6717,4 +6741,13 @@ border-radius: 10px;
 .scroll_slim::-webkit-scrollbar-thumb {
   background: var(--base-green);
   border-radius: 10px;
+}
+.user_profile {
+  flex-direction: row !important;
+  width: 100%;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+}
+.notification-content li svg:hover {
+  color: red;
 }
