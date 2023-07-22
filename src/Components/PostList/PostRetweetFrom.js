@@ -10,6 +10,7 @@ import { levelBelowPost } from "../../helper/levelBelowPost";
 import { createMarkup } from "../../helper/editorhelper";
 import { useNavigate } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
+import ShowPostText from '../TextEditor/ShowPostAsPlainText';
 
 
 export default function PostRetweetFrom(props) {
@@ -74,51 +75,51 @@ export default function PostRetweetFrom(props) {
     // const lines = parentPostDetail[0]?.content.split('\n');
 
 
-    const handleClick = async (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const name = String(event.target.textContent);
-        // console.log(name, "name");
-        let str = name[0];
-        if (str === "@") {
-            var newStr = name.replace("@", "");
-            // console.log(newStr, "newStr");
-            const axiosRes = await checkUsernameExistDContext(newStr);
-            // console.log('axiosResaxiosResaxiosResaxiosRes', axiosRes)
-            if (axiosRes.status === "error") {
-                navigate("/notfound");
-            } else {
-                // localStorage.setItem('sessionUserID', axiosRes.detail._id);
-                navigate("/UsersProfile/" + axiosRes.detail.username);
-            }
-        }
+    // const handleClick = async (event) => {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     const name = String(event.target.textContent);
+    //     // console.log(name, "name");
+    //     let str = name[0];
+    //     if (str === "@") {
+    //         var newStr = name.replace("@", "");
+    //         // console.log(newStr, "newStr");
+    //         const axiosRes = await checkUsernameExistDContext(newStr);
+    //         // console.log('axiosResaxiosResaxiosResaxiosRes', axiosRes)
+    //         if (axiosRes.status === "error") {
+    //             navigate("/notfound");
+    //         } else {
+    //             // localStorage.setItem('sessionUserID', axiosRes.detail._id);
+    //             navigate("/UsersProfile/" + axiosRes.detail.username);
+    //         }
+    //     }
 
-        if (str === "#") {
-            if (isDummyUser()) {
-                // console.log("user not logged in");
-                navigate("/login");
-            } else {
-                setSearchState(null);
-                setHashTagClickState(true);
-                localStorage.setItem("hashTagName", name);
-                navigate("/hashtagPosts");
-            }
-        }
-    };
+    //     if (str === "#") {
+    //         if (isDummyUser()) {
+    //             // console.log("user not logged in");
+    //             navigate("/login");
+    //         } else {
+    //             setSearchState(null);
+    //             setHashTagClickState(true);
+    //             localStorage.setItem("hashTagName", name);
+    //             navigate("/hashtagPosts");
+    //         }
+    //     }
+    // };
 
-    const contentRef = useRef(null);
+    // const contentRef = useRef(null);
 
-    useEffect(() => {
-        if (contentRef.current) {
-            const atElements = contentRef.current.querySelectorAll(".highlighted");
+    // useEffect(() => {
+    //     if (contentRef.current) {
+    //         const atElements = contentRef.current.querySelectorAll(".highlighted");
 
-            atElements.forEach((element) => {
-                element.addEventListener("click", handleClick);
-            });
-        }
-    }, [parentPostDetail[0]?.content]);
+    //         atElements.forEach((element) => {
+    //             element.addEventListener("click", handleClick);
+    //         });
+    //     }
+    // }, [parentPostDetail[0]?.content]);
 
-    let content = createMarkup(parentPostDetail[0]?.content);
+    // let content = createMarkup(parentPostDetail[0]?.content);
 
     return (
         < div className="digital-feeds diffrentiate-bar" >
@@ -158,19 +159,7 @@ export default function PostRetweetFrom(props) {
             </div>
             <div className="user-preview">
                 <div className="Description-bar">
-                    {/* <p>
-                        {lines.map((line, index) => (
-                            <React.Fragment key={index}>
-                                <HighLight content={line} />
-                                <br />
-                            </React.Fragment>
-                        ))}
-                    </p> */}
-                    <div
-                        ref={contentRef}
-                        className="Description-bar"
-                        dangerouslySetInnerHTML={content}
-                    ></div>
+                    <ShowPostText postContent={parentPostDetail[0]?.content ? parentPostDetail[0].content : "loading"} />
                 </div>
             </div>
         </div >

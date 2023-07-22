@@ -1,9 +1,10 @@
 import React from "react";
-import HighLight from "../HighLight";
+// import HighLight from "../HighLight";
+import ShowPostText from "../ShowPostAsPlainText";
 const PostContent = ({ postContent }) => {
 
 
-  const lines = postContent.split('\n');
+  // const lines = postContent.split('\n');
 
   return (
     <>
@@ -11,17 +12,16 @@ const PostContent = ({ postContent }) => {
         <p>
           {/* <HighLight content={postContent} /> */}
 
-          {lines.map((line, index) => (
+          {/* {lines.map((line, index) => (
             <React.Fragment key={index}>
-              {/* {line} */}
               <HighLight key={index} content={line} />
               {line === "" ?
                 <br />
                 : null
               }
-              {/* <br /> */}
             </React.Fragment>
-          ))}
+          ))} */}
+          <ShowPostText postContent={postContent ? postContent : "loading"} />
         </p>
       </div>
 

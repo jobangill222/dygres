@@ -16,6 +16,7 @@ import TimeAgo from 'javascript-time-ago'
 // TimeAgo.addDefaultLocale(en)
 import { levelBelowPost } from "../../helper/levelBelowPost";
 import Editor from "../TextEditor/Editor";
+import ShowPostText from "../TextEditor/ShowPostAsPlainText";
 
 export default function SingleAward(props) {
 
@@ -301,7 +302,7 @@ export default function SingleAward(props) {
 
                                 </MentionsInput> */}
                                 {/* <p className="word-note">Character {createPostState.length}/420</p> */}
-                                <p className="word-note">{420 - createPostState.length}</p>
+                                {/* <p className="word-note">{420 - createPostState.length}</p> */}
 
                             </div>
                         </div>
@@ -342,14 +343,7 @@ export default function SingleAward(props) {
                             <div className="user-preview">
                                 <div className="Description-bar">
                                     <p>
-                                        {/* <HighLight content={postDetailForRetweet?.content ? postDetailForRetweet?.content : " "} /> */}
-                                        {postDetailForRetweet?.content.split('\n').map((line, index) => (
-                                            <React.Fragment key={index}>
-                                                {/* {parentPostDetail[0].content} */}
-                                                <HighLight content={line} />
-                                                <br />
-                                            </React.Fragment>
-                                        ))}
+                                        <ShowPostText postContent={postDetailForRetweet?.content ? postDetailForRetweet.content : "loading"} />
                                     </p>
                                 </div>
                             </div>

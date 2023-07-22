@@ -7,6 +7,7 @@ import TimeAgo from 'javascript-time-ago'
 // TimeAgo.addDefaultLocale(en)
 import { verificationLevel } from "../../../helper/verificationLevel";
 import HighLight from "../HighLight";
+import ShowPostText from '../ShowPostAsPlainText';
 
 export default function PostRetweetFrom(props) {
 
@@ -81,13 +82,14 @@ export default function PostRetweetFrom(props) {
                 <div className="Description-bar">
                     <p>
                         {/* <HighLight content={parentPostDetail[0]?.content} /> */}
-                        {parentPostDetail[0]?.content.split('\n').map((line, index) => (
-                            <React.Fragment key={index}>
-                                {/* {parentPostDetail[0].content} */}
+                        <ShowPostText postContent={parentPostDetail[0]?.content ? parentPostDetail[0].content : "loading"} />
+
+                        {/* {parentPostDetail[0]?.content.split('\n').map((line, index) => (
+                            <React.Fragment key={index}> 
                                 <HighLight content={line} />
                                 <br />
                             </React.Fragment>
-                        ))}
+                        ))} */}
                     </p>
                 </div>
             </div>

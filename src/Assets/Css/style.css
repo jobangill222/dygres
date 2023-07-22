@@ -6580,6 +6580,7 @@ text-transform: capitalize;
 background: linear-gradient(to right, rgba(157, 211, 131, 1), rgba(62, 172, 198, 1));  
 -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  cursor: pointer;
 }
 
 
