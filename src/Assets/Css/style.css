@@ -924,6 +924,9 @@ textarea {
   border-radius: 20px;
   padding: 5px;
 }
+.whtsmind-btn-space {
+    padding: 14px;
+}
 .whatsmind-inputbar .whatsmind-inputbar__highlighter {
   display: none;
 }
@@ -4930,6 +4933,7 @@ ul.sidebar-menu {
 }
 .digital-feeds .Description-bar div span {
   margin: 0 3px 0 0 !important;
+  height: auto;
 }
 .buymore-modal .Awrds-li h3 span {
   font-size: 0.875rem;
@@ -6687,11 +6691,17 @@ stroke: white;
   color: var(--base-default-text);
   word-wrap: break-word;
 }
+.retweetmodal.modal-body {
+  padding: 10px 0px;
+}
+.retweetmodal .digital-feeds.feed-type {
+  padding: 0 15px;
+}
 [darkmode] .Description-bar h1, [darkmode] .Description-bar h2, [darkmode] .Description-bar h3, [darkmode] .Description-bar h4, [darkmode]  .Description-bar h5, [darkmode] .Description-bar h6, [darkmode] .Description-bar p{
   color: var(--darkmode-offwhite);
   word-wrap: break-word;
 }
-.Whatsmind-bar .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
+.Whatsmind-bar .ql-editor p,  .ql-editor ol li, .ql-editor ul li, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
   color: var(--base-default-text);
 }
 [darkmode] .Whatsmind-bar .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
