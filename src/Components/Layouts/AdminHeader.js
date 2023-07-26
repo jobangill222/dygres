@@ -157,7 +157,7 @@ const Header = () => {
                     <div className="mainheader">
                         <Navbar.Brand>
                             <Link to="/admin/dashboard">
-                                <img className="lightmode" src="/images/logo.png" alt="logo" />
+                                <img className="lightmode" src="/images/dygreslogo.png" alt="logo" />
                             </Link>
                             <Link to="/admin/dashboard">
                                 <img

@@ -20,6 +20,9 @@ import SingleNotificationList from "../Notification/SingleNotificationList";
 import { FcAbout } from "react-icons/fc";
 import { TbUser, TbUserPlus } from "react-icons/tb";
 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 import RulesModal from "../Modals/RulesModal";
 import ReferModal from "../Modals/ReferUserModal";
 import HelpCenterModal from "../Modals/HelpCenterModal";
@@ -139,30 +142,33 @@ const Header = () => {
           <div className="mainheader">
             {userToken ? (
               <>
+              <OverlayTrigger placement="right" overlay={<Tooltip id="tooltip-disabled">dygres</Tooltip>}>
                 <Navbar.Brand>
                   <Link to="/new">
                     <img
                       className="lightmode"
-                      src="/images/logo.png"
+                      src="/images/dygreslogo.png"
                       alt="logo"
                     />
                   </Link>
                   <Link to="/new">
                     <img
                       className="darkmode"
-                      src="/images/logowhite.png"
+                      src="/images/dygreslogo.png"
                       alt="logo"
                     />
                   </Link>
                 </Navbar.Brand>
+                </OverlayTrigger>
               </>
             ) : (
               <>
+              <OverlayTrigger placement="right" overlay={<Tooltip id="tooltip-disabled">dygres</Tooltip>}>
                 <Navbar.Brand>
                   <Link to="/">
                     <img
                       className="lightmode"
-                      src="/images/logo.png"
+                      src="/images/dygreslogo.png"
                       alt="logo"
                     />
                   </Link>
@@ -170,11 +176,12 @@ const Header = () => {
                   <Link to="/">
                     <img
                       className="darkmode"
-                      src="/images/logowhite.png"
+                      src="/images/dygreslogo.png"
                       alt="logo"
                     />
                   </Link>
                 </Navbar.Brand>
+                </OverlayTrigger>
               </>
             )}
 

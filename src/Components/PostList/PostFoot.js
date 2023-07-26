@@ -408,7 +408,7 @@ const PostFoot = (props) => {
 
       <div className="action-bar">
         <ul className="actionleftbar">
-          <li>
+          <li className="Agreeli">
             <div
               className={isAgree ? `active` : ""}
               onClick={() => !isPostDisable && AgreePost(postID)}><AiFillLike />
@@ -418,7 +418,7 @@ const PostFoot = (props) => {
               Agree</div>
           </li>
 
-          <li>
+          <li className="Disagreeli">
             <div className={isDisAgree ? `active` : ""}
               onClick={() => !isPostDisable && DisAgreePost(postID)}><AiFillDislike />
             </div>
@@ -431,15 +431,15 @@ const PostFoot = (props) => {
           {/* <li onClick={AwardsShow}> */}
           {/* {console.log('awardPopupOpenStatus', awardPopupOpenStatus)} */}
 
-          <li onClick={viewAwardModal} >
-            <FaGift />
+          <li className="Awardsli awardsbtn-disable" onClick={viewAwardModal} >
+            <div ><FaGift /></div>
             <span className="number">{awardCount}</span>Awards
           </li>
 
           {awardPopupOpenStatus && <AwardModal selectedPostIDForAwardPopup={selectedPostIDForAwardPopup} setSelectedPostIDForAwardPopup={setSelectedPostIDForAwardPopup} awardPopupOpenStatus={awardPopupOpenStatus} setAwardPopupOpenStatus={setAwardPopupOpenStatus} setAwardCount={setAwardCount} />}
 
 
-          <li>
+          <li  className="Threadsli">
             {/* <div className={isthreadopen ? 'accordionhead active' : 'accordionhead'} isthreadopen={isthreadopen ? isthreadopen : ""} onClick={() => setIsthreadopen(!isthreadopen)}> */}
             <div className={isthreadopen ? 'accordionhead active' : 'accordionhead'} onClick={() => setIsthreadopen(!isthreadopen)}>
               <FaComments />
@@ -454,8 +454,8 @@ const PostFoot = (props) => {
               <span className="number">{postReportCount}</span>
               Report</div>
           </li> */}
-          <li onClick={() => EditReport(postID)} >
-            <BsFillFlagFill />
+          <li  className="Reportsli" onClick={() => EditReport(postID)} >
+            <div><BsFillFlagFill /></div>
             <div className="list-text">
               <span className="number">{postReportCount}</span>
               Reports</div>
@@ -463,22 +463,23 @@ const PostFoot = (props) => {
 
 
 
-          <li>
+          <li  className="Amplifyli">
             <div className="" onClick={retweetPost}>
-              <HiSpeakerphone />
+              <div><HiSpeakerphone /></div>
             </div>
             <div className="list-text" onClick={() => viewUserListPopup('apmlified-user-of-post-list')} >
               <span className="number">{amplifyCountState}</span>
-              Amplify</div>
+              Amplify
+            </div>
           </li>
 
-          {postListingType !== 'singlePost' && <li onClick={() => viewPost(postID)} >
+          {postListingType !== 'singlePost' && <li  className="viewpostli" onClick={() => viewPost(postID)} >
             <div><BsArrowUpRightSquareFill /></div>
             <p>View post</p>
           </li>}
 
 
-          <li>
+          <li  className="editpostli">
             <Dropdown className="hoverdropdown">
               <Dropdown.Toggle
                 className="p-0 bg-transparent border-0 text-lightgray"
@@ -512,9 +513,13 @@ const PostFoot = (props) => {
         </ul>
         <ul className="actionrytbar">
           <li onClick={ShareShow}>
-            <ImForward />
-            Share
+            <div><ImForward /></div>
+            <p>Share</p>
           </li>
+          {postListingType !== 'singlePost' && <li className="viewpost-btn" onClick={() => viewPost(postID)} >
+            <div><BsArrowUpRightSquareFill /></div>
+            <p>View post</p>
+          </li>}
         </ul>
       </div>
       {/* Delete modal */}

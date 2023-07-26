@@ -150,7 +150,7 @@ function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholde
 
   const handleTextChange = (content, delta, source, editor) => {
 
-    console.log('content.length' , content.length)
+    // console.log('content.length' , content.length)
 
     // Check if the text length exceeds the limit (420 characters)
     if (content.length > 420) {

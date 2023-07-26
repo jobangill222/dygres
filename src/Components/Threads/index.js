@@ -132,7 +132,7 @@ const Threads = (props) => {
 
             <div className='accordionitem scroll_slim' ref={scollToRef}>
 
-                {clickTypeState === 'reply' && <div className='reply-post'>
+                {clickTypeState === 'reply' && <div className='reply-post '>
                     <Form>
                         {/* <Form.Group className='replyinput' controlId="formBasicEmail">
                             <Form.Control
@@ -204,7 +204,7 @@ const Threads = (props) => {
 
 
 
-                {clickTypeState !== 'reply' && <div className='reply-post'>
+                {clickTypeState !== 'reply' && <div className='reply-post reply-fix-bottom'>
                     <Form>
                         {/* <Form.Group className='replyinput' controlId="formBasicEmail">
                             <Form.Control
