@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { AiFillHome } from 'react-icons/ai';
-import { BsPlus } from 'react-icons/bs';
+import { AiFillHome  } from 'react-icons/ai';
+import { BsPlusCircle } from 'react-icons/bs';
 import { Link } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
 import { MdLogout } from "react-icons/md";
@@ -135,9 +135,7 @@ const AdminFooterMob = () => {
                 <div className="Mob-Footerbar">
                     <ul className="mob-foot-menu">
                         <li><Link exact to="/new"><AiFillHome />Home</Link></li>
-                        <li><Link exact to="/trending-hashtags"><BiLayerMinus />Trending hashtags</Link></li>
-                        <li className="Addpost"><Link exact to="/whatsmind"><BsPlus /></Link></li>
-                        <li><Link exact to="/Most-voted"><MdHowToVote />Most Voted</Link></li>
+                        <li className="Addpost"><Link exact to="/whatsmind"><BsPlusCircle/></Link></li>
                         <li className="relative user-dropdown">
 
                             <img

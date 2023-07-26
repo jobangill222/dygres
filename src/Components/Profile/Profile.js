@@ -178,7 +178,7 @@ const Profile = () => {
 
               <div className="user-detail">
                 <h4 className="text-secondry">{user?.name ? user.name : ""}</h4>
-                <div className="d-flex align-items-center text_level">
+                <div className="d-flex align-items-center text_level useravail-text-align">
                   <div className="user-availbility">
                     <h6 className="text-lightgray">@{user?.username}</h6>
                   </div>

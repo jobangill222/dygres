@@ -367,7 +367,7 @@ input.form-control {
 /* Header css  */
 .header-nav {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.02), 0px 0px 40px rgba(0, 0, 0, 0.02);
-  padding: 15px 0;
+  padding: 10px 0;
   background-color: #fdfdfd;
 }
 
@@ -943,10 +943,10 @@ textarea {
 .user-active-timer {
   align-self: baseline;
 }
-
+/* 
 .rules-sestion .modal-dialog {
   max-width: 460px !important;
-}
+} */
 
 .rules-sestion .modal-dialog .modal-header {
   padding: 0 0 10px 0 !important;
@@ -993,6 +993,9 @@ textarea {
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
+}
+.useravail-text-align .rules-tag {
+  margin: 0;
 }
 .whatsmind-inputbar__suggestions {
   margin-top: 0px !important;
@@ -1913,26 +1916,20 @@ t .report-tabs li.active {
   border-radius: 20px;
   padding: 30px 30px;
 }
-
 .reply-post form .btn {
   position: absolute;
-  right: 30px;
+  right: 15px;
   padding: 0;
-  /* background: transparent !important; */
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
   font-weight: 700;
-  font-size: 1.375rem;
   line-height: 1.625rem;
   letter-spacing: 0.02em;
-  /* color: var(--base-primary) !important; */
-  cursor: pointer;
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  bottom: 20px;
-  transform: translate(0px, -50%)
+  top: 6px;
 }
 .ql-toolbar.ql-snow .ql-formats{
   margin-right: 0 !important;
@@ -2235,7 +2232,7 @@ t .report-tabs li.active {
 
 .fade.modal-backdrop {
   background: #000000 !important;
-  opacity: 0.2;
+  /* opacity: 0.2; */
 }
 
 .award_of_package {
@@ -2690,7 +2687,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   height: 100%;
   object-fit: cover;
 }
-.action-bar ul li:nth-child(3){
+.action-bar ul li.awardsbtn-disable{
   display: none;
 }
 
@@ -3271,6 +3268,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5rem;
+  display: inline-block;
   text-align: right;
   color: var(--base-primary);
 }
@@ -4402,7 +4400,13 @@ ul.sidebar-menu {
 [darkmode] .Auth-bar .Authbar-innerbox form .authinputbar label.form-label {
   color: var(--base-purewhite);
 }
-
+[darkmode] .Auth-bar .Authbar-innerbox form .authinputbar label.form-label svg {
+  fill: white;
+}
+[darkmode] .Auth-bar .Authbar-innerbox form .authinputbar .form-control[disabled] {
+  background: #3a3a3a !important;
+  cursor: no-drop;
+}
 [darkmode] button.btn-close {
   filter: invert(1);
 }
@@ -4572,14 +4576,13 @@ ul.sidebar-menu {
 }
 
 .Mob-Footerbar {
-  padding: 10px 10px;
+  padding: 5px 0px;
   position: fixed;
   bottom: 0;
   filter: drop-shadow(0px 8px 9px rgb(0,0,0,0.4));
   width: 100%;
   left: 0;
   background: var(--base-purewhite);
-  height: 65px;
 }
 [darkmode] .Mob-Footerbar,
 [darkmode] .Mob-Footerbar .mob-foot-menu li.Addpost a {
@@ -4587,8 +4590,8 @@ ul.sidebar-menu {
 }
 .Mob-Footerbar .mob-foot-menu {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .Mob-Footerbar .mob-foot-menu li {
@@ -4596,7 +4599,7 @@ ul.sidebar-menu {
   max-width: 20%;
   text-align: center;
 }
-
+/* 
 .Mob-Footerbar .mob-foot-menu li.Addpost a {
   width: 80px;
   height: 80px;
@@ -4608,15 +4611,14 @@ ul.sidebar-menu {
   background: var(--base-purewhite);
   border: 0.5px solid var(--base-border);
   box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.06);
-  top: -50px;
   position: relative;
   font-size: 52px;
   color: #b9b9b9;
   transition: 0.5s ease;
-}
+} */
 .Mob-Footerbar .mob-foot-menu li a svg {
   color: #7e7e7e;
-  font-size: 32px;
+  font-size: 60px;
 }
 [darkmode] .Mob-Footerbar .mob-foot-menu li a svg{
   color: #ffffff;
@@ -4643,12 +4645,16 @@ ul.sidebar-menu {
   flex-direction: row;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown img {
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 .Mob-Footerbar .mob-foot-menu li.user-dropdown .Dropdown-listing ul li a svg {
   font-size: 1.125rem;
+  color: #171717;
+}
+[darkmode] .Mob-Footerbar .mob-foot-menu li.user-dropdown .Dropdown-listing ul li a svg{
+  color: #ffffff;
 }
 .Mob-Footerbar .mob-foot-menu li a img {
   width: 100%;
@@ -4924,9 +4930,22 @@ ul.sidebar-menu {
   max-height: 400px;
   overflow-x: hidden;
   overflow-y: scroll;
+  padding-bottom: 110px;
 }
 .thredsbar .accordionitem .accordionitem {
   max-height: initial;
+  overflow: initial;
+  padding-bottom: 0px;
+}
+.reply-post.reply-fix-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 50%;
+  max-width: 100%;
+  transform: translate(-50%, 0px);
+  padding: 10px 20px 20px 50px;
+  background: #ffffff;
 }
 .digital-feeds .Description-bar div {
   white-space: inherit !important;
@@ -4937,6 +4956,14 @@ ul.sidebar-menu {
 }
 .buymore-modal .Awrds-li h3 span {
   font-size: 0.875rem;
+}
+
+ul.actionrytbar {
+  flex: 0 0 20%;
+  justify-content: flex-end;
+}
+.actionrytbar li.viewpost-btn {
+  display: none;
 }
 /* Responsive css  */
 @media (max-width: 1599px) {
@@ -5047,8 +5074,8 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .profile-user-detail .user-detail-bar .detailleft .avatar-img {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
   }
 
   .profile-user-detail
@@ -5056,7 +5083,7 @@ ul.trending-hashtag-list li.hashtaglist {
     .detailleft
     .user-detail
     h4.text-secondry {
-    font-size: 28px;
+    font-size: 32px;
     line-height: 1.75rem;
   }
 
@@ -5066,7 +5093,7 @@ ul.trending-hashtag-list li.hashtaglist {
     .user-detail
     .user-availbility
     h6.text-lightgray {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   .dashboard-title-bar h4 {
@@ -5320,6 +5347,14 @@ ul.trending-hashtag-list li.hashtaglist {
     max-width: 100%;
     padding: 0 20px;
   }
+  .header-nav .container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.header-nav .container .navbar-nav {
+  flex-direction: row;
+}
+
   .action-bar ul li svg {
     margin-right: 4px;
     font-size: 1rem;
@@ -5392,7 +5427,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 991px) {
   .Mob-Footerbar .mob-foot-menu li a {
     color: var(--base-secondry) !important;
 }
@@ -5440,7 +5475,7 @@ ul.trending-hashtag-list li.hashtaglist {
   .Mob-Footerbar .user-dropdown .Dropdown-listing {
     position: absolute;
     top: inherit;
-    bottom: 40px;
+    bottom: 60px;
   }
   .Mob-Footerbar .user-dropdown .Dropdown-listing ul li {
     width: 100%;
@@ -5630,7 +5665,6 @@ ul.trending-hashtag-list li.hashtaglist {
     .detailleft
     .user-detail
     h4.text-secondry {
-    color: var(--base-primary);
     font-size: 22px;
   }
 
@@ -5671,8 +5705,9 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .profile-user-detail .user-detail-bar .detailleft .avatar-img {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
+    border-width: 4px;
   }
 
   .action-bar ul li .accordion-button {
@@ -5812,7 +5847,7 @@ li.svggray svg path {
     padding: 0px 0;
   }
   .body-wrapper {
-    padding: 80px 0 80px 0 !important;
+    padding: 60px 0 60px 0 !important;
   }
 
   .user-detail-bar .user-edit-cover ul {
@@ -5987,9 +6022,53 @@ li.svggray svg path {
 }
 
 @media (max-width: 767px) {
+  .action-bar ul.actionleftbar .list-text {
+    font-size: 0;
+    line-height: 0;
+}
+.actionrytbar li.viewpost-btn {
+  display: flex;
+}
+.action-bar ul.actionleftbar .list-text span.number {
+    font-size: 20px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+}
+.action-bar ul.actionleftbar li {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.action-bar ul.actionleftbar {
+    column-gap: 15px;
+}
+.action-bar ul.actionleftbar li .accordionhead {
+    font-size: 0;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+}
+.action-bar ul.actionleftbar li .accordionhead span.number {
+    font-size: 20px;
+    line-height: 1 !important;
+    margin: 0;
+}
+  ul.actionrytbar {
+    flex: 0 0 20%;
+}
+  .userleftside {
+    display: block;
+}
   .digital-feeds .Description-bar p{
     font-size: 1.125rem !important;
   }
+  .Auth-bar .Authbar-innerbox form .authinputbar .form-control {
+    padding: 10px !important;
+    font-size: 14px;
+}
+  .Actions-modal .modal-content {
+    padding: 20px 20px;
+}
   .medium .digital-feeds .Description-bar p {
     font-size: 19px !important;
 }
@@ -6000,7 +6079,8 @@ li.svggray svg path {
   font-size: 1rem !important;
 }
   .user-detail-bar .detailleft .avatar-img {
-    margin-right: 5px !important;
+    margin-right: 0px !important;
+    max-width: inherit !important;
 }
 .thredsbar .thredsbar .accordionitem .replyinput textarea {
   padding: 10px 45px 10px 10px !important;
@@ -6053,13 +6133,13 @@ li.svggray svg path {
     display: block;
   }
   .digital-feeds .avatar-img {
-    flex: 0 0 40px !important;
-    max-width: 40px;
+    flex: 0 0 60px !important;
+    max-width: 60px;
   }
 
   .digital-feeds .avatar-img img {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
   }
   .action-bar ul.actionleftbar {
     flex: 0 0 80%;
@@ -6111,8 +6191,7 @@ li.svggray svg path {
     padding-right: 10px;
   }
   .welcomepopup .modal-header {
-    justify-content: flex-start !important;
-    padding: 0 30px 20px 0;
+    padding: 0 40px 20px 0;
   }
   .terms-content h4 {
     color: #212121;
@@ -6264,19 +6343,34 @@ li.svggray svg path {
 .profile-user-detail .user-edit-cover ul li {
   margin-bottom: 8px;
 }
-.action-bar ul li:nth-child(3){
+.action-bar ul li.awardsbtn-disable{
   display: none;
 }
 .action-bar ul li svg{
   font-size: 18px;
 }
-.Mob-Footerbar .mob-foot-menu li.user-dropdown img, .Mob-Footerbar .mob-foot-menu li a svg {
-  font-size: 40px !important;
-  width: 40px !important;
-  height: 40px !important;
+/* , .Mob-Footerbar .mob-foot-menu li a svg */
+.Mob-Footerbar .mob-foot-menu li.user-dropdown img {
+  font-size: 60px !important;
+  width: 60px !important;
+  height: 60px !important;
   margin-bottom: 0px;
 }
-
+.Mob-Footerbar{
+  padding: 5px 15px;
+}
+.header-nav .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.mainheader {
+  padding: 5px 0;
+}
+.cursor-pointer.helpicon{display: none;}
+.welcomepopup .modal-body {
+  padding: 0 !important;
+  overflow: hidden;
+}
 }
 
 @media (max-width: 574px) {
@@ -6363,9 +6457,7 @@ li.svggray svg path {
   .body-wrapper {
     padding: 70px 0 90px 0 !important;
   }
-  .cursor-pointer.helpicon {
-    display: none;
-  }
+  
   .user-detail-bar .detailleft .awards-bar li img {
     width: 24px !important;
     height: 24px !important;
@@ -6471,8 +6563,22 @@ li.svggray svg path {
   }
 
   .mobilemenu ul.web-none li {
-    margin-right: 20px;
+    margin-right: 15px;
   }
+  .mobilemenu ul.web-none li svg{
+    font-size: 24px;
+    color: #AAAAAA;
+  }
+  .navbar-nav svg {
+    font-size: 24px;
+    color: #AAAAAA;
+}
+[darkmode] .mobilemenu ul.web-none li svg{
+  color: var(--base-default-text);
+}
+  .header-nav .navbar-nav {
+    margin-right: 5px !important;
+}
   .tabswithbutotn .buttonoverall-size{
     right: inherit;
     top: -50px;
@@ -6575,7 +6681,7 @@ text-transform: capitalize;
 }
 
 .editor{
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   position:relative;
 }
 
@@ -6681,6 +6787,16 @@ stroke: white;
 .ql-snow.ql-toolbar button:hover, .ql-snow .ql-toolbar button:hover, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.ql-active, .ql-snow .ql-toolbar button.ql-active, .ql-snow.ql-toolbar .ql-picker-label:hover, .ql-snow .ql-toolbar .ql-picker-label:hover, .ql-snow.ql-toolbar .ql-picker-label.ql-active, .ql-snow .ql-toolbar .ql-picker-label.ql-active, .ql-snow.ql-toolbar .ql-picker-item:hover, .ql-snow .ql-toolbar .ql-picker-item:hover, .ql-snow.ql-toolbar .ql-picker-item.ql-selected, .ql-snow .ql-toolbar .ql-picker-item.ql-selected{
   color:var(--base-primary) !important;
 }
+/* Editor css  */
+/* .ql-toolbar.ql-snow {width: 100%;transition: .3s ease;margin-top: -53px;}
+.quill {
+    overflow: hidden;
+}
+.quill.quillactive .ql-toolbar.ql-snow {margin-top: 0;} */
+.ql-snow.ql-toolbar button:hover .ql-fill, .ql-snow .ql-toolbar button:hover .ql-fill, .ql-snow.ql-toolbar button:focus .ql-fill, .ql-snow .ql-toolbar button:focus .ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+  fill: var(--base-primary) !important;
+  stroke: var(--base-primary) !important;
+}
 .ql-snow.ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow.ql-toolbar button:focus .ql-stroke, .ql-snow .ql-toolbar button:focus .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button:hover .ql-stroke-miter, .ql-snow .ql-toolbar button:hover .ql-stroke-miter, .ql-snow.ql-toolbar button:focus .ql-stroke-miter, .ql-snow .ql-toolbar button:focus .ql-stroke-miter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter{
   stroke: var(--base-primary) !important;
 }
@@ -6733,8 +6849,8 @@ ul.user-detail-listing{
     color: #AFAFAF;
 }
 [darkmode] .user_info_sidebar a{
-  background: var(--base-default-text);
-  color: var(--base-offgray);
+  color: var(--base-green);
+  background-color: transparent;
 }
 [darkmode] .user_info_sidebar p{
   color: var(--base-offgray);

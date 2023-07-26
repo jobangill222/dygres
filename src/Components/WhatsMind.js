@@ -115,7 +115,7 @@ const WhatsMind = (props) => {
   return (
     <>
       <div className="Whatsmind-bar">
-        <Editor value={createPostState} setValue={setCreatePostState} userDropDown="create_post_user_dropdown" hashtagDropDown="create_post_hashtag_dropdown" placeholderState={placeholderState} />
+        <Editor value={createPostState} setValue={setCreatePostState} userDropDown="create_post_user_dropdown" hashtagDropDown="create_post_hashtag_dropdown" placeholderState={placeholderState} className={createPostState ? "active" : ""} />
         <div className="text-end whtsmind-btn-space">
           <Button className="bg-primary text-white" onClick={submitPost}>
             Post

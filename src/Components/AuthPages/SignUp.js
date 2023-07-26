@@ -216,7 +216,7 @@ const SignUp = () => {
                 </small>
               </Form.Group>
               {username && (
-                <Form.Group controlId="formBasicReferradFrom">
+                <Form.Group className="authinputbar" controlId="formBasicReferradFrom">
                   <Form.Label>Referrad From</Form.Label>
                   <Form.Control
                     type="text"
