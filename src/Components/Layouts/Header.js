@@ -27,6 +27,8 @@ import HelpCenterModal from "../Modals/HelpCenterModal";
 import DataSaveConfirmationModal from "../Modals/DataSaveConfirmationModal";
 import DeleteAccountModal from "../Modals/DeleteAccountModal";
 import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
+import Tooltip from 'react-bootstrap/tooltip';
+import { OverlayTrigger } from "react-bootstrap";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -97,6 +99,12 @@ const Header = () => {
     }
   };
 
+
+  const shareDisableToolTip = (
+    <Tooltip id="shareDisableToolTip">
+      Verify email to share
+    </Tooltip>
+  );
 
   return (
     <>
@@ -196,10 +204,24 @@ const Header = () => {
               </div>
 
               <div className="text-lightgray user_icon" href="#">
-                <div className="user_icon">
-                  <span>{user?.referradCount ? user.referradCount : 0}</span>
-                  <TbUser onClick={ShareShow} />
-                </div>
+
+                {user?.isEmailVerify === 0 ?
+                  <>
+                    <div className="user_icon">
+                      <OverlayTrigger overlay={shareDisableToolTip} placement="bottom" >
+                        <div>
+                          <span>{user?.referradCount ? user.referradCount : 0}</span>
+                          <TbUser />
+                        </div>
+                      </OverlayTrigger>
+                    </div>
+                  </>
+                  :
+                  <div className="user_icon" onClick={ShareShow}>
+                    <span>{user?.referradCount ? user.referradCount : 0}</span>
+                    <TbUser />
+                  </div>
+                }
               </div>
 
               <div

@@ -62,6 +62,7 @@ export default function ReferModal(props) {
                   aria-label="Recipient's username"
                   aria-describedby="basic-addon2"
                   defaultValue={url ? url : null}
+                  disabled={true}
                 />
                 <InputGroup.Text id="basic-addon2">
                   {copied ? (

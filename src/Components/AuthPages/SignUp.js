@@ -208,8 +208,8 @@ const SignUp = () => {
                   placeholder="Enter Email Address"
                   name="email"
                   {...register("email", registerOptions.email)}
-                  // value={email}
-                  // onChange={e => setEmail(e.target.value)}
+                // value={email}
+                // onChange={e => setEmail(e.target.value)}
                 />
                 <small className="text-danger">
                   {errors?.email && errors.email.message}
@@ -222,7 +222,7 @@ const SignUp = () => {
                     type="text"
                     placeholder="Referrad From"
                     name="referradFrom"
-                    defaultValue={username}
+                    defaultValue={"@" + username}
                     disabled
                     onChange={async (e) => {
                       setValue("referradFrom", e.target.value);
