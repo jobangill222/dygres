@@ -54,7 +54,7 @@ const WhatsMind = (props) => {
             parentPostID
           );
           if (axiosRes.status === "success") {
-            setIsPostState(true);
+            // setIsPostState(true);
             // Update user stats state
             setUserStats((previousState) => {
               return {
@@ -65,15 +65,12 @@ const WhatsMind = (props) => {
 
             setCreatePostState("");
 
-            setActiveTabState("Global");
+            // setActiveTabState("Global");
 
             searchParams.delete("text");
             const newSearch = searchParams.toString();
 
-            navigate({
-              pathname: location.pathname,
-              search: newSearch,
-            });
+            navigate("/new");
           } else {
             toast(axiosRes.message);
           }
@@ -115,7 +112,14 @@ const WhatsMind = (props) => {
   return (
     <>
       <div className="Whatsmind-bar c">
-        <Editor value={createPostState} setValue={setCreatePostState} userDropDown="create_post_user_dropdown" hashtagDropDown="create_post_hashtag_dropdown" placeholderState={placeholderState} className={createPostState ? "active" : ""} />
+        <Editor
+          value={createPostState}
+          setValue={setCreatePostState}
+          userDropDown="create_post_user_dropdown"
+          hashtagDropDown="create_post_hashtag_dropdown"
+          placeholderState={placeholderState}
+          className={createPostState ? "active" : ""}
+        />
         <div className="text-end whtsmind-btn-space">
           <Button className="bg-primary text-white" onClick={submitPost}>
             Post

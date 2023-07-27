@@ -1,32 +1,34 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import { InputGroup, Form } from "react-bootstrap";
 import { AiOutlineCopy } from "react-icons/ai";
 import { MdCopyAll, MdOutlineContentCopy } from "react-icons/md";
-import useCopy from "use-copy";
+
 import { BiCopy } from "react-icons/bi";
 import { TiTickOutline } from "react-icons/ti";
 import { DContext } from "../../Context/DContext";
-
+import { CopyToClipboard } from "react-copy-to-clipboard";
 export default function ReferModal(props) {
   const { isShowReferModal, setIsShowReferModal, url } = props;
 
-  const [copied, copy, setCopied] = useCopy(url ? url : null);
+  const [copied, setCopied] = React.useState(false);
+
+  const onChangeCopyValue = useCallback(({ target: { value } }) => {
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  }, []);
+
+  const onCopy = useCallback(() => {
+    setCopied(true);
+  }, []);
+
   const { user } = useContext(DContext);
   const closePopup = async () => {
     setIsShowReferModal(false);
   };
-
-  const copyText = () => {
-    copy();
-
-    setTimeout(() => {
-      setCopied(false);
-    }, 3000);
-  };
-
-  console.log();
 
   return (
     <>
@@ -42,7 +44,8 @@ export default function ReferModal(props) {
           <div>
             <p className="mb-0 totalshare">
               {" "}
-              Total Shares: <span> {user?.referradCount ? user.referradCount : 0}</span>
+              Total Shares:{" "}
+              <span> {user?.referradCount ? user.referradCount : 0}</span>
             </p>
           </div>
         </Modal.Header>
@@ -76,8 +79,15 @@ export default function ReferModal(props) {
                       </p>
                     </div>
                   ) : (
-                    <div className="copiedbar">
-                      <BiCopy onClick={copyText} size={25} />
+                    <div className="copiedbar" onClick={onChangeCopyValue}>
+                      {/* <BiCopy onClick={copyText} size={25} /> */}
+                      <CopyToClipboard
+                        onCopy={onCopy}
+                        // options={{ message: "Whoa!" }}
+                        text={url ? url : null}
+                      >
+                        <BiCopy size={25} />
+                      </CopyToClipboard>
                       <p className="content">Copy</p>
                     </div>
                   )}{" "}

@@ -153,10 +153,9 @@ function Editor({
     });
 
     const quillElement = editor.container;
-    console.log(quillElement, "quillElement");
+
     if (quillElement && editor.getLength() > 2) {
       quillElement.classList.add("quillactive");
-      console.log(quillElement, "quill element");
     }
 
     return () => {
@@ -170,7 +169,6 @@ function Editor({
       editor.getLength() === 1
         ? setContentLength(0)
         : setContentLength(editor.getLength());
-      console.log(editor.getLength(), "Length 2");
 
       // setContentLength(editor.getLength());
     }
@@ -222,11 +220,7 @@ function Editor({
         </div>
       </div>
 
-      <p
-      className="counter-text"
-      >
-        {420 - contentLength}
-      </p>
+      <p className="counter-text">{420 - contentLength}</p>
     </>
   );
 }
