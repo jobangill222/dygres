@@ -6483,6 +6483,9 @@ ul.actionrytbar li p {
   .header-nav .navbar-nav .notify-add svg {
     font-size: 25px;
 }
+#theme-switch {
+  margin-right: 0px !important;
+}
 .header-nav .navbar-nav .notify-add .notification-dropdown .userleftside .rules-tag {
   line-height: 1;
   margin: 0;
