@@ -9,6 +9,7 @@ import { BsQuestionCircle } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { GrNotes } from "react-icons/gr";
+import { BiSearch } from "react-icons/bi";
 
 import { BsPencil, BsFileMedicalFill, BsBell, BsSearch } from "react-icons/bs";
 import { BiLayerMinus, BiHome, BiCopy } from "react-icons/bi";
@@ -20,8 +21,8 @@ import SingleNotificationList from "../Notification/SingleNotificationList";
 import { FcAbout } from "react-icons/fc";
 import { TbUser, TbUserPlus } from "react-icons/tb";
 
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 import RulesModal from "../Modals/RulesModal";
 import ReferModal from "../Modals/ReferUserModal";
@@ -30,12 +31,10 @@ import HelpCenterModal from "../Modals/HelpCenterModal";
 import DataSaveConfirmationModal from "../Modals/DataSaveConfirmationModal";
 import DeleteAccountModal from "../Modals/DeleteAccountModal";
 import FoundationalRuleModal from "../Modals/FoundationalRuleModal";
-import Tooltip from 'react-bootstrap/tooltip';
-import { OverlayTrigger } from "react-bootstrap";
 
 const Header = () => {
   const navigate = useNavigate();
-
+  const [suggestionList, setSuggestionList] = useState([]);
   // Context Variables
   const {
     user,
@@ -48,6 +47,12 @@ const Header = () => {
     isShowDataSaveConfirmationPopup,
     isNewNotificationArrive,
     isDummyUser,
+    searchState,
+    setSearchState,
+    showSuggestions,
+    setShowSuggestions,
+    searchSuggestionDContext,
+    setHashTagClickState,
   } = useContext(DContext);
   // console.log("console user Details in header", user);
 
@@ -85,6 +90,7 @@ const Header = () => {
 
   const [shareLinkUrl, setShareLinkUrl] = useState(null);
   const [shareShowModalState, setShareShowModalState] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
   const ShareShow = async () => {
     console.log(isDummyUser(), "dummay user");
     if (isDummyUser()) {
@@ -102,11 +108,63 @@ const Header = () => {
     }
   };
 
+  const searchTyping = async (event) => {
+    if (isDummyUser()) {
+      navigate("/login");
+    } else {
+      let value;
+      if (event.target.value[0] === "@") {
+        value = event.target.value.replace(/^./, "");
+      } else {
+        value = event.target.value;
+      }
+
+      setSearchState(event.target.value);
+      if (!value) {
+        setShowSuggestions(false);
+        return;
+      } else {
+        setShowSuggestions(true);
+        const axiosRes = await searchSuggestionDContext(value);
+        setSuggestionList(axiosRes.list);
+        // navigate("/new");
+      }
+    }
+  };
+
+  const ignoreUpperClick = (event) => {
+    event.stopPropagation();
+  };
+
+  const searchClickHashTag = (name) => {
+    if (isDummyUser()) {
+      navigate("/login");
+    } else {
+      setHashTagClickState(true);
+      setSearchState(name);
+      setShowSuggestions(false);
+      localStorage.setItem("hashTagName", name);
+      navigate("/hashtagPosts");
+    }
+  };
+
+  const searchClickUserName = (username, userID) => {
+    if (isDummyUser()) {
+      navigate("/login");
+    } else {
+      setSearchState(username);
+      setShowSuggestions(false);
+      // localStorage.setItem('sessionUserID', userID)
+      navigate("/UsersProfile/" + username);
+    }
+  };
+
+  const searchBarHandler = () => {
+    setShowSearchBar((prev) => !prev);
+  };
 
   const shareDisableToolTip = (
-    <Tooltip id="shareDisableToolTip">
-      Verify email to share
-    </Tooltip>
+    <Tooltip id="shareDisableToolTip">Verify email to share</Tooltip>
   );
 
   return (
@@ -150,45 +208,51 @@ const Header = () => {
           <div className="mainheader">
             {userToken ? (
               <>
-              <OverlayTrigger placement="right" overlay={<Tooltip id="tooltip-disabled">dygres</Tooltip>}>
-                <Navbar.Brand>
-                  <Link to="/new">
-                    <img
-                      className="lightmode"
-                      src="/images/dygreslogo.png"
-                      alt="logo"
-                    />
-                  </Link>
-                  <Link to="/new">
-                    <img
-                      className="darkmode"
-                      src="/images/dygreslogo.png"
-                      alt="logo"
-                    />
-                  </Link>
-                </Navbar.Brand>
+                <OverlayTrigger
+                  placement="right"
+                  overlay={<Tooltip id="tooltip-disabled">dygres</Tooltip>}
+                >
+                  <Navbar.Brand>
+                    <Link to="/new">
+                      <img
+                        className="lightmode"
+                        src="/images/dygreslogo.png"
+                        alt="logo"
+                      />
+                    </Link>
+                    <Link to="/new">
+                      <img
+                        className="darkmode"
+                        src="/images/dygreslogo.png"
+                        alt="logo"
+                      />
+                    </Link>
+                  </Navbar.Brand>
                 </OverlayTrigger>
               </>
             ) : (
               <>
-              <OverlayTrigger placement="right" overlay={<Tooltip id="tooltip-disabled">dygres</Tooltip>}>
-                <Navbar.Brand>
-                  <Link to="/">
-                    <img
-                      className="lightmode"
-                      src="/images/dygreslogo.png"
-                      alt="logo"
-                    />
-                  </Link>
+                <OverlayTrigger
+                  placement="right"
+                  overlay={<Tooltip id="tooltip-disabled">dygres</Tooltip>}
+                >
+                  <Navbar.Brand>
+                    <Link to="/">
+                      <img
+                        className="lightmode"
+                        src="/images/dygreslogo.png"
+                        alt="logo"
+                      />
+                    </Link>
 
-                  <Link to="/">
-                    <img
-                      className="darkmode"
-                      src="/images/dygreslogo.png"
-                      alt="logo"
-                    />
-                  </Link>
-                </Navbar.Brand>
+                    <Link to="/">
+                      <img
+                        className="darkmode"
+                        src="/images/dygreslogo.png"
+                        alt="logo"
+                      />
+                    </Link>
+                  </Navbar.Brand>
                 </OverlayTrigger>
               </>
             )}
@@ -211,24 +275,28 @@ const Header = () => {
               </div>
 
               <div className="text-lightgray user_icon" href="#">
-
-                {user?.isEmailVerify === 0 ?
+                {user?.isEmailVerify === 0 ? (
                   <>
                     <div className="user_icon">
-                      <OverlayTrigger overlay={shareDisableToolTip} placement="bottom" >
+                      <OverlayTrigger
+                        overlay={shareDisableToolTip}
+                        placement="bottom"
+                      >
                         <div>
-                          <span>{user?.referradCount ? user.referradCount : 0}</span>
+                          <span>
+                            {user?.referradCount ? user.referradCount : 0}
+                          </span>
                           <TbUser />
                         </div>
                       </OverlayTrigger>
                     </div>
                   </>
-                  :
+                ) : (
                   <div className="user_icon" onClick={ShareShow}>
                     <span>{user?.referradCount ? user.referradCount : 0}</span>
                     <TbUser />
                   </div>
-                }
+                )}
               </div>
 
               <div
@@ -372,9 +440,68 @@ const Header = () => {
               <div className="mobilemenu">
                 <ul className="web-none">
                   <li>
-                    <Link to="/notfound">
-                      <BsSearch />
-                    </Link>
+                    <div className="search-input-form">
+                      <div
+                        className={`user-searchform ${
+                          showSearchBar && "showSearch"
+                        }`}
+                      >
+                        <input
+                          type="text"
+                          value={searchState}
+                          onChange={searchTyping}
+                          placeholder="Search"
+                          className="bg-gray"
+                          onClick={ignoreUpperClick}
+                          // style={{ display: showSearchBar ? "block" : "none" }}
+                        />
+                        <button className="bg-lightgray text-lightgray">
+                          <BiSearch
+                            style={{ marginRight: 10 }}
+                            onClick={() => searchBarHandler()}
+                          />
+                        </button>
+                      </div>
+                      {showSuggestions && (
+                        <ul>
+                          {searchState &&
+                            searchState[0] === "#" &&
+                            suggestionList.map((suggestion) => (
+                              <li
+                                key={suggestion?.name}
+                                onClick={() =>
+                                  searchClickHashTag(suggestion?.name)
+                                }
+                              >
+                                {suggestion?.name}
+                              </li>
+                            ))}
+                          {searchState &&
+                            searchState[0] !== "#" &&
+                            suggestionList.map((suggestion) => (
+                              <li
+                                key={suggestion?.username}
+                                onClick={() =>
+                                  searchClickUserName(
+                                    suggestion?.username,
+                                    suggestion?._id
+                                  )
+                                }
+                              >
+                                <img
+                                  src={
+                                    suggestion?.profileImage !== null
+                                      ? suggestion.profileImage
+                                      : "/images/user-120.png"
+                                  }
+                                  alt="icon"
+                                />
+                                {suggestion?.username}
+                              </li>
+                            ))}
+                        </ul>
+                      )}
+                    </div>
                   </li>
                   <li>
                     <Link to="/notification">

@@ -6,8 +6,13 @@ import { modules } from "./QuillModules";
 import { DContext } from "../../Context/DContext";
 import { debounce, searchQuery, modifyString } from "../../helper/editorhelper";
 
-function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholderState }) { 
-
+function Editor({
+  value,
+  setValue,
+  userDropDown,
+  hashtagDropDown,
+  placeholderState,
+}) {
   const { suggestionWhilePostingDContext } = useContext(DContext);
 
   const [selectedUser, setSelectedUser] = useState(null);
@@ -18,7 +23,7 @@ function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholde
   const [cachedHashTagList, setCachedHashTagList] = useState({});
   const [showUserDropDown, setShowUserDropDown] = useState(false);
   const [showTagDropDown, setShowTagDropDown] = useState(false);
-
+  const [contentLength, setContentLength] = useState(0);
   const quillInstanceRef = useRef(null);
 
   const handleSelectUser = (user) => {
@@ -55,7 +60,6 @@ function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholde
   };
 
   useEffect(() => {
-
     const editor = quillInstanceRef.current.getEditor();
 
     editor.on("text-change", () => {
@@ -67,14 +71,14 @@ function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholde
       const currentLineText = editor.getLine(currentCursorPosition);
       let lastElement = currentLineText[0]?.children?.head?.text;
 
-      if(!lastElement){
-        setShowUserDropDown(false)
-        setShowTagDropDown(false)
-      }else{
+      if (!lastElement) {
+        setShowUserDropDown(false);
+        setShowTagDropDown(false);
+      } else {
         const words = lastElement.split(/\s+/);
         const lastWord = words[words.length - 1]; // Get the last word
         let lastChar = lastElement.slice(-1);
-  
+
         if (
           // lastWord.length > 1 &&
           lastChar !== " " &&
@@ -96,7 +100,7 @@ function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholde
               setShowUserDropDown(
                 res && res.length > 0 && words.length > 0 && lastChar !== " "
               );
-  
+
               dropdown.style.top = `${top + 100}px`;
               dropdown.style.left = `${left}px`;
             }),
@@ -108,7 +112,7 @@ function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholde
           lastWord.startsWith("#")
         ) {
           const dropdown = document.getElementById(hashtagDropDown);
-  
+
           setQuery(lastWord);
           // debounceHashtagData(lastWord);
           debounce(
@@ -139,31 +143,40 @@ function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholde
           setShowTagDropDown(false);
         }
       }
-      
+      console.log(editor.getLength(), "Length 1");
+      // limit on content editor
+
+      if (editor.getLength() > 421) {
+        editor.deleteText(420, editor.getLength());
+        console.log("Limit extented");
+      }
     });
+
+    const quillElement = editor.container;
+    console.log(quillElement, "quillElement");
+    if (quillElement && editor.getLength() > 2) {
+      quillElement.classList.add("quillactive");
+      console.log(quillElement, "quill element");
+    }
+
     return () => {
       editor.off("text-change");
     };
   }, [value]);
 
-
-
   const handleTextChange = (content, delta, source, editor) => {
-
-    // console.log('content.length' , content.length)
-
-    // Check if the text length exceeds the limit (420 characters)
-    if (content.length > 420) {
-      // Truncate the content to the first 420 characters
-      content = content.slice(0, 420);
-      // Update the editor's content with the truncated text
-      editor.setContents(editor.clipboard.convert(content));
-    }
-  
     // Update the state with the new value
+    if (editor.getLength() < 421) {
+      editor.getLength() === 1
+        ? setContentLength(0)
+        : setContentLength(editor.getLength());
+      console.log(editor.getLength(), "Length 2");
+
+      // setContentLength(editor.getLength());
+    }
+
     setValue(content);
   };
-
 
   return (
     <>
@@ -206,12 +219,17 @@ function Editor({ value, setValue , userDropDown , hashtagDropDown  , placeholde
               {tag.display ? tag.display : "not found"}
             </div>
           ))}
-          
         </div>
       </div>
 
-      {/* <p>{420 - value.replace(/(<([^>]+)>)/gi, "").length}</p> */}
-
+      <p
+        style={{
+          textAlign: "right",
+          fontSize: "14px",
+        }}
+      >
+        {420 - contentLength}
+      </p>
     </>
   );
 }
