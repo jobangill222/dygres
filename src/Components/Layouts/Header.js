@@ -10,6 +10,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { GrNotes } from "react-icons/gr";
 import { BiSearch } from "react-icons/bi";
+import { RxCross1 } from "react-icons/rx";
 
 import { BsPencil, BsFileMedicalFill, BsBell, BsSearch } from "react-icons/bs";
 import { BiLayerMinus, BiHome, BiCopy } from "react-icons/bi";
@@ -292,9 +293,10 @@ const Header = () => {
                     </div>
                   </>
                 ) : (
-                  <div className="user_icon" onClick={ShareShow}>
+                  <div className="user_icon treeicon" onClick={ShareShow}>
                     <span>{user?.referradCount ? user.referradCount : 0}</span>
-                    <TbUser />
+                    {/* <TbUser /> */}
+                    <img src='/images/treeicon.svg' alt='referral icon'/>
                   </div>
                 )}
               </div>
@@ -456,10 +458,10 @@ const Header = () => {
                           // style={{ display: showSearchBar ? "block" : "none" }}
                         />
                         <button className="bg-lightgray text-lightgray">
-                          <BiSearch
-                            style={{ marginRight: 10 }}
+                          <BiSearch className="searchicon"
                             onClick={() => searchBarHandler()}
                           />
+                          <RxCross1 className="crossicon" onClick={() => searchBarHandler()}/>
                         </button>
                       </div>
                       {showSuggestions && (

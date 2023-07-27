@@ -223,10 +223,7 @@ function Editor({
       </div>
 
       <p
-        style={{
-          textAlign: "right",
-          fontSize: "14px",
-        }}
+      className="counter-text"
       >
         {420 - contentLength}
       </p>
