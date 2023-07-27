@@ -10,7 +10,11 @@ import Editor from "./TextEditor/Editor";
 
 const WhatsMind = (props) => {
   //To change state when post is posted
-  const { setIsPostState, placeholderState, setActiveTabState } = props;
+  const { placeholderState, setActiveTabState } = props;
+
+  const { setIsPostState } = useContext(DContext);
+
+
 
   //Set create post state
   const [createPostState, setCreatePostState] = useState("");
@@ -54,7 +58,7 @@ const WhatsMind = (props) => {
             parentPostID
           );
           if (axiosRes.status === "success") {
-            // setIsPostState(true);
+            setIsPostState(true);
             // Update user stats state
             setUserStats((previousState) => {
               return {

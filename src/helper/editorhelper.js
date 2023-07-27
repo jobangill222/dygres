@@ -1,9 +1,16 @@
 export const createMarkup = (postContent) => {
   const highlightedContent = postContent.replace(
-    /<p>(https?:\/\/[^\s<]+)<\/p>|<a\s+href="([^"]+)">([^<]+)<\/a>|(@\w+)|(#\w+)/g,
+    /<p>((?:https?:\/\/)?(?:[a-z0-9\-]+\.)+[a-z]{2,}(?:\/[^\s]*)?)<\/p>|<a\s+href="([^"]+)">([^<]+)<\/a>|(@\w+)|(#\w+)/g,
     (match, url, href, anchorText, atMention, hashtag) => {
       if (url) {
-        return `<a href="${url}" target="_blank">${url}</a>`;
+        // console.log(url, "url")
+
+        if (url.startsWith("http")) {
+          return `<a href="${url}" target="_blank">${url}</a>`;
+        } else {
+          return `<a href="http://${url}" target="_blank">${url}</a>`;
+        }
+        // return `<a href="${url}" target="_blank">${url}</a>`;
       } else if (href && anchorText) {
         return `<a href="${href}">${anchorText}</a>`;
       } else if (atMention || hashtag) {

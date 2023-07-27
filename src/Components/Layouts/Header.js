@@ -275,31 +275,33 @@ const Header = () => {
                 <DarkModeSwitch />
               </div>
 
-              <div className="text-lightgray user_icon" href="#">
-                {user?.isEmailVerify === 0 ? (
-                  <>
-                    <div className="user_icon">
-                      <OverlayTrigger
-                        overlay={shareDisableToolTip}
-                        placement="bottom"
-                      >
-                        <div>
-                          <span>
-                            {user?.referradCount ? user.referradCount : 0}
-                          </span>
-                          <TbUser />
-                        </div>
-                      </OverlayTrigger>
+              {userToken ?
+                <div className="text-lightgray user_icon" href="#">
+                  {user?.isEmailVerify === 0 ? (
+                    <>
+                      <div className="user_icon">
+                        <OverlayTrigger
+                          overlay={shareDisableToolTip}
+                          placement="bottom"
+                        >
+                          <div>
+                            <span>
+                              {user?.referradCount ? user.referradCount : 0}
+                            </span>
+                            <TbUser />
+                          </div>
+                        </OverlayTrigger>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="user_icon treeicon" onClick={ShareShow}>
+                      <span>{user?.referradCount ? user.referradCount : 0}</span>
+                      {/* <TbUser /> */}
+                      <img src='/images/treeicon.svg' alt='referral icon' />
                     </div>
-                  </>
-                ) : (
-                  <div className="user_icon treeicon" onClick={ShareShow}>
-                    <span>{user?.referradCount ? user.referradCount : 0}</span>
-                    {/* <TbUser /> */}
-                    <img src='/images/treeicon.svg' alt='referral icon'/>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
+                : null}
 
               <div
                 className="cursor-pointer helpicon"
@@ -444,9 +446,8 @@ const Header = () => {
                   <li>
                     <div className="search-input-form">
                       <div
-                        className={`user-searchform ${
-                          showSearchBar && "showSearch"
-                        }`}
+                        className={`user-searchform ${showSearchBar && "showSearch"
+                          }`}
                       >
                         <input
                           type="text"
@@ -455,13 +456,13 @@ const Header = () => {
                           placeholder="Search"
                           className="bg-gray"
                           onClick={ignoreUpperClick}
-                          // style={{ display: showSearchBar ? "block" : "none" }}
+                        // style={{ display: showSearchBar ? "block" : "none" }}
                         />
                         <button className="bg-lightgray text-lightgray">
                           <BiSearch className="searchicon"
                             onClick={() => searchBarHandler()}
                           />
-                          <RxCross1 className="crossicon" onClick={() => searchBarHandler()}/>
+                          <RxCross1 className="crossicon" onClick={() => searchBarHandler()} />
                         </button>
                       </div>
                       {showSuggestions && (
