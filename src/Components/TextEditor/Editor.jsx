@@ -154,7 +154,7 @@ function Editor({
 
     const quillElement = editor.container;
 
-    if (quillElement && editor.getLength() > 2) {
+    if (quillElement && editor.getLength() > 1) {
       quillElement.classList.add("quillactive");
     }
 
@@ -176,10 +176,13 @@ function Editor({
     setValue(content);
   };
 
+  // const [idAnimation , settIsAnimation] = useState()
+
   return (
     <>
       <div className="editor">
         <ReactQuill
+          className={value ? "quillactive" : ""}
           theme="snow"
           modules={modules}
           value={value}
