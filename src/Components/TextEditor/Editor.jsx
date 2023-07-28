@@ -165,10 +165,13 @@ function Editor({
 
   const handleTextChange = (content, delta, source, editor) => {
     // Update the state with the new value
+
+    console.log('editor.getLength()editor.getLength()' , editor.getLength())
+
     if (editor.getLength() < 421) {
       editor.getLength() === 1
         ? setContentLength(0)
-        : setContentLength(editor.getLength());
+        : setContentLength(editor.getLength() - 1);
 
       // setContentLength(editor.getLength());
     }

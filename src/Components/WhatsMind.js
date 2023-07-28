@@ -14,8 +14,6 @@ const WhatsMind = (props) => {
 
   const { setIsPostState } = useContext(DContext);
 
-
-
   //Set create post state
   const [createPostState, setCreatePostState] = useState("");
 
