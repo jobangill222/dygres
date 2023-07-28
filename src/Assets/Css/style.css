@@ -4463,7 +4463,19 @@ ul.sidebar-menu {
   -webkit-transition: background-color 5000s ease-in-out 0s;
   transition: background-color 5000s ease-in-out 0s;
 }
-
+.scroll_slim::-webkit-scrollbar{
+  width: 3px;
+  border-radius: 80px;
+  }
+  .scroll_slim::-webkit-scrollbar-track {
+    background: #e5fed15a;
+    border-radius: 10px;
+    width: 2px;
+  }
+  .scroll_slim::-webkit-scrollbar-thumb {
+    background: var(--base-green);
+    border-radius: 10px;
+  }
 [darkmode] .sidebar-profile .sidebar-menu li a.active,
 [darkmode] .sidebar-profile .sidebar-menu li a:hover {
   background-color: #303031;
@@ -5289,19 +5301,7 @@ ul.user-detail-listing{
   color: var(--base-offgray);
 }
 
-.scroll_slim::-webkit-scrollbar{
-width: 6px;
-border-radius: 10px;
-}
-.scroll_slim::-webkit-scrollbar-track {
-  background: #e5fed15a;
-  border-radius: 10px;
-  width: 7px;
-}
-.scroll_slim::-webkit-scrollbar-thumb {
-  background: var(--base-green);
-  border-radius: 10px;
-}
+
 .user_profile {
   flex-direction: row !important;
   width: 100%;
