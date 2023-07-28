@@ -6616,9 +6616,9 @@ ul.actionrytbar li p {
     max-width: 90%;
     flex-wrap: wrap;
   }
-  .Notfy-block .user-availbility {
+  /* .Notfy-block .user-availbility {
     display: block !important;
-  }
+  } */
   .digital-feeds
     .digital-feeds.diffrentiate-bar
     .user-availbility
