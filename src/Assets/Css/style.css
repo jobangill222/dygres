@@ -568,7 +568,7 @@ ul.trending-hashtag-list li.hashtaglist {
   top: 60px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
-  padding: 15px 20px;
+  padding: 0px;
   right: 0;
   width: 197px;
   border: 2px solid var(--base-border);
@@ -1577,7 +1577,7 @@ t .report-tabs li.active {
 }
 .Dropdown-listing .arrowbar {
   height: 300px;
-  padding: 0 5px;
+  padding: 20px 15px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -2422,8 +2422,8 @@ t .report-tabs li.active {
 }
 
 .header-nav .navbar-nav .user-dropdown img {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
 }
 
@@ -5002,6 +5002,290 @@ ul.actionrytbar {
 .actionrytbar li.viewpost-btn {
   display: none;
 }
+.ql-snow .ql-picker {
+  height: auto !important; 
+}
+.editor .ql-toolbar.ql-snow span.ql-formats:last-child {
+  display: none;
+}
+.ql-snow .ql-picker.ql-header {
+  width: auto !important;
+}
+.ql-snow .ql-picker.ql-header span.ql-picker-label {
+  padding-left: 0 !important;
+}
+.ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {
+  width: 16px !important;
+  position: relative !important;
+  top: inherit !important;
+  margin: 0 !important;
+}
+
+.profile-feature-image {
+  display: none;
+}
+
+.user-detail-bar {
+  align-items: flex-end;
+}
+/* .user-detail {
+  margin-top: 24px;
+} */
+.navbar-nav svg {
+  font-size: 30px;
+  color: #AAAAAA ;
+}
+[darkmode] .navbar-nav svg {
+  color: #AAAAAA;
+}
+.user_icon span {
+  color: #ffffff;
+  margin-top: 6px;
+  position: absolute;
+  top: -17px;
+  right: -7px;
+  font-size: 14px;
+  background: var(--base-primary);
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user_icon{
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  position: relative;
+}
+.sidebar-menu.col-lg-3{
+  margin-top: 65px;
+}
+.user_info_sidebar p{
+font-size: 15px;
+font-weight: 600;
+margin-bottom: 4px;
+text-transform: capitalize;
+}
+.user_info_sidebar a{
+  border: 1px solid var(--base-green);
+  border-radius: 5px;
+  padding: 6px 10px;
+  text-decoration: none;
+  color: var(--base-green);
+  font-size: 12px;
+  background: var(--base-purewhite);
+}
+
+.editor{
+  margin-bottom: 0px;
+  position:relative;
+}
+
+.highlighted{
+  /* font-weight: bold; */
+background: linear-gradient(to right, rgba(157, 211, 131, 1), rgba(62, 172, 198, 1));  
+-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+
+#create_post_user_dropdown div, #create_post_hashtag_dropdown div , #edit_post_user_dropdown div, #tag-edit-dropdown div , #amplify_post_user_dropdown div , #apmlify_post_hashtag_dropdown div{
+  cursor: pointer; 
+  padding: 5px;
+}
+
+/* dropdown  */
+#create_post_user_dropdown, #edit_post_user_dropdown , #amplify_post_user_dropdown{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: var(--base-lightgray);
+  border: 1px solid var(--base-border);
+  border-radius: 0 20px 20px 20px;
+  color: #00c350;
+  padding: 10px;
+  width: 200px;
+  z-index: 10; /* Ensure the dropdown appears above other elements */
+}
+
+#create_post_hashtag_dropdown, #edit_post_hashtag_dropdown , #apmlify_post_hashtag_dropdown{
+  position: absolute;
+  left: 20px;
+  display: none;
+  background-color: var(--base-lightgray);
+  border: 1px solid var(--base-border);
+  border-radius: 0 20px 20px 20px;
+  color: #00c350;
+  max-height: 300px;
+  overflow-y: scroll;
+  padding: 10px;
+  width: 200px;
+  z-index: 1; /* Ensure the dropdown appears above other elements */
+}
+
+ .editor .ql-container {
+  border: none;
+  min-height: 160px;
+}
+ .editor .ql-editor{
+  min-height: 158px;
+}
+body .ql-container.ql-snow{
+  border: none;
+}
+.editpost-editor .editor .ql-toolbar.ql-snow {
+  background: transparent;
+  border: 1px solid var(--base-border) !important;
+  border-bottom: 0 !important;
+}
+.editpost-editor .editor .ql-container.ql-snow {
+  border: 1px solid #dfdfdf !important;
+  border-radius: 20px 20px 20px 20px;
+}
+.editpost-editor .editor .quill.quillactive .ql-container.ql-snow {
+  border-radius: 0 0 20px 20px;
+}
+.editpost-editor .editor .ql-container.ql-snow
+.edit-post-buttons {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.edit-post-buttons .cancel{
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+.editor .ql-toolbar.ql-snow {
+  border: none !important;
+  background: var(--base-purewhite);
+  border-bottom: 1px solid rgb(223 223 223 / 52%) !important;
+  border-radius: 20px 20px 0 0;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+[darkmode]  .editor .ql-toolbar.ql-snow {
+  border: none;
+  background: var(--darkmode-lightgray);  
+  border-bottom: 1px solid rgb(0 0 0 / 30%) !important;
+}
+[darkmode]  .editor .ql-container{
+  border: none;
+}
+.user_icon{
+  cursor: pointer;
+}
+[darkmode]  .editor .ql-toolbar.ql-snow span{
+color: white;
+stroke: white;
+}
+[darkmode] .Whatsmind-bar .editor .ql-snow .ql-stroke{
+stroke: white;
+}
+.ql-snow.ql-toolbar button:hover, .ql-snow .ql-toolbar button:hover, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.ql-active, .ql-snow .ql-toolbar button.ql-active, .ql-snow.ql-toolbar .ql-picker-label:hover, .ql-snow .ql-toolbar .ql-picker-label:hover, .ql-snow.ql-toolbar .ql-picker-label.ql-active, .ql-snow .ql-toolbar .ql-picker-label.ql-active, .ql-snow.ql-toolbar .ql-picker-item:hover, .ql-snow .ql-toolbar .ql-picker-item:hover, .ql-snow.ql-toolbar .ql-picker-item.ql-selected, .ql-snow .ql-toolbar .ql-picker-item.ql-selected{
+  color:var(--base-primary) !important;
+}
+/* Editor css  */
+.ql-toolbar.ql-snow {width: 100%;transition: .3s ease;margin-top: -53px;}
+.quill {
+    overflow: hidden;
+}
+.quill.quillactive .ql-toolbar.ql-snow {margin-top: 0;}
+.ql-snow.ql-toolbar button:hover .ql-fill, .ql-snow .ql-toolbar button:hover .ql-fill, .ql-snow.ql-toolbar button:focus .ql-fill, .ql-snow .ql-toolbar button:focus .ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+  fill: var(--base-primary) !important;
+  stroke: var(--base-primary) !important;
+}
+.ql-snow.ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow.ql-toolbar button:focus .ql-stroke, .ql-snow .ql-toolbar button:focus .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button:hover .ql-stroke-miter, .ql-snow .ql-toolbar button:hover .ql-stroke-miter, .ql-snow.ql-toolbar button:focus .ql-stroke-miter, .ql-snow .ql-toolbar button:focus .ql-stroke-miter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter{
+  stroke: var(--base-primary) !important;
+}
+.Whatsmind-bar .editor .ql-snow .ql-picker{
+  height: auto;
+}
+.Description-bar h1, .Description-bar h2, .Description-bar h3, .Description-bar h4, .Description-bar h5, .Description-bar h6, .Description-bar p{
+  color: var(--base-default-text);
+  word-wrap: break-word;
+}
+.retweetmodal.modal-body {
+  padding: 10px 0px;
+}
+.retweetmodal .digital-feeds.feed-type {
+  padding: 0 15px;
+}
+[darkmode] .Description-bar h1, [darkmode] .Description-bar h2, [darkmode] .Description-bar h3, [darkmode] .Description-bar h4, [darkmode]  .Description-bar h5, [darkmode] .Description-bar h6, [darkmode] .Description-bar p{
+  color: var(--darkmode-offwhite);
+  word-wrap: break-word;
+}
+.Whatsmind-bar .ql-editor p,  .ql-editor ol li, .ql-editor ul li, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
+  color: var(--base-default-text);
+}
+[darkmode] .Whatsmind-bar .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
+  color: var(--darkmode-offwhite);
+}
+.ql-snow .ql-picker-options{
+  background-color: var(--base-lightgray) !important;
+}
+[darkmode] .ql-snow .ql-picker-options{
+  background-color: var(--darkmode-lightgray)!important;
+}
+
+ul.user-detail-listing{
+  justify-content: space-between !important;
+}
+.user-edit-cover {
+  min-width: 321px;
+}
+.digital-feeds .Description-bar .ql-align-center {
+    text-align: center;
+}
+.digital-feeds .Description-bar .ql-align-right {
+    text-align: right;
+}
+.ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6 {
+    color: #545456;
+}
+[darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6 {
+    color: #AFAFAF;
+}
+[darkmode] .user_info_sidebar a{
+  color: var(--base-green);
+  background-color: transparent;
+}
+[darkmode] .user_info_sidebar p{
+  color: var(--base-offgray);
+}
+
+.scroll_slim::-webkit-scrollbar{
+width: 6px;
+border-radius: 10px;
+}
+.scroll_slim::-webkit-scrollbar-track {
+  background: #e5fed15a;
+  border-radius: 10px;
+  width: 7px;
+}
+.scroll_slim::-webkit-scrollbar-thumb {
+  background: var(--base-green);
+  border-radius: 10px;
+}
+.user_profile {
+  flex-direction: row !important;
+  width: 100%;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+}
+.notification-content li svg:hover {
+  color: red;
+}
 /* Responsive css  */
 @media (max-width: 1599px) {
   ul.trending-hashtag-list {
@@ -5063,8 +5347,8 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .header-nav .navbar-nav .user-dropdown img {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
   }
 
@@ -5073,7 +5357,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .header-nav .navbar-brand img {
-    max-width: 80%;
+    max-width: 100%;
   }
 
   .Whatsmind-bar {
@@ -5564,7 +5848,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
   .header-nav .navbar-nav {
     flex-direction: row;
-    margin-right: 10px !important;
+    margin-right: 15px !important;
   }
   .header-nav .mobilemenu ul.web-none li:last-child {
     display: none;
@@ -5578,13 +5862,10 @@ ul.trending-hashtag-list li.hashtaglist {
   .header-nav .navbar-nav a.homeicon {
     display: none;
   }
-  .helpicon {
-    margin-left: 15px;
-  }
-  .user-dropdown,
+  /* .user-dropdown,
   .header-nav .navbar-nav a.nav-link {
     margin-left: 15px;
-  }
+  } */
   .header-nav .mobilemenu {
     margin-left: 0px;
   }
@@ -5847,7 +6128,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .mobilemenu ul.web-none li {
-    margin-right: 10px;
+    margin-right: 15px;
   }
 li.svggray svg path {
     fill: var(--base-text-lightgray);
@@ -6057,16 +6338,16 @@ li.svggray svg path {
     margin-top: 0 !important;
   }
   .header-nav .navbar-nav{
-    column-gap: 4px;
+    column-gap: 15px;
   }
 }
 .mobilemenu ul.web-none .user-searchform button svg.crossicon {
   display: none;
 }
 @media (max-width: 767px) {
-  .ql-toolbar.ql-snow {
+  /* .ql-toolbar.ql-snow {
     margin-top: -83px !important;
-}
+} */
 .Actions-modal .modal-header button.btn-close {
   opacity: 1;
   font-size: 1rem;
@@ -6421,7 +6702,7 @@ ul.actionrytbar li p {
     margin-right: 10px;
   }
   .header-nav .navbar-nav .notify-add .notification-dropdown {
-    padding: 10px;
+    padding: 0px;
   }
   .header-nav
     .navbar-nav
@@ -6739,10 +7020,10 @@ ul.actionrytbar {
     height: 40px;
     border-radius: 50%;
   }
-  .user-dropdown,
+  /* .user-dropdown,
   .header-nav .navbar-nav a.nav-link {
     margin-left: 10px;
-  }
+  } */
   .profile-user-detail .user-detail-bar .detailleft {
     margin-bottom: 20px;
     width: 100%;
@@ -6774,7 +7055,7 @@ ul.actionrytbar {
     margin-right: 5px;
   }
   .header-nav .navbar-nav {
-    column-gap: 10px;
+    column-gap: 15px;
 }
 .user-edit-cover {
   min-width: 100%;
@@ -6816,24 +7097,35 @@ ul.actionrytbar {
   display: flex;
   flex-direction: row;
 }
-#theme-switch .switch-thumb{
-  height: 20px;
-    left: 3px;
-    top: 3px;
-    width: 37px
+#theme-switch .switch-thumb {
+  height: 26px;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  transform: translate(-50%,-50%);
+  overflow: hidden;
 }
 #theme-switch .switch-track{
-  height: 25px;
-  width: 65px; 
+  height: 32px;
+  width: 32px; 
+}
+body #theme-switch .switch-check, body #theme-switch .switch-x {
+  position: absolute;
+  top: inherit !important;
+  left: inherit !important;
+  right: inherit !important;
+  transform: inherit !important;
+  bottom: inherit !important;
 }
 [darkmode] #theme-switch .switch-thumb {
-  left: 25px;
+  left: 50%;
 }
 [darkmode] #theme-switch .switch-icon svg {
   font-size: 1rem;
 }
 #theme-switch .switch-icon svg {
-  font-size: 13px;
+  font-size: 20px;
+  line-height: 1;
 }
 
 }
@@ -6843,261 +7135,10 @@ ul.actionrytbar {
     line-height: .875rem;
 }
 
-
 }
 
-.profile-feature-image {
-  display: none;
+@media (max-width: 340px){
+  .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+    width: 18px !important;
 }
-
-.user-detail-bar {
-  align-items: flex-end;
-}
-/* .user-detail {
-  margin-top: 24px;
-} */
-.navbar-nav svg {
-  font-size: 30px;
-  color: #AAAAAA ;
-}
-[darkmode] .navbar-nav svg {
-  color: #AAAAAA;
-}
-.user_icon span {
-  color: #ffffff;
-  margin-top: 6px;
-  position: absolute;
-  top: -17px;
-  right: -7px;
-  font-size: 14px;
-  background: var(--base-primary);
-  width: 20px;
-  height: 20px;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.user_icon{
-  display: flex;
-  column-gap: 8px;
-  align-items: center;
-  position: relative;
-}
-.sidebar-menu.col-lg-3{
-  margin-top: 65px;
-}
-.user_info_sidebar p{
-font-size: 15px;
-font-weight: 600;
-margin-bottom: 4px;
-text-transform: capitalize;
-}
-.user_info_sidebar a{
-  border: 1px solid var(--base-green);
-  border-radius: 5px;
-  padding: 6px 10px;
-  text-decoration: none;
-  color: var(--base-green);
-  font-size: 12px;
-  background: var(--base-purewhite);
-}
-
-.editor{
-  margin-bottom: 0px;
-  position:relative;
-}
-
-.highlighted{
-  /* font-weight: bold; */
-background: linear-gradient(to right, rgba(157, 211, 131, 1), rgba(62, 172, 198, 1));  
--webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  cursor: pointer;
-}
-
-
-#create_post_user_dropdown div, #create_post_hashtag_dropdown div , #edit_post_user_dropdown div, #tag-edit-dropdown div , #amplify_post_user_dropdown div , #apmlify_post_hashtag_dropdown div{
-  cursor: pointer; 
-  padding: 5px;
-}
-
-/* dropdown  */
-#create_post_user_dropdown, #edit_post_user_dropdown , #amplify_post_user_dropdown{
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: none;
-  background-color: var(--base-lightgray);
-  border: 1px solid var(--base-border);
-  border-radius: 0 20px 20px 20px;
-  color: #00c350;
-  padding: 10px;
-  width: 200px;
-  z-index: 10; /* Ensure the dropdown appears above other elements */
-}
-
-#create_post_hashtag_dropdown, #edit_post_hashtag_dropdown , #apmlify_post_hashtag_dropdown{
-  position: absolute;
-  left: 20px;
-  display: none;
-  background-color: var(--base-lightgray);
-  border: 1px solid var(--base-border);
-  border-radius: 0 20px 20px 20px;
-  color: #00c350;
-  max-height: 300px;
-  overflow-y: scroll;
-  padding: 10px;
-  width: 200px;
-  z-index: 1; /* Ensure the dropdown appears above other elements */
-}
-
- .editor .ql-container {
-  border: none;
-  min-height: 160px;
-}
- .editor .ql-editor{
-  min-height: 158px;
-}
-body .ql-container.ql-snow{
-  border: none;
-}
-.editpost-editor .editor .ql-toolbar.ql-snow{
-  background: var(--base-border);
-}
-.editpost-editor .editor .ql-container.ql-snow {
-  border: 1px solid #dfdfdf !important;
-  border-radius: 0 0 20px 20px;
-}
-.edit-post-buttons {
-  display: flex;
-  column-gap: 20px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.edit-post-buttons .cancel{
-  padding: 11px 37px;
-  display: flex;
-  align-items: center;
-  column-gap: 5px;
-  flex-direction: row-reverse;
-  justify-content: center;
-}
- .editor .ql-toolbar.ql-snow {
-  border: none !important;
-  background: var(--base-purewhite);
-  border-bottom: 1px solid rgb(223 223 223 / 52%) !important;
-  border-radius: 20px 20px 0 0;
-}
-[darkmode]  .editor .ql-toolbar.ql-snow {
-  border: none;
-  background: var(--darkmode-lightgray);  
-  border-bottom: 1px solid rgb(0 0 0 / 30%) !important;
-}
-[darkmode]  .editor .ql-container{
-  border: none;
-}
-.user_icon{
-  cursor: pointer;
-}
-[darkmode]  .editor .ql-toolbar.ql-snow span{
-color: white;
-stroke: white;
-}
-[darkmode] .Whatsmind-bar .editor .ql-snow .ql-stroke{
-stroke: white;
-}
-.ql-snow.ql-toolbar button:hover, .ql-snow .ql-toolbar button:hover, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.ql-active, .ql-snow .ql-toolbar button.ql-active, .ql-snow.ql-toolbar .ql-picker-label:hover, .ql-snow .ql-toolbar .ql-picker-label:hover, .ql-snow.ql-toolbar .ql-picker-label.ql-active, .ql-snow .ql-toolbar .ql-picker-label.ql-active, .ql-snow.ql-toolbar .ql-picker-item:hover, .ql-snow .ql-toolbar .ql-picker-item:hover, .ql-snow.ql-toolbar .ql-picker-item.ql-selected, .ql-snow .ql-toolbar .ql-picker-item.ql-selected{
-  color:var(--base-primary) !important;
-}
-/* Editor css  */
-.ql-toolbar.ql-snow {width: 100%;transition: .3s ease;margin-top: -53px;}
-.quill {
-    overflow: hidden;
-}
-.quill.quillactive .ql-toolbar.ql-snow {margin-top: 0;}
-.ql-snow.ql-toolbar button:hover .ql-fill, .ql-snow .ql-toolbar button:hover .ql-fill, .ql-snow.ql-toolbar button:focus .ql-fill, .ql-snow .ql-toolbar button:focus .ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
-  fill: var(--base-primary) !important;
-  stroke: var(--base-primary) !important;
-}
-.ql-snow.ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow.ql-toolbar button:focus .ql-stroke, .ql-snow .ql-toolbar button:focus .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button:hover .ql-stroke-miter, .ql-snow .ql-toolbar button:hover .ql-stroke-miter, .ql-snow.ql-toolbar button:focus .ql-stroke-miter, .ql-snow .ql-toolbar button:focus .ql-stroke-miter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter{
-  stroke: var(--base-primary) !important;
-}
-.Whatsmind-bar .editor .ql-snow .ql-picker{
-  height: auto;
-}
-.Description-bar h1, .Description-bar h2, .Description-bar h3, .Description-bar h4, .Description-bar h5, .Description-bar h6, .Description-bar p{
-  color: var(--base-default-text);
-  word-wrap: break-word;
-}
-.retweetmodal.modal-body {
-  padding: 10px 0px;
-}
-.retweetmodal .digital-feeds.feed-type {
-  padding: 0 15px;
-}
-[darkmode] .Description-bar h1, [darkmode] .Description-bar h2, [darkmode] .Description-bar h3, [darkmode] .Description-bar h4, [darkmode]  .Description-bar h5, [darkmode] .Description-bar h6, [darkmode] .Description-bar p{
-  color: var(--darkmode-offwhite);
-  word-wrap: break-word;
-}
-.Whatsmind-bar .ql-editor p,  .ql-editor ol li, .ql-editor ul li, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
-  color: var(--base-default-text);
-}
-[darkmode] .Whatsmind-bar .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
-  color: var(--darkmode-offwhite);
-}
-.ql-snow .ql-picker-options{
-  background-color: var(--base-lightgray) !important;
-}
-[darkmode] .ql-snow .ql-picker-options{
-  background-color: var(--darkmode-lightgray)!important;
-}
-
-ul.user-detail-listing{
-  justify-content: space-between !important;
-}
-.user-edit-cover {
-  min-width: 321px;
-}
-.digital-feeds .Description-bar .ql-align-center {
-    text-align: center;
-}
-.digital-feeds .Description-bar .ql-align-right {
-    text-align: right;
-}
-.ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6 {
-    color: #545456;
-}
-[darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6 {
-    color: #AFAFAF;
-}
-[darkmode] .user_info_sidebar a{
-  color: var(--base-green);
-  background-color: transparent;
-}
-[darkmode] .user_info_sidebar p{
-  color: var(--base-offgray);
-}
-
-.scroll_slim::-webkit-scrollbar{
-width: 6px;
-border-radius: 10px;
-}
-.scroll_slim::-webkit-scrollbar-track {
-  background: #e5fed15a;
-  border-radius: 10px;
-  width: 7px;
-}
-.scroll_slim::-webkit-scrollbar-thumb {
-  background: var(--base-green);
-  border-radius: 10px;
-}
-.user_profile {
-  flex-direction: row !important;
-  width: 100%;
-  justify-content: space-between !important;
-  align-items: flex-end !important;
-}
-.notification-content li svg:hover {
-  color: red;
 }
