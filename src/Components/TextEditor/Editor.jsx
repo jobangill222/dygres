@@ -182,7 +182,7 @@ function Editor({
     <>
       <div className="editor">
         <ReactQuill
-          className={value ? "quillactive" : ""}
+          className={value.replace(/<[^>]*>/g, '') ? "quillactive" : ""}
           theme="snow"
           modules={modules}
           value={value}
