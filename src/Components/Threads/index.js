@@ -50,8 +50,10 @@ const Threads = (props) => {
 
 
     const [createCommentState, setCreateCommentState] = useState("");
+
     //Submit post
     const submitComment = async () => {
+
         if (!createCommentState) {
             toast("Maybe enter some text before you clickety-click?");
         } else {
@@ -60,7 +62,7 @@ const Threads = (props) => {
                 if (axiosRes.status === "success") {
                     toast(axiosRes.message);
                     // Make field empty afetr comment
-                    setCreateCommentState("");
+                    setCreateCommentState(" ");
                     //Inc comment count
                     setCommentCount((previousState) => previousState + 1);
 
@@ -117,14 +119,14 @@ const Threads = (props) => {
     const scollToRef = useRef();
 
     const textRef = React.useRef();
-    
+
     React.useEffect(() => {
         if (textRef && textRef.current) {
-          textRef.current.style.height = "0px";
-          const taHeight = textRef.current.scrollHeight;
-          textRef.current.style.height = taHeight + "px";
+            textRef.current.style.height = "0px";
+            const taHeight = textRef.current.scrollHeight;
+            textRef.current.style.height = taHeight + "px";
         }
-      }, [createCommentState]);
+    }, [createCommentState]);
 
 
     return (
@@ -146,10 +148,17 @@ const Threads = (props) => {
                                 }}
                                 placeholder="What are your thoughts............?" />
                         </Form.Group> */}
-                        <textarea className="form-control" ref={textRef} onChange={(e) => {
-                                    setCreateCommentState(e.target.value);
-                                }}>
-                            {createCommentState}
+                        <textarea
+                            placeholder="What are your thoughts............?"
+                            className="form-control"
+                            ref={textRef}
+                            name="comment"
+                            max="420"
+                            value={createCommentState}
+                            onChange={(e) => {
+                                setCreateCommentState(e.target.value);
+                            }}>
+                            {/* {createCommentState} */}
                         </textarea>
                         <Button className="btn " onClick={submitComment}>
                             Post
@@ -218,10 +227,15 @@ const Threads = (props) => {
                                 }}
                                 placeholder="What are your thoughts............?" />
                         </Form.Group> */}
-                        <textarea className="form-control" ref={textRef} onChange={(e) => {
-                                    setCreateCommentState(e.target.value);
-                                }}>
-                            {createCommentState}
+                        <textarea
+                            placeholder="What are your thoughts............?"
+                            name="comment"
+                            className="form-control"
+                            ref={textRef}
+                            value={createCommentState}
+                            onChange={(e) => {
+                                setCreateCommentState(e.target.value);
+                            }}>
                         </textarea>
                         <Button className="btn " onClick={submitComment}>
                             Post

@@ -40,11 +40,11 @@ export default function ReferModal(props) {
         size="lg"
       >
         <Modal.Header closeButton className="refer_header">
-          <Modal.Title> Refer Dygres </Modal.Title>
+          <Modal.Title> Invite your friends to join dygres </Modal.Title>
           <div>
             <p className="mb-0 totalshare">
               {" "}
-              Total Shares:{" "}
+              Sign ups:{" "}
               <span> {user?.referradCount ? user.referradCount : 0}</span>
             </p>
           </div>
@@ -53,9 +53,7 @@ export default function ReferModal(props) {
           <Row>
             <div>
               <p>
-                Refer dygres to your friend and earn referral points. Lorem
-                ispum is a dummy text used to display dummy content for content
-                creators.
+                Every user that signs up and completes level 1 verification through your unique link will grant you 1 point. This system will evolve overtime.
               </p>
             </div>
             <div>

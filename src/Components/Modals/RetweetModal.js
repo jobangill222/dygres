@@ -136,7 +136,7 @@ export default function SingleAward(props) {
     const [createPostState, setCreatePostState] = useState("");
     //Submit post
     const submitPost = async () => {
-        if (!createPostState) {
+        if (!createPostState.replace(/<[^>]*>/g, '')) {
             toast("Hmm… you might consider entering some text before clicking submit.");
         } else {
             // console.log("createPostState", createPostState);

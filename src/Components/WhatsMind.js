@@ -44,7 +44,7 @@ const WhatsMind = (props) => {
       console.log("please login first");
       navigate("/login");
     } else {
-      if (!createPostState) {
+      if (!createPostState.replace(/<[^>]*>/g, '')) {
         toast(
           "Hmm… you might consider entering some text before clicking submit."
         );

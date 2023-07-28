@@ -22,7 +22,7 @@ const PostEdit = (props) => {
   const [editContent, setEditContent] = useState(postContent);
 
   const saveEditPost = async () => {
-    if (!editContent) {
+    if (!editContent.replace(/<[^>]*>/g, '')) {
       toast(
         "Hmm… you might consider entering some text before clicking submit."
       );
@@ -145,7 +145,7 @@ const PostEdit = (props) => {
       </div>
       {/* <EditEditor value={editContent} setValue={setEditContent} /> */}
       <div className="editpost-editor">
-      <Editor value={editContent} setValue={setEditContent} userDropDown="edit_post_user_dropdown" hashtagDropDown="edit_post_hashtag_dropdown" placeholderState="" />
+        <Editor value={editContent} setValue={setEditContent} userDropDown="edit_post_user_dropdown" hashtagDropDown="edit_post_hashtag_dropdown" placeholderState="" />
       </div>
       <div className="text-end edit-post-buttons">
         <Button
