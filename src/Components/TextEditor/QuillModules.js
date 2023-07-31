@@ -1,6 +1,6 @@
 export const modules = {
   toolbar: [
-    [{ header: [3, false] }],
+    [{ header: [4, 5, 6, false] }],
     ["bold", "italic", "underline", "strike"],
     // [{ color: [] }, { background: [] }],
     [{ align: [] }],

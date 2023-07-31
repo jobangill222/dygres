@@ -1,7 +1,8 @@
 import React from 'react'
 // import { highlightName } from "../../helper/highlightName";
 
-import HighLight from '../HighLight';
+// import HighLight from '../HighLight';
+import ShowPostText from "../TextEditor/ShowPostAsPlainText";
 
 export default function ThreadContent(props) {
 
@@ -9,25 +10,24 @@ export default function ThreadContent(props) {
 
     // const finalPostContent = highlightName(content);
 
-    const lines = content.split('\n');
+    // const lines = content.split('\n');
 
     return (
 
         <>
             <div className="Description-bar">
-                {/* <p>{finalPostContent}</p> */}
-                {/* <p><HighLight content={content} /></p> */}
-                {lines.map((line, index) => (
-                    <React.Fragment key={index}>
-                        {/* {line} */}
+
+                <ShowPostText postContent={content ? content : "loading"} />
+
+                {/* {lines.map((line, index) => (
+                    <React.Fragment key={index}> 
                         <HighLight key={index} content={line} />
                         {line === "" ?
                             <br />
                             : null
-                        }
-                        {/* <br /> */}
+                        } 
                     </React.Fragment>
-                ))}
+                ))} */}
             </div>
         </>
     )

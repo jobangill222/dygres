@@ -162,20 +162,20 @@ const Sidebar = () => {
           <OverlayTrigger placement="top" overlay={tooltip}>
             <div className="usermain-img">
               <div className="avatar_img">
-              <img
-                src={
-                  user?.profileImage
-                    ? user.profileImage
-                    : `/images/user-120.png`
-                }
-                alt="user-main-img"
-                style={
-                  user?.profileImage
-                    ? { border: "5px solid var(--base-green)" }
-                    : { border: "none" }
-                }
-              />
-</div>
+                <img
+                  src={
+                    user?.profileImage
+                      ? user.profileImage
+                      : `/images/user-120.png`
+                  }
+                  alt="user-main-img"
+                  style={
+                    user?.profileImage
+                      ? { border: "5px solid var(--base-green)" }
+                      : { border: "none" }
+                  }
+                />
+              </div>
               {isDummyUser() ? (
                 <div class="user_info_sidebar">
                   <p></p>
@@ -212,7 +212,8 @@ const Sidebar = () => {
               <p className="text-secondry">{userStats?.totalFollowers}</p>
               <h6 className="text-offwhite">Followers</h6>
             </li>
-            <li onClick={viewAwardIGot}>
+            {/* <li onClick={viewAwardIGot}> */}
+            <li >
               <p className="text-secondry">{userStats?.totalAwards}</p>
               <h6 className="text-offwhite">Awards</h6>
             </li>

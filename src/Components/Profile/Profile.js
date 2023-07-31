@@ -41,10 +41,10 @@ const Profile = () => {
       {verificationLevelState && verificationLevelState === 4
         ? "Verified official account"
         : verificationLevelState === 1
-        ? "Verified Email"
-        : verificationLevelState === 2
-        ? "Verified Human"
-        : "New account"}
+          ? "Verified Email"
+          : verificationLevelState === 2
+            ? "Verified Human"
+            : "New account"}
     </Tooltip>
   );
 
@@ -241,7 +241,8 @@ const Profile = () => {
                   <p className="text-secondry">{userStats?.totalFollowers}</p>
                   <h6 className="text-offwhite">Followers</h6>
                 </li>
-                <li onClick={viewAwardIGot}>
+                {/* <li onClick={viewAwardIGot}> */}
+                <li >
                   <p className="text-secondry">{userStats?.totalAwards}</p>
                   <h6 className="text-offwhite">Awards</h6>
                 </li>

@@ -58,7 +58,8 @@ function Editor({
       username: true,
     });
   };
-
+ 
+    
   useEffect(() => {
     const editor = quillInstanceRef.current.getEditor();
 
@@ -143,12 +144,12 @@ function Editor({
           setShowTagDropDown(false);
         }
       }
-      console.log(editor.getLength(), "Length 1");
+      console.log(editor.getLength() - 1, "Length 1");
       // limit on content editor
 
-      if (editor.getLength() > 421) {
+      if (editor.getLength() - 1 > 420) {
         editor.deleteText(420, editor.getLength());
-        console.log("Limit extented");
+        // console.log("Limit extented");
       }
     });
 
@@ -163,23 +164,39 @@ function Editor({
     };
   }, [value]);
 
+
+  // Set word count
   const handleTextChange = (content, delta, source, editor) => {
-    // Update the state with the new value
-
-    console.log('editor.getLength()editor.getLength()' , editor.getLength())
-
-    if (editor.getLength() < 421) {
-      editor.getLength() === 1
-        ? setContentLength(0)
-        : setContentLength(editor.getLength() - 1);
-
-      // setContentLength(editor.getLength());
-    }
-
+    let count =  editor.getLength() - 1;
+    // console.log('count' , count) 
+    setContentLength(count);
     setValue(content);
   };
+  
 
-  // const [idAnimation , settIsAnimation] = useState()
+  //Restrict paster image
+  const handlePaste = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    if (clipboardData) {
+      const types = clipboardData.types || [];
+      if (types.includes('Files')) {
+        e.preventDefault(); // Prevent the default paste behavior
+      }
+    }
+  };
+ 
+  const formats = [
+    'header', // This will enable all header levels (h1 to h6) in the editor
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'align',
+    'link',
+    'list',
+    'user-list', // Add the custom format for "user-list" if required
+  ];
+
 
   return (
     <>
@@ -192,6 +209,8 @@ function Editor({
           onChange={handleTextChange}
           ref={quillInstanceRef}
           placeholder={placeholderState}
+          onPaste={handlePaste}
+          formats={formats}
         />
         <div
           id={userDropDown}
@@ -224,8 +243,8 @@ function Editor({
             </div>
           ))}
         </div>
-      </div>
-
+      </div> 
+      
       <p className="counter-text">{420 - contentLength}</p>
     </>
   );

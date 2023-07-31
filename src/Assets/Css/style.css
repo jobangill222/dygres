@@ -5105,13 +5105,13 @@ background: linear-gradient(to right, rgba(157, 211, 131, 1), rgba(62, 172, 198,
 }
 
 
-#create_post_user_dropdown div, #create_post_hashtag_dropdown div , #edit_post_user_dropdown div, #tag-edit-dropdown div , #amplify_post_user_dropdown div , #apmlify_post_hashtag_dropdown div{
+#create_post_user_dropdown div, #create_post_hashtag_dropdown div , #edit_post_user_dropdown div, #tag-edit-dropdown div , #amplify_post_user_dropdown div , #apmlify_post_hashtag_dropdown div , #create_comment_user_dropdown div , #create_comment_hashtag_dropdown div{
   cursor: pointer; 
   padding: 5px;
 }
 
 /* dropdown  */
-#create_post_user_dropdown, #edit_post_user_dropdown , #amplify_post_user_dropdown{
+#create_post_user_dropdown, #edit_post_user_dropdown , #amplify_post_user_dropdown , #create_comment_user_dropdown{
   position: absolute;
   top: 100%;
   left: 0;
@@ -5125,7 +5125,7 @@ background: linear-gradient(to right, rgba(157, 211, 131, 1), rgba(62, 172, 198,
   z-index: 10; /* Ensure the dropdown appears above other elements */
 }
 
-#create_post_hashtag_dropdown, #edit_post_hashtag_dropdown , #apmlify_post_hashtag_dropdown{
+#create_post_hashtag_dropdown, #edit_post_hashtag_dropdown , #apmlify_post_hashtag_dropdown , #create_comment_hashtag_dropdown{
   position: absolute;
   left: 20px;
   display: none;

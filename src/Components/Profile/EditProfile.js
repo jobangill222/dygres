@@ -180,11 +180,11 @@ const EditProfile = () => {
                   alt="icon"
                   id="output"
                   ref={imageRef}
-                  // style={
-                  //   genInfoFiledsState?.profileImage
-                  //     ? { border: "5px solid var(--base-green)" }
-                  //     : { border: "none" }
-                  // }
+                // style={
+                //   genInfoFiledsState?.profileImage
+                //     ? { border: "5px solid var(--base-green)" }
+                //     : { border: "none" }
+                // }
                 />
 
                 <div className="userup-in">

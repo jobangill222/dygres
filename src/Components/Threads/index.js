@@ -10,6 +10,7 @@ import ThreadHead from './ThreadHead';
 import ThreadContent from './ThreadContent';
 import ThreadFoot from './ThreadFoot';
 import { toast } from "react-toastify";
+import Editor from '../TextEditor/Editor';
 
 
 const Threads = (props) => {
@@ -99,7 +100,7 @@ const Threads = (props) => {
 
 
     const list = async () => {
-        console.log('pageNumberOfComment', pageNumberOfComment)
+        // console.log('pageNumberOfComment', pageNumberOfComment)
         let axiosRes;
         if (commentID) {
             axiosRes = await getCommentOfCommentDContext(commentID, pageNumberOfComment);
@@ -148,7 +149,15 @@ const Threads = (props) => {
                                 }}
                                 placeholder="What are your thoughts............?" />
                         </Form.Group> */}
-                        <textarea
+                        <Editor
+                            value={createCommentState}
+                            setValue={setCreateCommentState}
+                            userDropDown="create_comment_user_dropdown"
+                            hashtagDropDown="create_comment_hashtag_dropdown"
+                            placeholderState="What are your thoughts............?"
+                            className={createCommentState ? "active" : ""}
+                        />
+                        {/* <textarea
                             placeholder="What are your thoughts............?"
                             className="form-control"
                             ref={textRef}
@@ -157,9 +166,8 @@ const Threads = (props) => {
                             value={createCommentState}
                             onChange={(e) => {
                                 setCreateCommentState(e.target.value);
-                            }}>
-                            {/* {createCommentState} */}
-                        </textarea>
+                            }}> 
+                        </textarea> */}
                         <Button className="btn " onClick={submitComment}>
                             Post
                         </Button>
@@ -227,7 +235,17 @@ const Threads = (props) => {
                                 }}
                                 placeholder="What are your thoughts............?" />
                         </Form.Group> */}
-                        <textarea
+
+                        <Editor
+                            value={createCommentState}
+                            setValue={setCreateCommentState}
+                            userDropDown="create_comment_user_dropdown"
+                            hashtagDropDown="create_comment_hashtag_dropdown"
+                            placeholderState="What are your thoughts............?"
+                            className={createCommentState ? "active" : ""}
+                        />
+
+                        {/* <textarea
                             placeholder="What are your thoughts............?"
                             name="comment"
                             className="form-control"
@@ -236,7 +254,7 @@ const Threads = (props) => {
                             onChange={(e) => {
                                 setCreateCommentState(e.target.value);
                             }}>
-                        </textarea>
+                        </textarea> */}
                         <Button className="btn " onClick={submitComment}>
                             Post
                         </Button>
