@@ -14,7 +14,7 @@ export default function FoundationalRuleModal(props) {
     return (
         <>
             <Modal
-                className="Actions-modal awards-modal welcomepopup"
+                className="Actions-modal awards-modal welcomepopup Foundationalmodal"
                 show={isShowFoundationalRulePopup}
                 onHide={closePopup}
                 centered

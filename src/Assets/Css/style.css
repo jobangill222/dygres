@@ -360,8 +360,8 @@ input.form-control {
 
 /* BS Container */
 .container {
-  max-width: 1440px;
-  padding: 0 50px;
+  max-width: 1550px;
+  padding: 0 30px;
 }
 
 /* Header css  */
@@ -939,6 +939,7 @@ textarea {
 .rules-tag {
   cursor: pointer;
   margin-top: 5px;
+  line-height: 1;
 }
 .user-active-timer {
   align-self: baseline;
@@ -1418,6 +1419,7 @@ t .report-tabs li.active {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
+  column-gap: 10px;
 }
 
 .action-bar ul li,
@@ -1458,7 +1460,7 @@ t .report-tabs li.active {
 
 .action-bar ul li svg {
   margin-right: 6px;
-  font-size: 1.25rem;
+  font-size: 32px;
   transition: 0.3s ease;
 }
 .share-popup .modal-body {
@@ -1732,8 +1734,9 @@ t .report-tabs li.active {
 .thredsbar span.no-comment ~ .reply-post {
   margin-top: 10px;
 }
-[darkmode] .reply-post.reply-fix-bottom {
+[darkmode] .reply-post {
   background: #272728;
+  border: 1px solid #383838;
 }
 .accordion .accordion-collapse {
   margin-top: 0px;
@@ -1820,7 +1823,7 @@ t .report-tabs li.active {
     background: var(--base-green);
 } */
 .reply-post {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .reply-post form {
@@ -1855,10 +1858,16 @@ t .report-tabs li.active {
   overflow: hidden !important;
 }
 .treeicon img {
-  width: 30px;
+  width: 50px;
 }
 [darkmode] .treeicon img {
   filter: invert(1);
+}
+.editor .ql-editor a {
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #9dd382;
 }
 .welcomepopup .welcomepopupbar p b {
   color: #171717;
@@ -1925,9 +1934,15 @@ t .report-tabs li.active {
   border-radius: 20px;
   padding: 30px 30px;
 }
-.reply-post form .btn {
+.reply-post p.counter-text {
   position: absolute;
-  right: 15px;
+  bottom: 15px;
+  margin: 0;
+  left: 15px;
+}
+.reply-post form .btn {
+  position: relative;
+  right: inherit;
   padding: 0;
   border: none !important;
   outline: none !important;
@@ -1938,7 +1953,7 @@ t .report-tabs li.active {
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  top: 6px;
+  top: inherit;
 }
 .ql-toolbar.ql-snow .ql-formats{
   margin-right: 0 !important;
@@ -4466,16 +4481,29 @@ ul.sidebar-menu {
 .scroll_slim::-webkit-scrollbar{
   width: 3px;
   border-radius: 80px;
-  }
-  .scroll_slim::-webkit-scrollbar-track {
-    background: #e5fed15a;
-    border-radius: 10px;
-    width: 2px;
-  }
-  .scroll_slim::-webkit-scrollbar-thumb {
-    background: var(--base-green);
-    border-radius: 10px;
-  }
+}
+.scroll_slim::-webkit-scrollbar-track {
+  background: #e5fed15a;
+  border-radius: 10px;
+  width: 2px;
+}
+.scroll_slim::-webkit-scrollbar-thumb {
+  background: var(--base-green);
+  border-radius: 10px;
+}
+.accordionitem.scroll_slim-slim::-webkit-scrollbar{
+  width: 3px;
+  border-radius: 80px;
+}
+.accordionitem.scroll_slim-slim::-webkit-scrollbar-track {
+  background: #e5fed15a;
+  border-radius: 10px;
+  width: 2px;
+}
+.accordionitem.scroll_slim-slim::-webkit-scrollbar-thumb {
+  background: var(--base-green);
+  border-radius: 10px;
+}
 [darkmode] .sidebar-profile .sidebar-menu li a.active,
 [darkmode] .sidebar-profile .sidebar-menu li a:hover {
   background-color: #303031;
@@ -4979,7 +5007,7 @@ ul.sidebar-menu {
   max-height: 400px;
   overflow-x: hidden;
   overflow-y: scroll;
-  padding-bottom: 110px;
+  padding-bottom: 260px;
 }
 .thredsbar .accordionitem .accordionitem {
   max-height: initial;
@@ -4988,13 +5016,27 @@ ul.sidebar-menu {
 }
 .reply-post.reply-fix-bottom {
   position: absolute;
-  bottom: 0;
-  width: 100%;
+  bottom: 20px;
+  width: 96%;
   left: 50%;
   max-width: 100%;
   transform: translate(-50%, 0px);
-  padding: 10px 20px 20px 50px;
+  padding: 0;
+}
+.reply-post {
+  width: 100%;
+  padding: 0;
   background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #d1d1d1;
+  box-shadow: 0px 0px 5px #8080803d;
+}
+.reply-post form {
+  display: block;
+}
+.reply-post form .ql-container {min-height: auto;}
+.reply-post form .ql-container .ql-editor {
+  min-height: 80px !important;
 }
 .digital-feeds .Description-bar div {
   white-space: inherit !important;
@@ -5201,10 +5243,25 @@ stroke: white;
 .ql-snow.ql-toolbar button:hover, .ql-snow .ql-toolbar button:hover, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.ql-active, .ql-snow .ql-toolbar button.ql-active, .ql-snow.ql-toolbar .ql-picker-label:hover, .ql-snow .ql-toolbar .ql-picker-label:hover, .ql-snow.ql-toolbar .ql-picker-label.ql-active, .ql-snow .ql-toolbar .ql-picker-label.ql-active, .ql-snow.ql-toolbar .ql-picker-item:hover, .ql-snow .ql-toolbar .ql-picker-item:hover, .ql-snow.ql-toolbar .ql-picker-item.ql-selected, .ql-snow .ql-toolbar .ql-picker-item.ql-selected{
   color:var(--base-primary) !important;
 }
+.ql-snow .ql-editor h6 {
+  font-size: 1.375rem !important;
+}
+.ql-snow .ql-editor h5 {
+  font-size: 1.5rem !important;
+}
+.ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6 {
+  font-weight: normal !important;
+}
+.ql-snow .ql-editor h4 {
+  font-size: 1.625rem !important;
+}
 /* Editor css  */
 .ql-toolbar.ql-snow {width: 100%;transition: .3s ease;margin-top: -53px;}
 .quill {
-    overflow: hidden;
+  overflow: hidden;
+}
+.quill.quillactive {
+  overflow: visible !important;
 }
 .quill.quillactive .ql-toolbar.ql-snow {margin-top: 0;}
 .ql-snow.ql-toolbar button:hover .ql-fill, .ql-snow .ql-toolbar button:hover .ql-fill, .ql-snow.ql-toolbar button:focus .ql-fill, .ql-snow .ql-toolbar button:focus .ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
@@ -5290,8 +5347,8 @@ ul.user-detail-listing{
 .ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6 {
     color: #545456;
 }
-[darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6 {
-    color: #AFAFAF;
+[darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6,[darkmode]  .ql-snow .ql-editor p {
+    color: #ffffff;
 }
 [darkmode] .user_info_sidebar a{
   color: var(--base-green);
@@ -5326,6 +5383,29 @@ ul.user-detail-listing{
   flex-direction: row-reverse;
   justify-content: center;
   padding: 11px 37px;
+}
+.digital-feeds .Description-bar .Description-bar {
+  padding: 0;
+}
+.digital-feeds .Description-bar .Description-bar {
+  padding: 0;
+}
+.thredsbar .threads-rows .thredsbar .reply-post {
+  position: relative !important;
+  top: inherit !important;
+  bottom: inherit !important;
+  left: inherit !important;
+  transform: inherit !important;
+}
+.reply-post.reply-fix-bottom .ql-editor {
+  max-height: 140px;
+  overflow: auto;
+}
+[darkmode] .ql-editor.ql-blank::before {
+  color: #ffffff;
+}
+[darkmode] .ql-stroke {
+  stroke: #ffffff !important;
 }
 /* Responsive css  */
 @media (max-width: 1599px) {
@@ -5631,7 +5711,7 @@ ul.trending-hashtag-list li.hashtaglist {
 
   .thredsbar {
     position: relative;
-    padding: 10px 20px;
+    padding: 20px 20px;
   }
   .accordionitem::-webkit-scrollbar {
     width: 20px;
@@ -5656,7 +5736,7 @@ ul.trending-hashtag-list li.hashtaglist {
   .accordionitem::-webkit-scrollbar-thumb:hover {
   }
   .action-bar ul li {
-    margin-left: 10px;
+    margin-left: 0px;
     font-size: .75rem;
     font-weight: normal;
   }
@@ -5716,10 +5796,11 @@ ul.trending-hashtag-list li.hashtaglist {
 .header-nav .container .navbar-nav {
   flex-direction: row;
 }
-
+.action-bar{
+  flex-wrap: nowrap;
+}
   .action-bar ul li svg {
     margin-right: 4px;
-    font-size: 1rem;
     transition: 0.3s ease;
 }
   .action-bar .flagbtnbar li button {
@@ -5763,9 +5844,11 @@ ul.trending-hashtag-list li.hashtaglist {
     font-size: 10px;
 }
 .action-bar ul li svg {
-  margin-right: 2px;
-  font-size: 0.875rem;
+  margin-right: 5px;
   transition: 0.3s ease;
+}
+.action-bar ul li{
+  margin-bottom: 10px;
 }
 }
 @media (max-width: 1024px){
@@ -6311,10 +6394,6 @@ li.svggray svg path {
   .action-bar ul li .list-text, .action-bar ul li .list-text span.number, .action-bar ul li, .action-bar ul li p {
     font-size: 0.875rem;
 }
-  .action-bar ul li svg,
-  .action-bar ul li .accordion-button svg {
-    font-size: 1.125rem;
-  }
 
   .hoverdropdown button,
   .action-bar ul li .accordion-button {
@@ -6572,14 +6651,26 @@ ul.actionrytbar li p {
 }
 .reply-post form .btn {
   font-size: 0.875rem;
-  right: 10px;
-  top: 20px;
+}
+.Foundationalmodal button.btn-close {
+  top: 20px !important;
+  right: 0 !important;
+}
+.thredsbar .threads-rows ul.actionleftbar {
+  flex: 0 0 100% !important;
+  justify-content: flex-start;
+}
+.treeicon img {
+  width: 36px;
 }
   /* .action-bar ul li .list-text, .action-bar ul li, .action-bar ul li p {
     font-size: 0;
 } */
 .action-bar ul li, .action-bar ul li .accordion-button {
   margin-left: 10px;
+}
+.action-bar ul li {
+  margin-left: 0px;
 }
 .action-bar ul li .list-text span.number{
   font-size: 0.875rem !important;
@@ -6803,6 +6894,15 @@ ul.actionrytbar li p {
   }
   .action-bar {
     align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.action-bar ul.actionleftbar {
+  justify-content: flex-end;
+}
+.action-bar ul.actionrytbar {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 .text_level{
   margin-top: 0;
@@ -6813,9 +6913,7 @@ ul.actionrytbar li p {
 .action-bar ul li.awardsbtn-disable{
   display: none;
 }
-.action-bar ul li svg{
-  font-size: 22px;
-}
+
 /* , .Mob-Footerbar .mob-foot-menu li a svg */
 .Mob-Footerbar .mob-foot-menu li.user-dropdown img {
   font-size: 60px !important;
@@ -6882,20 +6980,20 @@ ul.actionrytbar li p {
   min-width: 200px;
 }
 .action-bar ul.actionleftbar li.Agreeli {
-    order: 1;
+    order: 3;
 }
-.action-bar ul.actionleftbar li.Disagreeli {order: 4;}
+.action-bar ul.actionleftbar li.Disagreeli {order: 6;}
 .action-bar ul.actionleftbar li.Amplifyli {
     order: 2;
 }
 .action-bar ul.actionleftbar li.Reportsli {
-    order: 3;
+    order: 1;
 }
 .action-bar ul.actionleftbar li.Threadsli {
     order: 5;
 }
 .action-bar ul.actionleftbar li.editpostli {
-    order: 6;
+    order: 4;
 }
 .action-bar ul.actionleftbar li.viewpostli {
     display: none;
@@ -7146,10 +7244,7 @@ ul.actionrytbar {
     text-align: end;
     justify-content: flex-end !important;
 }
-.action-bar{
-  display: flex;
-  flex-direction: row;
-}
+
 #theme-switch .switch-thumb {
   height: 26px;
   left: 50%;

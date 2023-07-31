@@ -11,7 +11,7 @@ import Editor from "./TextEditor/Editor";
 const WhatsMind = (props) => {
   //To change state when post is posted
   const { placeholderState, setActiveTabState } = props;
-
+console.log("=========" , placeholderState);
   const { setIsPostState } = useContext(DContext);
 
   //Set create post state
@@ -124,7 +124,7 @@ const WhatsMind = (props) => {
         />
         <div className="text-end whtsmind-btn-space">
           <Button className="bg-primary text-white" onClick={submitPost}>
-            Post
+            dygres
           </Button>
         </div>
 

@@ -133,7 +133,7 @@ const Threads = (props) => {
     return (
         <>
 
-            <div className='accordionitem scroll_slim' ref={scollToRef}>
+            <div className='accordionitem scroll_slim-slim' ref={scollToRef}>
 
                 {clickTypeState === 'reply' && <div className='reply-post '>
                     <Form>
@@ -168,9 +168,12 @@ const Threads = (props) => {
                                 setCreateCommentState(e.target.value);
                             }}> 
                         </textarea> */}
+                        <div className='text-end whtsmind-btn-space'>
                         <Button className="btn " onClick={submitComment}>
-                            Post
+                            dygres
                         </Button>
+                        </div>
+                        
                     </Form>
                 </div>}
 
@@ -255,9 +258,11 @@ const Threads = (props) => {
                                 setCreateCommentState(e.target.value);
                             }}>
                         </textarea> */}
+                        <div className='text-end whtsmind-btn-space'>
                         <Button className="btn " onClick={submitComment}>
-                            Post
+                            dygres
                         </Button>
+                        </div>
                     </Form>
                 </div>
                 }
