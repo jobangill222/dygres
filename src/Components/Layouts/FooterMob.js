@@ -55,7 +55,7 @@ const FooterMob = () => {
                                 alt="user-img"
                             />
                             
-                            <div className="Dropdown-listing bg-white">
+                            <div className="Dropdown-listing bg-white p-3">
                                 <div className="arrowshape"></div>
                                 {/* <h4 className="text-silver">Account</h4> */}
                                 <ul>
