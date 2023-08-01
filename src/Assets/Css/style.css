@@ -469,6 +469,9 @@ button.ql-user-list {
 .quill {
   position: relative;
 }
+#emoji-palette #tab-panel span.bem {
+  margin: 3px !important;
+}
 .Whatsmind-bar .ql-editor p , .ql-editor ol li, .ql-editor ul li, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6 {display: flex;align-items: center;}
 ul.trending-hashtag-list li.hashtaglist {
   font-style: normal;
@@ -6963,6 +6966,9 @@ ul.actionrytbar li p {
 @media (max-width: 574px) {
   .header-nav .navbar-nav .notify-add svg {
     font-size: 25px;
+}
+#emoji-palette #tab-panel span.bem {
+  margin: 2px !important;
 }
 #theme-switch {
   margin-right: 0px !important;
