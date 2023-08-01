@@ -11,6 +11,7 @@ import ThreadContent from './ThreadContent';
 import ThreadFoot from './ThreadFoot';
 import { toast } from "react-toastify";
 import Editor from '../TextEditor/Editor';
+import { FaCommentSlash } from 'react-icons/fa';
 
 
 const Threads = (props) => {
@@ -209,7 +210,7 @@ const Threads = (props) => {
                         })}
                     </>
                     : commentID ? <span className='no-comment'>No Reply</span>
-                        : <span className='no-comment'>No comments</span>
+                        : <span className='no-comment'><FaCommentSlash/>No comments</span>
                 }
 
 

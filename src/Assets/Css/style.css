@@ -448,7 +448,7 @@ ul.trending-hashtag-list {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
+.user-detail-bar .detailleft .awards-bar{display:none !important;}
 ul.trending-hashtag-list li {
   margin-right: 20px;
   font-weight: 400;
@@ -1509,12 +1509,22 @@ t .report-tabs li.active {
   color: #2fb84c;
 }
 
-.action-bar ul li:hover,
 .action-bar ul li.active {
   color: #2fb84c;
 }
-
-.action-bar ul li:hover,
+.action-bar ul li:hover .list-text {
+  color: #5fba4e;
+}
+[darkmode] .digital-feeds .Description-bar a:hover {
+  color: var(--darkmode-offwhite);
+}
+.Dropdown-listing.notification-dropdown .notification-content .levelbar {
+  top: -8px !important;
+}
+.hoverdropdown .dropdown-menu .dropdown-item svg {
+  margin-right: 10px;
+  font-size: 18px;
+}
 .action-bar ul li.active {
   color: #2fb84c;
 }
@@ -6473,6 +6483,9 @@ li.svggray svg path {
   /* .ql-toolbar.ql-snow {
     margin-top: -83px !important;
 } */
+.digital-feeds .Description-bar p {
+  word-break: inherit !important;
+}
 .Actions-modal .modal-header button.btn-close {
   opacity: 1;
   font-size: 1rem;
@@ -6498,9 +6511,6 @@ li.svggray svg path {
 }
   [darkmode] .reply-post.reply-fix-bottom {
     background: #272728;
-}
-ul.actionrytbar li {
-  flex-direction: row-reverse;
 }
 ul.actionrytbar li p {
   margin-right: 5px;
