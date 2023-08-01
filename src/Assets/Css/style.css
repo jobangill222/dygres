@@ -457,7 +457,19 @@ ul.trending-hashtag-list li {
   /* identical to box height, or 136% */
   color: #6e7180;
 }
-
+button.ql-user-list {
+  display: none !important;
+}
+.ql-emojiblot {
+  line-height: 1;
+}
+.reply-post{
+  z-index: 1;
+}
+.quill {
+  position: relative;
+}
+.Whatsmind-bar .ql-editor p , .ql-editor ol li, .ql-editor ul li, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6 {display: flex;align-items: center;}
 ul.trending-hashtag-list li.hashtaglist {
   font-style: normal;
   font-weight: 600;
