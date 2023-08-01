@@ -502,6 +502,9 @@ ul.trending-hashtag-list li.hashtagcounts {
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   color: #ffffff;
 }
+#emoji-palette #tab-toolbar ul {
+  display: flex;
+}
 .restrict-logins {
   display: flex;
   align-items: center;
