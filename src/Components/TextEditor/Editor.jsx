@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "quill-emoji/dist/quill-emoji.css";
 import "emoji-mart/css/emoji-mart.css";
-import { Picker } from "emoji-mart";
 import quillEmoji from "quill-emoji";
 import { DContext } from "../../Context/DContext";
 import { debounce, searchQuery, modifyString } from "../../helper/editorhelper";
@@ -36,9 +35,9 @@ function Editor({
   const [showUserDropDown, setShowUserDropDown] = useState(false);
   const [showTagDropDown, setShowTagDropDown] = useState(false);
   const [contentLength, setContentLength] = useState(0);
-  // const quillInstanceRef = useRef(null);
-  const quillInstanceRef = React.useRef();
   
+  const quillInstanceRef = React.useRef();
+
   const handleSelectDropDownOption = (user) => {
     setSelectedUser(user);
     if (user) {

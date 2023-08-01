@@ -170,11 +170,11 @@ const Threads = (props) => {
                             }}> 
                         </textarea> */}
                         <div className='text-end whtsmind-btn-space'>
-                        <Button className="btn " onClick={submitComment}>
-                            dygres
-                        </Button>
+                            <Button className="btn " onClick={submitComment}>
+                                dygres
+                            </Button>
                         </div>
-                        
+
                     </Form>
                 </div>}
 
@@ -210,7 +210,7 @@ const Threads = (props) => {
                         })}
                     </>
                     : commentID ? <span className='no-comment'>No Reply</span>
-                        : <span className='no-comment'><FaCommentSlash/>No comments</span>
+                        : <span className='no-comment'><FaCommentSlash />No comments</span>
                 }
 
 
@@ -260,9 +260,9 @@ const Threads = (props) => {
                             }}>
                         </textarea> */}
                         <div className='text-end whtsmind-btn-space'>
-                        <Button className="btn " onClick={submitComment}>
-                            dygres
-                        </Button>
+                            <Button className="btn " onClick={submitComment}>
+                                dygres
+                            </Button>
                         </div>
                     </Form>
                 </div>

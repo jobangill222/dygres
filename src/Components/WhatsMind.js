@@ -11,7 +11,6 @@ import Editor from "./TextEditor/Editor";
 const WhatsMind = (props) => {
   //To change state when post is posted
   const { placeholderState, setActiveTabState } = props;
-  console.log("=========", placeholderState);
   const { setIsPostState } = useContext(DContext);
 
   //Set create post state

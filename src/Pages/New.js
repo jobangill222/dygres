@@ -12,7 +12,7 @@ const New = () => {
 
   //State for active tab like: global , follwing, officials
   const [activeTabState, setActiveTabState] = useState("Global");
-  const [placeholderState, setPlaceholderState] = useState('');
+  // const [placeholderState, setPlaceholderState] = useState('');
 
   var title = [
     "A penny for your thoughts",
@@ -93,7 +93,7 @@ const New = () => {
     if (activeTabState === "Official") {
       getOfficialPosts();
     }
-    setPlaceholderState(title[Math.floor(Math.random() * title.length)]);
+    // setPlaceholderState(title[Math.floor(Math.random() * title.length)]);
 
   }, [activeTabState, user]);
 
@@ -220,7 +220,7 @@ const New = () => {
         {/* {postList} */}
       </InfiniteScroll>
 
-      <WhatsMind setIsPostState={setIsPostState} setActiveTabState={setActiveTabState} placeholderState={placeholderState} />
+      <WhatsMind setIsPostState={setIsPostState} setActiveTabState={setActiveTabState} placeholderState={title[Math.floor(Math.random() * title.length)]} />
       <DigitalTabs setActiveTabState={setActiveTabState} activeTabState={activeTabState} postList={postList} />
     </>
   );
