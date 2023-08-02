@@ -168,6 +168,13 @@ const Header = () => {
     <Tooltip id="shareDisableToolTip">Verify email to share</Tooltip>
   );
 
+  const hideMenu = () => {
+    const element = document.getElementById('basic-navbar-nav');
+    if (element) {
+      element.classList.remove('show');
+    }
+  }
+
   return (
     <>
       {isShowRulesModal && (
@@ -516,20 +523,20 @@ const Header = () => {
               </div>
             ) : null}
           </div>
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav"  >
             <ul className="sidebar-menu">
-              <li className={splitLocation[1] === "new" ? "active" : ""}>
+              <li className={splitLocation[1] === "new" ? "active" : ""} onClick={hideMenu} >
                 <Link exact to="/new">
                   <BsFileMedicalFill /> New
                 </Link>
               </li>
-              <li className={splitLocation[1] === "Hot" ? "active" : ""}>
+              <li className={splitLocation[1] === "Hot" ? "active" : ""} onClick={hideMenu}>
                 <Link to="/Hot">
                   <MdOutlineWhatshot />
                   Hot
                 </Link>
               </li>
-              <li className={splitLocation[1] === "Most-voted" ? "active" : ""}>
+              <li className={splitLocation[1] === "Most-voted" ? "active" : ""} onClick={hideMenu}>
                 <Link to="/Most-voted">
                   <MdHowToVote />
                   Most Voted
@@ -540,6 +547,7 @@ const Header = () => {
                 className={
                   splitLocation[1] === "trending-hashtags" ? "active" : ""
                 }
+                onClick={hideMenu}
               >
                 <Link to="/trending-hashtags">
                   <BiLayerMinus />
@@ -549,6 +557,7 @@ const Header = () => {
 
               <li
                 className={splitLocation[1] === "notification" ? "active" : ""}
+                onClick={hideMenu}
               >
                 <Link to="/notification">
                   <BsBell />
@@ -597,7 +606,7 @@ const Header = () => {
             </ul>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </Navbar >
 
       {/* share model */}
       {/* <Modal
