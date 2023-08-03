@@ -5450,7 +5450,9 @@ ul.user-detail-listing{
 .Reportsli svg,.viewpostli svg {
   height: 28px;
 }
- 
+#tooltip {
+  z-index: 9999;
+}
 
 
 
