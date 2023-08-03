@@ -22,6 +22,30 @@ export const createMarkup = (postContent) => {
   );
   return { __html: highlightedContent };
 };
+// export const createMarkup = (postContent) => {
+//   const plainTextUrlRegex = /(?:(?:https?:\/\/)?(?:[a-z0-9\-]+\.)+[a-z]{2,}(?:\/[^\s]*)?)/ig;
+
+//   const highlightedContent = postContent.replace(
+//     /<a\s+href="([^"]+)">([^<]+)<\/a>|(@\w+)|(#\w+)/gi,
+//     (match, href, anchorText, atMention, hashtag) => {
+//       if (href && anchorText) {
+//         return `<a href="${href}" target="_blank">${anchorText}</a>`;
+//       } else if (atMention || hashtag) {
+//         return `<span class="highlighted" onClick="handleClick(event)">${match}</span>`;
+//       } else {
+//         return match;
+//       }
+//     }
+//   ).replace(plainTextUrlRegex, (url) => {
+//     if (url.startsWith("http")) {
+//       return `<a href="${url}" target="_blank">${url}</a>`;
+//     } else {
+//       return `<a href="http://${url}" target="_blank">${url}</a>`;
+//     }
+//   }).replace(/<p[^>]*><a\s+href="([^"]+)"[^>]*>(.*?)<\/a><\/p\s*>/gi, '<p><a href="$1" target="_blank">$2</a></p>');
+
+//   return { __html: highlightedContent };
+// };
 
 export const handleDropdown = (
   editor,

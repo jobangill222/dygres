@@ -9,6 +9,7 @@ export default function ShowPostText({ postContent }) {
     const navigate = useNavigate();
 
     // const { postContent } = props
+    console.log('____________________', postContent)
 
     const {
         checkUsernameExistDContext,
