@@ -100,8 +100,13 @@ export default function ThreadFoot(props) {
 
     const [clickTypeState, setClickTypeState] = useState('thread');
     const replyClick = async () => {
-        setIsThreadBoxOpen(true)
-        setClickTypeState('reply');
+        if (clickTypeState === 'reply') {
+            setIsThreadBoxOpen((prevState) => !prevState);
+            setClickTypeState(null);
+        } else {
+            setIsThreadBoxOpen(true)
+            setClickTypeState('reply');
+        }
     }
 
 
@@ -141,17 +146,21 @@ export default function ThreadFoot(props) {
 
                     <li>
                         {/* <div className={isThreadBoxOpen ? 'accordionhead active' : 'accordionhead'} onClick={() => setIsThreadBoxOpen(!isThreadBoxOpen)}><FaComments /><span className="number">{commentCount}</span>Threads */}
-                        <div className={isThreadBoxOpen ? 'accordionhead active' : 'accordionhead'} onClick={threadClick}><FaComments /><span className="number">{commentCount}</span>Threads
-
+                        {/* <div className={isThreadBoxOpen ? 'accordionhead active' : 'accordionhead'} onClick={threadClick}><FaComments /><span className="number">{commentCount}</span>Threads */}
+                        <div className={clickTypeState === "thread" ? 'accordionhead active' : 'accordionhead'} onClick={threadClick}>
+                            <FaComments /><span className="number">{commentCount}</span>Threads
                         </div>
                     </li>
 
                     {/* <li onClick={() => setIsThreadBoxOpen(true)}> */}
                     <li onClick={replyClick}>
-                        <RiMessageFill />Reply
+                        <div className={clickTypeState === "reply" ? 'accordionhead active' : 'accordionhead'}  >
+                            <RiMessageFill />Reply
+                        </div>
+
                     </li>
 
-                </ul>
+                </ul >
 
                 {/* <div className='reply-post'>
                     <Form>
@@ -167,7 +176,7 @@ export default function ThreadFoot(props) {
 
                     </Form>
                 </div> */}
-            </div>
+            </div >
 
             {isThreadBoxOpen &&
                 <div className="thredsbar">
