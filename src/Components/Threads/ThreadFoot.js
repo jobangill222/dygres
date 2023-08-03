@@ -135,7 +135,7 @@ export default function ThreadFoot(props) {
                     <li>
                         <div
                             className={isDisagreeState ? 'active' : ""} onClick={() => DisagreeComment(commentID)}><AiFillDislike /></div>
-                        <div className2="list-text" onClick={() => viewPopup('disagreed-comment-user-list')} >
+                        <div className="list-text" onClick={() => viewPopup('disagreed-comment-user-list')} >
                             <span className="number">{disagreeCountState}</span>
                             Disagree
                         </div>
