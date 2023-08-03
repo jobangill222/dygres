@@ -6,6 +6,19 @@
   padding: 0;
   margin: 0;
 }
+::-webkit-scrollbar{
+  width: 5px;
+  border-radius: 80px;
+}
+::-webkit-scrollbar-track {
+  background: #e5fed15a;
+  border-radius: 10px;
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--base-green);
+  border-radius: 10px;
+}
 
 body {
   font-family: ‘Outfit’, sans-serif;
@@ -59,7 +72,7 @@ a:hover {
   justify-content: flex-start;
 }
 .loginbtn {
-  margin-left: 30px;
+  margin-left: 0;
   color: #72c39d;
 }
 .notification-dropdown .notification-content .notification-text {
@@ -660,7 +673,7 @@ ul.trending-hashtag-list li.hashtaglist {
   background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgb(204 204 204 / 15%);
   position: sticky;
-  top: 160px;
+  top: 175px;
 }
 
 .sidebar-profile .feature-image {
@@ -1805,11 +1818,12 @@ t .report-tabs li.active {
 .user-detail-bar .detailleft .follow-bar {
   display: flex;
   align-items: center;
+  column-gap: 20px;
   justify-content: flex-start;
 }
 
 .followbtn {
-  margin-left: 20px;
+  /* margin-left: 20px; */
   border-radius: 3.57692px;
   padding: 6px 16px;
   background: transparent;
@@ -2321,6 +2335,7 @@ t .report-tabs li.active {
 
 .fade.modal-backdrop {
   background: #000000 !important;
+  z-index: 9999;
   /* opacity: 0.2; */
 }
 
@@ -2811,7 +2826,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-style: normal;
   font-weight: 600;
   font-size: 48px;
-  line-height: 1.875rem;
+  margin-bottom: 15px;
 }
 
 .profile-user-detail
@@ -2929,7 +2944,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 
 .profile-user-detail .user-detail-listing {
   margin-top: 15px;
-  column-gap: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .notification-content.readmark p.notify {
@@ -3150,7 +3166,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .Auth-bar {
-  height: calc(100vh - 90px);
+  height:auto;
+  padding: 50px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5450,7 +5467,9 @@ ul.user-detail-listing{
 .Reportsli svg,.viewpostli svg {
   height: 28px;
 }
- 
+#tooltip {
+  z-index: 9999;
+}
 
 
 
@@ -5638,9 +5657,7 @@ ul.trending-hashtag-list li.hashtaglist {
     font-size: 1.125rem;
   }
 
-  .profile-user-detail .user-detail-listing {
-    margin-top: 0px;
-  }
+
 
   .notification-title h4 {
     margin: 0;
@@ -5907,9 +5924,9 @@ ul.trending-hashtag-list li.hashtaglist {
 }
 @media (min-width: 991px) {
 
-  .user-detail-listing li p {
+  /* .user-detail-listing li p {
     font-size: 1.1rem;
-}
+} */
   .action-bar ul li .list-text, .action-bar ul li .list-text span.number, .action-bar ul li, .action-bar ul li p {
     font-size: 0.875rem;
 }
@@ -6223,9 +6240,7 @@ ul.trending-hashtag-list li.hashtaglist {
     font-size: 0.875rem;
   }
 
-  .profile-user-detail .user-detail-listing {
-    margin-top: 10px;
-  }
+  
 
   .user-detail-bar .detailleft .avatar-img {
     position: relative;
@@ -6513,6 +6528,10 @@ li.svggray svg path {
   .header-nav .navbar-nav{
     column-gap: 15px;
   }
+  .terms-content {
+    max-height: 500px;
+    overflow: auto;
+}
 }
 .mobilemenu ul.web-none .user-searchform button svg.crossicon {
   display: none;
@@ -6985,6 +7004,13 @@ ul.actionrytbar li p {
   padding: 0 !important;
   overflow: hidden;
 }
+.Uploaded-user .Imagebar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 10px solid var(--base-purewhite);
+  position: relative;
+}
 }
 
 @media (max-width: 574px) {
@@ -7250,9 +7276,6 @@ ul.actionrytbar {
     justify-content: flex-start;
   }
 
-  .profile-user-detail .user-detail-listing li {
-    margin-right: 20px;
-  }
 
   .mobilemenu ul.web-none li {
     margin-right: 5px;
@@ -7332,6 +7355,13 @@ body #theme-switch .switch-check, body #theme-switch .switch-x {
 }
 .Reportsli svg,.viewpostli svg {
   height: 25px;
+}
+.Uploaded-user .Imagebar {
+  width: 180px;
+  height: 180px;  
+}
+.Uploaded-user p{
+  left: 130px;
 }
 
 }
