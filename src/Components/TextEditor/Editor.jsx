@@ -65,6 +65,9 @@ function Editor({
 
   useEffect(() => {
     const editor = quillInstanceRef.current.getEditor();
+
+    setContentLength(editor.getLength() - 1)
+
     editor.on("text-change", () => {
       const currentSelection = editor.getSelection(true);
       const currentCursorPosition = currentSelection

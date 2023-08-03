@@ -73,7 +73,7 @@ const DigitalTabContent = (props) => {
                 <>
                   <PostContent postContent={postContent} />
                   {parentPostID !== null &&
-                    <div onClick={() => viewParentPostDetail(parentPostID)}>
+                    <div className="cursor-pointer" onClick={() => viewParentPostDetail(parentPostID)}>
                       <PostRetweetFrom parentPostDetail={parentPostDetail} />
                     </div>
                   }

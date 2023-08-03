@@ -98,7 +98,7 @@ export default function ThreadFoot(props) {
 
 
 
-    const [clickTypeState, setClickTypeState] = useState('thread');
+    const [clickTypeState, setClickTypeState] = useState(null);
     const replyClick = async () => {
         if (clickTypeState === 'reply') {
             setIsThreadBoxOpen((prevState) => !prevState);
