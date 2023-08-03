@@ -5349,6 +5349,7 @@ stroke: white;
 }
 .Whatsmind-bar .ql-editor p,  .ql-editor ol li, .ql-editor ul li, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
   color: var(--base-default-text);
+  display: block !important;
 }
 [darkmode] .Whatsmind-bar .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
   color: var(--darkmode-offwhite);
@@ -5374,9 +5375,11 @@ ul.user-detail-listing{
 }
 .ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6 {
     color: #545456;
+    word-break: break-all;
 }
 [darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6,[darkmode]  .ql-snow .ql-editor p {
     color: #ffffff;
+    word-break: break-all;
 }
 [darkmode] .user_info_sidebar a{
   color: var(--base-green);
@@ -6245,6 +6248,7 @@ ul.trending-hashtag-list li.hashtaglist {
 
   .Mob-Footerbar {
     display: block;
+    z-index: 9999;
   }
 
   /* .mob-none {
