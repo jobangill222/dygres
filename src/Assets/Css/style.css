@@ -6985,6 +6985,13 @@ ul.actionrytbar li p {
   padding: 0 !important;
   overflow: hidden;
 }
+.Uploaded-user .Imagebar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 10px solid var(--base-purewhite);
+  position: relative;
+}
 }
 
 @media (max-width: 574px) {
@@ -7332,6 +7339,13 @@ body #theme-switch .switch-check, body #theme-switch .switch-x {
 }
 .Reportsli svg,.viewpostli svg {
   height: 25px;
+}
+.Uploaded-user .Imagebar {
+  width: 180px;
+  height: 180px;  
+}
+.Uploaded-user p{
+  left: 130px;
 }
 
 }
