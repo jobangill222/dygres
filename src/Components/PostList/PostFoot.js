@@ -526,7 +526,7 @@ const PostFoot = (props) => {
               <div>
                 <BsArrowUpRightSquareFill />
               </div>
-              <p>View post</p>
+              <p>View dygression</p>
             </li>
           )}
 
@@ -582,7 +582,7 @@ const PostFoot = (props) => {
               <div>
                 <BsArrowUpRightSquareFill />
               </div>
-              <p>View post</p>
+              <p>View dygression</p>
             </li>
           )}
         </ul>

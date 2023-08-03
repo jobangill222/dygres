@@ -366,9 +366,12 @@ input.form-control {
 
 /* Header css  */
 .header-nav {
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.02), 0px 0px 40px rgba(0, 0, 0, 0.02);
+  box-shadow: 1px 1px 10px rgb(0,0,0,0.1);
   padding: 10px 0;
   background-color: #fdfdfd;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 .header-nav .navbar-nav {
@@ -657,7 +660,7 @@ ul.trending-hashtag-list li.hashtaglist {
   background: var(--base-purewhite);
   box-shadow: 0px 4px 24px rgb(204 204 204 / 15%);
   position: sticky;
-  top: 75px;
+  top: 160px;
 }
 
 .sidebar-profile .feature-image {
@@ -1305,7 +1308,7 @@ ul.profiletabsbar li:last-child a {
   display: inline-block;
   margin: 0;
   position: absolute;
-  left: 132px;
+  left: 202px;
   z-index: 2;
   /* background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff !important; */
   width: 30px;
@@ -1967,6 +1970,7 @@ t .report-tabs li.active {
   bottom: 15px;
   margin: 0;
   left: 15px;
+  font-size: 14px;
 }
 .reply-post form .btn {
   position: relative;
@@ -1977,6 +1981,7 @@ t .report-tabs li.active {
   box-shadow: none !important;
   font-weight: 700;
   line-height: 1.625rem;
+  font-size: 1.5rem;
   letter-spacing: 0.02em;
   background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
   -webkit-background-clip: text;
@@ -2100,6 +2105,10 @@ t .report-tabs li.active {
 .ql-editor.ql-blank::before {
   font-style: normal;
   font-size: 16px;
+}
+.reply-post .reply-fix-bottom .ql-editor::before {
+  font-style: normal;
+  font-size: 14px;
 }
 .retweetmodal.modal-body .user-preview .Description-bar .editor {
   border: 1px solid lightgrey;
@@ -2955,8 +2964,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .Uploaded-user .Imagebar {
-  width: 172px;
-  height: 172px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   border: 10px solid var(--base-purewhite);
   position: relative;
@@ -5064,7 +5073,7 @@ ul.sidebar-menu {
 }
 .reply-post form .ql-container {min-height: auto;}
 .reply-post form .ql-container .ql-editor {
-  min-height: 80px !important;
+  min-height: 50px !important;
 }
 .digital-feeds .Description-bar div {
   white-space: inherit !important;
@@ -5438,6 +5447,13 @@ ul.user-detail-listing{
 [darkmode] .ql-stroke {
   stroke: #ffffff !important;
 }
+.Reportsli svg,.viewpostli svg {
+  height: 28px;
+}
+ 
+
+
+
 /* Responsive css  */
 @media (max-width: 1599px) {
   ul.trending-hashtag-list {
@@ -6536,6 +6552,7 @@ li.svggray svg path {
 }
 ul.actionrytbar li p {
   margin-right: 5px;
+  text-align: start;
 }
 .edit-post-buttons .cancel {
   padding: 8px 12px;
@@ -7309,6 +7326,12 @@ body #theme-switch .switch-check, body #theme-switch .switch-x {
 #theme-switch .switch-icon svg {
   font-size: 20px;
   line-height: 1;
+}
+.reply-post .ql-toolbar.ql-snow{
+  margin-top: 0;
+}
+.Reportsli svg,.viewpostli svg {
+  height: 25px;
 }
 
 }

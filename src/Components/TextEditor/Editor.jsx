@@ -246,7 +246,6 @@ function Editor({
           ))}
         </div>
       </div>
-​
       <p className="counter-text">{420 - contentLength}</p>
     </>
   );
