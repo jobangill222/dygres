@@ -6,6 +6,19 @@
   padding: 0;
   margin: 0;
 }
+::-webkit-scrollbar{
+  width: 5px;
+  border-radius: 80px;
+}
+::-webkit-scrollbar-track {
+  background: #e5fed15a;
+  border-radius: 10px;
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--base-green);
+  border-radius: 10px;
+}
 
 body {
   font-family: ‘Outfit’, sans-serif;
@@ -2812,7 +2825,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-style: normal;
   font-weight: 600;
   font-size: 48px;
-  line-height: 1.875rem;
+  margin-bottom: 15px;
 }
 
 .profile-user-detail
