@@ -384,7 +384,7 @@ input.form-control {
   background-color: #fdfdfd;
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 200;
 }
 
 .header-nav .navbar-nav {
@@ -2333,11 +2333,10 @@ t .report-tabs li.active {
   z-index: 1060;
 }
 
-.fade.modal-backdrop {
+/* .fade.modal-backdrop {
   background: #000000 !important;
   z-index: 9999;
-  /* opacity: 0.2; */
-}
+} */
 
 .award_of_package {
   cursor: pointer;
