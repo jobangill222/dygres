@@ -72,7 +72,7 @@ a:hover {
   justify-content: flex-start;
 }
 .loginbtn {
-  margin-left: 30px;
+  margin-left: 0;
   color: #72c39d;
 }
 .notification-dropdown .notification-content .notification-text {
@@ -2335,6 +2335,7 @@ t .report-tabs li.active {
 
 .fade.modal-backdrop {
   background: #000000 !important;
+  z-index: 9999;
   /* opacity: 0.2; */
 }
 
@@ -3165,7 +3166,8 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 }
 
 .Auth-bar {
-  height: calc(100vh - 90px);
+  height:auto;
+  padding: 50px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6526,6 +6528,10 @@ li.svggray svg path {
   .header-nav .navbar-nav{
     column-gap: 15px;
   }
+  .terms-content {
+    max-height: 500px;
+    overflow: auto;
+}
 }
 .mobilemenu ul.web-none .user-searchform button svg.crossicon {
   display: none;
