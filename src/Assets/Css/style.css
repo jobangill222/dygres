@@ -7013,6 +7013,11 @@ ul.actionrytbar li p {
   .header-nav .navbar-nav .notify-add svg {
     font-size: 25px;
 }
+.refer_header.modal-header {
+  padding-right: 30px;
+  display: flex;
+  text-align: left;
+}
 #emoji-palette #tab-panel span.bem {
   margin: 2px !important;
 }
@@ -7042,10 +7047,12 @@ ul.actionrytbar li p {
   margin: 0;
 }
 .refer_header.modal-header .modal-title.h4 {
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 18px;
 }
 .refer_header.modal-header .totalshare {
   font-size: 14px;
+  line-height: 16px;
 }
 .hoverdropdown .dropdown-menu .dropdown-item p svg {
   font-size: 16px ;
