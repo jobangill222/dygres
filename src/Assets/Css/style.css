@@ -5469,8 +5469,9 @@ ul.user-detail-listing{
 #tooltip {
   z-index: 9999;
 }
-
-
+.editpostli .dropdown-toggle svg {
+  margin: 0;
+}
 
 /* Responsive css  */
 @media (max-width: 1599px) {
@@ -6545,11 +6546,6 @@ li.svggray svg path {
 .Actions-modal .modal-header button.btn-close {
   opacity: 1;
   font-size: 1rem;
-  position: absolute;
-  right: 0;
-  cursor: pointer;
-  transition: 0.3s ease;
-  top: -30px;
   filter: inrevert !important;
 }
 .user-detail-bar .detailleft .rules-tag {
