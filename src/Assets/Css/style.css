@@ -3884,6 +3884,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
 .tabswithbutotn .buttonoverall-size ul li button {
   width: 40px;
   height: 40px;
+  color: #000000;
   border-radius: 50%;
   background: transparent;
   border: 1px solid #8acc8d;
@@ -7067,8 +7068,9 @@ ul.actionrytbar li p {
     margin: 0;
 }
 .action-bar ul.actionleftbar li.editpostli {
-    order: 4;
-    margin: 0;
+  order: 4;
+  margin: 0;
+  min-width: 43px;
 }
 .action-bar ul.actionleftbar li.viewpostli {
     display: none;
