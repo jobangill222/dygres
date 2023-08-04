@@ -7055,7 +7055,7 @@ ul.actionrytbar li p {
 .action-bar ul.actionleftbar li.Agreeli {
     order: 3;
 }
-.action-bar ul.actionleftbar li.Disagreeli {order: 6;}
+.action-bar ul.actionleftbar li.Disagreeli {order: 6;margin: 0;}
 .action-bar ul.actionleftbar li.Amplifyli {
     order: 2;
 }
@@ -7064,9 +7064,11 @@ ul.actionrytbar li p {
 }
 .action-bar ul.actionleftbar li.Threadsli {
     order: 5;
+    margin: 0;
 }
 .action-bar ul.actionleftbar li.editpostli {
     order: 4;
+    margin: 0;
 }
 .action-bar ul.actionleftbar li.viewpostli {
     display: none;
