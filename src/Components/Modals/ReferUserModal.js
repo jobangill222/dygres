@@ -80,8 +80,9 @@ export default function ReferModal(props) {
                     <div className="copiedbar" onClick={onChangeCopyValue}>
                       {/* <BiCopy onClick={copyText} size={25} /> */}
                       <CopyToClipboard
-                        onCopy={onCopy}
+                        // onCopy={onCopy}
                         // options={{ message: "Whoa!" }}
+                        // text="qqqqqq"
                         text={url ? url : null}
                       >
                         <BiCopy size={25} />

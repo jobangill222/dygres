@@ -748,7 +748,7 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes("copyright or trademark infringement")
+                  reportReason.includes("copyright or trademark infringement")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -791,7 +791,7 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes("election or political interference")
+                  reportReason.includes("election or political interference")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -824,7 +824,7 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes("hate speech or hateful conduct")
+                  reportReason.includes("hate speech or hateful conduct")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -837,7 +837,7 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes("impersonating a dygres team member")
+                  reportReason.includes("impersonating a dygres team member")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -850,7 +850,7 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes("misleading or deceptive identity")
+                  reportReason.includes("misleading or deceptive identity")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -881,7 +881,7 @@ const PostFoot = (props) => {
               onClick={() => selectReportReason("sensitive or offensive media")}
               className={
                 reportReason &&
-                reportReason.includes("sensitive or offensive media")
+                  reportReason.includes("sensitive or offensive media")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -894,7 +894,7 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes("sexual exploitation or sexual violence")
+                  reportReason.includes("sexual exploitation or sexual violence")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -905,7 +905,7 @@ const PostFoot = (props) => {
               onClick={() => selectReportReason("someone is impersonating me")}
               className={
                 reportReason &&
-                reportReason.includes("someone is impersonating me")
+                  reportReason.includes("someone is impersonating me")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -936,7 +936,7 @@ const PostFoot = (props) => {
               onClick={() => selectReportReason("suicide or self-harm risk")}
               className={
                 reportReason &&
-                reportReason.includes("suicide or self-harm risk")
+                  reportReason.includes("suicide or self-harm risk")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -959,7 +959,7 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes("terrorism or violent extremism")
+                  reportReason.includes("terrorism or violent extremism")
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -982,9 +982,9 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes(
-                  "unlabeled manipulated or deceptive media"
-                )
+                  reportReason.includes(
+                    "unlabeled manipulated or deceptive media"
+                  )
                   ? "active report_reasons"
                   : "report_reasons"
               }
@@ -999,9 +999,9 @@ const PostFoot = (props) => {
               }
               className={
                 reportReason &&
-                reportReason.includes(
-                  "unlabeled synthetic or AI generated content"
-                )
+                  reportReason.includes(
+                    "unlabeled synthetic or AI generated content"
+                  )
                   ? "active report_reasons"
                   : "report_reasons"
               }
