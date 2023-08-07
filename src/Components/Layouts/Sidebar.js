@@ -159,8 +159,9 @@ const Sidebar = () => {
                     </Link>
                 </div> */}
         <div className="User-detail">
-          <OverlayTrigger placement="top" overlay={tooltip}>
+          
             <div className="usermain-img">
+            <OverlayTrigger placement="top" overlay={tooltip}>
               <div className="avatar_img">
                 <img
                   src={
@@ -176,6 +177,7 @@ const Sidebar = () => {
                   }
                 />
               </div>
+              </OverlayTrigger>
               {isDummyUser() ? (
                 <div class="user_info_sidebar">
                   <p></p>
@@ -198,7 +200,7 @@ const Sidebar = () => {
                 </div>
               )}
             </div>
-          </OverlayTrigger>
+          
           <ul className="user-detail-listing">
             <li onClick={openViewProfile}>
               <p className="text-secondry">{userStats?.totalPosts}</p>

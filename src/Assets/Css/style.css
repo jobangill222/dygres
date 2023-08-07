@@ -1406,6 +1406,12 @@ ul.profiletabsbar li:last-child a {
   margin-right: 5px;
   font-size: 1.5rem;
 }
+.Description-bar ul li{
+  list-style-type: disc;
+}
+.Description-bar ul{
+  padding-left: 2rem;
+}
 
 .digital-feeds .Description-bar {
   padding-bottom: 24px;

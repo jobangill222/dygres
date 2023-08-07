@@ -146,7 +146,7 @@ const EditProfile = () => {
       {/* <ul>
         <li>Username must be 20 characters max.</li>
       </ul> */}
-      Select 1920x1080 px image
+      Select 1080x1080 px image
     </Tooltip>
   );
 
@@ -193,7 +193,7 @@ const EditProfile = () => {
                       accept="image/*"
                       type="file"
                       onChange={uploadProfileImage}
-                      title="Select 1920x1080 px image"
+                      title="Select 1080x1080 px image"
                     />
                     <TbCameraPlus />
                   </div>

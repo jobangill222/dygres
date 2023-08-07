@@ -217,10 +217,10 @@ const SignUp = () => {
               </Form.Group>
               {username && (
                 <Form.Group className="authinputbar" controlId="formBasicReferradFrom">
-                  <Form.Label>Referred from</Form.Label>
+                  <Form.Label>Referred From</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Referred from"
+                    placeholder="Referred From"
                     name="referradFrom"
                     defaultValue={"@" + username}
                     disabled

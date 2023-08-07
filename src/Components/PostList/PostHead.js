@@ -238,11 +238,11 @@ const PostHead = (props) => {
       <div className="user-detail-bar">
         <div className="detailleft">
           <div className="userleftside">
-            <OverlayTrigger placement="top" overlay={userThoughtToolTip} >
               <div className="avatar-img active">
+            <OverlayTrigger placement="top" overlay={userThoughtToolTip} >
                 <img src={postUserDetails?.profileImage ? postUserDetails?.profileImage : `/images/user.png`} alt="user-img" />
-              </div>
             </OverlayTrigger>
+              </div>
             <div className="user-detail">
               <div className="follow-bar">
                 <h4 className="text-secondry" onClick={() => userProfileDetail(postUserDetails?.username)}>
