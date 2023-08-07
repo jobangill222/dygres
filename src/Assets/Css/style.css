@@ -5407,11 +5407,11 @@ ul.user-detail-listing{
 }
 .ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6 {
     color: #545456;
-    word-break: break-all;
+    word-break: break-word;
 }
 [darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6,[darkmode]  .ql-snow .ql-editor p {
     color: #ffffff;
-    word-break: break-all;
+    word-break: break-word;
 }
 [darkmode] .user_info_sidebar a{
   color: var(--base-green);
@@ -6803,7 +6803,7 @@ ul.actionrytbar li p {
     .digital-feeds.diffrentiate-bar
     .user-availbility
     h6.text-lightgray {
-    word-break: break-all;
+    word-break: break-word;
   }
   .digital-feeds .digital-feeds.diffrentiate-bar {
     margin-left: 0;
