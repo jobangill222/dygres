@@ -221,14 +221,20 @@ const Header = () => {
                   overlay={<Tooltip id="tooltip-disabled">dygres</Tooltip>}
                 >
                   <Navbar.Brand>
-                    <Link to="/new">
+                    <Link onClick={(e) => {
+                      location.reload();
+                      e.preventDefault();
+                    }} to="#">
                       <img
                         className="lightmode"
                         src="/images/dygreslogo.png"
                         alt="logo"
                       />
                     </Link>
-                    <Link to="/new">
+                    <Link onClick={(e) => {
+                      location.reload();
+                      e.preventDefault();
+                    }} to="#">
                       <img
                         className="darkmode"
                         src="/images/dygreslogo.png"
