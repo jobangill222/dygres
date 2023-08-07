@@ -5074,6 +5074,13 @@ ul.sidebar-menu {
   overflow: initial;
   padding-bottom: 0px;
 }
+.refer_input .input-group-text {
+  width: 70px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .reply-post.reply-fix-bottom {
   position: absolute;
   bottom: 20px;

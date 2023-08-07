@@ -9,26 +9,30 @@ import { BiCopy } from "react-icons/bi";
 import { TiTickOutline } from "react-icons/ti";
 import { DContext } from "../../Context/DContext";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useCopyToClipboard } from "@uidotdev/usehooks";
+
+
 export default function ReferModal(props) {
   const { isShowReferModal, setIsShowReferModal, url } = props;
 
   const [copied, setCopied] = React.useState(false);
 
-  const onChangeCopyValue = useCallback(({ target: { value } }) => {
+  const onChangeCopyValue = async () => {
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
     }, 3000);
-  }, []);
+  };
 
-  const onCopy = useCallback(() => {
-    setCopied(true);
-  }, []);
 
   const { user } = useContext(DContext);
   const closePopup = async () => {
     setIsShowReferModal(false);
   };
+
+  const [copiedText, copyToClipboard] = useCopyToClipboard();
+  const hasCopiedText = Boolean(copiedText);
+
 
   return (
     <>
@@ -68,27 +72,25 @@ export default function ReferModal(props) {
                 <InputGroup.Text id="basic-addon2">
                   {copied ? (
                     <div className="copiedbar">
-                      <TiTickOutline size={25} />{" "}
-                      <p
-                        className="content
-                         "
-                      >
-                        Copied
-                      </p>
+                      <TiTickOutline />{" "}
+                      <p className="content">Copied</p>
                     </div>
                   ) : (
-                    <div className="copiedbar" onClick={onChangeCopyValue}>
-                      {/* <BiCopy onClick={copyText} size={25} /> */}
-                      <CopyToClipboard
-                        // onCopy={onCopy}
-                        // options={{ message: "Whoa!" }}
-                        // text="qqqqqq"
-                        text={url ? url : null}
-                      >
-                        <BiCopy size={25} />
-                      </CopyToClipboard>
-                      <p className="content">Copy</p>
-                    </div>
+                    <>
+                      <div className="copiedbar" onClick={() => {
+                        onChangeCopyValue()
+                        copyToClipboard(url)
+                      }}>
+                        <BiCopy />
+                        <div disabled={hasCopiedText} className="link" >copy</div>
+                      </div>
+                      <br>
+                      </br>
+
+
+                    </>
+
+
                   )}{" "}
                 </InputGroup.Text>
               </InputGroup>
