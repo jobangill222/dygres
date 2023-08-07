@@ -1435,7 +1435,7 @@ t .report-tabs li.active {
   font-size: 1.125rem;
   line-height: 1.875rem;
   margin-bottom: 0;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .action-bar {
