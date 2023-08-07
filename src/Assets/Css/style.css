@@ -5479,7 +5479,26 @@ ul.user-detail-listing{
 .editpostli .dropdown-toggle svg {
   margin: 0;
 }
+.Dropdown-listing .arrowbar .notification-content .user-detail-bar .detailleft {
+    flex: 0 0 90%;
+    max-width: 90%;
+}
 
+.Dropdown-listing .arrowbar .notification-content .user-detail-bar .detailleft .userleftside {
+    width: 100%;
+}
+
+.Dropdown-listing .arrowbar .notification-content .user-detail-bar .detailleft .userleftside .user-detail {
+    width: 100%;
+}
+
+.Dropdown-listing .arrowbar .notification-content .user-detail-bar .detailleft .userleftside .avatar-img {
+    width: 40px;
+    height: 40px;
+}
+.Dropdown-listing .arrowbar .notification-content .user-detail-bar .detailleft .userleftside .user-detail .rules-tag .levelbar {
+    top: -8px !important;
+}
 /* Responsive css  */
 @media (max-width: 1599px) {
   ul.trending-hashtag-list {
