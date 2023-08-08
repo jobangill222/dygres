@@ -958,8 +958,11 @@ textarea {
   border-radius: 20px;
   padding: 5px;
 }
-.whtsmind-btn-space {
-    padding: 14px;
+.reply-post .whtsmind-btn-space {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 12px;
 }
 .whatsmind-inputbar .whatsmind-inputbar__highlighter {
   display: none;
@@ -1989,9 +1992,9 @@ t .report-tabs li.active {
 }
 .reply-post p.counter-text {
   position: absolute;
-  bottom: 15px;
+  bottom: 12px;
   margin: 0;
-  left: 15px;
+  right: 100px;
   font-size: 14px;
 }
 .reply-post form .btn {
@@ -5068,13 +5071,35 @@ ul.sidebar-menu {
 .thredsbar .accordionitem {
   max-height: 400px;
   overflow-x: hidden;
-  overflow-y: scroll;
-  padding-bottom: 260px;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  margin-bottom: 120px;
+}
+
+.Description-bar ol{
+  counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+.Description-bar ol li {
+  counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-0;
+}
+.Description-bar  ol li.ql-indent-1 {
+  counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+.Description-bar  ol li.ql-indent-1 {
+  counter-increment: list-1;
 }
 .thredsbar .accordionitem .accordionitem {
   max-height: initial;
   overflow: initial;
   padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.notification-dropdown .notification-content .notification-text .awards-note{
+  display: none;
+}
+.maineditor .whtsmind-btn-space {
+  padding: 14px;
 }
 .refer_input .input-group-text {
   width: 70px;
@@ -5086,7 +5111,7 @@ ul.sidebar-menu {
 .reply-post.reply-fix-bottom {
   position: absolute;
   bottom: 20px;
-  width: 96%;
+  width: 94%;
   left: 50%;
   max-width: 100%;
   transform: translate(-50%, 0px);
@@ -5106,6 +5131,7 @@ ul.sidebar-menu {
 .reply-post form .ql-container {min-height: auto;}
 .reply-post form .ql-container .ql-editor {
   min-height: 50px !important;
+    padding-right: 140px;
 }
 .digital-feeds .Description-bar div {
   white-space: inherit !important;
@@ -5258,6 +5284,7 @@ background: linear-gradient(to right, rgba(157, 211, 131, 1), rgba(62, 172, 198,
 }
  .editor .ql-editor{
   min-height: 158px;
+  padding-right: 15px;
 }
 body .ql-container.ql-snow{
   border: none;
@@ -6587,6 +6614,23 @@ li.svggray svg path {
   /* .ql-toolbar.ql-snow {
     margin-top: -83px !important;
 } */
+.reply-post .whtsmind-btn-space {
+  position: relative;
+  bottom: inherit;
+  right: inherit;
+  padding: 12px;
+}
+.reply-post p.counter-text {
+  right: inherit;
+  left: 15px;
+}
+.thredsbar .accordionitem {
+  max-height: 250px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  margin-bottom: 160px;
+}
 .digital-feeds .Description-bar p {
   word-break: inherit !important;
 }
@@ -6760,7 +6804,7 @@ ul.actionrytbar li p {
   overflow: hidden;
 }
 .reply-post form .btn {
-  font-size: 0.875rem;
+  font-size: 20px;
 }
 .Foundationalmodal button.btn-close {
   top: 20px !important;

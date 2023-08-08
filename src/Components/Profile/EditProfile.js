@@ -146,7 +146,7 @@ const EditProfile = () => {
       {/* <ul>
         <li>Username must be 20 characters max.</li>
       </ul> */}
-      Minimum resolution - 1080x1080 -<br/> Maximum size - 15 mb
+      Minimum resolution - 1080x1080 <br/> Maximum size - 15 mb
     </Tooltip>
   );
 

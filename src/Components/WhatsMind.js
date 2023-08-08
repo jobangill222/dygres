@@ -112,7 +112,7 @@ const WhatsMind = (props) => {
 
   return (
     <>
-      <div className="Whatsmind-bar c">
+      <div className="Whatsmind-bar maineditor">
         <Editor
           value={createPostState}
           setValue={setCreatePostState}

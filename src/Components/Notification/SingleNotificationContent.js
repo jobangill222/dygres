@@ -68,7 +68,7 @@ export default function SingleNotificationContent(props) {
                                             <p>has given your</p>
                                             <p className="notify" onClick={() => viewPost(singleNotification?.postID)}>dygression</p>
                                             <p>an award</p>
-                                            <img src={singleNotification?.awards?.image}></img>
+                                            <img className='awards-note' src={singleNotification?.awards?.image}></img>
                                         </div>
                                     </>
                                     :
