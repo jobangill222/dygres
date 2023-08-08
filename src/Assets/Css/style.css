@@ -5403,11 +5403,23 @@ stroke: white;
   color: var(--darkmode-offwhite);
   word-wrap: break-word;
 }
-.Whatsmind-bar .ql-editor p,  .ql-editor ol li, .ql-editor ul li, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
-  color: var(--base-default-text);
+[darkmode] .Whatsmind-bar .ql-editor p,
+[darkmode]  .ql-editor ol li,
+[darkmode] .ql-editor ul li,
+[darkmode] .ql-editor pre,
+[darkmode] .ql-editor blockquote,
+[darkmode] .ql-editor h1,
+[darkmode] .ql-editor h2,
+[darkmode] .ql-editor h3,
+[darkmode] .ql-editor h4,
+[darkmode] .ql-editor h5,
+[darkmode] .ql-editor h6{
   display: block !important;
 }
-[darkmode] .Whatsmind-bar .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
+.digital-feeds .Description-bar {
+  padding: 0px 0 20px 0;
+}
+[darkmode] .Whatsmind-bar .ql-editor p,[darkmode] .ql-editor ol,[darkmode] .ql-editor ul,[darkmode] .ql-editor pre,[darkmode] .ql-editor blockquote,[darkmode] .ql-editor h1,[darkmode] .ql-editor h2,[darkmode] .ql-editor h3,[darkmode] .ql-editor h4,[darkmode] .ql-editor h5,[darkmode] .ql-editor h6{
   color: var(--darkmode-offwhite);
 }
 .ql-snow .ql-picker-options{
@@ -5430,7 +5442,7 @@ ul.user-detail-listing{
     text-align: right;
 }
 .ql-editor ol > li, .ql-editor ul > li{
-  font-size: 18px;
+  font-size: 16px;
 }
 .ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6, .ql-snow .ql-editor li {
     color: #545456;
