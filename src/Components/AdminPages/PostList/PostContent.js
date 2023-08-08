@@ -8,7 +8,7 @@ const PostContent = ({ postContent }) => {
 
   return (
     <>
-      <div className="Description-bar">
+      <div className="Description-bar ">
         <p>
           {/* <HighLight content={postContent} /> */}
 

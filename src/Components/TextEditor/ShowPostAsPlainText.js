@@ -68,7 +68,7 @@ export default function ShowPostText({ postContent }) {
     return (
         <div
             ref={contentRef}
-            className="Description-bar"
+            className="Description-bar ql-editor"
             dangerouslySetInnerHTML={content}
         ></div>
     )
