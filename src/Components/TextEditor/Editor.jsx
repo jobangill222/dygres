@@ -189,7 +189,9 @@ function Editor({
         "link",
         // "image"
       ],
-      [{ list: "ordered" }, { list: "bullet" }],
+      [{ list: "ordered" }, { list: "bullet" } ,  {'indent': '-1'}, {'indent': '+1'}],
+
+      ['video'],
 
       ["user-list"], // Custom option for user list
       ["emoji"],
@@ -209,7 +211,9 @@ function Editor({
     "strike",
     "align",
     "link",
-    "list",
+    "list", 
+    "indent",  
+    'video',
     "user-list",
     "emoji",
     "clean",
