@@ -224,7 +224,7 @@ const Header = () => {
                     <Link onClick={(e) => {
                       location.reload();
                       e.preventDefault();
-                    }} to="#">
+                    }} to="/">
                       <img
                         className="lightmode"
                         src="/images/dygreslogo.png"
@@ -234,7 +234,7 @@ const Header = () => {
                     <Link onClick={(e) => {
                       location.reload();
                       e.preventDefault();
-                    }} to="#">
+                    }} to="/">
                       <img
                         className="darkmode"
                         src="/images/dygreslogo.png"
