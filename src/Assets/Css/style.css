@@ -1321,7 +1321,8 @@ ul.profiletabsbar li:last-child a {
   display: inline-block;
   margin: 0;
   position: absolute;
-  left: 202px;
+  left: 213px;
+  top: 2px;
   z-index: 2;
   /* background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff !important; */
   width: 30px;
@@ -1939,6 +1940,7 @@ t .report-tabs li.active {
   margin-bottom: 20px;
 }
 .usermain-img .avatar_img{
+  min-width: 142px;
   border-radius: 50% !important;
   border: 6px solid transparent;
   background: linear-gradient(rgba(62, 172, 198, 1), rgba(157, 211, 131, 1)) padding-box,
@@ -3010,7 +3012,7 @@ body[data-page="/editprofile"] .somewhere-full .somewhere-pad-0 {
   font-size: 30px;
   color: var(--base-purewhite);
   position: absolute;
-  right: -10px;
+  right: 25px;
   bottom: 0px;
 }
 
@@ -5185,9 +5187,10 @@ ul.actionrytbar {
   margin-top: 65px;
 }
 .user_info_sidebar p{
-font-size: 15px;
-font-weight: 600;
-margin-bottom: 4px;
+font-size: 18px;
+font-weight: 700;
+line-height: 1;
+margin-bottom: 10px;
 text-transform: capitalize;
 }
 .user_info_sidebar a{
@@ -5412,11 +5415,14 @@ ul.user-detail-listing{
 .digital-feeds .Description-bar .ql-align-right {
     text-align: right;
 }
-.ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6 {
+.ql-editor ol > li, .ql-editor ul > li{
+  font-size: 18px;
+}
+.ql-snow .ql-editor h1, .ql-snow .ql-editor h2, .ql-snow .ql-editor h3, .ql-snow .ql-editor h4, .ql-snow .ql-editor h5, .ql-snow .ql-editor h6, .ql-snow .ql-editor li {
     color: #545456;
     word-break: break-word;
 }
-[darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6,[darkmode]  .ql-snow .ql-editor p {
+[darkmode] .ql-snow .ql-editor h1,[darkmode]  .ql-snow .ql-editor h2,[darkmode]  .ql-snow .ql-editor h3,[darkmode]  .ql-snow .ql-editor h4,[darkmode]  .ql-snow .ql-editor h5,[darkmode]  .ql-snow .ql-editor h6,[darkmode]  .ql-snow .ql-editor p, [darkmode] .ql-snow .ql-editor li {
     color: #ffffff;
     word-break: break-word;
 }
@@ -5427,7 +5433,12 @@ ul.user-detail-listing{
 [darkmode] .user_info_sidebar p{
   color: var(--base-offgray);
 }
-
+.info_circle {
+  background: linear-gradient(180deg, #21a0da -28.9%, #9dd382 100%), #ffffff;
+  width: 45px;
+  height: 45px;
+  color: white;
+}
 
 .user_profile {
   flex-direction: row !important;
@@ -5549,7 +5560,7 @@ ul.trending-hashtag-list li.hashtaglist {
   }
 
   .reply-post form .btn {
-    font-size: 1.125rem;
+    font-size: 1.4rem;
   }
 
   input.form-control {
@@ -5929,6 +5940,9 @@ ul.trending-hashtag-list li.hashtaglist {
   .user_info_sidebar {
     width: 100%;
     text-align: center;
+  }
+  .user_info_sidebar p{
+    margin: 12px 0;
   }
 }
 
@@ -6902,6 +6916,12 @@ ul.actionrytbar li p {
   .restrict-logins li p {
     font-size: .75rem;
   }
+  .user-preview {
+    margin-top: 12px;
+}
+.ql-emoji {
+  display: none !important;
+}
 
   .restrict-logins {
     justify-content: flex-end;
@@ -7038,6 +7058,13 @@ ul.actionrytbar li p {
   border-radius: 50%;
   border: 10px solid var(--base-purewhite);
   position: relative;
+}
+.Uploaded-user p{
+  left: 143px;
+}
+.info_circle {
+  width: 38px;
+  height: 38px;
 }
 }
 
@@ -7400,6 +7427,12 @@ body #theme-switch .switch-check, body #theme-switch .switch-x {
 }
 .Uploaded-user p{
   left: 130px;
+  font-size: 14px;
+}
+.Uploaded-user .Imagebar .userup-in {
+  right: -4px;
+  width: 45px;
+  height: 45px;
 }
 
 }

@@ -138,7 +138,7 @@ const EditProfile = () => {
 
   const renderTooltip = (props) => (
     <Tooltip
-      style={{ width: "400px", wordBreak: "break-all" }}
+      style={{ width: "700px", wordBreak: "break-word" }}
       className="infotooltip"
       id="button-tooltip"
       {...props}
@@ -146,7 +146,7 @@ const EditProfile = () => {
       {/* <ul>
         <li>Username must be 20 characters max.</li>
       </ul> */}
-      Select 1080x1080 px image
+      Minimum resolution - 1080x1080 -<br/> Maximum size - 15 mb
     </Tooltip>
   );
 
@@ -164,13 +164,13 @@ const EditProfile = () => {
           <Col lg="6">
             <div className="Uploaded-user">
               <OverlayTrigger
-                placement="right"
+                placement="top"
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
               >
-                <p>
+                <p className="info_circle">
                   {" "}
-                  <BsInfoCircle />
+                  <BsInfoCircle size={30}/>
                 </p>
               </OverlayTrigger>
 
