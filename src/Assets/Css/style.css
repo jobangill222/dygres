@@ -6897,9 +6897,7 @@ ul.actionrytbar li p {
     padding-right: 10px;
   }
   .welcomepopup .modal-header {
-    padding: 0 0px 20px 0;
-    display: block;
-    text-align: center;
+    padding: 0 40px 20px 0;
 }
 .modal.show .modal-dialog {
   max-width: 96%;
