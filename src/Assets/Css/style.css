@@ -5118,6 +5118,7 @@ ul.sidebar-menu {
 .reply-post form .ql-container {min-height: auto;}
 .reply-post form .ql-container .ql-editor {
   min-height: 50px !important;
+  padding-bottom: 40px;
 }
 .digital-feeds .Description-bar div {
   white-space: inherit !important;
@@ -6612,6 +6613,9 @@ li.svggray svg path {
   /* .ql-toolbar.ql-snow {
     margin-top: -83px !important;
 } */
+.reply-post form .ql-container .ql-editor {
+  padding-bottom: 40px;
+}
 .reply-post .whtsmind-btn-space {
   position: relative;
   bottom: inherit;
@@ -6900,7 +6904,7 @@ ul.actionrytbar li p {
 }
 .modal.show .modal-dialog {
   max-width: 96%;
-}
+}©
   .terms-content h4 {
     color: #212121;
     font-weight: bold;
