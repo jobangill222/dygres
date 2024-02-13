@@ -17,7 +17,7 @@ const AuthLayout = () => {
             <div className='body-wrapper p-0'>
                 <Outlet />
             </div>
-            <FooterMob/>
+            <FooterMob />
         </>
     );
 }
