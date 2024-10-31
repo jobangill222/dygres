@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/overlayTrigger';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'

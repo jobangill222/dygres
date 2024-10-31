@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from "react-router-dom";
 
 import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/overlayTrigger';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'

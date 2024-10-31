@@ -5,7 +5,7 @@ import { DContext } from "../../Context/DContext";
 import Countdown from 'react-countdown';
 import PostHeadAward from "./PostHeadAward";
 import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/overlayTrigger';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 
 import { useNavigate, useLocation } from "react-router-dom";

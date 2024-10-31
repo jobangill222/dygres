@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/overlayTrigger';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import UsersProfileTabs from "./UsersProfileTabs";
 import { DContext } from "../../Context/DContext";
 import { verificationLevel } from "../../helper/verificationLevel";

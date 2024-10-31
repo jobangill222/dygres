@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Tooltip from "react-bootstrap/Tooltip";
-import OverlayTrigger from "react-bootstrap/overlayTrigger";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { BsFillImageFill, BsPencil } from "react-icons/bs";
 import ProfileTabs from "./ProfileTabs";
 import { Link, useNavigate } from "react-router-dom";
