@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 // import { MdOutlineTimer } from 'react-icons/md';
 
 import { BASE_URL } from '../../Config/index';
-import Tooltip from 'react-bootstrap/tooltip';
+import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 
 import moment from "moment";

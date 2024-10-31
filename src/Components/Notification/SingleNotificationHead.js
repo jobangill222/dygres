@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from "react-router-dom";
 
-import Tooltip from 'react-bootstrap/tooltip';
+import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 
 import moment from "moment";

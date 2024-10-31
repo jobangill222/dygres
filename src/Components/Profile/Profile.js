@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
-import Tooltip from "react-bootstrap/tooltip";
+import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/overlayTrigger";
 import { BsFillImageFill, BsPencil } from "react-icons/bs";
 import ProfileTabs from "./ProfileTabs";

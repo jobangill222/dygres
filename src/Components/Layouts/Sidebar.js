@@ -8,7 +8,7 @@ import { FcAbout } from "react-icons/fc";
 
 import { Link } from "react-router-dom";
 import { DContext } from "../../Context/DContext";
-import Tooltip from "react-bootstrap/tooltip";
+import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/overlayTrigger";
 import { useNavigate } from "react-router-dom";
 import ViewAllAwardsIGot from "../Modals/ViewAllAwardsIGot";

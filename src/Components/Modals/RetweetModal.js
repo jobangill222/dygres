@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { DContext } from "../../Context/DContext";
 import { toast } from "react-toastify";
 import HighLight from "../HighLight"
-import Tooltip from 'react-bootstrap/tooltip';
+import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import { MentionsInput, Mention } from 'react-mentions';
 

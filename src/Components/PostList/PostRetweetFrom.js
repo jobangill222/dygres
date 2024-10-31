@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from 'react'
-import Tooltip from 'react-bootstrap/tooltip';
+import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 import moment from "moment";
 import TimeAgo from 'javascript-time-ago'

@@ -35,7 +35,7 @@ import SendNotification from "./Components/AdminPages/SendNotification";
 import FlagPost from "./Components/AdminPages/FlagPost";
 import UserVerification from "./Components/AdminPages/UserVerification";
 // import TopLatestPost from "./Components/TopLatestPost";
-import NotFound from "./Pages/NotFound";
+// import NotFound from "./Pages/NotFound";
 import { useContext, useEffect } from "react";
 import { DContext } from "./Context/DContext";
 import EditProfile from "./Components/Profile/EditProfile";

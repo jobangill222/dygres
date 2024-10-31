@@ -4,7 +4,7 @@ import { DContext } from "../../Context/DContext";
 
 import Countdown from 'react-countdown';
 import PostHeadAward from "./PostHeadAward";
-import Tooltip from 'react-bootstrap/tooltip';
+import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/overlayTrigger';
 
 
